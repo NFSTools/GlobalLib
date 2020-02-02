@@ -471,7 +471,7 @@
     <Compile Include="Utils\EA\Resolve.cs" />
     <Compile Include="Utils\File\DDS.cs" />
     <Compile Include="Utils\Hash\Bin.cs" />
-    <Compile Include="Utils\Hash\Formatter.cs" />
+    <Compile Include="Utils\Hash\FormatX.cs" />
     <Compile Include="Utils\Hash\Vlt.cs" />
     <Compile Include="Utils\File\JDLZ.cs" />
     <Compile Include="Utils\File\Log.cs" />

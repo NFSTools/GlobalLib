@@ -12,7 +12,8 @@
             if (string.IsNullOrWhiteSpace(name)) return null;
             string value = name.ToUpper();
             if (!value.StartsWith("VINYL")) return null;
-            if (byte.TryParse(value.Substring(5, value.Length - 5), out byte result) && result != 0 && result <= 20)
+            byte result = Utils.FormatX.GetByte(name, "VINYL{XX}");
+            if (result != 0 && result <= 20)
                 return this.Vinyls[result - 1];
             else
                 return null;

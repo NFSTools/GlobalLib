@@ -10,22 +10,27 @@
         /// <returns>True if class adding was successful, false otherwise.</returns>
         public bool TryAddClass(string CName, ClassType type)
         {
+            if (string.IsNullOrWhiteSpace(CName)) return false;
+
             if (this.GetClassIndex(CName, type) != -1)
                 return false;
 
             switch (type)
             {
                 case ClassType.Material:
+                    if (CName.Length > 0x1B) return false;
                     var material = new Support.MostWanted.Class.Material(CName);
                     this.Materials.Add(material);
                     return true;
 
                 case ClassType.CarTypeInfo:
+                    if (CName.Length > 0xD) return false;
                     var car = new Support.MostWanted.Class.CarTypeInfo(CName);
                     this.CarTypeInfos.Add(car);
                     return true;
 
                 case ClassType.PresetRide:
+                    if (CName.Length > 0x1E) return false;
                     var ride = new Support.MostWanted.Class.PresetRide(CName);
                     this.PresetRides.Add(ride);
                     return true;

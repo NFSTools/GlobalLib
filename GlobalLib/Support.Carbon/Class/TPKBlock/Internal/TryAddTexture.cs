@@ -10,8 +10,12 @@
         /// <returns>True if texture adding was successful, false otherwise.</returns>
         public override bool TryAddTexture(string CName, string filename)
         {
+            if (string.IsNullOrWhiteSpace(CName)) return false;
+
             if (this.GetTextureIndex(CName) != -1)
                 return false;
+
+            if (CName.Length > 0x22) return false;
 
             if (!Utils.EA.Comp.IsDDSTexture(filename))
                 return false;

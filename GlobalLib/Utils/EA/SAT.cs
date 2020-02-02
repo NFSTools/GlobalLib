@@ -66,8 +66,8 @@ namespace GlobalLib.Utils.EA
                 return -1;
             try
             {
-                field = field.Substring(6, field.Length - 7);
-                result = Convert.ToInt32(field);
+                string str = FormatX.GetString(field, "Color[{X}]");
+                if (!int.TryParse(str, out result)) return -1;
             }
             catch { }
             return result;
@@ -114,15 +114,7 @@ namespace GlobalLib.Utils.EA
         /// <returns>Alpha parameter as a byte.</returns>
         public static byte GetAlpha(string color)
         {
-            string value = "";
-            byte result = 0;
-            try
-            {
-                value = color.Substring(2, 2);
-                result = Convert.ToByte(value, 16);
-            }
-            catch (Exception) { }
-            return result;
+            return FormatX.GetByte(color, "0x{XX}ABCDEF");
         }
 
         /// <summary>
@@ -132,15 +124,7 @@ namespace GlobalLib.Utils.EA
         /// <returns>Red parameter as a byte.</returns>
         public static byte GetRed(string color)
         {
-            string value = "";
-            byte result = 0;
-            try
-            {
-                value = color.Substring(4, 2);
-                result = Convert.ToByte(value, 16);
-            }
-            catch (Exception) { }
-            return result;
+            return FormatX.GetByte(color, "0xAB{XX}CDEF");
         }
 
         /// <summary>
@@ -150,15 +134,7 @@ namespace GlobalLib.Utils.EA
         /// <returns>Green parameter as a byte.</returns>
         public static byte GetGreen(string color)
         {
-            string value = "";
-            byte result = 0;
-            try
-            {
-                value = color.Substring(6, 2);
-                result = Convert.ToByte(value, 16);
-            }
-            catch (Exception) { }
-            return result;
+            return FormatX.GetByte(color, "0xABCD{XX}EF");
         }
 
         /// <summary>
@@ -168,15 +144,7 @@ namespace GlobalLib.Utils.EA
         /// <returns>Blue parameter as a byte.</returns>
         public static byte GetBlue(string color)
         {
-            string value = "";
-            byte result = 0;
-            try
-            {
-                value = color.Substring(8, 2);
-                result = Convert.ToByte(value, 16);
-            }
-            catch (Exception) { }
-            return result;
+            return FormatX.GetByte(color, "0xABCDEF{XX}");
         }
     }
 }

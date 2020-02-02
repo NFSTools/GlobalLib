@@ -10,12 +10,16 @@
         /// <returns>True if class cloning was successful, false otherwise.</returns>
         public override bool TryCloneTexture(string newname, string copyfrom)
         {
+            if (string.IsNullOrWhiteSpace(newname)) return false;
+
             if (this.GetTextureIndex(newname) != -1)
                 return false;
 
             int index = this.GetTextureIndex(copyfrom);
             if (index == -1)
                 return false;
+
+            if (newname.Length > 0x22) return false;
 
             var texture = this.Textures[index].MemoryCast(newname);
             this.Textures.Add(texture);

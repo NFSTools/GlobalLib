@@ -13,7 +13,7 @@
 
             result._spoiler = this._spoiler;
             result._spoilerAS = this._spoilerAS;
-            result.CollisionExternalName = this.CollisionExternalName;
+            result.CollisionExternalName = result.CollectionName;
             result.CollisionInternalName = this.CollisionInternalName;
             result.UsageType = this.UsageType;
             result.MemoryType = this.MemoryType;

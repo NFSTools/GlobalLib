@@ -12,7 +12,7 @@
             var result = new CarTypeInfo(CName);
 
             result._spoiler = this._spoiler;
-            result.CollisionExternalName = this.CollisionExternalName;
+            result.CollisionExternalName = result.CollectionName;
             result.CollisionInternalName = this.CollisionInternalName;
             result.UsageType = this.UsageType;
             result.MemoryType = this.MemoryType;

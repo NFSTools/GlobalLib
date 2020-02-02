@@ -60,10 +60,10 @@
             try
             {
                 if (!tint.StartsWith("WINDSHIELD_TINT")) return;
-                int level = System.Convert.ToInt32(tint.Substring(17, 1));
+                if (!int.TryParse(tint.Substring(17, 1), out int level)) return;
                 if (level == 3)
                 {
-                    string color = tint.Substring(19, tint.Length - 19);
+                    string color = FormatX.GetString(tint, "WINDSHIELD_TINT_L3_{X}");
                     string var1 = "WINDSHIELD_TINT_L3_PEARL_" + color;
                     string var2 = "WINDSHIELD_TINT_L3_PEARL " + color;
                     Core.Map.WindowTintMap.Add(var1);
