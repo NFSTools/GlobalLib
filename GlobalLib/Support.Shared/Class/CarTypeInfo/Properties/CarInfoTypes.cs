@@ -32,8 +32,9 @@
             {
                 if (System.Enum.IsDefined(typeof(Reflection.Enum.CarTypeInfo.UsageType), value))
                 {
+                    if (this._usagetype != value)
+                        this.Modified = true;
                     this._usagetype = value;
-                    this.Modified = true;
                 }
                 else
                     throw new System.ArgumentOutOfRangeException();

@@ -30,6 +30,7 @@
             this.Disassemble(byteptr_t);
             if (this.Index <= Reflection.Enum.CarTypeInfo.BoundValues.MinInfoCarbon)
                 this.Deletable = false;
+            this.Modified = false;
         }
 
         ~CarTypeInfo() { }

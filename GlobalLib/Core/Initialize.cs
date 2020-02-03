@@ -9,6 +9,7 @@
             Map.CollisionMap.Clear();
             PaintTypes();
             BodyPaints();
+            Windshields();
             RimBrandArray();
         }
 
@@ -74,6 +75,18 @@
             _paint_2 = "TRAFFIC_L1_COLOR01";
             Map.RaiderKeys[Utils.Bin.Hash(_paint_1)] = _paint_1;
             Map.RaiderKeys[Utils.Bin.Hash(_paint_2)] = _paint_2;
+        }
+
+        private static void Windshields()
+        {
+            Map.WindowTintMap.Add("WINDSHIELD_TINT_L1_BLACK");
+            Map.WindowTintMap.Add("WINDSHIELD_TINT_L1_GREEN");
+            Map.WindowTintMap.Add("WINDSHIELD_TINT_L1_BLUE");
+            Map.WindowTintMap.Add("WINDSHIELD_TINT_L1_RED");
+            Map.WindowTintMap.Add("WINDSHIELD_TINT_L1_MED_BLACK");
+            Map.WindowTintMap.Add("WINDSHIELD_TINT_L1_MED_GREEN");
+            for (int a1 = 0; a1 < Map.WindowTintMap.Count; ++a1)
+                Utils.Bin.Hash(Map.WindowTintMap[a1]);
         }
 
         /// <summary>

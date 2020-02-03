@@ -17,7 +17,6 @@
                     if (ThisProperty.Name == PropertyName)
                     {
                         ThisProperty.SetValue(this, Utils.Cast.RuntimeCast(value, ThisProperty.GetValue(this)));
-                        this.Modified = true;
                         return true;
                     }
                 }

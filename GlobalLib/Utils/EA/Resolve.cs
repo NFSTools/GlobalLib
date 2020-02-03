@@ -68,10 +68,13 @@
                     string var2 = "WINDSHIELD_TINT_L3_PEARL " + color;
                     Core.Map.WindowTintMap.Add(var1);
                     Core.Map.WindowTintMap.Add(var2);
+                    Bin.Hash(var1);
+                    Bin.Hash(var2);
                     return;
                 }
                 else
-                    Core.Map.WindowTintMap.Add(tint);
+                    if (!Core.Map.WindowTintMap.Contains(tint))
+                        Core.Map.WindowTintMap.Add(tint);
             }
             catch (System.Exception) { }
         }
