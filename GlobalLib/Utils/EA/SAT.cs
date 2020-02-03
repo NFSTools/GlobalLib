@@ -78,13 +78,15 @@ namespace GlobalLib.Utils.EA
         /// </summary>
         /// <param name="a1">FEngColor 1.</param>
         /// <param name="a2">FEngColor 2.</param>
+        /// <param name="comparealpha">True if do compared alpha values.</param>
         /// <returns>True if two FEngColors are equal.</returns>
-        public static bool EqualColors(FEngColor a1, FEngColor a2)
+        public static bool EqualColors(FEngColor a1, FEngColor a2, bool comparealpha)
         {
-            if (a1.Alpha != a2.Alpha) return false;
             if (a1.Red != a2.Red) return false;
             if (a1.Green != a2.Green) return false;
             if (a1.Blue != a2.Blue) return false;
+            if (comparealpha)
+                if (a1.Alpha != a2.Alpha) return false;
             return true;
         }
 
