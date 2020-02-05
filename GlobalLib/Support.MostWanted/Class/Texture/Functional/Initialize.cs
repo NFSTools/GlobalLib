@@ -47,7 +47,7 @@
                 }
 
                 // Default all other values
-                this._num_palettes = 0;
+                this._num_palettes = (short)(this.PaletteSize / 4);
                 this.TileableUV = 0;
                 this._bias_level = 0;
                 this._rendering_order = 5;

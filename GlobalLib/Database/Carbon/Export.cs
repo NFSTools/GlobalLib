@@ -2,6 +2,14 @@
 {
     public partial class Carbon : Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
     {
+        private void ShowSuccessMessage(string CName)
+        {
+            if (Core.Process.MessageShow)
+                System.Windows.Forms.MessageBox.Show($"Class {CName} has been exported.", "Success");
+            else
+                System.Console.WriteLine($"Class {CName} has been exported.");
+        }
+
         /// <summary>
         /// Exports data of the class specified in a binary file.
         /// </summary>
@@ -24,6 +32,7 @@
                             if (index == -1)
                                 throw new Reflection.Exception.CollectionExistanceException();
                             bw.Write(this.Materials[index].Assemble());
+                            this.ShowSuccessMessage(CName);
                             return;
 
                         case ClassType.CarTypeInfo:
@@ -31,6 +40,7 @@
                             if (index == -1)
                                 throw new Reflection.Exception.CollectionExistanceException();
                             bw.Write(this.CarTypeInfos[index].Assemble(0xFF));
+                            this.ShowSuccessMessage(CName);
                             return;
 
                         case ClassType.PresetRide:
@@ -38,6 +48,7 @@
                             if (index == -1)
                                 throw new Reflection.Exception.CollectionExistanceException();
                             bw.Write(this.PresetRides[index].Assemble());
+                            this.ShowSuccessMessage(CName);
                             return;
 
                         case ClassType.PresetSkin:
@@ -45,6 +56,7 @@
                             if (index == -1)
                                 throw new Reflection.Exception.CollectionExistanceException();
                             bw.Write(this.PresetSkins[index].Assemble());
+                            this.ShowSuccessMessage(CName);
                             return;
 
                         default:
@@ -71,6 +83,7 @@
         {
             try
             {
+                string CName;
                 if (!System.IO.Path.HasExtension(filepath))
                     filepath += ".BIN";
                 using (var bw = new System.IO.BinaryWriter(System.IO.File.Open(filepath, System.IO.FileMode.Create)))
@@ -80,25 +93,33 @@
                         case ClassType.Material:
                             if (index < 0 || index >= this.Materials.Count)
                                 throw new System.ArgumentOutOfRangeException();
+                            CName = this.Materials[index].CollectionName;
                             bw.Write(this.Materials[index].Assemble());
+                            this.ShowSuccessMessage(CName);
                             return;
 
                         case ClassType.CarTypeInfo:
                             if (index < 0 || index >= this.CarTypeInfos.Count)
                                 throw new System.ArgumentOutOfRangeException();
+                            CName = this.CarTypeInfos[index].CollectionName;
                             bw.Write(this.CarTypeInfos[index].Assemble(0xFF));
+                            this.ShowSuccessMessage(CName);
                             return;
 
                         case ClassType.PresetRide:
                             if (index < 0 || index >= this.PresetRides.Count)
                                 throw new System.ArgumentOutOfRangeException();
+                            CName = this.PresetRides[index].CollectionName;
                             bw.Write(this.PresetRides[index].Assemble());
+                            this.ShowSuccessMessage(CName);
                             return;
 
                         case ClassType.PresetSkin:
                             if (index < 0 || index >= this.PresetSkins.Count)
                                 throw new System.ArgumentOutOfRangeException();
+                            CName = this.PresetSkins[index].CollectionName;
                             bw.Write(this.PresetSkins[index].Assemble());
+                            this.ShowSuccessMessage(CName);
                             return;
 
                         default:

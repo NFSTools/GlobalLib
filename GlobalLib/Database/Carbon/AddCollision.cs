@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="CName">Collection Name of the collision block.</param>
         /// <param name="filepath">Filepath of the collision block to be imported.</param>
-        public unsafe void AddCollision(string CName, string filepath)
+        public unsafe bool AddCollision(string CName, string filepath)
         {
             try
             {
@@ -34,6 +34,7 @@
                     this.SlotTypes.Collisions[key] = collision;
                     Core.Map.CollisionMap[key] = CName;
                 }
+                return true;
             }
             catch (System.Exception e)
             {
@@ -41,7 +42,7 @@
                     System.Windows.Forms.MessageBox.Show(e.Message, "Warning");
                 else
                     System.Console.WriteLine($"{e.Message}");
-                return;
+                return false;
             }
         }
     }

@@ -71,7 +71,7 @@
     <Compile Include="Database\ClassType.cs" />
     <Compile Include="Database\MostWanted\AddCollision.cs" />
     <Compile Include="Database\MostWanted\Export.cs" />
-    <Compile Include="Database\MostWanted\ExtractTextures.cs" />
+    <Compile Include="Database\MostWanted\ExportTextures.cs" />
     <Compile Include="Database\MostWanted\GetClassIndex.cs" />
     <Compile Include="Database\MostWanted\Import.cs" />
     <Compile Include="Database\MostWanted\MostWanted.cs" />
@@ -204,9 +204,11 @@
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\Disassemble.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\GetTextureIndex.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TPKBlockConstructor.cs" />
+    <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryExportTexture.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryRemoveTexture.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryCloneTexture.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryAddTexture.cs" />
+    <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryReplaceTexture.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Reading\GetTextureHeaders.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Reading\GetCompressionList.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Reading\GetKeyList.cs" />
@@ -340,7 +342,9 @@
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\TPKBlockConstructor.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\TryAddTexture.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\TryCloneTexture.cs" />
+    <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\TryExportTexture.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\TryRemoveTexture.cs" />
+    <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\TryReplaceTexture.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Reading\FindOffsets.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Reading\GetCompressionList.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Reading\GetHeaderInfo.cs" />

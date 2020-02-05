@@ -9,7 +9,7 @@
         /// <returns>True if export was successful.</returns>
         public bool ExportTextures(string dir)
         {
-            if (this.ExportTextures(dir, "dds"))
+            if (this.ExportTextures(dir, ".dds"))
                 return true;
             else
                 return false;
@@ -19,26 +19,26 @@
         /// Exports all textures to the directory specified.
         /// </summary>
         /// <param name="dir">Directory where all textures should be extracted.</param>
-        /// <param name="mode">Mode of extraction. Range: "dds", "png", "jpg", "tiff", "bmp".</param>
+        /// <param name="mode">Mode of extraction. Range: ".dds", ".png", ".jpg", ".tiff", ".bmp".</param>
         /// <returns>True if export was successful.</returns>
         public bool ExportTextures(string dir, string mode)
         {
             DevIL.ImageType type;
             switch (mode)
             {
-                case "dds":
+                case ".dds":
                     type = DevIL.ImageType.Dds;
                     break;
-                case "png":
+                case ".png":
                     type = DevIL.ImageType.Png;
                     break;
-                case "jpg":
+                case ".jpg":
                     type = DevIL.ImageType.Jpg;
                     break;
-                case "tiff":
+                case ".tiff":
                     type = DevIL.ImageType.Tiff;
                     break;
-                case "bmp":
+                case ".bmp":
                     type = DevIL.ImageType.Bmp;
                     break;
                 default:
@@ -69,9 +69,9 @@
                     foreach (var tex in tpk.Textures)
                     {
                         string texdir = System.IO.Path.Combine(tpkdir, tex.CollectionName);
-                        texdir += "." + mode;
+                        texdir += mode;
                         var data = tex.GetDDSArray();
-                        if (mode == "dds")
+                        if (mode == ".dds")
                         {
                             using (var bw = new System.IO.BinaryWriter(System.IO.File.Open(texdir, System.IO.FileMode.Create)))
                             {

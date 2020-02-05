@@ -1,13 +1,13 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    partial class TPKBlock : Shared.Class.TPKBlock
+    public partial class TPKBlock : Shared.Class.TPKBlock
     {
         /// <summary>
         /// Attempts to clone texture specified in the TPKBlock data.
         /// </summary>
         /// <param name="newname">Collection Name of the new texture.</param>
         /// <param name="copyfrom">Collection Name of the texture to clone.</param>
-        /// <returns>True if class cloning was successful, false otherwise.</returns>
+        /// <returns>True if texture cloning was successful, false otherwise.</returns>
         public override bool TryCloneTexture(string newname, string copyfrom)
         {
             if (string.IsNullOrWhiteSpace(newname)) return false;

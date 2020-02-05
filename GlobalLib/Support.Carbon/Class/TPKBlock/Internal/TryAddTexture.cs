@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    partial class TPKBlock : Shared.Class.TPKBlock
+    public partial class TPKBlock : Shared.Class.TPKBlock
     {
         /// <summary>
         /// Attempts to add texture to the TPKBlock data.

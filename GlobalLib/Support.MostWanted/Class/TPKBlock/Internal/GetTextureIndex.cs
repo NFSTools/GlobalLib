@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    partial class TPKBlock : Shared.Class.TPKBlock
+    public partial class TPKBlock : Shared.Class.TPKBlock
     {
         /// <summary>
         /// Gets index of the texture in the TPKBlock.

@@ -15,7 +15,7 @@
         /// </summary>
         /// <param name="type">Class type to be imported. Range: Material, CarTypeInfo, PresetRide, PresetSkin.</param>
         /// <param name="filepath">File with data to be imported.</param>
-        public unsafe void Import(ClassType type, string filepath)
+        public unsafe bool Import(ClassType type, string filepath)
         {
             if (!System.IO.File.Exists(filepath))
             {
@@ -23,7 +23,7 @@
                     System.Windows.Forms.MessageBox.Show("File specified does not exist.", "Warning");
                 else
                     System.Console.WriteLine("File specified does not exist.");
-                return;
+                return false;
             }
 
             byte[] data;
@@ -39,7 +39,7 @@
                     System.Windows.Forms.MessageBox.Show(e.Message, "Warning");
                 else
                     System.Console.WriteLine($"{e.Message}");
-                return;
+                return false;
             }
 
             fixed (byte* dataptr_t = &data[0])
@@ -56,7 +56,7 @@
                             goto LABEL_EXISTEXCEPT;
                         var material = new Support.MostWanted.Class.Material(dataptr_t, CName);
                         this.Materials.Add(material);
-                        return;
+                        return true;
 
                     case ClassType.CarTypeInfo:
                         if (data.Length != 0xD0)
@@ -70,7 +70,7 @@
                         cartypeinfo.CollisionExternalName = CName;
                         cartypeinfo.CollisionInternalName = "CARRERAGT";
                         this.CarTypeInfos.Add(cartypeinfo);
-                        return;
+                        return true;
 
                     case ClassType.PresetRide:
                         if (data.Length != 0x290)
@@ -80,14 +80,14 @@
                             goto LABEL_EXISTEXCEPT;
                         var presetride = new Support.MostWanted.Class.PresetRide(dataptr_t, CName);
                         this.PresetRides.Add(presetride);
-                        return;
+                        return true;
 
                     default:
                         if (Core.Process.MessageShow)
                             System.Windows.Forms.MessageBox.Show("Unable to import class specified.", "Warning");
                         else
                             System.Console.WriteLine("Unable to import class specified.");
-                        return;
+                        return false;
                 }
             }
 
@@ -96,21 +96,21 @@
                 System.Windows.Forms.MessageBox.Show("File length is invalid for importing.", "Warning");
             else
                 System.Console.WriteLine("File length is invalid for importing.");
-            return;
+            return false;
 
         LABEL_IDEXCEPT:
             if (Core.Process.MessageShow)
                 System.Windows.Forms.MessageBox.Show("File ID is invalid for importing.", "Warning");
             else
                 System.Console.WriteLine("File ID is invalid for importing.");
-            return;
+            return false;
 
         LABEL_EXISTEXCEPT:
             if (Core.Process.MessageShow)
                 System.Windows.Forms.MessageBox.Show("Class with the same collection name already exists.", "Warning");
             else
                 System.Console.WriteLine("Class with the same collection name already exists.");
-            return;
+            return false;
         }
     }
 }
