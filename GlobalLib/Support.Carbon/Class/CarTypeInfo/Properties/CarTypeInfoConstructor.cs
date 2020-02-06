@@ -19,7 +19,7 @@
             this.DefaultSkinNumber = 1;
             this.CollisionExternalName = CollectionName;
             this.CollisionInternalName = "CARRERAGT";
-            Core.Map.RaiderKeys[this.BinKey] = CName;
+            Core.Map.BinKeys[this.BinKey] = CName;
         }
 
         // Default constructor: disassemble cartypeinfo

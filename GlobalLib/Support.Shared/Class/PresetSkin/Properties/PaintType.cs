@@ -12,7 +12,7 @@
             get => this._painttype;
             set
             {
-                if (Core.Map.RaiderKeys.ContainsValue(value))
+                if (Core.Map.BinKeys.ContainsValue(value))
                     this._painttype = value;
                 else
                     throw new Reflection.Exception.MappingFailException();

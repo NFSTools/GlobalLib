@@ -50,7 +50,7 @@
             result._unk6 = this._unk6;
             result._unk7 = this._unk7;
 
-            Core.Map.RaiderKeys[result.BinKey] = CName;
+            Core.Map.BinKeys[result.BinKey] = CName;
             return result;
         }
     }

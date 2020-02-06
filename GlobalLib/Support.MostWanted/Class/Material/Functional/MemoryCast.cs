@@ -42,7 +42,7 @@
             result._unk8 = this._unk8;
             result._unk9 = this._unk9;
 
-            Core.Map.RaiderKeys[this.BinKey] = CName;
+            Core.Map.BinKeys[this.BinKey] = CName;
             return result;
         }
     }

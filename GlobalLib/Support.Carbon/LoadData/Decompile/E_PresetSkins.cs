@@ -22,7 +22,7 @@
                     CName += ((char)*(byteptr_t + a1)).ToString();
 
                 CName = Utils.EA.Resolve.GetPathFromCollection(CName);
-                Core.Map.RaiderKeys[Utils.Bin.Hash(CName)] = CName;
+                Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 
                 var Class = new Class.PresetSkin(byteptr_t + offset, CName);
                 db.PresetSkins.Add(Class);

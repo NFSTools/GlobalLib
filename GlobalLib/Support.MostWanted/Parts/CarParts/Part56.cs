@@ -26,12 +26,12 @@
             get => this._key;
             set
             {
-                if (!Core.Map.RaiderKeys.ContainsKey(_key))
+                if (!Core.Map.BinKeys.ContainsKey(_key))
                     throw new Reflection.Exception.MappingFailException();
                 else
                 {
                     this._key = value;
-                    this._collection_name = Core.Map.RaiderKeys[value];
+                    this._collection_name = Core.Map.BinKeys[value];
                 }
             }
         }

@@ -20,7 +20,7 @@
             this.CollisionExternalName = CollectionName;
             this.CollisionInternalName = "CARRERAGT";
             uint a1 = Utils.Bin.Hash(CName);
-            Core.Map.RaiderKeys[this.BinKey] = CName;
+            Core.Map.BinKeys[this.BinKey] = CName;
         }
 
         // Default constructor: disassemble cartypeinfo

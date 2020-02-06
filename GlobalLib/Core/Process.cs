@@ -36,9 +36,10 @@
                 return false;
             }
             Initialize.Init();
-            bool A = Support.Carbon.LoadData.LoadGlobalA(GlobalDir, ref database);
-            bool B = Support.Carbon.LoadData.LoadGlobalB(GlobalDir, ref database);
-            if (A && B)
+            bool A = Support.Carbon.LoadData.LoadVaults(GlobalDir);
+            bool B = Support.Carbon.LoadData.LoadGlobalA(GlobalDir, ref database);
+            bool C = Support.Carbon.LoadData.LoadGlobalB(GlobalDir, ref database);
+            if (A && B && C)
                 return true;
             else
                 return false;
@@ -60,9 +61,10 @@
                 return false;
             }
             Initialize.Init();
-            bool A = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
-            bool B = Support.MostWanted.LoadData.LoadGlobalB(GlobalDir, ref database);
-            if (A && B)
+            bool A = Support.MostWanted.LoadData.LoadVaults(GlobalDir);
+            bool B = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
+            bool C = Support.MostWanted.LoadData.LoadGlobalB(GlobalDir, ref database);
+            if (A && B && C)
                 return true;
             else
                 return false;

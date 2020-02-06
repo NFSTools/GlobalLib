@@ -12,7 +12,7 @@
             get => this._defaultbasepaint;
             set
             {
-                if (Core.Map.RaiderKeys.ContainsValue(value))
+                if (Core.Map.BinKeys.ContainsValue(value))
                     this._defaultbasepaint = value;
                 else
                     throw new Reflection.Exception.MappingFailException();

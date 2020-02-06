@@ -12,5 +12,16 @@
         public const string SpoilerAS             = "SpoilerAS";
         public const string CollisionExternalName = "CollisionExternalName";
         public const string CollisionInternalName = "CollisionInternalName";
+
+        public static bool Contains(string field)
+        {
+            var ThisType = typeof(DFCarTypeInfo);
+            foreach (var ThisProperty in ThisType.GetFields())
+            {
+                if (ThisProperty.Name == field)
+                    return true;
+            }
+            return false;
+        }
     }
 }

@@ -38,7 +38,7 @@
             result.Frontend = this.Frontend;
 
             System.Buffer.BlockCopy(this.data, 0, result.data, 0, this.data.Length);
-            Core.Map.RaiderKeys[result.BinKey] = CName;
+            Core.Map.BinKeys[result.BinKey] = CName;
             return result;
         }
     }

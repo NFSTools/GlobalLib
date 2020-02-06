@@ -27,5 +27,16 @@
         public const string SwatchColor4    = "SwatchColor4";
         public const string Saturation4     = "Saturation4";
         public const string Brightness4     = "Brightness4";
+
+        public static bool Contains(string field)
+        {
+            var ThisType = typeof(DFPresetSkin);
+            foreach (var ThisProperty in ThisType.GetFields())
+            {
+                if (ThisProperty.Name == field)
+                    return true;
+            }
+            return false;
+        }
     }
 }

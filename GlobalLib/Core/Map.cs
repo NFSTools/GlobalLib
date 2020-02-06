@@ -9,7 +9,12 @@ namespace GlobalLib.Core
         /// <summary>
         /// Represents all binary memory hashes through runtime of the library.
         /// </summary>
-        public static Dictionary<uint, string> RaiderKeys { get; } = new Dictionary<uint, string>();
+        public static Dictionary<uint, string> BinKeys { get; } = new Dictionary<uint, string>();
+
+        /// <summary>
+        /// Represents all vault memory hashes through runtime of the library.
+        /// </summary>
+        public static Dictionary<uint, string> VltKeys { get; } = new Dictionary<uint, string>();
 
         /// <summary>
         /// Represents map of all possible collisions that can be used.
@@ -33,7 +38,7 @@ namespace GlobalLib.Core
         /// <returns>Result value from the key passed, if value was not found, returns null instead.</returns>
         public static string Lookup(uint key)
         {
-            if (RaiderKeys.TryGetValue(key, out string result))
+            if (BinKeys.TryGetValue(key, out string result))
                 return result;
             else
                 return null;

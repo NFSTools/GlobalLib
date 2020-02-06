@@ -43,7 +43,7 @@
                         int numbytes = *(byteptr_t + off); // length of the string
                         for (int a1 = off + 1; a1 < off + 1 + numbytes; ++a1)
                             CName += ((char)*(byteptr_t + a1)).ToString();
-                        Core.Map.RaiderKeys[Utils.Bin.Hash(CName)] = CName;
+                        Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
                         --num;
                         len -= numbytes + 1;
                         off += numbytes + 1;

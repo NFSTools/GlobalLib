@@ -240,8 +240,10 @@
     <Compile Include="Support.Carbon\LoadData\Decompile\E_PresetSkins.cs" />
     <Compile Include="Support.Carbon\LoadData\Decompile\E_PresetRides.cs" />
     <Compile Include="Support.Carbon\LoadData\Decompile\E_Spoilers.cs" />
+    <Compile Include="Support.Carbon\LoadData\Decompile\E_VaultKeys.cs" />
     <Compile Include="Support.Carbon\LoadData\LoadGlobalA.cs" />
     <Compile Include="Support.Carbon\LoadData\LoadGlobalB.cs" />
+    <Compile Include="Support.Carbon\LoadData\LoadVaults.cs" />
     <Compile Include="Support.Carbon\Parts\CarParts\Collision.cs" />
     <Compile Include="Support.Carbon\Parts\CarParts\Part56.cs" />
     <Compile Include="Support.Carbon\Parts\CarParts\Spoilers.cs" />
@@ -375,8 +377,10 @@
     <Compile Include="Support.MostWanted\LoadData\Decompile\E_PresetRides.cs" />
     <Compile Include="Support.MostWanted\LoadData\Decompile\E_SlotType.cs" />
     <Compile Include="Support.MostWanted\LoadData\Decompile\E_Spoilers.cs" />
+    <Compile Include="Support.MostWanted\LoadData\Decompile\E_VaultKeys.cs" />
     <Compile Include="Support.MostWanted\LoadData\LoadGlobalA.cs" />
     <Compile Include="Support.MostWanted\LoadData\LoadGlobalB.cs" />
+    <Compile Include="Support.MostWanted\LoadData\LoadVaults.cs" />
     <Compile Include="Support.MostWanted\Parts\CarParts\Collision.cs" />
     <Compile Include="Support.MostWanted\Parts\CarParts\Part56.cs" />
     <Compile Include="Support.MostWanted\Parts\CarParts\Spoilers.cs" />

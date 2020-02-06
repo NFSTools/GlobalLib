@@ -18,7 +18,7 @@
                 for (uint a1 = offset; *(byteptr_t + a1) != 0; ++a1)
                     debug += ((char)*(byteptr_t + a1)).ToString();
                 offset += (uint)debug.Length + 1;
-                Core.Map.RaiderKeys[Utils.Bin.Hash(debug)] = debug;
+                Core.Map.BinKeys[Utils.Bin.Hash(debug)] = debug;
             }
             fixed (byte* dataptr_t = &data[0])
             {

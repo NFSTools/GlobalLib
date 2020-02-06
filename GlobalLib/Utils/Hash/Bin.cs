@@ -26,7 +26,7 @@
             }
 
             // Put into raider keys
-            Core.Map.RaiderKeys[result] = value;
+            Core.Map.BinKeys[result] = value;
             return result;
         }
 

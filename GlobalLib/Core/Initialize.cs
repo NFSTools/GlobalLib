@@ -44,8 +44,8 @@
                 _paint_2 = (a1 < 10)
                     ? METAL + COLOR00 + a1.ToString()
                     : METAL + COLOR10 + a1.ToString();
-                Map.RaiderKeys[Utils.Bin.Hash(_paint_1)] = _paint_1;
-                Map.RaiderKeys[Utils.Bin.Hash(_paint_2)] = _paint_2;
+                Map.BinKeys[Utils.Bin.Hash(_paint_1)] = _paint_1;
+                Map.BinKeys[Utils.Bin.Hash(_paint_2)] = _paint_2;
             }
 
             // PEARL + 00-20 + _PAINT
@@ -54,7 +54,7 @@
                 _paint_1 = (a1 < 10)
                     ? PEARL + _0 + a1.ToString() + _PAINT
                     : PEARL + a1.ToString() + _PAINT;
-                Map.RaiderKeys[Utils.Bin.Hash(_paint_1)] = _paint_1;
+                Map.BinKeys[Utils.Bin.Hash(_paint_1)] = _paint_1;
             }
 
             // MATTE/CHROME + 00-10 + _PAINT
@@ -66,15 +66,15 @@
                 _paint_2 = (a1 < 10)
                     ? CHROME + _0 + a1.ToString() + _PAINT
                     : CHROME + a1.ToString() + _PAINT;
-                Map.RaiderKeys[Utils.Bin.Hash(_paint_1)] = _paint_1;
-                Map.RaiderKeys[Utils.Bin.Hash(_paint_2)] = _paint_2;
+                Map.BinKeys[Utils.Bin.Hash(_paint_1)] = _paint_1;
+                Map.BinKeys[Utils.Bin.Hash(_paint_2)] = _paint_2;
             }
 
             // Cop and Traffic paint types
             _paint_1 = "COP_L1_COLOR01";
             _paint_2 = "TRAFFIC_L1_COLOR01";
-            Map.RaiderKeys[Utils.Bin.Hash(_paint_1)] = _paint_1;
-            Map.RaiderKeys[Utils.Bin.Hash(_paint_2)] = _paint_2;
+            Map.BinKeys[Utils.Bin.Hash(_paint_1)] = _paint_1;
+            Map.BinKeys[Utils.Bin.Hash(_paint_2)] = _paint_2;
         }
 
         private static void Windshields()

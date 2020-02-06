@@ -48,5 +48,16 @@
         public const string AvailableSkinNumbers9   = "AvailableSkinNumbers9";
         public const string AvailableSkinNumbers10  = "AvailableSkinNumbers10";
         public const string DefaultSkinNumber       = "DefaultSkinNumber";
+
+        public static bool Contains(string field)
+        {
+            var ThisType = typeof(DFExtra);
+            foreach (var ThisProperty in ThisType.GetFields())
+            {
+                if (ThisProperty.Name == field)
+                    return true;
+            }
+            return false;
+        }
     }
 }

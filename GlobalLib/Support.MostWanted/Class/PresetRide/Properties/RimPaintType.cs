@@ -14,7 +14,7 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException();
-                if (value == Reflection.BaseArguments.NULL || Core.Map.RaiderKeys.ContainsValue(value))
+                if (value == Reflection.BaseArguments.NULL || Core.Map.BinKeys.ContainsValue(value))
                     this._rimpaint = value;
                 else
                     throw new Reflection.Exception.MappingFailException();

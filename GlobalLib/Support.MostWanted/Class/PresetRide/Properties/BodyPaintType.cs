@@ -14,7 +14,7 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException();
-                if (Core.Map.RaiderKeys.ContainsValue(value))
+                if (Core.Map.BinKeys.ContainsValue(value))
                     this._bodypaint = value;
                 else
                     throw new Reflection.Exception.MappingFailException();

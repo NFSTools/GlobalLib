@@ -47,5 +47,16 @@
         public const string VinylColor2            = "VinylColor2";
         public const string VinylColor3            = "VinylColor3";
         public const string VinylColor4            = "VinylColor4";
+
+        public static bool Contains(string field)
+        {
+            var ThisType = typeof(DFPresetRide);
+            foreach (var ThisProperty in ThisType.GetFields())
+            {
+                if (ThisProperty.Name == field)
+                    return true;
+            }
+            return false;
+        }
     }
 }

@@ -70,7 +70,7 @@
             result.DefaultSkinNumber = this.DefaultSkinNumber;
             result.Padding2 = this.Padding2;
 
-            Core.Map.RaiderKeys[result.BinKey] = CName;
+            Core.Map.BinKeys[result.BinKey] = CName;
             return result;
         }
     }

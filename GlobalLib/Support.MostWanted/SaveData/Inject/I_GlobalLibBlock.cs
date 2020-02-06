@@ -66,7 +66,7 @@
             bw.Write(strdata);
 
             int dataoffset = (int)bw.BaseStream.Position;
-            foreach (var pair in Core.Map.RaiderKeys)
+            foreach (var pair in Core.Map.BinKeys)
             {
                 ++strsize;
                 bw.Write(pair.Value);

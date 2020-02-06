@@ -50,5 +50,16 @@
         public const string StrongColor2Blue       = "StrongColor2Blue";
         public const string LinearNegative         = "LinearNegative";
         public const string GradientNegative       = "GradientNegative";
+
+        public static bool Contains(string field)
+        {
+            var ThisType = typeof(DFMaterial);
+            foreach (var ThisProperty in ThisType.GetFields())
+            {
+                if (ThisProperty.Name == field)
+                    return true;
+            }
+            return false;
+        }
     }
 }

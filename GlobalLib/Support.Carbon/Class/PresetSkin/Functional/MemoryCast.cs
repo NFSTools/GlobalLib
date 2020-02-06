@@ -36,7 +36,7 @@
             result.PaintSaturation = this.PaintSaturation;
             result.PaintType = this.PaintType;
 
-            Core.Map.RaiderKeys[result.BinKey] = CName;
+            Core.Map.BinKeys[result.BinKey] = CName;
             return result;
         }
     }

@@ -12,7 +12,7 @@
             for (int x = 0; x < 0x600; ++x)
                 this.data[x] = *(byteptr_t + x);
 
-            string MODEL = ""; // MODEL of the car, MODEL = this.result._SETTINGS[1]
+            string MODEL = ""; // MODEL of the car
             string hex = "0x"; // for hex representations
             string v1 = "";    // main for class strings
             string v2 = "";    // main for system strings
@@ -34,18 +34,19 @@
             this.MODEL = MODEL;
             this.OriginalModel = MODEL;
 
-            // Lowercase model, try and see if frontend and pvehicle hashes match
-            // If do not match, keep hex representation of the bin hashes
-            v1 = MODEL.ToLower();
-            a1 = Utils.Vlt.Hash(v1);
-            a2 = *(uint*)(byteptr_t + 0x48); // frontend vlt hash
-            this.Frontend = (a1 == a2)
-                ? v1
-                : hex + a2.ToString("X8");
-            a2 = *(uint*)(byteptr_t + 0x50); // pvehicle vlt hash
-            this.Pvehicle = (a1 == a2)
-                ? v1
-                : hex + a2.ToString("X8");
+            // Frontend hash
+            a1 = *(uint*)(byteptr_t + 0x48);
+            if (Core.Map.VltKeys.TryGetValue(a1, out v1))
+                this.Frontend = v1;
+            else
+                this.Frontend = hex + a1.ToString("X8");
+
+            // Pvehicle hash
+            a1 = *(uint*)(byteptr_t + 0x50);
+            if (Core.Map.VltKeys.TryGetValue(a1, out v1))
+                this.Pvehicle = v1;
+            else
+                this.Pvehicle = hex + a1.ToString("X8");
 
             a1 = Utils.Bin.Hash(MODEL + parts._BASE); // for RaiderKeys
 
