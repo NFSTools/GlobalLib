@@ -2,6 +2,6 @@
 {
     public interface IGetValue
     {
-        string GetValue(string FieldName);
+        string GetValue(string PropertyName);
     }
 }

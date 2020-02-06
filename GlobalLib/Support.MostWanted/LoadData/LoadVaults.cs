@@ -8,6 +8,11 @@ namespace GlobalLib.Support.MostWanted
 {
 	public static partial class LoadData
 	{
+		/// <summary>
+		/// Loads vault data files and processes all strings that are contained in them.
+		/// </summary>
+		/// <param name="Vault_Dir">Directory of the game.</param>
+		/// <returns>True if success.</returns>
 		public static unsafe bool LoadVaults(string Vault_Dir)
 		{
 			string AttribDir = Vault_Dir + @"\GLOBAL\attributes.bin";

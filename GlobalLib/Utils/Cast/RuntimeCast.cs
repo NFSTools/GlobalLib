@@ -13,34 +13,38 @@
         /// <returns>Casted value of the passed object.</returns>
         public static object RuntimeCast(object value, object oftype)
         {
-            if (oftype is string)
-                return ReinterpretCast<string>(value);
-            else if (oftype is bool)
-                return ReinterpretCast<bool>(value);
+            if (oftype is bool)
+            {
+                if (value.ToString() == Reflection.BaseArguments.TRUE) return true;
+                else if (value.ToString() == Reflection.BaseArguments.FALSE) return false;
+                else return StaticCast<bool>(value);
+            }
+            else if (oftype is string)
+                return StaticCast<string>(value);
             else if (oftype is int)
-                return ReinterpretCast<int>(value);
+                return StaticCast<int>(value);
             else if (oftype is uint)
-                return ReinterpretCast<uint>(value);
+                return StaticCast<uint>(value);
             else if (oftype is short)
-                return ReinterpretCast<short>(value);
+                return StaticCast<short>(value);
             else if (oftype is ushort)
-                return ReinterpretCast<ushort>(value);
+                return StaticCast<ushort>(value);
             else if (oftype is byte)
-                return ReinterpretCast<byte>(value);
+                return StaticCast<byte>(value);
             else if (oftype is sbyte)
-                return ReinterpretCast<sbyte>(value);
+                return StaticCast<sbyte>(value);
             else if (oftype is double)
-                return ReinterpretCast<double>(value);
+                return StaticCast<double>(value);
             else if (oftype is float)
-                return ReinterpretCast<float>(value);
+                return StaticCast<float>(value);
             else if (oftype is long)
-                return ReinterpretCast<long>(value);
+                return StaticCast<long>(value);
             else if (oftype is ulong)
-                return ReinterpretCast<ulong>(value);
+                return StaticCast<ulong>(value);
             else if (oftype is char)
-                return ReinterpretCast<char>(value);
+                return StaticCast<char>(value);
             else if (oftype is decimal)
-                return ReinterpretCast<decimal>(value);
+                return StaticCast<decimal>(value);
             else
                 return value;
         }

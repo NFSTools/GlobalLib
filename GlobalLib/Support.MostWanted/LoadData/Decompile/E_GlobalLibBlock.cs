@@ -27,7 +27,7 @@
                             CName += ((char)*(byteptr_t + a1)).ToString();
                         Core.Map.CollisionMap[Utils.Vlt.Hash(CName)] = CName;
                         --num;
-                        len -= (numbytes + 1);
+                        len -= numbytes + 1;
                         off += numbytes + 1;
                     }
                     LibColBlockExists = true;

@@ -5,7 +5,6 @@
         private int _index = -1;
         private int _usagetype = (int)Reflection.Enum.CarTypeInfo.UsageType.Racer;
         private uint _memorytype = (uint)Reflection.Enum.CarTypeInfo.MemoryType.Racing;
-        private byte _skinnable = 1;
 
         /// <summary>
         /// Represents index of the cartypeinfo in Global data.
@@ -59,16 +58,6 @@
         /// <summary>
         /// Represents boolean as an int of whether cartypeinfo is skinnable.
         /// </summary>
-        public byte IsSkinnable
-        {
-            get => this._skinnable;
-            set
-            {
-                if (value > byte.MaxValue || value < byte.MinValue)
-                    throw new System.ArgumentOutOfRangeException();
-                else
-                    this._skinnable = value;
-            }
-        }
+        public bool IsSkinnable { get; set; }
     }
 }

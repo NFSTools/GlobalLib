@@ -2,6 +2,7 @@
 {
     public interface ISetValue
     {
-        bool SetValue(string FieldName, object value);
+        bool SetValue(string PropertyName, object value);
+        bool SetValue(string PropertyName, object value, ref string error);
     }
 }

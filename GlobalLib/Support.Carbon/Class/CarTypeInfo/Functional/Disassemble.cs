@@ -66,7 +66,7 @@
             this.AvailableSkinNumbers10 = *(byteptr_t + 0xC5);
 
             this.DefaultSkinNumber = *(byteptr_t + 0xC6);
-            this.IsSkinnable = *(byteptr_t + 0xC7);
+            this.IsSkinnable = (*(byteptr_t + 0xC7) == 0) ? false : true;
             this.Padding2 = *(int*)(byteptr_t + 0xC8);
 
             uint key = *(uint*)(byteptr_t + 0xCC);

@@ -41,9 +41,40 @@ namespace GlobalLib.Utils
                     using (var LogWriter = new StreamWriter(File.Open(FileName, FileMode.Append)))
                     {
                         if (EnableTimeWrite)
-                            LogWriter.Write("[" + DateTime.Now.ToString() + "]" + " : " + LogEntry);
+                            LogWriter.Write($"[{DateTime.Now.ToString()}] : {LogEntry}" + Environment.NewLine);
                         else
-                            LogWriter.Write(LogEntry);
+                            LogWriter.Write(LogEntry + Environment.NewLine);
+                    }
+                }
+                catch (Exception)
+                {
+                    EnableLog = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Write action strings passed to the filename specified.
+        /// </summary>
+        /// <param name="LogEntries">Strings to write.</param>
+        public static void Write(string[] LogEntries)
+        {
+            if (!File.Exists(FileName))
+                File.Create(FileName);
+
+            if (EnableLog)
+            {
+                try
+                {
+                    using (var LogWriter = new StreamWriter(File.Open(FileName, FileMode.Append)))
+                    {
+                        foreach (var LogEntry in LogEntries)
+                        {
+                            if (EnableTimeWrite)
+                                LogWriter.Write($"[{DateTime.Now.ToString()}] : {LogEntry}" + Environment.NewLine);
+                            else
+                                LogWriter.Write(LogEntry + Environment.NewLine);
+                        }
                     }
                 }
                 catch (Exception)

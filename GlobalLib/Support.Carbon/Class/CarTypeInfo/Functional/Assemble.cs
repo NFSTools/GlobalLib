@@ -85,7 +85,7 @@
                 *(byteptr_t + 0xC5) = this.AvailableSkinNumbers10;
 
                 *(byteptr_t + 0xC6) = this.DefaultSkinNumber;
-                *(byteptr_t + 0xC7) = this.IsSkinnable;
+                *(byteptr_t + 0xC7) = this.IsSkinnable ? (byte)1 : (byte)0;
                 *(int*)(byteptr_t + 0xC8) = this.Padding2;
 
                 if (string.IsNullOrWhiteSpace(this.DefaultBasePaint)) { }

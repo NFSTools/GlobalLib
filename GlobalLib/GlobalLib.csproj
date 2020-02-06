@@ -50,11 +50,13 @@
     <Compile Include="Core\Initialize.cs" />
     <Compile Include="Core\Map.cs" />
     <Compile Include="Core\Process.cs" />
+    <Compile Include="Database\Carbon\ToString.cs" />
     <Compile Include="Database\Carbon\TryAddClass.cs" />
     <Compile Include="Database\Carbon\AddCollision.cs" />
     <Compile Include="Database\Carbon\Carbon.cs" />
     <Compile Include="Database\Carbon\TryCloneClass.cs" />
     <Compile Include="Database\Carbon\TryRemoveClass.cs" />
+    <Compile Include="Database\MostWanted\ToString.cs" />
     <Compile Include="Database\MostWanted\TryAddClass.cs" />
     <Compile Include="Database\MostWanted\TryCloneClass.cs" />
     <Compile Include="Database\MostWanted\TryRemoveClass.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\SetValue.cs" />
+    <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\ToString.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\GameAddress.cs" />
     <Compile Include="Reflection\Info\Spoiler.cs" />
@@ -114,6 +117,7 @@
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\SpoilerASProperty.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Functional\Disassemble.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Functional\Assemble.cs" />
+    <Compile Include="Support.Carbon\Class\FNGroup\Functional\ToString.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Properties\ColorInformation.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Properties\FNGroupConstructor.cs" />
@@ -123,6 +127,7 @@
     <Compile Include="Support.Carbon\Class\Material\Functional\MemoryCast.cs" />
     <Compile Include="Support.Carbon\Class\Material\Functional\Disassemble.cs" />
     <Compile Include="Support.Carbon\Class\Material\Functional\Assemble.cs" />
+    <Compile Include="Support.Carbon\Class\Material\Functional\ToString.cs" />
     <Compile Include="Support.Carbon\Class\Material\Properties\BlendedColors.cs" />
     <Compile Include="Support.Carbon\Class\Material\Properties\MaterialConstructor.cs" />
     <Compile Include="Support.Carbon\Class\Material\Properties\StrongColor1.cs" />
@@ -143,6 +148,7 @@
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\StringToKey.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Carbon\Class\PresetRide\Functional\ToString.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\VinylByName.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Properties\PresetRideConstuctor.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Properties\PresetPartsList.cs" />
@@ -170,6 +176,7 @@
     <Compile Include="Support.Carbon\Class\PresetSkin\Functional\MemoryCast.cs" />
     <Compile Include="Support.Carbon\Class\PresetSkin\Functional\SetValue.cs" />
     <Compile Include="Support.Carbon\Class\PresetSkin\Functional\GetValue.cs" />
+    <Compile Include="Support.Carbon\Class\PresetSkin\Functional\ToString.cs" />
     <Compile Include="Support.Carbon\Class\PresetSkin\Properties\GameAddress.cs" />
     <Compile Include="Support.Carbon\Class\PresetSkin\Properties\LayerOrientation.cs" />
     <Compile Include="Support.Carbon\Class\PresetSkin\Properties\LayerSaturations.cs" />
@@ -188,6 +195,7 @@
     <Compile Include="Support.Carbon\Class\Texture\Functional\Reload.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Functional\SetValue.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Functional\GetValue.cs" />
+    <Compile Include="Support.Carbon\Class\Texture\Functional\ToString.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Properties\GameAddress.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Properties\ImagePlacement.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Properties\ScrollSettings.cs" />
@@ -202,7 +210,9 @@
     <Compile Include="Support.Carbon\Class\Texture\Properties\CompressionType.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\Disassemble.cs" />
+    <Compile Include="Support.Carbon\Class\TPKBlock\Internal\GameAddress.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\GetTextureIndex.cs" />
+    <Compile Include="Support.Carbon\Class\TPKBlock\Internal\ToString.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TPKBlockConstructor.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryExportTexture.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryRemoveTexture.cs" />
@@ -268,11 +278,13 @@
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\GetValue.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\SetValue.cs" />
+    <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\GameAddress.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\SpoilerProperty.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Functional\Assemble.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Functional\Disassemble.cs" />
+    <Compile Include="Support.MostWanted\Class\FNGroup\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Properties\ColorInformation.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Properties\FNGroupConstructor.cs" />
@@ -282,6 +294,7 @@
     <Compile Include="Support.MostWanted\Class\Material\Functional\GetValue.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Functional\MemoryCast.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Functional\SetValue.cs" />
+    <Compile Include="Support.MostWanted\Class\Material\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\BrightColor1.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\BrightColor2.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\GameAddress.cs" />
@@ -299,6 +312,7 @@
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\Assemble.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\SetValue.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\GetValue.cs" />
+    <Compile Include="Support.MostWanted\Class\PresetRide\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\VectorVinylColor2.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\VectorVinylColor3.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\VectorVinylColor4.cs" />
@@ -326,6 +340,7 @@
     <Compile Include="Support.MostWanted\Class\Texture\Functional\GetImage.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Functional\SetValue.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Functional\GetValue.cs" />
+    <Compile Include="Support.MostWanted\Class\Texture\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Properties\TextureConstructor.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Properties\UnknownValues.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Properties\BaseImageArea.cs" />
@@ -340,7 +355,9 @@
     <Compile Include="Support.MostWanted\Class\Texture\Properties\GameAddress.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\Assemble.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\Disassemble.cs" />
+    <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\GameAddress.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\GetTextureIndex.cs" />
+    <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\TPKBlockConstructor.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\TryAddTexture.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\TryCloneTexture.cs" />
@@ -474,6 +491,7 @@
     <Compile Include="Utils\Cast\MemoryCast.cs" />
     <Compile Include="Utils\Cast\ReinterpretCast.cs" />
     <Compile Include="Utils\Cast\RuntimeCast.cs" />
+    <Compile Include="Utils\Cast\StaticCast.cs" />
     <Compile Include="Utils\Hash\ConvertX.cs" />
     <Compile Include="Utils\EA\EAComp.cs" />
     <Compile Include="Utils\EA\Resolve.cs" />

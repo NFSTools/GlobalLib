@@ -6,7 +6,7 @@
     public static partial class Cast
     {
         /// <summary>
-        /// Casts any object to any type specified.
+        /// Casts any object to any type specified. Returns default value if cast fails.
         /// </summary>
         /// <typeparam name="TypeID">Type to be converted to.</typeparam>
         /// <param name="value">Object passed to be casted.</param>
@@ -19,7 +19,7 @@
             }
             catch (System.Exception)
             {
-                return default(TypeID);
+                return default;
             }
         }
     }
