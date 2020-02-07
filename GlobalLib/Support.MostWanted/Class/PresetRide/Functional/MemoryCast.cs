@@ -9,7 +9,7 @@
         /// <returns>Memory casted copy of the object.</returns>
         public PresetRide MemoryCast(string CName)
         {
-            var result = new PresetRide(CName);
+            var result = new PresetRide(CName, this.Database);
 
             result.VinylName = this.VinylName;
             result.VinylColor1 = this.VinylColor1;

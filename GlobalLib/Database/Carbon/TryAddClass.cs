@@ -19,25 +19,25 @@
             {
                 case ClassType.Material:
                     if (CName.Length > 0x1B) return false;
-                    var material = new Support.Carbon.Class.Material(CName);
+                    var material = new Support.Carbon.Class.Material(CName, this);
                     this.Materials.Add(material);
                     return true;
 
                 case ClassType.CarTypeInfo:
                     if (CName.Length > 0xD) return false;
-                    var car = new Support.Carbon.Class.CarTypeInfo(CName);
+                    var car = new Support.Carbon.Class.CarTypeInfo(CName, this);
                     this.CarTypeInfos.Add(car);
                     return true;
 
                 case ClassType.PresetRide:
                     if (CName.Length > 0x1E) return false;
-                    var ride = new Support.Carbon.Class.PresetRide(CName);
+                    var ride = new Support.Carbon.Class.PresetRide(CName, this);
                     this.PresetRides.Add(ride);
                     return true;
 
                 case ClassType.PresetSkin:
                     if (CName.Length > 0x1E) return false;
-                    var skin = new Support.Carbon.Class.PresetSkin(CName);
+                    var skin = new Support.Carbon.Class.PresetSkin(CName, this);
                     this.PresetSkins.Add(skin);
                     return true;
 

@@ -11,5 +11,10 @@
         /// Game string to which the class belongs to.
         /// </summary>
         public string GameSTR { get => Core.GameSTR.MostWanted; }
+
+        /// <summary>
+        /// Database to which the class belongs to.
+        /// </summary>
+        public Database.MostWanted Database { get; set; }
     }
 }

@@ -17,7 +17,7 @@
             Utils.EA.Resolve.GetWindowTintString(CName);
             Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 
-            var Class = new Class.Material(byteptr_t, CName);
+            var Class = new Class.Material(byteptr_t, CName, db);
             db.Materials.Add(Class);
         }
     }

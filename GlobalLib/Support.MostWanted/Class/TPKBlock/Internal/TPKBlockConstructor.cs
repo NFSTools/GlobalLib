@@ -13,8 +13,9 @@ namespace GlobalLib.Support.MostWanted.Class
 
         public TPKBlock() { }
 
-        public unsafe TPKBlock(byte* byteptr_t, int index)
+        public unsafe TPKBlock(byte* byteptr_t, int index, Database.MostWanted db)
         {
+            this.Database = db;
             this.Index = index;
             this.Disassemble(byteptr_t);
         }

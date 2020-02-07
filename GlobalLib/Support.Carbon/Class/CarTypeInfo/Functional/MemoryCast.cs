@@ -9,7 +9,7 @@
         /// <returns>Memory casted copy of the object.</returns>
         public CarTypeInfo MemoryCast(string CName)
         {
-            var result = new CarTypeInfo(CName);
+            var result = new CarTypeInfo(CName, this.Database);
 
             result._spoiler = this._spoiler;
             result._spoilerAS = this._spoilerAS;

@@ -6,14 +6,16 @@
         public Material() { }
 
         // Default constructor: create new material
-        public Material(string CName)
+        public Material(string CName, Database.Carbon db)
         {
+            this.Database = db;
             this.CollectionName = CName;
         }
 
         // Default constructor: disassemble material
-        public unsafe Material(byte* byteptr_t, string CName)
+        public unsafe Material(byte* byteptr_t, string CName, Database.Carbon db)
         {
+            this.Database = db;
             this.CollectionName = CName;
             this.Disassemble(byteptr_t);
         }

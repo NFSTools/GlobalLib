@@ -9,7 +9,7 @@
         /// <returns>Memory casted copy of the object.</returns>
         public Material MemoryCast(string CName)
         {
-            var result = new Material(CName);
+            var result = new Material(CName, this.Database);
 
             result._brightcolor1_level = this._brightcolor1_level;
             result._brightcolor1_red = this._brightcolor1_red;

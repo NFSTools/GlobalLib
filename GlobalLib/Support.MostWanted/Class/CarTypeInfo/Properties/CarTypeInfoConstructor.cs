@@ -6,8 +6,9 @@
         public CarTypeInfo() { }
 
         // Default constructor: create new cartypeinfo
-        public CarTypeInfo(string CName)
+        public CarTypeInfo(string CName, Database.MostWanted db)
         {
+            this.Database = db;
             this.CollectionName = CName;
             this.ManufacturerName = "GENERIC";
             this.Deletable = true;
@@ -24,8 +25,9 @@
         }
 
         // Default constructor: disassemble cartypeinfo
-        public unsafe CarTypeInfo(byte* byteptr_t, string CName)
+        public unsafe CarTypeInfo(byte* byteptr_t, string CName, Database.MostWanted db)
         {
+            this.Database = db;
             this.CollectionName = CName;
             this.OriginalName = CName;
             this.Disassemble(byteptr_t);

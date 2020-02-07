@@ -54,7 +54,7 @@
                         CName = this.GetCNameAtOffset(dataptr_t, 0x1C, 0x1C);
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
-                        var material = new Support.Carbon.Class.Material(dataptr_t, CName);
+                        var material = new Support.Carbon.Class.Material(dataptr_t, CName, this);
                         this.Materials.Add(material);
                         return true;
 
@@ -64,7 +64,7 @@
                         CName = this.GetCNameAtOffset(dataptr_t, 0, 0x10);
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
-                        var cartypeinfo = new Support.Carbon.Class.CarTypeInfo(dataptr_t, CName);
+                        var cartypeinfo = new Support.Carbon.Class.CarTypeInfo(dataptr_t, CName, this);
                         cartypeinfo.Modified = true;
                         cartypeinfo.Deletable = true;
                         cartypeinfo.CollisionExternalName = CName;
@@ -78,7 +78,7 @@
                         CName = this.GetCNameAtOffset(dataptr_t, 0x28, 0x20);
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
-                        var presetride = new Support.Carbon.Class.PresetRide(dataptr_t, CName);
+                        var presetride = new Support.Carbon.Class.PresetRide(dataptr_t, CName, this);
                         this.PresetRides.Add(presetride);
                         return true;
 
@@ -88,7 +88,7 @@
                         CName = this.GetCNameAtOffset(dataptr_t, 0x8, 0x20);
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
-                        var presetskin = new Support.Carbon.Class.PresetSkin(dataptr_t, CName);
+                        var presetskin = new Support.Carbon.Class.PresetSkin(dataptr_t, CName, this);
                         this.PresetSkins.Add(presetskin);
                         return true;
 

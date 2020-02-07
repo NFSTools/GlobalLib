@@ -60,6 +60,7 @@
     <Compile Include="Database\MostWanted\TryAddClass.cs" />
     <Compile Include="Database\MostWanted\TryCloneClass.cs" />
     <Compile Include="Database\MostWanted\TryRemoveClass.cs" />
+    <Compile Include="Reflection\DataFields\DFTPKBlock.cs" />
     <Compile Include="Reflection\DataFields\DFAutosculpt.cs" />
     <Compile Include="Reflection\DataFields\DFCarTypeInfo.cs" />
     <Compile Include="Reflection\DataFields\DFExtra.cs" />

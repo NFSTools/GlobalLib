@@ -18,7 +18,7 @@
                     *(dataptr_t + a1) = *(byteptr_t + a1);
             }
             data = Utils.EA.SAT.Decompress(data);
-            var Class = new Class.FNGroup(data);
+            var Class = new Class.FNGroup(data, db);
 
             // Check whether this FEng class already exists in the database
             if (Class.Destroy)

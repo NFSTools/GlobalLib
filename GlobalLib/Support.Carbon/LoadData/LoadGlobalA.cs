@@ -61,7 +61,7 @@ namespace GlobalLib.Support.Carbon
                     {
                         case Reflection.ID.Global.TPK:
                             int count = db.TPKBlocks.Count;
-                            db.TPKBlocks.Add(new Class.TPKBlock(byteptr_t + offset, count));
+                            db.TPKBlocks.Add(new Class.TPKBlock(byteptr_t + offset, count, db));
                             db.TPKBlocks[count].InGlobalA = true;
                             break;
 

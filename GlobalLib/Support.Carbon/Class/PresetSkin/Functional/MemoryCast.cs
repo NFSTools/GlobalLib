@@ -9,7 +9,7 @@
         /// <returns>Memory casted copy of the object.</returns>
         public PresetSkin MemoryCast(string CName)
         {
-            var result = new PresetSkin(CName);
+            var result = new PresetSkin(CName, this.Database);
 
             result.PositionY = this.PositionY;
             result.PositionX = this.PositionX;

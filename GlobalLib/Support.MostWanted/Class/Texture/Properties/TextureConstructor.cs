@@ -5,8 +5,9 @@
         public Texture() { }
 
         // Default constructor: create new texture for memory cast
-        public Texture(string CName)
+        public Texture(string CName, Database.MostWanted db)
         {
+            this.Database = db;
             this.CollectionName = CName;
             this.BinKey = Utils.Bin.Hash(CName);
             this.PaletteOffset = 0;
@@ -14,8 +15,9 @@
         }
 
         // Default constructor: create new texture from file.
-        public Texture(string CName, string filename)
+        public Texture(string CName, string filename, Database.MostWanted db)
         {
+            this.Database = db;
             this._collection_name = CName;
             this.BinKey = Utils.Bin.Hash(CName);
             this.PaletteOffset = 0;
@@ -24,8 +26,9 @@
         }
 
         // Default constructor: disassemble texture
-        public unsafe Texture(byte* byteptr_t, int offset, int size, string _TPK)
+        public unsafe Texture(byte* byteptr_t, int offset, int size, string _TPK, Database.MostWanted db)
         {
+            this.Database = db;
             this._located_at = offset;
             this._size_of_block = size;
             this._parent_TPK = _TPK;
@@ -35,8 +38,9 @@
         }
 
         // Default constructor: disassemble texture
-        public unsafe Texture(byte* byteptr_t, uint offset, uint size, string _TPK)
+        public unsafe Texture(byte* byteptr_t, uint offset, uint size, string _TPK, Database.MostWanted db)
         {
+            this.Database = db;
             this._located_at = (int)offset;
             this._size_of_block = (int)size;
             this._parent_TPK = _TPK;

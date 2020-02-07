@@ -24,7 +24,7 @@
             // Add textures to the list
             for (int i = 0; i < TextureCount; ++i)
             {
-                var Read = new Texture(byteptr_t, TextureList[i, 0], TextureList[i, 1], this._collection_name);
+                var Read = new Texture(byteptr_t, TextureList[i, 0], TextureList[i, 1], this._collection_name, this.Database);
                 this.Textures.Add(Read);
             }
 

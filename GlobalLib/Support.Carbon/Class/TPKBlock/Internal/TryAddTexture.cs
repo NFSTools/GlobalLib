@@ -20,7 +20,7 @@
             if (!Utils.EA.Comp.IsDDSTexture(filename))
                 return false;
 
-            var texture = new Texture(CName, filename);
+            var texture = new Texture(CName, filename, this.Database);
             this.Textures.Add(texture);
             return true;
         }

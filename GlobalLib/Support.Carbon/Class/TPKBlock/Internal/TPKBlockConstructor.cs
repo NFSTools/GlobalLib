@@ -12,8 +12,9 @@ namespace GlobalLib.Support.Carbon.Class
 
         public TPKBlock() { }
 
-        public unsafe TPKBlock(byte* byteptr_t, int index)
+        public unsafe TPKBlock(byte* byteptr_t, int index, Database.Carbon db)
         {
+            this.Database = db;
             this.Index = index;
             this.Disassemble(byteptr_t);
         }

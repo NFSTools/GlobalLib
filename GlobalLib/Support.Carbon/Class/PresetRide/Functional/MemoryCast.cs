@@ -9,7 +9,7 @@
         /// <returns>Memory casted copy of the object.</returns>
         public PresetRide MemoryCast(string CName)
         {
-            var result = new PresetRide(CName);
+            var result = new PresetRide(CName, this.Database);
 
             for (int a1 = 0; a1 < 20; ++a1)
                 result.Vinyls[a1] = this.Vinyls[a1].PlainCopy();

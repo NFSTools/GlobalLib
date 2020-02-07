@@ -9,7 +9,7 @@
         /// <returns>Memory casted copy of the object.</returns>
         public Material MemoryCast(string CName)
         {
-            var result = new Material(CName);
+            var result = new Material(CName, this.Database);
 
             result._shadow_outer_radius = this._shadow_outer_radius;
             result._optimal_light_reflection = this._optimal_light_reflection;

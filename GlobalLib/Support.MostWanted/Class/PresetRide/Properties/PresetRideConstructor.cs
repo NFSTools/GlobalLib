@@ -6,8 +6,9 @@
         public PresetRide() { }
 
         // Default constructor: create new preset
-        public PresetRide(string v1)
+        public PresetRide(string v1, Database.MostWanted db)
         {
+            this.Database = db;
             this.data = new byte[0x290];
             this.CollectionName = v1;
             this.MODEL = "SUPRA";
@@ -17,8 +18,9 @@
         }
 
         // Default constructor: disassemble preset
-        public unsafe PresetRide(byte* byteptr_t, string CName)
+        public unsafe PresetRide(byte* byteptr_t, string CName, Database.MostWanted db)
         {
+            this.Database = db;
             this.data = new byte[0x290];
             this.CollectionName = CName;
             this.Exists = true;

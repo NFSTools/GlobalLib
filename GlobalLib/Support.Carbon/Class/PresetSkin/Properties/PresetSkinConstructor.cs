@@ -6,14 +6,16 @@
         public PresetSkin() { }
 
         // Default constructor: create new skin
-        public PresetSkin(string CName)
+        public PresetSkin(string CName, Database.Carbon db)
         {
+            this.Database = db;
             this.CollectionName = CName;
         }
 
         // Default constructor: disassemble skin
-        public unsafe PresetSkin(byte* byteptr_t, string CName)
+        public unsafe PresetSkin(byte* byteptr_t, string CName, Database.Carbon db)
         {
+            this.Database = db;
             this.CollectionName = CName;
             this.Disassemble(byteptr_t);
         }

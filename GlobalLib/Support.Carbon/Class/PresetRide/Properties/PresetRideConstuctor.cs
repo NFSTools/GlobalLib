@@ -6,8 +6,9 @@
         public PresetRide() { }
 
         // Default constructor: create new preset
-        public PresetRide(string CName)
+        public PresetRide(string CName, Database.Carbon db)
         {
+            this.Database = db;
             this.data = new byte[0x600];
             this.CollectionName = CName;
             this.MODEL = "SUPRA";
@@ -27,8 +28,9 @@
         }
 
         // Default constructor: disassemble preset
-        public unsafe PresetRide(byte* byteptr_t, string CName)
+        public unsafe PresetRide(byte* byteptr_t, string CName, Database.Carbon db)
         {
+            this.Database = db;
             this.data = new byte[0x600];
             this.CollectionName = CName;
             this.Exists = true;
