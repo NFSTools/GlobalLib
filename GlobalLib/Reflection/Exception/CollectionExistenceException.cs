@@ -1,8 +1,8 @@
 ﻿namespace GlobalLib.Reflection.Exception
 {
-    public class CollectionExistanceException : System.Exception
+    public class CollectionExistenceException : System.Exception
     {
-        public CollectionExistanceException()
+        public CollectionExistenceException()
             : base("Class with the collection name provided does not exists.") { }
     }
 }

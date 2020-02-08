@@ -9,7 +9,7 @@
         /// <returns>Memory casted copy of the object.</returns>
         public Texture MemoryCast(string CName)
         {
-            var result = new Texture(CName, this.Database);
+            var result = new Texture(CName, this._parent_TPK, this.Database);
 
             result._unknown0 = this._unknown0;
             result._unknown1 = this._unknown1;

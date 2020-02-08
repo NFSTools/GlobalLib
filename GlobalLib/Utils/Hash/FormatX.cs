@@ -158,7 +158,7 @@
                 string result = GetString(value, format);
                 return System.Convert.ToByte(result);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
                 return 0;
             }

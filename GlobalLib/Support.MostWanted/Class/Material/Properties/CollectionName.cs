@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
+    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
     {
         private string _collection_name;
 
@@ -14,13 +14,22 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException();
-                if (value.Length > 0x17)
+                if (value.Length > 0x1B)
                     throw new Reflection.Exception.ArgumentLengthException();
-                int index = this.Database.GetClassIndex(this._parent_TPK, GlobalLib.Database.ClassType.TPKBlock);
-                if (this.Database.TPKBlocks[index].GetTextureIndex(value) != -1)
+                if (this.Database.GetClassIndex(value, GlobalLib.Database.ClassType.Material) != -1)
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;
             }
         }
+
+        /// <summary>
+        /// Binary memory hash of the collection name.
+        /// </summary>
+        public override uint BinKey { get => Utils.Bin.Hash(this._collection_name); }
+
+        /// <summary>
+        /// Vault memory hash of the collection name.
+        /// </summary>
+        public override uint VltKey { get => Utils.Vlt.Hash(this._collection_name); }
     }
 }

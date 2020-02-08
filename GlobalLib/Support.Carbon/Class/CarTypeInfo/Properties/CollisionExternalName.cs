@@ -1,6 +1,6 @@
-﻿namespace GlobalLib.Support.Shared.Class
+﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class CarTypeInfo : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
     {
         private string _collision_external_name = Reflection.BaseArguments.NULL;
 

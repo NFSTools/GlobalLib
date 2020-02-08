@@ -5,20 +5,22 @@
         public Texture() { }
 
         // Default constructor: create new texture for memory cast
-        public Texture(string CName, Database.MostWanted db)
+        public Texture(string CName, string _TPK, Database.MostWanted db)
         {
             this.Database = db;
-            this.CollectionName = CName;
+            this._collection_name = CName;
+            this._parent_TPK = _TPK;
             this.BinKey = Utils.Bin.Hash(CName);
             this.PaletteOffset = 0;
             this._padding = 1;
         }
 
         // Default constructor: create new texture from file.
-        public Texture(string CName, string filename, Database.MostWanted db)
+        public Texture(string CName, string _TPK, string filename, Database.MostWanted db)
         {
             this.Database = db;
             this._collection_name = CName;
+            this._parent_TPK = _TPK;
             this.BinKey = Utils.Bin.Hash(CName);
             this.PaletteOffset = 0;
             this._padding = 1;

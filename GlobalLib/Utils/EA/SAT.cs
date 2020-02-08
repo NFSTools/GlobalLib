@@ -116,7 +116,12 @@ namespace GlobalLib.Utils.EA
         /// <returns>Alpha parameter as a byte.</returns>
         public static byte GetAlpha(string color)
         {
-            return FormatX.GetByte(color, "0x{XX}ABCDEF");
+            try
+            {
+                string hex = FormatX.GetString(color, "0x{XX}ABCDEF");
+                return Convert.ToByte(hex, 16);
+            }
+            catch (Exception) { return 0; }
         }
 
         /// <summary>
@@ -126,7 +131,12 @@ namespace GlobalLib.Utils.EA
         /// <returns>Red parameter as a byte.</returns>
         public static byte GetRed(string color)
         {
-            return FormatX.GetByte(color, "0xAB{XX}CDEF");
+            try
+            {
+                string hex = FormatX.GetString(color, "0xAB{XX}CDEF");
+                return Convert.ToByte(hex, 16);
+            }
+            catch (Exception) { return 0; }
         }
 
         /// <summary>
@@ -136,7 +146,12 @@ namespace GlobalLib.Utils.EA
         /// <returns>Green parameter as a byte.</returns>
         public static byte GetGreen(string color)
         {
-            return FormatX.GetByte(color, "0xABCD{XX}EF");
+            try
+            {
+                string hex = FormatX.GetString(color, "0xABCD{XX}EF");
+                return Convert.ToByte(hex, 16);
+            }
+            catch (Exception) { return 0; }
         }
 
         /// <summary>
@@ -146,7 +161,12 @@ namespace GlobalLib.Utils.EA
         /// <returns>Blue parameter as a byte.</returns>
         public static byte GetBlue(string color)
         {
-            return FormatX.GetByte(color, "0xABCDEF{XX}");
+            try
+            {
+                string hex = FormatX.GetString(color, "0xABCDEF{XX}");
+                return Convert.ToByte(hex, 16);
+            }
+            catch (Exception) { return 0; }
         }
     }
 }

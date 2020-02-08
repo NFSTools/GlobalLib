@@ -30,7 +30,7 @@
                         case ClassType.Material:
                             index = this.GetClassIndex(CName, type);
                             if (index == -1)
-                                throw new Reflection.Exception.CollectionExistanceException();
+                                throw new Reflection.Exception.CollectionExistenceException();
                             bw.Write(this.Materials[index].Assemble());
                             this.ShowSuccessMessage(CName);
                             return;
@@ -38,7 +38,7 @@
                         case ClassType.CarTypeInfo:
                             index = this.GetClassIndex(CName, type);
                             if (index == -1)
-                                throw new Reflection.Exception.CollectionExistanceException();
+                                throw new Reflection.Exception.CollectionExistenceException();
                             bw.Write(this.CarTypeInfos[index].Assemble(0xFF));
                             this.ShowSuccessMessage(CName);
                             return;
@@ -46,7 +46,7 @@
                         case ClassType.PresetRide:
                             index = this.GetClassIndex(CName, type);
                             if (index == -1)
-                                throw new Reflection.Exception.CollectionExistanceException();
+                                throw new Reflection.Exception.CollectionExistenceException();
                             bw.Write(this.PresetRides[index].Assemble());
                             this.ShowSuccessMessage(CName);
                             return;
@@ -54,7 +54,7 @@
                         case ClassType.PresetSkin:
                             index = this.GetClassIndex(CName, type);
                             if (index == -1)
-                                throw new Reflection.Exception.CollectionExistanceException();
+                                throw new Reflection.Exception.CollectionExistenceException();
                             bw.Write(this.PresetSkins[index].Assemble());
                             this.ShowSuccessMessage(CName);
                             return;

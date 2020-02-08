@@ -5,12 +5,12 @@
         /// <summary>
         /// Binary memory hash of the collection name.
         /// </summary>
-        public uint BinKey { get => Utils.Bin.Hash(this._collection_name); }
+        public virtual uint BinKey { get => 0; }
 
         /// <summary>
         /// Vault memory hash of the collection name.
         /// </summary>
-        public uint VltKey { get => Utils.Vlt.Hash(this._collection_name); }
+        public virtual uint VltKey { get => 0; }
 
         /// <summary>
         /// Provides info on whether this cartypeinfo can be deleted or not.

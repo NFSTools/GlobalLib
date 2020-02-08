@@ -91,7 +91,7 @@
     <Compile Include="Reflection\Exception\ArgumentLengthException.cs" />
     <Compile Include="Reflection\BaseArguments.cs" />
     <Compile Include="Reflection\Exception\MappingFailException.cs" />
-    <Compile Include="Reflection\Exception\CollectionCollisionException.cs" />
+    <Compile Include="Reflection\Exception\CollectionExistenceException.cs" />
     <Compile Include="Reflection\ID\CarParts.cs" />
     <Compile Include="Reflection\ID\EAComp.cs" />
     <Compile Include="Reflection\ID\Global.cs" />
@@ -107,6 +107,7 @@
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\SetValue.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\ToString.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
+    <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CollectionName.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\GameAddress.cs" />
     <Compile Include="Reflection\Info\Spoiler.cs" />
     <Compile Include="Reflection\Info\SpoilerAS.cs" />
@@ -281,6 +282,8 @@
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\SetValue.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
+    <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\CollectionName.cs" />
+    <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\CollisionExternalName.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\GameAddress.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\SpoilerProperty.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Functional\Assemble.cs" />
@@ -298,6 +301,7 @@
     <Compile Include="Support.MostWanted\Class\Material\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\BrightColor1.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\BrightColor2.cs" />
+    <Compile Include="Support.MostWanted\Class\Material\Properties\CollectionName.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\GameAddress.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\MaterialConstructor.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\NegativeValues.cs" />
@@ -314,6 +318,7 @@
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\SetValue.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\GetValue.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\ToString.cs" />
+    <Compile Include="Support.MostWanted\Class\PresetRide\Properties\CollectionName.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\VectorVinylColor2.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\VectorVinylColor3.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\VectorVinylColor4.cs" />
@@ -416,8 +421,7 @@
     <Compile Include="Support.MostWanted\SaveData\SaveGlobalB.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Functional\Disassemble.cs" />
-    <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\CollectionName.cs" />
-    <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\CollisionExternalName.cs" />
+    <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CollisionExternalName.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\CollisionInternalName.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\CarInfoTypes.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Functional\GetValue.cs" />
@@ -434,7 +438,7 @@
     <Compile Include="Support.Shared\Class\Material\Functional\Disassemble.cs" />
     <Compile Include="Support.Shared\Class\Material\Functional\GetValue.cs" />
     <Compile Include="Support.Shared\Class\Material\Functional\SetValue.cs" />
-    <Compile Include="Support.Shared\Class\Material\Properties\CollectionName.cs" />
+    <Compile Include="Support.Carbon\Class\Material\Properties\CollectionName.cs" />
     <Compile Include="Support.Shared\Class\Material\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Shared\Class\Material\Properties\SecondaryProperties.cs" />
     <Compile Include="Support.Shared\Class\PresetRide\Functional\StringToKey.cs" />
@@ -442,7 +446,7 @@
     <Compile Include="Support.Shared\Class\PresetRide\Functional\Disassemble.cs" />
     <Compile Include="Support.Shared\Class\PresetRide\Functional\GetValue.cs" />
     <Compile Include="Support.Shared\Class\PresetRide\Functional\SetValue.cs" />
-    <Compile Include="Support.Shared\Class\PresetRide\Properties\CollectionName.cs" />
+    <Compile Include="Support.Carbon\Class\PresetRide\Properties\CollectionName.cs" />
     <Compile Include="Support.Shared\Class\PresetRide\Properties\Model.cs" />
     <Compile Include="Support.Shared\Class\PresetRide\Properties\Pvehicle.cs" />
     <Compile Include="Support.Shared\Class\PresetRide\Properties\Frontend.cs" />
@@ -451,7 +455,7 @@
     <Compile Include="Support.Shared\Class\PresetSkin\Functional\Disassemble.cs" />
     <Compile Include="Support.Shared\Class\PresetSkin\Functional\GetValue.cs" />
     <Compile Include="Support.Shared\Class\PresetSkin\Functional\SetValue.cs" />
-    <Compile Include="Support.Shared\Class\PresetSkin\Properties\CollectionName.cs" />
+    <Compile Include="Support.Carbon\Class\PresetSkin\Properties\CollectionName.cs" />
     <Compile Include="Support.Shared\Class\PresetSkin\Properties\PaintSwatch.cs" />
     <Compile Include="Support.Shared\Class\PresetSkin\Properties\Brightness.cs" />
     <Compile Include="Support.Shared\Class\PresetSkin\Properties\PrimaryProperties.cs" />
@@ -505,6 +509,8 @@
     <Compile Include="Utils\File\MemoryUnlock.cs" />
     <Compile Include="Utils\File\Palette.cs" />
     <Compile Include="Utils\EA\SAT.cs" />
+    <Compile Include="Utils\HTML\TagFormatter.cs" />
+    <Compile Include="Utils\HTML\TexEd.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
