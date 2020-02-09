@@ -35,6 +35,8 @@
     <Reference Include="DevILNet">
       <HintPath>.\DevILNet.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -45,6 +47,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Initialize.cs" />
@@ -509,8 +512,19 @@
     <Compile Include="Utils\File\MemoryUnlock.cs" />
     <Compile Include="Utils\File\Palette.cs" />
     <Compile Include="Utils\EA\SAT.cs" />
+    <Compile Include="Utils\HTML\AppendStyling.cs" />
+    <Compile Include="Utils\HTML\EndTags.cs" />
+    <Compile Include="Utils\HTML\Events.cs" />
+    <Compile Include="Utils\HTML\FontStyling.cs" />
+    <Compile Include="Utils\HTML\GetHTMLTag.cs" />
+    <Compile Include="Utils\HTML\HTMLTagType.cs" />
+    <Compile Include="Utils\HTML\IsHTMLTag.cs" />
+    <Compile Include="Utils\HTML\MenuSettings.cs" />
+    <Compile Include="Utils\HTML\Rule.cs" />
+    <Compile Include="Utils\HTML\SettingsTags.cs" />
+    <Compile Include="Utils\HTML\StartTags.cs" />
     <Compile Include="Utils\HTML\TagFormatter.cs" />
-    <Compile Include="Utils\HTML\TexEd.cs" />
+    <Compile Include="Utils\HTML\HTMLTextBox.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

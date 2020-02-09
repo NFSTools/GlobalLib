@@ -157,5 +157,51 @@
                     return result;
             }
         }
+
+        /// <summary>
+        /// Removes all whitespace from the string.
+        /// </summary>
+        /// <param name="value">String to be modified.</param>
+        /// <returns>String without whitespace.</returns>
+        public static string RemoveWhiteSpace(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return string.Empty;
+            string result = "";
+            foreach (var c in value)
+                if (c != ' ') result += c.ToString();
+            return result;
+        }
+
+        /// <summary>
+        /// Removes all newlines and tabs from the string.
+        /// </summary>
+        /// <param name="value">String to be modified.</param>
+        /// <returns>String without newlines and tabs.</returns>
+        public static string RemoveNewLines(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return string.Empty;
+            string result = "";
+            foreach (var c in value)
+                if (c != '\n' && c != '\r' && c != '\t' && c != '\v') result += c.ToString();
+            return result;
+        }
+
+        /// <summary>
+        /// Compares two font styles and returns true if they are equal.
+        /// </summary>
+        /// <param name="font1">Font style 1 to be compared.</param>
+        /// <param name="font2">Font style 2 to be compared.</param>
+        /// <returns>True if two fonts passed are equal.</returns>
+        public static bool EqualFonts(System.Drawing.Font font1, System.Drawing.Font font2)
+        {
+            if (font1.Unit != font2.Unit) return false;
+            if (font1.Bold != font2.Bold) return false;
+            if (font1.Italic != font2.Italic) return false;
+            if (font1.Underline != font2.Underline) return false;
+            if (font1.Strikeout != font2.Strikeout) return false;
+            if (font1.Name != font2.Name) return false;
+            if (font1.Style != font2.Style) return false;
+            return true;
+        }
     }
 }
