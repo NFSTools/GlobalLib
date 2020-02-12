@@ -19,11 +19,9 @@
                 }
 
                 // Read CollectionName
-                for (int a1 = 0x30; *(byteptr_t + a1) != 0 && a1 < this._DATA.Length; ++a1)
-                    this.CollectionName += ((char)*(byteptr_t + a1)).ToString();
-
+                this.CollectionName = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x30, this._DATA.Length - 0x30);
                 if (this.CollectionName.EndsWith(".fng"))
-                    this.CollectionName = this.CollectionName.Substring(0, this.CollectionName.Length - 4);
+                    this.CollectionName = Utils.FormatX.GetString(this.CollectionName, "{X}.fng");
 
                 for (uint offset = 0x30; offset < this._DATA.Length; offset += 4)
                 {

@@ -293,5 +293,47 @@ namespace GlobalLib.Utils.EA
             }
             return true;
         }
+    
+    
+        public static string GetTPKName(int index)
+        {
+            if (Core.Process.Set == (int)Core.GameINT.Carbon)
+            {
+                switch (index)
+                {
+                    case 0:
+                        return "GLOBALMESSAGETEXTURES";
+                    case 1:
+                        return "GLOBALTEXTURES";
+                    case 2:
+                        return "FLARETEXTURES";
+                    case 3:
+                        return "GLOBALTEXTURESPC";
+                    case 4:
+                        return "EMITTER_SYSTEM_TEXTURE_PAGE";
+                    case 5:
+                        return "EMITTER_SYSTEM_NORMALMAPS_P";
+                    case 6:
+                        return "FLARE_TEXTURE_PAGE";
+                    default:
+                        return null;
+                }
+            }
+            else if (Core.Process.Set == (int)Core.GameINT.MostWanted)
+            {
+                switch (index)
+                {
+                    case 0:
+                        return "GLOBALMESSAGE";
+                    case 1:
+                    case 2:
+                    case 3:
+                        return "GLOBAL";
+                    default:
+                        return null;
+                }
+            }
+            return null;
+        }
     }
 }

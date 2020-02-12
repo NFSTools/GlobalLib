@@ -9,6 +9,9 @@
         protected override unsafe byte[] Get1Part1()
         {
             var result = new byte[0x84];
+            this.filename = "GlobalLib by MaxHwoy " + System.DateTime.Today.ToString("dd-MM-yyyy");
+            this.FilenameHash = Utils.Bin.Hash(this.filename);
+            Core.Map.BinKeys.Remove(this.FilenameHash);
             fixed (byte* byteptr_t = &result[0])
             {
                 *(uint*)byteptr_t = Reflection.ID.TPK.INFO_PART1_BLOCKID; // write ID

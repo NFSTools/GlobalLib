@@ -15,13 +15,10 @@
                 return; // check header size
 
             // Get CollectionName
-            this._collection_name = this.Index.ToString() + "_";
-            for (int a1 = offset + 0xC; *(byteptr_t + a1) != 0; ++a1)
-                this._collection_name += ((char)*(byteptr_t + a1)).ToString();
+            this._collection_name = this.Index.ToString() + "_" + Utils.EA.Comp.GetTPKName(this.Index);
 
             // Get Filename
-            for (int a1 = offset + 0x28; *(byteptr_t + a1) != 0; ++a1)
-                this.filename += ((char)*(byteptr_t + a1)).ToString();
+            this.filename = Utils.ScriptX.NullTerminatedString(byteptr_t + offset + 0x28, 0x40);
 
             // Get the rest of the settings
             this.Version = *(int*)(byteptr_t + offset + 8);

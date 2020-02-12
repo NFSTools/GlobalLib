@@ -17,9 +17,7 @@
                 uint offset = loop * size; // current offset of the preset ride
 
                 // Get CollectionName
-                string CName = "";
-                for (uint a1 = offset + 0x28; *(byteptr_t + a1) != 0; ++a1)
-                    CName += ((char)*(byteptr_t + a1)).ToString();
+                string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + offset + 0x28, 0x20);
 
                 CName = Utils.EA.Resolve.GetPathFromCollection(CName);
                 Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;

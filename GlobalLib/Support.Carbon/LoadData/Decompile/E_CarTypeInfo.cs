@@ -17,9 +17,7 @@
                 uint offset = 8 + loop * size; // current offset of the cartypeinfo (padding included)
 
                 // Get CollectionName
-                string CName = "";
-                for (uint a1 = offset; *(byteptr_t + a1) != 0; ++a1)
-                    CName += ((char)*(byteptr_t + a1)).ToString();
+                string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + offset, 0x10);
 
                 CName = Utils.EA.Resolve.GetPathFromCollection(CName);
                 Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;

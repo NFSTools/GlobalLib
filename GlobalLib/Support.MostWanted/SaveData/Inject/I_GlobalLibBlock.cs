@@ -68,6 +68,7 @@
             int dataoffset = (int)bw.BaseStream.Position;
             foreach (var pair in Core.Map.BinKeys)
             {
+                if (pair.Value == null) continue;
                 ++strsize;
                 bw.Write(pair.Value);
             }

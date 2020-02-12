@@ -14,10 +14,9 @@
             uint offset = 8;
             while (offset < length)
             {
-                string debug = "";
-                for (uint a1 = offset; *(byteptr_t + a1) != 0; ++a1)
-                    debug += ((char)*(byteptr_t + a1)).ToString();
-                offset += (uint)debug.Length + 1;
+                string debug = Utils.ScriptX.NullTerminatedString(byteptr_t + offset);
+                if (debug == null) offset += 1;
+                else offset += (uint)debug.Length + 1;
                 Core.Map.BinKeys[Utils.Bin.Hash(debug)] = debug;
             }
             fixed (byte* dataptr_t = &data[0])

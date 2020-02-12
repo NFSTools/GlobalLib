@@ -11,7 +11,7 @@
 			foreach (var field in type.GetFields())
 				if ((string)field.GetValue(type) == tag) return true;
 
-			tag = EA.Resolve.RemoveWhiteSpace(tag);
+			tag = ScriptX.RemoveWhiteSpace(tag);
 			foreach (var field in sett.GetFields())
 			{
 				string nfield = (string)field.GetValue(sett) + Rule.Equal + Rule.Quote;

@@ -36,7 +36,7 @@
             this._parent_TPK = _TPK;
             this.PaletteOffset = 0;
             this._padding = 1;
-            this.Disassemble(byteptr_t);
+            this.Disassemble(byteptr_t + this._located_at);
         }
 
         // Default constructor: disassemble texture
@@ -48,7 +48,7 @@
             this._parent_TPK = _TPK;
             this.PaletteOffset = 0;
             this._padding = 1;
-            this.Disassemble(byteptr_t);
+            this.Disassemble(byteptr_t + this._located_at);
         }
 
         ~Texture() { }

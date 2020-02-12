@@ -10,9 +10,7 @@
         private static unsafe void E_Material(byte* byteptr_t, ref Database.Carbon db)
         {
             // Get collection name of the material, starts at 0x14
-            string CName = "";
-            for (int a1 = 0x1C; *(byteptr_t + a1) != 0; ++a1)
-                CName += ((char)*(byteptr_t + a1)).ToString();
+            string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x1C, 0x1C);
             CName = Utils.EA.Resolve.GetPathFromCollection(CName);
             Utils.EA.Resolve.GetWindowTintString(CName);
             Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;

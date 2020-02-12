@@ -159,34 +159,6 @@
         }
 
         /// <summary>
-        /// Removes all whitespace from the string.
-        /// </summary>
-        /// <param name="value">String to be modified.</param>
-        /// <returns>String without whitespace.</returns>
-        public static string RemoveWhiteSpace(string value)
-        {
-            if (string.IsNullOrWhiteSpace(value)) return string.Empty;
-            string result = "";
-            foreach (var c in value)
-                if (c != ' ') result += c.ToString();
-            return result;
-        }
-
-        /// <summary>
-        /// Removes all newlines and tabs from the string.
-        /// </summary>
-        /// <param name="value">String to be modified.</param>
-        /// <returns>String without newlines and tabs.</returns>
-        public static string RemoveNewLines(string value)
-        {
-            if (string.IsNullOrWhiteSpace(value)) return string.Empty;
-            string result = "";
-            foreach (var c in value)
-                if (c != '\n' && c != '\r' && c != '\t' && c != '\v') result += c.ToString();
-            return result;
-        }
-
-        /// <summary>
         /// Compares two font styles and returns true if they are equal.
         /// </summary>
         /// <param name="font1">Font style 1 to be compared.</param>
@@ -202,6 +174,49 @@
             if (font1.Name != font2.Name) return false;
             if (font1.Style != font2.Style) return false;
             return true;
+        }
+
+        /// <summary>
+        /// Checks if the string passed is an HTML color type, if yes, returns color based on it.
+        /// </summary>
+        /// <param name="value">String to be checked.</param>
+        /// <returns>True if string is of HTML color type, false otherwise.</returns>
+        public static bool TryParseHTMLColor(string value, out System.Drawing.Color color)
+        {
+            try
+            {
+                color = System.Drawing.ColorTranslator.FromHtml(value);
+                return true;
+            }
+            catch (System.Exception)
+            {
+                color = System.Windows.Forms.Control.DefaultBackColor;
+                return false;
+            }
+        }
+    
+        /// <summary>
+        /// Checks if the file is of supported image format and if it exists.
+        /// </summary>
+        /// <param name="filepath">File to be checked.</param>
+        /// <returns>True if file exists and is of valid image format.</returns>
+        public static bool IsImageFormat(string filepath)
+        {
+            if (string.IsNullOrEmpty(filepath))
+                return false;
+            if (!System.IO.File.Exists(filepath))
+                return false;
+            string ext = System.IO.Path.GetExtension(filepath);
+            switch (ext)
+            {
+                case ".png":
+                case ".jpg":
+                case ".bmp":
+                case ".tiff":
+                    return true;
+                default:
+                    return false;
+            }
         }
     }
 }

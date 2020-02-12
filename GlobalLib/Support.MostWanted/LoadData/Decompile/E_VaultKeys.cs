@@ -11,9 +11,8 @@
 			int offset = 8;
 			while (offset < size)
 			{
-				string CName = "";
-				for (int a1 = offset; *(byteptr_t + a1) != 0 && a1 < size; ++a1)
-					CName += ((char)*(byteptr_t + a1)).ToString();
+				string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + offset, size - offset);
+				if (CName == null) { offset += 1; continue; }
 				uint key = Utils.Vlt.Hash(CName);
 				Core.Map.VltKeys[key] = CName;
 				offset += CName.Length + 1;

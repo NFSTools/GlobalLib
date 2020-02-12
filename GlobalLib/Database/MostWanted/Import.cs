@@ -2,14 +2,6 @@
 {
     public partial class MostWanted : Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
     {
-        private unsafe string GetCNameAtOffset(byte* byteptr_t, int offset, int maxlen)
-        {
-            string result = "";
-            for (int a1 = offset; *(byteptr_t + a1) != 0 && a1 < offset + maxlen; ++a1)
-                result += ((char)*(byteptr_t + a1)).ToString();
-            return result;
-        }
-
         /// <summary>
         /// Imports class data from a file specified.
         /// </summary>
@@ -51,7 +43,7 @@
                             goto LABEL_LENGTHEXCEPT;
                         if (*(uint*)dataptr_t != Reflection.ID.Global.Materials)
                             goto LABEL_IDEXCEPT;
-                        CName = this.GetCNameAtOffset(dataptr_t, 0x1C, 0x1C);
+                        CName = Utils.ScriptX.NullTerminatedString(dataptr_t + 0x1C, 0x1C);
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
                         var material = new Support.MostWanted.Class.Material(dataptr_t, CName, this);
@@ -61,7 +53,7 @@
                     case ClassType.CarTypeInfo:
                         if (data.Length != 0xD0)
                             goto LABEL_LENGTHEXCEPT;
-                        CName = this.GetCNameAtOffset(dataptr_t, 0, 0x10);
+                        CName = Utils.ScriptX.NullTerminatedString(dataptr_t, 0x10);
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
                         var cartypeinfo = new Support.MostWanted.Class.CarTypeInfo(dataptr_t, CName, this);
@@ -75,7 +67,7 @@
                     case ClassType.PresetRide:
                         if (data.Length != 0x290)
                             goto LABEL_LENGTHEXCEPT;
-                        CName = this.GetCNameAtOffset(dataptr_t, 0x28, 0x20);
+                        CName = Utils.ScriptX.NullTerminatedString(dataptr_t + 0x28, 0x20);
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
                         var presetride = new Support.MostWanted.Class.PresetRide(dataptr_t, CName, this);
