@@ -13,8 +13,8 @@ namespace GlobalLib.Utils.HTML
 		public RichTextBox RTX { get; set; }
 		public MenuSettings Menu { get; set; }
 		private Dictionary<string, string> _linkmap;
-		private bool controlled = false;
 
+		private const char Listable = '\u02E3';
 		public static Color LinkColor { get; } = Color.FromArgb(1, 1, 0xEE);
 
 
@@ -25,15 +25,18 @@ namespace GlobalLib.Utils.HTML
 			char[] delim = new char[] { '<', '>' };
 			var formatters = new List<TagFormatter>();
 			string variative = null;
+			bool controlled = false;
+			bool bodyprocess = false;
 
 			foreach (var line in lines)
 			{
-				var nline = EA.Resolve.RemoveNewLines(line);
+				var nline = ScriptX.RemoveNewLines(line);
+				nline = ScriptX.CleanString(nline, false);
 				var words = nline.Split(delim);
 				foreach (var word in words)
 				{
 					if (string.IsNullOrEmpty(word)) continue;
-					if (word == StartTags.NewLine)
+					if (word == StartTags.NewLine && bodyprocess)
 					{
 						this.RTX.AppendText(Environment.NewLine);
 						continue;
@@ -41,17 +44,27 @@ namespace GlobalLib.Utils.HTML
 					this.DefaultAllFormats();
 					if (this.IsEndTag(word))
 					{
+						if (!controlled && !bodyprocess) continue;
+
 						int index = this.FindIndexByEndTag(word, formatters);
 						if (index == -1) { this.RTX.AppendText(word); continue; }
 						formatters[index].SelectLength = this.RTX.Text.Length - formatters[index].StartsLength;
 
-						if (this.controlled)
+						if (controlled)
+						{
+							formatters[index].SpecialSetting = variative;
 							this.AppendMenuStyling(formatters[index]);
-						else
+							variative = null;
+						}
+						else if (bodyprocess)
 							this.AppendTextStyling(formatters[index]);
+						else continue;
 
 						if (formatters[index].TagType == HTMLTagType.Head)
-							this.controlled = false;
+							controlled = false;
+
+						if (formatters[index].TagType == HTMLTagType.Body)
+							bodyprocess = false;
 
 						formatters.RemoveAt(index);
 					}
@@ -65,20 +78,22 @@ namespace GlobalLib.Utils.HTML
 						if (setting != null) tag.SpecialSetting = setting;
 
 						if (tag.TagType == HTMLTagType.Head)
-						{
-							this.controlled = true;
+							controlled = true;
+						else if (tag.TagType == HTMLTagType.Body)
+							bodyprocess = true;
+						else if (tag.TagType == HTMLTagType.Comment)
 							continue;
-						}
-
-						if (tag.TagType == HTMLTagType.Comment)
+						else if (tag.TagType == HTMLTagType.ImageLink)
 							continue;
 
 						formatters.Add(tag);
 					}
-					else if (this.controlled)
+					else if (controlled)
 						variative += word;
-					else
+					else if (bodyprocess)
 						this.RTX.AppendText(word);
+					else
+						continue;
 				}
 			}
 		}
@@ -88,18 +103,15 @@ namespace GlobalLib.Utils.HTML
 		{
 			this.InitializeComponent(null);
 		}
-
 		public HTMLTextBox(string[] lines)
 		{
 			this.InitializeComponent(null);
 			this.LoadHTMLTextBox(lines);
 		}
-	
 		public HTMLTextBox(RichTextBox box)
 		{
 			this.InitializeComponent(box);
 		}
-
 		public HTMLTextBox(RichTextBox box, string[] lines)
 		{
 			this.InitializeComponent(box);

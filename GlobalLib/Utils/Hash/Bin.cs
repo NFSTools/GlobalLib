@@ -15,9 +15,9 @@
             if (string.IsNullOrWhiteSpace(value)) // check for being null
                 return 0;
 
-            byte[] arr = System.Text.Encoding.GetEncoding(1252).GetBytes(value);
-            int len = 0;
-            uint result = 0xFFFFFFFF;
+            var arr = System.Text.Encoding.GetEncoding(1252).GetBytes(value);
+            var len = 0;
+            var result = 0xFFFFFFFF;
 
             while (len < arr.Length)
             {

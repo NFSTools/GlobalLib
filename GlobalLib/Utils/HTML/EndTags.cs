@@ -5,8 +5,10 @@
 		public const string Head = "/head";
 		public const string Body = "/body";
 		public const string Title = "/title";
-		public const string ScaleWidth = "/wwidth";
-		public const string ScaleHeight = "/wheight";
+		public const string WWidth = "/wwidth";
+		public const string WHeight = "/wheight";
+		public const string WFColor = "/wfcolor";
+		public const string WBColor = "/wbcolor";
 
 		public const string FontBoldedStyle = "/b";
 		public const string FontItalicStyle = "/i";
@@ -15,8 +17,9 @@
 
 		public const string DottedList = "/ul";
 		public const string NumberedList = "/ol";
+		public const string ListItem = "/li";
 
-		public const string FontStyle = "/p";
+		public const string Paragraph = "/p";
 		public const string ReferenceLink = "/a";
 
 

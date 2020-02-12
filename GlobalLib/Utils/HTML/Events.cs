@@ -28,6 +28,7 @@ namespace GlobalLib.Utils.HTML
 			this.RTX.DetectUrls = false;
 			this.RTX.MouseClick += new MouseEventHandler(this.RichTextBox_MouseClickEvent);
 			this._linkmap = new Dictionary<string, string>();
+			this.Menu.ImagePaths = new List<string>();
 		}
 
 		private void DefaultAllFormats()
@@ -35,15 +36,18 @@ namespace GlobalLib.Utils.HTML
 			this.RTX.SelectionStart = this.RTX.Text.Length;
 			this.RTX.SelectionFont = this.Menu.DefaultFont;
 			this.RTX.SelectionColor = this.Menu.DefaultColor;
-			this.RTX.SelectionBackColor = this.Menu.DefaultBackground;
 			this.RTX.SelectionAlignment = this.Menu.DefaultAlign;
+			if (this.Menu.UseDefaultBackgound)
+				this.RTX.SelectionBackColor = this.Menu.DefaultBackground;
+			else
+				this.RTX.SelectionBackColor = this.Menu.WFColor;
 		}
 
 		private void SendToLink(RichTextBox box, int index)
 		{
+			if (box.SelectionColor != LinkColor) return;
 			var linkfont = new Font(box.SelectionFont, FontStyle.Underline);
 			if (!EA.Resolve.EqualFonts(box.SelectionFont, linkfont)) return;
-			if (box.SelectionColor != LinkColor) return;
 
 			int selectionstart = index;
 			int selectionend = index;
@@ -70,7 +74,7 @@ namespace GlobalLib.Utils.HTML
 			box.SelectionStart = index;
 			if (selectionstart == selectionend) return;
 			var key = box.Text.Substring(selectionstart, selectionend - selectionstart);
-			key = EA.Resolve.RemoveNewLines(key);
+			key = ScriptX.RemoveNewLines(key);
 			if (!_linkmap.TryGetValue(key, out string result)) return;
 			var e = new LinkClickedEventArgs(result);
 			RichTextBox_LinkClickedEvent(box, e);

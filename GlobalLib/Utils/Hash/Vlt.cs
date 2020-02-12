@@ -12,12 +12,14 @@
         /// <returns>Vlt Memory Hash of the string as an unsigned integer.</returns>
         public static uint Hash(string str)
         {
+            if (string.IsNullOrWhiteSpace(str)) return 0;
+
             var arr = System.Text.Encoding.ASCII.GetBytes(str);
-            uint a = 0x9E3779B9;
-            uint b = 0x9E3779B9;
-            uint c = 0xABCDEF00;
-            int v1 = 0;
-            int v2 = arr.Length;
+            var a = 0x9E3779B9;
+            var b = 0x9E3779B9;
+            var c = 0xABCDEF00;
+            var v1 = 0;
+            var v2 = arr.Length;
 
             while (v2 >= 12)
             {
@@ -80,6 +82,7 @@
         /// <returns>Vlt64 Memory Hash of the string as an unsigned long.</returns>
         public static ulong Hash64(string str)
         {
+            if (string.IsNullOrWhiteSpace(str)) return 0;
             var arr = System.Text.Encoding.ASCII.GetBytes(str);
             ulong a = 0x9E3779B97F4A7C13;
             ulong b = 0x9E3779B97F4A7C13;
