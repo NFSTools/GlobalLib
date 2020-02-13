@@ -15,7 +15,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._shadowlevel = value;
             }
@@ -30,7 +30,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._mattelevel = value;
             }
@@ -45,7 +45,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._chromelevel = value;
             }

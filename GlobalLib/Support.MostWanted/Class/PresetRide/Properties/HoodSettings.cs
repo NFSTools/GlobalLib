@@ -14,7 +14,7 @@
             set
             {
                 if (value > 32)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 32.");
                 else
                     this._hood_style = value;
                 this.Modified = true;

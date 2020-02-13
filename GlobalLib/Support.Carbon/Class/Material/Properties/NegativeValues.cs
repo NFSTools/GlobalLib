@@ -15,7 +15,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._grayscale = value;
             }
@@ -30,7 +30,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._linear_negative = value;
             }
@@ -45,7 +45,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._gradient_negative = value;
             }

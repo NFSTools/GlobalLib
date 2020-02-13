@@ -13,7 +13,7 @@
             set
             {
                 if (value < 0 || value > 90)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._paintswatch = value;
                 this.Modified = true;

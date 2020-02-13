@@ -13,7 +13,7 @@
             set
             {
                 if (value > 20)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 20.");
                 else
                     this._number_of_vinyls = value;
                 this.Modified = true;

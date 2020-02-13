@@ -235,6 +235,8 @@
                 // _SKIRT
                 if (this._autosculpt_skirt == -1)
                     parts._SKIRT = "";
+                else if (this._autosculpt_skirt == -2)
+                    parts._SKIRT = MODEL + add_on._KIT + add_on._0 + parts._SKIRT + "_CAPPED";
                 else
                 {
                     parts._SKIRT = (this._autosculpt_skirt < 10)

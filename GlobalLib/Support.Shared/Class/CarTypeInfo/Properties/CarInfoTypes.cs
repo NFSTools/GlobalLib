@@ -15,7 +15,7 @@
             set
             {
                 if (value > byte.MaxValue || value < byte.MinValue)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("Value passed was outside of range of possible values.");
                 else
                     this._index = value;
             }
@@ -36,7 +36,7 @@
                     this._usagetype = value;
                 }
                 else
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("Value passed was outside of range of possible values.");
             }
         }
 
@@ -51,7 +51,7 @@
                 if (System.Enum.IsDefined(typeof(Reflection.Enum.CarTypeInfo.MemoryType), value))
                     this._memorytype = value;
                 else
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("Value passed was outside of range of possible values.");
             }
         }
 

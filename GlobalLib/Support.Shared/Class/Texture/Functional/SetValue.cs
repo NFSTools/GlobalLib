@@ -25,9 +25,9 @@
             catch (System.Exception e)
             {
                 if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show(e.Message);
+                    System.Windows.Forms.MessageBox.Show(e.InnerException.Message);
                 else
-                    System.Console.WriteLine($"{e.Message}");
+                    System.Console.WriteLine($"{e.InnerException.Message}");
                 return false;
             }
         }
@@ -56,7 +56,7 @@
             }
             catch (System.Exception e)
             {
-                error = e.Message;
+                error = e.InnerException.Message;
                 return false;
             }
         }

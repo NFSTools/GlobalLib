@@ -23,7 +23,7 @@
                 else
                 {
                     if (!byte.TryParse(value, out byte result) || result > 5)
-                        throw new System.ArgumentOutOfRangeException();
+                        throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 5, or NULL.");
                     else
                     {
                         this._aftermarket_bodykit = (sbyte)result;

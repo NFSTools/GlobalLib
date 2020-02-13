@@ -14,7 +14,7 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 this._specific_vinyl = value;
                 this.Modified = true;
             }
@@ -29,7 +29,7 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 this._generic_vinyl = value;
                 this.Modified = true;
             }

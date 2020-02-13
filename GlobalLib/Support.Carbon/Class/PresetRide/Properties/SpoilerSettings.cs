@@ -16,7 +16,7 @@
             set
             {
                 if (value > 29)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 29.");
                 else
                     this._spoiler_style = value;
                 this.Modified = true;
@@ -32,7 +32,7 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 switch (value)
                 {
                     case Reflection.BaseArguments.NULL:

@@ -16,7 +16,7 @@
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch1 = value;
             }
@@ -31,7 +31,7 @@
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch2 = value;
             }
@@ -46,7 +46,7 @@
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch3 = value;
             }
@@ -61,7 +61,7 @@
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch4 = value;
             }

@@ -16,7 +16,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._disable_reflection = value;
             }
@@ -31,7 +31,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._stronger_reflection = value;
             }
@@ -46,7 +46,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._blend_strong_colors = value;
             }
@@ -61,7 +61,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._disable_strong_colors = value;
             }

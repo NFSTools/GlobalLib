@@ -55,7 +55,7 @@
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._choptop_size = value;
                 this.Modified = true;

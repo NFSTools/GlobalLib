@@ -94,7 +94,7 @@ namespace GlobalLib.Support.Carbon.Parts.CarParts
                             CarSlot.SpoilerAS = Reflection.Info.SpoilerAS._CARRERA;
                             break;
                         default:
-                            CarSlot.SpoilerAS = "0x" + SpoilerASKey.ToString("X");
+                            CarSlot.SpoilerAS = "0x" + SpoilerASKey.ToString("X8");
                             break;
                     }
                     result.Add(CarSlot);

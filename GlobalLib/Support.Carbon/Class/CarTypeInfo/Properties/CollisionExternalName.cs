@@ -13,7 +13,7 @@
             set
             {
                 if (value != Reflection.BaseArguments.NULL && value != this._collection_name)
-                    throw new Reflection.Exception.MappingFailException();
+                    throw new Reflection.Exception.MappingFailException("Value passed should be either equal to CollectionName, or be NULL.");
                 else
                     this._collision_external_name = value;
             }

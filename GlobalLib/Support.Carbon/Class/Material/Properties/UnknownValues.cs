@@ -19,7 +19,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._unk1 = value;
             }
@@ -34,7 +34,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._unk2 = value;
             }
@@ -49,7 +49,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._unk3 = value;
             }
@@ -64,7 +64,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._unk4 = value;
             }
@@ -79,7 +79,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._unk5 = value;
             }
@@ -94,7 +94,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._unk6 = value;
             }
@@ -109,7 +109,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._unk7 = value;
             }

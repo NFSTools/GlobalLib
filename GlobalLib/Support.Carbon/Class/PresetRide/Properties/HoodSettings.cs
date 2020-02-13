@@ -15,7 +15,7 @@
             set
             {
                 if (value > 8)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 8.");
                 else
                     this._hood_style = value;
                 this.Modified = true;

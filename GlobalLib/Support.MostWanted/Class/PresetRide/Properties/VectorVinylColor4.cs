@@ -13,7 +13,7 @@
             set
             {
                 if (value > 80)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 80.");
                 else
                     this._vinylcolor4 = value;
                 this.Modified = true;

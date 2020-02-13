@@ -402,6 +402,12 @@
                 this._autosculpt_skirt = -1;
                 goto LABEL_RIM;
             }
+            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._SKIRT + "_CAPPED");
+            if (a1 == a2)
+            {
+                this._autosculpt_skirt = -2;
+                goto LABEL_RIM;
+            }
             for (a3 = 0; a3 < 15; ++a3) // basically 14 styles max
             {
                 a1 = (a3 < 10)

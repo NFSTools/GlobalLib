@@ -16,7 +16,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._strongcolor2_level = value;
             }
@@ -31,7 +31,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._strongcolor2_red = value;
             }
@@ -46,7 +46,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._strongcolor2_green = value;
             }
@@ -61,7 +61,7 @@
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._strongcolor2_blue = value;
             }

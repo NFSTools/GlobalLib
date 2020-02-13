@@ -129,7 +129,7 @@
         }
 
         /// <summary>
-        /// Cleans string from whitespace at the start and ending.
+        /// Cleans string from whitespace at the start (and optional ending).
         /// </summary>
         /// <param name="value">String to be cleaned.</param>
         /// <param name="frombothsides">True if clean from both start and end, false if just at the start.</param>

@@ -14,7 +14,7 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 this._genericvinyl = value;
             }
         }
@@ -28,7 +28,7 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 this._vectorvinyl = value;
             }
         }

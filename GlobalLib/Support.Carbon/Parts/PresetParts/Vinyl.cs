@@ -18,7 +18,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 this._vectorvinyl = value;
             }
         }
@@ -44,7 +44,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch1 = value;
             }
@@ -56,7 +56,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch2 = value;
             }
@@ -68,7 +68,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch3 = value;
             }
@@ -80,7 +80,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch4 = value;
             }
@@ -142,9 +142,9 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             catch (System.Exception e)
             {
                 if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show(e.Message);
+                    System.Windows.Forms.MessageBox.Show(e.InnerException.Message);
                 else
-                    System.Console.WriteLine($"{e.Message}");
+                    System.Console.WriteLine($"{e.InnerException.Message}");
                 return false;
             }
         }
@@ -173,7 +173,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             }
             catch (System.Exception e)
             {
-                error = e.Message;
+                error = e.InnerException.Message;
                 return false;
             }
         }

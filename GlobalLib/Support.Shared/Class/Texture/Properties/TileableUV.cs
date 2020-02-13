@@ -13,7 +13,7 @@
             set
             {
                 if (value > 3)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("Value passed should be in range 0 to 3.");
                 else
                     this._tileableuv = value;
             }

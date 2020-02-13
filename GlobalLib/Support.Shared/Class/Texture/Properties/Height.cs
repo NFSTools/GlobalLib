@@ -13,7 +13,7 @@
             set
             {
                 if (value <= 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("Value passed should be a positive value.");
                 else
                 {
                     this._height = value;

@@ -15,7 +15,7 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 switch (value)
                 {
                     case Reflection.BaseArguments.NULL:
@@ -46,7 +46,7 @@
                 if (value < 7)
                     this._rim_style = value;
                 else
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 6.");
                 this.Modified = true;
             }
         }
@@ -60,7 +60,7 @@
             set
             {
                 if (value > 20 || value < 17)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 17 to 20.");
                 else
                     this._rim_size = value;
                 this.Modified = true;

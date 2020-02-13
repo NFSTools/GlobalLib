@@ -13,9 +13,9 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (value.Length > 0x17)
-                    throw new Reflection.Exception.ArgumentLengthException();
+                    throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 23 characters.");
                 int index = this.Database.GetClassIndex(this._parent_TPK, GlobalLib.Database.ClassType.TPKBlock);
                 if (this.Database.TPKBlocks[index].GetTextureIndex(value) != -1)
                     throw new Reflection.Exception.CollectionExistenceException();

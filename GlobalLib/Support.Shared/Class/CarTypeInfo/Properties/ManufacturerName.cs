@@ -15,7 +15,7 @@
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException();
                 if (value.Length > 15)
-                    throw new Reflection.Exception.ArgumentLengthException();
+                    throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 15 characters.");
                 this._manufacturer_name = value;
             }
         }

@@ -14,7 +14,7 @@
             set
             {
                 if (value > 15)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("Value passed should be in range 0 to 15.");
                 else
                     this._mipmaps = value;
             }
@@ -31,7 +31,7 @@
                 if (System.Enum.IsDefined(typeof(Reflection.Enum.TPK.TextureMipmapBiasType), (int)value))
                     this._mipmap_bias_type = value;
                 else
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("Value passed falls out of range of possible values.");
             }
         }
     }

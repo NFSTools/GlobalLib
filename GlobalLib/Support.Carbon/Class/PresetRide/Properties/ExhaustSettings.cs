@@ -26,7 +26,7 @@
                 else
                 {
                     if (!byte.TryParse(value, out byte result) || result > 17)
-                        throw new System.ArgumentOutOfRangeException();
+                        throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 17, or NULL.");
                     else
                         this._exhaust_style = (sbyte)result;
                 }

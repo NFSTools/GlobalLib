@@ -22,7 +22,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone1 = value;
             }
@@ -34,7 +34,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone2 = value;
             }
@@ -46,7 +46,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone3 = value;
             }
@@ -58,7 +58,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone4 = value;
             }
@@ -70,7 +70,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone5 = value;
             }
@@ -82,7 +82,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone6 = value;
             }
@@ -94,7 +94,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone7 = value;
             }
@@ -106,7 +106,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone8 = value;
             }
@@ -118,7 +118,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone9 = value;
             }
@@ -180,9 +180,9 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             catch (System.Exception e)
             {
                 if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show(e.Message);
+                    System.Windows.Forms.MessageBox.Show(e.InnerException.Message);
                 else
-                    System.Console.WriteLine($"{e.Message}");
+                    System.Console.WriteLine($"{e.InnerException.Message}");
                 return false;
             }
         }
@@ -211,7 +211,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             }
             catch (System.Exception e)
             {
-                error = e.Message;
+                error = e.InnerException.Message;
                 return false;
             }
         }

@@ -13,11 +13,11 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (value == Reflection.BaseArguments.STOCK || Core.Map.WindowTintMap.Contains(value))
                     this._window_tint_type = value;
                 else
-                    throw new Reflection.Exception.MappingFailException();
+                    throw new Reflection.Exception.MappingFailException("This value should be either a valid windshield type, or STOCK.");
                 this.Modified = true;
             }
         }

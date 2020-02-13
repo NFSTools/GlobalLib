@@ -16,7 +16,7 @@
             set
             {
                 if (value > 18)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 18.");
                 else
                     this._roofscoop_style = value;
                 this.Modified = true;

@@ -13,7 +13,7 @@
             set
             {
                 if (value > 1 || value < 0)
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 1.");
                 else
                     this._saturation = value;
                 this.Modified = true;

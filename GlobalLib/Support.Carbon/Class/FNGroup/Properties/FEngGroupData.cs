@@ -13,7 +13,7 @@
             set
             {
                 if (value == null || value.Length == 0)
-                    throw new System.ArgumentNullException();
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
                 else
                     this._DATA = value;
             }

@@ -13,6 +13,8 @@
             {
                 if (this._autosculpt_skirt == -1)
                     return Reflection.BaseArguments.NULL;
+                if (this._autosculpt_skirt == -2)
+                    return "CAPPED";
                 else
                     return this._autosculpt_skirt.ToString();
             }
@@ -20,10 +22,12 @@
             {
                 if (value == Reflection.BaseArguments.NULL)
                     this._autosculpt_skirt = -1;
+                else if (value == "CAPPED")
+                    this._autosculpt_skirt = -2;
                 else
                 {
                     if (!byte.TryParse(value, out byte result) || result > 14)
-                        throw new System.ArgumentOutOfRangeException();
+                        throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 14, or NULL, or CAPPED.");
                     else
                         this._autosculpt_skirt = (sbyte)result;
                 }
