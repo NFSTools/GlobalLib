@@ -14,14 +14,14 @@
             if (this._compression == Reflection.ID.EAComp.P8_08)
             {
                 this.PaletteOffset = offdata;
-                this.Offset = offdata + 0x400;
+                this.Offset = offdata + this.PaletteSize;
             }
             else
                 this.Offset = offdata;
 
             // Write CollectionName
-            for (int a1 = 0; a1 < this.CollectionName.Length; ++a1)
-                *(byteptr_t + offheader + 0xC + a1) = (byte)this.CollectionName[a1];
+            for (int a1 = 0; a1 < this._collection_name.Length; ++a1)
+                *(byteptr_t + offheader + 0xC + a1) = (byte)this._collection_name[a1];
 
             // Write all settings
             *(uint*)(byteptr_t + offheader + 0x24) = this.BinKey;

@@ -18,7 +18,12 @@
 
             // Copy all data to the array
             for (int a1 = 0; a1 < this.keys.Count; ++a1)
-                System.Buffer.BlockCopy(this.Textures[a1].Data, 0, result, 0x80 + this.Textures[a1].Offset, this.Textures[a1].Size);
+            {
+                if (this.Textures[a1].Compression == Utils.EA.Comp.GetString(Reflection.ID.EAComp.P8_08))
+                    System.Buffer.BlockCopy(this.Textures[a1].Data, 0, result, 0x80 + this.Textures[a1].PaletteOffset, this.Textures[a1].Data.Length);
+                else
+                    System.Buffer.BlockCopy(this.Textures[a1].Data, 0, result, 0x80 + this.Textures[a1].Offset, this.Textures[a1].Data.Length);
+            }
 
             fixed (byte* byteptr_t = &result[8])
             {
