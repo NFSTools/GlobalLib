@@ -118,8 +118,8 @@ namespace GlobalLib.Support.Carbon.Parts.CarParts
         public unsafe byte[] SetSpoilers(List<CarSpoilerType> list)
         {
             int newsize = list.Count * 0x24 + this.data.Length;
-            int padding = newsize % 0x10;
-            if (padding != 0)
+            int padding = 0x10 - newsize % 0x10;
+            if (padding != 0x10)
                 newsize += padding;
             int offset = this.data.Length;
 

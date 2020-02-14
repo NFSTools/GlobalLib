@@ -306,10 +306,6 @@
                     if (!this.Modified) // if exists and not modified, return original array
                         goto LABEL_FINAL;
 
-                    // Write CollectionName
-                    for (int a1 = 0; a1 < this.CollectionName.Length; ++a1)
-                        *(byteptr_t + 0x28 + a1) = (byte)this.CollectionName[a1];
-
                     // Write settings that could have been changed
                     fixed (uint* uintptr_t = &keys[0])
                     {
@@ -352,12 +348,10 @@
                 else
                 {
                     // Write ModelName
+                    for (int a1 = 0; a1 < 0x20; ++a1)
+                        *(byteptr_t + 8 + a1) = (byte)0;
                     for (int a1 = 0; a1 < this.MODEL.Length; ++a1)
                         *(byteptr_t + 8 + a1) = (byte)this.MODEL[a1];
-
-                    // Write CollectionName
-                    for (int a1 = 0; a1 < this.CollectionName.Length; ++a1)
-                        *(byteptr_t + 0x28 + a1) = (byte)this.CollectionName[a1];
 
                     // Write all keys
                     fixed (uint* uintptr_t = &keys[0])
@@ -383,11 +377,17 @@
                     }
                 }
 
-                // Write Autosculpt and Vinyls
                 *(float*)(byteptr_t + 0x214) = this._saturation;
                 *(float*)(byteptr_t + 0x218) = this._brightness;
 
             LABEL_FINAL:
+                // Write CollectionName
+                for (int a1 = 0; a1 < 0x20; ++a1)
+                    *(byteptr_t + 0x28 + a1) = (byte)0;
+                for (int a1 = 0; a1 < this.CollectionName.Length; ++a1)
+                    *(byteptr_t + 0x28 + a1) = (byte)this.CollectionName[a1];
+
+                // Write Fronend and Pvehicle
                 *(uint*)(byteptr_t + 0x48) = this._Frontend_Hash;
                 *(uint*)(byteptr_t + 0x50) = this._Pvehicle_Hash;
 

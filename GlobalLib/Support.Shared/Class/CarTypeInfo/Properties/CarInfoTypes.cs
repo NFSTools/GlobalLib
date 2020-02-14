@@ -58,6 +58,6 @@
         /// <summary>
         /// Represents boolean as an int of whether cartypeinfo is skinnable.
         /// </summary>
-        public bool IsSkinnable { get; set; }
+        public bool IsSkinnable { get; set; } = true;
     }
 }

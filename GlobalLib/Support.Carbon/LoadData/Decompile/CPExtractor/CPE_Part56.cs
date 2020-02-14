@@ -20,7 +20,7 @@
             // Validation check
             int check = *(part6ptr_t + len6 - 3) + 1;
             int total = (len5 - 8) / 4;
-            if (check != total) return;
+            if (check < total) len5 = check * 4 + 8;
 
             db.SlotTypes.Part56 = new System.Collections.Generic.List<Parts.CarParts.Part56>();
             var CarCNames = new System.Collections.Generic.List<uint>();

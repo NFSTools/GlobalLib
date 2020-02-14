@@ -70,14 +70,13 @@
 
             // Write part 5
             int part5size = db.SlotTypes.Part56.Count * 4;
-            padding = 0xC - (part5size % 0x10);
-            if (padding == 0xC) padding = 0;
-            part5size += padding;
+            padding = 3 - db.SlotTypes.Part56.Count % 4;
+            if (padding != 0) part5size += padding * 4;
             bw.Write(Reflection.ID.CarParts.Part5);
             bw.Write(part5size);
             for (int a1 = 0; a1 < db.SlotTypes.Part56.Count; ++a1)
                 bw.Write(db.SlotTypes.Part56[a1].Key);
-            for (int a1 = 0; a1 < padding; ++a1)
+            for (int a1 = 0; a1 < padding * 4; ++a1)
                 bw.Write((byte)0);
 
             // Write part 6
@@ -91,10 +90,9 @@
                 part6size += db.SlotTypes.Part56[a1].Data.Length;
             }
             padding = 0x10 - ((part6size + 8) % 0x10);
-            if (padding == 0x10) padding = 0;
+            if (padding != 0x10) part6size += padding;
             for (int a1 = 0; a1 < padding; ++a1)
                 bw.Write((byte)0);
-            part6size += padding;
             bw.BaseStream.Position = size6off;
             bw.Write(part6size);
 

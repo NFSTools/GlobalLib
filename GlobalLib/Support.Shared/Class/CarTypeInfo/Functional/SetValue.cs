@@ -36,10 +36,11 @@
             }
             catch (System.Exception e)
             {
+                while (e.InnerException != null) e = e.InnerException;
                 if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show(e.InnerException.Message);
+                    System.Windows.Forms.MessageBox.Show(e.Message);
                 else
-                    System.Console.WriteLine($"{e.InnerException.Message}");
+                    System.Console.WriteLine($"{e.Message}");
                 return false;
             }
         }
@@ -80,7 +81,8 @@
             }
             catch (System.Exception e)
             {
-                error = e.InnerException.Message;
+                while (e.InnerException != null) e = e.InnerException;
+                error = e.Message;
                 return false;
             }
         }
