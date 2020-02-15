@@ -19,13 +19,13 @@ namespace GlobalLib.Support.Carbon
             GlobalA_dir += @"\GLOBAL\GlobalA.bun";
             byte[] GlobalABUN;
 
-            // Get everything from GlobalB.lzc
+            // Get everything from GlobalA.bun
             try
             {
                 GlobalABUN = File.ReadAllBytes(GlobalA_dir);
                 Utils.Log.Write("Reading data from GlobalA.bun...");
             }
-            catch (Exception) // If GlobalB.lzc is opened in editing mode in another program
+            catch (Exception) // If GlobalA.bun is opened in editing mode in another program
             {
                 if (Core.Process.MessageShow)
                     MessageBox.Show("Unable to read GlobalA.bun file. Please close all\napplications that have it opened or\ncheck its internal data.", "Failure");
@@ -59,7 +59,7 @@ namespace GlobalLib.Support.Carbon
 
                     switch (ID)
                     {
-                        case Reflection.ID.Global.TPK:
+                        case Reflection.ID.Global.TPKBlocks:
                             int count = db.TPKBlocks.Count;
                             db.TPKBlocks.Add(new Class.TPKBlock(byteptr_t + offset, count, db));
                             db.TPKBlocks[count].InGlobalA = true;

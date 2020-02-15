@@ -50,7 +50,7 @@ namespace GlobalLib.Support.Carbon
                     // If one of the necessary slots is reached, replace it
                     switch (WriterSlotID)
                     {
-                        case Reflection.ID.Global.TPK:
+                        case Reflection.ID.Global.TPKBlocks:
                             while (!db.TPKBlocks[tpkindex].InGlobalA)
                                 ++tpkindex;
                             I_TPKBlock(db, bw, ref tpkindex);

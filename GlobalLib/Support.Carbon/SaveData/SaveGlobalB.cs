@@ -67,7 +67,7 @@ namespace GlobalLib.Support.Carbon
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.TPK:
+                        case Reflection.ID.Global.TPKBlocks:
                             while (db.TPKBlocks[tpkindex].InGlobalA)
                                 ++tpkindex;
                             I_TPKBlock(db, bw, ref tpkindex);

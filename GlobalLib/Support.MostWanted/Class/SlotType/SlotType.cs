@@ -9,5 +9,10 @@ namespace GlobalLib.Support.MostWanted.Class
         public List<Parts.CarParts.Part56> Part56 { get; set; }
         public Parts.CarParts.Spoilers Spoilers { get; set; }
         public Dictionary<uint, Parts.CarParts.Collision> Collisions { get; set; }
+
+        public override string ToString()
+        {
+            return $"Part56 Count: {Part56.Count} | Collisions Count: {Collisions.Count}";
+        }
     }
 }

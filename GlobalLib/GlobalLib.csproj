@@ -192,6 +192,13 @@
     <Compile Include="Support.Carbon\Class\PresetSkin\Properties\LayerSwatchColors.cs" />
     <Compile Include="Support.Carbon\Class\PresetSkin\Properties\ClassifiedVinyls.cs" />
     <Compile Include="Support.Carbon\Class\SlotType\SlotType.cs" />
+    <Compile Include="Support.Carbon\Class\STRBlock\Functional\Assemble.cs" />
+    <Compile Include="Support.Carbon\Class\STRBlock\Functional\Disassemble.cs" />
+    <Compile Include="Support.Carbon\Class\STRBlock\Properties\GameAddress.cs" />
+    <Compile Include="Support.Carbon\Class\STRBlock\Properties\STRBlockConstructor.cs" />
+    <Compile Include="Support.Carbon\Class\STRBlock\Properties\StringInformation.cs" />
+    <Compile Include="Support.Carbon\Class\STRBlock\Properties\SubBlockOffsets.cs" />
+    <Compile Include="Support.Carbon\Class\STRBlock\Properties\SubBlockData.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Functional\GetDDSArray.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Functional\ReadData.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Functional\MemoryCast.cs" />
@@ -258,6 +265,7 @@
     <Compile Include="Support.Carbon\LoadData\Decompile\E_PresetRides.cs" />
     <Compile Include="Support.Carbon\LoadData\Decompile\E_Spoilers.cs" />
     <Compile Include="Support.Carbon\LoadData\Decompile\E_VaultKeys.cs" />
+    <Compile Include="Support.Carbon\LoadData\LoadLanguage.cs" />
     <Compile Include="Support.Carbon\LoadData\LoadGlobalA.cs" />
     <Compile Include="Support.Carbon\LoadData\LoadGlobalB.cs" />
     <Compile Include="Support.Carbon\LoadData\LoadVaults.cs" />
@@ -280,6 +288,7 @@
     <Compile Include="Support.Carbon\SaveData\Inject\I_TPKBlock.cs" />
     <Compile Include="Support.Carbon\SaveData\SaveGlobalA.cs" />
     <Compile Include="Support.Carbon\SaveData\SaveGlobalB.cs" />
+    <Compile Include="Support.Carbon\SaveData\SaveLanguage.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\GetValue.cs" />
@@ -467,6 +476,9 @@
     <Compile Include="Support.Shared\Class\PresetSkin\Properties\Saturation.cs" />
     <Compile Include="Support.Shared\Class\PresetSkin\Properties\PaintType.cs" />
     <Compile Include="Support.Shared\Class\SlotType\SlotType.cs" />
+    <Compile Include="Support.Shared\Class\STRBlock\Functional\Assemble.cs" />
+    <Compile Include="Support.Shared\Class\STRBlock\Functional\Disassemble.cs" />
+    <Compile Include="Support.Shared\Class\STRBlock\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Shared\Class\Texture\Functional\GetDDS.cs" />
     <Compile Include="Support.Shared\Class\Texture\Functional\GetValue.cs" />
     <Compile Include="Support.Shared\Class\Texture\Functional\Assemble.cs" />
@@ -496,6 +508,7 @@
     <Compile Include="Support.Shared\Parts\FNGParts\FEngColor.cs" />
     <Compile Include="Support.Shared\Parts\PresetParts\Add_On.cs" />
     <Compile Include="Support.Shared\Parts\PresetParts\Concatenator.cs" />
+    <Compile Include="Support.Shared\Parts\STRParts\StringRecord.cs" />
     <Compile Include="Support.Shared\Parts\TPKParts\CompSlot.cs" />
     <Compile Include="Utils\Cast\DynamicCast.cs" />
     <Compile Include="Utils\Cast\MemoryCast.cs" />

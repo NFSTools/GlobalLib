@@ -39,7 +39,8 @@
             bool A = Support.Carbon.LoadData.LoadVaults(GlobalDir);
             bool B = Support.Carbon.LoadData.LoadGlobalA(GlobalDir, ref database);
             bool C = Support.Carbon.LoadData.LoadGlobalB(GlobalDir, ref database);
-            if (A && B && C)
+            bool D = Support.Carbon.LoadData.LoadLanguage(GlobalDir, ref database);
+            if (A && B && C && D)
                 return true;
             else
                 return false;
@@ -88,9 +89,10 @@
             }
             bool A = Support.Carbon.SaveData.SaveGlobalA(GlobalDir, database);
             bool B = Support.Carbon.SaveData.SaveGlobalB(GlobalDir, database);
+            bool C = Support.Carbon.SaveData.SaveLanguage(GlobalDir, database);
             if (B && compressed)
                 CompressFiles();
-            if (A && B)
+            if (A && B && C)
                 return true;
             else
                 return false;

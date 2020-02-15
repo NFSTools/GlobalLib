@@ -52,7 +52,7 @@
         /// <returns>String read from the memory.</returns>
         public static unsafe string NullTerminatedString(byte* byteptr_t)
         {
-            string result = null;
+            string result = string.Empty;
             for (int a1 = 0; *(byteptr_t + a1) != 0; ++a1)
                 result += ((char)*(byteptr_t + a1)).ToString();
             return result;
@@ -66,7 +66,7 @@
         /// <returns>String read from the memory.</returns>
         public static unsafe string NullTerminatedString(byte* byteptr_t, int maxlen)
         {
-            string result = null;
+            string result = string.Empty;
             for (int a1 = 0; a1 < maxlen && *(byteptr_t + a1) != 0; ++a1)
                 result += ((char)*(byteptr_t + a1)).ToString();
             return result;
@@ -79,7 +79,7 @@
         /// <returns>String read using binary reader.</returns>
         public static string NullTerminatedString(System.IO.BinaryReader br)
         {
-            string result = null;
+            string result = string.Empty;
             byte reader;
             while ((reader = br.ReadByte()) != 0)
                 result += ((char)reader).ToString();
@@ -94,7 +94,7 @@
         /// <returns>String read using binary reader.</returns>
         public static string NullTerminatedString(System.IO.BinaryReader br, int maxlen)
         {
-            string result = null;
+            string result = string.Empty;
             byte reader;
             for (int a1 = 0; a1 < maxlen && (reader = br.ReadByte()) != 0; ++a1)
                 result += ((char)reader).ToString();

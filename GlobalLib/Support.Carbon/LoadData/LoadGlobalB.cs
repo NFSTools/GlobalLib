@@ -82,7 +82,7 @@ namespace GlobalLib.Support.Carbon
                             E_Material(byteptr_t + offset, ref db);
                             break;
 
-                        case Reflection.ID.Global.TPK:
+                        case Reflection.ID.Global.TPKBlocks:
                             int count = db.TPKBlocks.Count;
                             db.TPKBlocks.Add(new Class.TPKBlock(byteptr_t + offset, count, db));
                             break;
