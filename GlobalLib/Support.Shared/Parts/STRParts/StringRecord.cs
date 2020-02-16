@@ -13,7 +13,7 @@
 
 		public override string ToString()
 		{
-			return $"BinKey: {this.Key.ToString("X8")} | Text: {this.Text}";
+			return $"BinKey: {this.Key.ToString("X8")} | Label: {this.Label} | Text: {this.Text}";
 		}
 	}
 }

@@ -3,10 +3,10 @@
 	public partial class STRBlock : Shared.Class.STRBlock
 	{
 		/// <summary>
-		/// Disassembles string block array into separate properties.
+		/// Disassembles labels block array into separate properties.
 		/// </summary>
-		/// <param name="byteptr_t">Pointer to the string block array.</param>
-		protected override unsafe void Disassemble(byte* byteptr_t, int length)
+		/// <param name="byteptr_t">Pointer to the label block array.</param>
+		protected override unsafe void DisperseLabels(byte* byteptr_t, int length)
 		{
 			int ReaderOffset = 0;
 			uint ReaderID = 0;
@@ -32,6 +32,11 @@
 			// Check if string block exists
 			if (this._offset == -1 || this._size == -1) return;
 
+			// Initialize map with keys and indexes
+			var key_to_index = new System.Collections.Generic.Dictionary<uint, int>();
+			for (int a1 = 0; a1 < this._stringinfo.Count; ++a1)
+				key_to_index[this._stringinfo[a1].Key] = a1;
+
 			// Advance position and read through header
 			byteptr_t += this._offset + 8;
 			this._num_entries = *(int*)(byteptr_t);
@@ -42,11 +47,11 @@
 			// Begin reading through string records
 			for (int a1 = 0; a1 < this._num_entries; ++a1)
 			{
-				var info = new Shared.Parts.STRParts.StringRecord();
-				info.Key = *(uint*)(byteptr_t + this._key_offset + a1 * 8);
+				var key = *(uint*)(byteptr_t + this._key_offset + a1 * 8);
 				var pos = this._text_offset + *(int*)(byteptr_t + this._key_offset + a1 * 8 + 4);
-				info.Text = Utils.ScriptX.NullTerminatedString(byteptr_t + pos);
-				this._stringinfo.Add(info);
+				var label = Utils.ScriptX.NullTerminatedString(byteptr_t + pos);
+				if (key_to_index.TryGetValue(key, out int index))
+					this._stringinfo[index].Label = label;
 			}
 		}
 	}

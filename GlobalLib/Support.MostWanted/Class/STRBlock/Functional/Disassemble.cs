@@ -2,21 +2,27 @@
 {
 	public partial class STRBlock : Shared.Class.STRBlock
 	{
+		/// <summary>
+		/// Disassembles string block array into separate properties.
+		/// </summary>
+		/// <param name="byteptr_t">Pointer to the string block array.</param>
 		protected override unsafe void Disassemble(byte* byteptr_t, int length)
 		{
 			int ReaderOffset = 0;
 			uint ReaderID = 0;
 			int BlockSize = 0;
+			bool found = false;
 
 			// Run through file
 			while (ReaderOffset < length)
 			{
 				ReaderID = *(uint*)(byteptr_t + ReaderOffset);
 				BlockSize = *(int*)(byteptr_t + ReaderOffset + 4);
-				if (ReaderID == Reflection.ID.Global.STRBlocks)
+				if (!found && ReaderID == Reflection.ID.Global.STRBlocks)
 				{
 					this._offset = ReaderOffset;
 					this._size = BlockSize;
+					found = true;
 				}
 				ReaderOffset += 8 + BlockSize;
 			}
@@ -45,7 +51,6 @@
 				info.Text = Utils.ScriptX.NullTerminatedString(byteptr_t + pos);
 				this._stringinfo.Add(info);
 			}
-			int aa = 0;
 		}
 	}
 }

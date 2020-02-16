@@ -194,6 +194,8 @@
     <Compile Include="Support.Carbon\Class\SlotType\SlotType.cs" />
     <Compile Include="Support.Carbon\Class\STRBlock\Functional\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\STRBlock\Functional\Disassemble.cs" />
+    <Compile Include="Support.Carbon\Class\STRBlock\Functional\DisperseLabels.cs" />
+    <Compile Include="Support.Carbon\Class\STRBlock\Functional\ParseLabels.cs" />
     <Compile Include="Support.Carbon\Class\STRBlock\Properties\GameAddress.cs" />
     <Compile Include="Support.Carbon\Class\STRBlock\Properties\STRBlockConstructor.cs" />
     <Compile Include="Support.Carbon\Class\STRBlock\Properties\StringInformation.cs" />
@@ -485,7 +487,9 @@
     <Compile Include="Support.Shared\Class\PresetSkin\Properties\Saturation.cs" />
     <Compile Include="Support.Shared\Class\PresetSkin\Properties\PaintType.cs" />
     <Compile Include="Support.Shared\Class\SlotType\SlotType.cs" />
+    <Compile Include="Support.Shared\Class\STRBlock\Functional\ParseLabels.cs" />
     <Compile Include="Support.Shared\Class\STRBlock\Functional\Assemble.cs" />
+    <Compile Include="Support.Shared\Class\STRBlock\Functional\DisperseLabels.cs" />
     <Compile Include="Support.Shared\Class\STRBlock\Functional\Disassemble.cs" />
     <Compile Include="Support.Shared\Class\STRBlock\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Shared\Class\Texture\Functional\GetDDS.cs" />
