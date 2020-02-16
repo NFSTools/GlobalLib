@@ -13,6 +13,7 @@ namespace GlobalLib.Database
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
+        public STRBlock STRBlocks { get; set; }
 
         public MostWanted()
         {
@@ -22,6 +23,7 @@ namespace GlobalLib.Database
             this.PresetRides = new List<PresetRide>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
+            this.STRBlocks = new STRBlock();
         }
     }
 }

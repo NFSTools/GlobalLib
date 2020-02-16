@@ -350,6 +350,13 @@
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\AftermarketBodykit.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\GameAddress.cs" />
     <Compile Include="Support.MostWanted\Class\SlotType\SlotType.cs" />
+    <Compile Include="Support.MostWanted\Class\STRBlock\Functional\Assemble.cs" />
+    <Compile Include="Support.MostWanted\Class\STRBlock\Functional\Disassemble.cs" />
+    <Compile Include="Support.MostWanted\Class\STRBlock\Properties\GameAddress.cs" />
+    <Compile Include="Support.MostWanted\Class\STRBlock\Properties\STRBlockConstructor.cs" />
+    <Compile Include="Support.MostWanted\Class\STRBlock\Properties\StringInformation.cs" />
+    <Compile Include="Support.MostWanted\Class\STRBlock\Properties\SubBlockData.cs" />
+    <Compile Include="Support.MostWanted\Class\STRBlock\Properties\SubBlockOffsets.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Functional\GetDDSArray.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Functional\MemoryCast.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Functional\Disassemble.cs" />
@@ -417,6 +424,7 @@
     <Compile Include="Support.MostWanted\LoadData\Decompile\E_VaultKeys.cs" />
     <Compile Include="Support.MostWanted\LoadData\LoadGlobalA.cs" />
     <Compile Include="Support.MostWanted\LoadData\LoadGlobalB.cs" />
+    <Compile Include="Support.MostWanted\LoadData\LoadLanguage.cs" />
     <Compile Include="Support.MostWanted\LoadData\LoadVaults.cs" />
     <Compile Include="Support.MostWanted\Parts\CarParts\Collision.cs" />
     <Compile Include="Support.MostWanted\Parts\CarParts\Part56.cs" />
@@ -433,6 +441,7 @@
     <Compile Include="Support.MostWanted\SaveData\Inject\I_TPKBlock.cs" />
     <Compile Include="Support.MostWanted\SaveData\SaveGlobalA.cs" />
     <Compile Include="Support.MostWanted\SaveData\SaveGlobalB.cs" />
+    <Compile Include="Support.MostWanted\SaveData\SaveLanguage.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CollisionExternalName.cs" />

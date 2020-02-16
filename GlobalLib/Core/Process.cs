@@ -65,7 +65,8 @@
             bool A = Support.MostWanted.LoadData.LoadVaults(GlobalDir);
             bool B = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
             bool C = Support.MostWanted.LoadData.LoadGlobalB(GlobalDir, ref database);
-            if (A && B && C)
+            bool D = Support.MostWanted.LoadData.LoadLanguage(GlobalDir, ref database);
+            if (A && B && C && D)
                 return true;
             else
                 return false;
@@ -116,9 +117,10 @@
             }
             bool A = Support.MostWanted.SaveData.SaveGlobalA(GlobalDir, database);
             bool B = Support.MostWanted.SaveData.SaveGlobalB(GlobalDir, database);
+            bool C = Support.MostWanted.SaveData.SaveLanguage(GlobalDir, database);
             if (B && compressed)
                 CompressFiles();
-            if (A && B)
+            if (A && B & C)
                 return true;
             else
                 return false;
