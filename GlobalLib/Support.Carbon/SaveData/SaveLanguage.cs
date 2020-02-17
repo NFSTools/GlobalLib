@@ -11,7 +11,7 @@ namespace GlobalLib.Support.Carbon
         /// <summary>
         /// Saves database data into English_Global file.
         /// </summary>
-        /// <param name="GlobalA_dir">Game directory.</param>
+        /// <param name="Language_dir">Game directory.</param>
         /// <param name="db">Database of classes.</param>
         /// <returns>True if success.</returns>
         public static bool SaveLanguage(string Language_dir, Database.Carbon db)

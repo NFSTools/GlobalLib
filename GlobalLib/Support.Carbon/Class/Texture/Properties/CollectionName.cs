@@ -20,6 +20,7 @@
                 if (this.Database.TPKBlocks[index].GetTextureIndex(value) != -1)
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;
+                this.BinKey = Utils.Bin.Hash(value);
             }
         }
     }

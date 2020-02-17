@@ -354,6 +354,8 @@
     <Compile Include="Support.MostWanted\Class\SlotType\SlotType.cs" />
     <Compile Include="Support.MostWanted\Class\STRBlock\Functional\Assemble.cs" />
     <Compile Include="Support.MostWanted\Class\STRBlock\Functional\Disassemble.cs" />
+    <Compile Include="Support.MostWanted\Class\STRBlock\Functional\DisperseLabels.cs" />
+    <Compile Include="Support.MostWanted\Class\STRBlock\Functional\ParseLabels.cs" />
     <Compile Include="Support.MostWanted\Class\STRBlock\Properties\GameAddress.cs" />
     <Compile Include="Support.MostWanted\Class\STRBlock\Properties\STRBlockConstructor.cs" />
     <Compile Include="Support.MostWanted\Class\STRBlock\Properties\StringInformation.cs" />

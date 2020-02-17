@@ -8,7 +8,7 @@
         /// <param name="byteptr_t">Pointer to the texture header array.</param>
         protected override unsafe void Disassemble(byte* byteptr_t)
         {
-            this._cube_environment = *(uint*)(byteptr_t );
+            this._cube_environment = *(uint*)byteptr_t;
             this.BinKey = *(uint*)(byteptr_t  + 0xC);
             this._class = *(uint*)(byteptr_t  + 0x10);
             this.Offset = *(int*)(byteptr_t  + 0x14);
