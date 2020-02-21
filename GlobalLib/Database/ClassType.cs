@@ -8,5 +8,6 @@
         PresetSkin = 4,
         FNGroup = 5,
         TPKBlock = 6,
+        STRBlock = 7,
     }
 }

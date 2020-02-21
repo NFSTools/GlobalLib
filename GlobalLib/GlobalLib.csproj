@@ -65,6 +65,7 @@
     <Compile Include="Database\MostWanted\TryAddClass.cs" />
     <Compile Include="Database\MostWanted\TryCloneClass.cs" />
     <Compile Include="Database\MostWanted\TryRemoveClass.cs" />
+    <Compile Include="Reflection\DataFields\DFSTRBlock.cs" />
     <Compile Include="Reflection\DataFields\DFTPKBlock.cs" />
     <Compile Include="Reflection\DataFields\DFAutosculpt.cs" />
     <Compile Include="Reflection\DataFields\DFCarTypeInfo.cs" />
@@ -200,7 +201,6 @@
     <Compile Include="Support.Carbon\Class\STRBlock\Properties\STRBlockConstructor.cs" />
     <Compile Include="Support.Carbon\Class\STRBlock\Properties\StringInformation.cs" />
     <Compile Include="Support.Carbon\Class\STRBlock\Properties\SubBlockOffsets.cs" />
-    <Compile Include="Support.Carbon\Class\STRBlock\Properties\SubBlockData.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Functional\GetDDSArray.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Functional\ReadData.cs" />
     <Compile Include="Support.Carbon\Class\Texture\Functional\MemoryCast.cs" />
@@ -530,6 +530,7 @@
     <Compile Include="Utils\Cast\ReinterpretCast.cs" />
     <Compile Include="Utils\Cast\RuntimeCast.cs" />
     <Compile Include="Utils\Cast\StaticCast.cs" />
+    <Compile Include="Utils\File\MemoryReader.cs" />
     <Compile Include="Utils\Hash\ConvertX.cs" />
     <Compile Include="Utils\EA\EAComp.cs" />
     <Compile Include="Utils\EA\Resolve.cs" />

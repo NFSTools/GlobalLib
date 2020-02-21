@@ -32,7 +32,6 @@
             result.BodyPaint = this.BodyPaint;
             result.RimPaint = this.RimPaint;
             result.AftermarketBodykit = this.AftermarketBodykit;
-            result.CollectionName = this.CollectionName;
             result.MODEL = this.MODEL;
             result.Pvehicle = this.Pvehicle;
             result.Frontend = this.Frontend;
