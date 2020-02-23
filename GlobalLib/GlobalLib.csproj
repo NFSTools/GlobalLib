@@ -526,6 +526,13 @@
     <Compile Include="Support.Shared\Parts\PresetParts\Concatenator.cs" />
     <Compile Include="Support.Shared\Parts\STRParts\StringRecord.cs" />
     <Compile Include="Support.Shared\Parts\TPKParts\CompSlot.cs" />
+    <Compile Include="Support.Underground2\Class\FNGroup\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Class\FNGroup\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Class\FNGroup\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Class\FNGroup\Properties\ColorInformation.cs" />
+    <Compile Include="Support.Underground2\Class\FNGroup\Properties\FEngGroupData.cs" />
+    <Compile Include="Support.Underground2\Class\FNGroup\Properties\FNGroupConstructor.cs" />
+    <Compile Include="Support.Underground2\Class\FNGroup\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Class\STRBlock\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Class\STRBlock\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\STRBlock\Functional\DisperseLabels.cs" />
@@ -619,7 +626,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Support.Underground2\Class\CarTypeInfo\" />
-    <Folder Include="Support.Underground2\Class\FNGroup\" />
     <Folder Include="Support.Underground2\Class\Materials\" />
     <Folder Include="Support.Underground2\Class\PresetRide\" />
     <Folder Include="Support.Underground2\Class\SlotType\" />
