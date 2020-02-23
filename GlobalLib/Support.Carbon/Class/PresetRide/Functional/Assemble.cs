@@ -96,8 +96,8 @@
                 {
                     parts._KIT00_EXHAUST = add_on.EXHAUST + add_on._STYLE;
                     parts._KIT00_EXHAUST += (this._exhaust_style >= 1 && this._exhaust_style <= 9)
-                        ? add_on._0 + ExhaustSize.ToString()
-                        : ExhaustSize.ToString();
+                        ? add_on._0 + ExhaustStyle.ToString()
+                        : ExhaustStyle.ToString();
                     if (this._is_center_exhaust)
                         parts._KIT00_EXHAUST += add_on._CENTER;
                     parts._KIT00_EXHAUST += add_on._LEVEL1;
@@ -377,6 +377,7 @@
                     }
                 }
 
+                *(int*)(byteptr_t + 0x208) = 1;
                 *(float*)(byteptr_t + 0x214) = this._saturation;
                 *(float*)(byteptr_t + 0x218) = this._brightness;
 

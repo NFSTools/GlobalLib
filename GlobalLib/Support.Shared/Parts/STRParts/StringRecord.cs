@@ -8,8 +8,14 @@
 		public int NulledLabelLength { get => (this.Label == null) ? 0 : this.Label.Length + 1; }
 		public int NulledTextLength { get => (this.Text == null) ? 0 : this.Text.Length + 1; }
 
+		public System.Collections.Generic.List<StringRecord> ThisList { get; set; }
+
 		// Default constructor: make label empty
-		public StringRecord() { this.Label = string.Empty; }
+		public StringRecord(System.Collections.Generic.List<StringRecord> thislist)
+		{
+			this.Label = string.Empty;
+			this.ThisList = thislist;
+		}
 
 		public override string ToString()
 		{

@@ -18,6 +18,7 @@ namespace GlobalLib.Support.MostWanted
         /// <returns>True if success.</returns>
         public static unsafe bool LoadGlobalB(string GlobalB_dir, ref Database.MostWanted db)
         {
+            LibColBlockExists = false;
             GlobalB_dir += @"\GLOBAL\GlobalB.lzc";
             byte[] GlobalBLZC;
 
