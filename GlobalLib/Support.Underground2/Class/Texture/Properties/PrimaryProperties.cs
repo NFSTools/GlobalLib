@@ -1,8 +1,8 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿namespace GlobalLib.Support.Underground2.Class
 {
     public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
     {
-        private uint _class = 0x001A93CF;
+        private uint _class = 0x001A93CF; // default; sometimes 0x6B6D3253
 
         /// <summary>
         /// DDS data of the texture.

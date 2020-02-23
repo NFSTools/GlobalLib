@@ -1,11 +1,11 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿namespace GlobalLib.Support.Underground2.Class
 {
     public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
     {
         public Texture() { }
 
         // Default constructor: create new texture for memory cast
-        public Texture(string CName, string _TPK, Database.MostWanted db)
+        public Texture(string CName, string _TPK, Database.Underground2 db)
         {
             this.Database = db;
             this._collection_name = CName;
@@ -16,7 +16,7 @@
         }
 
         // Default constructor: create new texture from file.
-        public Texture(string CName, string _TPK, string filename, Database.MostWanted db)
+        public Texture(string CName, string _TPK, string filename, Database.Underground2 db)
         {
             this.Database = db;
             this._collection_name = CName;
@@ -28,7 +28,7 @@
         }
 
         // Default constructor: disassemble texture
-        public unsafe Texture(byte* byteptr_t, int offset, int size, string _TPK, Database.MostWanted db)
+        public unsafe Texture(byte* byteptr_t, int offset, int size, string _TPK, Database.Underground2 db)
         {
             this.Database = db;
             this._located_at = offset;
@@ -40,7 +40,7 @@
         }
 
         // Default constructor: disassemble texture
-        public unsafe Texture(byte* byteptr_t, uint offset, uint size, string _TPK, Database.MostWanted db)
+        public unsafe Texture(byte* byteptr_t, uint offset, uint size, string _TPK, Database.Underground2 db)
         {
             this.Database = db;
             this._located_at = (int)offset;

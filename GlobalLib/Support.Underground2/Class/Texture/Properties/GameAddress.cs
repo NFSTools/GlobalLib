@@ -1,20 +1,20 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿namespace GlobalLib.Support.Underground2.Class
 {
     public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
     {
         /// <summary>
         /// Game index to which the class belongs to.
         /// </summary>
-        public int GameINT { get => (int)Core.GameINT.MostWanted; }
+        public int GameINT { get => (int)Core.GameINT.Underground2; }
 
         /// <summary>
         /// Game string to which the class belongs to.
         /// </summary>
-        public string GameSTR { get => Core.GameSTR.MostWanted; }
+        public string GameSTR { get => Core.GameSTR.Underground2; }
 
         /// <summary>
         /// Database to which the class belongs to.
         /// </summary>
-        public Database.MostWanted Database { get; set; }
+        public Database.Underground2 Database { get; set; }
     }
 }

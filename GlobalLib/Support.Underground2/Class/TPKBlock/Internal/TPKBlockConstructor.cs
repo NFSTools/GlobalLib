@@ -13,7 +13,7 @@ namespace GlobalLib.Support.Underground2.Class
 
         public TPKBlock() { }
 
-        public unsafe TPKBlock(byte* byteptr_t, int index, Database.MostWanted db)
+        public unsafe TPKBlock(byte* byteptr_t, int index, Database.Underground2 db)
         {
             this.Database = db;
             this.Index = index;
