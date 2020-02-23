@@ -1,4 +1,4 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class STRBlock : Shared.Class.STRBlock
 	{
@@ -6,7 +6,7 @@
 		public STRBlock() { }
 
 		// Default constructor: disassemble string block
-		public unsafe STRBlock(byte* strptr, byte* labptr, int strlen, int lablen, Database.MostWanted db)
+		public unsafe STRBlock(byte* strptr, byte* labptr, int strlen, int lablen, Database.Underground2 db)
 		{
 			this.Database = db;
 			this.Disassemble(strptr, strlen);
