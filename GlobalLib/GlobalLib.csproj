@@ -65,6 +65,7 @@
     <Compile Include="Database\MostWanted\TryAddClass.cs" />
     <Compile Include="Database\MostWanted\TryCloneClass.cs" />
     <Compile Include="Database\MostWanted\TryRemoveClass.cs" />
+    <Compile Include="Database\Underground2\GetClassIndex.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />
     <Compile Include="Reflection\DataFields\DFSTRBlock.cs" />
     <Compile Include="Reflection\DataFields\DFTPKBlock.cs" />
@@ -526,6 +527,11 @@
     <Compile Include="Support.Shared\Parts\PresetParts\Concatenator.cs" />
     <Compile Include="Support.Shared\Parts\STRParts\StringRecord.cs" />
     <Compile Include="Support.Shared\Parts\TPKParts\CompSlot.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Functional\ToString.cs" />
@@ -533,6 +539,7 @@
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FNGroupConstructor.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Class\SlotType\SlotType.cs" />
     <Compile Include="Support.Underground2\Class\STRBlock\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Class\STRBlock\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\STRBlock\Functional\DisperseLabels.cs" />
@@ -591,6 +598,18 @@
     <Compile Include="Support.Underground2\Class\TPKBlock\Writing\Get2Part1.cs" />
     <Compile Include="Support.Underground2\Class\TPKBlock\Writing\Get2Part2.cs" />
     <Compile Include="Support.Underground2\Class\TPKBlock\Writing\TextureSort.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part0.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part1.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part2.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part3.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part4.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part56.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_CarParts.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_CarTypeInfo.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_FNGroup.cs" />
+    <Compile Include="Support.Underground2\LoadData\LoadGlobalB.cs" />
+    <Compile Include="Support.Underground2\Parts\CarParts\Part56.cs" />
+    <Compile Include="Support.Underground2\Parts\CarParts\UsageType.cs" />
     <Compile Include="Utils\Cast\DynamicCast.cs" />
     <Compile Include="Utils\Cast\MemoryCast.cs" />
     <Compile Include="Utils\Cast\ReinterpretCast.cs" />
@@ -625,14 +644,10 @@
     <Compile Include="Utils\HTML\HTMLTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Support.Underground2\Class\CarTypeInfo\" />
     <Folder Include="Support.Underground2\Class\Materials\" />
     <Folder Include="Support.Underground2\Class\PresetRide\" />
-    <Folder Include="Support.Underground2\Class\SlotType\" />
     <Folder Include="Support.Underground2\Framework\" />
     <Folder Include="Support.Underground2\Gameplay\" />
-    <Folder Include="Support.Underground2\LoadData\" />
-    <Folder Include="Support.Underground2\Parts\" />
     <Folder Include="Support.Underground2\SaveData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

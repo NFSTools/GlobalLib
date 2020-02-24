@@ -1,0 +1,18 @@
+﻿using System.Collections.Generic;
+
+
+
+namespace GlobalLib.Support.Underground2.Class
+{
+    public partial class SlotType : Shared.Class.SlotType
+    {
+        public List<Parts.CarParts.Part56> Part56 { get; set; }
+        //public Parts.CarParts.Spoilers Spoilers { get; set; }
+        //public Dictionary<uint, Parts.CarParts.Collision> Collisions { get; set; }
+
+        public override string ToString()
+        {
+            return $"Part56 Count: {Part56.Count} | Collisions Count: 0"; // change later
+        }
+    }
+}

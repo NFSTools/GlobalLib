@@ -73,6 +73,32 @@
         }
 
         /// <summary>
+        /// Loads data from Global files in the directory chosen.
+        /// </summary>
+        /// <param name="database">MostWanted database to be loaded into.</param>
+        /// <returns>True if loading was successful.</returns>
+        public static bool LoadData(ref Database.Underground2 database)
+        {
+            if (Set != (int)GameINT.Underground2)
+            {
+                if (MessageShow)
+                    System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
+                else
+                    System.Console.WriteLine("Game set is not valid for MostWanted database load.");
+                return false;
+            }
+            Initialize.Init();
+            //bool A = Support.MostWanted.LoadData.LoadVaults(GlobalDir);
+            //bool B = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
+            bool C = Support.Underground2.LoadData.LoadGlobalB(GlobalDir, ref database);
+            //bool D = Support.MostWanted.LoadData.LoadLanguage(GlobalDir, ref database);
+            if (C)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
         /// Saves data into Global files in the directory chosen.
         /// </summary>
         /// <param name="database">Carbon database of classes.</param>

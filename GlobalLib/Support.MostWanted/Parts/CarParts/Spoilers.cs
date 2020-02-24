@@ -43,6 +43,7 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
             {
                 int newoff = 8;
                 int offset = 8;
+                bool reached = false; // to remove padding
 
                 *(uint*)dataptr_t = *(uint*)byteptr_t;
 
@@ -51,8 +52,8 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
                     uint key = *(uint*)(byteptr_t + offset);
                     string CName = Core.Map.Lookup(key) ?? "";
 
-                    // Write to new array if not a spoiler
-                    if (!CNames.Contains(CName))
+                    // Write to new array if not a spoiler or if not a padding
+                    if (!reached && !CNames.Contains(CName))
                     {
                         *(uint*)(dataptr_t + newoff) = key;
                         offset += 4;
@@ -61,6 +62,7 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
                     }
 
                     // Else find collection name and extract
+                    reached = true;
                     var CarSlot = new CarSpoilerType();
                     CarSlot.CarTypeInfo = CName;
 
