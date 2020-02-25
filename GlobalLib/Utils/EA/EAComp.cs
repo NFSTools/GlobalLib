@@ -294,7 +294,11 @@ namespace GlobalLib.Utils.EA
             return true;
         }
     
-    
+        /// <summary>
+        /// Gets the default .tpk name by index passed.
+        /// </summary>
+        /// <param name="index">Index of the .tpk in the array.</param>
+        /// <returns>Collection Name of the .tpk</returns>
         public static string GetTPKName(int index)
         {
             if (Core.Process.Set == (int)Core.GameINT.Carbon)
@@ -328,6 +332,19 @@ namespace GlobalLib.Utils.EA
                     case 1:
                     case 2:
                     case 3:
+                        return "GLOBAL";
+                    default:
+                        return null;
+                }
+            }
+            else if (Core.Process.Set == (int)Core.GameINT.Underground2)
+            {
+                switch (index)
+                {
+                    case 0:
+                        return "GLOBALMESSAGE";
+                    case 1:
+                    case 2:
                         return "GLOBAL";
                     default:
                         return null;
