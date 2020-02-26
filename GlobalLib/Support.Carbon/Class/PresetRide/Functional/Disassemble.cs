@@ -165,13 +165,13 @@
 
                         if (x2 < 10) // check for being less than 10
                         {
-                            v3 = add_on.SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._STYPE[x1];
-                            v4 = add_on.AS_SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._STYPE[x1];
+                            v3 = add_on.SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._CSTYPE[x1];
+                            v4 = add_on.AS_SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._CSTYPE[x1];
                         }
                         else
                         {
-                            v3 = add_on.SPOILER + add_on._STYLE + x2.ToString() + add_on._STYPE[x1];
-                            v4 = add_on.AS_SPOILER + add_on._STYLE + x2.ToString() + add_on._STYPE[x1];
+                            v3 = add_on.SPOILER + add_on._STYLE + x2.ToString() + add_on._CSTYPE[x1];
+                            v4 = add_on.AS_SPOILER + add_on._STYLE + x2.ToString() + add_on._CSTYPE[x1];
                         }
 
                         a3 = Utils.Bin.Hash(v3);
@@ -179,13 +179,13 @@
                         if (a3 == a2)
                         {
                             this._spoiler_style = x2;
-                            this._spoiler_type = add_on._STYPE[x1];
+                            this._spoiler_type = add_on._CSTYPE[x1];
                             goto LABEL_FRONT_BUMPER; // break the whole loop
                         }
                         else if (a4 == a2)
                         {
                             this._spoiler_style = x2;
-                            this._spoiler_type = add_on._STYPE[x1];
+                            this._spoiler_type = add_on._CSTYPE[x1];
                             this._is_autosculpt_spoiler = true;
                             goto LABEL_FRONT_BUMPER; // break the whole loop
                         }
@@ -196,14 +196,14 @@
                             if (a3 == a2)
                             {
                                 this._spoiler_style = x2;
-                                this._spoiler_type = add_on._STYPE[x1];
+                                this._spoiler_type = add_on._CSTYPE[x1];
                                 this._is_carbonfibre_spoiler = true;
                                 goto LABEL_FRONT_BUMPER; // break the whole loop
                             }
                             else if (a4 == a2)
                             {
                                 this._spoiler_style = x2;
-                                this._spoiler_type = add_on._STYPE[x1];
+                                this._spoiler_type = add_on._CSTYPE[x1];
                                 this._is_autosculpt_spoiler = true;
                                 this._is_carbonfibre_spoiler = true;
                                 goto LABEL_FRONT_BUMPER; // break the whole loop
@@ -328,7 +328,7 @@
                         else if (a3 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_dual_roofscoop = true;
+                            this._is_autosculpt_roofscoop = true;
                             this._is_carbonfibre_roofscoop = true;
                             goto LABEL_HOOD;
                         }
