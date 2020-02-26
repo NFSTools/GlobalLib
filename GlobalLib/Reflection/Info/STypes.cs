@@ -6,5 +6,6 @@
         public const string _HATCH = "_HATCH";
         public const string _PORSCHES = "_PORSCHES";
         public const string _CARRERA = "_CARRERA";
+        public const string _SUV = "_SUV";
     }
 }

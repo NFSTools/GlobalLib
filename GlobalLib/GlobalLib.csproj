@@ -539,6 +539,32 @@
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FNGroupConstructor.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\AutosculptRearBumper.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2811%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2812%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2813%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2814%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2815%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2816%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2817%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2818%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2819%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\RoofScoopSettings.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\SpoilerSettings.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %284%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %285%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %286%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %287%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %288%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\HoodSettings.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\AftermarketBodykit.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\AutosculptSkirt.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\AutosculptFrontBumper.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Underground2\Class\SlotType\SlotType.cs" />
     <Compile Include="Support.Underground2\Class\STRBlock\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Class\STRBlock\Functional\Disassemble.cs" />
@@ -645,7 +671,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Support.Underground2\Class\Materials\" />
-    <Folder Include="Support.Underground2\Class\PresetRide\" />
     <Folder Include="Support.Underground2\Framework\" />
     <Folder Include="Support.Underground2\Gameplay\" />
     <Folder Include="Support.Underground2\SaveData\" />

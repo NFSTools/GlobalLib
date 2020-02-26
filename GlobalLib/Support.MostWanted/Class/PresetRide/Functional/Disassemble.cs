@@ -95,13 +95,13 @@
                     for (byte x2 = 1; x2 < 45; ++x2) // all 44 spoiler styles
                     {
                         v3 = (x2 < 10)
-                            ? add_on.SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._STYPE[x1]
-                            : add_on.SPOILER + add_on._STYLE + x2.ToString() + add_on._STYPE[x1];
+                            ? add_on.SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._CSTYPE[x1]
+                            : add_on.SPOILER + add_on._STYLE + x2.ToString() + add_on._CSTYPE[x1];
                         a3 = Utils.Bin.Hash(v3);
                         if (a3 == a2)
                         {
                             this._spoiler_style = x2;
-                            this._spoiler_type = add_on._STYPE[x1];
+                            this._spoiler_type = add_on._CSTYPE[x1];
                             goto LABEL_ROOF; // break the whole loop
                         }
                         else // try carbonfibre
@@ -110,7 +110,7 @@
                             if (a3 == a2)
                             {
                                 this._spoiler_style = x2;
-                                this._spoiler_type = add_on._STYPE[x1];
+                                this._spoiler_type = add_on._CSTYPE[x1];
                                 this._is_carbonfibre_spoiler = true;
                                 goto LABEL_ROOF; // break the whole loop
                             }
@@ -212,7 +212,9 @@
             {
                 for (byte x1 = 1; x1 < 33; ++x1) // 33 hood styles
                 {
-                    v1 = MODEL + add_on._STYLE + add_on._0 + x1.ToString() + parts._HOOD;
+                    v1 = (x1 < 10)
+                        ? MODEL + add_on._STYLE + add_on._0 + x1.ToString() + parts._HOOD
+                        : MODEL + add_on._STYLE + x1.ToString() + parts._HOOD;
                     a1 = Utils.Bin.Hash(v1);
                     if (a1 == a2)
                     {

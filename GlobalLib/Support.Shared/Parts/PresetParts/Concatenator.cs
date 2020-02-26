@@ -93,5 +93,9 @@
         public string HUD_BACKING = "WHITE";
         public string HUD_NEEDLE = "WHITE";
         public string HUD_CHARS = "WHITE";
+
+        // Strings exclusive to NFSUG2
+        public string _TOP = "_TOP";
+        public string _TRUNK = "_TRUNK";
     }
 }

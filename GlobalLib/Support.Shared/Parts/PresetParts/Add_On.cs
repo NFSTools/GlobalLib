@@ -14,7 +14,8 @@
         public string _ON = "_ON";
         public string _25 = "_25";
         public string _L = "_L";
-        public string[] _STYPE = new string[4] { "", "_HATCH", "_PORSCHES", "_CARRERA" };
+        public string[] _CSTYPE = new string[4] { "", "_HATCH", "_PORSCHES", "_CARRERA" };
+        public string[] _USTYPE = new string[3] { "", "_HATCH", "_SUV" };
         public string _STYLE = "_STYLE";
         public string _COLOR = "_COLOR";
         public string _AUTOSCULPT = "_AUTOSCULPT";
