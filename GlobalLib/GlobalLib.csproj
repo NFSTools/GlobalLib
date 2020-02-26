@@ -553,11 +553,11 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2819%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\RoofScoopSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\SpoilerSettings.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %284%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\ExhaustSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %285%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %286%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\LightsSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %287%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %288%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\EngineSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\HoodSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\AftermarketBodykit.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\AutosculptSkirt.cs" />
@@ -642,6 +642,7 @@
     <Compile Include="Utils\Cast\RuntimeCast.cs" />
     <Compile Include="Utils\Cast\StaticCast.cs" />
     <Compile Include="Utils\File\MemoryReader.cs" />
+    <Compile Include="Utils\File\MemoryWriter.cs" />
     <Compile Include="Utils\Hash\ConvertX.cs" />
     <Compile Include="Utils\EA\EAComp.cs" />
     <Compile Include="Utils\EA\Resolve.cs" />

@@ -3,7 +3,9 @@
     public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
     {
         private byte[] data;
-        private int uversion = 2;
+        private uint _unknown1 = 0;
+        private uint _unknown2 = 0;
+        private int uversion_ = 2;
 
         /// <summary>
         /// Provides info on whether this preset ride already exists in Global data.

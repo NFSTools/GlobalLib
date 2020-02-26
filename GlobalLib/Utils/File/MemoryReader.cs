@@ -29,6 +29,14 @@ namespace GlobalLib.Utils
 		{
 			this.SetStream(filename);
 		}
+		public MemoryReader(IntPtr dataptr_t, int count)
+		{
+			this.SetStream(dataptr_t, count);
+		}
+		public MemoryReader(IntPtr dataptr_t, int offset, int count)
+		{
+			this.SetStream(dataptr_t, offset, count);
+		}
 
 		/// <summary>
 		/// Sets memory array to be read from.
@@ -78,6 +86,25 @@ namespace GlobalLib.Utils
 		{
 			this.stream = File.ReadAllBytes(filename);
 			this.Position = 0;
+		}
+		/// <summary>
+		/// Sets memory array to be read from.
+		/// </summary>
+		/// <param name="dataptr_t">Pointer to the block of memory.</param>
+		/// <param name="count">Length of the memory to be read.</param>
+		public void SetStream(IntPtr dataptr_t, int count)
+		{
+			this.SetStream((byte*)dataptr_t, count);
+		}
+		/// <summary>
+		/// Sets memory array to be read from.
+		/// </summary>
+		/// <param name="dataptr_t">Pointer to the block of memory.</param>
+		/// <param name="offset">Offset in memory from pointer provided.</param>
+		/// <param name="count">Length of the memory to be read.</param>
+		public void SetStream(IntPtr dataptr_t, int offset, int count)
+		{
+			this.SetStream((byte*)dataptr_t, offset, count);
 		}
 
 		/// <summary>
@@ -394,6 +421,7 @@ namespace GlobalLib.Utils
 				case SeekOrigin.Current:
 					if (this.Position + offset <= this.Length)
 						this.Position += offset;
+					else this.Position = this.Length;
 					return;
 			}
 		}

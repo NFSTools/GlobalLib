@@ -97,5 +97,9 @@
         // Strings exclusive to NFSUG2
         public string _TOP = "_TOP";
         public string _TRUNK = "_TRUNK";
+        public string _ENGINE = "_ENGINE";
+        public string _HEADLIGHT = "_HEADLIGHT";
+        public string _BRAKELIGHT = "_BRAKELIGHT";
+        
     }
 }

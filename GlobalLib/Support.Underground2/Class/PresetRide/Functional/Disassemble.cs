@@ -22,6 +22,10 @@
             var parts = new Shared.Parts.PresetParts.Concatenator(); // assign actual concatenator
             var add_on = new Shared.Parts.PresetParts.Add_On(); // assign actual add_on
 
+            // Get unknown values
+            this._unknown1 = *(uint*)byteptr_t;
+            this._unknown2 = *(uint*)(byteptr_t + 4);
+
             // Get the model name
             for (int x = 8; *(byteptr_t + x) != 0; ++x)
                 MODEL += ((char)*(byteptr_t + x)).ToString();
@@ -31,7 +35,7 @@
             this.OriginalModel = MODEL;
 
             // Begin reading
-            this.uversion = *(int*)(byteptr_t + 0x48);
+            this.uversion_ = *(int*)(byteptr_t + 0x48);
             a1 = Utils.Bin.Hash(MODEL + parts._BASE); // for RaiderKeys
 
             // try to match _FRONT_BUMPER
@@ -276,8 +280,106 @@
             // fix spoiler settings first
             if (this._spoiler_type == "")
                 this._spoiler_type = Reflection.Info.STypes.BASE; // use BASE to make it clearer
-            
-            
+
+            a2 = *(uint*)(byteptr_t + 0x80);
+            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._ENGINE);
+            if (a2 == 0 || a1 == a2)
+            {
+                this._engine_style = 0;
+                goto LABEL_HEADLIGHT;
+            }
+            for (a3 = 0; a3 < 4; ++a3)
+            {
+                a1 = Utils.Bin.Hash(MODEL + add_on._STYLE + add_on._0 + a3.ToString() + parts._ENGINE);
+                if (a1 == a2)
+                {
+                    this._engine_style = (byte)a3;
+                    goto LABEL_HEADLIGHT;
+                }
+            }
+
+        LABEL_HEADLIGHT:
+            a2 = *(uint*)(byteptr_t + 0x84);
+            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._HEADLIGHT);
+            if (a2 == 0 || a1 == a2)
+            {
+                this._headlight_style = 0;
+                goto LABEL_BRAKELIGHT;
+            }
+            for (a3 = 0; a3 < 15; ++a3)
+            {
+                v1 = (a3 < 10)
+                    ? MODEL + add_on._STYLE + add_on._0 + a3.ToString() + parts._HEADLIGHT
+                    : MODEL + add_on._STYLE + a3.ToString() + parts._HEADLIGHT;
+                a1 = Utils.Bin.Hash(v1);
+                if (a1 == a2)
+                {
+                    this._headlight_style = (byte)a3;
+                    goto LABEL_BRAKELIGHT;
+                }
+            }
+
+        LABEL_BRAKELIGHT:
+            a2 = *(uint*)(byteptr_t + 0x88);
+            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._BRAKELIGHT);
+            if (a2 == 0 || a1 == a2)
+            {
+                this._brakelight_style = 0;
+                goto LABEL_EXHAUST;
+            }
+            for (a3 = 0; a3 < 15; ++a3)
+            {
+                v1 = (a3 < 10)
+                    ? MODEL + add_on._STYLE + add_on._0 + a3.ToString() + parts._BRAKELIGHT
+                    : MODEL + add_on._STYLE + a3.ToString() + parts._BRAKELIGHT;
+                a1 = Utils.Bin.Hash(v1);
+                if (a1 == a2)
+                {
+                    this._brakelight_style = (byte)a3;
+                    goto LABEL_EXHAUST;
+                }
+            }
+
+        LABEL_EXHAUST:
+            a2 = *(uint*)(byteptr_t + 0x8C);
+            a1 = Utils.Bin.Hash(MODEL + parts._KIT00_EXHAUST);
+            if (a2 == 0 || a1 == a2)
+            {
+                this._exhaust_style = 0;
+                goto LABEL_EXHAUST;
+            }
+            for (a3 = 0; a3 < 11; ++a3)
+            {
+                v1 = (a3 < 10)
+                    ? add_on.EXHAUST + add_on._STYLE + add_on._0 + a3.ToString() + add_on._LEVEL1
+                    : add_on.EXHAUST + add_on._STYLE + a3.ToString() + add_on._LEVEL1;
+                a1 = Utils.Bin.Hash(v1);
+                if (a1 == a2)
+                {
+                    this._exhaust_style = (byte)a3;
+                    goto LABEL_DOOR_LEFT;
+                }
+            }
+
+        LABEL_DOOR_LEFT:
+            a1 = 0;
+
+
+
+
+
+
+            // MODEL_DECAL_HOOD_RECT_(MEDIUM/SMALL)
+            // MODEL_DECAL_FRONT_WINDOW_WIDE_MEDIUM
+            // MODEL_DECAL_REAR_WINDOW_WIDE_MEDIUM
+            // MODEL_DECAL_LEFT_DOOR_RECT_MEDIUM
+            // MODEL_DECAL_RIGHT_DOOR_RECT_MEDIUM
+            // MODEL_DECAL_LEFT_QUARTER_RECT_(MEDIUM/SMALL)
+            // MODEL_DECAL_RIGHT_QUARTER_RECT_(MEDIUM/SMALL)
+            // MODEL_WIDE(1-4)_DECAL_LEFT_DOOR_RECT_MEDIUM
+            // MODEL_WIDE(1-4)_DECAL_LEFT_DOOR_RECT_MEDIUM
+            // MODEL_WIDE(1-4)_DECAL_RIGHT_QUARTER_RECT_MEDIUM
+            // MODEL_WIDE(1-4)_DECAL_RIGHT_QUARTER_RECT_MEDIUM
         }
     }
 }
