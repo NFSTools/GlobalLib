@@ -84,6 +84,8 @@ namespace GlobalLib.Support.Underground2
 					return false;
 				}
 			}
+			foreach (var rim in Core.Map.RimBrands)
+				Utils.Bin.Hash(rim);
 			return true;
         }
     }

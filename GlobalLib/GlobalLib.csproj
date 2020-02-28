@@ -539,6 +539,7 @@
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FNGroupConstructor.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\SetValidSpinning.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\SetValidRimStyle.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\SetValidRimSize.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\IsValidRimBrand.cs" />
@@ -549,6 +550,7 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\IsValidRimSize.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\DisperseRimSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\ValidateSpinning.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\AutosculptRearBumper.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2811%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2812%29.cs" />

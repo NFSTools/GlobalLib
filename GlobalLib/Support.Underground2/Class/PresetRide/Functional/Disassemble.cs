@@ -417,7 +417,12 @@
                 }
             }
 
-
+            // WHEELS
+            a2 = *(uint*)(byteptr_t + 0xC0);
+            if (Core.Map.BinKeys.TryGetValue(a2, out v2))
+                this.DisperseRimSettings(v2);
+            else
+                this._rim_brand = Reflection.BaseArguments.STOCK;
 
 
             // MODEL_KIT(00/W01-W04)_DOOR_LEFT
@@ -432,6 +437,9 @@
             // MODEL_KIT00_TRUNK_UNDER
             // MODEL_KIT00_FRONT_BRAKE / BRAKE_STYLE(01-03)
             // MODEL_KIT00_REAR_BRAKE  / BRAKE_STYLE(01-03)
+            // MODEL_KIT00_FRONT_WHEEL / BRAND_STYLE##_##_##(_SPI)
+            // MODEL_KIT00_FRONT_WHEEL / BRAND_STYLE##_##_##(_SPI)
+            // MODEL_SPINNER ??? (00000000)
 
 
 

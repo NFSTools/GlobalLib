@@ -12,6 +12,12 @@
         /// <param name="max">Max outer size of the rim brand.</param>
         private void DisperseRimSettings(string rim)
         {
+            bool potentialspi = false;
+            if (rim.EndsWith("_SPI"))
+            {
+                potentialspi = true;
+                rim = rim.Substring(0, rim.Length - 4);
+            }
             this._rim_brand = Utils.FormatX.GetString(rim, "{X}_STYLE##_##_##");
             if (!Utils.FormatX.GetByte(rim, this._rim_brand + "_STYLE{X}_##_##", out byte thisstyle))
                 thisstyle = 1;
@@ -22,6 +28,7 @@
             this._rim_style = thisstyle;
             this._rim_size = thissize;
             this._rim_outer_max = thismax;
+            this._is_spinning_rim = potentialspi;
         }
     }
 }

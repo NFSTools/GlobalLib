@@ -6,6 +6,7 @@
         private byte _rim_style = 0;
         private byte _rim_size = 18;
         private byte _rim_outer_max = 24;
+        private bool _is_spinning_rim = false;
 
         /// <summary>
         /// Rim brand value of the preset ride.
@@ -27,6 +28,10 @@
                         if (this.IsValidRimBrand(value))
                         {
                             this._rim_brand = value;
+                            this.SetValidRimStyle();
+                            this.SetValidRimSize();
+                            this.SetValidRimOuterMax();
+                            this.SetValidSpinning();
                             break;
                         }
                         else
@@ -49,6 +54,9 @@
                 else
                 {
                     this._rim_style = value;
+                    this.SetValidRimSize();
+                    this.SetValidRimOuterMax();
+                    this.SetValidSpinning();
                     this.Modified = true;
                 }
             }
@@ -67,6 +75,8 @@
                 else
                 {
                     this._rim_size = value;
+                    this.SetValidRimOuterMax();
+                    this.SetValidSpinning();
                     this.Modified = true;
                 }
             }
@@ -85,6 +95,31 @@
                 else
                 {
                     this._rim_outer_max = value;
+                    this.SetValidSpinning();
+                    this.Modified = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// If set to true, rim is a spinner type, otherwise a regular rim.
+        /// </summary>
+        public bool IsSpinningRim
+        {
+            get => this._is_spinning_rim;
+            set
+            {
+                if (value)
+                {
+                    if (this.ValidateSpinning())
+                        this._is_spinning_rim = value;
+                    else
+                        throw new System.Exception("Spinner with the brand, style, size and outer max specified " +
+                            "does not exist.");
+                }
+                else
+                {
+                    this._is_spinning_rim = value;
                     this.Modified = true;
                 }
             }
