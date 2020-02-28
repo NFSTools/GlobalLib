@@ -103,7 +103,7 @@
         /// <param name="database">Carbon database of classes.</param>
         /// <param name="compressed">Compress GlobalB file on the output.</param>
         /// <returns>True if game is supported.</returns>
-        public static bool SaveData(Database.Carbon database, bool compressed)
+        public static bool SaveData(ref Database.Carbon database, bool compressed)
         {
             if (Set != (int)GameINT.Carbon)
             {
@@ -119,7 +119,12 @@
             if (B && compressed)
                 CompressFiles();
             if (A && B && C)
+            {
+                var db = new Database.Carbon();
+                LoadData(ref db);
+                database = db;
                 return true;
+            }
             else
                 return false;
         }
@@ -130,7 +135,7 @@
         /// <param name="database">MostWanted database of classes.</param>
         /// <param name="compressed">Compress GlobalB file on the output.</param>
         /// <returns>True if game is supported.</returns>
-        public static bool SaveData(Database.MostWanted database, bool compressed)
+        public static bool SaveData(ref Database.MostWanted database, bool compressed)
         {
             if (Set != (int)GameINT.MostWanted)
             {
@@ -146,7 +151,12 @@
             if (B && compressed)
                 CompressFiles();
             if (A && B & C)
+            {
+                var db = new Database.MostWanted();
+                LoadData(ref db);
+                database = db;
                 return true;
+            }
             else
                 return false;
         }

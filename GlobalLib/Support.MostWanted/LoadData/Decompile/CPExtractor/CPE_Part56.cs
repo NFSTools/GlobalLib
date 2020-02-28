@@ -48,6 +48,7 @@
                 off6 += size;
                 size = 0;
             }
+            int aaa = 0;
         }
     }
 }

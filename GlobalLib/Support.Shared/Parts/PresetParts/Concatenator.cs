@@ -106,7 +106,7 @@
         public string _DOOR_SILL_RIGHT = "_DOOR_SILL_RIGHT";
         public string _HOOD_UNDER = "_HOOD_UNDER";
         public string _TRUNK_UNDER = "_TRUNK_UNDER";
-
+        public string _WING_MIRROR = "_WING_MIRROR";
 
 
 

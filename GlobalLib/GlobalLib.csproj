@@ -560,7 +560,7 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2816%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2817%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2818%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2819%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\MirrorSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\RoofScoopSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\SpoilerSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\ExhaustSettings.cs" />

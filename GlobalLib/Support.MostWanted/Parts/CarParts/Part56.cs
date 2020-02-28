@@ -109,5 +109,11 @@
                     *(dataptr_t + a1) = *(part6ptr_t + a1);
             }
         }
+
+        public override string ToString()
+        {
+            string str = this._collection_name == null ? string.Empty : this._collection_name;
+            return $"BelongsTo: {str} | Index: {this.Index}";
+        }
     }
 }

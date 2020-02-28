@@ -184,7 +184,7 @@
             }
             else
             {
-                for (byte x1 = 1; x1 < 29; ++x1) // 29 hood styles
+                for (byte x1 = 1; x1 < 29; ++x1) // 28 hood styles
                 {
                     v1 = (x1 < 10)
                         ? MODEL + add_on._STYLE + add_on._0 + x1.ToString() + parts._HOOD
@@ -424,7 +424,37 @@
             else
                 this._rim_brand = Reflection.BaseArguments.STOCK;
 
+            // WING_MIRROR
+            a2 = *(uint*)(byteptr_t + 0xCC);
+            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._WING_MIRROR);
+            if (a2 == 0 || a1 == a2)
+                this._wing_mirror_style = 0;
+            else
+            {
+                for (a3 = 1; a3 < 41; ++a3)
+                {
 
+                }
+            }
+
+
+            // MODEL_BASE
+            // MODEL_KIT(00-30)_FRONT_BUMPER
+            // MODEL_KIT(00-30)_REAR_BUMPER
+            // MODEL_KIT00_LEFT_SIDE_MIRROR  ??? (00000000)
+            // MODEL_KIT00_RIGHT_SIDE_MIRROR ??? (00000000)
+            // MODEL_KIT00_BODY
+            // MODEL_KITW(00-04)_BODY
+            // ROOF_STYLE(00-17)(_OFFSET/_DUAL)(_CF)
+            // MODEL_TOP     ??? (00000000)
+            // MODEL_KIT00_HOOD / MODEL_STYLE(01-28)_HOOD(_CF)
+            // MODEL_KIT00_TRUNK
+            // MODEL_KIT(00-30)_SKIRT
+            // MODEL_KIT00_SPOILER / SPOILER_STYLE(00-40)(_HATCH/_SUV)(_CF)
+            // MODEL_KIT00_ENGINE / MODEL_STYLE(01-03)_ENGINE
+            // MODEL_KIT00_HEADLIGHT / MODEL_STYLE(00-14)_HEADLIGHT
+            // MODEL_KIT00_BRAKELIGHT / MODEL_STYLE(00-14)_BRAKELIGHT
+            // MODEL_KIT00_EXHAUST / EXHAUST_STYLE(01-10)_LEVEL1
             // MODEL_KIT(00/W01-W04)_DOOR_LEFT
             // MODEL_KIT(00/W01-W04)_DOOR_RIGHT
             // MODEL_KIT(00/W01-W04)_DOOR_PANEL_LEFT
@@ -440,9 +470,27 @@
             // MODEL_KIT00_FRONT_WHEEL / BRAND_STYLE##_##_##(_SPI)
             // MODEL_KIT00_FRONT_WHEEL / BRAND_STYLE##_##_##(_SPI)
             // MODEL_SPINNER ??? (00000000)
-
-
-
+            // MIRROR SHENANIGANS <-- ???
+            // MIRROR SHENANIGANS <-- ???
+            // LICENSE_PLATE_STYLE01
+            // MODEL_KIT(00-03)_TRUNK_AUDIO
+            // AUDIO_COMP_(BRAND)_(STYLE)_(SMALL) / AUDIO_COMP_SPEAKER_(STYLE)_8
+            // AUDIO_COMP_(BRAND)_(STYLE)_(SMALL) / AUDIO_COMP_SPEAKER_(STYLE)_8
+            // AUDIO_COMP_(BRAND)_(STYLE)_(MEDIUM) / AUDIO_COMP_SPEAKER_(STYLE)_(10/12)
+            // AUDIO_COMP_(BRAND)_(STYLE)_(MEDIUM) / AUDIO_COMP_SPEAKER_(STYLE)_(10/12)
+            // AUDIO_COMP_(BRAND)_(STYLE)_(LARGE) / AUDIO_COMP_SPEAKER_(STYLE)_15
+            // AUDIO_COMP_(BRAND)_(STYLE)_(LARGE) / AUDIO_COMP_SPEAKER_(STYLE)_15
+            // AUDIO_COMP_(BRAND)_(STYLE)_(SMALL) / AUDIO_COMP_SPEAKER_(STYLE)_8
+            // AUDIO_COMP_(BRAND)_(STYLE)_(SMALL) / AUDIO_COMP_SPEAKER_(STYLE)_8
+            // AUDIO_COMP_(BRAND)_(STYLE)_(SMALL) / AUDIO_COMP_SPEAKER_(STYLE)_8
+            // AUDIO_COMP_(BRAND)_(STYLE)_(SMALL) / AUDIO_COMP_SPEAKER_(STYLE)_8
+            // AUDIO_COMP_(BRAND)_(STYLE)_(MEDIUM) / AUDIO_COMP_SPEAKER_(STYLE)_(10/12)
+            // AUDIO_COMP_(BRAND)_(STYLE)_(MEDIUM) / AUDIO_COMP_SPEAKER_(STYLE)_(10/12)
+            // MODEL_KIT00_DAMAGE_FRONT ??? (00000000)
+            // MODEL_KIT00_DAMAGE_REAR  ??? (00000000)
+            // MODEL_KIT00_DAMAGE_LEFT  ??? (00000000)
+            // MODEL_KIT00_DAMAGE_RIGHT ??? (00000000)
+            // MODEL_KIT00_DAMAGE_TOP   ??? (00000000)
             // MODEL_DECAL_HOOD_RECT_(MEDIUM/SMALL)
             // MODEL_DECAL_FRONT_WINDOW_WIDE_MEDIUM
             // MODEL_DECAL_REAR_WINDOW_WIDE_MEDIUM
@@ -454,6 +502,11 @@
             // MODEL_WIDE(1-4)_DECAL_LEFT_DOOR_RECT_MEDIUM
             // MODEL_WIDE(1-4)_DECAL_RIGHT_QUARTER_RECT_MEDIUM
             // MODEL_WIDE(1-4)_DECAL_RIGHT_QUARTER_RECT_MEDIUM
+
+
+
+
+
         }
     }
 }
