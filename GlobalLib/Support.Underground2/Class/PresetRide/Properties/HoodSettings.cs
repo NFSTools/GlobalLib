@@ -4,6 +4,7 @@
 	{
         private byte _hood_style = 0;
         private bool _is_carbonfibre_hood = false;
+        private byte _under_hood_style = 0;
 
         /// <summary>
         /// Hood style value of the preset ride. Range: 0-28.
@@ -30,6 +31,22 @@
             set
             {
                 this._is_carbonfibre_hood = value;
+                this.Modified = true;
+            }
+        }
+
+        /// <summary>
+        /// Under hood style value of the preset ride. Range: 0-30.
+        /// </summary>
+        public byte UnderHoodStyle
+        {
+            get => this._under_hood_style;
+            set
+            {
+                if (value > 30)
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 30.");
+                else
+                    this._hood_style = value;
                 this.Modified = true;
             }
         }

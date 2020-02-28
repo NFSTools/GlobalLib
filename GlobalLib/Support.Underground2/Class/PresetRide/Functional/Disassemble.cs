@@ -357,15 +357,81 @@
                 if (a1 == a2)
                 {
                     this._exhaust_style = (byte)a3;
-                    goto LABEL_DOOR_LEFT;
+                    goto LABEL_HOOD_UNDER;
                 }
             }
 
-        LABEL_DOOR_LEFT:
-            a1 = 0;
+        LABEL_HOOD_UNDER:
+            a2 = *(uint*)(byteptr_t + 0xB0);
+            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._HOOD_UNDER);
+            if (a2 == 0 || a1 == a2)
+                this._under_hood_style = 0;
+            else
+            {
+                for (a3 = 21; a3 < 26; ++a3) // only 21-25 are valid
+                {
+                    a1 = Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString() + parts._HOOD_UNDER);
+                    if (a1 == a2)
+                    {
+                        this._under_hood_style = (byte)a3;
+                        break;
+                    }
+                }
+            }
+
+            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._TRUNK_UNDER); // for RaiderKeys
+
+            // FRONT_BRAKE
+            a2 = *(uint*)(byteptr_t + 0xB8);
+            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._FRONT_BRAKE);
+            if (a2 == 0 || a1 == a2)
+                this._front_brake_style = 0;
+            else
+            {
+                for (a3 = 1; a3 < 4; ++a3)
+                {
+                    a1 = Utils.Bin.Hash(add_on.BRAKE + add_on._STYLE + add_on._0 + a3.ToString());
+                    if (a1 == a2)
+                    {
+                        this._front_brake_style = (byte)a3;
+                        break;
+                    }
+                }
+            }
+
+            // REAR_BRAKE
+            a2 = *(uint*)(byteptr_t + 0xBC);
+            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._FRONT_BRAKE);
+            if (a2 == 0 || a1 == a2)
+                this._rear_brake_style = 0;
+            else
+            {
+                for (a3 = 1; a3 < 4; ++a3)
+                {
+                    a1 = Utils.Bin.Hash(add_on.BRAKE + add_on._STYLE + add_on._0 + a3.ToString());
+                    if (a1 == a2)
+                    {
+                        this._rear_brake_style = (byte)a3;
+                        break;
+                    }
+                }
+            }
 
 
 
+
+            // MODEL_KIT(00/W01-W04)_DOOR_LEFT
+            // MODEL_KIT(00/W01-W04)_DOOR_RIGHT
+            // MODEL_KIT(00/W01-W04)_DOOR_PANEL_LEFT
+            // MODEL_KIT(00/W01-W04)_DOOR_PANEL_RIGHT
+            // MODEL_KIT(00/W01-W04)_DOOR_SILL_LEFT
+            // MODEL_KIT(00/W01-W04)_DOOR_SILL_RIGHT
+            // MODEL_FENDER  ??? (00000000)
+            // MODEL_QUARTER ??? (00000000)
+            // MODEL_KIT(00/21-25)_HOOD_UNDER
+            // MODEL_KIT00_TRUNK_UNDER
+            // MODEL_KIT00_FRONT_BRAKE / BRAKE_STYLE(01-03)
+            // MODEL_KIT00_REAR_BRAKE  / BRAKE_STYLE(01-03)
 
 
 

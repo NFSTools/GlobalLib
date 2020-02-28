@@ -27,6 +27,7 @@
         public string AUTOSCLPT = "AUTOSCLPT";
         public string SPOILER = "SPOILER";
         public string EXHAUST = "EXHAUST";
+        public string BRAKE = "BRAKE";
         public string _CHOP_TOP = "_CHOP_TOP";
         public string AS_SPOILER = "AUTOSCULPTSPOILER";
         public string WINDSHIELD_TINT = "WINDSHIELD_TINT";

@@ -17,7 +17,7 @@ namespace GlobalLib.Utils
 
 		public MemoryWriter()
 		{
-			this.stream = new byte[0]; // empty initializer
+			this.stream = new byte[0];
 			this.Position = 0;
 		}
 		public MemoryWriter(int count)
@@ -41,10 +41,14 @@ namespace GlobalLib.Utils
 			return (!typeof(string).Equals(field.FieldType) &&
 				typeof(IEnumerable).IsAssignableFrom(field.FieldType));
 		}
-		private void CheckLength(int length)
+		private unsafe void CheckLength(int length)
 		{
 			if (this.Position + length > this.Length)
-				Array.Resize(ref this.stream, this.Position + length);
+			{
+				var result = new byte[this.Position + length]; // add capacity
+				this.stream.CopyTo(result, 0);
+				this.stream = result;
+			}
 		}
 		private unsafe void WriteObject(object value, bool propertyonly)
 		{

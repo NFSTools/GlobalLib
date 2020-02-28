@@ -539,7 +539,15 @@
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FNGroupConstructor.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\SetValidRimStyle.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\SetValidRimSize.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\IsValidRimBrand.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\IsValidRimStyle.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\IsValidRimOuterMax.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\SetValidRimOuterMax.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\IsValidRimSize.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\DisperseRimSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\AutosculptRearBumper.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2811%29.cs" />
@@ -554,9 +562,9 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\RoofScoopSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\SpoilerSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\ExhaustSettings.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %285%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\RimSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\LightsSettings.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %287%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\BrakeSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\EngineSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\HoodSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\AftermarketBodykit.cs" />
@@ -634,6 +642,8 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarTypeInfo.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_FNGroup.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadGlobalB.cs" />
+    <Compile Include="Support.Underground2\LoadData\LoadLanguage.cs" />
+    <Compile Include="Support.Underground2\LoadData\LoadWheels.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\Part56.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\UsageType.cs" />
     <Compile Include="Utils\Cast\DynamicCast.cs" />

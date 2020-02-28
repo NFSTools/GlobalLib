@@ -32,6 +32,11 @@ namespace GlobalLib.Core
         public static List<string> RimBrands { get; set; } = new List<string>();
 
         /// <summary>
+        /// Represents list of all possible paint type that can be used in UG2 support.
+        /// </summary>
+        public static List<string> UG2PaintTypes { get; set; } = new List<string>();
+
+        /// <summary>
         /// Lookup through raider key map that throws no exceptions.
         /// </summary>
         /// <param name="key">Binary memory hash to look for.</param>

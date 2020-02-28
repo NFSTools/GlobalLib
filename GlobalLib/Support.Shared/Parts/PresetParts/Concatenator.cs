@@ -100,6 +100,16 @@
         public string _ENGINE = "_ENGINE";
         public string _HEADLIGHT = "_HEADLIGHT";
         public string _BRAKELIGHT = "_BRAKELIGHT";
-        
+        public string _DOOR_PANEL_LEFT = "_DOOR_PANEL_LEFT";
+        public string _DOOR_PANEL_RIGHT = "_DOOR_PANEL_RIGHT";
+        public string _DOOR_SILL_LEFT = "_DOOR_SILL_LEFT";
+        public string _DOOR_SILL_RIGHT = "_DOOR_SILL_RIGHT";
+        public string _HOOD_UNDER = "_HOOD_UNDER";
+        public string _TRUNK_UNDER = "_TRUNK_UNDER";
+
+
+
+
+
     }
 }

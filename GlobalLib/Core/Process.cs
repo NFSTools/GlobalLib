@@ -87,12 +87,11 @@
                     System.Console.WriteLine("Game set is not valid for MostWanted database load.");
                 return false;
             }
-            Initialize.Init();
-            //bool A = Support.MostWanted.LoadData.LoadVaults(GlobalDir);
-            //bool B = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
-            bool C = Support.Underground2.LoadData.LoadGlobalB(GlobalDir, ref database);
-            //bool D = Support.MostWanted.LoadData.LoadLanguage(GlobalDir, ref database);
-            if (C)
+            Initialize.InitUG2();
+            //bool A = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
+            bool B = Support.Underground2.LoadData.LoadGlobalB(GlobalDir, ref database);
+            bool C = Support.Underground2.LoadData.LoadLanguage(GlobalDir, ref database);
+            if (B && C)
                 return true;
             else
                 return false;
