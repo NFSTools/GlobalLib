@@ -122,6 +122,7 @@
             {
                 var db = new Database.Carbon();
                 LoadData(ref db);
+                database = null;
                 database = db;
                 return true;
             }
@@ -154,6 +155,7 @@
             {
                 var db = new Database.MostWanted();
                 LoadData(ref db);
+                database = null;
                 database = db;
                 return true;
             }
