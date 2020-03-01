@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="byteptr_t">Pointer to the beginning of material block in Global data.</param>
         /// <param name="db">Database to which add classes.</param>
-        private static unsafe void E_Material(byte* byteptr_t, ref Database.Carbon db)
+        private static unsafe void E_Material(byte* byteptr_t, Database.Carbon db)
         {
             // Get collection name of the material, starts at 0x14
             string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x1C, 0x1C);

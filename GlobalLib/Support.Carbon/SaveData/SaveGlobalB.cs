@@ -17,25 +17,8 @@ namespace GlobalLib.Support.Carbon
         public static bool SaveGlobalB(string GlobalB_dir, Database.Carbon db)
         {
             GlobalB_dir += @"\GLOBAL\GlobalB.lzc";
-            byte[] GlobalBLZC;
-            try
-            {
-                GlobalBLZC = File.ReadAllBytes(GlobalB_dir);
-                Utils.Log.Write("Saving data into GlobalB.lzc...");
-            }
-            catch (Exception)
-            {
-                if (Core.Process.MessageShow)
-                    MessageBox.Show("Unable to save GlobalB.lzc file. Please close all\napplications that have it opened or\ncheck its internal data.", "Failure");
-                else
-                    Console.WriteLine("Unable to save GlobalB.lzc file.");
-                return false;
-            }
 
-            // Decompress if compressed
-            GlobalBLZC = Utils.JDLZ.Decompress(GlobalBLZC);
-
-            using (var br = new BinaryReader(new MemoryStream(GlobalBLZC)))
+            using (var br = new BinaryReader(new MemoryStream(db.GlobalBLZC)))
             using (var bw = new BinaryWriter(File.Open(GlobalB_dir, FileMode.Create)))
             {
                 int tpkindex = 0;

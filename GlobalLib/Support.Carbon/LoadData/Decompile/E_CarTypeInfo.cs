@@ -8,7 +8,7 @@
         /// <param name="byteptr_t">Pointer to the beginning of cartypeinfo block in Global data.</param>
         /// <param name="length">Length of the block to be read.</param>
         /// <param name="db">Database to which add classes.</param>
-        private static unsafe void E_CarTypeInfo(byte* byteptr_t, uint length, ref Database.Carbon db)
+        private static unsafe void E_CarTypeInfo(byte* byteptr_t, uint length, Database.Carbon db)
         {
             uint size = 0xD0;
 

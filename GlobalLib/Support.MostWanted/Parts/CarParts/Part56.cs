@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Parts.CarParts
 {
-    public class Part56
+    public class Part56 : Reflection.Interface.ICastable<Part56>
     {
         private uint _key = 0;
         private string _collection_name;
@@ -69,6 +69,8 @@
             }
         }
 
+        public Part56() { }
+
         // Default constructor: initialize new part56
         public unsafe Part56(string CName, byte index)
         {
@@ -114,6 +116,23 @@
         {
             string str = this._collection_name == null ? string.Empty : this._collection_name;
             return $"BelongsTo: {str} | Index: {this.Index}";
+        }
+
+        /// <summary>
+        /// Returns new class with casted memory of this class.
+        /// </summary>
+        /// <param name="CName">Collection Name of the classes, null by default.</param>
+        /// <returns>Copy of this class.</returns>
+        public Part56 MemoryCast(string CName = null)
+        {
+            var result = new Part56();
+            result.Data = new byte[this.Data.Length];
+            System.Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
+            result._collection_name = this._collection_name;
+            result._key = this._key;
+            result.IsCar = this.IsCar;
+            result.Index = this.Index;
+            return result;
         }
     }
 }

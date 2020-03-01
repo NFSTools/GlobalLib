@@ -94,7 +94,8 @@ namespace GlobalLib.Support.Carbon
 					}
 				}
 			}
-
+			Attributes = null;
+			FE_Attrib = null;
 			return true;
 		}
 	}

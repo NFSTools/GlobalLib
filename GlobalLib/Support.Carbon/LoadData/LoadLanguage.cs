@@ -14,17 +14,15 @@ namespace GlobalLib.Support.Carbon
         /// <param name="Language_dir">Directory of the game.</param>
         /// <param name="db">Database of classes.</param>
         /// <returns>True if success.</returns>
-        public static unsafe bool LoadLanguage(string Language_dir, ref Database.Carbon db)
+        public static unsafe bool LoadLanguage(string Language_dir, Database.Carbon db)
         {
             Language_dir += @"\LANGUAGES\";
-            byte[] LngGlobal;
-            byte[] LngLabels;
 
             // Get everything from language files
             try
             {
-                LngGlobal = File.ReadAllBytes(Language_dir + "English_Global.bin");
-                LngLabels = File.ReadAllBytes(Language_dir + "Labels_Global.bin");
+                db.LngGlobal = File.ReadAllBytes(Language_dir + "English_Global.bin");
+                db.LngLabels = File.ReadAllBytes(Language_dir + "Labels_Global.bin");
                 Utils.Log.Write("Reading data from English_Global.bin...");
                 Utils.Log.Write("Reading data from Labels_Global.bin...");
             }
@@ -38,13 +36,13 @@ namespace GlobalLib.Support.Carbon
             }
 
             // Decompress if compressed
-            LngGlobal = Utils.JDLZ.Decompress(LngGlobal);
-            LngLabels = Utils.JDLZ.Decompress(LngLabels);
+            db.LngGlobal = Utils.JDLZ.Decompress(db.LngGlobal);
+            db.LngLabels = Utils.JDLZ.Decompress(db.LngLabels);
 
             // Use pointers to speed up process
-            fixed (byte* strptr = &LngGlobal[0], labptr = &LngLabels[0])
+            fixed (byte* strptr = &db.LngGlobal[0], labptr = &db.LngLabels[0])
             {
-                db.STRBlocks = new Class.STRBlock(strptr, labptr, LngGlobal.Length, LngLabels.Length, db);
+                db.STRBlocks = new Class.STRBlock(strptr, labptr, db.LngGlobal.Length, db.LngLabels.Length, db);
             }
             return true;
         }

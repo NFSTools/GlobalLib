@@ -25,7 +25,7 @@
         /// </summary>
         /// <param name="database">Carbon database to be loaded into.</param>
         /// <returns>True if loading was successful.</returns>
-        public static bool LoadData(ref Database.Carbon database)
+        public static bool LoadData(Database.Carbon database)
         {
             if (Set != (int)GameINT.Carbon)
             {
@@ -37,13 +37,10 @@
             }
             Initialize.Init();
             bool A = Support.Carbon.LoadData.LoadVaults(GlobalDir);
-            bool B = Support.Carbon.LoadData.LoadGlobalA(GlobalDir, ref database);
-            bool C = Support.Carbon.LoadData.LoadGlobalB(GlobalDir, ref database);
-            bool D = Support.Carbon.LoadData.LoadLanguage(GlobalDir, ref database);
-            if (A && B && C && D)
-                return true;
-            else
-                return false;
+            bool B = Support.Carbon.LoadData.LoadGlobalA(GlobalDir, database);
+            bool C = Support.Carbon.LoadData.LoadGlobalB(GlobalDir, database);
+            bool D = Support.Carbon.LoadData.LoadLanguage(GlobalDir, database);
+            return A && B && C && D;
         }
 
         /// <summary>
@@ -51,7 +48,7 @@
         /// </summary>
         /// <param name="database">MostWanted database to be loaded into.</param>
         /// <returns>True if loading was successful.</returns>
-        public static bool LoadData(ref Database.MostWanted database)
+        public static bool LoadData(Database.MostWanted database)
         {
             if (Set != (int)GameINT.MostWanted)
             {
@@ -63,13 +60,10 @@
             }
             Initialize.Init();
             bool A = Support.MostWanted.LoadData.LoadVaults(GlobalDir);
-            bool B = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
-            bool C = Support.MostWanted.LoadData.LoadGlobalB(GlobalDir, ref database);
-            bool D = Support.MostWanted.LoadData.LoadLanguage(GlobalDir, ref database);
-            if (A && B && C && D)
-                return true;
-            else
-                return false;
+            bool B = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, database);
+            bool C = Support.MostWanted.LoadData.LoadGlobalB(GlobalDir, database);
+            bool D = Support.MostWanted.LoadData.LoadLanguage(GlobalDir, database);
+            return A && B && C && D;
         }
 
         /// <summary>
@@ -77,7 +71,7 @@
         /// </summary>
         /// <param name="database">MostWanted database to be loaded into.</param>
         /// <returns>True if loading was successful.</returns>
-        public static bool LoadData(ref Database.Underground2 database)
+        public static bool LoadData(Database.Underground2 database)
         {
             if (Set != (int)GameINT.Underground2)
             {
@@ -89,12 +83,9 @@
             }
             Initialize.InitUG2();
             //bool A = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
-            bool B = Support.Underground2.LoadData.LoadGlobalB(GlobalDir, ref database);
-            bool C = Support.Underground2.LoadData.LoadLanguage(GlobalDir, ref database);
-            if (B && C)
-                return true;
-            else
-                return false;
+            bool B = Support.Underground2.LoadData.LoadGlobalB(GlobalDir, database);
+            bool C = Support.Underground2.LoadData.LoadLanguage(GlobalDir, database);
+            return B && C;
         }
 
         /// <summary>
@@ -103,7 +94,7 @@
         /// <param name="database">Carbon database of classes.</param>
         /// <param name="compressed">Compress GlobalB file on the output.</param>
         /// <returns>True if game is supported.</returns>
-        public static bool SaveData(ref Database.Carbon database, bool compressed)
+        public static bool SaveData(Database.Carbon database, bool compressed)
         {
             if (Set != (int)GameINT.Carbon)
             {
@@ -118,16 +109,7 @@
             bool C = Support.Carbon.SaveData.SaveLanguage(GlobalDir, database);
             if (B && compressed)
                 CompressFiles();
-            if (A && B && C)
-            {
-                var db = new Database.Carbon();
-                LoadData(ref db);
-                database = null;
-                database = db;
-                return true;
-            }
-            else
-                return false;
+            return A && B && C;
         }
 
         /// <summary>
@@ -136,7 +118,7 @@
         /// <param name="database">MostWanted database of classes.</param>
         /// <param name="compressed">Compress GlobalB file on the output.</param>
         /// <returns>True if game is supported.</returns>
-        public static bool SaveData(ref Database.MostWanted database, bool compressed)
+        public static bool SaveData(Database.MostWanted database, bool compressed)
         {
             if (Set != (int)GameINT.MostWanted)
             {
@@ -151,16 +133,7 @@
             bool C = Support.MostWanted.SaveData.SaveLanguage(GlobalDir, database);
             if (B && compressed)
                 CompressFiles();
-            if (A && B & C)
-            {
-                var db = new Database.MostWanted();
-                LoadData(ref db);
-                database = null;
-                database = db;
-                return true;
-            }
-            else
-                return false;
+            return A && B && C;
         }
 
         /// <summary>
@@ -169,10 +142,10 @@
         private static void CompressFiles()
         {
             string dirB = GlobalDir + @"\GLOBAL\GlobalB.lzc";
-            var data = System.IO.File.ReadAllBytes(dirB);
+            using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(dirB)))
             using (var bw = new System.IO.BinaryWriter(System.IO.File.Open(dirB, System.IO.FileMode.Create)))
             {
-                bw.Write(Utils.JDLZ.Compress(data));
+                bw.Write(Utils.JDLZ.Compress(ms.GetBuffer()));
             }
         }
     }
@@ -184,7 +157,7 @@
     {
         Carbon = 1,
         MostWanted = 2,
-        Underground2 = 3, // support is later ???
+        Underground2 = 3,
     }
 
     public static class GameSTR

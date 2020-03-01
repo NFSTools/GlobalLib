@@ -6,7 +6,7 @@ namespace GlobalLib.Support.MostWanted
 {
     public static partial class LoadData
     {
-        private static unsafe void E_Collisions(byte* byteptr_t, uint length, ref Database.MostWanted db)
+        private static unsafe void E_Collisions(byte* byteptr_t, uint length, Database.MostWanted db)
         {
             db.SlotTypes.Collisions = new Dictionary<uint, Parts.CarParts.Collision>();
 

@@ -17,25 +17,8 @@ namespace GlobalLib.Support.Carbon
         public static bool SaveGlobalA(string GlobalA_dir, Database.Carbon db)
         {
             GlobalA_dir += @"\GLOBAL\GlobalA.bun";
-            byte[] GlobalABUN;
-            try
-            {
-                GlobalABUN = File.ReadAllBytes(GlobalA_dir);
-                Utils.Log.Write("Saving data into GlobalA.bun...");
-            }
-            catch (Exception)
-            {
-                if (Core.Process.MessageShow)
-                    MessageBox.Show("Unable to save GlobalA.bun file. Please close all\napplications that have it opened or\ncheck its internal data.", "Failure");
-                else
-                    Console.WriteLine("Unable to save GlobalA.bun file.");
-                return false;
-            }
 
-            // Decompress if compressed
-            GlobalABUN = Utils.JDLZ.Decompress(GlobalABUN);
-
-            using (var br = new BinaryReader(new MemoryStream(GlobalABUN)))
+            using (var br = new BinaryReader(new MemoryStream(db.GlobalABUN)))
             using (var bw = new BinaryWriter(File.Open(GlobalA_dir, FileMode.Create)))
             {
                 int tpkindex = 0;

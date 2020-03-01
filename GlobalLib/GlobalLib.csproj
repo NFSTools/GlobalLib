@@ -66,6 +66,7 @@
     <Compile Include="Database\MostWanted\TryCloneClass.cs" />
     <Compile Include="Database\MostWanted\TryRemoveClass.cs" />
     <Compile Include="Database\Underground2\GetClassIndex.cs" />
+    <Compile Include="Database\Underground2\ToString.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />
     <Compile Include="Reflection\DataFields\DFSTRBlock.cs" />
     <Compile Include="Reflection\DataFields\DFTPKBlock.cs" />

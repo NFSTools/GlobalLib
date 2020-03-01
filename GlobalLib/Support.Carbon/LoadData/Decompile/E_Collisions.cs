@@ -6,7 +6,7 @@ namespace GlobalLib.Support.Carbon
 {
     public static partial class LoadData
     {
-        private static unsafe void E_Collisions(byte* byteptr_t, uint length, ref Database.Carbon db)
+        private static unsafe void E_Collisions(byte* byteptr_t, uint length, Database.Carbon db)
         {
             db.SlotTypes.Collisions = new Dictionary<uint, Parts.CarParts.Collision>();
 

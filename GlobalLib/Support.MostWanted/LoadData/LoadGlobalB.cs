@@ -16,16 +16,15 @@ namespace GlobalLib.Support.MostWanted
         /// <param name="GlobalB_dir">Directory of the game.</param>
         /// <param name="db">Database of classes.</param>
         /// <returns>True if success.</returns>
-        public static unsafe bool LoadGlobalB(string GlobalB_dir, ref Database.MostWanted db)
+        public static unsafe bool LoadGlobalB(string GlobalB_dir, Database.MostWanted db)
         {
             LibColBlockExists = false;
             GlobalB_dir += @"\GLOBAL\GlobalB.lzc";
-            byte[] GlobalBLZC;
 
             // Get everything from GlobalB.lzc
             try
             {
-                GlobalBLZC = File.ReadAllBytes(GlobalB_dir);
+                db.GlobalBLZC = File.ReadAllBytes(GlobalB_dir);
                 Utils.Log.Write("Reading data from GlobalB.lzc...");
             }
             catch (Exception) // If GlobalB.lzc is opened in editing mode in another program
@@ -38,10 +37,10 @@ namespace GlobalLib.Support.MostWanted
             }
 
             // Decompress if compressed
-            GlobalBLZC = Utils.JDLZ.Decompress(GlobalBLZC);
+            db.GlobalBLZC = Utils.JDLZ.Decompress(db.GlobalBLZC);
 
             // Use pointers to speed up process
-            fixed (byte* byteptr_t = &GlobalBLZC[0])
+            fixed (byte* byteptr_t = &db.GlobalBLZC[0])
             {
                 uint offset = 0; // to calculate current offset
                 uint ID = 0; // to get the ID of the block being read
@@ -56,11 +55,11 @@ namespace GlobalLib.Support.MostWanted
                 uint cooff = 0; // offset of the collision block
                 uint cosize = 0; // size of the collision block
 
-                while (offset < GlobalBLZC.Length)
+                while (offset < db.GlobalBLZC.Length)
                 {
                     ID = *(uint*)(byteptr_t + offset); // read ID
                     size = *(uint*)(byteptr_t + offset + 4); // read size
-                    if (offset + size > GlobalBLZC.Length)
+                    if (offset + size > db.GlobalBLZC.Length)
                     {
                         if (Core.Process.MessageShow)
                             MessageBox.Show("GlobalB: unable to read beyond the stream.", "Failure");
@@ -77,7 +76,7 @@ namespace GlobalLib.Support.MostWanted
                             break;
 
                         case Reflection.ID.Global.Materials:
-                            E_Material(byteptr_t + offset, ref db);
+                            E_Material(byteptr_t + offset, db);
                             break;
 
                         case Reflection.ID.Global.TPKBlocks:
@@ -86,7 +85,7 @@ namespace GlobalLib.Support.MostWanted
                             break;
 
                         case Reflection.ID.Global.CarTypeInfo:
-                            E_CarTypeInfo(byteptr_t + offset + 8, size, ref db);
+                            E_CarTypeInfo(byteptr_t + offset + 8, size, db);
                             break;
 
                         case Reflection.ID.Global.PresetRides:
@@ -100,7 +99,7 @@ namespace GlobalLib.Support.MostWanted
                             break;
 
                         case Reflection.ID.Global.SlotTypes:
-                            E_SlotType(byteptr_t + offset, size + 8, ref db);
+                            E_SlotType(byteptr_t + offset, size + 8, db);
                             break;
 
                         case Reflection.ID.Global.Collisions:
@@ -110,7 +109,7 @@ namespace GlobalLib.Support.MostWanted
 
                         case Reflection.ID.Global.FEngFiles:
                         case Reflection.ID.Global.FNGCompress:
-                            E_FNGroup(byteptr_t + offset, size + 8, ref db);
+                            E_FNGroup(byteptr_t + offset, size + 8, db);
                             break;
 
                         default:
@@ -120,9 +119,9 @@ namespace GlobalLib.Support.MostWanted
                 }
 
                 // CarParts and Collisions blocks are the last ones to disassemble
-                E_CarParts(byteptr_t + cpoff, cpsize, ref db);
-                E_Collisions(byteptr_t + cooff, cosize, ref db);
-                E_PresetRides(byteptr_t + proff, prsize, ref db);
+                E_CarParts(byteptr_t + cpoff, cpsize, db);
+                E_Collisions(byteptr_t + cooff, cosize, db);
+                E_PresetRides(byteptr_t + proff, prsize, db);
             }
 
             // Disperse spoilers across cartypeinfo

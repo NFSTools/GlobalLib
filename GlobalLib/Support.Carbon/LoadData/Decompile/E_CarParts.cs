@@ -8,7 +8,7 @@
         /// <param name="byteptr_t">Pointer to the beginning of carparts block in Global data.</param>
         /// <param name="length">Length of the block to be read.</param>
         /// <param name="db">Database to which add classes.</param>
-        private static unsafe void E_CarParts(byte* byteptr_t, uint length, ref Database.Carbon db)
+        private static unsafe void E_CarParts(byte* byteptr_t, uint length, Database.Carbon db)
         {
             uint offset = 0;
             uint ID = 0;
@@ -59,7 +59,7 @@
             }
 
             // Disassemble part5 and part6
-            CPE_Part56(part5ptr_t, part6ptr_t, ref db);
+            CPE_Part56(part5ptr_t, part6ptr_t, db);
         }
     }
 }

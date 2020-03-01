@@ -33,7 +33,7 @@
                     LibColBlockExists = true;
                     break;
 
-                case "Raider Block":
+                case "Raider Block": // suspended, no longer supported
                     num = *(int*)(byteptr_t + off); // get number of strings allocated
                     len = *(int*)(byteptr_t + off + 4); // get total length of characters
                     off += 8; // move last time

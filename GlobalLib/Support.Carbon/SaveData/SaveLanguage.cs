@@ -17,28 +17,8 @@ namespace GlobalLib.Support.Carbon
         public static bool SaveLanguage(string Language_dir, Database.Carbon db)
         {
             Language_dir += @"\LANGUAGES\";
-            byte[] LngGlobal;
-            byte[] LngLabels;
-            try
-            {
-                LngGlobal = File.ReadAllBytes(Language_dir + "English_Global.bin");
-                LngLabels = File.ReadAllBytes(Language_dir + "Labels_Global.bin");
-                Utils.Log.Write("Saving data into string files...");
-            }
-            catch (Exception)
-            {
-                if (Core.Process.MessageShow)
-                    MessageBox.Show("Unable to save string files. Please close all\napplications that have them opened or\ncheck their internal data.", "Failure");
-                else
-                    Console.WriteLine("Unable to save string files.");
-                return false;
-            }
 
-            // Decompress if compressed
-            LngGlobal = Utils.JDLZ.Decompress(LngGlobal);
-            LngLabels = Utils.JDLZ.Decompress(LngLabels);
-
-            using (var br = new BinaryReader(new MemoryStream(LngGlobal)))
+            using (var br = new BinaryReader(new MemoryStream(db.LngGlobal)))
             using (var bw = new BinaryWriter(File.Open(Language_dir + "English_Global.bin", FileMode.Create)))
             {
                 while (br.BaseStream.Position < br.BaseStream.Length)
@@ -73,7 +53,7 @@ namespace GlobalLib.Support.Carbon
                 }
             }
             
-            using (var br = new BinaryReader(new MemoryStream(LngLabels)))
+            using (var br = new BinaryReader(new MemoryStream(db.LngLabels)))
             using (var bw = new BinaryWriter(File.Open(Language_dir + "Labels_Global.bin", FileMode.Create)))
             {
                 while (br.BaseStream.Position < br.BaseStream.Length)
@@ -107,6 +87,7 @@ namespace GlobalLib.Support.Carbon
                     }
                 }
             }
+
             return true;
         }
     }

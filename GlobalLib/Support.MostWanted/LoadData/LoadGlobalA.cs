@@ -14,15 +14,14 @@ namespace GlobalLib.Support.MostWanted
         /// <param name="GlobalA_dir">Directory of the game.</param>
         /// <param name="db">Database of classes.</param>
         /// <returns>True if success.</returns>
-        public static unsafe bool LoadGlobalA(string GlobalA_dir, ref Database.MostWanted db)
+        public static unsafe bool LoadGlobalA(string GlobalA_dir, Database.MostWanted db)
         {
             GlobalA_dir += @"\GLOBAL\GlobalA.bun";
-            byte[] GlobalABUN;
 
             // Get everything from GlobalA.bun
             try
             {
-                GlobalABUN = File.ReadAllBytes(GlobalA_dir);
+                db.GlobalABUN = File.ReadAllBytes(GlobalA_dir);
                 Utils.Log.Write("Reading data from GlobalA.bun...");
             }
             catch (Exception) // If GlobalA.bun is opened in editing mode in another program
@@ -35,20 +34,20 @@ namespace GlobalLib.Support.MostWanted
             }
 
             // Decompress if compressed
-            GlobalABUN = Utils.JDLZ.Decompress(GlobalABUN);
+            db.GlobalABUN = Utils.JDLZ.Decompress(db.GlobalABUN);
 
             // Use pointers to speed up process
-            fixed (byte* byteptr_t = &GlobalABUN[0])
+            fixed (byte* byteptr_t = &db.GlobalABUN[0])
             {
                 uint offset = 0; // to calculate current offset
                 uint ID = 0; // to get the ID of the block being read
                 uint size = 0; // to get the size of the block being read
 
-                while (offset < GlobalABUN.Length)
+                while (offset < db.GlobalABUN.Length)
                 {
                     ID = *(uint*)(byteptr_t + offset); // read ID
                     size = *(uint*)(byteptr_t + offset + 4); // read size
-                    if (offset + size > GlobalABUN.Length)
+                    if (offset + size > db.GlobalABUN.Length)
                     {
                         if (Core.Process.MessageShow)
                             MessageBox.Show("GlobalA: unable to read beyond the stream.", "Failure");
@@ -67,7 +66,7 @@ namespace GlobalLib.Support.MostWanted
 
                         case Reflection.ID.Global.FEngFiles:
                         case Reflection.ID.Global.FNGCompress:
-                            E_FNGroup(byteptr_t + offset, size + 8, ref db);
+                            E_FNGroup(byteptr_t + offset, size + 8, db);
                             break;
 
                         default:

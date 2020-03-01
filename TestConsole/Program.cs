@@ -14,7 +14,7 @@ namespace TestConsole
 			GlobalLib.Core.Process.Set = (int)GlobalLib.Core.GameINT.Underground2;
 			GlobalLib.Core.Process.GlobalDir = "FOLDER";
 			var db = new GlobalLib.Database.Underground2();
-			GlobalLib.Core.Process.LoadData(ref db);
+			GlobalLib.Core.Process.LoadData(db);
 			
 			
 

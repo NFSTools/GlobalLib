@@ -17,28 +17,8 @@ namespace GlobalLib.Support.MostWanted
         public static bool SaveLanguage(string Language_dir, Database.MostWanted db)
         {
             Language_dir += @"\LANGUAGES\";
-            byte[] LngGlobal;
-            byte[] LngLabels;
-            try
-            {
-                LngGlobal = File.ReadAllBytes(Language_dir + "English.bin");
-                LngLabels = File.ReadAllBytes(Language_dir + "Labels.bin");
-                Utils.Log.Write("Saving data into string files...");
-            }
-            catch (Exception)
-            {
-                if (Core.Process.MessageShow)
-                    MessageBox.Show("Unable to save string files. Please close all\napplications that have them opened or\ncheck their internal data.", "Failure");
-                else
-                    Console.WriteLine("Unable to save string files.");
-                return false;
-            }
 
-            // Decompress if compressed
-            LngGlobal = Utils.JDLZ.Decompress(LngGlobal);
-            LngLabels = Utils.JDLZ.Decompress(LngLabels);
-
-            using (var br = new BinaryReader(new MemoryStream(LngGlobal)))
+            using (var br = new BinaryReader(new MemoryStream(db.LngGlobal)))
             using (var bw = new BinaryWriter(File.Open(Language_dir + "English.bin", FileMode.Create)))
             {
                 bool finished = false;
@@ -72,7 +52,7 @@ namespace GlobalLib.Support.MostWanted
                 }
             }
 
-            using (var br = new BinaryReader(new MemoryStream(LngLabels)))
+            using (var br = new BinaryReader(new MemoryStream(db.LngLabels)))
             using (var bw = new BinaryWriter(File.Open(Language_dir + "Labels.bin", FileMode.Create)))
             {
                 bool finished = false;
@@ -105,6 +85,7 @@ namespace GlobalLib.Support.MostWanted
                     }
                 }
             }
+
             return true;
         }
     }

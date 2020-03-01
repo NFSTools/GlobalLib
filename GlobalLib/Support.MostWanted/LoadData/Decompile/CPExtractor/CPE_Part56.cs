@@ -2,7 +2,7 @@
 {
     public static partial class LoadData
     {
-        private static unsafe void CPE_Part56(byte* part5ptr_t, byte* part6ptr_t, ref Database.MostWanted db)
+        private static unsafe void CPE_Part56(byte* part5ptr_t, byte* part6ptr_t, Database.MostWanted db)
         {
             int len5 = *(int*)(part5ptr_t + 4) + 8; // size of part5
             int len6 = *(int*)(part6ptr_t + 4); // size of part6
@@ -48,7 +48,6 @@
                 off6 += size;
                 size = 0;
             }
-            int aaa = 0;
         }
     }
 }

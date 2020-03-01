@@ -94,7 +94,8 @@ namespace GlobalLib.Support.MostWanted
 					}
 				}
 			}
-
+			Attributes = null;
+			FE_Attrib = null;
 			return true;
 		}
 	}

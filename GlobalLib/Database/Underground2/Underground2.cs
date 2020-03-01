@@ -7,6 +7,10 @@ namespace GlobalLib.Database
 {
     public partial class Underground2 : Reflection.Interface.IGetIndex//, Reflection.Interface.IOperative
     {
+        public byte[] GlobalABUN;
+        public byte[] GlobalBLZC;
+        public byte[] LngGlobal;
+        public byte[] LngLabels;
         //public List<Material> Materials { get; set; }
         public List<CarTypeInfo> CarTypeInfos { get; set; }
         //public List<PresetRide> PresetRides { get; set; }
@@ -24,6 +28,22 @@ namespace GlobalLib.Database
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();
+        }
+
+        ~Underground2()
+        {
+            this.GlobalABUN = null;
+            this.GlobalBLZC = null;
+            this.LngGlobal = null;
+            this.LngLabels = null;
+            this.CarTypeInfos = null;
+            this.FNGroups = null;
+            //this.Materials = null;
+            //this.PresetRides = null;
+            this.TPKBlocks = null;
+            this.SlotTypes = null;
+            this.STRBlocks = null;
+            System.GC.Collect();
         }
     }
 }
