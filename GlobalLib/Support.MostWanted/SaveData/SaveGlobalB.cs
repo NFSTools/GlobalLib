@@ -90,7 +90,6 @@ namespace GlobalLib.Support.MostWanted
                     }
                 }
             }
-            db.GlobalBLZC = null;
             return true;
         }
     }

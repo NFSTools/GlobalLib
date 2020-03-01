@@ -25,7 +25,7 @@
                 }
             }
 
-            padding = 0x80 - ((colsize + 0x58) % 0x80);
+            padding = 0x80 - (((int)bw.BaseStream.Length + colsize + 0x70) % 0x80);
             if (padding == 0x80) padding = 0;
             var coldata = new byte[0x58];
             fixed (byte* byteptr_t = &coldata[0])

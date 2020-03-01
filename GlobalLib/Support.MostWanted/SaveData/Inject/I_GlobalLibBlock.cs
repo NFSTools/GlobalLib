@@ -5,7 +5,6 @@
         private static unsafe void I_GlobalLibBlock(Database.MostWanted db, System.IO.BinaryWriter bw)
         {
             int colsize = 0;
-            int strsize = 0;
             int padding = 0;
 
             // Collision Block
@@ -26,7 +25,7 @@
                 }
             }
 
-            padding = 0x80 - ((colsize + 0x58) % 0x80);
+            padding = 0x80 - (((int)bw.BaseStream.Length + colsize + 0x98) % 0x80);
             if (padding == 0x80) padding = 0;
             var coldata = new byte[0x58];
             fixed (byte* byteptr_t = &coldata[0])
@@ -48,42 +47,6 @@
                 bw.Write(CollisionsUsed[a1]);
             for (int a1 = 0; a1 < padding; ++a1)
                 bw.Write((byte)0);
-
-            // Raider block
-            int stroffset = (int)bw.BaseStream.Position + 8;
-            var strdata = new byte[0x58];
-            fixed (byte* byteptr_t = &strdata[0])
-            {
-                *(int*)(byteptr_t + 4) = strsize + 0x50 + padding;
-                *(uint*)(byteptr_t + 8) = Reflection.ID.Global.GlobalLib;
-                string strblock = "Raider Block";
-                string LibDescr = "GlobalLib by MaxHwoy " + System.DateTime.Today.ToString("dd-MM-yyyy");
-                for (int a1 = 0; a1 < LibDescr.Length; ++a1)
-                    *(byteptr_t + 0x10 + a1) = (byte)LibDescr[a1];
-                for (int a1 = 0; a1 < strblock.Length; ++a1)
-                    *(byteptr_t + 0x30 + a1) = (byte)strblock[a1];
-            }
-            bw.Write(strdata);
-
-            int dataoffset = (int)bw.BaseStream.Position;
-            foreach (var pair in Core.Map.BinKeys)
-            {
-                if (pair.Value == null) continue;
-                ++strsize;
-                bw.Write(pair.Value);
-            }
-            bw.BaseStream.Position = dataoffset - 8;
-            bw.Write(strsize);
-            bw.Write((int)bw.BaseStream.Length - dataoffset);
-
-            padding = 0x80 - ((int)bw.BaseStream.Length + 0x40) % 0x80;
-            if (padding == 0x80) padding = 0;
-            bw.BaseStream.Position = bw.BaseStream.Length;
-            for (int a1 = 0; a1 < padding; ++a1)
-                bw.Write((byte)0);
-            bw.BaseStream.Position = stroffset - 4;
-            bw.Write((int)bw.BaseStream.Length - stroffset);
-            bw.BaseStream.Position = bw.BaseStream.Length;
         }
     }
 }

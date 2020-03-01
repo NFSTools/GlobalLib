@@ -93,9 +93,10 @@
                 part6size += UsedPart56[a1].Data.Length;
             }
             padding = 0x10 - ((part6size + 8) % 0x10);
-            if (padding != 0x10) part6size += padding;
+            if (padding == 0x10) padding = 0;
             for (int a1 = 0; a1 < padding; ++a1)
                 bw.Write((byte)0);
+            part6size += padding;
             bw.BaseStream.Position = size6off;
             bw.Write(part6size);
 

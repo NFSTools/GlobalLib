@@ -8,7 +8,9 @@
         /// <returns>Byte array of the preset ride.</returns>
         public override unsafe byte[] Assemble()
         {
-            fixed (byte* byteptr_t = &this.data[0])
+            var result = new byte[this.data.Length];
+            System.Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
+            fixed (byte* byteptr_t = &result[0])
             {
                 var parts = new Shared.Parts.PresetParts.Concatenator();
                 var add_on = new Shared.Parts.PresetParts.Add_On();
@@ -266,7 +268,7 @@
                     }
                 }
             }
-            return this.data;
+            return result;
         }
     }
 }
