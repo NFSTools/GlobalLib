@@ -145,7 +145,7 @@
             using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(dirB)))
             using (var bw = new System.IO.BinaryWriter(System.IO.File.Open(dirB, System.IO.FileMode.Create)))
             {
-                bw.Write(Utils.JDLZ.Compress(ms.GetBuffer()));
+                bw.Write(Utils.JDLZ.Compress(ms.ToArray()));
             }
         }
     }
