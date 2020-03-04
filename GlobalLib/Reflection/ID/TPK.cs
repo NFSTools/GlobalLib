@@ -17,5 +17,6 @@
         public const uint DATA_PART1_BLOCKID = 0x33320001;
         public const uint DATA_PART2_BLOCKID = 0x33320002;
         public const uint DATA_PART3_BLOCKID = 0x33320003;
+        public const uint COMPRESSED_TEXTURE = 0x55441122;
     }
 }

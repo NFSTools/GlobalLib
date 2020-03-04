@@ -38,6 +38,13 @@
         protected virtual unsafe void GetKeyList(byte* byteptr_t, int offset) { }
 
         /// <summary>
+        /// Gets list of offset slots of the textures in the tpk block array.
+        /// </summary>
+        /// <param name="byteptr_t">Pointer to the tpk block array.</param>
+        /// <param name="offset">Partial 1 part3 offset in the tpk block array.</param>
+        protected virtual unsafe void GetOffsetSlots(byte* byteptr_t, int offset) { }
+
+        /// <summary>
         /// Gets list of compressions of the textures in the tpk block array.
         /// </summary>
         /// <param name="byteptr_t">Pointer to the tpk block array.</param>
@@ -51,5 +58,13 @@
         /// <param name="offset">Partial 1 part4 offset in the tpk block array.</param>
         /// <returns>Array of offsets and sizes of texture headers.</returns>
         protected virtual unsafe int[,] GetTextureHeaders(byte* byteptr_t, int offset) { return null; }
+    
+        /// <summary>
+        /// Parses compressed texture and returns it on the output.
+        /// </summary>
+        /// <param name="byteptr_t">Pointer to the tpk block array.</param>
+        /// <param name="offslot">Offslot of the texture to be parsed</param>
+        /// <returns>Decompressed texture valid to the current support.</returns>
+        protected virtual unsafe void ParseCompTexture(byte* byteptr_t, Parts.TPKParts.OffSlot offslot) { }
     }
 }

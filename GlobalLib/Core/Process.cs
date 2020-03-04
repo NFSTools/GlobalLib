@@ -85,7 +85,9 @@
             //bool A = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
             bool B = Support.Underground2.LoadData.LoadGlobalB(GlobalDir, database);
             bool C = Support.Underground2.LoadData.LoadLanguage(GlobalDir, database);
-            return B && C;
+            bool D = Support.Underground2.LoadData.LoadAudios(GlobalDir);
+            bool E = Support.Underground2.LoadData.LoadWheels(GlobalDir);
+            return B && C && D && E;
         }
 
         /// <summary>

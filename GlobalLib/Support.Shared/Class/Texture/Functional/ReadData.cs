@@ -7,6 +7,8 @@
         /// </summary>
         /// <param name="byteptr_t">Pointer to the tpk block.</param>
         /// <param name="offset">Data offset from where to read.</param>
-        public virtual unsafe void ReadData(byte* byteptr_t, int offset) { }
+        /// <param name="forced">If forced, ignores internal offset and reads data 
+        /// starting at the pointer passed.</param>
+        public virtual unsafe void ReadData(byte* byteptr_t, int offset, bool forced) { }
     }
 }

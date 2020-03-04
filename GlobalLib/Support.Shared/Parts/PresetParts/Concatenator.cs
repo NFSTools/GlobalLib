@@ -107,6 +107,7 @@
         public string _HOOD_UNDER = "_HOOD_UNDER";
         public string _TRUNK_UNDER = "_TRUNK_UNDER";
         public string _WING_MIRROR = "_WING_MIRROR";
+        public string _TRUNK_AUDIO = "_TRUNK_AUDIO";
 
 
 

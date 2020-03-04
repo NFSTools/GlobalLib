@@ -238,12 +238,14 @@
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryCloneTexture.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryAddTexture.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\TryReplaceTexture.cs" />
+    <Compile Include="Support.Carbon\Class\TPKBlock\Reading\GetOffsetSlots.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Reading\GetTextureHeaders.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Reading\GetCompressionList.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Reading\GetKeyList.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Reading\GetHeaderInfo.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Reading\GetTextureCount.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Reading\FindOffsets.cs" />
+    <Compile Include="Support.Carbon\Class\TPKBlock\Reading\ParseCompTexture.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Writing\Get2Part2.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Writing\Get2Part1.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Writing\Get1Part5.cs" />
@@ -528,6 +530,7 @@
     <Compile Include="Support.Shared\Parts\PresetParts\Concatenator.cs" />
     <Compile Include="Support.Shared\Parts\STRParts\StringRecord.cs" />
     <Compile Include="Support.Shared\Parts\TPKParts\CompSlot.cs" />
+    <Compile Include="Support.Shared\Parts\TPKParts\OffSlot.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
@@ -553,7 +556,7 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\ValidateSpinning.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\AutosculptRearBumper.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2811%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\TrunkAudioSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2812%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2813%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2814%29.cs" />
@@ -646,6 +649,7 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\E_FNGroup.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadGlobalB.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadLanguage.cs" />
+    <Compile Include="Support.Underground2\LoadData\LoadAudios.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadWheels.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\Part56.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\UsageType.cs" />

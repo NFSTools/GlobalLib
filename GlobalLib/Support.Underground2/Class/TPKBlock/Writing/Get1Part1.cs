@@ -19,7 +19,11 @@
                 *(int*)(byteptr_t + 8) = this.Version;
 
                 // Write CollectionName
-                string CName = this._collection_name.Substring(2, this._collection_name.Length - 2);
+                string CName = string.Empty;
+                if (this._use_current_cname)
+                    CName = this._collection_name;
+                else
+                    CName = this._collection_name.Substring(2, this._collection_name.Length - 2);
                 for (int a1 = 0; a1 < CName.Length; ++a1)
                     *(byteptr_t + 0xC + a1) = (byte)CName[a1];
 

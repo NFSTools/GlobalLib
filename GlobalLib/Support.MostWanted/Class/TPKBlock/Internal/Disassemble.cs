@@ -34,7 +34,7 @@
                 this.Textures[i].CompVal1 = this.compressions[i].var1;
                 this.Textures[i].CompVal2 = this.compressions[i].var2;
                 this.Textures[i].CompVal3 = this.compressions[i].var3;
-                this.Textures[i].ReadData(byteptr_t, PartOffsets[6] + 0x80);
+                this.Textures[i].ReadData(byteptr_t, PartOffsets[6] + 0x80, false);
             }
         }
     }

@@ -16,6 +16,7 @@
         public static void InitUG2()
         {
             Map.RimBrands.Clear();
+            Map.AudioTypes.Clear();
             Map.WindowTintMap.Clear();
             Map.CollisionMap.Clear();
             UG2PaintTypes();

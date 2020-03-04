@@ -32,6 +32,11 @@ namespace GlobalLib.Core
         public static List<string> RimBrands { get; set; } = new List<string>();
 
         /// <summary>
+        /// Represents array of all possible audio types that can be used.
+        /// </summary>
+        public static List<string> AudioTypes { get; set; } = new List<string>();
+
+        /// <summary>
         /// Represents list of all possible paint type that can be used in UG2 support.
         /// </summary>
         public static List<string> UG2PaintTypes { get; set; } = new List<string>();

@@ -2,7 +2,7 @@
 {
     public partial class TPKBlock
     {
-        protected int Version                 { get; set; } = 8; // usually 0x8
+        protected int Version                 { get; set; } = 8; // 8 for C, 5 for MW and UG2
         protected string filename             { get; set; }      // 0x40 bytes max
         protected uint FilenameHash           { get; set; }      // Utils.Bin.Hash(this.filename)
         protected uint PermBlockByteOffset    { get; set; } = 0; // usually 0
