@@ -194,7 +194,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
         /// <param name="PropertyName">Name of the field to be modified.</param>
         /// <param name="value">Value to be set at the field specified.</param>
         /// <param name="error">Error occured in case setting value fails.</param>
-        public virtual bool SetValue(string PropertyName, object value, ref string error)
+        public bool SetValue(string PropertyName, object value, ref string error)
         {
             try
             {

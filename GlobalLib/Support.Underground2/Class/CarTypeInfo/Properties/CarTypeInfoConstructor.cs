@@ -13,13 +13,13 @@
             this.ManufacturerName = "GENERIC";
             this.Deletable = true;
             this.Modified = true;
-            this.WhatGame = 1;
+            this.WhatGame = 2;
             this.WheelOuterRadius = 26;
             this.WheelOuterRadiusMin = 17;
             this.WheelInnerRadiusMax = 20;
             this.DefaultSkinNumber = 1;
             //this.CollisionExternalName = CollectionName;
-            this.CollisionInternalName = "CARRERAGT";
+            this.CollisionInternalName = "NULL";
             uint a1 = Utils.Bin.Hash(CName);
             Core.Map.BinKeys[this.BinKey] = CName;
         }
