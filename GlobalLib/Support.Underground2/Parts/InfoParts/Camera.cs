@@ -31,8 +31,8 @@
 	{
 		FAR,
 		CLOSE,
-		DRIVER,
 		BUMPER,
+		DRIVER,
 		HOOD,
 		DRIFT
 	}

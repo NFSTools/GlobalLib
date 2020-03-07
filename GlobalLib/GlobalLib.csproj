@@ -55,6 +55,7 @@
     <Compile Include="Core\Initialize.cs" />
     <Compile Include="Core\Map.cs" />
     <Compile Include="Core\Process.cs" />
+    <Compile Include="Database\Carbon\SetValueByPath.cs" />
     <Compile Include="Database\Carbon\ToString.cs" />
     <Compile Include="Database\Carbon\TryAddClass.cs" />
     <Compile Include="Database\Carbon\AddCollision.cs" />
@@ -534,6 +535,7 @@
     <Compile Include="Support.Shared\Parts\STRParts\StringRecord.cs" />
     <Compile Include="Support.Shared\Parts\TPKParts\CompSlot.cs" />
     <Compile Include="Support.Shared\Parts\TPKParts\OffSlot.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\Initialize.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
@@ -701,6 +703,7 @@
     <Compile Include="Utils\File\DDS.cs" />
     <Compile Include="Utils\Hash\Bin.cs" />
     <Compile Include="Utils\Hash\FormatX.cs" />
+    <Compile Include="Utils\Hash\ReflectX.cs" />
     <Compile Include="Utils\Hash\ScriptX.cs" />
     <Compile Include="Utils\Hash\Vlt.cs" />
     <Compile Include="Utils\File\JDLZ.cs" />

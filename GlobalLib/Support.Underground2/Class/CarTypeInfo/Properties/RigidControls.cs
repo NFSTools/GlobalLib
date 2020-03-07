@@ -3,6 +3,6 @@
     public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
     {
         public bool IsSUV { get; set; }
-        private ushort[] _rigid_controls;
+        public ushort[] _rigid_controls { get; set; }
     }
 }

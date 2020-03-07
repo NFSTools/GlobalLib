@@ -22,6 +22,10 @@ namespace TestConsole
 
 			var elapsed = watch.ElapsedMilliseconds;
 
+			var car = db.CarTypeInfos[0].MemoryCast("M3GTR");
+
+
+
 			int aa = 0;
 		}
 	}
