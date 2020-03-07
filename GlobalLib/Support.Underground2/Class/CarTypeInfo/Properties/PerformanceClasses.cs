@@ -41,24 +41,16 @@
         public Parts.InfoParts.Engine BASE_ENGINE { get; set; }
         /* 0x052C - 0x0560 */
         public Parts.InfoParts.Engine TOP_ENGINE { get; set; }
-        /* 0x03E0 - 0x0404 */
-        private Parts.InfoParts.Engine _scr_street_engine;
-        /* 0x0404 - 0x0428 */
-        private Parts.InfoParts.Engine _scr_pro_engine;
 
         /* 0x0340 - 0x0370 */
         public Parts.InfoParts.Turbo BASE_TURBO { get; set; }
         /* 0x0620 - 0x0650 */
         public Parts.InfoParts.Turbo TOP_TURBO { get; set; }
-        /* 0x0428 - 0x044C */
-        private Parts.InfoParts.Turbo _scr_street_turbo;
 
         /* 0x0374 - 0x0390 */
         public Parts.InfoParts.Brakes BASE_BRAKES { get; set; }
         /* 0x06B0 - 0x06D0 */
         public Parts.InfoParts.Brakes TOP_BRAKES { get; set; }
-        /* 0x06A0 - 0x06B0 */
-        private Parts.InfoParts.Brakes _scr_pro_brakes;
 
         /* 0x0450 - 0x0460 */
         public Parts.InfoParts.WeightReduction TOP_WEIGHT_REDUCTION { get; set; }
@@ -67,6 +59,6 @@
         public Parts.InfoParts.Nitrous TOP_NITROUS { get; set; }
 
         /* 0x03C0 - 0x03E0 */
-        public Parts.InfoParts.DriftControl DRIFTADDCONTROL { get; set; }
+        public Parts.InfoParts.DriftControl DRIFT_ADD_CONTROL { get; set; }
 	}
 }

@@ -22,6 +22,7 @@
             this.CollisionInternalName = "NULL";
             uint a1 = Utils.Bin.Hash(CName);
             Core.Map.BinKeys[this.BinKey] = CName;
+            this.Initialize();
         }
 
         // Default constructor: disassemble cartypeinfo
@@ -30,9 +31,10 @@
             this.Database = db;
             this.CollectionName = CName;
             this.OriginalName = CName;
-            //this.Disassemble(byteptr_t);
-            //if (this.Index <= Reflection.Enum.CarTypeInfo.BoundValues.MinInfoMostWanted)
-            //    this.Deletable = false;
+            this.Initialize();
+            this.Disassemble(byteptr_t);
+            if (this.Index <= Reflection.Enum.CarTypeInfo.BoundValues.MinInfoUnderground2)
+                this.Deletable = false;
             this.Modified = false;
         }
 

@@ -11,5 +11,6 @@
         public const string STOCK   = "STOCK";
         public const string PPAINT  = "GLOSS";
         public const string BPAINT  = "GLOSS_L1_COLOR17";
+        public const string UGPAINT = "GLOSS_L1_COLOR01";
     }
 }

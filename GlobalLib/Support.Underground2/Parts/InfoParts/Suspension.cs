@@ -19,7 +19,7 @@
 		public float ShockValvingRear { get; set; }
 		public float SwayBarRear { get; set; }
 		public float TrackWidthRear { get; set; }
-		public float CounterBiasRead { get; set; }
+		public float CounterBiasRear { get; set; }
 		public float ShockDigressionRear { get; set; }
 
         public Suspension() { }

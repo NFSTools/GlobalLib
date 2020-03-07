@@ -2,28 +2,12 @@
 {
 	public class Camera : VirtualBase, Reflection.Interface.ICopyable<Camera>
 	{
-		private CameraType CameraType;
-		public short CameraAngle;
-		public float CameraLag;
-		public float CameraHeight;
-		public float CameraLatOffset;
+		public short CameraAngle { get; set; }
+		public float CameraLag { get; set; }
+		public float CameraHeight { get; set; }
+		public float CameraLatOffset { get; set; }
 
 		public Camera() { }
-
-		public Camera(CameraType type)
-		{
-			this.PlayerCamera_Type = type;
-		}
-
-		public Camera(int type)
-		{
-			this.PlayerCamera_Type = (CameraType)type;
-		}
-
-		public short GetCameraType()
-		{
-			return (short)this.CameraType;
-		}
 
 		/// <summary>
 		/// Creates a plane copy of the objects that contains same values.

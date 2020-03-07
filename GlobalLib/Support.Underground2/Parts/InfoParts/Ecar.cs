@@ -9,6 +9,7 @@
 		/* 0x0718 */ public float TopSuspRearHeightReduce { get; set; }
 		/* 0x0720 */ public int NumPlayerCameras { get; set; }
 		/* 0x0724 */ public int NumAICameras { get; set; }
+        /* 0x087C */ public int Cost { get; set; }
 
 		public Ecar() { }
 

@@ -2,9 +2,9 @@
 {
 	public class RPM : VirtualBase, Reflection.Interface.ICopyable<RPM>
 	{
-		public float IdleRPM { get; set; }
-		public float RedLineRPM { get; set; }
-		public float MAXRPM { get; set; }
+		public float IdleRPMAdd { get; set; }
+		public float RedLineRPMAdd { get; set; }
+		public float MaxRPMAdd { get; set; }
 
 		public RPM() { }
 

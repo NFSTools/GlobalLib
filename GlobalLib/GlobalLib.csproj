@@ -534,6 +534,7 @@
     <Compile Include="Support.Shared\Parts\STRParts\StringRecord.cs" />
     <Compile Include="Support.Shared\Parts\TPKParts\CompSlot.cs" />
     <Compile Include="Support.Shared\Parts\TPKParts\OffSlot.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\Initialize.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\ToString.cs" />
@@ -543,14 +544,13 @@
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %285%29.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %286%29.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %287%29.cs" />
-    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %288%29.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\PaintType.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\RigidControls.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CollectionName.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\PerformanceClasses.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\Constants.cs" />
-    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\PvehicleValues.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\UnknownVector.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\EcarClasses.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Functional\Assemble.cs" />
@@ -670,6 +670,7 @@
     <Compile Include="Support.Underground2\LoadData\LoadAudios.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadWheels.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\Part56.cs" />
+    <Compile Include="Support.Underground2\Parts\CarParts\RigidControls.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\UsageType.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Brakes.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Camera.cs" />
