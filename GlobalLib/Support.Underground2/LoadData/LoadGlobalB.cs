@@ -75,9 +75,9 @@ namespace GlobalLib.Support.Underground2
                         //        E_GlobalLibBlock(byteptr_t + offset, size + 8);
                         //    break;
                         //
-                        //case Reflection.ID.Global.Materials:
-                        //    E_Material(byteptr_t + offset, db);
-                        //    break;
+                        case Reflection.ID.Global.Materials:
+                            E_Material(byteptr_t + offset, db);
+                            break;
 
                         case Reflection.ID.Global.TPKBlocks:
                             int count = db.TPKBlocks.Count;

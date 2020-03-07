@@ -20,7 +20,6 @@
             this.DefaultSkinNumber = 1;
             //this.CollisionExternalName = CollectionName;
             this.CollisionInternalName = "NULL";
-            uint a1 = Utils.Bin.Hash(CName);
             Core.Map.BinKeys[this.BinKey] = CName;
             this.Initialize();
         }

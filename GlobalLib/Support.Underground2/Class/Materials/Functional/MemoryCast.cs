@@ -1,12 +1,18 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
-	{
-		public CarTypeInfo MemoryCast(string CName)
-		{
-			var result = new CarTypeInfo(CName, this.Database);
-
-            var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance;
+    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    {
+        /// <summary>
+        /// Casts all attributes from this object to another one.
+        /// </summary>
+        /// <param name="CName">CollectionName of the new created object.</param>
+        /// <returns>Memory casted copy of the object.</returns>
+        public Material MemoryCast(string CName)
+        {
+            var result = new Material(CName, this.Database);
+            
+            var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.NonPublic;
             var args = new object[0] { };
 
             foreach (var property in this.GetType().GetProperties(flags))

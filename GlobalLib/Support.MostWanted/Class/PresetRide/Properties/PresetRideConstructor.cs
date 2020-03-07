@@ -6,14 +6,15 @@
         public PresetRide() { }
 
         // Default constructor: create new preset
-        public PresetRide(string v1, Database.MostWanted db)
+        public PresetRide(string CName, Database.MostWanted db)
         {
             this.Database = db;
             this.data = new byte[0x290];
-            this.CollectionName = v1;
+            this.CollectionName = CName;
             this.MODEL = "SUPRA";
             this.Frontend = "supra";
             this.Pvehicle = "supra";
+            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
             this.Modified = true;
         }
 

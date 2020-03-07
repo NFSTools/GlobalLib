@@ -20,8 +20,7 @@
             this.DefaultSkinNumber = 1;
             this.CollisionExternalName = CollectionName;
             this.CollisionInternalName = "CARRERAGT";
-            uint a1 = Utils.Bin.Hash(CName);
-            Core.Map.BinKeys[this.BinKey] = CName;
+            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
         }
 
         // Default constructor: disassemble cartypeinfo

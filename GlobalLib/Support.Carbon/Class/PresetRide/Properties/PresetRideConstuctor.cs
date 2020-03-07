@@ -14,6 +14,7 @@
             this.MODEL = "SUPRA";
             this.Frontend = "supra";
             this.Pvehicle = "supra";
+            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
             this.FRONTBUMPER = new Parts.PresetParts.Autosculpt();
             this.REARBUMPER = new Parts.PresetParts.Autosculpt();
             this.ROOFSCOOP = new Parts.PresetParts.Autosculpt();

@@ -1,4 +1,4 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿namespace GlobalLib.Support.Underground2.Class
 {
     public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
     {
@@ -6,7 +6,7 @@
         public Material() { }
 
         // Default constructor: create new material
-        public Material(string CName, Database.MostWanted db)
+        public Material(string CName, Database.Underground2 db)
         {
             this.Database = db;
             this.CollectionName = CName;
@@ -14,7 +14,7 @@
         }
 
         // Default constructor: disassemble material
-        public unsafe Material(byte* byteptr_t, string CName, Database.MostWanted db)
+        public unsafe Material(byte* byteptr_t, string CName, Database.Underground2 db)
         {
             this.Database = db;
             this.CollectionName = CName;

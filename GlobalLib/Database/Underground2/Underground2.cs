@@ -11,7 +11,7 @@ namespace GlobalLib.Database
         public byte[] GlobalBLZC;
         public byte[] LngGlobal;
         public byte[] LngLabels;
-        //public List<Material> Materials { get; set; }
+        public List<Material> Materials { get; set; }
         public List<CarTypeInfo> CarTypeInfos { get; set; }
         //public List<PresetRide> PresetRides { get; set; }
         public List<FNGroup> FNGroups { get; set; }
@@ -23,7 +23,7 @@ namespace GlobalLib.Database
         {
             this.CarTypeInfos = new List<CarTypeInfo>();
             this.FNGroups = new List<FNGroup>();
-            //this.Materials = new List<Material>();
+            this.Materials = new List<Material>();
             //this.PresetRides = new List<PresetRide>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
@@ -38,7 +38,7 @@ namespace GlobalLib.Database
             this.LngLabels = null;
             this.CarTypeInfos = null;
             this.FNGroups = null;
-            //this.Materials = null;
+            this.Materials = null;
             //this.PresetRides = null;
             this.TPKBlocks = null;
             this.SlotTypes = null;

@@ -562,6 +562,24 @@
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FNGroupConstructor.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Functional\GetValue.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Functional\SetValue.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\StrongColor4.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\StrongColor3.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\StrongRatios.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\BrightColor1.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\BrightColor2.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\MaterialConstructor.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\PrimaryBlockSize.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\StrongColor1.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\StrongColor2.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Properties\Transparency.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\SetValidSpinning.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\SetValidRimStyle.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\SetValidRimSize.cs" />
@@ -667,6 +685,7 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarParts.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarTypeInfo.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_FNGroup.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_Materials.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadGlobalB.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadLanguage.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadAudios.cs" />
@@ -726,7 +745,6 @@
     <Compile Include="Utils\HTML\HTMLTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Support.Underground2\Class\Materials\" />
     <Folder Include="Support.Underground2\Framework\" />
     <Folder Include="Support.Underground2\Gameplay\" />
     <Folder Include="Support.Underground2\SaveData\" />
