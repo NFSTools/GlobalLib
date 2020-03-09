@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Pvehicle : VirtualBase, Reflection.Interface.ICopyable<Pvehicle>
+	public class Pvehicle : Framework.VirtualPart, Reflection.Interface.ICopyable<Pvehicle>
 	{
 		/* 0x0220 */ public float Massx1000Multiplier { get; set; }
         /* 0x0224 */ public float TensorScaleX { get; set; }

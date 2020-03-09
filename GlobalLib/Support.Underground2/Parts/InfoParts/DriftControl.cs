@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-    public class DriftControl : VirtualBase, Reflection.Interface.ICopyable<DriftControl>
+    public class DriftControl : Framework.VirtualPart, Reflection.Interface.ICopyable<DriftControl>
     {
         public float DriftAdditionalYawControl1 { get; set; } = 0.015F;
         public float DriftAdditionalYawControl2 { get; set; } = 0.2F;

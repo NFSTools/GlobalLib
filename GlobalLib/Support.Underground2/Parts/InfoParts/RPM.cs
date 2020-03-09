@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class RPM : VirtualBase, Reflection.Interface.ICopyable<RPM>
+	public class RPM : Framework.VirtualPart, Reflection.Interface.ICopyable<RPM>
 	{
 		public float IdleRPMAdd { get; set; }
 		public float RedLineRPMAdd { get; set; }

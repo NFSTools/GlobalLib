@@ -10,6 +10,7 @@
         /// <summary>
         /// Level value of the first bright color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float BrightColor1Level
         {
             get => this._brightcolor1_level;
@@ -25,6 +26,7 @@
         /// <summary>
         /// Red value of the first bright color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float BrightColor1Red
         {
             get => this._brightcolor1_red;
@@ -40,6 +42,7 @@
         /// <summary>
         /// Green value of the first bright color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float BrightColor1Green
         {
             get => this._brightcolor1_green;
@@ -55,6 +58,7 @@
         /// <summary>
         /// Blue value of the first bright color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float BrightColor1Blue
         {
             get => this._brightcolor1_blue;

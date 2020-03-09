@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Turbo : VirtualBase, Reflection.Interface.ICopyable<Turbo>
+	public class Turbo : Framework.VirtualPart, Reflection.Interface.ICopyable<Turbo>
 	{
 		public float TurboBraking { get; set; }
 		public float TurboVacuum { get; set; }

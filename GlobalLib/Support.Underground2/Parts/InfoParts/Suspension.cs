@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Suspension : VirtualBase, Reflection.Interface.ICopyable<Suspension>
+	public class Suspension : Framework.VirtualPart, Reflection.Interface.ICopyable<Suspension>
 	{
 		// Front values
 		public float ShockStiffnessFront { get; set; }

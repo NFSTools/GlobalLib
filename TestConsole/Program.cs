@@ -22,6 +22,11 @@ namespace TestConsole
 
 			var elapsed = watch.ElapsedMilliseconds;
 
+			var cla = db.Materials.FindClass("CALLIPER");
+
+			var inte = db.Materials.GetClassIndex("CALLIPER");
+			var oof = db.Materials.GetAccessibleProperties(cla.CollectionName);
+			
 
 			int aa = 0;
 		}

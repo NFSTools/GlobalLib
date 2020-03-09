@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Engine : VirtualBase, Reflection.Interface.ICopyable<Engine>
+	public class Engine : Framework.VirtualPart, Reflection.Interface.ICopyable<Engine>
 	{
 		public float SpeedRefreshRate { get; set; }
 		public float EngineTorque1 { get; set; }

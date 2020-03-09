@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Brakes : VirtualBase, Reflection.Interface.ICopyable<Brakes>
+	public class Brakes : Framework.VirtualPart, Reflection.Interface.ICopyable<Brakes>
 	{
 		public float FrontDownForce { get; set; }
 		public float RearDownForce { get; set; } 

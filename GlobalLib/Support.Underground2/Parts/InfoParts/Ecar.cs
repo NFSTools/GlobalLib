@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Ecar : VirtualBase, Reflection.Interface.ICopyable<Ecar>
+	public class Ecar : Framework.VirtualPart, Reflection.Interface.ICopyable<Ecar>
 	{
 		/* 0x0244 */ public float EcarUnknown1 { get; set; }
 		/* 0x0258 */ public float EcarUnknown2 { get; set; }

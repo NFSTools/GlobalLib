@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Nitrous : VirtualBase, Reflection.Interface.ICopyable<Nitrous>
+	public class Nitrous : Framework.VirtualPart, Reflection.Interface.ICopyable<Nitrous>
 	{
 		public float NOSCapacity { get; set; }
 		public float NOSTorqueBoost { get; set; }

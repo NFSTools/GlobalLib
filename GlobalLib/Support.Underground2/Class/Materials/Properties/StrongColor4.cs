@@ -10,6 +10,7 @@
         /// <summary>
         /// Level value of the fourth strong color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float StrongColor4Level
         {
             get => this._strongcolor4_level;
@@ -25,6 +26,7 @@
         /// <summary>
         /// Red value of the fourth strong color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float StrongColor4Red
         {
             get => this._strongcolor4_red;
@@ -40,6 +42,7 @@
         /// <summary>
         /// Green value of the fourth strong color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float StrongColor4Green
         {
             get => this._strongcolor4_green;
@@ -55,6 +58,7 @@
         /// <summary>
         /// Blue value of the fourth strong color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float StrongColor4Blue
         {
             get => this._strongcolor4_blue;

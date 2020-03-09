@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class WeightReduction : VirtualBase, Reflection.Interface.ICopyable<WeightReduction>
+	public class WeightReduction : Framework.VirtualPart, Reflection.Interface.ICopyable<WeightReduction>
 	{
         public float WeightReductionMassMultiplier { get; set; }
         public float WeightReductionGripAddon { get; set; }

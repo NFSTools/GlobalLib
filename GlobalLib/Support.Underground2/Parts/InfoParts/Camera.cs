@@ -1,8 +1,8 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Camera : VirtualBase, Reflection.Interface.ICopyable<Camera>
+	public class Camera : Framework.VirtualPart, Reflection.Interface.ICopyable<Camera>
 	{
-		public short CameraAngle { get; set; }
+		public float CameraAngle { get; set; }
 		public float CameraLag { get; set; }
 		public float CameraHeight { get; set; }
 		public float CameraLatOffset { get; set; }

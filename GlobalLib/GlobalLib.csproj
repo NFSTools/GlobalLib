@@ -62,14 +62,19 @@
     <Compile Include="Database\Carbon\Carbon.cs" />
     <Compile Include="Database\Carbon\TryCloneClass.cs" />
     <Compile Include="Database\Carbon\TryRemoveClass.cs" />
+    <Compile Include="Database\Collection\ClassCollection.cs" />
+    <Compile Include="Database\Collection\KeyType.cs" />
     <Compile Include="Database\MostWanted\ToString.cs" />
     <Compile Include="Database\MostWanted\TryAddClass.cs" />
     <Compile Include="Database\MostWanted\TryCloneClass.cs" />
     <Compile Include="Database\MostWanted\TryRemoveClass.cs" />
     <Compile Include="Database\Underground2\GetClassIndex.cs" />
+    <Compile Include="Database\Underground2\SetByPath.cs" />
     <Compile Include="Database\Underground2\ToString.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />
     <Compile Include="Reflection\Abstract\ICollectable.cs" />
+    <Compile Include="Reflection\Abstract\IStorable.cs" />
+    <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
     <Compile Include="Reflection\DataFields\DFSTRBlock.cs" />
     <Compile Include="Reflection\DataFields\DFTPKBlock.cs" />
     <Compile Include="Reflection\DataFields\DFAutosculpt.cs" />
@@ -470,8 +475,7 @@
     <Compile Include="Support.Shared\Class\FNGroup\Functional\Disassemble.cs" />
     <Compile Include="Support.Shared\Class\FNGroup\Properties\CollectionName.cs" />
     <Compile Include="Support.Shared\Class\FNGroup\Properties\PrimaryProperties.cs" />
-    <Compile Include="Support.Shared\Class\Material\Functional\Assemble.cs" />
-    <Compile Include="Support.Shared\Class\Material\Functional\Disassemble.cs" />
+    <Compile Include="Support.Shared\Class\Material\Functional\Virtuals.cs" />
     <Compile Include="Support.Shared\Class\Material\Functional\GetValue.cs" />
     <Compile Include="Support.Shared\Class\Material\Functional\SetValue.cs" />
     <Compile Include="Support.Carbon\Class\Material\Properties\CollectionName.cs" />
@@ -545,7 +549,26 @@
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %284%29.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %285%29.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %286%29.cs" />
-    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %287%29.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Functional\GetPropertyEnumerableTypes.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Functional\OfEnumerableType.cs" />
+    <Compile Include="Support.Underground2\Class\Materials\Functional\GetAccessibles.cs" />
+    <Compile Include="Support.Underground2\Framework\VirtualClass.cs" />
+    <Compile Include="Support.Underground2\Gameplay\eSunAlpha.cs" />
+    <Compile Include="Support.Underground2\Gameplay\eSunTexture.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\GetValue.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\SetValue.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\SunInfoConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\SunInfoSettings.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\PositionSettings.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Functional\SetValue.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Functional\GetValue.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\InterfaceSettings.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\PaintType.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\RigidControls.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
@@ -676,6 +699,21 @@
     <Compile Include="Support.Underground2\Class\TPKBlock\Writing\Get2Part1.cs" />
     <Compile Include="Support.Underground2\Class\TPKBlock\Writing\Get2Part2.cs" />
     <Compile Include="Support.Underground2\Class\TPKBlock\Writing\TextureSort.cs" />
+    <Compile Include="Support.Underground2\Gameplay\eDriftType.cs" />
+    <Compile Include="Support.Underground2\Gameplay\eLocationType.cs" />
+    <Compile Include="Support.Underground2\Framework\Parse.cs" />
+    <Compile Include="Support.Underground2\Framework\Validate.cs" />
+    <Compile Include="Support.Underground2\Gameplay\eRaceGameplayMode.cs" />
+    <Compile Include="Support.Underground2\Gameplay\eTrackDifficulty.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %282%29.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %283%29.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %284%29.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %285%29.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\BasicRaceSettings.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\Enumerable.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part0.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part1.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part2.cs" />
@@ -693,6 +731,7 @@
     <Compile Include="Support.Underground2\Parts\CarParts\Part56.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\RigidControls.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\UsageType.cs" />
+    <Compile Include="Support.Underground2\Parts\GameParts\SunLayer.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Brakes.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Camera.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\DriftControl.cs" />
@@ -703,7 +742,7 @@
     <Compile Include="Support.Underground2\Parts\InfoParts\Turbo.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\RPM.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Engine.cs" />
-    <Compile Include="Support.Underground2\Parts\InfoParts\VirtualBase.cs" />
+    <Compile Include="Support.Underground2\Framework\VirtualBase.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\CarInfoWheel.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Suspension.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Tires.cs" />
@@ -745,8 +784,6 @@
     <Compile Include="Utils\HTML\HTMLTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Support.Underground2\Framework\" />
-    <Folder Include="Support.Underground2\Gameplay\" />
     <Folder Include="Support.Underground2\SaveData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

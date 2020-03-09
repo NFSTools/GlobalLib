@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Transmission : VirtualBase, Reflection.Interface.ICopyable<Transmission>
+	public class Transmission : Framework.VirtualPart, Reflection.Interface.ICopyable<Transmission>
 	{
 		public float ClutchSlip{ get; set; }
 		public float OptimalShift{ get; set; }

@@ -9,5 +9,7 @@
         FNGroup = 5,
         TPKBlock = 6,
         STRBlock = 7,
+        Track = 8,
+        SunInfoType = 9,
     }
 }

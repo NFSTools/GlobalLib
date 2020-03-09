@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class CarInfoWheel : VirtualBase, Reflection.Interface.ICopyable<CarInfoWheel>
+	public class CarInfoWheel : Framework.VirtualPart, Reflection.Interface.ICopyable<CarInfoWheel>
 	{
 		public float XValue { get; set; }
 		public float Springs { get; set; }

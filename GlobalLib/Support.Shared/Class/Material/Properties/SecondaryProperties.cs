@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class Material : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class Material
     {
         protected const int _Unknown0 = 0;
         protected const int _Unknown1 = 1;
