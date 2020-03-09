@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class CarTypeInfo : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class CarTypeInfo
     {
         /// <summary>
         /// Disassembles cartypeinfo array into separate properties.

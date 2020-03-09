@@ -18,11 +18,11 @@
                 //            return a1;
                 //    break;
                 
-                case ClassType.CarTypeInfo:
-                    for (int a1 = 0; a1 < this.CarTypeInfos.Count; ++a1)
-                        if (CName == this.CarTypeInfos[a1].CollectionName)
-                            return a1;
-                    break;
+                //case ClassType.CarTypeInfo:
+                //    for (int a1 = 0; a1 < this.CarTypeInfos.Count; ++a1)
+                //        if (CName == this.CarTypeInfos[a1].CollectionName)
+                //            return a1;
+                //    break;
                 
                 //case ClassType.PresetRide:
                 //    for (int a1 = 0; a1 < this.PresetRides.Count; ++a1)

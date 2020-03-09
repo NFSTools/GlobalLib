@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class CarTypeInfo : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class CarTypeInfo
     {
         private int _index = -1;
         private int _usagetype = (int)Reflection.Enum.CarTypeInfo.UsageType.Racer;
@@ -9,6 +9,7 @@
         /// <summary>
         /// Represents index of the cartypeinfo in Global data.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public int Index
         {
             get => this._index;
@@ -24,6 +25,7 @@
         /// <summary>
         /// Represents usage type of the cartypeinfo.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public int UsageType
         {
             get => this._usagetype;
@@ -43,6 +45,7 @@
         /// <summary>
         /// Represents memory type of the cartypeinfo.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public uint MemoryType
         {
             get => this._memorytype;
@@ -58,6 +61,7 @@
         /// <summary>
         /// Represents boolean as an int of whether cartypeinfo is skinnable.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public bool IsSkinnable { get; set; } = true;
     }
 }

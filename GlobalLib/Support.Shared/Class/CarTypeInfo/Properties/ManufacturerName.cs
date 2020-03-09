@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class CarTypeInfo : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class CarTypeInfo
     {
         private string _manufacturer_name;
 
         /// <summary>
         /// Represents manufacturer name of the cartypeinfo.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string ManufacturerName
         {
             get => this._manufacturer_name;

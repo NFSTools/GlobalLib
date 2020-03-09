@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class CarTypeInfo : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class CarTypeInfo
     {
         private string _defaultbasepaint = Reflection.BaseArguments.BPAINT;
 
         /// <summary>
         /// Represents paint type of the cartypeinfo.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string DefaultBasePaint
         {
             get => this._defaultbasepaint;

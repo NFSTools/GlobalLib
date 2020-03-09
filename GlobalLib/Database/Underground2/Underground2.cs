@@ -12,7 +12,7 @@ namespace GlobalLib.Database
         public byte[] LngGlobal;
         public byte[] LngLabels;
         public Collection.ClassCollection<Material> Materials { get; set; }
-        public List<CarTypeInfo> CarTypeInfos { get; set; }
+        public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
         //public List<PresetRide> PresetRides { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
@@ -21,7 +21,7 @@ namespace GlobalLib.Database
 
         public Underground2()
         {
-            this.CarTypeInfos = new List<CarTypeInfo>();
+            this.CarTypeInfos = new Collection.ClassCollection<CarTypeInfo>();
             this.FNGroups = new List<FNGroup>();
             this.Materials = new Collection.ClassCollection<Material>();
             //this.PresetRides = new List<PresetRide>();

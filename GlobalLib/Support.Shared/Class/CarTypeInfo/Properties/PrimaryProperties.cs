@@ -1,7 +1,16 @@
-﻿namespace GlobalLib.Support.Shared.Class
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+
+namespace GlobalLib.Support.Shared.Class
 {
-    public partial class CarTypeInfo : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class CarTypeInfo : ICollectable, IGetValue, ISetValue
     {
+        /// <summary>
+        /// Collection name of the variable.
+        /// </summary>
+        public override string CollectionName { get; set; }
+
         /// <summary>
         /// Binary memory hash of the collection name.
         /// </summary>

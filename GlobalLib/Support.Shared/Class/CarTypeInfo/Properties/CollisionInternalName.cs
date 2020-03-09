@@ -1,13 +1,14 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class CarTypeInfo : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class CarTypeInfo
     {
         private string _collision_internal_name = Reflection.BaseArguments.NULL;
 
         /// <summary>
         /// Represents internal collision name of the cartypeinfo.
         /// </summary>
-        public string CollisionInternalName
+        [Reflection.Attributes.AccessModifiable()]
+        public virtual string CollisionInternalName
         {
             get => this._collision_internal_name;
             set

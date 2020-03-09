@@ -75,6 +75,7 @@
     <Compile Include="Reflection\Abstract\ICollectable.cs" />
     <Compile Include="Reflection\Abstract\IStorable.cs" />
     <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
+    <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />
     <Compile Include="Reflection\DataFields\DFSTRBlock.cs" />
     <Compile Include="Reflection\DataFields\DFTPKBlock.cs" />
     <Compile Include="Reflection\DataFields\DFAutosculpt.cs" />
@@ -465,9 +466,7 @@
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CollisionExternalName.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\CollisionInternalName.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\CarInfoTypes.cs" />
-    <Compile Include="Support.Shared\Class\CarTypeInfo\Functional\GetValue.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\ManufacturerName.cs" />
-    <Compile Include="Support.Shared\Class\CarTypeInfo\Functional\SetValue.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\PaintType.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo\Properties\SecondaryProperties.cs" />
@@ -475,9 +474,8 @@
     <Compile Include="Support.Shared\Class\FNGroup\Functional\Disassemble.cs" />
     <Compile Include="Support.Shared\Class\FNGroup\Properties\CollectionName.cs" />
     <Compile Include="Support.Shared\Class\FNGroup\Properties\PrimaryProperties.cs" />
-    <Compile Include="Support.Shared\Class\Material\Functional\Virtuals.cs" />
-    <Compile Include="Support.Shared\Class\Material\Functional\GetValue.cs" />
-    <Compile Include="Support.Shared\Class\Material\Functional\SetValue.cs" />
+    <Compile Include="Support.Shared\Class\Material\Functional\Disassemble.cs" />
+    <Compile Include="Support.Shared\Class\Material\Functional\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\Material\Properties\CollectionName.cs" />
     <Compile Include="Support.Shared\Class\Material\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Shared\Class\Material\Properties\SecondaryProperties.cs" />
@@ -544,14 +542,6 @@
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\ToString.cs" />
-    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %282%29.cs" />
-    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %283%29.cs" />
-    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %284%29.cs" />
-    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %285%29.cs" />
-    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\1 - Copy %286%29.cs" />
-    <Compile Include="Support.Underground2\Class\Materials\Functional\GetPropertyEnumerableTypes.cs" />
-    <Compile Include="Support.Underground2\Class\Materials\Functional\OfEnumerableType.cs" />
-    <Compile Include="Support.Underground2\Class\Materials\Functional\GetAccessibles.cs" />
     <Compile Include="Support.Underground2\Framework\VirtualClass.cs" />
     <Compile Include="Support.Underground2\Gameplay\eSunAlpha.cs" />
     <Compile Include="Support.Underground2\Gameplay\eSunTexture.cs" />
@@ -587,9 +577,7 @@
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Class\Materials\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Class\Materials\Functional\Disassemble.cs" />
-    <Compile Include="Support.Underground2\Class\Materials\Functional\GetValue.cs" />
     <Compile Include="Support.Underground2\Class\Materials\Functional\MemoryCast.cs" />
-    <Compile Include="Support.Underground2\Class\Materials\Functional\SetValue.cs" />
     <Compile Include="Support.Underground2\Class\Materials\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Class\Materials\Properties\StrongColor4.cs" />
     <Compile Include="Support.Underground2\Class\Materials\Properties\StrongColor3.cs" />

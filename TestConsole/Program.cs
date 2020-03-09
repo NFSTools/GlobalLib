@@ -22,11 +22,12 @@ namespace TestConsole
 
 			var elapsed = watch.ElapsedMilliseconds;
 
-			var cla = db.Materials.FindClass("CALLIPER");
+			var cla = db.CarTypeInfos.FindClass("SUPRA");
 
-			var inte = db.Materials.GetClassIndex("CALLIPER");
-			var oof = db.Materials.GetAccessibleProperties(cla.CollectionName);
-			
+			var str = cla.GetAccessibles();
+			var oof = cla.GetValue(str[12]);
+			cla.SetValue(str[12], 3);
+			cla.SetValue("IsSUV", "True");
 
 			int aa = 0;
 		}
