@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         /// <summary>
         /// Disassembles preset ride array into separate properties.
@@ -85,18 +85,18 @@
             // Try match popup lights
             a2 = *(uint*)(byteptr_t + 0xE0);
             a1 = Utils.Bin.Hash(MODEL + parts._LEFT_HEADLIGHT + add_on._ON);
-            this._popup_headlights_exist = a2 == 0;  // either this
-            this._popup_headlights_exist = a1 == a2; // or this
+            this._popup_headlights_exist = (a2 == 0) ? Reflection.Enum.eBoolean.False : Reflection.Enum.eBoolean.True;  // either this
+            this._popup_headlights_exist = (a1 == a2) ? Reflection.Enum.eBoolean.True : Reflection.Enum.eBoolean.False; // or this
             a2 = *(uint*)(byteptr_t + 0xE4);
             if (a2 == 0)
                 goto LABEL_EXHAUST; // skip if statements if null
-            if (this._popup_headlights_exist)
+            if (this._popup_headlights_exist == Reflection.Enum.eBoolean.True)
             {
                 a1 = Utils.Bin.Hash(MODEL + parts._LEFT_HEADLIGHT_GLASS + add_on._OFF);
-                this._popup_heaglights_on = a1 == a2;
+                this._popup_heaglights_on = (a1 == a2) ? Reflection.Enum.eBoolean.False : Reflection.Enum.eBoolean.True;
             }
             else
-                this._popup_heaglights_on = false;
+                this._popup_heaglights_on = Reflection.Enum.eBoolean.False;
 
             LABEL_EXHAUST:
             // Try exhaust match
@@ -133,7 +133,7 @@
                         if (a1 == a2)
                         {
                             this._exhaust_style = x1;
-                            this._is_center_exhaust = true;
+                            this._is_center_exhaust = Reflection.Enum.eBoolean.True;
                             goto LABEL_SPOILER;
                         }
                     }
@@ -147,14 +147,14 @@
             if (a2 == 0)
             {
                 this._spoiler_style = 0;
-                this._spoiler_type = Reflection.BaseArguments.NULL; // means spoiler is nulled
+                this._spoiler_type = Reflection.Enum.eSTypes.NULL; // means spoiler is nulled
                 goto LABEL_FRONT_BUMPER;
             }
             a1 = Utils.Bin.Hash(MODEL + parts._SPOILER);
             if (a1 == a2)
             {   // stock spoiler
                 this._spoiler_style = 0;
-                this._spoiler_type = Reflection.BaseArguments.STOCK;
+                this._spoiler_type = Reflection.Enum.eSTypes.STOCK;
             }
             else
             {
@@ -179,14 +179,14 @@
                         if (a3 == a2)
                         {
                             this._spoiler_style = x2;
-                            this._spoiler_type = add_on._CSTYPE[x1];
+                            v1 = add_on._CSTYPE[x1];
                             goto LABEL_FRONT_BUMPER; // break the whole loop
                         }
                         else if (a4 == a2)
                         {
                             this._spoiler_style = x2;
-                            this._spoiler_type = add_on._CSTYPE[x1];
-                            this._is_autosculpt_spoiler = true;
+                            v1 = add_on._CSTYPE[x1];
+                            this._is_autosculpt_spoiler = Reflection.Enum.eBoolean.True;
                             goto LABEL_FRONT_BUMPER; // break the whole loop
                         }
                         else // try carbonfibre
@@ -196,16 +196,16 @@
                             if (a3 == a2)
                             {
                                 this._spoiler_style = x2;
-                                this._spoiler_type = add_on._CSTYPE[x1];
-                                this._is_carbonfibre_spoiler = true;
+                                v1 = add_on._CSTYPE[x1];
+                                this._is_carbonfibre_spoiler = Reflection.Enum.eBoolean.True;
                                 goto LABEL_FRONT_BUMPER; // break the whole loop
                             }
                             else if (a4 == a2)
                             {
                                 this._spoiler_style = x2;
-                                this._spoiler_type = add_on._CSTYPE[x1];
-                                this._is_autosculpt_spoiler = true;
-                                this._is_carbonfibre_spoiler = true;
+                                v1 = add_on._CSTYPE[x1];
+                                this._is_autosculpt_spoiler = Reflection.Enum.eBoolean.True;
+                                this._is_carbonfibre_spoiler = Reflection.Enum.eBoolean.True;
                                 goto LABEL_FRONT_BUMPER; // break the whole loop
                             }
                         }
@@ -216,8 +216,10 @@
         // escape from a really big spoiler loop
         LABEL_FRONT_BUMPER:
             // fix spoiler settings first
-            if (this._spoiler_type == "")
-                this._spoiler_type = Reflection.Info.STypes.BASE; // use BASE to make it clearer
+            if (v1 == "")
+                this._spoiler_type = Reflection.Enum.eSTypes.BASE; // use BASE to make it clearer
+            else
+                System.Enum.TryParse(v1, out this._spoiler_type);
 
             // try to match _FRONT_BUMPER
             a2 = *(uint*)(byteptr_t + 0x180);
@@ -262,12 +264,12 @@
             // Try to match _ROOF
             a2 = *(uint*)(byteptr_t + 0x190);
             if (a2 == 0 || Utils.Bin.Hash(MODEL + parts._ROOF) == a2)
-                this._choptop_is_on = false; // means no roof at all
+                this._choptop_is_on = Reflection.Enum.eBoolean.False; // means no roof at all
             else
             {
                 a1 = Utils.Bin.Hash(MODEL + parts._ROOF + "_CHOP_TOP");
                 if (a1 == a2)
-                    this._choptop_is_on = true;
+                    this._choptop_is_on = Reflection.Enum.eBoolean.True;
             } // _SETTINGS[26] (chop top size) is in autosculpt zone later on
 
             // Try to match ROOF_STYLE
@@ -305,13 +307,13 @@
                     else if (a3 == a2)
                     {
                         this._roofscoop_style = x1;
-                        this._is_autosculpt_roofscoop = true;
+                        this._is_autosculpt_roofscoop = Reflection.Enum.eBoolean.True;
                         goto LABEL_HOOD;
                     }
                     else if (a4 == a2)
                     {
                         this._roofscoop_style = x1;
-                        this._is_dual_roofscoop = true;
+                        this._is_dual_roofscoop = Reflection.Enum.eBoolean.True;
                         goto LABEL_HOOD;
                     }
                     else
@@ -322,21 +324,21 @@
                         if (a1 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_carbonfibre_roofscoop = true;
+                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
                             goto LABEL_HOOD;
                         }
                         else if (a3 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_autosculpt_roofscoop = true;
-                            this._is_carbonfibre_roofscoop = true;
+                            this._is_autosculpt_roofscoop = Reflection.Enum.eBoolean.True;
+                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
                             goto LABEL_HOOD;
                         }
                         else if (a4 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_dual_roofscoop = true;
-                            this._is_carbonfibre_roofscoop = true;
+                            this._is_dual_roofscoop = Reflection.Enum.eBoolean.True;
+                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
                             goto LABEL_HOOD;
                         }
                     }
@@ -369,7 +371,7 @@
                     else if (a4 == a2)
                     {
                         this._hood_style = x1;
-                        this._is_autosculpt_hood = true;
+                        this._is_autosculpt_hood = Reflection.Enum.eBoolean.True;
                         goto LABEL_SKIRT;
                     }
                     else
@@ -379,14 +381,14 @@
                         if (a3 == a2)
                         {
                             this._hood_style = x1;
-                            this._is_carbonfibre_hood = true;
+                            this._is_carbonfibre_hood = Reflection.Enum.eBoolean.True;
                             goto LABEL_SKIRT;
                         }
                         else if (a4 == a2)
                         {
                             this._hood_style = x1;
-                            this._is_autosculpt_hood = true;
-                            this._is_carbonfibre_hood = true;
+                            this._is_autosculpt_hood = Reflection.Enum.eBoolean.True;
+                            this._is_carbonfibre_hood = Reflection.Enum.eBoolean.True;
                             goto LABEL_SKIRT;
                         }
                     }
@@ -489,10 +491,10 @@
 
             // COLOR TYPE
             a2 = *(uint*)(byteptr_t + 0x20C);
-            if (a2 == 0)
-                this._painttype = Reflection.BaseArguments.PPAINT;
+            if (System.Enum.IsDefined(typeof(Reflection.Enum.eCarbonPaint), a2))
+                this._painttype = (Reflection.Enum.eCarbonPaint)a2;
             else
-                this._painttype = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.PPAINT;
+                this._painttype = Reflection.Enum.eCarbonPaint.GLOSS;
 
             // Paint Swatch
             this._paintswatch = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x210)));

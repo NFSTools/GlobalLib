@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetSkin : Shared.Class.PresetSkin, Reflection.Interface.ICastable<PresetSkin>
+    public partial class PresetSkin
     {
         private byte _swatch1 = 0;
         private byte _swatch2 = 0;
@@ -10,6 +10,7 @@
         /// <summary>
         /// Swatch color value of the first color of the vector vinyl of the preset skin.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte SwatchColor1
         {
             get => this._swatch1;
@@ -25,6 +26,7 @@
         /// <summary>
         /// Swatch color value of the second color of the vector vinyl of the preset skin.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte SwatchColor2
         {
             get => this._swatch2;
@@ -40,6 +42,7 @@
         /// <summary>
         /// Swatch color value of the third color of the vector vinyl of the preset skin.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte SwatchColor3
         {
             get => this._swatch3;
@@ -55,6 +58,7 @@
         /// <summary>
         /// Swatch color value of the fourth color of the vector vinyl of the preset skin.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte SwatchColor4
         {
             get => this._swatch4;

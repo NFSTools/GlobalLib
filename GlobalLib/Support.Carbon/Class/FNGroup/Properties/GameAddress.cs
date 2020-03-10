@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class FNGroup : Shared.Class.FNGroup
+    public partial class FNGroup
     {
         /// <summary>
         /// Game index to which the class belongs to.

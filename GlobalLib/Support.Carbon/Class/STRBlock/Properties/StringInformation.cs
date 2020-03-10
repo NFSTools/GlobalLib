@@ -5,7 +5,7 @@ using GlobalLib.Support.Shared.Parts.STRParts;
 
 namespace GlobalLib.Support.Carbon.Class
 {
-	public partial class STRBlock : Shared.Class.STRBlock
+	public partial class STRBlock
 	{
 		private List<StringRecord> _stringinfo = new List<StringRecord>();
 
@@ -105,7 +105,7 @@ namespace GlobalLib.Support.Carbon.Class
 			var info = new StringRecord(this._stringinfo);
 			info.Key = key;
 			info.Label = label;
-			info.Text = text == null ? string.Empty : text;
+			info.Text = text ?? string.Empty;
 			this._stringinfo.Add(info);
 			return true;
 		}
@@ -130,7 +130,7 @@ namespace GlobalLib.Support.Carbon.Class
 			var info = new StringRecord(this._stringinfo);
 			info.Key = key;
 			info.Label = label;
-			info.Text = text == null ? string.Empty : text;
+			info.Text = text ?? string.Empty;
 			this._stringinfo.Add(info);
 			return true;
 		}

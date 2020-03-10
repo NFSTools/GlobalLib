@@ -7,6 +7,7 @@
         /// <summary>
         /// Represents external collision name of the cartypeinfo.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string CollisionExternalName
         {
             get => this._collision_external_name;

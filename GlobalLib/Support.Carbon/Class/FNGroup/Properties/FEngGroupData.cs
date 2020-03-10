@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class FNGroup : Shared.Class.FNGroup
+    public partial class FNGroup
     {
         private byte[] _DATA;
 

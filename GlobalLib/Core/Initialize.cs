@@ -107,13 +107,9 @@
         /// </summary>
         private static void BodyPaints()
         {
-            Utils.Bin.Hash(Reflection.Info.Paint.GLOSS);
-            Utils.Bin.Hash(Reflection.Info.Paint.METALLIC);
-            Utils.Bin.Hash(Reflection.Info.Paint.PEARL);
-            Utils.Bin.Hash(Reflection.Info.Paint.MATTE);
-            Utils.Bin.Hash(Reflection.Info.Paint.CHROME);
-            Utils.Bin.Hash(Reflection.Info.Paint.CANDY);
-            Utils.Bin.Hash(Reflection.Info.Paint.IRIDESCENT);
+            var paints = System.Enum.GetNames(typeof(Reflection.Enum.eCarbonPaint));
+            foreach (var paint in paints)
+                Utils.Bin.Hash(paint);
         }
 
         /// <summary>

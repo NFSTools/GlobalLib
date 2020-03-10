@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetSkin : Shared.Class.PresetSkin, Reflection.Interface.ICastable<PresetSkin>
+    public partial class PresetSkin
     {
         /// <summary>
         /// Casts all attributes from this object to another one.
@@ -11,32 +11,31 @@
         {
             var result = new PresetSkin(CName, this.Database);
 
-            result.PositionY = this.PositionY;
-            result.PositionX = this.PositionX;
-            result.Rotation = this.Rotation;
-            result.Skew = this.Skew;
-            result.ScaleY = this.ScaleY;
-            result.ScaleX = this.ScaleX;
-            result.Saturation1 = this.Saturation1;
-            result.Saturation2 = this.Saturation2;
-            result.Saturation3 = this.Saturation3;
-            result.Saturation4 = this.Saturation4;
-            result.Brightness1 = this.Brightness1;
-            result.Brightness2 = this.Brightness2;
-            result.Brightness3 = this.Brightness3;
-            result.Brightness4 = this.Brightness4;
-            result.SwatchColor1 = this.SwatchColor1;
-            result.SwatchColor2 = this.SwatchColor2;
-            result.SwatchColor3 = this.SwatchColor3;
-            result.SwatchColor4 = this.SwatchColor4;
-            result.GenericVinyl = this.GenericVinyl;
-            result.VectorVinyl = this.VectorVinyl;
-            result.PaintSwatch = this.PaintSwatch;
-            result.PaintBrightness = this.PaintBrightness;
-            result.PaintSaturation = this.PaintSaturation;
-            result.PaintType = this.PaintType;
+            var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.NonPublic;
+            var args = new object[0] { };
 
-            Core.Map.BinKeys[result.BinKey] = CName;
+            foreach (var property in this.GetType().GetProperties(flags))
+            {
+                if (property.Name == "CollectionName" || property.Name == "BinKey") continue;
+                if (Utils.ReflectX.IsAssignableToGeneric(property.PropertyType, typeof(Reflection.Interface.ICopyable<>)))
+                    result.GetType().GetProperty(property.Name, flags)
+                        .SetValue(result, property.PropertyType
+                        .GetMethod("PlainCopy")
+                        .Invoke(property.GetValue(this), args));
+                else if (Utils.ReflectX.IsEnumerableType(property))
+                    result.GetType().GetProperty(property.Name, flags)
+                        .SetValue(result, property.PropertyType.IsArray
+                        ? typeof(Utils.ReflectX).GetMethod("GetArrayCopy")
+                            .MakeGenericMethod(property.PropertyType.GetElementType())
+                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default
+                        : typeof(Utils.ReflectX).GetMethod("GetEnumerableCopy")
+                            .MakeGenericMethod(property.PropertyType.GetGenericArguments()[0])
+                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default);
+                else if (result.GetType().GetProperty(property.Name, flags).GetSetMethod() != null)
+                    result.GetType().GetProperty(property.Name, flags)
+                        .SetValue(result, property.GetValue(this));
+            }
             return result;
         }
     }

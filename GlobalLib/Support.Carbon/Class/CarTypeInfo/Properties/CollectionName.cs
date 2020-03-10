@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo
     {
         private string _collection_name;
 
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public override string CollectionName
         {
             get => this._collection_name;

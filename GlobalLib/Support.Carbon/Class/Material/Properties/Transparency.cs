@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _transparency1 = 0;
         private float _transparency2 = 0;
@@ -8,6 +8,7 @@
         /// <summary>
         /// First alpha value of the material colors.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float AlphaValue1
         {
             get => this._transparency1;
@@ -23,6 +24,7 @@
         /// <summary>
         /// Second alpha value of the material colors.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float AlphaValue2
         {
             get => this._transparency2;

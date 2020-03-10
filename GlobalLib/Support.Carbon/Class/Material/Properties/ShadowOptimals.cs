@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _shadow_outer_radius = 0;
         private float _optimal_light_reflection = 0;
@@ -8,6 +8,7 @@
         /// <summary>
         /// Outer radius of the shadow fading.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float ShadowOuterRadius
         {
             get => this._shadow_outer_radius;
@@ -23,6 +24,7 @@
         /// <summary>
         /// Value of the optimal light reflection on the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float OptimalLightReflection
         {
             get => this._optimal_light_reflection;

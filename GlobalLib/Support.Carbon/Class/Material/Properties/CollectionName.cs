@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private string _collection_name;
 
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public override string CollectionName
         {
             get => this._collection_name;

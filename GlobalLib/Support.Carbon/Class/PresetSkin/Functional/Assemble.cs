@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetSkin : Shared.Class.PresetSkin, Reflection.Interface.ICastable<PresetSkin>
+    public partial class PresetSkin
     {
         /// <summary>
         /// Assembles preset skin into a byte array.
@@ -16,7 +16,7 @@
                     *(byteptr_t + 8 + a1) = (byte)this.CollectionName[a1];
 
                 // Write all main settings
-                *(uint*)(byteptr_t + 0x28) = Utils.Bin.Hash(this.PaintType);
+                *(uint*)(byteptr_t + 0x28) = (uint)this.PaintType;
                 *(uint*)(byteptr_t + 0x2C) = Utils.Bin.Hash(Utils.EA.Resolve.GetSwatchString(this.PaintSwatch));
                 *(float*)(byteptr_t + 0x30) = this.PaintSaturation;
                 *(float*)(byteptr_t + 0x34) = this.PaintBrightness;

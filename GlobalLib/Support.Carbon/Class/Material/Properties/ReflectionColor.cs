@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _reflectioncolor_level = 0;
         private float _reflectioncolor_red = 0;
@@ -10,6 +10,7 @@
         /// <summary>
         /// Level value of the reflection color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float ReflectionColorLevel
         {
             get => this._reflectioncolor_level;
@@ -25,6 +26,7 @@
         /// <summary>
         /// Red value of the reflection color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float ReflectionColorRed
         {
             get => this._reflectioncolor_red;
@@ -40,6 +42,7 @@
         /// <summary>
         /// Green value of the reflection color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float ReflectionColorGreen
         {
             get => this._reflectioncolor_green;
@@ -55,6 +58,7 @@
         /// <summary>
         /// Blue value of the reflection color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float ReflectionColorBlue
         {
             get => this._reflectioncolor_blue;

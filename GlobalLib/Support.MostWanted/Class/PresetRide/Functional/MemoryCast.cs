@@ -9,7 +9,7 @@
         /// <returns>Memory casted copy of the object.</returns>
         public PresetRide MemoryCast(string CName)
         {
-            var result = new PresetRide();
+            var result = new PresetRide(CName, this.Database);
 
             var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance
                 | System.Reflection.BindingFlags.NonPublic;

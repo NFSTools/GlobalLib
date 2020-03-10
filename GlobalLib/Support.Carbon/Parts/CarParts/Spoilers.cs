@@ -7,8 +7,8 @@ namespace GlobalLib.Support.Carbon.Parts.CarParts
     public class CarSpoilerType
     {
         public string CarTypeInfo { get; set; }
-        public string Spoiler { get; set; }
-        public string SpoilerAS { get; set; }
+        public Reflection.Enum.eSpoiler Spoiler { get; set; }
+        public Reflection.Enum.eSpoilerAS2 SpoilerAS { get; set; }
     }
 
     public class Spoilers
@@ -69,36 +69,14 @@ namespace GlobalLib.Support.Carbon.Parts.CarParts
 
                     uint SpoilerKey = *(uint*)(byteptr_t + offset + 0xC);
                     uint SpoilerASKey = *(uint*)(byteptr_t + offset + 0x10);
-                    switch (SpoilerKey)
-                    {
-                        case 0xE8E9C8A4:
-                            CarSlot.Spoiler = Reflection.Info.Spoiler._HATCH;
-                            break;
-                        case 0xAE826423:
-                            CarSlot.Spoiler = Reflection.Info.Spoiler._PORSCHES;
-                            break;
-                        case 0x497F589C:
-                            CarSlot.Spoiler = Reflection.Info.Spoiler._CARRERA;
-                            break;
-                        default:
-                            CarSlot.Spoiler = "0x" + SpoilerKey.ToString("X8");
-                            break;
-                    }
-                    switch (SpoilerASKey)
-                    {
-                        case 0x645AB209:
-                            CarSlot.SpoilerAS = Reflection.Info.SpoilerAS._HATCH;
-                            break;
-                        case 0x33C2F508:
-                            CarSlot.SpoilerAS = Reflection.Info.SpoilerAS._PORSCHES;
-                            break;
-                        case 0x34A77E01:
-                            CarSlot.SpoilerAS = Reflection.Info.SpoilerAS._CARRERA;
-                            break;
-                        default:
-                            CarSlot.SpoilerAS = "0x" + SpoilerASKey.ToString("X8");
-                            break;
-                    }
+                    if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoiler), SpoilerKey))
+                        CarSlot.Spoiler = (Reflection.Enum.eSpoiler)SpoilerKey;
+                    else
+                        CarSlot.Spoiler = Reflection.Enum.eSpoiler.SPOILER;
+                    if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoilerAS2), SpoilerKey))
+                        CarSlot.SpoilerAS = (Reflection.Enum.eSpoilerAS2)SpoilerASKey;
+                    else
+                        CarSlot.SpoilerAS = Reflection.Enum.eSpoilerAS2.SPOILER_AS2;
                     result.Add(CarSlot);
                     offset += 0x24;
                 }
@@ -136,8 +114,8 @@ namespace GlobalLib.Support.Carbon.Parts.CarParts
                     *(uint*)(byteptr_t + offset) = key;
                     *(uint*)(byteptr_t + offset + 4) = 0x30;
                     *(uint*)(byteptr_t + offset + 8) = key;
-                    *(uint*)(byteptr_t + offset + 0xC) = Utils.Bin.Hash(CarSlot.Spoiler);
-                    *(uint*)(byteptr_t + offset + 0x10) = Utils.Bin.Hash(CarSlot.SpoilerAS);
+                    *(uint*)(byteptr_t + offset + 0xC) = (uint)CarSlot.Spoiler;
+                    *(uint*)(byteptr_t + offset + 0x10) = (uint)CarSlot.SpoilerAS;
                     *(uint*)(byteptr_t + offset + 0x14) = 0xC2F6EBB0;
                     offset += 0x24;
                 }

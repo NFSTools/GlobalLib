@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         /// <summary>
         /// Returns autosculpt part of the preset ride using length of the name of the part.

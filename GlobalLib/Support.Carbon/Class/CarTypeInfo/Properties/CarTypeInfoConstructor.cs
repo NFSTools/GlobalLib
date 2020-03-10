@@ -30,7 +30,7 @@
             this.CollectionName = CName;
             this.OriginalName = CName;
             this.Disassemble(byteptr_t);
-            if (this.Index <= Reflection.Enum.CarTypeInfo.BoundValues.MinInfoCarbon)
+            if (this.Index <= (int)Reflection.Enum.eBoundValues.MIN_INFO_CARBON)
                 this.Deletable = false;
             this.Modified = false;
         }

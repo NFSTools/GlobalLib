@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         private byte _paintswatch = 1;
 
         /// <summary>
         /// Gradient color value of the paint of the preset ride. Range: 0-90.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte PaintSwatch
         {
             get => this._paintswatch;

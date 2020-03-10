@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo
     {
         /// <summary>
         /// Assembles cartypeinfo into a byte array.
@@ -54,8 +54,8 @@
                 *(float*)(byteptr_t + 0x8C) = this.SteeringWheelRenderingW;
 
                 *(int*)(byteptr_t + 0x90) = index;
-                *(int*)(byteptr_t + 0x94) = this.UsageType;
-                *(uint*)(byteptr_t + 0x98) = this.MemoryType;
+                *(int*)(byteptr_t + 0x94) = (int)this.UsageType;
+                *(uint*)(byteptr_t + 0x98) = (uint)this.MemoryType;
 
                 *(byteptr_t + 0x9C) = this.MaxInstances1;
                 *(byteptr_t + 0x9D) = this.MaxInstances2;
@@ -85,7 +85,7 @@
                 *(byteptr_t + 0xC5) = this.AvailableSkinNumbers10;
 
                 *(byteptr_t + 0xC6) = this.DefaultSkinNumber;
-                *(byteptr_t + 0xC7) = this.IsSkinnable ? (byte)1 : (byte)0;
+                *(byteptr_t + 0xC7) = (this.IsSkinnable == Reflection.BaseArguments.TRUE) ? (byte)1 : (byte)0;
                 *(int*)(byteptr_t + 0xC8) = this.Padding2;
 
                 if (string.IsNullOrWhiteSpace(this.DefaultBasePaint)) { }

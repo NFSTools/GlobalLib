@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         /// <summary>
         /// Assembles preset ride into a byte array.
@@ -49,11 +49,11 @@
                 parts._LEFT_BRAKELIGHT_GLASS = MODEL + parts._LEFT_BRAKELIGHT_GLASS;
 
                 // _LEFT_HEADLIGHT
-                if (!this._popup_headlights_exist)
+                if (this._popup_headlights_exist == Reflection.Enum.eBoolean.False)
                     parts._LEFT_HEADLIGHT = MODEL + parts._LEFT_HEADLIGHT;
                 else
                 {
-                    parts._LEFT_HEADLIGHT = this._popup_heaglights_on
+                    parts._LEFT_HEADLIGHT = (this._popup_heaglights_on == Reflection.Enum.eBoolean.True)
                         ? MODEL + parts._LEFT_HEADLIGHT + add_on._ON
                         : MODEL + parts._LEFT_HEADLIGHT + add_on._OFF;
                 }
@@ -72,11 +72,11 @@
                 parts._RIGHT_BRAKELIGHT_GLASS = MODEL + parts._RIGHT_BRAKELIGHT_GLASS;
 
                 // _RIGHT_HEADLIGHT
-                if (!this._popup_headlights_exist)
+                if (this._popup_headlights_exist == Reflection.Enum.eBoolean.False)
                     parts._RIGHT_HEADLIGHT = MODEL + parts._RIGHT_HEADLIGHT;
                 else
                 {
-                    parts._RIGHT_HEADLIGHT = this._popup_heaglights_on
+                    parts._RIGHT_HEADLIGHT = (this._popup_heaglights_on == Reflection.Enum.eBoolean.True)
                         ? MODEL + parts._RIGHT_HEADLIGHT + add_on._ON
                         : MODEL + parts._RIGHT_HEADLIGHT + add_on._OFF;
                 }
@@ -100,27 +100,27 @@
                     parts._KIT00_EXHAUST += (this._exhaust_style >= 1 && this._exhaust_style <= 9)
                         ? add_on._0 + ExhaustStyle.ToString()
                         : ExhaustStyle.ToString();
-                    if (this._is_center_exhaust)
+                    if (this._is_center_exhaust == Reflection.Enum.eBoolean.True)
                         parts._KIT00_EXHAUST += add_on._CENTER;
                     parts._KIT00_EXHAUST += add_on._LEVEL1;
                 }
 
                 // _SPOILER
-                if (this._spoiler_type == Reflection.BaseArguments.NULL)
+                if (this._spoiler_type == Reflection.Enum.eSTypes.NULL)
                     parts._SPOILER = "";
-                else if (this._spoiler_type == Reflection.BaseArguments.STOCK || this._spoiler_style == 0)
+                else if (this._spoiler_type == Reflection.Enum.eSTypes.STOCK || this._spoiler_style == 0)
                     parts._SPOILER = MODEL + parts._SPOILER;
                 else
                 {
-                    parts._SPOILER = this._is_autosculpt_spoiler
+                    parts._SPOILER = (this._is_autosculpt_spoiler == Reflection.Enum.eBoolean.True)
                         ? add_on.AS_SPOILER
                         : add_on.SPOILER;
                     parts._SPOILER += (this._spoiler_style >= 1 && this._spoiler_style <= 9)
                         ? add_on._STYLE + add_on._0 + this._spoiler_style.ToString()
                         : add_on._STYLE + this._spoiler_style.ToString();
-                    if (this._spoiler_type != Reflection.Info.STypes.BASE)
+                    if (this._spoiler_type != Reflection.Enum.eSTypes.BASE)
                         parts._SPOILER += this.SpoilerType;
-                    if (this._is_carbonfibre_spoiler)
+                    if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
                         parts._SPOILER += add_on._CF;
                 }
 
@@ -202,7 +202,7 @@
 
             LABEL_NEXT:
                 // _ROOF (_CHOP_TOP)
-                parts._ROOF = this._choptop_is_on
+                parts._ROOF = (this._choptop_is_on == Reflection.Enum.eBoolean.True)
                     ? MODEL + parts._ROOF + "_CHOP_TOP"
                     : MODEL + parts._ROOF;
 
@@ -214,11 +214,11 @@
                     parts.ROOF_STYLE += (this._roofscoop_style < 10)
                         ? add_on._0 + this._roofscoop_style.ToString()
                         : this._roofscoop_style.ToString();
-                    if (this._is_dual_roofscoop)
+                    if (this._is_dual_roofscoop == Reflection.Enum.eBoolean.True)
                         parts.ROOF_STYLE += add_on._DUAL;
-                    if (this._is_autosculpt_roofscoop && !this._is_dual_roofscoop)
+                    if ((this._is_autosculpt_roofscoop == Reflection.Enum.eBoolean.True) && (this._is_dual_roofscoop == Reflection.Enum.eBoolean.False))
                         parts.ROOF_STYLE += add_on._AUTOSCULPT;
-                    if (this._is_carbonfibre_roofscoop)
+                    if (this._is_carbonfibre_roofscoop == Reflection.Enum.eBoolean.True)
                         parts.ROOF_STYLE += add_on._CF;
                 }
 
@@ -228,9 +228,9 @@
                 else
                 {
                     parts._HOOD = MODEL + add_on._STYLE + add_on._0 + this._hood_style + parts._HOOD;
-                    if (this._is_autosculpt_hood)
+                    if (this._is_autosculpt_hood == Reflection.Enum.eBoolean.True)
                         parts._HOOD += add_on._AS;
-                    if (this._is_carbonfibre_hood)
+                    if (this._is_carbonfibre_hood == Reflection.Enum.eBoolean.True)
                         parts._HOOD += add_on._CF;
                 }
 
@@ -283,7 +283,7 @@
                     parts.WINDOW_TINT_STOCK = this._window_tint_type;
 
                 // Carpaint
-                parts.PAINT = this._painttype;
+                parts.PAINT = this._painttype.ToString();
                 parts.SWATCH_COLOR = Utils.EA.Resolve.GetSwatchString(this._paintswatch);
 
                 // Hash all strings to keys

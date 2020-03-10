@@ -1,15 +1,16 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         private sbyte _exhaust_style = 0;
         private byte _exhaust_size = 0;
-        private bool _is_center_exhaust = false;
+        private Reflection.Enum.eBoolean _is_center_exhaust = Reflection.Enum.eBoolean.False;
 
 
         /// <summary>
         /// Exhaust style value of the preset ride. Possible values: 0-17, NULL.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string ExhaustStyle
         {
             get
@@ -37,6 +38,7 @@
         /// <summary>
         /// Exhaust size value of the preset ride. Range: 0-100.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte ExhaustSize
         {
             get => this._exhaust_size;
@@ -53,13 +55,19 @@
         /// <summary>
         /// True if exhaust is centered, false otherwise.
         /// </summary>
-        public bool IsCenterExhaust
+        [Reflection.Attributes.AccessModifiable()]
+        public Reflection.Enum.eBoolean IsCenterExhaust
         {
             get => this._is_center_exhaust;
             set
             {
-                this._is_center_exhaust = value;
-                this.Modified = true;
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                {
+                    this._is_center_exhaust = value;
+                    this.Modified = true;
+                }
+                else
+                    throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
             }
         }
     }

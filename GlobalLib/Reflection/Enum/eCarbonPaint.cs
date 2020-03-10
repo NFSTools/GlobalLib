@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Reflection.Enum
 {
-	enum eCarbonPaint : uint
+	public enum eCarbonPaint : uint
 	{
 		GLOSS = 0x02DAAB07,
 		METALLIC = 0x23777E0A,

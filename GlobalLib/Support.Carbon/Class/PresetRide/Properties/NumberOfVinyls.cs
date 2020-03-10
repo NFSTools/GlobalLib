@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         private byte _number_of_vinyls = 0;
 
         /// <summary>
         /// Number of vinyls value of the preset ride. Range: 0-20.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte NumberOfVinyls
         {
             get => this._number_of_vinyls;

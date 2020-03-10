@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _strongcolor1_level = 0;
         private float _strongcolor1_red = 0;
@@ -10,6 +10,7 @@
         /// <summary>
         /// Level value of the first strong color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float StrongColor1Level
         {
             get => this._strongcolor1_level;
@@ -25,6 +26,7 @@
         /// <summary>
         /// Red value of the first strong color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float StrongColor1Red
         {
             get => this._strongcolor1_red;
@@ -40,6 +42,7 @@
         /// <summary>
         /// Green value of the first strong color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float StrongColor1Green
         {
             get => this._strongcolor1_green;
@@ -55,6 +58,7 @@
         /// <summary>
         /// Blue value of the first strong color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float StrongColor1Blue
         {
             get => this._strongcolor1_blue;

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetSkin : Shared.Class.PresetSkin, Reflection.Interface.ICastable<PresetSkin>
+    public partial class PresetSkin
     {
         private string _genericvinyl = Reflection.BaseArguments.NULL;
         private string _vectorvinyl = Reflection.BaseArguments.NULL;
@@ -8,6 +8,7 @@
         /// <summary>
         /// Generic vinyl value of the preset skin.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string GenericVinyl
         {
             get => this._genericvinyl;
@@ -22,6 +23,7 @@
         /// <summary>
         /// Vector vinyl value of the preset skin.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string VectorVinyl
         {
             get => this._vectorvinyl;

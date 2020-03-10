@@ -4,7 +4,7 @@ using GlobalLib.Support.Shared.Parts.FNGParts;
 
 namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class FNGroup : Shared.Class.FNGroup
+    public partial class FNGroup
     {
         private List<FEngColor> _colorinfo = new List<FEngColor>();
 

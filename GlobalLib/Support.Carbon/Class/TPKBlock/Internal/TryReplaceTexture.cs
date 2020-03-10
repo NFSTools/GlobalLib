@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class TPKBlock : Shared.Class.TPKBlock
+    public partial class TPKBlock
     {
         /// <summary>
         /// Attemps to replace texture specified in the TPKBlock data with a new one.

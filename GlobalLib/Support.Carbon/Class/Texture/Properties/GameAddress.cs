@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
+    public partial class Texture
     {
         /// <summary>
         /// Game index to which the class belongs to.

@@ -14,7 +14,7 @@
             // Get all cartypeinfos with non-base spoilers
             foreach (var info in db.CarTypeInfos)
             {
-                if (info.Spoiler != Reflection.Info.Spoiler.BASE)
+                if (info.Spoiler != Reflection.Enum.eSpoiler.SPOILER)
                 {
                     var Class = new Parts.CarParts.CarSpoilerType();
                     Class.CarTypeInfo = info.CollectionName;

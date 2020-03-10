@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-	public partial class STRBlock : Shared.Class.STRBlock
+	public partial class STRBlock
 	{
 		/// <summary>
 		/// Disassembles labels block array into separate properties.

@@ -4,7 +4,7 @@
     {
         #region Private Fields
 
-        private string _painttype = Reflection.BaseArguments.PPAINT;
+        private Reflection.Enum.eCarbonPaint _painttype = Reflection.Enum.eCarbonPaint.GLOSS;
         private byte _paintswatch = 1;
         private float _paintsaturation = 0;
         private float _paintbrightness = 0;
@@ -36,12 +36,12 @@
         /// Paint type value of the preset skin.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
-        public string PaintType
+        public Reflection.Enum.eCarbonPaint PaintType
         {
             get => this._painttype;
             set
             {
-                if (Core.Map.BinKeys.ContainsValue(value))
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eCarbonPaint), value))
                     this._painttype = value;
                 else
                     throw new Reflection.Exception.MappingFailException();

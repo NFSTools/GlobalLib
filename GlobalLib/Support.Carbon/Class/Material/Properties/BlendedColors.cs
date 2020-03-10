@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _disable_reflection = 0;
         private float _stronger_reflection = 0;
@@ -10,6 +10,7 @@
         /// <summary>
         /// Disable value of reflection colors of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float DisableReflection
         {
             get => this._disable_reflection;
@@ -25,6 +26,7 @@
         /// <summary>
         /// Increment value of reflection colors of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float StrongerReflection
         {
             get => this._stronger_reflection;
@@ -40,6 +42,7 @@
         /// <summary>
         /// Blend value of strong colors of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float BlendStrongColors
         {
             get => this._blend_strong_colors;
@@ -55,6 +58,7 @@
         /// <summary>
         /// Disable value of strong colors of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float DisableStrongColors
         {
             get => this._disable_strong_colors;

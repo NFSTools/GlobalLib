@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetSkin : Shared.Class.PresetSkin, Reflection.Interface.ICastable<PresetSkin>
+    public partial class PresetSkin
     {
         /// <summary>
         /// Disassembles preset skin array into separate properties.
@@ -11,7 +11,10 @@
             uint key = 0; // for reading hashes
 
             key = *(uint*)(byteptr_t + 0x28);
-            this.PaintType = Core.Map.Lookup(key);
+            if (System.Enum.IsDefined(typeof(Reflection.Enum.eCarbonPaint), key))
+                this.PaintType = (Reflection.Enum.eCarbonPaint)key;
+            else
+                this.PaintType = Reflection.Enum.eCarbonPaint.GLOSS;
 
             // Paint Swatch
             this.PaintSwatch = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x2C)));

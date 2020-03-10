@@ -7,7 +7,7 @@
         public bool IsCar { get; set; } = false;
         public byte[] Data { get; private set; }
         public byte Index { get; private set; } = 0xFF;
-        public int Usage { get; private set; } = (int)Reflection.Enum.CarTypeInfo.UsageType.Racer;
+        public Reflection.Enum.eUsageType Usage { get; private set; } = Reflection.Enum.eUsageType.Racer;
 
         /// <summary>
         /// Game index to which the class belongs to.
@@ -74,14 +74,14 @@
         /// Sets new usage in the part56.
         /// </summary>
         /// <param name="usage">New usage to be set.</param>
-        public unsafe void SetUsage(int usage)
+        public unsafe void SetUsage(Reflection.Enum.eUsageType usage)
         {
             if (this.Usage == usage) return;
             this.Usage = usage;
             this.Data = null;
             switch (usage)
             {
-                case 1:
+                case Reflection.Enum.eUsageType.Cop:
                     this.Data = new byte[204];
                     fixed (byte* byteptr_t = &this.Data[0])
                     {
@@ -94,7 +94,7 @@
                     }
                     break;
 
-                case 2:
+                case Reflection.Enum.eUsageType.Traffic:
                     this.Data = new byte[128];
                     fixed (byte* byteptr_t = &this.Data[0])
                     {
@@ -125,7 +125,7 @@
         public Part56() { }
 
         // Default constructor: initialize new part56
-        public unsafe Part56(string CName, byte index, int usage)
+        public unsafe Part56(string CName, byte index, Reflection.Enum.eUsageType usage)
         {
             this._key = Utils.Bin.Hash(CName);
             this._collection_name = CName;
@@ -134,7 +134,7 @@
             this.IsCar = true;
             switch (usage)
             {
-                case 1:
+                case Reflection.Enum.eUsageType.Cop:
                     this.Data = new byte[204];
                     fixed (byte* byteptr_t = &this.Data[0])
                     {
@@ -147,7 +147,7 @@
                     }
                     break;
 
-                case 2:
+                case Reflection.Enum.eUsageType.Traffic:
                     this.Data = new byte[128];
                     fixed (byte* byteptr_t = &this.Data[0])
                     {
@@ -196,16 +196,16 @@
             switch (Data.Length)
             {
                 case 204:
-                    this.Usage = (int)Reflection.Enum.CarTypeInfo.UsageType.Cop;
+                    this.Usage = Reflection.Enum.eUsageType.Cop;
                     break;
                 case 128:
-                    this.Usage = (int)Reflection.Enum.CarTypeInfo.UsageType.Traffic;
+                    this.Usage = Reflection.Enum.eUsageType.Traffic;
                     break;
                 case 1108:
-                    this.Usage = (int)Reflection.Enum.CarTypeInfo.UsageType.Racer;
+                    this.Usage = Reflection.Enum.eUsageType.Racer;
                     break;
                 default:
-                    this.Usage = -1;
+                    this.Usage = Reflection.Enum.eUsageType.Universal;
                     break;
             }
         }

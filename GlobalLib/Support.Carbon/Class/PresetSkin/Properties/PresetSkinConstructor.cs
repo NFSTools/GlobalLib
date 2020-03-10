@@ -10,6 +10,7 @@
         {
             this.Database = db;
             this.CollectionName = CName;
+            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
         }
 
         // Default constructor: disassemble skin

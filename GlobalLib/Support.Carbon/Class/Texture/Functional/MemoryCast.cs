@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
+    public partial class Texture
     {
         /// <summary>
         /// Casts all attributes from this object to another one.
@@ -11,44 +11,31 @@
         {
             var result = new Texture(CName, this._parent_TPK, this.Database);
 
-            result._offsetS = this._offsetS;
-            result._offsetT = this._offsetT;
-            result._scaleS = this._scaleS;
-            result._scaleT = this._scaleT;
-            result._scroll_type = this._scroll_type;
-            result._scroll_timestep = this._scroll_timestep;
-            result._scroll_speedS = this._scroll_speedS;
-            result._scroll_speedT = this._scroll_speedT;
-            result._area = this._area;
-            result._num_palettes = this._num_palettes;
-            result._apply_alpha_sort = this._apply_alpha_sort;
-            result._alpha_usage_type = this._alpha_usage_type;
-            result._alpha_blend_type = this._alpha_blend_type;
-            result._cube_environment = this._cube_environment;
-            result._bias_level = this._bias_level;
-            result._rendering_order = this._rendering_order;
-            result._used_flag = this._used_flag;
-            result._flags = this._flags;
-            result._padding = this._padding;
-            result._unknown1 = this._unknown1;
-            result._unknown2 = this._unknown2;
-            result._unknown3 = this._unknown3;
-            result._class = this._class;
-            result._compression = this._compression;
-            result._pal_comp = this._pal_comp;
-            result.Mipmaps = this.Mipmaps;
-            result.MipmapBiasType = this.MipmapBiasType;
-            result.Height = this.Height;
-            result.Width = this.Width;
-            result.TileableUV = this.TileableUV;
-            result.Offset = this.Offset;
-            result.Size = this.Size;
-            result.PaletteOffset = this.PaletteOffset;
-            result.PaletteSize = this.PaletteSize;
+            var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.NonPublic;
+            var args = new object[0] { };
 
-            result.Data = new byte[this.Data.Length];
-            System.Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
-
+            foreach (var property in this.GetType().GetProperties(flags))
+            {
+                if (property.Name == "CollectionName" || property.Name == "BinKey") continue;
+                if (Utils.ReflectX.IsAssignableToGeneric(property.PropertyType, typeof(Reflection.Interface.ICopyable<>)))
+                    result.GetType().GetProperty(property.Name, flags)
+                        .SetValue(result, property.PropertyType
+                        .GetMethod("PlainCopy")
+                        .Invoke(property.GetValue(this), args));
+                else if (Utils.ReflectX.IsEnumerableType(property))
+                    result.GetType().GetProperty(property.Name, flags)
+                        .SetValue(result, property.PropertyType.IsArray
+                        ? typeof(Utils.ReflectX).GetMethod("GetArrayCopy")
+                            .MakeGenericMethod(property.PropertyType.GetElementType())
+                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default
+                        : typeof(Utils.ReflectX).GetMethod("GetEnumerableCopy")
+                            .MakeGenericMethod(property.PropertyType.GetGenericArguments()[0])
+                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default);
+                else if (result.GetType().GetProperty(property.Name, flags).GetSetMethod() != null)
+                    result.GetType().GetProperty(property.Name, flags)
+                        .SetValue(result, property.GetValue(this));
+            }
             return result;
         }
     }

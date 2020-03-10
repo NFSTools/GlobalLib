@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         private sbyte _autosculpt_rearbumper = 0;
 
         /// <summary>
         /// Autosculpt rear bumper value of the preset ride. Range: 0-10, NULL.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string AutosculptRearBumper
         {
             get

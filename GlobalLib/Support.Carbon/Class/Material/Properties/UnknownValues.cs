@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _unk1 = 0;
         private float _unk2 = 0;
@@ -13,6 +13,7 @@
         /// <summary>
         /// Unknown 1 value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Unknown1
         {
             get => this._unk1;
@@ -28,6 +29,7 @@
         /// <summary>
         /// Unknown 2 value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Unknown2
         {
             get => this._unk2;
@@ -43,6 +45,7 @@
         /// <summary>
         /// Unknown 3 value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Unknown3
         {
             get => this._unk3;
@@ -58,6 +61,7 @@
         /// <summary>
         /// Unknown 4 value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Unknown4
         {
             get => this._unk4;
@@ -73,6 +77,7 @@
         /// <summary>
         /// Unknown 5 value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Unknown5
         {
             get => this._unk5;
@@ -88,6 +93,7 @@
         /// <summary>
         /// Unknown 6 value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Unknown6
         {
             get => this._unk6;
@@ -103,6 +109,7 @@
         /// <summary>
         /// Unknown 7 value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Unknown7
         {
             get => this._unk7;

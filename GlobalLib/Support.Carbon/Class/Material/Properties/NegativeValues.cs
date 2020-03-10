@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _grayscale = 0;
         private float _linear_negative = 0;
@@ -9,6 +9,7 @@
         /// <summary>
         /// Main grayscale value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Grayscale
         {
             get => this._grayscale;
@@ -24,6 +25,7 @@
         /// <summary>
         /// Linear negativity of the material colors.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float LinearNegative
         {
             get => this._linear_negative;
@@ -39,6 +41,7 @@
         /// <summary>
         /// Gradient negativity of the material colors.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float GradientNegative
         {
             get => this._gradient_negative;

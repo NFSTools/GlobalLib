@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         private sbyte _aftermarket_bodykit = 0;
 
         /// <summary>
         /// Aftermarket bodykit value of the preset ride. Range: 0-5, NULL.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string AftermarketBodykit
         {
             get

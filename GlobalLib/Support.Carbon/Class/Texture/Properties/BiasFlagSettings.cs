@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
+    public partial class Texture
     {
         private uint _cube_environment = 0;
         private byte _bias_level = 0;

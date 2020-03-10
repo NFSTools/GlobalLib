@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class TPKBlock : Shared.Class.TPKBlock
+    public partial class TPKBlock
     {
         /// <summary>
         /// Assembles partial 1 part4 of the tpk block.

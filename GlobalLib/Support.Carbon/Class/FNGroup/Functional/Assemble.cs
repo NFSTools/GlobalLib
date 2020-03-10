@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class FNGroup : Shared.Class.FNGroup
+    public partial class FNGroup
     {
         /// <summary>
         /// Assembles frontend group into a byte array.

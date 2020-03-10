@@ -83,16 +83,16 @@
                 parts._DRIVER = MODEL + parts._DRIVER;
 
                 // _SPOILER
-                if (this._spoiler_type == Reflection.BaseArguments.NULL)
+                if (this._spoiler_type == Reflection.Enum.eSTypes.NULL)
                     parts._SPOILER = "";
-                else if (this._spoiler_type == Reflection.BaseArguments.STOCK || this._spoiler_style == 0)
+                else if (this._spoiler_type == Reflection.Enum.eSTypes.STOCK || this._spoiler_style == 0)
                     parts._SPOILER = MODEL + parts._SPOILER;
                 else
                 {
                     parts._SPOILER = (this._spoiler_style >= 1 && this._spoiler_style <= 9)
                         ? add_on.SPOILER + add_on._STYLE + add_on._0 + this._spoiler_style.ToString()
                         : add_on.SPOILER + add_on._STYLE + this._spoiler_style.ToString();
-                    if (this.SpoilerType != Reflection.Info.STypes.BASE)
+                    if (this.SpoilerType != Reflection.Enum.eSTypes.BASE)
                         parts._SPOILER += this._spoiler_type;
                     if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
                         parts._SPOILER += add_on._CF;

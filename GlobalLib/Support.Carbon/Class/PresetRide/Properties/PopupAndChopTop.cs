@@ -1,48 +1,66 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
-        private bool _popup_headlights_exist = false;
-        private bool _popup_heaglights_on = false;
-        private bool _choptop_is_on = false;
+        private Reflection.Enum.eBoolean _popup_headlights_exist = Reflection.Enum.eBoolean.False;
+        private Reflection.Enum.eBoolean _popup_heaglights_on = Reflection.Enum.eBoolean.False;
+        private Reflection.Enum.eBoolean _choptop_is_on = Reflection.Enum.eBoolean.False;
         private byte _choptop_size = 0;
 
         /// <summary>
         /// True if popup headlights of the preset ride model exist, false otherwise.
         /// </summary>
-        public bool PopupHeadlightsExist
+        [Reflection.Attributes.AccessModifiable()]
+        public Reflection.Enum.eBoolean PopupHeadlightsExist
         {
             get => this._popup_headlights_exist;
             set
             {
-                this._popup_headlights_exist = value;
-                this.Modified = true;
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                {
+                    this._popup_headlights_exist = value;
+                    this.Modified = true;
+                }
+                else
+                    throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
             }
         }
 
         /// <summary>
         /// True if preset ride's popup headlights are on, false otherwise.
         /// </summary>
-        public bool PopupHeadlightsOn
+        [Reflection.Attributes.AccessModifiable()]
+        public Reflection.Enum.eBoolean PopupHeadlightsOn
         {
             get => this._popup_heaglights_on;
             set
             {
-                this._popup_heaglights_on = value;
-                this.Modified = true;
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                {
+                    this._popup_heaglights_on = value;
+                    this.Modified = true;
+                }
+                else
+                    throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
             }
         }
 
         /// <summary>
         /// True if preset ride's roof is a chop top, false otherwise.
         /// </summary>
-        public bool ChopTopIsOn
+        [Reflection.Attributes.AccessModifiable()]
+        public Reflection.Enum.eBoolean ChopTopIsOn
         {
             get => this._choptop_is_on;
             set
             {
-                this._choptop_is_on = value;
-                this.Modified = true;
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                {
+                    this._choptop_is_on = value;
+                    this.Modified = true;
+                }
+                else
+                    throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
             }
         }
 

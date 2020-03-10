@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo
     {
         private string _collision_external_name = Reflection.BaseArguments.NULL;
 
         /// <summary>
         /// Represents external collision name of the cartypeinfo.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string CollisionExternalName
         {
             get => this._collision_external_name;
@@ -18,5 +19,11 @@
                     this._collision_external_name = value;
             }
         }
+
+        /// <summary>
+        /// Represents internal collision name of the cartypeinfo.
+        /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
+        public override string CollisionInternalName { get => base.CollisionInternalName; set => base.CollisionInternalName = value; }
     }
 }
