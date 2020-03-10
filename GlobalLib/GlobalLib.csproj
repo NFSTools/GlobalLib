@@ -463,15 +463,9 @@
     <Compile Include="Support.MostWanted\SaveData\SaveLanguage.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CollisionExternalName.cs" />
     <Compile Include="Support.Shared\Class\CarTypeInfo.cs" />
-    <Compile Include="Support.Shared\Class\FNGroup\Functional\Assemble.cs" />
-    <Compile Include="Support.Shared\Class\FNGroup\Functional\Disassemble.cs" />
-    <Compile Include="Support.Shared\Class\FNGroup\Properties\CollectionName.cs" />
-    <Compile Include="Support.Shared\Class\FNGroup\Properties\PrimaryProperties.cs" />
-    <Compile Include="Support.Shared\Class\Material\Functional\Disassemble.cs" />
-    <Compile Include="Support.Shared\Class\Material\Functional\Assemble.cs" />
+    <Compile Include="Support.Shared\Class\FNGroup.cs" />
     <Compile Include="Support.Carbon\Class\Material\Properties\CollectionName.cs" />
-    <Compile Include="Support.Shared\Class\Material\Properties\PrimaryProperties.cs" />
-    <Compile Include="Support.Shared\Class\Material\Properties\SecondaryProperties.cs" />
+    <Compile Include="Support.Shared\Class\Material.cs" />
     <Compile Include="Support.Shared\Class\PresetRide\Functional\StringToKey.cs" />
     <Compile Include="Support.Shared\Class\PresetRide\Functional\Assemble.cs" />
     <Compile Include="Support.Shared\Class\PresetRide\Functional\Disassemble.cs" />
