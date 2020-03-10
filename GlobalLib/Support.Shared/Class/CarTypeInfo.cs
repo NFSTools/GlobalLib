@@ -70,7 +70,6 @@
         /// <summary>
         /// Represents internal collision name of the cartypeinfo.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
         public virtual string CollisionInternalName
         {
             get => this._collision_internal_name;

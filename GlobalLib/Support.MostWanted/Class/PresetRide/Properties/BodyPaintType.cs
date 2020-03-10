@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         private string _bodypaint = Reflection.BaseArguments.BPAINT;
 
         /// <summary>
         /// Body paint value of the preset ride.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string BodyPaint
         {
             get => this._bodypaint;

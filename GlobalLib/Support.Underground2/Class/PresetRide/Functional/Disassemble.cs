@@ -133,13 +133,13 @@
                     else if (a3 == a2)
                     {
                         this._roofscoop_style = x1;
-                        this._is_offset_roofscoop = true;
+                        this._is_offset_roofscoop = Reflection.Enum.eBoolean.True;
                         goto LABEL_HOOD;
                     }
                     else if (a4 == a2)
                     {
                         this._roofscoop_style = x1;
-                        this._is_dual_roofscoop = true;
+                        this._is_dual_roofscoop = Reflection.Enum.eBoolean.True;
                         goto LABEL_HOOD;
                     }
                     else
@@ -150,21 +150,21 @@
                         if (a1 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_carbonfibre_roofscoop = true;
+                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
                             goto LABEL_HOOD;
                         }
                         else if (a3 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_dual_roofscoop = true;
-                            this._is_carbonfibre_roofscoop = true;
+                            this._is_dual_roofscoop = Reflection.Enum.eBoolean.True;
+                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
                             goto LABEL_HOOD;
                         }
                         else if (a4 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_dual_roofscoop = true;
-                            this._is_carbonfibre_roofscoop = true;
+                            this._is_dual_roofscoop = Reflection.Enum.eBoolean.True;
+                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
                             goto LABEL_HOOD;
                         }
                     }
@@ -201,7 +201,7 @@
                         if (a3 == a2)
                         {
                             this._hood_style = x1;
-                            this._is_carbonfibre_hood = true;
+                            this._is_carbonfibre_hood = Reflection.Enum.eBoolean.True;
                             goto LABEL_SKIRT;
                         }
                     }
@@ -236,13 +236,13 @@
             if (a2 == 0)
             {
                 this._spoiler_style = 0;
-                this._spoiler_type = Reflection.BaseArguments.NULL; // means spoiler is nulled
+                this._spoiler_type = Reflection.Enum.eSTypes.NULL; // means spoiler is nulled
                 goto LABEL_ENGINE;
             }
             if (a1 == a2)
             {
                 this._spoiler_style = 0;
-                this._spoiler_type = Reflection.BaseArguments.STOCK;
+                this._spoiler_type = Reflection.Enum.eSTypes.STOCK;
             }
             else
             {
@@ -258,7 +258,7 @@
                         if (a3 == a2)
                         {
                             this._spoiler_style = x2;
-                            this._spoiler_type = add_on._USTYPE[x1];
+                            v4 = add_on._USTYPE[x1];
                             goto LABEL_ENGINE; // break the whole loop
                         }
                         else // try carbonfibre
@@ -267,8 +267,8 @@
                             if (a3 == a2)
                             {
                                 this._spoiler_style = x2;
-                                this._spoiler_type = add_on._USTYPE[x1];
-                                this._is_carbonfibre_spoiler = true;
+                                v4 = add_on._USTYPE[x1];
+                                this._is_carbonfibre_spoiler = Reflection.Enum.eBoolean.True;
                                 goto LABEL_ENGINE; // break the whole loop
                             }
                         }
@@ -278,8 +278,10 @@
 
         LABEL_ENGINE:
             // fix spoiler settings first
-            if (this._spoiler_type == "")
-                this._spoiler_type = Reflection.Info.STypes.BASE; // use BASE to make it clearer
+            if (v4 == "")
+                this._spoiler_type = Reflection.Enum.eSTypes.BASE; // use BASE to make it clearer
+            else
+                System.Enum.TryParse(v4, out this._spoiler_type);
 
             a2 = *(uint*)(byteptr_t + 0x80);
             a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._ENGINE);

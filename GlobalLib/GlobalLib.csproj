@@ -99,7 +99,11 @@
     <Compile Include="Reflection\DataFields\DFPresetRide.cs" />
     <Compile Include="Reflection\Enum\eBoolean.cs" />
     <Compile Include="Reflection\Enum\eBoundValues.cs" />
+    <Compile Include="Reflection\Enum\eCarbonPaint.cs" />
     <Compile Include="Reflection\Enum\eMemoryType.cs" />
+    <Compile Include="Reflection\Enum\eSpoilerAS.cs" />
+    <Compile Include="Reflection\Enum\eSpoiler.cs" />
+    <Compile Include="Reflection\Enum\eSTypes.cs" />
     <Compile Include="Reflection\Enum\eUsageType.cs" />
     <Compile Include="Reflection\Enum\eAlphaUsageType.cs" />
     <Compile Include="Reflection\Enum\eTextureAlphaBlendType.cs" />
@@ -308,13 +312,11 @@
     <Compile Include="Support.Carbon\SaveData\SaveLanguage.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\Disassemble.cs" />
-    <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\GetValue.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\MemoryCast.cs" />
-    <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\SetValue.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\CollectionName.cs" />
-    <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\CollisionExternalName.cs" />
+    <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\CollisionValues.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\GameAddress.cs" />
     <Compile Include="Support.MostWanted\Class\CarTypeInfo\Properties\SpoilerProperty.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Functional\Assemble.cs" />
@@ -326,9 +328,7 @@
     <Compile Include="Support.MostWanted\Class\FNGroup\Properties\GameAddress.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Functional\Assemble.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Functional\Disassemble.cs" />
-    <Compile Include="Support.MostWanted\Class\Material\Functional\GetValue.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Functional\MemoryCast.cs" />
-    <Compile Include="Support.MostWanted\Class\Material\Functional\SetValue.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\BrightColor1.cs" />
     <Compile Include="Support.MostWanted\Class\Material\Properties\BrightColor2.cs" />
@@ -346,8 +346,6 @@
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\StringToKey.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\Disassemble.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\Assemble.cs" />
-    <Compile Include="Support.MostWanted\Class\PresetRide\Functional\SetValue.cs" />
-    <Compile Include="Support.MostWanted\Class\PresetRide\Functional\GetValue.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\CollectionName.cs" />
     <Compile Include="Support.MostWanted\Class\PresetRide\Properties\VectorVinylColor2.cs" />
@@ -385,8 +383,6 @@
     <Compile Include="Support.MostWanted\Class\Texture\Functional\Reload.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Functional\ReadData.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Functional\GetImage.cs" />
-    <Compile Include="Support.MostWanted\Class\Texture\Functional\SetValue.cs" />
-    <Compile Include="Support.MostWanted\Class\Texture\Functional\GetValue.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Functional\ToString.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Properties\TextureConstructor.cs" />
     <Compile Include="Support.MostWanted\Class\Texture\Properties\UnknownValues.cs" />

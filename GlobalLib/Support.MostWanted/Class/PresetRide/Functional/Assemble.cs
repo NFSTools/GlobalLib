@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         /// <summary>
         /// Assembles preset ride into a byte array.
@@ -94,7 +94,7 @@
                         : add_on.SPOILER + add_on._STYLE + this._spoiler_style.ToString();
                     if (this.SpoilerType != Reflection.Info.STypes.BASE)
                         parts._SPOILER += this._spoiler_type;
-                    if (this._is_carbonfibre_spoiler)
+                    if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
                         parts._SPOILER += add_on._CF;
                 }
 
@@ -120,11 +120,11 @@
                     parts.ROOF_STYLE += (this._roofscoop_style >= 1 && this._roofscoop_style <= 9)
                         ? add_on._0 + this._roofscoop_style.ToString()
                         : this._roofscoop_style.ToString();
-                    if (this._is_dual_roofscoop)
+                    if (this._is_dual_roofscoop == Reflection.Enum.eBoolean.True)
                         parts.ROOF_STYLE += add_on._DUAL;
-                    if (this._is_offset_roofscoop && !this._is_dual_roofscoop)
+                    if (this._is_offset_roofscoop == Reflection.Enum.eBoolean.True && this._is_dual_roofscoop == Reflection.Enum.eBoolean.False)
                         parts.ROOF_STYLE += add_on._OFFSET;
-                    if (this._is_carbonfibre_roofscoop)
+                    if (this._is_carbonfibre_roofscoop == Reflection.Enum.eBoolean.True)
                         parts.ROOF_STYLE += add_on._CF;
                 }
 
@@ -136,7 +136,7 @@
                     parts._HOOD = (this._hood_style >= 1 && this._hood_style <= 9)
                         ? MODEL + add_on._STYLE + add_on._0 + this._hood_style.ToString() + parts._HOOD
                         : MODEL + add_on._STYLE + this._hood_style.ToString() + parts._HOOD;
-                    if (this._is_carbonfibre_hood)
+                    if (this._is_carbonfibre_hood == Reflection.Enum.eBoolean.True)
                         parts._HOOD += add_on._CF;
                 }
 

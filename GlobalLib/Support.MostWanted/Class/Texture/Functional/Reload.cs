@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
+    public partial class Texture
     {
         /// <summary>
         /// Reloads texture properties based on the new texture passed.

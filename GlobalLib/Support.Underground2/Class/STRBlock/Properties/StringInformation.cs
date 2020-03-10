@@ -105,7 +105,7 @@ namespace GlobalLib.Support.Underground2.Class
 			var info = new StringRecord(this._stringinfo);
 			info.Key = key;
 			info.Label = label;
-			info.Text = text == null ? string.Empty : text;
+			info.Text = text ?? string.Empty;
 			this._stringinfo.Add(info);
 			return true;
 		}
@@ -130,7 +130,7 @@ namespace GlobalLib.Support.Underground2.Class
 			var info = new StringRecord(this._stringinfo);
 			info.Key = key;
 			info.Label = label;
-			info.Text = text == null ? string.Empty : text;
+			info.Text = text ?? string.Empty;
 			this._stringinfo.Add(info);
 			return true;
 		}

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class TPKBlock : Shared.Class.TPKBlock
+    public partial class TPKBlock
     {
         /// <summary>
         /// Assembles partial 1 part5 of the tpk block.

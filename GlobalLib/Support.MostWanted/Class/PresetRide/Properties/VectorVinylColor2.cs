@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         private byte _vinylcolor2 = 0;
 
         /// <summary>
         /// Second vinyl color of the preset ride. Range: 0-80.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte VinylColor2
         {
             get => this._vinylcolor2;

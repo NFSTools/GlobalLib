@@ -7,7 +7,7 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
     public class CarSpoilerType
     {
         public string CarTypeInfo { get; set; }
-        public string Spoiler { get; set; }
+        public Reflection.Enum.eSpoiler Spoiler { get; set; }
     }
 
     public class Spoilers
@@ -67,21 +67,10 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
                     CarSlot.CarTypeInfo = CName;
 
                     uint SpoilerKey = *(uint*)(byteptr_t + offset + 0xC);
-                    switch (SpoilerKey)
-                    {
-                        case 0xE8E9C8A4:
-                            CarSlot.Spoiler = Reflection.Info.Spoiler._HATCH;
-                            break;
-                        case 0xAE826423:
-                            CarSlot.Spoiler = Reflection.Info.Spoiler._PORSCHES;
-                            break;
-                        case 0x497F589C:
-                            CarSlot.Spoiler = Reflection.Info.Spoiler._CARRERA;
-                            break;
-                        default:
-                            CarSlot.Spoiler = "0x" + SpoilerKey.ToString("X8");
-                            break;
-                    }
+                    if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoiler), SpoilerKey))
+                        CarSlot.Spoiler = (Reflection.Enum.eSpoiler)SpoilerKey;
+                    else
+                        CarSlot.Spoiler = Reflection.Enum.eSpoiler.SPOILER;
                     result.Add(CarSlot);
                     offset += 0x10;
                 }
@@ -119,7 +108,7 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
                     *(uint*)(byteptr_t + offset) = key;
                     *(uint*)(byteptr_t + offset + 4) = 0x2C;
                     *(uint*)(byteptr_t + offset + 8) = key;
-                    *(uint*)(byteptr_t + offset + 0xC) = Utils.Bin.Hash(CarSlot.Spoiler);
+                    *(uint*)(byteptr_t + offset + 0xC) = (uint)CarSlot.Spoiler;
                     offset += 0x10;
                 }
                 *(uint*)byteptr_t = Reflection.ID.Global.SlotTypes;

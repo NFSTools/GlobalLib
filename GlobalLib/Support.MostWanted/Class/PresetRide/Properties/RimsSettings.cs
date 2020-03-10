@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         private string _rim_brand = Reflection.BaseArguments.STOCK;
         private byte _rim_style = 0;
@@ -9,6 +9,7 @@
         /// <summary>
         /// Rim brand value of the preset ride.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string RimBrand
         {
             get => this._rim_brand;
@@ -38,6 +39,7 @@
         /// <summary>
         /// Rim style value of the preset ride. Range: 0-6.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte RimStyle
         {
             get => this._rim_style;
@@ -54,6 +56,7 @@
         /// <summary>
         /// Rim size value of the preset ride. Range: 17-20.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte RimSize
         {
             get => this._rim_size;

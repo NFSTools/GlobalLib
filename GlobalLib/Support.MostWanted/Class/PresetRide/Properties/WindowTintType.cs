@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         private string _window_tint_type = Reflection.BaseArguments.STOCK;
 
         /// <summary>
         /// Window tint type value of the preset ride.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string WindowTintType
         {
             get => this._window_tint_type;

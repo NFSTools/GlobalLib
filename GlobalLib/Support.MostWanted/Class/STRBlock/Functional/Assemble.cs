@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-	public partial class STRBlock : Shared.Class.STRBlock
+	public partial class STRBlock
 	{
 		/// <summary>
 		/// Assembles string block into a byte array.

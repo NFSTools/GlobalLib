@@ -2,8 +2,8 @@
 {
 	public class SunLayer : Framework.VirtualPart, Reflection.Interface.ICopyable<SunLayer>
 	{
-		/* 0x0000 */ public Gameplay.eSunTexture SunTextureType { get; set; }
-		/* 0x0004 */ public Gameplay.eSunAlpha SunAlphaType { get; set; }
+		/* 0x0000 */ public Reflection.Enum.eSunTexture SunTextureType { get; set; }
+		/* 0x0004 */ public Reflection.Enum.eSunAlpha SunAlphaType { get; set; }
 		/* 0x0008 */ public float IntensityScale { get; set; }
 		/* 0x000C */ public float Size { get; set; }
 		/* 0x0010 */ public float OffsetX { get; set; }

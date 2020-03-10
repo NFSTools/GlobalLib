@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _shadowlevel = 0;
         private float _mattelevel = 0;
@@ -9,6 +9,7 @@
         /// <summary>
         /// Shadow level value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float ShadowLevel
         {
             get => this._shadowlevel;
@@ -24,6 +25,7 @@
         /// <summary>
         /// Matte level value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float MatteLevel
         {
             get => this._mattelevel;
@@ -39,6 +41,7 @@
         /// <summary>
         /// Chrome level value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float ChromeLevel
         {
             get => this._chromelevel;

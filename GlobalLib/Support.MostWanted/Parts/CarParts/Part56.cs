@@ -114,7 +114,7 @@
 
         public override string ToString()
         {
-            string str = this._collection_name == null ? string.Empty : this._collection_name;
+            string str = this._collection_name ?? string.Empty;
             return $"BelongsTo: {str} | Index: {this.Index}";
         }
 

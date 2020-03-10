@@ -1,13 +1,14 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo
     {
         private string _collection_name;
 
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
-        public string CollectionName
+        [Reflection.Attributes.AccessModifiable()]
+        public override string CollectionName
         {
             get => this._collection_name;
             set

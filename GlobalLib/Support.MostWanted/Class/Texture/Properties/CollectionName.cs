@@ -1,13 +1,14 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
+    public partial class Texture
     {
         private string _collection_name;
 
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
-        public string CollectionName
+        [Reflection.Attributes.AccessModifiable()]
+        public override string CollectionName
         {
             get => this._collection_name;
             set

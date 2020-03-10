@@ -4,7 +4,7 @@
 
 namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         /// <summary>
         /// Converts all preset parts into binary memory keys.

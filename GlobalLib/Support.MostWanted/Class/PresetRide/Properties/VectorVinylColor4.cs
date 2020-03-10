@@ -7,6 +7,7 @@
         /// <summary>
         /// Fourth vinyl color of the preset ride. Range: 0-80.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte VinylColor4
         {
             get => this._vinylcolor4;

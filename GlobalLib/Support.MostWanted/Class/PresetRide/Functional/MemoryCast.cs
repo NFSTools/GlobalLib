@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         /// <summary>
         /// Casts all attributes from this object to another one.
@@ -9,35 +9,33 @@
         /// <returns>Memory casted copy of the object.</returns>
         public PresetRide MemoryCast(string CName)
         {
-            var result = new PresetRide(CName, this.Database);
+            var result = new PresetRide();
 
-            result.VinylName = this.VinylName;
-            result.VinylColor1 = this.VinylColor1;
-            result.VinylColor2 = this.VinylColor2;
-            result.VinylColor3 = this.VinylColor3;
-            result.VinylColor4 = this.VinylColor4;
-            result.WindowTintType = this.WindowTintType;
-            result.HoodStyle = this.HoodStyle;
-            result.IsCarbonfibreHood = this.IsCarbonfibreHood;
-            result.SpoilerStyle = this.SpoilerStyle;
-            result.SpoilerType = this.SpoilerType;
-            result.IsCarbonfibreSpoiler = this.IsCarbonfibreSpoiler;
-            result.RoofScoopStyle = this.RoofScoopStyle;
-            result.IsOffsetRoofScoop = this.IsOffsetRoofScoop;
-            result.IsDualRoofScoop = this.IsDualRoofScoop;
-            result.IsCarbonfibreRoofScoop = this.IsCarbonfibreRoofScoop;
-            result.RimBrand = this.RimBrand;
-            result.RimStyle = this.RimStyle;
-            result.RimSize = this.RimSize;
-            result.BodyPaint = this.BodyPaint;
-            result.RimPaint = this.RimPaint;
-            result.AftermarketBodykit = this.AftermarketBodykit;
-            result.MODEL = this.MODEL;
-            result.Pvehicle = this.Pvehicle;
-            result.Frontend = this.Frontend;
+            var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.NonPublic;
+            var args = new object[0] { };
 
-            System.Buffer.BlockCopy(this.data, 0, result.data, 0, this.data.Length);
-            Core.Map.BinKeys[result.BinKey] = CName;
+            foreach (var property in this.GetType().GetProperties(flags))
+            {
+                if (property.Name == "CollectionName" || property.Name == "BinKey") continue;
+                if (Utils.ReflectX.IsAssignableToGeneric(property.PropertyType, typeof(Reflection.Interface.ICopyable<>)))
+                    result.GetType().GetProperty(property.Name, flags)
+                        .SetValue(result, property.PropertyType
+                        .GetMethod("PlainCopy")
+                        .Invoke(property.GetValue(this), args));
+                else if (Utils.ReflectX.IsEnumerableType(property))
+                    result.GetType().GetProperty(property.Name, flags)
+                        .SetValue(result, property.PropertyType.IsArray
+                        ? typeof(Utils.ReflectX).GetMethod("GetArrayCopy")
+                            .MakeGenericMethod(property.PropertyType.GetElementType())
+                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default
+                        : typeof(Utils.ReflectX).GetMethod("GetEnumerableCopy")
+                            .MakeGenericMethod(property.PropertyType.GetGenericArguments()[0])
+                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default);
+                else if (result.GetType().GetProperty(property.Name, flags).GetSetMethod() != null)
+                    result.GetType().GetProperty(property.Name, flags)
+                        .SetValue(result, property.GetValue(this));
+            }
             return result;
         }
     }

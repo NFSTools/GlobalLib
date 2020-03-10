@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _reflection1 = 0;
         private float _reflection2 = 0;
@@ -9,6 +9,7 @@
         /// <summary>
         /// First reflection value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Reflection1
         {
             get => this._reflection1;
@@ -24,6 +25,7 @@
         /// <summary>
         /// Second reflection value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Reflection2
         {
             get => this._reflection2;
@@ -39,6 +41,7 @@
         /// <summary>
         /// Third reflection value of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float Reflection3
         {
             get => this._reflection3;

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _linear_negative = 0;
         private float _gradient_negative = 0;
@@ -8,6 +8,7 @@
         /// <summary>
         /// Linear negativity of the material colors.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float LinearNegative
         {
             get => this._linear_negative;
@@ -23,6 +24,7 @@
         /// <summary>
         /// Gradient negativity of the material colors.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float GradientNegative
         {
             get => this._gradient_negative;

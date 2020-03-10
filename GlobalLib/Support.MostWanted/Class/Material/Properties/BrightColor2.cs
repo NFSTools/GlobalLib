@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _brightcolor2_level = 0;
         private float _brightcolor2_red = 0;
@@ -10,6 +10,7 @@
         /// <summary>
         /// Level value of the second bright color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float BrightColor2Level
         {
             get => this._brightcolor2_level;
@@ -25,6 +26,7 @@
         /// <summary>
         /// Red value of the second bright color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float BrightColor2Red
         {
             get => this._brightcolor2_red;
@@ -40,6 +42,7 @@
         /// <summary>
         /// Green value of the second bright color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float BrightColor2Green
         {
             get => this._brightcolor2_green;
@@ -55,6 +58,7 @@
         /// <summary>
         /// Blue value of the second bright color of the material.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public float BrightColor2Blue
         {
             get => this._brightcolor2_blue;

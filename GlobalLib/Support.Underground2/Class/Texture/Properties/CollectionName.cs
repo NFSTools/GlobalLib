@@ -7,6 +7,7 @@
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public override string CollectionName
         {
             get => this._collection_name;

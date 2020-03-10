@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.MostWanted.Class
 {
-    public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+    public partial class PresetRide
     {
         protected override unsafe void Disassemble(byte* byteptr_t)
         {
@@ -79,14 +79,14 @@
             if (a2 == 0)
             {
                 this._spoiler_style = 0;
-                this._spoiler_type = Reflection.BaseArguments.NULL; // means spoiler is nulled
+                this._spoiler_type = Reflection.Enum.eSTypes.NULL; // means spoiler is nulled
                 goto LABEL_ROOF;
             }
             a1 = Utils.Bin.Hash(MODEL + parts._SPOILER);
             if (a1 == a2) // stock spoiler
             {
                 this._spoiler_style = 0;
-                this._spoiler_type = Reflection.BaseArguments.STOCK;
+                this._spoiler_type = Reflection.Enum.eSTypes.STOCK;
             }
             else
             {
@@ -101,7 +101,7 @@
                         if (a3 == a2)
                         {
                             this._spoiler_style = x2;
-                            this._spoiler_type = add_on._CSTYPE[x1];
+                            v4 = add_on._CSTYPE[x1];
                             goto LABEL_ROOF; // break the whole loop
                         }
                         else // try carbonfibre
@@ -110,8 +110,8 @@
                             if (a3 == a2)
                             {
                                 this._spoiler_style = x2;
-                                this._spoiler_type = add_on._CSTYPE[x1];
-                                this._is_carbonfibre_spoiler = true;
+                                v4 = add_on._CSTYPE[x1];
+                                this._is_carbonfibre_spoiler = Reflection.Enum.eBoolean.True;
                                 goto LABEL_ROOF; // break the whole loop
                             }
                         }
@@ -122,8 +122,10 @@
         // escape from a really big spoiler loop
         LABEL_ROOF:
             // fix spoiler settings first
-            if (this._spoiler_type == "")
-                this._spoiler_type = Reflection.Info.STypes.BASE; // use BASE to make it clearer
+            if (v4 == "")
+                this._spoiler_type = Reflection.Enum.eSTypes.BASE; // use BASE to make it clearer
+            else
+                System.Enum.TryParse(v4, out this._spoiler_type);
 
             // Try to match ROOF_STYLE
             a2 = *(uint*)(byteptr_t + 0x158);
@@ -160,13 +162,13 @@
                     else if (a3 == a2)
                     {
                         this._roofscoop_style = x1;
-                        this._is_offset_roofscoop = true;
+                        this._is_offset_roofscoop = Reflection.Enum.eBoolean.True;
                         goto LABEL_HOOD;
                     }
                     else if (a4 == a2)
                     {
                         this._roofscoop_style = x1;
-                        this._is_dual_roofscoop = true;
+                        this._is_dual_roofscoop = Reflection.Enum.eBoolean.True;
                         goto LABEL_HOOD;
                     }
                     else
@@ -177,21 +179,21 @@
                         if (a1 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_carbonfibre_roofscoop = true;
+                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
                             goto LABEL_HOOD;
                         }
                         else if (a3 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_offset_roofscoop = true;
-                            this._is_carbonfibre_roofscoop = true;
+                            this._is_offset_roofscoop = Reflection.Enum.eBoolean.True;
+                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
                             goto LABEL_HOOD;
                         }
                         else if (a4 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_dual_roofscoop = true;
-                            this._is_carbonfibre_roofscoop = true;
+                            this._is_dual_roofscoop = Reflection.Enum.eBoolean.True;
+                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
                             goto LABEL_HOOD;
                         }
                     }
@@ -227,7 +229,7 @@
                         if (a3 == a2)
                         {
                             this._hood_style = x1;
-                            this._is_carbonfibre_hood = true;
+                            this._is_carbonfibre_hood = Reflection.Enum.eBoolean.True;
                             goto LABEL_RIM;
                         }
                     }
