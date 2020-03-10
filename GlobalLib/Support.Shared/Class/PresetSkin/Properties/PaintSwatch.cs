@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class PresetSkin : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class PresetSkin
     {
         private byte _paintswatch = 1;
 
         /// <summary>
         /// Gradient color value of the paint of the preset skin. Range: 0-90.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte PaintSwatch
         {
             get => this._paintswatch;

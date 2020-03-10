@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class PresetSkin : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class PresetSkin
     {
         private string _painttype = Reflection.BaseArguments.PPAINT;
 
         /// <summary>
         /// Paint type value of the preset skin.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string PaintType
         {
             get => this._painttype;

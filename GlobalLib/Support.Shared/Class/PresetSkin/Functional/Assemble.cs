@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class PresetSkin : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class PresetSkin
     {
         /// <summary>
         /// Assembles preset skin into a byte array.
