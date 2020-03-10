@@ -9,7 +9,7 @@
         /// Represents first paint type of the cartypeinfo.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
-        public new string DefaultBasePaint
+        public override string DefaultBasePaint
         {
             get => this._defaultbasepaint;
             set

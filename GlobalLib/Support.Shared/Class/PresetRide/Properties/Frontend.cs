@@ -1,13 +1,14 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class PresetRide : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
+    public partial class PresetRide
     {
         private string _frontend = "supra";
 
         /// <summary>
         /// Represents frontend name of the preset ride.
         /// </summary>
-        public string Frontend
+        [Reflection.Attributes.AccessModifiable()]
+        public virtual string Frontend
         {
             get => this._frontend;
             set

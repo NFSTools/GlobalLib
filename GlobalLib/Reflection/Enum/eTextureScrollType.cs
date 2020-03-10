@@ -1,6 +1,6 @@
-﻿namespace GlobalLib.Reflection.Enum.TPK
+﻿namespace GlobalLib.Reflection.Enum
 {
-    public enum TextureScrollType : int
+    public enum eTextureScrollType : int
     {
         TEXSCROLL_NONE        = 0,
         TEXSCROLL_SMOOTH      = 1,

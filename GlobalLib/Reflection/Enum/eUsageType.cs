@@ -1,6 +1,6 @@
-﻿namespace GlobalLib.Reflection.Enum.CarTypeInfo
+﻿namespace GlobalLib.Reflection.Enum
 {
-    public enum UsageType : int
+    public enum eUsageType : int
     {
         Racer     = 0,
         Cop       = 1,

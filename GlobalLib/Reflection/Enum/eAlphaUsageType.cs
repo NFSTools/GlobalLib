@@ -1,6 +1,6 @@
-﻿namespace GlobalLib.Reflection.Enum.TPK
+﻿namespace GlobalLib.Reflection.Enum
 {
-    public enum AlphaUsageType : int
+    public enum eAlphaUsageType : int
     {
         TEXUSAGE_NONE      = 0,
         TEXUSAGE_PUNCHTHRU = 1,

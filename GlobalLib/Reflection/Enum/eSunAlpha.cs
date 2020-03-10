@@ -1,4 +1,4 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿namespace GlobalLib.Reflection.Enum
 {
 	public enum eSunAlpha : int
 	{

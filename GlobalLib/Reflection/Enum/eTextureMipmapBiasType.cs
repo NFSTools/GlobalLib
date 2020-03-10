@@ -1,6 +1,6 @@
-﻿namespace GlobalLib.Reflection.Enum.TPK
+﻿namespace GlobalLib.Reflection.Enum
 {
-    public enum TextureMipmapBiasType : int
+    public enum eTextureMipmapBiasType : int
     {
         TEXBIAS_DEFAULT   = 0,
         TEXBIAS_ADS       = 1,

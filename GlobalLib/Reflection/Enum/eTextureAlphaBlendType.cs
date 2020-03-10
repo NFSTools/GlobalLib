@@ -1,6 +1,6 @@
-﻿namespace GlobalLib.Reflection.Enum.TPK
+﻿namespace GlobalLib.Reflection.Enum
 {
-    public enum TextureAlphaBlendType : int
+    public enum eTextureAlphaBlendType : int
     {
         TEXBLEND_DEFAULT          = -1,
         TEXBLEND_SRCCOPY          = 0,

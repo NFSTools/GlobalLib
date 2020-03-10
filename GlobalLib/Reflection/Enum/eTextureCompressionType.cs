@@ -1,6 +1,6 @@
-﻿namespace GlobalLib.Reflection.Enum.TPK
+﻿namespace GlobalLib.Reflection.Enum
 {
-    public enum TextureCompressionType : int
+    public enum eTextureCompressionType : int
     {
         TEXCOMP_DEFAULT       = 0,
         TEXCOMP_4BIT          = 4,

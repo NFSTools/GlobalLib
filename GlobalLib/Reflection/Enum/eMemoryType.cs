@@ -1,6 +1,6 @@
-﻿namespace GlobalLib.Reflection.Enum.CarTypeInfo
+﻿namespace GlobalLib.Reflection.Enum
 {
-    public enum MemoryType : uint
+    public enum eMemoryType : uint
     {
         Player      = 0x757C0CEC,
         Racing      = 0x79602673,
