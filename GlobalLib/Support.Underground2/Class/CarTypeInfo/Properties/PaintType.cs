@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo
     {
         private string _defaultbasepaint = Reflection.BaseArguments.UGPAINT;
         private string _defaultbasepaint2 = Reflection.BaseArguments.UGPAINT;

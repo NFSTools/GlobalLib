@@ -1,16 +1,17 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide
 	{
         private string _rim_brand = Reflection.BaseArguments.STOCK;
         private byte _rim_style = 0;
         private byte _rim_size = 18;
         private byte _rim_outer_max = 24;
-        private bool _is_spinning_rim = false;
+        private Reflection.Enum.eBoolean _is_spinning_rim = Reflection.Enum.eBoolean.False;
 
         /// <summary>
         /// Rim brand value of the preset ride.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string RimBrand
         {
             get => this._rim_brand;
@@ -44,6 +45,7 @@
         /// <summary>
         /// Rim style value of the preset ride. Range varies for different brands.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte RimStyle
         {
             get => this._rim_style;
@@ -65,6 +67,7 @@
         /// <summary>
         /// Rim size value of the preset ride. Range varies for different brands and styles.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte RimSize
         {
             get => this._rim_size;
@@ -85,6 +88,7 @@
         /// <summary>
         /// Rim outer max value of the preset ride. Range varies for different brands, styles, and sizes.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte RimOuterMax
         {
             get => this._rim_outer_max;
@@ -104,12 +108,13 @@
         /// <summary>
         /// If set to true, rim is a spinner type, otherwise a regular rim.
         /// </summary>
-        public bool IsSpinningRim
+        [Reflection.Attributes.AccessModifiable()]
+        public Reflection.Enum.eBoolean IsSpinningRim
         {
             get => this._is_spinning_rim;
             set
             {
-                if (value)
+                if (value == Reflection.Enum.eBoolean.True)
                 {
                     if (this.ValidateSpinning())
                         this._is_spinning_rim = value;

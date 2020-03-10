@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         /// <summary>
         /// Disassembles material array into separate properties.

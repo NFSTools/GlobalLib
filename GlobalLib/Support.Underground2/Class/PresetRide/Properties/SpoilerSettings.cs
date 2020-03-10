@@ -4,11 +4,12 @@
 	{
         private byte _spoiler_style = 0;
         private string _spoiler_type = Reflection.BaseArguments.STOCK;
-        private bool _is_carbonfibre_spoiler = false;
+        private Reflection.Enum.eBoolean _is_carbonfibre_spoiler = Reflection.Enum.eBoolean.False;
 
         /// <summary>
         /// Spoiler style of the preset ride. Range: 0-40.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte SpoilerStyle
         {
             get => this._spoiler_style;
@@ -25,6 +26,7 @@
         /// <summary>
         /// Spoiler type of the preset ride. Range: STOCK, BASE, _HATCH, _SUV, NULL.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string SpoilerType
         {
             get => this._spoiler_type;
@@ -51,13 +53,19 @@
         /// <summary>
         /// True if spoiler is carbonfibre, false otherwise.
         /// </summary>
-        public bool IsCarbonfibreSpoiler
+        [Reflection.Attributes.AccessModifiable()]
+        public Reflection.Enum.eBoolean IsCarbonfibreSpoiler
         {
             get => this._is_carbonfibre_spoiler;
             set
             {
-                this._is_carbonfibre_spoiler = value;
-                this.Modified = true;
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                {
+                    this._is_carbonfibre_spoiler = value;
+                    this.Modified = true;
+                }
+                else
+                    throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
             }
         }
     }

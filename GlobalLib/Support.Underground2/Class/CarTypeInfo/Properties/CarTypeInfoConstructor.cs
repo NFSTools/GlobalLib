@@ -18,8 +18,6 @@
             this.WheelOuterRadiusMin = 17;
             this.WheelInnerRadiusMax = 20;
             this.DefaultSkinNumber = 1;
-            //this.CollisionExternalName = CollectionName;
-            this.CollisionInternalName = "NULL";
             Core.Map.BinKeys[this.BinKey] = CName;
             this.Initialize();
         }
@@ -32,7 +30,7 @@
             this.OriginalName = CName;
             this.Initialize();
             this.Disassemble(byteptr_t);
-            if (this.Index <= Reflection.Enum.CarTypeInfo.BoundValues.MinInfoUnderground2)
+            if (this.Index <= (int)Reflection.Enum.eBoundValues.MIN_INFO_UNDERGROUND2)
                 this.Deletable = false;
             this.Modified = false;
         }

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide
 	{
 		private byte _front_brake_style = 0;
         private byte _rear_brake_style = 0;
@@ -8,6 +8,7 @@
         /// <summary>
         /// Front brake style value of the preset ride. Range: 0-3.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte FrontBrakeStyle
         {
             get => this._front_brake_style;
@@ -24,6 +25,7 @@
         /// <summary>
         /// Rear brake style value of the preset ride. Range: 0-3.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte RearBrakeStyle
         {
             get => this._rear_brake_style;

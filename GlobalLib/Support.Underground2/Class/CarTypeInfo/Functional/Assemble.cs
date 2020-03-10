@@ -1,7 +1,12 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo
     {
+        /// <summary>
+        /// Assembles cartypeinfo into a byte array.
+        /// </summary>
+        /// <param name="index">Index of the cartypeinfo.</param>
+        /// <returns>Byte array of the cartypeinfo.</returns>
         public override unsafe byte[] Assemble(int index)
         {
             var result = new byte[0x890];
@@ -512,7 +517,7 @@
                 // Rigid Controls (if an added car, or usagetype modified, or rigid controls are missing or broken
                 if (this.Deletable || this.Modified || this._rigid_controls == null || this._rigid_controls.Length != 40)
                 {
-                    if (this.UsageType == (int)Reflection.Enum.CarTypeInfo.UsageType.Traffic)
+                    if (this.UsageType == Reflection.Enum.eUsageType.Traffic)
                     {
                         for (int a1 = 0; a1 < 40; ++a1)
                             *(ushort*)(byteptr_t + 0x7F0 + a1 * 2) = Parts.CarParts.RigidControls.RigidTrafControls[a1];
@@ -530,7 +535,7 @@
                 }
                  // Secondary Properties
                 *(int*)(byteptr_t + 0x840) = index;
-                *(int*)(byteptr_t + 0x844) = this.UsageType;
+                *(int*)(byteptr_t + 0x844) = (int)this.UsageType;
                 *(uint*)(byteptr_t + 0x84C) = Utils.Bin.Hash(this._defaultbasepaint);
                 *(uint*)(byteptr_t + 0x850) = Utils.Bin.Hash(this._defaultbasepaint2);
                 *(byteptr_t + 0x854) = this.MaxInstances1;
@@ -561,8 +566,8 @@
                 *(byteptr_t + 0x887) = this.AvailableSkinNumbers8;
                 *(byteptr_t + 0x888) = this.AvailableSkinNumbers9;
                 *(byteptr_t + 0x889) = this.AvailableSkinNumbers10;
-                *(byteptr_t + 0x88A) = this.IsSUV ? (byte)1 : (byte)0;
-                *(byteptr_t + 0x88C) = this.IsSkinnable ? (byte)1 : (byte)0;
+                *(byteptr_t + 0x88A) = this._is_suv ? (byte)1 : (byte)0;
+                *(byteptr_t + 0x88C) = (this.IsSkinnable == Reflection.BaseArguments.TRUE) ? (byte)1 : (byte)0;
             }
             return result;
         }

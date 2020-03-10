@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide
 	{
         private sbyte _autosculpt_skirt = 0;
 
         /// <summary>
         /// Autosculpt skirt value of the preset ride. Range: 0-30, NULL.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string AutosculptSkirt
         {
             get

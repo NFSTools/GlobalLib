@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material
     {
         private float _strong_1_to_2_ratio = 0;
         private float _strong_3_to_4_ratio = 0;

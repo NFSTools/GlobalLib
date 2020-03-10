@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide
 	{
         private byte _exhaust_style = 0;
 
         /// <summary>
         /// Exhaust style value of the preset ride. Range: 0-10.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte ExhaustStyle
         {
             get => this._exhaust_style;

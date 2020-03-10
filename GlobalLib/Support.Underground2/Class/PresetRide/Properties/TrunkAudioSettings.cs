@@ -1,12 +1,13 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide
 	{
         private byte _trunk_audio_style = 0;
 
         /// <summary>
         /// Hood style value of the preset ride. Range: 0-3.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte TrunkAudioStyle
         {
             get => this._trunk_audio_style;

@@ -97,6 +97,7 @@
     <Compile Include="Database\MostWanted\MostWanted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\DataFields\DFPresetRide.cs" />
+    <Compile Include="Reflection\Enum\eBoolean.cs" />
     <Compile Include="Reflection\Enum\eBoundValues.cs" />
     <Compile Include="Reflection\Enum\eMemoryType.cs" />
     <Compile Include="Reflection\Enum\eUsageType.cs" />

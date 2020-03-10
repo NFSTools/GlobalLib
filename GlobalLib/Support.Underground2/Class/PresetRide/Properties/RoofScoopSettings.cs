@@ -1,15 +1,16 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide
 	{
         private byte _roofscoop_style = 0;
-        private bool _is_offset_roofscoop = false;
-        private bool _is_dual_roofscoop = false;
-        private bool _is_carbonfibre_roofscoop = false;
+        private Reflection.Enum.eBoolean _is_offset_roofscoop = Reflection.Enum.eBoolean.False;
+        private Reflection.Enum.eBoolean _is_dual_roofscoop = Reflection.Enum.eBoolean.False;
+        private Reflection.Enum.eBoolean _is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.False;
 
         /// <summary>
         /// RoofScoop style value of the preset ride. Range: 0-17.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte RoofScoopStyle
         {
             get => this._roofscoop_style;
@@ -26,39 +27,57 @@
         /// <summary>
         /// True if roof scoop is offset, false otherwise.
         /// </summary>
-        public bool IsOffsetRoofScoop
+        [Reflection.Attributes.AccessModifiable()]
+        public Reflection.Enum.eBoolean IsOffsetRoofScoop
         {
             get => this._is_offset_roofscoop;
             set
             {
-                this._is_offset_roofscoop = value;
-                this.Modified = true;
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                {
+                    this._is_offset_roofscoop = value;
+                    this.Modified = true;
+                }
+                else
+                    throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
             }
         }
 
         /// <summary>
         /// True if roof scoop is dual, false otherwise.
         /// </summary>
-        public bool IsDualRoofScoop
+        [Reflection.Attributes.AccessModifiable()]
+        public Reflection.Enum.eBoolean IsDualRoofScoop
         {
             get => this._is_dual_roofscoop;
             set
             {
-                this._is_dual_roofscoop = value;
-                this.Modified = true;
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                {
+                    this._is_dual_roofscoop = value;
+                    this.Modified = true;
+                }
+                else
+                    throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
             }
         }
 
         /// <summary>
         /// True if roof scoop is carbonfibre, false otherwise.
         /// </summary>
-        public bool IsCarbonfibreRoofScoop
+        [Reflection.Attributes.AccessModifiable()]
+        public Reflection.Enum.eBoolean IsCarbonfibreRoofScoop
         {
             get => this._is_carbonfibre_roofscoop;
             set
             {
-                this._is_carbonfibre_roofscoop = value;
-                this.Modified = true;
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                {
+                    this._is_carbonfibre_roofscoop = value;
+                    this.Modified = true;
+                }
+                else
+                    throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
             }
         }
     }

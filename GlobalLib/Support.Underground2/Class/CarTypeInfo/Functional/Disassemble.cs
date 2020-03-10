@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo
     {
         /// <summary>
         /// Disassembles cartypeinfo array into separate properties.
@@ -449,7 +449,7 @@
             // Secondary Properties
             uint key = 0;
             this.Index = *(int*)(byteptr_t + 0x840);
-            this.UsageType = *(int*)(byteptr_t + 0x844);
+            this.UsageType = (Reflection.Enum.eUsageType)(*(int*)(byteptr_t + 0x844));
             key = *(uint*)(byteptr_t + 0x84C);
             this._defaultbasepaint = Core.Map.Lookup(key) ?? "0x" + key.ToString("X8");
             key = *(uint*)(byteptr_t + 0x850);
@@ -482,8 +482,10 @@
             this.AvailableSkinNumbers8 = *(byteptr_t + 0x887);
             this.AvailableSkinNumbers9 = *(byteptr_t + 0x888);
             this.AvailableSkinNumbers10 = *(byteptr_t + 0x889);
-            this.IsSUV = (*(short*)(byteptr_t + 0x88A) == 1) ? true : false;
-            this.IsSkinnable = (*(int*)(byteptr_t + 0x88C) == 1) ? true : false;
+            this._is_suv = (*(short*)(byteptr_t + 0x88A) == 1) ? true : false;
+            this.IsSkinnable = (*(int*)(byteptr_t + 0x88C) == 1)
+                ? Reflection.BaseArguments.TRUE
+                : Reflection.BaseArguments.FALSE;
         }
     }
 }

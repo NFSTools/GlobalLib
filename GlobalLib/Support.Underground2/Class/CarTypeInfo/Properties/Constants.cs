@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo
     {
         /* 0x026C */ private const float _float_1pt0 = 1;
         /* 0x0394 */ private const float _float_2pt5 = 2.5F;

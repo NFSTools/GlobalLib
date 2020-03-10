@@ -1,6 +1,11 @@
-﻿namespace GlobalLib.Reflection.Attributes
+﻿using System;
+
+
+
+namespace GlobalLib.Reflection.Attributes
 {
-	class AccessModifiableAttribute : System.Attribute
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, Inherited = false)]
+	class AccessModifiableAttribute : Attribute
 	{
 	}
 }
