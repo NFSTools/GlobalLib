@@ -473,12 +473,7 @@
     <Compile Include="Support.Shared\Class\SlotType.cs" />
     <Compile Include="Support.Shared\Class\STRBlock.cs" />
     <Compile Include="Support.Shared\Class\Texture.cs" />
-    <Compile Include="Support.Shared\Class\TPKBlock\Functional\Internal.cs" />
-    <Compile Include="Support.Shared\Class\TPKBlock\Functional\Reading.cs" />
-    <Compile Include="Support.Shared\Class\TPKBlock\Functional\Writing.cs" />
-    <Compile Include="Support.Shared\Class\TPKBlock\Properties\CollectionName.cs" />
-    <Compile Include="Support.Shared\Class\TPKBlock\Properties\PrimaryProperties.cs" />
-    <Compile Include="Support.Shared\Class\TPKBlock\Properties\SecondaryProperties.cs" />
+    <Compile Include="Support.Shared\Class\TPKBlock.cs" />
     <Compile Include="Support.Shared\Parts\CarParts\Part0.cs" />
     <Compile Include="Support.Shared\Parts\CarParts\Part1.cs" />
     <Compile Include="Support.Shared\Parts\CarParts\Part2.cs" />
