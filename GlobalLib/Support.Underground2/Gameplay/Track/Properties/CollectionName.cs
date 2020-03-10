@@ -1,14 +1,13 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class Track : Reflection.Interface.ICastable<Track>, Reflection.Interface.IGetValue,
-		Reflection.Interface.ISetValue
+	public partial class Track
 	{
 		private string _collection_name;
 
 		/// <summary>
 		/// Collection name of the variable.
 		/// </summary>
-		public string CollectionName
+		public override string CollectionName
 		{
 			get => this._collection_name;
 			set

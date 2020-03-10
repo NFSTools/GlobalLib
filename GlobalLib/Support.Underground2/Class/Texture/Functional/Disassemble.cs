@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
+    public partial class Texture
     {
         /// <summary>
         /// Disassembles texture header array into separate properties.

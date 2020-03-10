@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class STRBlock : Shared.Class.STRBlock
+	public partial class STRBlock
 	{
 		/// <summary>
 		/// Disassembles labels block array into separate properties.

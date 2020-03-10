@@ -7,7 +7,7 @@
 		/// <summary>
 		/// Collection name of the variable.
 		/// </summary>
-		public string CollectionName
+		public override string CollectionName
 		{
 			get => this._collection_name;
 			set

@@ -3,6 +3,19 @@
 	public class VirtualPart : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
 	{
         /// <summary>
+        /// Returns array of all accessible and modifiable properties and fields.
+        /// </summary>
+        /// <returns>Array of strings.</returns>
+        public string[] GetAccessibles()
+        {
+            var list = new System.Collections.Generic.List<string>();
+            foreach (var property in this.GetType().GetProperties())
+                list.Add(property.Name);
+            list.Sort();
+            return list.ToArray();
+        }
+
+        /// <summary>
         /// Returns the value of a field name provided.
         /// </summary>
         /// <param name="PropertyName">Field name to get the value from.</param>

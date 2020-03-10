@@ -1,13 +1,13 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-    public partial class Track : Reflection.Interface.ICastable<Track>, Reflection.Interface.IGetValue,
-        Reflection.Interface.ISetValue
+    public partial class Track
     {
         /* 0x0090 */ private string _sun_info_name_hash = Reflection.BaseArguments.NULL;
 
         /// <summary>
         /// Represents sun type during race.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public string SunInfoNameHash
         {
             get => this._sun_info_name_hash;

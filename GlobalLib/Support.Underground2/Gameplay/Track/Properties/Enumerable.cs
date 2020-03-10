@@ -1,7 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Enum;
+
+
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class Track : Reflection.Interface.ICastable<Track>, Reflection.Interface.IGetValue,
-		Reflection.Interface.ISetValue
+	public partial class Track
 	{
 		/* 0x007C */ private eLocationType _location_type = eLocationType.CITY_CORE;
 		/* 0x0080 */ private eDriftType _drift_type = eDriftType.VS_AI;
@@ -12,6 +15,7 @@
 		/// <summary>
 		/// Location type of the track.
 		/// </summary>
+		[Reflection.Attributes.AccessModifiable()]
 		public eLocationType LocationType
 		{
 			get => this._location_type;
@@ -26,6 +30,7 @@
 		/// <summary>
 		/// Drift type of the track.
 		/// </summary>
+		[Reflection.Attributes.AccessModifiable()]
 		public eDriftType DriftType
 		{
 			get => this._drift_type;
@@ -40,6 +45,7 @@
 		/// <summary>
 		/// Represents the race gameplay mode of the track.
 		/// </summary>
+		[Reflection.Attributes.AccessModifiable()]
 		public eRaceGameplayMode RaceGameplayMode
 		{
 			get => this._race_gameplay_mode;
@@ -54,6 +60,7 @@
 		/// <summary>
 		/// Difficulty of the track when it has a forward direction.
 		/// </summary>
+		[Reflection.Attributes.AccessModifiable()]
 		public eTrackDifficulty DifficultyForward
 		{
 			get => this._difficulty_forward;
@@ -68,6 +75,7 @@
 		/// <summary>
 		/// Difficulty of the track when it has a reverse direction.
 		/// </summary>
+		[Reflection.Attributes.AccessModifiable()]
 		public eTrackDifficulty DifficultyReverse
 		{
 			get => this._difficulty_reverse;

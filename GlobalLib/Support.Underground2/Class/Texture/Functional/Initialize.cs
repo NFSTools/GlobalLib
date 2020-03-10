@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
+    public partial class Texture
     {
         /// <summary>
         /// Initializes all properties of the new texture.
@@ -54,10 +54,10 @@
                 this._scroll_type = 0;
                 this._used_flag = 0;
                 this._apply_alpha_sort = 0;
-                this._alpha_usage_type = (byte)Reflection.Enum.TPK.AlphaUsageType.TEXUSAGE_MODULATED;
-                this._alpha_blend_type = (byte)Reflection.Enum.TPK.TextureAlphaBlendType.TEXBLEND_BLEND;
+                this._alpha_usage_type = (byte)Reflection.Enum.eAlphaUsageType.TEXUSAGE_MODULATED;
+                this._alpha_blend_type = (byte)Reflection.Enum.eTextureAlphaBlendType.TEXBLEND_BLEND;
                 this._flags = 0;
-                this.MipmapBiasType = (byte)Reflection.Enum.TPK.TextureMipmapBiasType.TEXBIAS_DEFAULT;
+                this.MipmapBiasType = (byte)Reflection.Enum.eTextureMipmapBiasType.TEXBIAS_DEFAULT;
                 this._scroll_timestep = 0;
                 this._scroll_speedS = 0;
                 this._scroll_speedT = 0;

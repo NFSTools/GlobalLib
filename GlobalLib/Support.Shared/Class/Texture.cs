@@ -24,7 +24,7 @@
         /// <summary>
         /// Binary memory hash of the collection name.
         /// </summary>
-        public virtual uint BinKey { get => Utils.Bin.Hash(this.CollectionName); }
+        public virtual uint BinKey { get; set; }
 
         /// <summary>
         /// Vault memory hash of the collection name.

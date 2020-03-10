@@ -73,18 +73,18 @@
                     throw new System.FieldAccessException("This field is either non-modifiable or non-accessible");
                 if (property.PropertyType == typeof(bool))
                 {
-                    if (value.ToString() == BaseArguments.TRUE || (int)value != 0)
+                    if (value.ToString() == BaseArguments.TRUE || Utils.Cast.StaticCast<int>(value) != 0)
                         property.SetValue(this, true);
-                    else if (value.ToString() == BaseArguments.FALSE || (int)value == 0)
+                    else if (value.ToString() == BaseArguments.FALSE || Utils.Cast.StaticCast<int>(value) == 0)
                         property.SetValue(this, false);
                     else
                         throw new System.InvalidCastException();
                 }
                 else
                 {
-                    property.SetValue(this, typeof(Utils.Cast).
-                        GetMethod("StaticCast").
-                        MakeGenericMethod(property.PropertyType)
+                    property.SetValue(this, typeof(Utils.Cast)
+                        .GetMethod("StaticCast")
+                        .MakeGenericMethod(property.PropertyType)
                         .Invoke(null, new object[1] { value }));
                 }
                 return true;
@@ -120,18 +120,18 @@
                 var type = property.GetType();
                 if (type == typeof(bool))
                 {
-                    if (value.ToString() == BaseArguments.TRUE || (int)value != 0)
+                    if (value.ToString() == BaseArguments.TRUE || Utils.Cast.StaticCast<int>(value) != 0)
                         property.SetValue(this, true);
-                    else if (value.ToString() == BaseArguments.FALSE || (int)value == 0)
+                    else if (value.ToString() == BaseArguments.FALSE || Utils.Cast.StaticCast<int>(value) == 0)
                         property.SetValue(this, false);
                     else
                         throw new System.InvalidCastException();
                 }
                 else
                 {
-                    property.SetValue(this, typeof(Utils.Cast).
-                        GetMethod("StaticCast").
-                        MakeGenericMethod(value.GetType())
+                    property.SetValue(this, typeof(Utils.Cast)
+                        .GetMethod("StaticCast")
+                        .MakeGenericMethod(value.GetType())
                         .Invoke(null, new object[1] { value }));
                 }
                 return true;

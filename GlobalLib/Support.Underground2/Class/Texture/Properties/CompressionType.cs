@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class Texture : Shared.Class.Texture, Reflection.Interface.ICastable<Texture>
+    public partial class Texture
     {
         private byte _compression = Reflection.ID.EAComp.DXT5_08;
         private byte _pal_comp = 0;

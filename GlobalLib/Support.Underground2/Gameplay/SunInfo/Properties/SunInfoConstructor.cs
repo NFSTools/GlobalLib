@@ -1,11 +1,11 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class SunInfo : Framework.VirtualClass, Reflection.Interface.ICastable<SunInfo>
+	public partial class SunInfo : Reflection.Abstract.ICollectable, Reflection.Interface.ICastable<SunInfo>
 	{
 		// Default constructor
 		public SunInfo() { }
 
-		// Default constructor: create new material
+		// Default constructor: create new suninfo
 		public SunInfo(string CName, Database.Underground2 db)
 		{
 			this.Database = db;
@@ -19,7 +19,7 @@
 			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 		}
 
-		// Default constructor: disassemble material
+		// Default constructor: disassemble suninfo
 		public unsafe SunInfo(byte* byteptr_t, string CName, Database.Underground2 db)
 		{
 			this.Database = db;

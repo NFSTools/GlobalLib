@@ -65,7 +65,6 @@
         /// <summary>
         /// Represents frontend name of the preset ride.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
         public virtual string Frontend
         {
             get => this._frontend;
@@ -80,8 +79,7 @@
         /// <summary>
         /// Represents pvehicle name of the preset ride.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        public string Pvehicle
+        public virtual string Pvehicle
         {
             get => this._pvehicle;
             set

@@ -5,7 +5,7 @@ using GlobalLib.Support.Shared.Parts.STRParts;
 
 namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class STRBlock : Shared.Class.STRBlock
+	public partial class STRBlock
 	{
 		private List<StringRecord> _stringinfo = new List<StringRecord>();
 

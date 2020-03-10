@@ -2,8 +2,8 @@
 {
 	public class Nitrous : Framework.VirtualPart, Reflection.Interface.ICopyable<Nitrous>
 	{
-		public float NOSCapacity { get; set; }
-		public float NOSTorqueBoost { get; set; }
+		/* 0x0690 */ public float NOSCapacity { get; set; }
+		/* 0x069C */ public float NOSTorqueBoost { get; set; }
 
 		public Nitrous() { }
 

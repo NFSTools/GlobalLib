@@ -1,18 +1,16 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide
 	{
         /// <summary>
         /// If spinning was set before and rim was changed, checks if spinner still exists.
         /// </summary>
         private void SetValidSpinning()
         {
-            if (!this._is_spinning_rim) return;
-            string rim = $"{this._rim_brand}_STYLE";
-            rim += (this._rim_style < 10) ? "0" + this._rim_style.ToString() : this._rim_style.ToString();
-            rim += $"_{this._rim_size.ToString()}_{this._rim_outer_max.ToString()}_SPI";
+            if (this._is_spinning_rim == Reflection.Enum.eBoolean.False) return;
+            string rim = $"{this._rim_brand}_STYLE{this._rim_style:00}_{this._rim_size}_{this._rim_outer_max}_SPI";
             if (Core.Map.RimBrands.Contains(rim)) return;
-            this._is_spinning_rim = false;
+            this._is_spinning_rim = Reflection.Enum.eBoolean.False;
         }
     }
 }

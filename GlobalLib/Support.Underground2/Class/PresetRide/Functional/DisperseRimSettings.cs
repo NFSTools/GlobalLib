@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide
 	{
         /// <summary>
         /// Disperses all settings from the rim string passed.
@@ -28,7 +28,7 @@
             this._rim_style = thisstyle;
             this._rim_size = thissize;
             this._rim_outer_max = thismax;
-            this._is_spinning_rim = potentialspi;
+            this._is_spinning_rim = potentialspi ? Reflection.Enum.eBoolean.True : Reflection.Enum.eBoolean.False;
         }
     }
 }

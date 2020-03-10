@@ -497,16 +497,12 @@
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\MemoryCast.cs" />
-    <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\GetValue.cs" />
-    <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\SetValue.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\SunInfoConstructor.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\SunInfoSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\PositionSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\CollectionName.cs" />
-    <Compile Include="Support.Underground2\Gameplay\Track\Functional\SetValue.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Functional\MemoryCast.cs" />
-    <Compile Include="Support.Underground2\Gameplay\Track\Functional\GetValue.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\InterfaceSettings.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\PaintType.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\RigidControls.cs" />
@@ -560,7 +556,7 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2815%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2816%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2817%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2818%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\PresetRideConstructor.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\MirrorSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\RoofScoopSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\SpoilerSettings.cs" />
@@ -591,12 +587,10 @@
     <Compile Include="Support.Underground2\Class\Texture\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\Texture\Functional\GetDDSArray.cs" />
     <Compile Include="Support.Underground2\Class\Texture\Functional\GetImage.cs" />
-    <Compile Include="Support.Underground2\Class\Texture\Functional\GetValue.cs" />
     <Compile Include="Support.Underground2\Class\Texture\Functional\Initialize.cs" />
     <Compile Include="Support.Underground2\Class\Texture\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\Texture\Functional\ReadData.cs" />
     <Compile Include="Support.Underground2\Class\Texture\Functional\Reload.cs" />
-    <Compile Include="Support.Underground2\Class\Texture\Functional\SetValue.cs" />
     <Compile Include="Support.Underground2\Class\Texture\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Class\Texture\Properties\AlphaSettings.cs" />
     <Compile Include="Support.Underground2\Class\Texture\Properties\BaseImageArea.cs" />
@@ -643,7 +637,7 @@
     <Compile Include="Reflection\Enum\eRaceGameplayMode.cs" />
     <Compile Include="Reflection\Enum\eTrackDifficulty.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\CollectionName.cs" />
-    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %282%29.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\TrackConstructor.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %283%29.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %284%29.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %285%29.cs" />
