@@ -466,14 +466,8 @@
     <Compile Include="Support.Shared\Class\FNGroup.cs" />
     <Compile Include="Support.Carbon\Class\Material\Properties\CollectionName.cs" />
     <Compile Include="Support.Shared\Class\Material.cs" />
-    <Compile Include="Support.Shared\Class\PresetRide\Functional\StringToKey.cs" />
-    <Compile Include="Support.Shared\Class\PresetRide\Functional\Assemble.cs" />
-    <Compile Include="Support.Shared\Class\PresetRide\Functional\Disassemble.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Properties\CollectionName.cs" />
-    <Compile Include="Support.Shared\Class\PresetRide\Properties\Model.cs" />
-    <Compile Include="Support.Shared\Class\PresetRide\Properties\Pvehicle.cs" />
-    <Compile Include="Support.Shared\Class\PresetRide\Properties\Frontend.cs" />
-    <Compile Include="Support.Shared\Class\PresetRide\Properties\PrimaryProperties.cs" />
+    <Compile Include="Support.Shared\Class\PresetRide.cs" />
     <Compile Include="Support.Shared\Class\PresetSkin\Functional\Assemble.cs" />
     <Compile Include="Support.Shared\Class\PresetSkin\Functional\Disassemble.cs" />
     <Compile Include="Support.Carbon\Class\PresetSkin\Properties\CollectionName.cs" />
