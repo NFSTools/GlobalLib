@@ -2,6 +2,6 @@
 {
     public interface IGetIndex
     {
-        int GetClassIndex(string CName, Database.ClassType ClassType);
+        int GetClassIndex(string CName, Database.eClassType ClassType);
     }
 }

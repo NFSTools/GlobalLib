@@ -14,7 +14,7 @@ namespace GlobalLib.Database
 			try
 			{
 				var tokens = PropertyPath.Split(new char[] { ' ', '\\', '/' }, StringSplitOptions.RemoveEmptyEntries);
-				var type = (ClassType)Enum.Parse(typeof(ClassType), tokens[0]);
+				var type = (eClassType)Enum.Parse(typeof(eClassType), tokens[0]);
 				foreach (var pro_1 in this.GetType().GetProperties())
 				{
 					

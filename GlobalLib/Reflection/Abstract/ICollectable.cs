@@ -30,7 +30,7 @@
         /// <returns>True if property is enum; false otherwise.</returns>
         public virtual bool OfEnumerableType(string property)
         {
-            return this.GetType().GetProperty(property).GetType().IsEnum;
+            return this.GetType().GetProperty(property).PropertyType.IsEnum;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@
         /// <returns>Array of strings.</returns>
         public virtual string[] GetPropertyEnumerableTypes(string property)
         {
-            return this.GetType().GetProperty(property).GetType().GetEnumNames();
+            return this.GetType().GetProperty(property).PropertyType.GetEnumNames();
         }
 
         /// <summary>

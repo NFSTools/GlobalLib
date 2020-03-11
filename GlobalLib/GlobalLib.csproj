@@ -63,7 +63,7 @@
     <Compile Include="Database\Carbon\TryCloneClass.cs" />
     <Compile Include="Database\Carbon\TryRemoveClass.cs" />
     <Compile Include="Database\Collection\ClassCollection.cs" />
-    <Compile Include="Database\Collection\KeyType.cs" />
+    <Compile Include="Database\Collection\eKeyType.cs" />
     <Compile Include="Database\MostWanted\ToString.cs" />
     <Compile Include="Database\MostWanted\TryAddClass.cs" />
     <Compile Include="Database\MostWanted\TryCloneClass.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="Database\Carbon\GetClassIndex.cs" />
     <Compile Include="Database\Carbon\Export.cs" />
     <Compile Include="Database\Carbon\Import.cs" />
-    <Compile Include="Database\ClassType.cs" />
+    <Compile Include="Database\eClassType.cs" />
     <Compile Include="Database\MostWanted\AddCollision.cs" />
     <Compile Include="Database\MostWanted\Export.cs" />
     <Compile Include="Database\MostWanted\ExportTextures.cs" />

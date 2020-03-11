@@ -16,7 +16,7 @@
         /// <param name="CName">Collection Name of the class to be exported.</param>
         /// <param name="type">Type of the class to be exported.</param>
         /// <param name="filepath">Filepath path where data should be exported.</param>
-        public void Export(string CName, ClassType type, string filepath)
+        public void Export(string CName, eClassType type, string filepath)
         {
             try
             {
@@ -27,7 +27,7 @@
                 {
                     switch (type)
                     {
-                        case ClassType.Material:
+                        case eClassType.Material:
                             index = this.GetClassIndex(CName, type);
                             if (index == -1)
                                 throw new Reflection.Exception.CollectionExistenceException();
@@ -35,7 +35,7 @@
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.CarTypeInfo:
+                        case eClassType.CarTypeInfo:
                             index = this.GetClassIndex(CName, type);
                             if (index == -1)
                                 throw new Reflection.Exception.CollectionExistenceException();
@@ -43,7 +43,7 @@
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.PresetRide:
+                        case eClassType.PresetRide:
                             index = this.GetClassIndex(CName, type);
                             if (index == -1)
                                 throw new Reflection.Exception.CollectionExistenceException();
@@ -51,7 +51,7 @@
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.PresetSkin:
+                        case eClassType.PresetSkin:
                             index = this.GetClassIndex(CName, type);
                             if (index == -1)
                                 throw new Reflection.Exception.CollectionExistenceException();
@@ -79,7 +79,7 @@
         /// <param name="index">Index of the class to be exported in the database.</param>
         /// <param name="type">Type of the class to be exported.</param>
         /// <param name="filepath">Filepath path where data should be exported.</param>
-        public void Export(int index, ClassType type, string filepath)
+        public void Export(int index, eClassType type, string filepath)
         {
             try
             {
@@ -90,7 +90,7 @@
                 {
                     switch (type)
                     {
-                        case ClassType.Material:
+                        case eClassType.Material:
                             if (index < 0 || index >= this.Materials.Count)
                                 throw new System.ArgumentOutOfRangeException();
                             CName = this.Materials[index].CollectionName;
@@ -98,7 +98,7 @@
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.CarTypeInfo:
+                        case eClassType.CarTypeInfo:
                             if (index < 0 || index >= this.CarTypeInfos.Count)
                                 throw new System.ArgumentOutOfRangeException();
                             CName = this.CarTypeInfos[index].CollectionName;
@@ -106,7 +106,7 @@
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.PresetRide:
+                        case eClassType.PresetRide:
                             if (index < 0 || index >= this.PresetRides.Count)
                                 throw new System.ArgumentOutOfRangeException();
                             CName = this.PresetRides[index].CollectionName;
@@ -114,7 +114,7 @@
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.PresetSkin:
+                        case eClassType.PresetSkin:
                             if (index < 0 || index >= this.PresetSkins.Count)
                                 throw new System.ArgumentOutOfRangeException();
                             CName = this.PresetSkins[index].CollectionName;

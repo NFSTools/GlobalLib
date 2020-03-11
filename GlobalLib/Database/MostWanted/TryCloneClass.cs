@@ -9,40 +9,51 @@
         /// <param name="copyfrom">Collection Name of the class to clone.</param>
         /// <param name="type">Type of the class to clone. Range: Material, CarTypeInfo, Preset Ride.</param>
         /// <returns>True if class cloning was successful, false otherwise.</returns>
-        public bool TryCloneClass(string newname, string copyfrom, ClassType type)
+        public bool TryCloneClass(string newname, string copyfrom, eClassType type)
         {
             if (string.IsNullOrWhiteSpace(newname)) return false;
 
-            if (this.GetClassIndex(newname, type) != -1)
-                return false;
-
-            int index = this.GetClassIndex(copyfrom, type);
-            if (index == -1)
-                return false;
-
             switch (type)
             {
-                case ClassType.Material:
+                case eClassType.Material:
+                    var material = this.Materials.FindClass(copyfrom);
+                    if (this.Materials.GetClassIndex(newname) != -1) return false;
+                    if (material == null) return false;
                     if (newname.Length > 0x1B) return false;
-                    var material = this.Materials[index].MemoryCast(newname);
-                    this.Materials.Add(material);
+                    this.Materials.Classes.Add(material.MemoryCast(newname));
                     return true;
 
-                case ClassType.CarTypeInfo:
+                case eClassType.CarTypeInfo:
+                    var car = this.CarTypeInfos.FindClass(copyfrom);
+                    if (this.CarTypeInfos.GetClassIndex(newname) != -1) return false;
+                    if (car == null) return false;
                     if (newname.Length > 0xD) return false;
-                    var car = this.CarTypeInfos[index].MemoryCast(newname);
-                    this.CarTypeInfos.Add(car);
+                    this.CarTypeInfos.Classes.Add(car.MemoryCast(newname));
                     return true;
 
-                case ClassType.PresetRide:
+                case eClassType.PresetRide:
+                    var ride = this.PresetRides.FindClass(copyfrom);
+                    if (this.PresetRides.GetClassIndex(newname) != -1) return false;
+                    if (ride == null) return false;
                     if (newname.Length > 0x1E) return false;
-                    var ride = this.PresetRides[index].MemoryCast(newname);
-                    this.PresetRides.Add(ride);
+                    this.PresetRides.Classes.Add(ride.MemoryCast(newname));
                     return true;
 
                 default:
                     return false;
             }
+        }
+
+        /// <summary>
+        /// Attempts to clone class specfified in the database.
+        /// </summary>
+        /// <param name="newname">Collection Name of the new class.</param>
+        /// <param name="copyfrom">Collection Name of the class to clone.</param>
+        /// <param name="root">Root of the class to clone. Range: Materials, CarTypeInfos, PresetRides.</param>
+        /// <returns>True if class cloning was successful, false otherwise.</returns>
+        public bool TryCloneClass(string newname, string copyfrom, string root)
+        {
+            return System.Enum.TryParse(root, out eClassType type) && this.TryCloneClass(newname, copyfrom, type);
         }
     }
 }

@@ -16,38 +16,37 @@
         /// <param name="CName">Collection Name of the class to be exported.</param>
         /// <param name="type">Type of the class to be exported.</param>
         /// <param name="filepath">Filepath path where data should be exported.</param>
-        public void Export(string CName, ClassType type, string filepath)
+        public void Export(string CName, eClassType type, string filepath)
         {
             try
             {
-                int index = -1;
                 if (!System.IO.Path.HasExtension(filepath))
                     filepath += ".BIN";
                 using (var bw = new System.IO.BinaryWriter(System.IO.File.Open(filepath, System.IO.FileMode.Create)))
                 {
                     switch (type)
                     {
-                        case ClassType.Material:
-                            index = this.GetClassIndex(CName, type);
-                            if (index == -1)
+                        case eClassType.Material:
+                            var material = this.Materials.FindClass(CName);
+                            if (material == null)
                                 throw new Reflection.Exception.CollectionExistenceException();
-                            bw.Write(this.Materials[index].Assemble());
+                            bw.Write(material.Assemble());
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.CarTypeInfo:
-                            index = this.GetClassIndex(CName, type);
-                            if (index == -1)
+                        case eClassType.CarTypeInfo:
+                            var car = this.CarTypeInfos.FindClass(CName);
+                            if (car == null)
                                 throw new Reflection.Exception.CollectionExistenceException();
-                            bw.Write(this.CarTypeInfos[index].Assemble(0xFF));
+                            bw.Write(car.Assemble(0xFF));
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.PresetRide:
-                            index = this.GetClassIndex(CName, type);
-                            if (index == -1)
+                        case eClassType.PresetRide:
+                            var ride = this.PresetRides.FindClass(CName);
+                            if (ride == null)
                                 throw new Reflection.Exception.CollectionExistenceException();
-                            bw.Write(this.PresetRides[index].Assemble());
+                            bw.Write(ride.Assemble());
                             this.ShowSuccessMessage(CName);
                             return;
 
@@ -71,7 +70,7 @@
         /// <param name="index">Index of the class to be exported in the database.</param>
         /// <param name="type">Type of the class to be exported.</param>
         /// <param name="filepath">Filepath path where data should be exported.</param>
-        public void Export(int index, ClassType type, string filepath)
+        public void Export(int index, eClassType type, string filepath)
         {
             try
             {
@@ -82,27 +81,27 @@
                 {
                     switch (type)
                     {
-                        case ClassType.Material:
-                            if (index < 0 || index >= this.Materials.Count)
+                        case eClassType.Material:
+                            if (index < 0 || index >= this.Materials.Length)
                                 throw new System.ArgumentOutOfRangeException();
-                            CName = this.Materials[index].CollectionName;
-                            bw.Write(this.Materials[index].Assemble());
+                            CName = this.Materials.Classes[index].CollectionName;
+                            bw.Write(this.Materials.Classes[index].Assemble());
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.CarTypeInfo:
-                            if (index < 0 || index >= this.CarTypeInfos.Count)
+                        case eClassType.CarTypeInfo:
+                            if (index < 0 || index >= this.CarTypeInfos.Length)
                                 throw new System.ArgumentOutOfRangeException();
-                            CName = this.CarTypeInfos[index].CollectionName;
-                            bw.Write(this.CarTypeInfos[index].Assemble(0xFF));
+                            CName = this.CarTypeInfos.Classes[index].CollectionName;
+                            bw.Write(this.CarTypeInfos.Classes[index].Assemble(0xFF));
                             this.ShowSuccessMessage(CName);
                             return;
 
-                        case ClassType.PresetRide:
-                            if (index < 0 || index >= this.PresetRides.Count)
+                        case eClassType.PresetRide:
+                            if (index < 0 || index >= this.PresetRides.Length)
                                 throw new System.ArgumentOutOfRangeException();
-                            CName = this.PresetRides[index].CollectionName;
-                            bw.Write(this.PresetRides[index].Assemble());
+                            CName = this.PresetRides.Classes[index].CollectionName;
+                            bw.Write(this.PresetRides.Classes[index].Assemble());
                             this.ShowSuccessMessage(CName);
                             return;
 
@@ -110,6 +109,28 @@
                             throw new System.Exception("Could not export class specified.");
                     }
                 }
+            }
+            catch (System.Exception e)
+            {
+                if (Core.Process.MessageShow)
+                    System.Windows.Forms.MessageBox.Show(e.Message, "Failure");
+                else
+                    System.Console.WriteLine($"{e.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Exports data of the class specified in a binary file.
+        /// </summary>
+        /// <param name="CName">Collection Name of the class to be exported.</param>
+        /// <param name="root">Root of the class to be exported.</param>
+        /// <param name="filepath">Filepath path where data should be exported.</param>
+        public void Export(string CName, string root, string filepath)
+        {
+            try
+            {
+                var type = (eClassType)System.Enum.Parse(typeof(eClassType), root);
+                this.Export(CName, type, filepath);
             }
             catch (System.Exception e)
             {

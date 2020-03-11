@@ -14,12 +14,12 @@
             int initial_size = (int)bw.BaseStream.Position;
 
             // Copy all collisions by the internal names
-            foreach (var info in db.CarTypeInfos)
+            foreach (var info in db.CarTypeInfos.Classes)
             {
                 if (info.CollisionExternalName == Reflection.BaseArguments.NULL) continue;
                 uint extkey = Utils.Vlt.Hash(info.CollisionExternalName);
                 uint intkey = Utils.Vlt.Hash(info.CollisionInternalName);
-                if (db.SlotTypes.Collisions.TryGetValue(intkey, out Parts.CarParts.Collision collision))
+                if (db.SlotTypes.Collisions.TryGetValue(intkey, out var collision))
                     bw.Write(collision.GetData(extkey));
             }
 

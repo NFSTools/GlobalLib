@@ -9,6 +9,7 @@ namespace GlobalLib.Database.Collection
 	public class ClassCollection<TypeID> where TypeID : Reflection.Abstract.ICollectable 
 	{
 		public List<TypeID> Classes { get; set; }
+		public int Length { get => this.Classes.Count; }
 
 		public ClassCollection()
 		{
@@ -24,21 +25,21 @@ namespace GlobalLib.Database.Collection
 			}
 			return -1;
 		}
-		public int GetClassIndex(uint key, KeyType type)
+		public int GetClassIndex(uint key, eKeyType type)
 		{
 			for (int a1 = 0; a1 < this.Classes.Count; ++a1)
 			{
 				switch (type)
 				{
-					case KeyType.BINKEY:
+					case eKeyType.BINKEY:
 						if (Utils.Bin.Hash(this.Classes[a1].CollectionName) == key)
 							return a1;
 						continue;
-					case KeyType.VLTKEY:
+					case eKeyType.VLTKEY:
 						if (Utils.Vlt.Hash(this.Classes[a1].CollectionName) == key)
 							return a1;
 						continue;
-					case KeyType.CUSTOM:
+					case eKeyType.CUSTOM:
 						throw new NotImplementedException("No custom hashing method is available.");
 					default:
 						return -1;
@@ -51,15 +52,15 @@ namespace GlobalLib.Database.Collection
 		{
 			return this.Classes.Find(c => c.CollectionName == CName);
 		}
-		public TypeID FindClass(uint key, KeyType type)
+		public TypeID FindClass(uint key, eKeyType type)
 		{
 			switch (type)
 			{
-				case KeyType.BINKEY:
+				case eKeyType.BINKEY:
 					return this.Classes.Find(c => Utils.Bin.Hash(c.CollectionName) == key);
-				case KeyType.VLTKEY:
+				case eKeyType.VLTKEY:
 					return this.Classes.Find(c => Utils.Vlt.Hash(c.CollectionName) == key);
-				case KeyType.CUSTOM:
+				case eKeyType.CUSTOM:
 					throw new NotImplementedException();
 				default:
 					return null;

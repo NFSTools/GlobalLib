@@ -16,7 +16,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				if (!Framework.Validate.TrackCollectionName(value))
 					throw new System.Exception("Unable to parse TrackID from the collection name provided.");
-				if (this.Database.GetClassIndex(value, GlobalLib.Database.ClassType.Track) != -1)
+				if (this.Database.GetClassIndex(value, GlobalLib.Database.eClassType.Track) != -1)
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 				Utils.FormatX.GetUInt16(value, "Track_{X}", out this._track_id);

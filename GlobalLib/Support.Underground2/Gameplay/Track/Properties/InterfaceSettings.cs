@@ -17,7 +17,7 @@
                     this._sun_info_name_hash = value;
                 else
                 {
-                    if (this.Database.GetClassIndex(value, GlobalLib.Database.ClassType.SunInfoType) == -1)
+                    if (this.Database.GetClassIndex(value, GlobalLib.Database.eClassType.SunInfoType) == -1)
                         throw new Reflection.Exception.MappingFailException();
                     this._sun_info_name_hash = value;
                 }

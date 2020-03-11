@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="type">Class type to be imported. Range: Material, CarTypeInfo, PresetRide, PresetSkin.</param>
         /// <param name="filepath">File with data to be imported.</param>
-        public unsafe bool Import(ClassType type, string filepath)
+        public unsafe bool Import(eClassType type, string filepath)
         {
             if (!System.IO.File.Exists(filepath))
             {
@@ -38,40 +38,40 @@
             {
                 switch (type)
                 {
-                    case ClassType.Material:
+                    case eClassType.Material:
                         if (data.Length != 0xB0)
                             goto LABEL_LENGTHEXCEPT;
                         if (*(uint*)dataptr_t != Reflection.ID.Global.Materials)
                             goto LABEL_IDEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t + 0x1C, 0x1C);
-                        if (this.GetClassIndex(CName, type) != -1)
+                        if (this.Materials.GetClassIndex(CName) != -1)
                             goto LABEL_EXISTEXCEPT;
                         var material = new Support.MostWanted.Class.Material(dataptr_t, CName, this);
-                        this.Materials.Add(material);
+                        this.Materials.Classes.Add(material);
                         return true;
 
-                    case ClassType.CarTypeInfo:
+                    case eClassType.CarTypeInfo:
                         if (data.Length != 0xD0)
                             goto LABEL_LENGTHEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t, 0x10);
-                        if (this.GetClassIndex(CName, type) != -1)
+                        if (this.CarTypeInfos.GetClassIndex(CName) != -1)
                             goto LABEL_EXISTEXCEPT;
                         var cartypeinfo = new Support.MostWanted.Class.CarTypeInfo(dataptr_t, CName, this);
                         cartypeinfo.Modified = true;
                         cartypeinfo.Deletable = true;
                         cartypeinfo.CollisionExternalName = CName;
                         cartypeinfo.CollisionInternalName = "CARRERAGT";
-                        this.CarTypeInfos.Add(cartypeinfo);
+                        this.CarTypeInfos.Classes.Add(cartypeinfo);
                         return true;
 
-                    case ClassType.PresetRide:
+                    case eClassType.PresetRide:
                         if (data.Length != 0x290)
                             goto LABEL_LENGTHEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t + 0x28, 0x20);
-                        if (this.GetClassIndex(CName, type) != -1)
+                        if (this.PresetRides.GetClassIndex(CName) != -1)
                             goto LABEL_EXISTEXCEPT;
                         var presetride = new Support.MostWanted.Class.PresetRide(dataptr_t, CName, this);
-                        this.PresetRides.Add(presetride);
+                        this.PresetRides.Classes.Add(presetride);
                         return true;
 
                     default:

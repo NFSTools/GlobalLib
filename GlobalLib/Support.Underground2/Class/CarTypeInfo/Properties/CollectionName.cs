@@ -17,7 +17,7 @@
                     throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (value.Length > 13)
                     throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 13 characters.");
-                if (this.Database.GetClassIndex(value, GlobalLib.Database.ClassType.CarTypeInfo) != -1)
+                if (this.Database.GetClassIndex(value, GlobalLib.Database.eClassType.CarTypeInfo) != -1)
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;
             }

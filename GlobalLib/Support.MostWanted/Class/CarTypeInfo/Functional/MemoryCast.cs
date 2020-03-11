@@ -16,7 +16,7 @@
 
             foreach (var property in this.GetType().GetProperties(flags))
             {
-                if (property.Name == "CollectionName" || property.Name == "BinKey") continue;
+                if (property.Name == "CollectionName" || property.Name == "CollisionExternalName") continue;
                 if (Utils.ReflectX.IsAssignableToGeneric(property.PropertyType, typeof(Reflection.Interface.ICopyable<>)))
                     result.GetType().GetProperty(property.Name, flags)
                         .SetValue(result, property.PropertyType

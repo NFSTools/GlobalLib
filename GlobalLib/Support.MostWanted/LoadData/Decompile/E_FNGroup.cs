@@ -23,7 +23,7 @@
             // Check whether this FEng class already exists in the database
             if (Class.Destroy)
                 return;
-            if (db.GetClassIndex(Class.CollectionName, Database.ClassType.FNGroup) != -1)
+            if (db.GetClassIndex(Class.CollectionName, Database.eClassType.FNGroup) != -1)
                 return;
             db.FNGroups.Add(Class);
         }

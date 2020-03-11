@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="type">Class type to be imported. Range: Material, CarTypeInfo, PresetRide, PresetSkin.</param>
         /// <param name="filepath">File with data to be imported.</param>
-        public unsafe bool Import(ClassType type, string filepath)
+        public unsafe bool Import(eClassType type, string filepath)
         {
             if (!System.IO.File.Exists(filepath))
             {
@@ -38,7 +38,7 @@
             {
                 switch (type)
                 {
-                    case ClassType.Material:
+                    case eClassType.Material:
                         if (data.Length != 0xF4)
                             goto LABEL_LENGTHEXCEPT;
                         if (*(uint*)dataptr_t != Reflection.ID.Global.Materials)
@@ -50,7 +50,7 @@
                         this.Materials.Add(material);
                         return true;
 
-                    case ClassType.CarTypeInfo:
+                    case eClassType.CarTypeInfo:
                         if (data.Length != 0xD0)
                             goto LABEL_LENGTHEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t, 0x10);
@@ -64,7 +64,7 @@
                         this.CarTypeInfos.Add(cartypeinfo);
                         return true;
 
-                    case ClassType.PresetRide:
+                    case eClassType.PresetRide:
                         if (data.Length != 0x600)
                             goto LABEL_LENGTHEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t + 0x28, 0x20);
@@ -74,7 +74,7 @@
                         this.PresetRides.Add(presetride);
                         return true;
 
-                    case ClassType.PresetSkin:
+                    case eClassType.PresetSkin:
                         if (data.Length != 0x68)
                             goto LABEL_LENGTHEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t + 0x8, 0x1C);

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Database
 {
-    public enum ClassType : int
+    public enum eClassType : int
     {
         Material = 1,
         CarTypeInfo = 2,

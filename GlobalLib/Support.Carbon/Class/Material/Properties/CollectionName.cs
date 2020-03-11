@@ -17,7 +17,7 @@
                     throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (value.Length > 0x1B)
                     throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 27 characters.");
-                if (this.Database.GetClassIndex(value, GlobalLib.Database.ClassType.Material) != -1)
+                if (this.Database.GetClassIndex(value, GlobalLib.Database.eClassType.Material) != -1)
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;
             }

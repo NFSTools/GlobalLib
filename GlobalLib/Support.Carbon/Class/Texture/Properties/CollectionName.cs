@@ -17,7 +17,7 @@
                     throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (value.Length > 0x22)
                     throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 34 characters.");
-                int index = this.Database.GetClassIndex(this._parent_TPK, GlobalLib.Database.ClassType.TPKBlock);
+                int index = this.Database.GetClassIndex(this._parent_TPK, GlobalLib.Database.eClassType.TPKBlock);
                 if (this.Database.TPKBlocks[index].GetTextureIndex(value) != -1)
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;

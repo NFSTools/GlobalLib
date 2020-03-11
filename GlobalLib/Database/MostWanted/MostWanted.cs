@@ -11,9 +11,9 @@ namespace GlobalLib.Database
         public byte[] GlobalBLZC;
         public byte[] LngGlobal;
         public byte[] LngLabels;
-        public List<Material> Materials { get; set; }
-        public List<CarTypeInfo> CarTypeInfos { get; set; }
-        public List<PresetRide> PresetRides { get; set; }
+        public Collection.ClassCollection<Material> Materials { get; set; }
+        public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
+        public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -21,10 +21,10 @@ namespace GlobalLib.Database
 
         public MostWanted()
         {
-            this.CarTypeInfos = new List<CarTypeInfo>();
+            this.CarTypeInfos = new Collection.ClassCollection<CarTypeInfo>();
             this.FNGroups = new List<FNGroup>();
-            this.Materials = new List<Material>();
-            this.PresetRides = new List<PresetRide>();
+            this.Materials = new Collection.ClassCollection<Material>();
+            this.PresetRides = new Collection.ClassCollection<PresetRide>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();

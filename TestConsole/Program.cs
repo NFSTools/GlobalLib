@@ -14,20 +14,24 @@ namespace TestConsole
 			var watch = new System.Diagnostics.Stopwatch();
 
 			watch.Start();
-			GlobalLib.Core.Process.Set = (int)GlobalLib.Core.GameINT.Underground2;
-			GlobalLib.Core.Process.GlobalDir = @"C:\Need For Speed Underground 2\Need For Speed Underground 2";
-			var db = new GlobalLib.Database.Underground2();
+			GlobalLib.Core.Process.Set = (int)GlobalLib.Core.GameINT.MostWanted;
+			GlobalLib.Core.Process.GlobalDir = @"E:\Need for Speed Most Wanted";
+			var db = new GlobalLib.Database.MostWanted();
 			GlobalLib.Core.Process.LoadData(db);
 			watch.Stop();
 
 			var elapsed = watch.ElapsedMilliseconds;
 
-			var cla = db.CarTypeInfos.FindClass("SUPRA");
+			var tex = db.TPKBlocks[1].Textures[16].MemoryCast("TEXTURE");
+			var car = db.CarTypeInfos.Classes[15].MemoryCast("M3GTR");
+			var mat = db.Materials.Classes[7].MemoryCast("USELESS");
 
-			var str = cla.GetAccessibles();
-			var oof = cla.GetValue(str[12]);
-			cla.SetValue(str[12], 3);
-			cla.SetValue("IsSUV", "True");
+			var texstr = tex.GetAccessibles();
+			var carstr = car.GetAccessibles();
+			var matstr = mat.GetAccessibles();
+			
+			bool tr = car.OfEnumerableType("Spoiler");
+			var opt = car.GetPropertyEnumerableTypes("Spoiler");
 
 			int aa = 0;
 		}

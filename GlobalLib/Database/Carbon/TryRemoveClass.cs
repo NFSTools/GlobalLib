@@ -8,7 +8,7 @@
         /// <param name="CName">Collection Name of the class to be deleted.</param>
         /// <param name="type">Type of the class to delete. Range: Material, CarTypeInfo, Preset Ride, Preset Skin.</param>
         /// <returns>True if class removing was successful, false otherwise.</returns>
-        public bool TryRemoveClass(string CName, ClassType type)
+        public bool TryRemoveClass(string CName, eClassType type)
         {
             int index = this.GetClassIndex(CName, type);
             if (index == -1)
@@ -16,21 +16,21 @@
 
             switch (type)
             {
-                case ClassType.Material:
+                case eClassType.Material:
                     this.Materials.RemoveAt(index);
                     return true;
 
-                case ClassType.CarTypeInfo:
+                case eClassType.CarTypeInfo:
                     if (!this.CarTypeInfos[index].Deletable)
                         return false;
                     this.CarTypeInfos.RemoveAt(index);
                     return true;
 
-                case ClassType.PresetRide:
+                case eClassType.PresetRide:
                     this.PresetRides.RemoveAt(index);
                     return true;
 
-                case ClassType.PresetSkin:
+                case eClassType.PresetSkin:
                     this.PresetSkins.RemoveAt(index);
                     return true;
 

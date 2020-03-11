@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Database.Collection
 {
-	public enum KeyType : int
+	public enum eKeyType : int
 	{
 		DEFAULT = 0,
 		BINKEY = 1,

@@ -8,7 +8,7 @@
         /// <param name="CName">Collection Name of the new class.</param>
         /// <param name="type">Type of the new class. Range: Material, CarTypeInfo, Preset Ride, Preset Skin.</param>
         /// <returns>True if class adding was successful, false otherwise.</returns>
-        public bool TryAddClass(string CName, ClassType type)
+        public bool TryAddClass(string CName, eClassType type)
         {
             if (string.IsNullOrWhiteSpace(CName)) return false;
 
@@ -17,25 +17,25 @@
 
             switch (type)
             {
-                case ClassType.Material:
+                case eClassType.Material:
                     if (CName.Length > 0x1B) return false;
                     var material = new Support.Carbon.Class.Material(CName, this);
                     this.Materials.Add(material);
                     return true;
 
-                case ClassType.CarTypeInfo:
+                case eClassType.CarTypeInfo:
                     if (CName.Length > 0xD) return false;
                     var car = new Support.Carbon.Class.CarTypeInfo(CName, this);
                     this.CarTypeInfos.Add(car);
                     return true;
 
-                case ClassType.PresetRide:
+                case eClassType.PresetRide:
                     if (CName.Length > 0x1E) return false;
                     var ride = new Support.Carbon.Class.PresetRide(CName, this);
                     this.PresetRides.Add(ride);
                     return true;
 
-                case ClassType.PresetSkin:
+                case eClassType.PresetSkin:
                     if (CName.Length > 0x1E) return false;
                     var skin = new Support.Carbon.Class.PresetSkin(CName, this);
                     this.PresetSkins.Add(skin);
