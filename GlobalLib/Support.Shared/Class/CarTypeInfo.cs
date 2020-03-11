@@ -9,7 +9,7 @@
         private int _index = -1;
         private Reflection.Enum.eUsageType _usagetype = Reflection.Enum.eUsageType.Racer;
         private Reflection.Enum.eMemoryType _memorytype = Reflection.Enum.eMemoryType.Racing;
-        private bool _is_skinnable = false;
+        private Reflection.Enum.eBoolean _is_skinnable = Reflection.Enum.eBoolean.True;
         private string _defaultbasepaint = Reflection.BaseArguments.BPAINT;
 
 		#endregion
@@ -85,7 +85,6 @@
         /// <summary>
         /// Represents index of the cartypeinfo in Global data.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
         public int Index
         {
             get => this._index;
@@ -121,8 +120,7 @@
         /// <summary>
         /// Represents memory type of the cartypeinfo.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        public Reflection.Enum.eMemoryType MemoryType
+        public virtual Reflection.Enum.eMemoryType MemoryType
         {
             get => this._memorytype;
             set
@@ -138,17 +136,15 @@
         /// Represents boolean as an int of whether cartypeinfo is skinnable.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
-        public string IsSkinnable
+        public Reflection.Enum.eBoolean IsSkinnable
         {
-            get => this._is_skinnable ? Reflection.BaseArguments.TRUE : Reflection.BaseArguments.FALSE;
+            get => this._is_skinnable;
             set
             {
-                if (value == Reflection.BaseArguments.TRUE)
-                    this._is_skinnable = true;
-                else if (value == Reflection.BaseArguments.FALSE)
-                    this._is_skinnable = false;
+                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                    this._is_skinnable = value;
                 else
-                    throw new System.InvalidCastException("Value passed is not of boolean type.");
+                    throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
             }
         }
 
@@ -280,31 +276,31 @@
         public float MinTimeBetweenUses5 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
-        public byte AvailableSkinNumbers1 { get; set; } = 0;
+        public byte AvailableSkinNumbers01 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
-        public byte AvailableSkinNumbers2 { get; set; } = 0;
+        public byte AvailableSkinNumbers02 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
-        public byte AvailableSkinNumbers3 { get; set; } = 0;
+        public byte AvailableSkinNumbers03 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
-        public byte AvailableSkinNumbers4 { get; set; } = 0;
+        public byte AvailableSkinNumbers04 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
-        public byte AvailableSkinNumbers5 { get; set; } = 0;
+        public byte AvailableSkinNumbers05 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
-        public byte AvailableSkinNumbers6 { get; set; } = 0;
+        public byte AvailableSkinNumbers06 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
-        public byte AvailableSkinNumbers7 { get; set; } = 0;
+        public byte AvailableSkinNumbers07 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
-        public byte AvailableSkinNumbers8 { get; set; } = 0;
+        public byte AvailableSkinNumbers08 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
-        public byte AvailableSkinNumbers9 { get; set; } = 0;
+        public byte AvailableSkinNumbers09 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
         public byte AvailableSkinNumbers10 { get; set; } = 0;

@@ -556,18 +556,18 @@
                 *(float*)(byteptr_t + 0x870) = this.MinTimeBetweenUses5;
                 *(byteptr_t + 0x874) = this.DefaultSkinNumber;
                 *(int*)(byteptr_t + 0x878) = this.Padding2;
-                *(byteptr_t + 0x880) = this.AvailableSkinNumbers1;
-                *(byteptr_t + 0x881) = this.AvailableSkinNumbers2;
-                *(byteptr_t + 0x882) = this.AvailableSkinNumbers3;
-                *(byteptr_t + 0x883) = this.AvailableSkinNumbers4;
-                *(byteptr_t + 0x884) = this.AvailableSkinNumbers5;
-                *(byteptr_t + 0x885) = this.AvailableSkinNumbers6;
-                *(byteptr_t + 0x886) = this.AvailableSkinNumbers7;
-                *(byteptr_t + 0x887) = this.AvailableSkinNumbers8;
-                *(byteptr_t + 0x888) = this.AvailableSkinNumbers9;
+                *(byteptr_t + 0x880) = this.AvailableSkinNumbers01;
+                *(byteptr_t + 0x881) = this.AvailableSkinNumbers02;
+                *(byteptr_t + 0x882) = this.AvailableSkinNumbers03;
+                *(byteptr_t + 0x883) = this.AvailableSkinNumbers04;
+                *(byteptr_t + 0x884) = this.AvailableSkinNumbers05;
+                *(byteptr_t + 0x885) = this.AvailableSkinNumbers06;
+                *(byteptr_t + 0x886) = this.AvailableSkinNumbers07;
+                *(byteptr_t + 0x887) = this.AvailableSkinNumbers08;
+                *(byteptr_t + 0x888) = this.AvailableSkinNumbers09;
                 *(byteptr_t + 0x889) = this.AvailableSkinNumbers10;
                 *(byteptr_t + 0x88A) = this._is_suv ? (byte)1 : (byte)0;
-                *(byteptr_t + 0x88C) = (this.IsSkinnable == Reflection.BaseArguments.TRUE) ? (byte)1 : (byte)0;
+                *(byteptr_t + 0x88C) = (this.IsSkinnable == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
             }
             return result;
         }

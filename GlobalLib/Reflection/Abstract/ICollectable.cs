@@ -50,12 +50,7 @@
         /// <returns>String value of a field name.</returns>
         public virtual string GetValue(string PropertyName)
         {
-            foreach (var ThisProperty in this.GetType().GetProperties())
-            {
-                if (ThisProperty.Name == PropertyName)
-                    return ThisProperty.GetValue(this).ToString();
-            }
-            return null;
+            return this.GetType().GetProperty(PropertyName).GetValue(this).ToString();
         }
 
         /// <summary>
@@ -71,14 +66,9 @@
                 if (property == null) return false;
                 if (!System.Attribute.IsDefined(property, typeof(Attributes.AccessModifiableAttribute)))
                     throw new System.FieldAccessException("This field is either non-modifiable or non-accessible");
-                if (property.PropertyType == typeof(bool))
+                if (property.PropertyType.IsEnum)
                 {
-                    if (value.ToString() == BaseArguments.TRUE || Utils.Cast.StaticCast<int>(value) != 0)
-                        property.SetValue(this, true);
-                    else if (value.ToString() == BaseArguments.FALSE || Utils.Cast.StaticCast<int>(value) == 0)
-                        property.SetValue(this, false);
-                    else
-                        throw new System.InvalidCastException();
+                    property.SetValue(this, System.Enum.Parse(property.PropertyType, value.ToString()));
                 }
                 else
                 {
@@ -118,14 +108,9 @@
                 if (!System.Attribute.IsDefined(property, typeof(Attributes.AccessModifiableAttribute)))
                     throw new System.FieldAccessException("This field is either non-modifiable or non-accessible");
                 var type = property.GetType();
-                if (type == typeof(bool))
+                if (property.PropertyType.IsEnum)
                 {
-                    if (value.ToString() == BaseArguments.TRUE || Utils.Cast.StaticCast<int>(value) != 0)
-                        property.SetValue(this, true);
-                    else if (value.ToString() == BaseArguments.FALSE || Utils.Cast.StaticCast<int>(value) == 0)
-                        property.SetValue(this, false);
-                    else
-                        throw new System.InvalidCastException();
+                    property.SetValue(this, System.Enum.Parse(property.PropertyType, value.ToString()));
                 }
                 else
                 {

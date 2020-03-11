@@ -13,28 +13,16 @@
             switch (classtype)
             {
                 case eClassType.Material:
-                    for (int a1 = 0; a1 < this.Materials.Count; ++a1)
-                        if (CName == this.Materials[a1].CollectionName)
-                            return a1;
-                    break;
+                    return this.Materials.GetClassIndex(CName);
 
                 case eClassType.CarTypeInfo:
-                    for (int a1 = 0; a1 < this.CarTypeInfos.Count; ++a1)
-                        if (CName == this.CarTypeInfos[a1].CollectionName)
-                            return a1;
-                    break;
+                    return this.CarTypeInfos.GetClassIndex(CName);
 
                 case eClassType.PresetRide:
-                    for (int a1 = 0; a1 < this.PresetRides.Count; ++a1)
-                        if (CName == this.PresetRides[a1].CollectionName)
-                            return a1;
-                    break;
+                    return this.PresetRides.GetClassIndex(CName);
 
                 case eClassType.PresetSkin:
-                    for (int a1 = 0; a1 < this.PresetSkins.Count; ++a1)
-                        if (CName == this.PresetSkins[a1].CollectionName)
-                            return a1;
-                    break;
+                    return this.PresetSkins.GetClassIndex(CName);
 
                 case eClassType.FNGroup:
                     for (int a1 = 0; a1 < this.FNGroups.Count; ++a1)

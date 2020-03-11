@@ -73,7 +73,7 @@ namespace GlobalLib.Support.Carbon.Parts.CarParts
                         CarSlot.Spoiler = (Reflection.Enum.eSpoiler)SpoilerKey;
                     else
                         CarSlot.Spoiler = Reflection.Enum.eSpoiler.SPOILER;
-                    if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoilerAS2), SpoilerKey))
+                    if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoilerAS2), SpoilerASKey))
                         CarSlot.SpoilerAS = (Reflection.Enum.eSpoilerAS2)SpoilerASKey;
                     else
                         CarSlot.SpoilerAS = Reflection.Enum.eSpoilerAS2.SPOILER_AS2;

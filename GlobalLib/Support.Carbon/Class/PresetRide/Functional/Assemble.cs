@@ -469,38 +469,26 @@
                 *(byteptr_t + 0x279) = this._choptop_size;
                 *(byteptr_t + 0x284) = this._exhaust_size;
 
-                for (int x1 = 0; x1 < this._number_of_vinyls; ++x1)
-                {
-                    var VINYL = this.Vinyls[x1];
-                    if (VINYL.VectorVinyl == Reflection.BaseArguments.NULL) continue;
-                    else
-                    {
-                        if (VINYL.VectorVinyl.StartsWith("0x"))
-                            *(uint*)(byteptr_t + 0x290 + x1 * 0x2C) = Utils.ConvertX.ToUInt32(VINYL.VectorVinyl);
-                        else
-                            *(uint*)(byteptr_t + 0x290 + x1 * 0x2C) = Utils.Bin.Hash(VINYL.VectorVinyl);
-                        *(short*)(byteptr_t + 0x294 + x1 * 0x2C) = VINYL.PositionY;
-                        *(short*)(byteptr_t + 0x296 + x1 * 0x2C) = VINYL.PositionX;
-                        *(byteptr_t + 0x298 + x1 * 0x2C) = (byte)VINYL.Rotation;
-                        *(byteptr_t + 0x299 + x1 * 0x2C) = (byte)VINYL.Skew;
-                        *(byteptr_t + 0x29A + x1 * 0x2C) = (byte)VINYL.ScaleY;
-                        *(byteptr_t + 0x29B + x1 * 0x2C) = (byte)VINYL.ScaleX;
-                        *(uint*)(byteptr_t + 0x29C + x1 * 0x2C) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(VINYL.SwatchColor1));
-                        *(uint*)(byteptr_t + 0x2A4 + x1 * 0x2C) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(VINYL.SwatchColor2));
-                        *(uint*)(byteptr_t + 0x2AC + x1 * 0x2C) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(VINYL.SwatchColor3));
-                        *(uint*)(byteptr_t + 0x2B4 + x1 * 0x2C) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(VINYL.SwatchColor4));
-                        *(byteptr_t + 0x2A0 + x1 * 0x2C) = VINYL.Saturation1;
-                        *(byteptr_t + 0x2A8 + x1 * 0x2C) = VINYL.Saturation2;
-                        *(byteptr_t + 0x2B0 + x1 * 0x2C) = VINYL.Saturation3;
-                        *(byteptr_t + 0x2B8 + x1 * 0x2C) = VINYL.Saturation4;
-                        *(byteptr_t + 0x2A1 + x1 * 0x2C) = VINYL.Brightness1;
-                        *(byteptr_t + 0x2A9 + x1 * 0x2C) = VINYL.Brightness2;
-                        *(byteptr_t + 0x2B1 + x1 * 0x2C) = VINYL.Brightness3;
-                        *(byteptr_t + 0x2B9 + x1 * 0x2C) = VINYL.Brightness4;
-                    }
-                }
-                for (int a1 = 0x290 + this._number_of_vinyls * 0x2C; a1 < 0x600; ++a1)
-                    *(byteptr_t + a1) = 0;
+                this.VINYL01.Write(byteptr_t + 0x290 + 0x2C * 0);
+                this.VINYL02.Write(byteptr_t + 0x290 + 0x2C * 1);
+                this.VINYL03.Write(byteptr_t + 0x290 + 0x2C * 2);
+                this.VINYL04.Write(byteptr_t + 0x290 + 0x2C * 3);
+                this.VINYL05.Write(byteptr_t + 0x290 + 0x2C * 4);
+                this.VINYL06.Write(byteptr_t + 0x290 + 0x2C * 5);
+                this.VINYL07.Write(byteptr_t + 0x290 + 0x2C * 6);
+                this.VINYL08.Write(byteptr_t + 0x290 + 0x2C * 7);
+                this.VINYL09.Write(byteptr_t + 0x290 + 0x2C * 8);
+                this.VINYL10.Write(byteptr_t + 0x290 + 0x2C * 9);
+                this.VINYL11.Write(byteptr_t + 0x290 + 0x2C * 10);
+                this.VINYL12.Write(byteptr_t + 0x290 + 0x2C * 11);
+                this.VINYL13.Write(byteptr_t + 0x290 + 0x2C * 12);
+                this.VINYL14.Write(byteptr_t + 0x290 + 0x2C * 13);
+                this.VINYL15.Write(byteptr_t + 0x290 + 0x2C * 14);
+                this.VINYL16.Write(byteptr_t + 0x290 + 0x2C * 15);
+                this.VINYL17.Write(byteptr_t + 0x290 + 0x2C * 16);
+                this.VINYL18.Write(byteptr_t + 0x290 + 0x2C * 17);
+                this.VINYL19.Write(byteptr_t + 0x290 + 0x2C * 18);
+                this.VINYL20.Write(byteptr_t + 0x290 + 0x2C * 19);
             }
             return result;
         }

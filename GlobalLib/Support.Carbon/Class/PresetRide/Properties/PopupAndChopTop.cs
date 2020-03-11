@@ -67,6 +67,7 @@
         /// <summary>
         /// Choptop size value of the preset car. Range: 0-100.
         /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
         public byte ChopTopSize
         {
             get => this._choptop_size;

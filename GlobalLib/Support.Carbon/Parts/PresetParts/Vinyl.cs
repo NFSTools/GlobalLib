@@ -179,5 +179,59 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
                 return false;
             }
         }
+    
+        public unsafe void Read(byte* byteptr_t)
+        {
+            var key = *(uint*)byteptr_t;
+            if (key == 0)
+                this.VectorVinyl = Reflection.BaseArguments.NULL;
+            else
+                this.VectorVinyl = Core.Map.Lookup(key) ?? ("0x" + key.ToString("X8"));
+            this.PositionY = *(short*)(byteptr_t + 0x04);
+            this.PositionX = *(short*)(byteptr_t + 0x06);
+            this.Rotation = *(sbyte*)(byteptr_t + 0x08);
+            this.Skew = *(sbyte*)(byteptr_t + 0x09);
+            this.ScaleY = *(sbyte*)(byteptr_t + 0x0A);
+            this.ScaleX = *(sbyte*)(byteptr_t + 0x0B);
+            this.SwatchColor1 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x0C)));
+            this.SwatchColor2 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x14)));
+            this.SwatchColor3 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1C)));
+            this.SwatchColor4 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x24)));
+            this.Saturation1 = *(byteptr_t + 0x10);
+            this.Saturation2 = *(byteptr_t + 0x18);
+            this.Saturation3 = *(byteptr_t + 0x20);
+            this.Saturation4 = *(byteptr_t + 0x28);
+            this.Brightness1 = *(byteptr_t + 0x11);
+            this.Brightness2 = *(byteptr_t + 0x19);
+            this.Brightness3 = *(byteptr_t + 0x21);
+            this.Brightness4 = *(byteptr_t + 0x29);
+        }
+
+        public unsafe void Write(byte* byteptr_t)
+        {
+            if (this.VectorVinyl == Reflection.BaseArguments.NULL) { }
+            else if (this.VectorVinyl.StartsWith("0x"))
+                *(uint*)byteptr_t = Utils.ConvertX.ToUInt32(this.VectorVinyl);
+            else
+                *(uint*)byteptr_t = Utils.Bin.Hash(this.VectorVinyl);
+            *(short*)(byteptr_t + 0x04) = this.PositionY;
+            *(short*)(byteptr_t + 0x06) = this.PositionX;
+            *(byteptr_t + 0x08) = (byte)this.Rotation;
+            *(byteptr_t + 0x09) = (byte)this.Skew;
+            *(byteptr_t + 0x0A) = (byte)this.ScaleY;
+            *(byteptr_t + 0x0B) = (byte)this.ScaleX;
+            *(uint*)(byteptr_t + 0x0C) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(this.SwatchColor1));
+            *(uint*)(byteptr_t + 0x14) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(this.SwatchColor2));
+            *(uint*)(byteptr_t + 0x1C) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(this.SwatchColor3));
+            *(uint*)(byteptr_t + 0x24) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(this.SwatchColor4));
+            *(byteptr_t + 0x10) = this.Saturation1;
+            *(byteptr_t + 0x18) = this.Saturation2;
+            *(byteptr_t + 0x20) = this.Saturation3;
+            *(byteptr_t + 0x28) = this.Saturation4;
+            *(byteptr_t + 0x11) = this.Brightness1;
+            *(byteptr_t + 0x19) = this.Brightness2;
+            *(byteptr_t + 0x21) = this.Brightness3;
+            *(byteptr_t + 0x29) = this.Brightness4;
+        }
     }
 }

@@ -25,8 +25,8 @@
             db.SlotTypes.Part56 = new System.Collections.Generic.List<Parts.CarParts.Part56>();
             var CarCNames = new System.Collections.Generic.List<uint>();
 
-            for (int a1 = 0; a1 < db.CarTypeInfos.Count; ++a1)
-                CarCNames.Add(db.CarTypeInfos[a1].BinKey);
+            for (int a1 = 0; a1 < db.CarTypeInfos.Length; ++a1)
+                CarCNames.Add(db.CarTypeInfos.Classes[a1].BinKey);
 
             while (off5 < len5)
             {

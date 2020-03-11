@@ -10,9 +10,9 @@
         private static void I_PresetSkins(Database.Carbon db, System.IO.BinaryWriter bw)
         {
             bw.Write(Reflection.ID.Global.PresetSkins);
-            bw.Write(db.PresetSkins.Count * 0x68);
-            for (int a1 = 0; a1 < db.PresetSkins.Count; ++a1)
-                bw.Write(db.PresetSkins[a1].Assemble());
+            bw.Write(db.PresetSkins.Length * 0x68);
+            for (int a1 = 0; a1 < db.PresetSkins.Length; ++a1)
+                bw.Write(db.PresetSkins.Classes[a1].Assemble());
         }
     }
 }

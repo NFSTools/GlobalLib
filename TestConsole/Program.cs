@@ -14,24 +14,28 @@ namespace TestConsole
 			var watch = new System.Diagnostics.Stopwatch();
 
 			watch.Start();
-			GlobalLib.Core.Process.Set = (int)GlobalLib.Core.GameINT.MostWanted;
-			GlobalLib.Core.Process.GlobalDir = @"E:\Need for Speed Most Wanted";
-			var db = new GlobalLib.Database.MostWanted();
+			GlobalLib.Core.Process.Set = (int)GlobalLib.Core.GameINT.Carbon;
+			GlobalLib.Core.Process.GlobalDir = @"C:\Need for Speed Carbon";
+			var db = new GlobalLib.Database.Carbon();
 			GlobalLib.Core.Process.LoadData(db);
 			watch.Stop();
 
-			var elapsed = watch.ElapsedMilliseconds;
+			var elapsed_1 = watch.ElapsedMilliseconds;
 
-			var tex = db.TPKBlocks[1].Textures[16].MemoryCast("TEXTURE");
-			var car = db.CarTypeInfos.Classes[15].MemoryCast("M3GTR");
-			var mat = db.Materials.Classes[7].MemoryCast("USELESS");
+			watch.Reset();
 
-			var texstr = tex.GetAccessibles();
-			var carstr = car.GetAccessibles();
-			var matstr = mat.GetAccessibles();
-			
-			bool tr = car.OfEnumerableType("Spoiler");
-			var opt = car.GetPropertyEnumerableTypes("Spoiler");
+			watch.Start();
+			GlobalLib.Core.Process.SaveData(db, false);
+			watch.Stop();
+
+			var elapsed_2 = watch.ElapsedMilliseconds;
+
+			var mat = db.Materials.GetAccessibleProperties(db.Materials.Classes[0].CollectionName);
+			var car = db.CarTypeInfos.GetAccessibleProperties(db.CarTypeInfos.Classes[0].CollectionName);
+			var ride = db.PresetRides.GetAccessibleProperties(db.PresetRides.Classes[0].CollectionName);
+			var skin = db.PresetSkins.GetAccessibleProperties(db.PresetSkins.Classes[0].CollectionName);
+
+			db.PresetRides.Classes[0].SetValue("SpoilerType", "_CARRER");
 
 			int aa = 0;
 		}

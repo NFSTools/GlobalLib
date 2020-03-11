@@ -54,21 +54,21 @@
             this.MinTimeBetweenUses3 = *(float*)(byteptr_t + 0xB0);
             this.MinTimeBetweenUses4 = *(float*)(byteptr_t + 0xB4);
             this.MinTimeBetweenUses5 = *(float*)(byteptr_t + 0xB8);
-            this.AvailableSkinNumbers1 = *(byteptr_t + 0xBC);
-            this.AvailableSkinNumbers2 = *(byteptr_t + 0xBD);
-            this.AvailableSkinNumbers3 = *(byteptr_t + 0xBE);
-            this.AvailableSkinNumbers4 = *(byteptr_t + 0xBF);
-            this.AvailableSkinNumbers5 = *(byteptr_t + 0xC0);
-            this.AvailableSkinNumbers6 = *(byteptr_t + 0xC1);
-            this.AvailableSkinNumbers7 = *(byteptr_t + 0xC2);
-            this.AvailableSkinNumbers8 = *(byteptr_t + 0xC3);
-            this.AvailableSkinNumbers9 = *(byteptr_t + 0xC4);
+            this.AvailableSkinNumbers01 = *(byteptr_t + 0xBC);
+            this.AvailableSkinNumbers02 = *(byteptr_t + 0xBD);
+            this.AvailableSkinNumbers03 = *(byteptr_t + 0xBE);
+            this.AvailableSkinNumbers04 = *(byteptr_t + 0xBF);
+            this.AvailableSkinNumbers05 = *(byteptr_t + 0xC0);
+            this.AvailableSkinNumbers06 = *(byteptr_t + 0xC1);
+            this.AvailableSkinNumbers07 = *(byteptr_t + 0xC2);
+            this.AvailableSkinNumbers08 = *(byteptr_t + 0xC3);
+            this.AvailableSkinNumbers09 = *(byteptr_t + 0xC4);
             this.AvailableSkinNumbers10 = *(byteptr_t + 0xC5);
 
             this.DefaultSkinNumber = *(byteptr_t + 0xC6);
             this.IsSkinnable = (*(byteptr_t + 0xC7) == 0)
-                ? Reflection.BaseArguments.FALSE
-                : Reflection.BaseArguments.TRUE;
+                ? Reflection.Enum.eBoolean.False
+                : Reflection.Enum.eBoolean.True;
             this.Padding2 = *(int*)(byteptr_t + 0xC8);
 
             uint key = *(uint*)(byteptr_t + 0xCC);

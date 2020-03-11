@@ -26,12 +26,12 @@
                 Intermid56.Add(db.SlotTypes.Part56[a1].MemoryCast());
 
             // Go through all cartypeinfo, set correct usagetype and keys
-            for (int a1 = 0; a1 < db.CarTypeInfos.Count; ++a1)
+            for (int a1 = 0; a1 < db.CarTypeInfos.Length; ++a1)
             {
                 bool CarDoesExist = false;
                 int index = 0;
-                uint ckey = db.CarTypeInfos[a1].BinKey;
-                uint okey = Utils.Bin.Hash(db.CarTypeInfos[a1].OriginalName);
+                uint ckey = db.CarTypeInfos.Classes[a1].BinKey;
+                uint okey = Utils.Bin.Hash(db.CarTypeInfos.Classes[a1].OriginalName);
                 keylists.Add(ckey);
                 for (index = 0; index < Intermid56.Count; ++index)
                 {
@@ -45,12 +45,12 @@
                 {
                     if (ckey != okey)
                         Intermid56[index].Key = ckey;
-                    if (db.CarTypeInfos[a1].Modified && db.CarTypeInfos[a1].UsageType != Intermid56[index].Usage)
-                        Intermid56[index].SetUsage(db.CarTypeInfos[a1].UsageType);
+                    if (db.CarTypeInfos.Classes[a1].Modified && db.CarTypeInfos.Classes[a1].UsageType != Intermid56[index].Usage)
+                        Intermid56[index].SetUsage(db.CarTypeInfos.Classes[a1].UsageType);
                 }
                 else
                 {
-                    var Class = new Parts.CarParts.Part56(db.CarTypeInfos[a1].CollectionName, (byte)index, db.CarTypeInfos[a1].UsageType);
+                    var Class = new Parts.CarParts.Part56(db.CarTypeInfos.Classes[a1].CollectionName, (byte)index, db.CarTypeInfos.Classes[a1].UsageType);
                     Intermid56.Add(Class);
                 }
             }

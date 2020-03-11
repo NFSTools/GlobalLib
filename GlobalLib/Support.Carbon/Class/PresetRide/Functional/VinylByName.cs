@@ -11,18 +11,10 @@
         {
             if (string.IsNullOrWhiteSpace(name)) return null;
             string value = name.ToUpper();
-            if (!value.StartsWith("VINYL")) return null;
-            string number = Utils.FormatX.GetString(name, "VINYL{XX}");
-            if (number.StartsWith("0")) return null;
-            if (byte.TryParse(number, out byte result))
-            {
-                if (result != 0 && result <= this._number_of_vinyls)
-                    return this.Vinyls[result - 1];
-                else
-                    return null;
-            }
-            else
-                return null;
+            var vinyl = this.GetType().GetProperty(name);
+            if (vinyl.PropertyType == typeof(Parts.PresetParts.Vinyl))
+                return (Parts.PresetParts.Vinyl)vinyl.GetValue(this);
+            return null;
         }
     }
 }

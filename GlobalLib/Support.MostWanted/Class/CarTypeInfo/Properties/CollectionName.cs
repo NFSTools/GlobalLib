@@ -32,5 +32,11 @@
         /// Vault memory hash of the collection name.
         /// </summary>
         public override uint VltKey { get => Utils.Vlt.Hash(this._collection_name); }
+
+        /// <summary>
+        /// Represents memory type of the cartypeinfo.
+        /// </summary>
+        [Reflection.Attributes.AccessModifiable()]
+        public override Reflection.Enum.eMemoryType MemoryType { get => base.MemoryType; set => base.MemoryType = value; }
     }
 }

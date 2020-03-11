@@ -73,7 +73,6 @@
     <Compile Include="Database\Underground2\ToString.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />
     <Compile Include="Reflection\Abstract\ICollectable.cs" />
-    <Compile Include="Reflection\Abstract\IStorable.cs" />
     <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
     <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />
     <Compile Include="Reflection\DataFields\DFSTRBlock.cs" />
@@ -160,6 +159,7 @@
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\AutoByParameter.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\Disassemble.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\Assemble.cs" />
+    <Compile Include="Support.Carbon\Class\PresetRide\Functional\Initialize.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\StringToKey.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\MemoryCast.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Functional\ToString.cs" />
@@ -180,7 +180,6 @@
     <Compile Include="Support.Carbon\Class\PresetRide\Properties\PopupAndChopTop.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Properties\WindowTintType.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Properties\ClassifiedVinyls.cs" />
-    <Compile Include="Support.Carbon\Class\PresetRide\Properties\NumberOfVinyls.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Properties\AutosculptFrontBumper.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Properties\AftermarketBodykit.cs" />
     <Compile Include="Support.Carbon\Class\PresetRide\Properties\GameAddress.cs" />

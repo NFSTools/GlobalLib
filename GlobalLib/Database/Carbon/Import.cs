@@ -47,7 +47,7 @@
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
                         var material = new Support.Carbon.Class.Material(dataptr_t, CName, this);
-                        this.Materials.Add(material);
+                        this.Materials.Classes.Add(material);
                         return true;
 
                     case eClassType.CarTypeInfo:
@@ -61,7 +61,7 @@
                         cartypeinfo.Deletable = true;
                         cartypeinfo.CollisionExternalName = CName;
                         cartypeinfo.CollisionInternalName = "CARRERAGT";
-                        this.CarTypeInfos.Add(cartypeinfo);
+                        this.CarTypeInfos.Classes.Add(cartypeinfo);
                         return true;
 
                     case eClassType.PresetRide:
@@ -71,7 +71,7 @@
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
                         var presetride = new Support.Carbon.Class.PresetRide(dataptr_t, CName, this);
-                        this.PresetRides.Add(presetride);
+                        this.PresetRides.Classes.Add(presetride);
                         return true;
 
                     case eClassType.PresetSkin:
@@ -81,7 +81,7 @@
                         if (this.GetClassIndex(CName, type) != -1)
                             goto LABEL_EXISTEXCEPT;
                         var presetskin = new Support.Carbon.Class.PresetSkin(dataptr_t, CName, this);
-                        this.PresetSkins.Add(presetskin);
+                        this.PresetSkins.Classes.Add(presetskin);
                         return true;
 
                     default:
