@@ -52,8 +52,8 @@ namespace GlobalLib.Support.Underground2
                 uint cpoff = 0; // offset of the carparts block
                 uint cpsize = 0; // size of the carparts block
 
-                uint cooff = 0; // offset of the collision block
-                uint cosize = 0; // size of the collision block
+                uint troff = 0; // offset of the tracks block
+                uint trsize = 0; // size of the tracks block
 
                 while (offset < db.GlobalBLZC.Length)
                 {
@@ -96,6 +96,10 @@ namespace GlobalLib.Support.Underground2
                         case Reflection.ID.Global.CarParts:
                             cpoff = offset + 8;
                             cpsize = size;
+                            break;
+
+                        case Reflection.ID.Global.SunInfos:
+                            E_SunInfo(byteptr_t + offset + 8, size, db);
                             break;
 
                         //case Reflection.ID.Global.SlotTypes:

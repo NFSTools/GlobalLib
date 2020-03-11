@@ -15,5 +15,7 @@
         public const uint FEngFiles   = 0x00030203;
         public const uint PaddingReq  = 0x8003CE0D;
         public const uint STRBlocks   = 0x00039000;
+        public const uint Tracks      = 0x00034201;
+        public const uint SunInfos    = 0x00034202;
     }
 }

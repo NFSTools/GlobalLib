@@ -31,5 +31,37 @@
 			}
 			return result;
 		}
+
+		public unsafe void Read(byte* byteptr_t)
+		{
+			this.SunTextureType = (Reflection.Enum.eSunTexture)(*(int*)byteptr_t);
+			this.SunAlphaType = (Reflection.Enum.eSunAlpha)(*(int*)(byteptr_t + 4));
+			this.IntensityScale = *(float*)(byteptr_t + 8);
+			this.Size = *(float*)(byteptr_t + 0xC);
+			this.OffsetX = *(float*)(byteptr_t + 0x10);
+			this.OffsetY = *(float*)(byteptr_t + 0x14);
+			this.ColorAlpha = *(byteptr_t + 0x18);
+			this.ColorRed = *(byteptr_t + 0x19);
+			this.ColorGreen = *(byteptr_t + 0x1A);
+			this.ColorBlue = *(byteptr_t + 0x1B);
+			this.Angle = *(int*)(byteptr_t + 0x1C);
+			this.SweepAngleAmount = *(float*)(byteptr_t + 0x20);
+		}
+
+		public unsafe void Write(byte* byteptr_t)
+		{
+			*(int*)byteptr_t = (int)this.SunTextureType;
+			*(int*)(byteptr_t + 4) = (int)this.SunAlphaType;
+			*(float*)(byteptr_t + 8) = this.IntensityScale;
+			*(float*)(byteptr_t + 0xC) = this.Size;
+			*(float*)(byteptr_t + 0x10) = this.OffsetX;
+			*(float*)(byteptr_t + 0x14) = this.OffsetY;
+			*(byteptr_t + 0x18) = this.ColorAlpha;
+			*(byteptr_t + 0x19) = this.ColorRed;
+			*(byteptr_t + 0x1A) = this.ColorGreen;
+			*(byteptr_t + 0x1B) = this.ColorBlue;
+			*(int*)(byteptr_t + 0x1C) = this.Angle;
+			*(float*)(byteptr_t + 0x20) = this.SweepAngleAmount;
+		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using GlobalLib.Support.Underground2.Class;
-
+using GlobalLib.Support.Underground2.Gameplay;
 
 
 namespace GlobalLib.Database
@@ -14,6 +14,7 @@ namespace GlobalLib.Database
         public Collection.ClassCollection<Material> Materials { get; set; }
         public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
         //public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
+        public Collection.ClassCollection<SunInfo> SunInfos { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -25,6 +26,7 @@ namespace GlobalLib.Database
             this.FNGroups = new List<FNGroup>();
             this.Materials = new Collection.ClassCollection<Material>();
             //this.PresetRides = new Collection.ClassCollection<PresetRide>();
+            this.SunInfos = new Collection.ClassCollection<SunInfo>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();
@@ -40,6 +42,7 @@ namespace GlobalLib.Database
             this.FNGroups = null;
             this.Materials = null;
             //this.PresetRides = null;
+            this.SunInfos = null;
             this.TPKBlocks = null;
             this.SlotTypes = null;
             this.STRBlocks = null;

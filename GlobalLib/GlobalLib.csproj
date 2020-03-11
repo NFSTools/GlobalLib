@@ -622,6 +622,7 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part4.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part56.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarParts.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_SunInfo.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarTypeInfo.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_FNGroup.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_Materials.cs" />
