@@ -15,6 +15,7 @@ namespace GlobalLib.Database
         public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
         //public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
         public Collection.ClassCollection<SunInfo> SunInfos { get; set; }
+        public Collection.ClassCollection<Track> Tracks { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -27,6 +28,7 @@ namespace GlobalLib.Database
             this.Materials = new Collection.ClassCollection<Material>();
             //this.PresetRides = new Collection.ClassCollection<PresetRide>();
             this.SunInfos = new Collection.ClassCollection<SunInfo>();
+            this.Tracks = new Collection.ClassCollection<Track>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();
@@ -43,6 +45,7 @@ namespace GlobalLib.Database
             this.Materials = null;
             //this.PresetRides = null;
             this.SunInfos = null;
+            this.Tracks = null;
             this.TPKBlocks = null;
             this.SlotTypes = null;
             this.STRBlocks = null;

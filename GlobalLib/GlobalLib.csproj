@@ -467,12 +467,16 @@
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\SunInfoConstructor.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\SunInfoSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\PositionSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Functional\Diassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\InterfaceSettings.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\PaintType.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\RigidControls.cs" />
@@ -608,9 +612,9 @@
     <Compile Include="Reflection\Enum\eTrackDifficulty.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\CollectionName.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\TrackConstructor.cs" />
-    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %283%29.cs" />
-    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %284%29.cs" />
-    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings - Copy %285%29.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\RaceCompleteSettings.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\TrackMapSettings.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Track\Properties\TrafficSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\BasicRaceSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\Enumerable.cs" />
@@ -622,6 +626,7 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part4.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part56.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarParts.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_Tracks.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SunInfo.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarTypeInfo.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_FNGroup.cs" />

@@ -7,6 +7,7 @@
 		/// <summary>
 		/// Collection name of the variable.
 		/// </summary>
+		[Reflection.Attributes.AccessModifiable()]
 		public override string CollectionName
 		{
 			get => this._collection_name;
@@ -19,7 +20,8 @@
 				if (this.Database.GetClassIndex(value, GlobalLib.Database.eClassType.Track) != -1)
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
-				Utils.FormatX.GetUInt16(value, "Track_{X}", out this._track_id);
+				Utils.FormatX.GetUInt16(value, "Track_{X}", out ushort id);
+				this.TrackID = id;
 			}
 		}
 

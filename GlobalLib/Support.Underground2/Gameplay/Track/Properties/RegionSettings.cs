@@ -2,11 +2,29 @@
 {
 	public partial class Track
 	{
-		/* 0x0020 - 0x0040 */ private string _track_directory;
-		/* 0x0040 - 0x0048 */ private string _region_name;
-		/* 0x0048 - 0x0068 */ private string _region_directory;
-		/* 0x0068 - 0x006C */ private int _location_index;
-		/* 0x006C - 0x007C */ private string _location_directory;
+		private string _race_descrition;
+		private string _track_directory;
+		private string _region_name;
+		private string _region_directory;
+		private int _location_index;
+		private string _location_directory;
+
+		/// <summary>
+		/// Represents debug description of the race.
+		/// </summary>
+		[Reflection.Attributes.AccessModifiable()]
+		public string RaceDescription
+		{
+			get => this._race_descrition;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				else if (value.Length > 0x1F)
+					throw new Reflection.Exception.ArgumentLengthException("This value should be less than 31 characters long.");
+				this._race_descrition = value;
+			}
+		}
 
 		/// <summary>
 		/// Represents region in which the track and its values are stored.
@@ -19,7 +37,7 @@
 			{
 				if (value.Length > 7)
 					throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 7 characters.");
-				if (!System.IO.Directory.Exists($"{Core.Process.GlobalDir}\\TRACKS\\{value}"))
+				if (!System.IO.Directory.Exists($"{Core.Process.GlobalDir}\\TRACKS\\ROUTES{value}"))
 					throw new System.IO.DirectoryNotFoundException($"Directory named {value} does not exist.");
 				if (!Framework.Validate.TrackRegionName(value))
 					throw new System.Exception("Value passed cannot be a recognizable game directory.");

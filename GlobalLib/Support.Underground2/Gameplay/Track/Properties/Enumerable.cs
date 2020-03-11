@@ -6,11 +6,11 @@ namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class Track
 	{
-		/* 0x007C */ private eLocationType _location_type = eLocationType.CITY_CORE;
-		/* 0x0080 */ private eDriftType _drift_type = eDriftType.VS_AI;
-		/* 0x0094 */ private eRaceGameplayMode _race_gameplay_mode = eRaceGameplayMode.SPRINT;
-		/* 0x00C4 */ private eTrackDifficulty _difficulty_forward = eTrackDifficulty.TRACK_DIFFICULTY_MEDIUM;
-		/* 0x00C8 */ private eTrackDifficulty _difficulty_reverse = eTrackDifficulty.TRACK_DIFFICULTY_MEDIUM;
+		private eLocationType _location_type = eLocationType.CITY_CORE;
+		private eDriftType _drift_type = eDriftType.VS_AI;
+		private eRaceGameplayMode _race_gameplay_mode = eRaceGameplayMode.SPRINT;
+		private eTrackDifficulty _difficulty_forward = eTrackDifficulty.TRACK_DIFFICULTY_MEDIUM;
+		private eTrackDifficulty _difficulty_reverse = eTrackDifficulty.TRACK_DIFFICULTY_MEDIUM;
 
 		/// <summary>
 		/// Location type of the track.

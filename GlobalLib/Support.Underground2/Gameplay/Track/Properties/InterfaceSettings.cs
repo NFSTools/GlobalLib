@@ -2,24 +2,29 @@
 {
     public partial class Track
     {
-        /* 0x0090 */ private string _sun_info_name_hash = Reflection.BaseArguments.NULL;
+        private string _sun_info_name = Reflection.BaseArguments.NULL;
 
         /// <summary>
         /// Represents sun type during race.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
-        public string SunInfoNameHash
+        public string SunInfoName
         {
-            get => this._sun_info_name_hash;
+            get => this._sun_info_name;
             set
             {
-                if (value.StartsWith("0x") && Utils.ConvertX.ToUInt32(value) != 0)
-                    this._sun_info_name_hash = value;
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                if (value == Reflection.BaseArguments.NULL)
+                    this._sun_info_name = value;
+                else if (value.StartsWith("0x") && Utils.ConvertX.ToUInt32(value) != 0)
+                    this._sun_info_name = value;
                 else
                 {
-                    if (this.Database.GetClassIndex(value, GlobalLib.Database.eClassType.SunInfoType) == -1)
+                    if (this.Database.SunInfos.GetClassIndex(value) == -1)
                         throw new Reflection.Exception.MappingFailException();
-                    this._sun_info_name_hash = value;
+                    else
+                        this._sun_info_name = value;
                 }
             }
         }

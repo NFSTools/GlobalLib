@@ -2,19 +2,73 @@
 {
 	public partial class Track
 	{
-		[Reflection.Attributes.AccessModifiable()]
-		/* 0x0084 */ public bool IsValidRace { get; set; } = true;
+		private Reflection.Enum.eBoolean _is_valid_race = Reflection.Enum.eBoolean.True;
+		private Reflection.Enum.eBoolean _is_looping_race = Reflection.Enum.eBoolean.False;
+		private Reflection.Enum.eBoolean _reverse_version_exists = Reflection.Enum.eBoolean.True;
+		private Reflection.Enum.eBoolean _is_performance_tuning = Reflection.Enum.eBoolean.False;
 
+		/// <summary>
+		/// Indicates whether race is valid.
+		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
-		/* 0x0085 */ public bool IsLoopingRace { get; set; } = false;
+		public Reflection.Enum.eBoolean IsValidRace
+		{
+			get => this._is_valid_race;
+			set
+			{
+				if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+					this._is_valid_race = value;
+				else
+					throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
+			}
+		}
 
+		/// <summary>
+		/// Indicates whether race is looping.
+		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
-		/* 0x0086 */ public bool ReverseVersionExists { get; set; } = true;
+		public Reflection.Enum.eBoolean IsLoopingRace
+		{
+			get => this._is_looping_race;
+			set
+			{
+				if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+					this._is_looping_race = value;
+				else
+					throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
+			}
+		}
 
+		/// <summary>
+		/// Indicates whether reverse version of the race exists.
+		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
-		/* 0x0088 */ public bool IsPerformanceTuning { get; set; } = false;
+		public Reflection.Enum.eBoolean ReverseVersionExists
+		{
+			get => this._reverse_version_exists;
+			set
+			{
+				if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+					this._reverse_version_exists = value;
+				else
+					throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
+			}
+		}
 
+		/// <summary>
+		/// Indicates whether the race is used in performance tuning events.
+		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
-		/* 0x008A - 0x008E */ private ushort _track_id;
+		public Reflection.Enum.eBoolean IsPerformanceTuning
+		{
+			get => this._is_performance_tuning;
+			set
+			{
+				if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+					this._is_performance_tuning = value;
+				else
+					throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
+			}
+		}
 	}
 }

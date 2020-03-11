@@ -102,6 +102,11 @@ namespace GlobalLib.Support.Underground2
                             E_SunInfo(byteptr_t + offset + 8, size, db);
                             break;
 
+                        case Reflection.ID.Global.Tracks:
+                            troff = offset + 8;
+                            trsize = size;
+                            break;
+
                         //case Reflection.ID.Global.SlotTypes:
                         //    E_SlotType(byteptr_t + offset, size + 8, db);
                         //    break;
@@ -124,6 +129,7 @@ namespace GlobalLib.Support.Underground2
 
                 // CarParts and Collisions blocks are the last ones to disassemble
                 E_CarParts(byteptr_t + cpoff, cpsize, db);
+                E_Tracks(byteptr_t + troff, trsize, db);
                 //E_Collisions(byteptr_t + cooff, cosize, db);
                 //E_PresetRides(byteptr_t + proff, prsize, db);
             }
