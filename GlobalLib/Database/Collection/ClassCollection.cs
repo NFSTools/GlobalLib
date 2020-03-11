@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
 
 namespace GlobalLib.Database.Collection
 {
@@ -67,12 +66,38 @@ namespace GlobalLib.Database.Collection
 			}
 		}
 
-
 		public string[] GetAccessibleProperties(string CName)
 		{
 			int index = this.GetClassIndex(CName);
 			if (index == -1) return null;
 			else return this.Classes[index].GetAccessibles();
+		}
+
+		public bool TrySetClassValue(params string[] tokens)
+		{
+			switch (tokens.Length)
+			{
+				case 3:
+					return this.FindClass(tokens[0]).SetValue(tokens[1], tokens[2]);
+				case 5:
+					return this.FindClass(tokens[0]).SetValueOfInternalObject(tokens[1], tokens[2], tokens[3], tokens[4]);
+				default:
+					return false;
+			}
+		}
+
+		public bool TrySetClassValue(ref string error, params string[] tokens)
+		{
+			switch (tokens.Length)
+			{
+				case 3:
+					return this.FindClass(tokens[0]).SetValue(tokens[1], tokens[2], ref error);
+				case 5:
+					return this.FindClass(tokens[0]).SetValueOfInternalObject(ref error, tokens[1], tokens[2], tokens[3], tokens[4]);
+				default:
+					error = $"Invalid amount of parameters passed";
+					return false;
+			}
 		}
 
 		public override string ToString()

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Database
 {
-    partial class Carbon : Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
+    public partial class Carbon
     {
         /// <summary>
         /// Attempts to add class specfified to the database.

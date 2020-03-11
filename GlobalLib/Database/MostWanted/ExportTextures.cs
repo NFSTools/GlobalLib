@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Database
 {
-    public partial class MostWanted : Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
+    public partial class MostWanted
     {
         /// <summary>
         /// Exports all textures to the directory specified as .dds files.

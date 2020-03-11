@@ -13,7 +13,7 @@ namespace GlobalLib.Database
         public byte[] LngLabels;
         public Collection.ClassCollection<Material> Materials { get; set; }
         public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
-        //public List<PresetRide> PresetRides { get; set; }
+        //public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -24,7 +24,7 @@ namespace GlobalLib.Database
             this.CarTypeInfos = new Collection.ClassCollection<CarTypeInfo>();
             this.FNGroups = new List<FNGroup>();
             this.Materials = new Collection.ClassCollection<Material>();
-            //this.PresetRides = new List<PresetRide>();
+            //this.PresetRides = new Collection.ClassCollection<PresetRide>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Database
 {
-    partial class MostWanted : Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
+    partial class MostWanted
     {
         /// <summary>
         /// Attempts to remove class specfified in the database.

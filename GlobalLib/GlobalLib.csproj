@@ -55,7 +55,6 @@
     <Compile Include="Core\Initialize.cs" />
     <Compile Include="Core\Map.cs" />
     <Compile Include="Core\Process.cs" />
-    <Compile Include="Database\Carbon\SetValueByPath.cs" />
     <Compile Include="Database\Carbon\ToString.cs" />
     <Compile Include="Database\Carbon\TryAddClass.cs" />
     <Compile Include="Database\Carbon\AddCollision.cs" />
@@ -69,20 +68,11 @@
     <Compile Include="Database\MostWanted\TryCloneClass.cs" />
     <Compile Include="Database\MostWanted\TryRemoveClass.cs" />
     <Compile Include="Database\Underground2\GetClassIndex.cs" />
-    <Compile Include="Database\Underground2\SetByPath.cs" />
     <Compile Include="Database\Underground2\ToString.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />
     <Compile Include="Reflection\Abstract\ICollectable.cs" />
     <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
     <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />
-    <Compile Include="Reflection\DataFields\DFSTRBlock.cs" />
-    <Compile Include="Reflection\DataFields\DFTPKBlock.cs" />
-    <Compile Include="Reflection\DataFields\DFAutosculpt.cs" />
-    <Compile Include="Reflection\DataFields\DFCarTypeInfo.cs" />
-    <Compile Include="Reflection\DataFields\DFExtra.cs" />
-    <Compile Include="Reflection\DataFields\DFPresetSkin.cs" />
-    <Compile Include="Reflection\DataFields\DFVinyl.cs" />
-    <Compile Include="Reflection\DataFields\DFMaterial.cs" />
     <Compile Include="Database\Carbon\ExportTextures.cs" />
     <Compile Include="Database\Carbon\GetClassIndex.cs" />
     <Compile Include="Database\Carbon\Export.cs" />
@@ -95,7 +85,6 @@
     <Compile Include="Database\MostWanted\Import.cs" />
     <Compile Include="Database\MostWanted\MostWanted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reflection\DataFields\DFPresetRide.cs" />
     <Compile Include="Reflection\Enum\eBoolean.cs" />
     <Compile Include="Reflection\Enum\eBoundValues.cs" />
     <Compile Include="Reflection\Enum\eCarbonPaint.cs" />

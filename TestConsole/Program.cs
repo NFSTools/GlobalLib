@@ -30,12 +30,16 @@ namespace TestConsole
 
 			var elapsed_2 = watch.ElapsedMilliseconds;
 
-			var mat = db.Materials.GetAccessibleProperties(db.Materials.Classes[0].CollectionName);
-			var car = db.CarTypeInfos.GetAccessibleProperties(db.CarTypeInfos.Classes[0].CollectionName);
-			var ride = db.PresetRides.GetAccessibleProperties(db.PresetRides.Classes[0].CollectionName);
-			var skin = db.PresetSkins.GetAccessibleProperties(db.PresetSkins.Classes[0].CollectionName);
+			var C = new GlobalLib.Support.Carbon.Class.PresetSkin();
+			var MW = new GlobalLib.Support.MostWanted.Class.PresetRide();
+			var UG2 = new GlobalLib.Support.Underground2.Class.CarTypeInfo();
 
-			db.PresetRides.Classes[0].SetValue("SpoilerType", "_CARRER");
+			var strC = C.GetAccessibles();
+			var strMW = MW.GetAccessibles();
+			var strUG2 = UG2.GetAccessibles();
+
+			string reference = null;
+			bool done = db.PresetRides.Classes[0].SetValueOfInternalObject(ref reference, "Autosculpt", "SKIRT", "AutosculptZone3", "80");
 
 			int aa = 0;
 		}

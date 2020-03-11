@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Database
 {
-    public partial class Underground2 : Reflection.Interface.IGetIndex//, Reflection.Interface.IOperative
+    public partial class Underground2
     {
         /// <summary>
         /// Gets index of the class from the list of the database.

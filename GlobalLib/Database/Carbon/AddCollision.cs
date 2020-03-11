@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Database
 {
-    public partial class Carbon : Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
+    public partial class Carbon
     {
         /// <summary>
         /// Adds collision block to the database memory.
