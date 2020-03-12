@@ -55,6 +55,8 @@ namespace GlobalLib.Support.Underground2
                 uint troff = 0; // offset of the tracks block
                 uint trsize = 0; // size of the tracks block
 
+                uint gcoff = 0xFFFFFFFF; // offset of the gcareerinfo block
+
                 while (offset < db.GlobalBLZC.Length)
                 {
                     ID = *(uint*)(byteptr_t + offset); // read ID
@@ -88,10 +90,10 @@ namespace GlobalLib.Support.Underground2
                             E_CarTypeInfo(byteptr_t + offset + 8, size, db);
                             break;
 
-                        //case Reflection.ID.Global.PresetRides:
-                        //    proff = offset + 8;
-                        //    prsize = size;
-                        //    break;
+                        case Reflection.ID.Global.PresetRides:
+                            proff = offset + 8;
+                            prsize = size;
+                            break;
 
                         case Reflection.ID.Global.CarParts:
                             cpoff = offset + 8;
@@ -116,6 +118,11 @@ namespace GlobalLib.Support.Underground2
                         //    cosize = size;
                         //    break;
 
+                        case Reflection.ID.Global.GCareerInfo:
+                            if (gcoff == 0xFFFFFFFF)
+                                gcoff = offset;
+                            break;
+
                         case Reflection.ID.Global.FEngFiles:
                         case Reflection.ID.Global.FNGCompress:
                             E_FNGroup(byteptr_t + offset, size + 8, db);
@@ -131,7 +138,8 @@ namespace GlobalLib.Support.Underground2
                 E_CarParts(byteptr_t + cpoff, cpsize, db);
                 E_Tracks(byteptr_t + troff, trsize, db);
                 //E_Collisions(byteptr_t + cooff, cosize, db);
-                //E_PresetRides(byteptr_t + proff, prsize, db);
+                E_PresetRides(byteptr_t + proff, prsize, db);
+                db.GCareerInfos = new Gameplay.GCareerInfo(byteptr_t + gcoff, db);
             }
 
             // Disperse spoilers across cartypeinfo

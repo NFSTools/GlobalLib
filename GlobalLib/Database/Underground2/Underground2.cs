@@ -16,10 +16,12 @@ namespace GlobalLib.Database
         //public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
         public Collection.ClassCollection<SunInfo> SunInfos { get; set; }
         public Collection.ClassCollection<Track> Tracks { get; set; }
+        public Collection.ClassCollection<GCareerRace> GCareerRaces { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
         public STRBlock STRBlocks { get; set; }
+        public GCareerInfo GCareerInfos { get; set; }
 
         public Underground2()
         {
@@ -29,9 +31,11 @@ namespace GlobalLib.Database
             //this.PresetRides = new Collection.ClassCollection<PresetRide>();
             this.SunInfos = new Collection.ClassCollection<SunInfo>();
             this.Tracks = new Collection.ClassCollection<Track>();
+            this.GCareerRaces = new Collection.ClassCollection<GCareerRace>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();
+            this.GCareerInfos = new GCareerInfo();
         }
 
         ~Underground2()
@@ -46,9 +50,11 @@ namespace GlobalLib.Database
             //this.PresetRides = null;
             this.SunInfos = null;
             this.Tracks = null;
+            this.GCareerRaces = null;
             this.TPKBlocks = null;
             this.SlotTypes = null;
             this.STRBlocks = null;
+            this.GCareerInfos = null;
             System.GC.Collect();
         }
     }

@@ -21,6 +21,7 @@
             Map.CollisionMap.Clear();
             UG2PaintTypes();
             Windshields();
+            HashImportantStrings();
         }
 
         /// <summary>
@@ -239,6 +240,13 @@
             // Hashing of all paint types
             foreach (var paint in Map.UG2PaintTypes)
                 Utils.Bin.Hash(paint);
+        }
+    
+        private static void HashImportantStrings()
+        {
+            Utils.Bin.Hash(Reflection.BaseArguments.RANDOM);
+            Utils.Bin.Hash(Reflection.BaseArguments.GLOBAL);
+            Utils.Bin.Hash(Reflection.BaseArguments.DEFAULT);
         }
     }
 }

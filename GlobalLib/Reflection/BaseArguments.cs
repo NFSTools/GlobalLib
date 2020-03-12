@@ -6,6 +6,7 @@
         public const string TRUE    = "True";
         public const string FALSE   = "False";
         public const string DEFAULT = "DEFAULT";
+        public const string RANDOM  = "RANDOM";
         public const string MAIN    = "MAIN";
         public const string GLOBAL  = "GLOBAL";
         public const string STOCK   = "STOCK";

@@ -18,7 +18,7 @@
 		{
 			this.Database = db;
 			this._collection_name = CName;
-			this.Diassemble(byteptr_t);
+			this.Disassemble(byteptr_t);
 		}
 	}
 }

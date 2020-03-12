@@ -6,7 +6,7 @@
 		/// Disassembles track block into separate properties.
 		/// </summary>
 		/// <param name="byteptr_t">Pointer to the track block.</param
-		protected unsafe void Diassemble(byte* byteptr_t)
+		protected unsafe void Disassemble(byte* byteptr_t)
 		{
 			this._race_descrition = Utils.ScriptX.NullTerminatedString(byteptr_t, 0x20);
 			this._track_directory = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x20, 0x20);

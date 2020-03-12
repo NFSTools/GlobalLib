@@ -17,5 +17,6 @@
         public const uint STRBlocks   = 0x00039000;
         public const uint Tracks      = 0x00034201;
         public const uint SunInfos    = 0x00034202;
+        public const uint GCareerInfo = 0x80034A10;
     }
 }

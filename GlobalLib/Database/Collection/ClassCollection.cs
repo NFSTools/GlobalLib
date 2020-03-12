@@ -102,7 +102,7 @@ namespace GlobalLib.Database.Collection
 
 		public override string ToString()
 		{
-			return base.ToString();
+			return $"Count = {this.Length}";
 		}
 	}
 }
