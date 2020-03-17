@@ -20,6 +20,7 @@ namespace GlobalLib.Database
         public Collection.ClassCollection<WorldShop> WorldShops { get; set; }
         public Collection.ClassCollection<GCareerBrand> GCareerBrands { get; set; }
         public Collection.ClassCollection<PartPerformance> PartPerformances { get; set; }
+        public Collection.ClassCollection<GShowcase> GShowcases { get; set; }
         public Collection.ClassCollection<WorldChallenge> WorldChallenges { get; set; }
         public Collection.ClassCollection<PartUnlockable> PartUnlockables { get; set; }
         public Collection.ClassCollection<BankTrigger> BankTriggers { get; set; }
@@ -41,6 +42,7 @@ namespace GlobalLib.Database
             this.WorldShops = new Collection.ClassCollection<WorldShop>();
             this.GCareerBrands = new Collection.ClassCollection<GCareerBrand>();
             this.PartPerformances = new Collection.ClassCollection<PartPerformance>();
+            this.GShowcases = new Collection.ClassCollection<GShowcase>();
             this.WorldChallenges = new Collection.ClassCollection<WorldChallenge>();
             this.PartUnlockables = new Collection.ClassCollection<PartUnlockable>();
             this.BankTriggers = new Collection.ClassCollection<BankTrigger>();
@@ -70,6 +72,7 @@ namespace GlobalLib.Database
             this.WorldShops = null;
             this.GCareerBrands = null;
             this.PartPerformances = null;
+            this.GShowcases = null;
             this.WorldChallenges = null;
             this.PartUnlockables = null;
             this.BankTriggers = null;

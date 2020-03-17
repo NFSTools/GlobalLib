@@ -22,8 +22,6 @@ namespace TestConsole
 
 			var elapsed_1 = watch.ElapsedMilliseconds;
 
-			var str = GlobalLib.Core.Map.Lookup(252412494);
-
 
 
 			int aa = 0;

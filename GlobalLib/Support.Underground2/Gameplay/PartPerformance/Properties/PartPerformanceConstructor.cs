@@ -21,6 +21,7 @@
 			this._upgrade_level = args[1];
 			this._upgrade_part_index = args[2];
 			this.Disassemble(byteptr_t);
+			Core.Map.PerfPartTable[args[0], args[1], args[2]] = this.BinKey;
 		}
 
 		~PartPerformance() { }

@@ -14,7 +14,7 @@
 			{
 				byte* offset_ptr = byteptr_t + PartOffsets[4] + a1 * 0x17C + 8;
 				int index = *(int*)(offset_ptr);
-				int level = *(int*)(offset_ptr + 4);
+				int level = *(int*)(offset_ptr + 4) - 1;
 				int total = *(int*)(offset_ptr + 8);
 
 				for (int a2 = 0; a2 < total; ++a2)

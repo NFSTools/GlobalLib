@@ -24,9 +24,10 @@
 		[Reflection.Attributes.AccessModifiable()]
 		public int UpgradeLevel
 		{
-			get => this._upgrade_level;
+			get => (this._upgrade_level + 1);
 			set
 			{
+				--value;
 				if (this.CheckIfLevelCanBeSwitched(value))
 					this.SwitchUpgradeLevel(value);
 				else
