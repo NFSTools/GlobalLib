@@ -18,7 +18,7 @@ namespace GlobalLib.Support.Carbon
         {
             Language_dir += @"\LANGUAGES\";
 
-            using (var br = new BinaryReader(new MemoryStream(db.LngGlobal)))
+            using (var br = new BinaryReader(new MemoryStream(db._LngGlobal)))
             using (var bw = new BinaryWriter(File.Open(Language_dir + "English_Global.bin", FileMode.Create)))
             {
                 while (br.BaseStream.Position < br.BaseStream.Length)
@@ -53,7 +53,7 @@ namespace GlobalLib.Support.Carbon
                 }
             }
             
-            using (var br = new BinaryReader(new MemoryStream(db.LngLabels)))
+            using (var br = new BinaryReader(new MemoryStream(db._LngLabels)))
             using (var bw = new BinaryWriter(File.Open(Language_dir + "Labels_Global.bin", FileMode.Create)))
             {
                 while (br.BaseStream.Position < br.BaseStream.Length)

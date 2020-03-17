@@ -24,6 +24,7 @@
             UG2BankTriggers();
             Windshields();
             HashImportantStrings();
+            Map.PerfPartTable = new uint[10, 3, 4];
         }
 
         /// <summary>

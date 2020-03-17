@@ -7,10 +7,10 @@ namespace GlobalLib.Database
 {
     public partial class Underground2 : Reflection.Interface.IGetIndex//, Reflection.Interface.IOperative
     {
-        public byte[] GlobalABUN;
-        public byte[] GlobalBLZC;
-        public byte[] LngGlobal;
-        public byte[] LngLabels;
+        public byte[] _GlobalABUN;
+        public byte[] _GlobalBLZC;
+        public byte[] _LngGlobal;
+        public byte[] _LngLabels;
         public Collection.ClassCollection<Material> Materials { get; set; }
         public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
         //public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
@@ -19,6 +19,7 @@ namespace GlobalLib.Database
         public Collection.ClassCollection<GCareerRace> GCareerRaces { get; set; }
         public Collection.ClassCollection<WorldShop> WorldShops { get; set; }
         public Collection.ClassCollection<GCareerBrand> GCareerBrands { get; set; }
+        public Collection.ClassCollection<PartPerformance> PartPerformances { get; set; }
         public Collection.ClassCollection<WorldChallenge> WorldChallenges { get; set; }
         public Collection.ClassCollection<PartUnlockable> PartUnlockables { get; set; }
         public Collection.ClassCollection<BankTrigger> BankTriggers { get; set; }
@@ -39,6 +40,7 @@ namespace GlobalLib.Database
             this.GCareerRaces = new Collection.ClassCollection<GCareerRace>();
             this.WorldShops = new Collection.ClassCollection<WorldShop>();
             this.GCareerBrands = new Collection.ClassCollection<GCareerBrand>();
+            this.PartPerformances = new Collection.ClassCollection<PartPerformance>();
             this.WorldChallenges = new Collection.ClassCollection<WorldChallenge>();
             this.PartUnlockables = new Collection.ClassCollection<PartUnlockable>();
             this.BankTriggers = new Collection.ClassCollection<BankTrigger>();
@@ -50,10 +52,10 @@ namespace GlobalLib.Database
 
         ~Underground2()
         {
-            this.GlobalABUN = null;
-            this.GlobalBLZC = null;
-            this.LngGlobal = null;
-            this.LngLabels = null;
+            this._GlobalABUN = null;
+            this._GlobalBLZC = null;
+            this._LngGlobal = null;
+            this._LngLabels = null;
             this.CarTypeInfos = null;
             this.FNGroups = null;
             this.Materials = null;
@@ -67,6 +69,7 @@ namespace GlobalLib.Database
             this.GCareerRaces = null;
             this.WorldShops = null;
             this.GCareerBrands = null;
+            this.PartPerformances = null;
             this.WorldChallenges = null;
             this.PartUnlockables = null;
             this.BankTriggers = null;

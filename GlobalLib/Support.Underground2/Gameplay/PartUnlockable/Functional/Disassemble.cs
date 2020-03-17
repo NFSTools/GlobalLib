@@ -7,7 +7,7 @@
 			uint key = 0;
 
 			// CollectionName
-			this._collection_name = $"CarPart_{*(int*)byteptr_t:X2}";
+			this._collection_name = $"CARPART_{*(int*)byteptr_t:X2}";
 
 			// Visual Ratings
 			this.VisualRating_Level1 = *(short*)(byteptr_t + 4);

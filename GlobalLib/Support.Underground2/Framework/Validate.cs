@@ -24,11 +24,25 @@ namespace GlobalLib.Support.Underground2.Framework
 			return result <= ushort.MaxValue;
 		}
 
+		public static bool PartPerformanceCollectionName(string CName)
+		{
+			if (CName.Length != 10) return false;
+			try
+			{
+				uint _ = System.Convert.ToUInt32(CName, 16);
+				return false;
+			}
+			catch (System.Exception)
+			{
+				return false;
+			}
+		}
+
 		public static bool PartUnlockableCollectionName(string CName)
 		{
 			if (CName.Length != 10) return false;
-			if (!CName.StartsWith("CarPart_")) return false;
-			string index = FormatX.GetString(CName, "CarPart_{X}");
+			if (!CName.StartsWith("CARPART_")) return false;
+			string index = FormatX.GetString(CName, "CARPART_{X}");
 			if (ConvertX.ToInt32(index) == 0) return false;
 			else return true;
 		}

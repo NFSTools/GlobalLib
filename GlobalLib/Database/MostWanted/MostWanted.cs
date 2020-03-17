@@ -7,10 +7,10 @@ namespace GlobalLib.Database
 {
     public partial class MostWanted : Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
     {
-        public byte[] GlobalABUN;
-        public byte[] GlobalBLZC;
-        public byte[] LngGlobal;
-        public byte[] LngLabels;
+        public byte[] _GlobalABUN;
+        public byte[] _GlobalBLZC;
+        public byte[] _LngGlobal;
+        public byte[] _LngLabels;
         public Collection.ClassCollection<Material> Materials { get; set; }
         public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
         public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
@@ -22,9 +22,9 @@ namespace GlobalLib.Database
         public MostWanted()
         {
             this.CarTypeInfos = new Collection.ClassCollection<CarTypeInfo>();
-            this.FNGroups = new List<FNGroup>();
             this.Materials = new Collection.ClassCollection<Material>();
             this.PresetRides = new Collection.ClassCollection<PresetRide>();
+            this.FNGroups = new List<FNGroup>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();
@@ -32,10 +32,10 @@ namespace GlobalLib.Database
 
         ~MostWanted()
         {
-            this.GlobalABUN = null;
-            this.GlobalBLZC = null;
-            this.LngGlobal = null;
-            this.LngLabels = null;
+            this._GlobalABUN = null;
+            this._GlobalBLZC = null;
+            this._LngGlobal = null;
+            this._LngLabels = null;
             this.CarTypeInfos = null;
             this.FNGroups = null;
             this.Materials = null;

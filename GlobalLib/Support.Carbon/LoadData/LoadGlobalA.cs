@@ -21,7 +21,7 @@ namespace GlobalLib.Support.Carbon
             // Get everything from GlobalA.bun
             try
             {
-                db.GlobalABUN = File.ReadAllBytes(GlobalA_dir);
+                db._GlobalABUN = File.ReadAllBytes(GlobalA_dir);
                 Utils.Log.Write("Reading data from GlobalA.bun...");
             }
             catch (Exception) // If GlobalA.bun is opened in editing mode in another program
@@ -34,20 +34,20 @@ namespace GlobalLib.Support.Carbon
             }
 
             // Decompress if compressed
-            db.GlobalABUN = Utils.JDLZ.Decompress(db.GlobalABUN);
+            db._GlobalABUN = Utils.JDLZ.Decompress(db._GlobalABUN);
 
             // Use pointers to speed up process
-            fixed (byte* byteptr_t = &db.GlobalABUN[0])
+            fixed (byte* byteptr_t = &db._GlobalABUN[0])
             {
                 uint offset = 0; // to calculate current offset
                 uint ID = 0; // to get the ID of the block being read
                 uint size = 0; // to get the size of the block being read
 
-                while (offset < db.GlobalABUN.Length)
+                while (offset < db._GlobalABUN.Length)
                 {
                     ID = *(uint*)(byteptr_t + offset); // read ID
                     size = *(uint*)(byteptr_t + offset + 4); // read size
-                    if (offset + size > db.GlobalABUN.Length)
+                    if (offset + size > db._GlobalABUN.Length)
                     {
                         if (Core.Process.MessageShow)
                             MessageBox.Show("GlobalA: unable to read beyond the stream.", "Failure");

@@ -21,8 +21,8 @@ namespace GlobalLib.Support.Carbon
             // Get everything from language files
             try
             {
-                db.LngGlobal = File.ReadAllBytes(Language_dir + "English_Global.bin");
-                db.LngLabels = File.ReadAllBytes(Language_dir + "Labels_Global.bin");
+                db._LngGlobal = File.ReadAllBytes(Language_dir + "English_Global.bin");
+                db._LngLabels = File.ReadAllBytes(Language_dir + "Labels_Global.bin");
                 Utils.Log.Write("Reading data from English_Global.bin...");
                 Utils.Log.Write("Reading data from Labels_Global.bin...");
             }
@@ -36,13 +36,13 @@ namespace GlobalLib.Support.Carbon
             }
 
             // Decompress if compressed
-            db.LngGlobal = Utils.JDLZ.Decompress(db.LngGlobal);
-            db.LngLabels = Utils.JDLZ.Decompress(db.LngLabels);
+            db._LngGlobal = Utils.JDLZ.Decompress(db._LngGlobal);
+            db._LngLabels = Utils.JDLZ.Decompress(db._LngLabels);
 
             // Use pointers to speed up process
-            fixed (byte* strptr = &db.LngGlobal[0], labptr = &db.LngLabels[0])
+            fixed (byte* strptr = &db._LngGlobal[0], labptr = &db._LngLabels[0])
             {
-                db.STRBlocks = new Class.STRBlock(strptr, labptr, db.LngGlobal.Length, db.LngLabels.Length, db);
+                db.STRBlocks = new Class.STRBlock(strptr, labptr, db._LngGlobal.Length, db._LngLabels.Length, db);
             }
             return true;
         }

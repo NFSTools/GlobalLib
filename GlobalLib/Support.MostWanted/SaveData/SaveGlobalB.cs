@@ -18,7 +18,7 @@ namespace GlobalLib.Support.MostWanted
         {
             GlobalB_dir += @"\GLOBAL\GlobalB.lzc";
 
-            using (var br = new BinaryReader(new MemoryStream(db.GlobalBLZC)))
+            using (var br = new BinaryReader(new MemoryStream(db._GlobalBLZC)))
             using (var bw = new BinaryWriter(File.Open(GlobalB_dir, FileMode.Create)))
             {
                 int tpkindex = 0;

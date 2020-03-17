@@ -42,6 +42,11 @@ namespace GlobalLib.Core
         public static List<string> UG2PaintTypes { get; set; } = new List<string>();
 
         /// <summary>
+        /// Index table of all performance parts.
+        /// </summary>
+        public static uint[,,] PerfPartTable { get; set; }
+
+        /// <summary>
         /// Lookup through raider key map that throws no exceptions.
         /// </summary>
         /// <param name="key">Binary memory hash to look for.</param>

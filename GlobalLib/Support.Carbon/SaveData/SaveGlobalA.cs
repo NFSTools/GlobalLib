@@ -18,7 +18,7 @@ namespace GlobalLib.Support.Carbon
         {
             GlobalA_dir += @"\GLOBAL\GlobalA.bun";
 
-            using (var br = new BinaryReader(new MemoryStream(db.GlobalABUN)))
+            using (var br = new BinaryReader(new MemoryStream(db._GlobalABUN)))
             using (var bw = new BinaryWriter(File.Open(GlobalA_dir, FileMode.Create)))
             {
                 int tpkindex = 0;

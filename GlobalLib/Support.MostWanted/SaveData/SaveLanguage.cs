@@ -18,7 +18,7 @@ namespace GlobalLib.Support.MostWanted
         {
             Language_dir += @"\LANGUAGES\";
 
-            using (var br = new BinaryReader(new MemoryStream(db.LngGlobal)))
+            using (var br = new BinaryReader(new MemoryStream(db._LngGlobal)))
             using (var bw = new BinaryWriter(File.Open(Language_dir + "English.bin", FileMode.Create)))
             {
                 bool finished = false;
@@ -52,7 +52,7 @@ namespace GlobalLib.Support.MostWanted
                 }
             }
 
-            using (var br = new BinaryReader(new MemoryStream(db.LngLabels)))
+            using (var br = new BinaryReader(new MemoryStream(db._LngLabels)))
             using (var bw = new BinaryWriter(File.Open(Language_dir + "Labels.bin", FileMode.Create)))
             {
                 bool finished = false;

@@ -24,7 +24,7 @@ namespace GlobalLib.Support.Underground2
             // Get everything from GlobalB.lzc
             try
             {
-                db.GlobalBLZC = File.ReadAllBytes(GlobalB_dir);
+                db._GlobalBLZC = File.ReadAllBytes(GlobalB_dir);
                 Utils.Log.Write("Reading data from GlobalB.lzc...");
             }
             catch (Exception) // If GlobalB.lzc is opened in editing mode in another program
@@ -37,10 +37,10 @@ namespace GlobalLib.Support.Underground2
             }
 
             // Decompress if compressed
-            db.GlobalBLZC = Utils.JDLZ.Decompress(db.GlobalBLZC);
+            db._GlobalBLZC = Utils.JDLZ.Decompress(db._GlobalBLZC);
 
             // Use pointers to speed up process
-            fixed (byte* byteptr_t = &db.GlobalBLZC[0])
+            fixed (byte* byteptr_t = &db._GlobalBLZC[0])
             {
                 uint offset = 0; // to calculate current offset
                 uint ID = 0; // to get the ID of the block being read
@@ -57,11 +57,11 @@ namespace GlobalLib.Support.Underground2
 
                 uint gcoff = 0xFFFFFFFF; // offset of the gcareerinfo block
 
-                while (offset < db.GlobalBLZC.Length)
+                while (offset < db._GlobalBLZC.Length)
                 {
                     ID = *(uint*)(byteptr_t + offset); // read ID
                     size = *(uint*)(byteptr_t + offset + 4); // read size
-                    if (offset + size > db.GlobalBLZC.Length)
+                    if (offset + size > db._GlobalBLZC.Length)
                     {
                         if (Core.Process.MessageShow)
                             MessageBox.Show("GlobalB: unable to read beyond the stream.", "Failure");
