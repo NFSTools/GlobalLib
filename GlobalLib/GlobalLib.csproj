@@ -477,9 +477,17 @@
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Properties\WorldChallengeConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Properties\PartUnlockableConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Properties\IngameBrandName.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Internal\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Internal\GCareerInfoConstructor.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\FindOffsets.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadGCareerBrands.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadWorldShops.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadPartUnlockables.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadBankTriggers.cs" />

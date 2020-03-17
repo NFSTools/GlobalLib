@@ -9,6 +9,7 @@
 			this.ReadStrings(byteptr_t, PartOffsets);
 			this.ReadGCareerRaces(byteptr_t, PartOffsets);
 			this.ReadWorldShops(byteptr_t, PartOffsets);
+			this.ReadGCareerBrands(byteptr_t, PartOffsets);
 			this.ReadWorldChallenges(byteptr_t, PartOffsets);
 			this.ReadPartUnlockables(byteptr_t, PartOffsets);
 			this.ReadBankTriggers(byteptr_t, PartOffsets);

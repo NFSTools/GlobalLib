@@ -18,6 +18,7 @@ namespace GlobalLib.Database
         public Collection.ClassCollection<Track> Tracks { get; set; }
         public Collection.ClassCollection<GCareerRace> GCareerRaces { get; set; }
         public Collection.ClassCollection<WorldShop> WorldShops { get; set; }
+        public Collection.ClassCollection<GCareerBrand> GCareerBrands { get; set; }
         public Collection.ClassCollection<WorldChallenge> WorldChallenges { get; set; }
         public Collection.ClassCollection<PartUnlockable> PartUnlockables { get; set; }
         public Collection.ClassCollection<BankTrigger> BankTriggers { get; set; }
@@ -37,6 +38,7 @@ namespace GlobalLib.Database
             this.Tracks = new Collection.ClassCollection<Track>();
             this.GCareerRaces = new Collection.ClassCollection<GCareerRace>();
             this.WorldShops = new Collection.ClassCollection<WorldShop>();
+            this.GCareerBrands = new Collection.ClassCollection<GCareerBrand>();
             this.WorldChallenges = new Collection.ClassCollection<WorldChallenge>();
             this.PartUnlockables = new Collection.ClassCollection<PartUnlockable>();
             this.BankTriggers = new Collection.ClassCollection<BankTrigger>();
@@ -64,6 +66,7 @@ namespace GlobalLib.Database
             this.GCareerInfos = null;
             this.GCareerRaces = null;
             this.WorldShops = null;
+            this.GCareerBrands = null;
             this.WorldChallenges = null;
             this.PartUnlockables = null;
             this.BankTriggers = null;
