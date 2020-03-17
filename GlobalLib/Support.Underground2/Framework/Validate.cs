@@ -18,9 +18,19 @@ namespace GlobalLib.Support.Underground2.Framework
 
 		public static bool TrackCollectionName(string CName)
 		{
+			// Allowed format: Track_#, where # is ushort
 			if (!CName.StartsWith("Track_")) return false;
 			if (!FormatX.GetInt32(CName, "Track_{X}", out int result)) return false;
 			return result <= ushort.MaxValue;
+		}
+
+		public static bool PartUnlockableCollectionName(string CName)
+		{
+			if (CName.Length != 10) return false;
+			if (!CName.StartsWith("CarPart_")) return false;
+			string index = FormatX.GetString(CName, "CarPart_{X}");
+			if (ConvertX.ToInt32(index) == 0) return false;
+			else return true;
 		}
 	}
 }

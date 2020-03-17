@@ -17,6 +17,10 @@ namespace GlobalLib.Database
         public Collection.ClassCollection<SunInfo> SunInfos { get; set; }
         public Collection.ClassCollection<Track> Tracks { get; set; }
         public Collection.ClassCollection<GCareerRace> GCareerRaces { get; set; }
+        public Collection.ClassCollection<WorldShop> WorldShops { get; set; }
+        public Collection.ClassCollection<WorldChallenge> WorldChallenges { get; set; }
+        public Collection.ClassCollection<PartUnlockable> PartUnlockables { get; set; }
+        public Collection.ClassCollection<BankTrigger> BankTriggers { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -32,6 +36,10 @@ namespace GlobalLib.Database
             this.SunInfos = new Collection.ClassCollection<SunInfo>();
             this.Tracks = new Collection.ClassCollection<Track>();
             this.GCareerRaces = new Collection.ClassCollection<GCareerRace>();
+            this.WorldShops = new Collection.ClassCollection<WorldShop>();
+            this.WorldChallenges = new Collection.ClassCollection<WorldChallenge>();
+            this.PartUnlockables = new Collection.ClassCollection<PartUnlockable>();
+            this.BankTriggers = new Collection.ClassCollection<BankTrigger>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();
@@ -50,11 +58,15 @@ namespace GlobalLib.Database
             //this.PresetRides = null;
             this.SunInfos = null;
             this.Tracks = null;
-            this.GCareerRaces = null;
             this.TPKBlocks = null;
             this.SlotTypes = null;
             this.STRBlocks = null;
             this.GCareerInfos = null;
+            this.GCareerRaces = null;
+            this.WorldShops = null;
+            this.WorldChallenges = null;
+            this.PartUnlockables = null;
+            this.BankTriggers = null;
             System.GC.Collect();
         }
     }

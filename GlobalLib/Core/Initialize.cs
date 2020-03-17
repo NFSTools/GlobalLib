@@ -11,6 +11,7 @@
             BodyPaints();
             Windshields();
             RimBrandArray();
+            HashImportantStrings();
         }
 
         public static void InitUG2()
@@ -20,6 +21,7 @@
             Map.WindowTintMap.Clear();
             Map.CollisionMap.Clear();
             UG2PaintTypes();
+            UG2BankTriggers();
             Windshields();
             HashImportantStrings();
         }
@@ -242,11 +244,23 @@
                 Utils.Bin.Hash(paint);
         }
     
+        /// <summary>
+        /// Hashes most important strings used when processing data.
+        /// </summary>
         private static void HashImportantStrings()
         {
             Utils.Bin.Hash(Reflection.BaseArguments.RANDOM);
             Utils.Bin.Hash(Reflection.BaseArguments.GLOBAL);
             Utils.Bin.Hash(Reflection.BaseArguments.DEFAULT);
+        }
+    
+        /// <summary>
+        /// Hashes all labels for bank triggers.
+        /// </summary>
+        private static void UG2BankTriggers()
+        {
+            for (int a1 = 0; a1 < 100; ++a1)
+                Utils.Bin.Hash($"BANK_TRIGGER_{a1:00}");
         }
     }
 }

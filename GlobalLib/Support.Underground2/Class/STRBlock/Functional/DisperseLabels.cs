@@ -55,6 +55,7 @@
 				var label = Utils.ScriptX.NullTerminatedString(byteptr_t + pos);
 				if (key_to_index.TryGetValue(key, out int index))
 					this._stringinfo[index].Label = label;
+				Utils.Bin.Hash(label);
 			}
 		}
 	}

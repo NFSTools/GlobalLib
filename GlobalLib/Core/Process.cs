@@ -82,12 +82,12 @@
                 return false;
             }
             Initialize.InitUG2();
-            //bool A = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
-            bool B = Support.Underground2.LoadData.LoadGlobalB(GlobalDir, database);
-            bool C = Support.Underground2.LoadData.LoadLanguage(GlobalDir, database);
-            bool D = Support.Underground2.LoadData.LoadAudios(GlobalDir);
-            bool E = Support.Underground2.LoadData.LoadWheels(GlobalDir);
-            return B && C && D && E;
+            bool A = Support.Underground2.LoadData.LoadLanguage(GlobalDir, database);
+            bool B = Support.Underground2.LoadData.LoadAudios(GlobalDir);
+            bool C = Support.Underground2.LoadData.LoadWheels(GlobalDir);
+            //bool D = Support.MostWanted.LoadData.LoadGlobalA(GlobalDir, ref database);
+            bool E = Support.Underground2.LoadData.LoadGlobalB(GlobalDir, database);
+            return A && B && C && E;
         }
 
         /// <summary>
