@@ -4,9 +4,9 @@
 	{
 		private unsafe void ReadWorldShops(byte* byteptr_t, int[] PartOffsets)
 		{
-			if (PartOffsets[2] == -1) return; // if strings block does not exist
+			if (PartOffsets[2] == -1) return; // if world shops block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[2]) != Reflection.ID.GCareerInfo.SHOP_BLOCK)
-				return; // check strings block ID
+				return; // check world shops block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[2] + 4) / 0xA0;
 

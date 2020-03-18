@@ -5,7 +5,7 @@
 		// Default constructor
 		public PartPerformance() { }
 
-		// Default constructor: create new world challenge
+		// Default constructor: create new part performance
 		public PartPerformance(string CName, Database.Underground2 db)
 		{
 			this.Database = db;
@@ -13,7 +13,7 @@
 			this.SetToFirstAvailablePerfSlot();
 		}
 
-		// Default constructor: disassemble world challenge
+		// Default constructor: disassemble part performance
 		public unsafe PartPerformance(byte* byteptr_t, Database.Underground2 db, params int[] args)
 		{
 			this.Database = db;

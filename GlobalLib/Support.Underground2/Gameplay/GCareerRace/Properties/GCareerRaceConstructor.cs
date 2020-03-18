@@ -5,7 +5,7 @@
 		// Default constructor
 		public GCareerRace() { }
 
-		// Default constructor: create new track
+		// Default constructor: create new career race
 		public GCareerRace(string CName, Database.Underground2 db)
 		{
 			this.Database = db;
@@ -18,7 +18,7 @@
 			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 		}
 
-		// Default constructor: disassemble track
+		// Default constructor: disassemble career race
 		public unsafe GCareerRace(byte* ptr_header, byte* ptr_string, Database.Underground2 db)
 		{
 			this.Database = db;

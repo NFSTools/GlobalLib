@@ -4,9 +4,9 @@
 	{
 		private unsafe void ReadSponsors(byte* byteptr_t, int[] PartOffsets)
 		{
-			if (PartOffsets[7] == -1) return; // if strings block does not exist
+			if (PartOffsets[7] == -1) return; // if sponsors block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[7]) != Reflection.ID.GCareerInfo.SPONSOR_BLOCK)
-				return; // check strings block ID
+				return; // check sponsors block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[7] + 4) / 0x10;
 

@@ -5,7 +5,7 @@
 		// Default constructor
 		public GCareerBrand() { }
 
-		// Default constructor: create new world challenge
+		// Default constructor: create new career brand
 		public GCareerBrand(string CName, Database.Underground2 db)
 		{
 			this.Database = db;
@@ -13,7 +13,7 @@
 			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 		}
 
-		// Default constructor: disassemble world challenge
+		// Default constructor: disassemble career brand
 		public unsafe GCareerBrand(byte* byteptr_t, Database.Underground2 db)
 		{
 			this.Database = db;

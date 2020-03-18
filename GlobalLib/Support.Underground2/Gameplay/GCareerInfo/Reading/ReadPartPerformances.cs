@@ -4,9 +4,9 @@
 	{
 		private unsafe void ReadPartPerformances(byte* byteptr_t, int[] PartOffsets)
 		{
-			if (PartOffsets[4] == -1) return; // if strings block does not exist
+			if (PartOffsets[4] == -1) return; // if part perf block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[4]) != Reflection.ID.GCareerInfo.PERF_PACK_BLOCK)
-				return; // check strings block ID
+				return; // check part perf block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[4] + 4) / 0x17C;
 

@@ -13,7 +13,7 @@ namespace GlobalLib.Database
         public byte[] _LngLabels;
         public Collection.ClassCollection<Material> Materials { get; set; }
         public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
-        //public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
+        public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
         public Collection.ClassCollection<SunInfo> SunInfos { get; set; }
         public Collection.ClassCollection<Track> Tracks { get; set; }
         public Collection.ClassCollection<GCareerRace> GCareerRaces { get; set; }
@@ -21,6 +21,7 @@ namespace GlobalLib.Database
         public Collection.ClassCollection<GCareerBrand> GCareerBrands { get; set; }
         public Collection.ClassCollection<PartPerformance> PartPerformances { get; set; }
         public Collection.ClassCollection<GShowcase> GShowcases { get; set; }
+        public Collection.ClassCollection<SMSMessage> SMSMessages { get; set; }
         public Collection.ClassCollection<Sponsor> Sponsors { get; set; }
         public Collection.ClassCollection<WorldChallenge> WorldChallenges { get; set; }
         public Collection.ClassCollection<PartUnlockable> PartUnlockables { get; set; }
@@ -36,7 +37,7 @@ namespace GlobalLib.Database
             this.CarTypeInfos = new Collection.ClassCollection<CarTypeInfo>();
             this.FNGroups = new List<FNGroup>();
             this.Materials = new Collection.ClassCollection<Material>();
-            //this.PresetRides = new Collection.ClassCollection<PresetRide>();
+            this.PresetRides = new Collection.ClassCollection<PresetRide>();
             this.SunInfos = new Collection.ClassCollection<SunInfo>();
             this.Tracks = new Collection.ClassCollection<Track>();
             this.GCareerRaces = new Collection.ClassCollection<GCareerRace>();
@@ -44,6 +45,7 @@ namespace GlobalLib.Database
             this.GCareerBrands = new Collection.ClassCollection<GCareerBrand>();
             this.PartPerformances = new Collection.ClassCollection<PartPerformance>();
             this.GShowcases = new Collection.ClassCollection<GShowcase>();
+            this.SMSMessages = new Collection.ClassCollection<SMSMessage>();
             this.Sponsors = new Collection.ClassCollection<Sponsor>();
             this.WorldChallenges = new Collection.ClassCollection<WorldChallenge>();
             this.PartUnlockables = new Collection.ClassCollection<PartUnlockable>();
@@ -63,7 +65,7 @@ namespace GlobalLib.Database
             this.CarTypeInfos = null;
             this.FNGroups = null;
             this.Materials = null;
-            //this.PresetRides = null;
+            this.PresetRides = null;
             this.SunInfos = null;
             this.Tracks = null;
             this.TPKBlocks = null;
@@ -75,6 +77,7 @@ namespace GlobalLib.Database
             this.GCareerBrands = null;
             this.PartPerformances = null;
             this.GShowcases = null;
+            this.SMSMessages = null;
             this.Sponsors = null;
             this.WorldChallenges = null;
             this.PartUnlockables = null;

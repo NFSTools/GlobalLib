@@ -38,6 +38,12 @@ namespace GlobalLib.Support.Underground2.Framework
 			}
 		}
 
+		public static bool PerfSliderCollectionName(string CName)
+		{
+			if (CName.Length != 0) return false;
+			return false;
+		}
+
 		public static bool PartUnlockableCollectionName(string CName)
 		{
 			if (CName.Length != 10) return false;

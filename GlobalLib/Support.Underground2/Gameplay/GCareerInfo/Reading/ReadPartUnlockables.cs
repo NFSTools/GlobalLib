@@ -4,9 +4,9 @@
 	{
 		private unsafe void ReadPartUnlockables(byte* byteptr_t, int[] PartOffsets)
 		{
-			if (PartOffsets[11] == -1) return; // if strings block does not exist
+			if (PartOffsets[11] == -1) return; // if part unlocks block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[11]) != Reflection.ID.GCareerInfo.PART_UNLOCKS_BLOCK)
-				return; // check strings block ID
+				return; // check part unlocks block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[11] + 4) / 0x28;
 

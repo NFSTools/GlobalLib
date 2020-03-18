@@ -12,6 +12,7 @@
 			this.ReadGCareerBrands(byteptr_t, PartOffsets);
 			this.ReadPartPerformances(byteptr_t, PartOffsets);
 			this.ReadGShowcases(byteptr_t, PartOffsets);
+			this.ReadSMSMessages(byteptr_t, PartOffsets);
 			this.ReadSponsors(byteptr_t, PartOffsets);
 			this.ReadWorldChallenges(byteptr_t, PartOffsets);
 			this.ReadPartUnlockables(byteptr_t, PartOffsets);

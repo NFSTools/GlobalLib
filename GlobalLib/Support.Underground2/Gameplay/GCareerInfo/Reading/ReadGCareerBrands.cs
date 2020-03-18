@@ -4,9 +4,9 @@
 	{
 		private unsafe void ReadGCareerBrands(byte* byteptr_t, int[] PartOffsets)
 		{
-			if (PartOffsets[3] == -1) return; // if strings block does not exist
+			if (PartOffsets[3] == -1) return; // if career brands block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[3]) != Reflection.ID.GCareerInfo.BRAND_BLOCK)
-				return; // check strings block ID
+				return; // check career brands block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[3] + 4) / 0x44;
 

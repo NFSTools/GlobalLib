@@ -4,9 +4,9 @@
 	{
 		private unsafe void ReadGShowcases(byte* byteptr_t, int[] PartOffsets)
 		{
-			if (PartOffsets[5] == -1) return; // if strings block does not exist
+			if (PartOffsets[5] == -1) return; // if showcases block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[5]) != Reflection.ID.GCareerInfo.SHOWCASE_BLOCK)
-				return; // check strings block ID
+				return; // check showcases block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[5] + 4) / 0x40;
 
