@@ -93,6 +93,7 @@
     <Compile Include="Reflection\Enum\ePerformanceType.cs" />
     <Compile Include="Reflection\Enum\eSpoilerAS.cs" />
     <Compile Include="Reflection\Enum\eSpoiler.cs" />
+    <Compile Include="Reflection\Enum\eSponsorRaceType.cs" />
     <Compile Include="Reflection\Enum\eSTypes.cs" />
     <Compile Include="Reflection\Enum\eTakePhotoMethod.cs" />
     <Compile Include="Reflection\Enum\eUsageType.cs" />
@@ -490,6 +491,7 @@
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Internal\GCareerInfoConstructor.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\FindOffsets.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadGCareerBrands.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadSponsors.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadPartPerformances.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadGShowcases.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadWorldShops.cs" />
@@ -542,6 +544,14 @@
     <Compile Include="Support.Underground2\Gameplay\PartUnlockable\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\PartUnlockable\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Underground2\Gameplay\PartUnlockable\Properties\PartUnlockableConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Sponsor\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Sponsor\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Sponsor\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Sponsor\Properties\SigningCashBonuses.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Sponsor\Properties\RequiredRaces.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Sponsor\Properties\SponsorConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Sponsor\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Sponsor\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SunInfo\Functional\MemoryCast.cs" />
@@ -786,6 +796,7 @@
     <Compile Include="Utils\HTML\HTMLTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Support.Underground2\Gameplay\PerfSliderTuning\" />
     <Folder Include="Support.Underground2\SaveData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

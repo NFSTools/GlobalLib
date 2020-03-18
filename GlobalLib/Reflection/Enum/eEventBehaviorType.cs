@@ -2,11 +2,11 @@
 {
 	public enum eEventBehaviorType : byte
 	{
-		CIRCUIT = 0,
-		SPRINT = 1,
-		STREETX = 2,
-		OPENWORLD = 3,
-		DRAG = 4,
-		DRIFT = 5,
+		Circuit = 0,
+		Sprint = 1,
+		StreetX = 2,
+		OpenWorld = 3,
+		Drag = 4,
+		Drift = 5,
 	}
 }

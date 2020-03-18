@@ -3,13 +3,13 @@
 	public partial class PartUnlockable
 	{
 		[Reflection.Attributes.AccessModifiable()]
-		public short VisualRating_Level1 { get; set; }
+		public float VisualRating_Level1 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
-		public short VisualRating_Level2 { get; set; }
+		public float VisualRating_Level2 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
-		public short VisualRating_Level3 { get; set; }
+		public float VisualRating_Level3 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
 		public short PartPrice_Level1 { get; set; }

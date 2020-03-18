@@ -42,11 +42,11 @@
 						offsets[6] = ReaderOffset;
 						goto default;
 
-					case Reflection.ID.GCareerInfo.STAGE_BLOCK:
+					case Reflection.ID.GCareerInfo.SPONSOR_BLOCK:
 						offsets[7] = ReaderOffset;
 						goto default;
 
-					case Reflection.ID.GCareerInfo.SPONSOR_BLOCK:
+					case Reflection.ID.GCareerInfo.STAGE_BLOCK:
 						offsets[8] = ReaderOffset;
 						goto default;
 

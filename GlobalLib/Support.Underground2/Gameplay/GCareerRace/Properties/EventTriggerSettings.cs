@@ -4,7 +4,7 @@
 	{
 		private Reflection.Enum.eUnlockCondition _unlock_method = Reflection.Enum.eUnlockCondition.SPECIFIC_RACE_WON;
 		private Reflection.Enum.eBoolean _is_suv_race = Reflection.Enum.eBoolean.False;
-		private Reflection.Enum.eEventBehaviorType _event_behavior = Reflection.Enum.eEventBehaviorType.CIRCUIT;
+		private Reflection.Enum.eEventBehaviorType _event_behavior = Reflection.Enum.eEventBehaviorType.Circuit;
 
 		[Reflection.Attributes.AccessModifiable()]
 		public string EventTrigger { get; set; }

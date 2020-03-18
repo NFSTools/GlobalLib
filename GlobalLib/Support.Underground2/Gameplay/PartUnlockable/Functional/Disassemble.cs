@@ -10,9 +10,9 @@
 			this._collection_name = $"CARPART_{*(int*)byteptr_t:X2}";
 
 			// Visual Ratings
-			this.VisualRating_Level1 = *(short*)(byteptr_t + 4);
-			this.VisualRating_Level2 = *(short*)(byteptr_t + 0x10);
-			this.VisualRating_Level3 = *(short*)(byteptr_t + 0x1C);
+			this.VisualRating_Level1 = (float)(((float)*(short*)(byteptr_t + 0x04)) * 0.002);
+			this.VisualRating_Level2 = (float)(((float)*(short*)(byteptr_t + 0x10)) * 0.002);
+			this.VisualRating_Level3 = (float)(((float)*(short*)(byteptr_t + 0x1C)) * 0.002);
 
 			// Part Prices
 			this.PartPrice_Level1 = *(short*)(byteptr_t + 6);

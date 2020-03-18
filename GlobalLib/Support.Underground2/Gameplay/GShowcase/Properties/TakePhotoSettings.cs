@@ -2,7 +2,7 @@
 {
 	public partial class GShowcase
 	{
-		private Reflection.Enum.eTakePhotoMethod _take_photo = Reflection.Enum.eTakePhotoMethod.PICTURE_YOURSELF;
+		private Reflection.Enum.eTakePhotoMethod _take_photo = Reflection.Enum.eTakePhotoMethod.MAGAZINE_YOURSELF;
 
 		[Reflection.Attributes.AccessModifiable()]
 		public Reflection.Enum.eTakePhotoMethod TakePhotoMethod

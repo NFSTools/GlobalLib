@@ -2,9 +2,9 @@
 {
 	public enum eTakePhotoMethod : byte
 	{
-		PICTURE_YOURSELF = 1,
+		MAGAZINE_YOURSELF = 1,
 		DVD_YOURSELF = 2,
-		PICTURE_AUTO = 3,
+		MAGAZINE_AUTO = 3,
 		DVD_AUTO = 4,
 	}
 }
