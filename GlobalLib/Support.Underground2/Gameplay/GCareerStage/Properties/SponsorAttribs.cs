@@ -3,7 +3,7 @@
 	public partial class GCareerStage
 	{
 		[Reflection.Attributes.AccessModifiable()]
-		public byte NumberOfSponsorToChose { get; set; }
+		public byte NumberOfSponsorsToChoose { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
 		public short AttribSponsor1 { get; set; }

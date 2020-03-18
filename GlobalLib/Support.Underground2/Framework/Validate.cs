@@ -67,5 +67,13 @@ namespace GlobalLib.Support.Underground2.Framework
 			string index = FormatX.GetString(CName, "STAGE_{X}");
 			return byte.TryParse(index, out byte _);
 		}
+	
+		public static bool BankTriggerCollectionName(string CName)
+		{
+			if (CName.Length != 15) return false;
+			if (!CName.StartsWith("BANK_TRIGGER_")) return false;
+			string index = FormatX.GetString(CName, "BANK_TRIGGER_{X}");
+			return byte.TryParse(index, out byte _);
+		}
 	}
 }

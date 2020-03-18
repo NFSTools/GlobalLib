@@ -473,6 +473,7 @@
     <Compile Include="Support.Underground2\Framework\VirtualClass.cs" />
     <Compile Include="Reflection\Enum\eSunAlpha.cs" />
     <Compile Include="Reflection\Enum\eSunTexture.cs" />
+    <Compile Include="Support.Underground2\Gameplay\BankTrigger\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Functional\ToString.cs" />
@@ -483,6 +484,8 @@
     <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadGCareerStages.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadPerfSliderTunings.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadGCarUnlocks.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\ToString.cs" />
@@ -493,6 +496,7 @@
     <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\SponsorAttribs.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\SponsorSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\UnknownValues.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\ToString.cs" />
@@ -500,6 +504,8 @@
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\GCarUnlockConstructor.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\CareerRaceCompletion.cs" />
+    <Compile Include="Support.Underground2\Gameplay\PartUnlockable\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Properties\SliderSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\ToString.cs" />

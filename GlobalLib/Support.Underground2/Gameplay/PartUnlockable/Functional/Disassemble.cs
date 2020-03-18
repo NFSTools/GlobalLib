@@ -15,17 +15,17 @@
 			this.VisualRating_Level3 = (float)(((float)*(short*)(byteptr_t + 0x1C)) * 0.002);
 
 			// Part Prices
-			this.PartPrice_Level1 = *(short*)(byteptr_t + 6);
+			this.PartPrice_Level1 = *(short*)(byteptr_t + 0x06);
 			this.PartPrice_Level2 = *(short*)(byteptr_t + 0x12);
 			this.PartPrice_Level3 = *(short*)(byteptr_t + 0x1E);
 
 			// Required Stages Done
-			this.ReqStageDone_Level1 = *(byteptr_t + 8);
+			this.ReqStageDone_Level1 = *(byteptr_t + 0x08);
 			this.ReqStageDone_Level2 = *(byteptr_t + 0x14);
 			this.ReqStageDone_Level3 = *(byteptr_t + 0x20);
 
 			// Unlocking Shops
-			key = *(uint*)(byteptr_t + 0xC);
+			key = *(uint*)(byteptr_t + 0x0C);
 			this.UnlocksInShop_Level1 = Core.Map.Lookup(key) ?? string.Empty;
 			key = *(uint*)(byteptr_t + 0x18);
 			this.UnlocksInShop_Level2 = Core.Map.Lookup(key) ?? string.Empty;

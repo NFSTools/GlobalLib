@@ -10,11 +10,11 @@
         /// </summary>
         /// <param name="value">String to be hashed.</param>
         /// <returns>Vlt Memory Hash of the string as an unsigned integer.</returns>
-        public static uint Hash(string str)
+        public static uint Hash(string value)
         {
-            if (string.IsNullOrWhiteSpace(str)) return 0;
+            if (string.IsNullOrWhiteSpace(value)) return 0;
 
-            var arr = System.Text.Encoding.ASCII.GetBytes(str);
+            var arr = System.Text.Encoding.ASCII.GetBytes(value);
             var a = 0x9E3779B9;
             var b = 0x9E3779B9;
             var c = 0xABCDEF00;
@@ -80,10 +80,10 @@
         /// </summary>
         /// <param name="value">String to be hashed.</param>
         /// <returns>Vlt64 Memory Hash of the string as an unsigned long.</returns>
-        public static ulong Hash64(string str)
+        public static ulong Hash64(string value)
         {
-            if (string.IsNullOrWhiteSpace(str)) return 0;
-            var arr = System.Text.Encoding.ASCII.GetBytes(str);
+            if (string.IsNullOrWhiteSpace(value)) return 0;
+            var arr = System.Text.Encoding.ASCII.GetBytes(value);
             ulong a = 0x9E3779B97F4A7C13;
             ulong b = 0x9E3779B97F4A7C13;
             ulong c = 0x11223344ABCDEF00;
@@ -178,6 +178,28 @@
             }
 
             return Mix64_2(a, b, c);
+        }
+
+        /// <summary>
+        /// Hashes string passed and, if it starts with "0x", returns its unsigned integer value,
+        /// otherwises converts to vault hash.
+        /// </summary>
+        /// <param name="value">String to be hashed.</param>
+        /// <returns>Vlt Memory Hash of the string as an unsigned integer.</returns>
+        public static uint SmartHash(string value)
+        {
+            return (value?.StartsWith("0x") ?? false) ? ConvertX.ToUInt32(value) : Hash(value);
+        }
+
+        /// <summary>
+        /// Hashes string passed and, if it starts with "0x", returns its unsigned long value,
+        /// otherwises converts to vault-64 hash.
+        /// </summary>
+        /// <param name="value">String to be hashed.</param>
+        /// <returns>Vlt64 Memory Hash of the string as an unsigned long.</returns>
+        public static ulong SmartHash64(string value)
+        {
+            return (value?.StartsWith("0x") ?? false) ? ConvertX.ToUInt64(value) : Hash64(value);
         }
 
         /// <summary>

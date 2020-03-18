@@ -46,7 +46,7 @@ namespace GlobalLib.Utils
 			if (this.Position + length > this.Length)
 			{
 				var result = new byte[this.Position + length]; // add capacity
-				this.stream.CopyTo(result, 0);
+				Buffer.BlockCopy(this.stream, 0, result, 0, this.Length);
 				this.stream = result;
 			}
 		}
@@ -542,6 +542,15 @@ namespace GlobalLib.Utils
 					else this.Position = this.Length;
 					return;
 			}
+		}
+		/// <summary>
+		/// Compresses buffer size to the size of the current position.
+		/// </summary>
+		public void CompressToPosition()
+		{
+			var result = new byte[this.Position];
+			Buffer.BlockCopy(this.stream, 0, result, 0, this.Position);
+			this.stream = result;
 		}
 		public override string ToString()
 		{

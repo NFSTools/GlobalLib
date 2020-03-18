@@ -10,7 +10,7 @@
 			this._collection_name = $"STAGE_{*byteptr_t}";
 
 			// Sponsor Settings
-			this.NumberOfSponsorToChose = *(byteptr_t + 0x01);
+			this.NumberOfSponsorsToChoose = *(byteptr_t + 0x01);
 			key = *(uint*)(byteptr_t + 0x08);
 			if (key != 0) this._stage_sponsor1 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x0C);
@@ -46,6 +46,10 @@
 			this.Unknown0x2D = *(byteptr_t + 0x2D);
 			this.Unknown0x2E = *(byteptr_t + 0x2E);
 			this.Unknown0x2F = *(byteptr_t + 0x2F);
+			this.Unknown0x35 = *(byteptr_t + 0x35);
+			this.Unknown0x36 = *(byteptr_t + 0x36);
+			this.Unknown0x37 = *(byteptr_t + 0x37);
+			this.Unknown0x38 = *(byteptr_t + 0x38);
 			this.Unknown0x39 = *(byteptr_t + 0x39);
 			this.Unknown0x3A = *(byteptr_t + 0x3A);
 			this.Unknown0x3B = *(byteptr_t + 0x3B);

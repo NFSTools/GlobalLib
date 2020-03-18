@@ -31,6 +31,17 @@
         }
 
         /// <summary>
+        /// Hashes string passed and, if it starts with "0x", returns its unsigned integer value,
+        /// otherwises converts to binary hash,
+        /// </summary>
+        /// <param name="value">String to be hashed.</param>
+        /// <returns>Bin Memory Hash of the string as an unsigned integer.</returns>
+        public static uint SmartHash(string value)
+        {
+            return (value?.StartsWith("0x") ?? false) ? ConvertX.ToUInt32(value) : Hash(value);
+        }
+
+        /// <summary>
         /// Reverses bytes of an unsigned integer passed.
         /// </summary>
         /// <param name="value">Value to be reversed.</param>

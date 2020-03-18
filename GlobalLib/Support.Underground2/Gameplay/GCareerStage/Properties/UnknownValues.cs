@@ -24,6 +24,18 @@
 		public byte Unknown0x2F { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		public byte Unknown0x35 { get; set; }
+
+		[Reflection.Attributes.AccessModifiable()]
+		public byte Unknown0x36 { get; set; }
+
+		[Reflection.Attributes.AccessModifiable()]
+		public byte Unknown0x37 { get; set; }
+
+		[Reflection.Attributes.AccessModifiable()]
+		public byte Unknown0x38 { get; set; }
+
+		[Reflection.Attributes.AccessModifiable()]
 		public byte Unknown0x39 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
@@ -43,6 +55,15 @@
 
 		[Reflection.Attributes.AccessModifiable()]
 		public byte Unknown0x3F { get; set; }
+
+		[Reflection.Attributes.AccessModifiable()]
+		public byte Unknown0x41 { get; set; }
+
+		[Reflection.Attributes.AccessModifiable()]
+		public byte Unknown0x42 { get; set; }
+
+		[Reflection.Attributes.AccessModifiable()]
+		public byte Unknown0x43 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
 		public float Unknown0x44 { get; set; }
