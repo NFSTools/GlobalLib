@@ -1,8 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿namespace GlobalLib.Support.Underground2.Framework
 {
-	public partial class GCareerInfo
+	public static partial class CareerManager
 	{
-		private unsafe int[] FindOffsets(byte* byteptr_t)
+		private static unsafe int[] FindOffsets(byte* byteptr_t)
 		{
 			var offsets = new int[] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
 			int ReaderOffset = 8;

@@ -1,8 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿namespace GlobalLib.Support.Underground2.Framework
 {
-	public partial class GCareerInfo
+	public static partial class CareerManager
 	{
-		private unsafe void ReadWorldChallenges(byte* byteptr_t, int[] PartOffsets)
+		private static unsafe void ReadWorldChallenges(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[10] == -1) return; // if world challenges block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[10]) != Reflection.ID.GCareerInfo.WORLD_CHAL_BLOCK)
@@ -14,8 +14,8 @@
 			{
 				int ptr_string = PartOffsets[0] + 8;
 				int ptr_header = PartOffsets[10] + a1 * 0x18 + 8;
-				var Class = new WorldChallenge(byteptr_t + ptr_header, byteptr_t + ptr_string, this.Database);
-				this.Database.WorldChallenges.Classes.Add(Class);
+				var Class = new Gameplay.WorldChallenge(byteptr_t + ptr_header, byteptr_t + ptr_string, db);
+				db.WorldChallenges.Classes.Add(Class);
 			}
 		}
 	}

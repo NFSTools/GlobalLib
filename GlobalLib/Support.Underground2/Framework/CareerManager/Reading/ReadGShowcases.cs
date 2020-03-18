@@ -1,8 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿namespace GlobalLib.Support.Underground2.Framework
 {
-	public partial class GCareerInfo
+	public static partial class CareerManager
 	{
-		private unsafe void ReadGShowcases(byte* byteptr_t, int[] PartOffsets)
+		private static unsafe void ReadGShowcases(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[5] == -1) return; // if showcases block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[5]) != Reflection.ID.GCareerInfo.SHOWCASE_BLOCK)
@@ -13,8 +13,8 @@
 			for (int a1 = 0; a1 < size; ++a1)
 			{
 				int ptr_header = PartOffsets[5] + a1 * 0x40 + 8;
-				var Class = new GShowcase(byteptr_t + ptr_header, this.Database);
-				this.Database.GShowcases.Classes.Add(Class);
+				var Class = new Gameplay.GShowcase(byteptr_t + ptr_header, db);
+				db.GShowcases.Classes.Add(Class);
 			}
 		}
 	}

@@ -1,8 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿namespace GlobalLib.Support.Underground2.Framework
 {
-	public partial class GCareerInfo
+	public static partial class CareerManager
 	{
-		private unsafe void ReadGCareerBrands(byte* byteptr_t, int[] PartOffsets)
+		private static unsafe void ReadGCareerBrands(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[3] == -1) return; // if career brands block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[3]) != Reflection.ID.GCareerInfo.BRAND_BLOCK)
@@ -13,8 +13,8 @@
 			for (int a1 = 0; a1 < size; ++a1)
 			{
 				int ptr_header = PartOffsets[3] + a1 * 0x44 + 8;
-				var Class = new GCareerBrand(byteptr_t + ptr_header, this.Database);
-				this.Database.GCareerBrands.Classes.Add(Class);
+				var Class = new Gameplay.GCareerBrand(byteptr_t + ptr_header, db);
+				db.GCareerBrands.Classes.Add(Class);
 			}
 		}
 	}

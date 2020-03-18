@@ -23,6 +23,8 @@ namespace GlobalLib.Database
         public Collection.ClassCollection<GShowcase> GShowcases { get; set; }
         public Collection.ClassCollection<SMSMessage> SMSMessages { get; set; }
         public Collection.ClassCollection<Sponsor> Sponsors { get; set; }
+        public Collection.ClassCollection<GCareerStage> GCareerStages { get; set; }
+        public Collection.ClassCollection<PerfSliderTuning> PerfSliderTunings { get; set; }
         public Collection.ClassCollection<WorldChallenge> WorldChallenges { get; set; }
         public Collection.ClassCollection<PartUnlockable> PartUnlockables { get; set; }
         public Collection.ClassCollection<BankTrigger> BankTriggers { get; set; }
@@ -31,7 +33,6 @@ namespace GlobalLib.Database
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
         public STRBlock STRBlocks { get; set; }
-        public GCareerInfo GCareerInfos { get; set; }
 
         public Underground2()
         {
@@ -48,6 +49,8 @@ namespace GlobalLib.Database
             this.GShowcases = new Collection.ClassCollection<GShowcase>();
             this.SMSMessages = new Collection.ClassCollection<SMSMessage>();
             this.Sponsors = new Collection.ClassCollection<Sponsor>();
+            this.GCareerStages = new Collection.ClassCollection<GCareerStage>();
+            this.PerfSliderTunings = new Collection.ClassCollection<PerfSliderTuning>();
             this.WorldChallenges = new Collection.ClassCollection<WorldChallenge>();
             this.PartUnlockables = new Collection.ClassCollection<PartUnlockable>();
             this.BankTriggers = new Collection.ClassCollection<BankTrigger>();
@@ -55,7 +58,6 @@ namespace GlobalLib.Database
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();
-            this.GCareerInfos = new GCareerInfo();
         }
 
         ~Underground2()
@@ -73,7 +75,6 @@ namespace GlobalLib.Database
             this.TPKBlocks = null;
             this.SlotTypes = null;
             this.STRBlocks = null;
-            this.GCareerInfos = null;
             this.GCareerRaces = null;
             this.WorldShops = null;
             this.GCareerBrands = null;
@@ -81,6 +82,8 @@ namespace GlobalLib.Database
             this.GShowcases = null;
             this.SMSMessages = null;
             this.Sponsors = null;
+            this.GCareerStages = null;
+            this.PerfSliderTunings = null;
             this.WorldChallenges = null;
             this.PartUnlockables = null;
             this.BankTriggers = null;

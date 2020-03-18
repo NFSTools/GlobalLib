@@ -1,8 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿namespace GlobalLib.Support.Underground2.Framework
 {
-	public partial class GCareerInfo
+	public static partial class CareerManager
 	{
-		private unsafe void ReadWorldShops(byte* byteptr_t, int[] PartOffsets)
+		private static unsafe void ReadWorldShops(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[2] == -1) return; // if world shops block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[2]) != Reflection.ID.GCareerInfo.SHOP_BLOCK)
@@ -13,8 +13,8 @@
 			for (int a1 = 0; a1 < size; ++a1)
 			{
 				int ptr_header = PartOffsets[2] + a1 * 0xA0 + 8;
-				var Class = new WorldShop(byteptr_t + ptr_header, this.Database);
-				this.Database.WorldShops.Classes.Add(Class);
+				var Class = new Gameplay.WorldShop(byteptr_t + ptr_header, db);
+				db.WorldShops.Classes.Add(Class);
 			}
 		}
 	}

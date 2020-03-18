@@ -1,8 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿namespace GlobalLib.Support.Underground2.Framework
 {
-	public partial class GCareerInfo
+	public static partial class CareerManager
 	{
-		private unsafe void ReadGCarUnlocks(byte* byteptr_t, int[] PartOffsets)
+		private static unsafe void ReadGCarUnlocks(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[13] == -1) return; // if car unlocks block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[13]) != Reflection.ID.GCareerInfo.CAR_UNLOCKS_BLOCK)
@@ -13,8 +13,8 @@
 			for (int a1 = 0; a1 < size; ++a1)
 			{
 				int ptr_header = PartOffsets[13] + a1 * 0xC + 8;
-				var Class = new GCarUnlock(byteptr_t + ptr_header, this.Database);
-				this.Database.GCarUnlocks.Classes.Add(Class);
+				var Class = new Gameplay.GCarUnlock(byteptr_t + ptr_header, db);
+				db.GCarUnlocks.Classes.Add(Class);
 			}
 		}
 	}

@@ -1,8 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿namespace GlobalLib.Support.Underground2.Framework
 {
-	public partial class GCareerInfo
+	public static partial class CareerManager
 	{
-		private unsafe void ReadSMSMessages(byte* byteptr_t, int[] PartOffsets)
+		private static unsafe void ReadSMSMessages(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[6] == -1) return; // if sms message block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[6]) != Reflection.ID.GCareerInfo.SMS_MESSAGE_BLOCK)
@@ -14,8 +14,8 @@
 			{
 				int ptr_string = PartOffsets[0] + 8;
 				int ptr_header = PartOffsets[6] + a1 * 0x14 + 8;
-				var Class = new SMSMessage(byteptr_t + ptr_header, byteptr_t + ptr_string, this.Database);
-				this.Database.SMSMessages.Classes.Add(Class);
+				var Class = new Gameplay.SMSMessage(byteptr_t + ptr_header, byteptr_t + ptr_string, db);
+				db.SMSMessages.Classes.Add(Class);
 			}
 		}
 	}

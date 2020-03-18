@@ -40,8 +40,16 @@ namespace GlobalLib.Support.Underground2.Framework
 
 		public static bool PerfSliderCollectionName(string CName)
 		{
-			if (CName.Length != 0) return false;
-			return false;
+			if (CName.Length != 10) return false;
+			try
+			{
+				uint _ = System.Convert.ToUInt32(CName, 16);
+				return true;
+			}
+			catch (System.Exception)
+			{
+				return false;
+			}
 		}
 
 		public static bool PartUnlockableCollectionName(string CName)
@@ -51,6 +59,13 @@ namespace GlobalLib.Support.Underground2.Framework
 			string index = FormatX.GetString(CName, "CARPART_{X}");
 			if (ConvertX.ToInt32(index) == 0) return false;
 			else return true;
+		}
+	
+		public static bool CareerStageCollectionName(string CName)
+		{
+			if (!CName.StartsWith("STAGE_")) return false;
+			string index = FormatX.GetString(CName, "STAGE_{X}");
+			return byte.TryParse(index, out byte _);
 		}
 	}
 }

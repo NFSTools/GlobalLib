@@ -1,8 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿namespace GlobalLib.Support.Underground2.Framework
 {
-	public partial class GCareerInfo
+	public static partial class CareerManager
 	{
-		private unsafe void ReadPartPerformances(byte* byteptr_t, int[] PartOffsets)
+		private static unsafe void ReadPartPerformances(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[4] == -1) return; // if part perf block does not exist
 			if (*(uint*)(byteptr_t + PartOffsets[4]) != Reflection.ID.GCareerInfo.PERF_PACK_BLOCK)
@@ -20,8 +20,8 @@
 				for (int a2 = 0; a2 < total; ++a2)
 				{
 					int ptr_header = 12 + a2 * 0x5C;
-					var Class = new PartPerformance(offset_ptr + ptr_header, this.Database, index, level, a2);
-					this.Database.PartPerformances.Classes.Add(Class);
+					var Class = new Gameplay.PartPerformance(offset_ptr + ptr_header, db, index, level, a2);
+					db.PartPerformances.Classes.Add(Class);
 				}
 			}
 		}

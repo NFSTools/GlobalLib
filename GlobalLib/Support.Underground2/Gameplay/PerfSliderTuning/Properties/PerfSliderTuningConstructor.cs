@@ -14,10 +14,10 @@
 		}
 
 		// Default constructor: disassemble perfslidertuning
-		public unsafe PerfSliderTuning(byte* ptr_header, byte* ptr_string, Database.Underground2 db)
+		public unsafe PerfSliderTuning(byte* byteptr_t, Database.Underground2 db)
 		{
 			this.Database = db;
-			this.Disassemble(ptr_header, ptr_string);
+			this.Disassemble(byteptr_t);
 		}
 
 		~PerfSliderTuning() { }

@@ -139,7 +139,7 @@ namespace GlobalLib.Support.Underground2
                 E_Tracks(byteptr_t + troff, trsize, db);
                 //E_Collisions(byteptr_t + cooff, cosize, db);
                 E_PresetRides(byteptr_t + proff, prsize, db);
-                db.GCareerInfos = new Gameplay.GCareerInfo(byteptr_t + gcoff, db);
+                Framework.CareerManager.Disassemble(byteptr_t + gcoff, db);
             }
 
             // Disperse spoilers across cartypeinfo

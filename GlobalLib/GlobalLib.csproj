@@ -480,7 +480,19 @@
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Properties\BankTriggerConstructor.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadGCarUnlocks.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadGCareerStages.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadPerfSliderTunings.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadGCarUnlocks.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\GCareerStageConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\RaceSettings.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\SponsorAttribs.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\SponsorSettings.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerStage\Properties\UnknownValues.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\ToString.cs" />
@@ -488,6 +500,7 @@
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\GCarUnlockConstructor.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\CareerRaceCompletion.cs" />
+    <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Properties\SliderSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\MemoryCast.cs" />
@@ -502,20 +515,19 @@
     <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Properties\GCareerBrandConstructor.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Properties\IngameBrandName.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Internal\Disassemble.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Internal\GCareerInfoConstructor.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\FindOffsets.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadGCareerBrands.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadSMSMessages.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadSponsors.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadPartPerformances.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadGShowcases.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadWorldShops.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadPartUnlockables.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadBankTriggers.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadGCareerRaces.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadStrings.cs" />
-    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadWorldChallenges.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\FindOffsets.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadGCareerBrands.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadSMSMessages.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadSponsors.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadPartPerformances.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadGShowcases.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadWorldShops.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadPartUnlockables.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadBankTriggers.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadGCareerRaces.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadStrings.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadWorldChallenges.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerRace\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerRace\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerRace\Functional\ToString.cs" />
@@ -818,6 +830,7 @@
     <Compile Include="Utils\HTML\HTMLTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Support.Underground2\Framework\CareerManager\Writing\" />
     <Folder Include="Support.Underground2\SaveData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
