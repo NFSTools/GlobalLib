@@ -26,6 +26,7 @@ namespace GlobalLib.Database
         public Collection.ClassCollection<WorldChallenge> WorldChallenges { get; set; }
         public Collection.ClassCollection<PartUnlockable> PartUnlockables { get; set; }
         public Collection.ClassCollection<BankTrigger> BankTriggers { get; set; }
+        public Collection.ClassCollection<GCarUnlock> GCarUnlocks { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -50,6 +51,7 @@ namespace GlobalLib.Database
             this.WorldChallenges = new Collection.ClassCollection<WorldChallenge>();
             this.PartUnlockables = new Collection.ClassCollection<PartUnlockable>();
             this.BankTriggers = new Collection.ClassCollection<BankTrigger>();
+            this.GCarUnlocks = new Collection.ClassCollection<GCarUnlock>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();
@@ -82,6 +84,7 @@ namespace GlobalLib.Database
             this.WorldChallenges = null;
             this.PartUnlockables = null;
             this.BankTriggers = null;
+            this.GCarUnlocks = null;
             System.GC.Collect();
         }
     }

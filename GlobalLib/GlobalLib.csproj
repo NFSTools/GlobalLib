@@ -480,6 +480,14 @@
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Properties\BankTriggerConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerInfo\Reading\ReadGCarUnlocks.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\GCarUnlockConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\CareerRaceCompletion.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\MemoryCast.cs" />

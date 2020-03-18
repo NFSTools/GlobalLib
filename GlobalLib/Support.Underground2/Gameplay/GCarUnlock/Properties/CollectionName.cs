@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class SMSMessage
+	public partial class GCarUnlock
 	{
 		private string _collection_name;
 
@@ -15,7 +15,9 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
-				if (this.Database.SMSMessages.GetClassIndex(value) != -1)
+				if (this.Database.CarTypeInfos.GetClassIndex(value) == -1)
+					throw new Reflection.Exception.MappingFailException("CarTypeInfo with the given CollectionName does not exist.");
+				if (this.Database.GCarUnlocks.GetClassIndex(value) != -1)
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

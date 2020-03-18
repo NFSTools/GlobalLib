@@ -17,6 +17,7 @@
 			this.ReadWorldChallenges(byteptr_t, PartOffsets);
 			this.ReadPartUnlockables(byteptr_t, PartOffsets);
 			this.ReadBankTriggers(byteptr_t, PartOffsets);
+			this.ReadGCarUnlocks(byteptr_t, PartOffsets);
 		}
 	}
 }
