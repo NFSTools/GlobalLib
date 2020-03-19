@@ -471,7 +471,13 @@
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\Assemble.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteGCareerBrands.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteGCareerStages.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteGShowcases.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WritePartPerformances.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteSMSMessages.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteSponsors.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteWorldShops.cs" />
     <Compile Include="Support.Underground2\Framework\VirtualClass.cs" />
     <Compile Include="Reflection\Enum\eSunAlpha.cs" />
     <Compile Include="Reflection\Enum\eSunTexture.cs" />
