@@ -2,12 +2,24 @@
 {
 	public partial class WorldShop
 	{
+		private string _intro_movie;
 		private Reflection.Enum.eWorldShopType _shop_type = Reflection.Enum.eWorldShopType.PAINTSHOP;
 		private Reflection.Enum.eBoolean _initially_hidden = Reflection.Enum.eBoolean.True;
 		private Reflection.Enum.eBoolean _unlocked_by_event = Reflection.Enum.eBoolean.False;
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string IntroMovie { get; set; }
+		public string IntroMovie
+		{
+			get => this._intro_movie;
+			set
+			{
+				if (value == null) this._intro_movie = string.Empty;
+				else if (value.Length > 0x17)
+					throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 23 characters.");
+				else
+					this._intro_movie = value;
+			}
+		}
 
 		[Reflection.Attributes.AccessModifiable()]
 		public string ShopTrigger { get; set; }

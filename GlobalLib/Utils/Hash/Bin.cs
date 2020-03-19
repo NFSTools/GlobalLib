@@ -38,6 +38,7 @@
         /// <returns>Bin Memory Hash of the string as an unsigned integer.</returns>
         public static uint SmartHash(string value)
         {
+            if (value == Reflection.BaseArguments.NULL) return 0;
             return (value?.StartsWith("0x") ?? false) ? ConvertX.ToUInt32(value) : Hash(value);
         }
 

@@ -2,12 +2,12 @@
 {
 	public partial class GCareerBrand
 	{
-		public unsafe byte[] Assemble(Utils.MemoryWriter mr)
+		public unsafe byte[] Assemble(Utils.MemoryWriter mw)
 		{
 			var result = new byte[0x44];
 			fixed (byte* byteptr_t = &result[0])
 			{
-				mr.WriteNullTerminated(this._collection_name);
+				mw.WriteNullTerminated(this._collection_name);
 
 				for (int a1 = 0; a1 < this._collection_name.Length; ++a1)
 					*(byteptr_t + a1) = (byte)this._collection_name[a1];

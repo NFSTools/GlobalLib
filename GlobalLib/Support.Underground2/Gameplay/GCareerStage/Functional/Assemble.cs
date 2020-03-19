@@ -14,35 +14,11 @@
 				*(short*)(byteptr_t + 0x04) = this.Unknown0x04;
 				*(short*)(byteptr_t + 0x06) = this.Unknown0x06;
 
-				if (this._stage_sponsor1 == Reflection.BaseArguments.NULL) { }
-				else if (this._stage_sponsor1.StartsWith("0x"))
-					*(uint*)(byteptr_t + 0x08) = Utils.ConvertX.ToUInt32(this._stage_sponsor1);
-				else
-					*(uint*)(byteptr_t + 0x08) = Utils.Bin.Hash(this._stage_sponsor1);
-
-				if (this._stage_sponsor2 == Reflection.BaseArguments.NULL) { }
-				else if (this._stage_sponsor2.StartsWith("0x"))
-					*(uint*)(byteptr_t + 0x0C) = Utils.ConvertX.ToUInt32(this._stage_sponsor2);
-				else
-					*(uint*)(byteptr_t + 0x0C) = Utils.Bin.Hash(this._stage_sponsor2);
-
-				if (this._stage_sponsor3 == Reflection.BaseArguments.NULL) { }
-				else if (this._stage_sponsor3.StartsWith("0x"))
-					*(uint*)(byteptr_t + 0x10) = Utils.ConvertX.ToUInt32(this._stage_sponsor3);
-				else
-					*(uint*)(byteptr_t + 0x10) = Utils.Bin.Hash(this._stage_sponsor3);
-
-				if (this._stage_sponsor4 == Reflection.BaseArguments.NULL) { }
-				else if (this._stage_sponsor4.StartsWith("0x"))
-					*(uint*)(byteptr_t + 0x14) = Utils.ConvertX.ToUInt32(this._stage_sponsor4);
-				else
-					*(uint*)(byteptr_t + 0x14) = Utils.Bin.Hash(this._stage_sponsor4);
-
-				if (this._stage_sponsor5 == Reflection.BaseArguments.NULL) { }
-				else if (this._stage_sponsor5.StartsWith("0x"))
-					*(uint*)(byteptr_t + 0x18) = Utils.ConvertX.ToUInt32(this._stage_sponsor5);
-				else
-					*(uint*)(byteptr_t + 0x18) = Utils.Bin.Hash(this._stage_sponsor5);
+				*(uint*)(byteptr_t + 0x08) = Utils.Bin.SmartHash(this._stage_sponsor1);
+				*(uint*)(byteptr_t + 0x0C) = Utils.Bin.SmartHash(this._stage_sponsor2);
+				*(uint*)(byteptr_t + 0x10) = Utils.Bin.SmartHash(this._stage_sponsor3);
+				*(uint*)(byteptr_t + 0x14) = Utils.Bin.SmartHash(this._stage_sponsor4);
+				*(uint*)(byteptr_t + 0x18) = Utils.Bin.SmartHash(this._stage_sponsor5);
 
 				*(short*)(byteptr_t + 0x1C) = this.AttribSponsor1;
 				*(short*)(byteptr_t + 0x1E) = this.AttribSponsor2;
@@ -51,10 +27,7 @@
 				*(short*)(byteptr_t + 0x24) = this.AttribSponsor5;
 				*(short*)(byteptr_t + 0x26) = this.Unknown0x26;
 
-				if (!string.IsNullOrEmpty(this.LastStageEvent) && this.LastStageEvent.StartsWith("0x"))
-					*(uint*)(byteptr_t + 0x28) = Utils.ConvertX.ToUInt32(this.LastStageEvent);
-				else
-					*(uint*)(byteptr_t + 0x28) = Utils.Bin.Hash(this.LastStageEvent);
+				*(uint*)(byteptr_t + 0x28) = Utils.Bin.SmartHash(this.LastStageEvent);
 
 				*(byteptr_t + 0x2C) = this.Unknown0x2C;
 				*(byteptr_t + 0x2D) = this.Unknown0x2D;

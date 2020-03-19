@@ -584,6 +584,7 @@
     <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Properties\CollectionName.cs" />
     <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Properties\PerfSliderTuningConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\Sponsor\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\Sponsor\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\Sponsor\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Gameplay\Sponsor\Functional\MemoryCast.cs" />
@@ -747,6 +748,7 @@
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\BasicRaceSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\Enumerable.cs" />
     <Compile Include="Support.Underground2\Gameplay\Track\Properties\RegionSettings.cs" />
+    <Compile Include="Support.Underground2\Gameplay\WorldChallenge\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\WorldChallenge\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\WorldChallenge\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Gameplay\WorldChallenge\Functional\ToString.cs" />
@@ -754,6 +756,7 @@
     <Compile Include="Support.Underground2\Gameplay\WorldChallenge\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\WorldChallenge\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Underground2\Gameplay\WorldChallenge\Properties\WorldChallengeConstructor.cs" />
+    <Compile Include="Support.Underground2\Gameplay\WorldShop\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\WorldShop\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\WorldShop\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Gameplay\WorldShop\Functional\ToString.cs" />

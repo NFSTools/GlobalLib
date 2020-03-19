@@ -31,11 +31,7 @@
 				*(byteptr_t + 0x88) = (this._is_performance_tuning == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
 				*(ushort*)(byteptr_t + 0x8A) = this.TrackID;
 				*(ushort*)(byteptr_t + 0x8C) = this.TrackID;
-				if (this._sun_info_name == Reflection.BaseArguments.NULL) { }
-				else if (this._sun_info_name.StartsWith("0x"))
-					*(uint*)(byteptr_t + 0x90) = Utils.ConvertX.ToUInt32(this._sun_info_name);
-				else
-					*(uint*)(byteptr_t + 0x90) = Utils.Bin.Hash(this._sun_info_name);
+				*(uint*)(byteptr_t + 0x90) = Utils.Bin.SmartHash(this._sun_info_name);
 				*(int*)(byteptr_t + 0x94) = (int)this._race_gameplay_mode;
 				*(uint*)(byteptr_t + 0x98) = this.RaceLength;
 				*(float*)(byteptr_t + 0x9C) = this.TimeLimitToBeatForward;

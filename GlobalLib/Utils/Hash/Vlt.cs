@@ -188,6 +188,7 @@
         /// <returns>Vlt Memory Hash of the string as an unsigned integer.</returns>
         public static uint SmartHash(string value)
         {
+            if (value == Reflection.BaseArguments.NULL) return 0;
             return (value?.StartsWith("0x") ?? false) ? ConvertX.ToUInt32(value) : Hash(value);
         }
 
@@ -199,6 +200,7 @@
         /// <returns>Vlt64 Memory Hash of the string as an unsigned long.</returns>
         public static ulong SmartHash64(string value)
         {
+            if (value == Reflection.BaseArguments.NULL) return 0;
             return (value?.StartsWith("0x") ?? false) ? ConvertX.ToUInt64(value) : Hash64(value);
         }
 

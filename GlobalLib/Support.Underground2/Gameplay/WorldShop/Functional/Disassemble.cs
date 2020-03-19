@@ -10,7 +10,7 @@
 			this._collection_name = Utils.ScriptX.NullTerminatedString(byteptr_t, 0x20);
 
 			// Intro Movie
-			this.IntroMovie = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x20, 0x18);
+			this._intro_movie = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x20, 0x18);
 
 			// Shop Trigger
 			key = *(uint*)(byteptr_t + 0x3C);
