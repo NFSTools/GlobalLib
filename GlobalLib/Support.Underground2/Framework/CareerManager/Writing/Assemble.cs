@@ -9,7 +9,7 @@
 			mw.Write((byte)0); // write null-termination
 
 			// Get arrays of all blocks
-			var EventBlock = WriteGCareerStages(mw, db);
+			var EventBlock = WriteGCareerRaces(mw, db);
 
 
 			return null;
