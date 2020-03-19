@@ -68,26 +68,16 @@ namespace GlobalLib.Core
                 {
                     _paint_1 = $"{PEARL}{a1Padding}";
                     Map.BinKeys[Bin.Hash(_paint_1)] = _paint_1;
+
+                    if (a1 < 11)
+                    {
+                        _paint_1 = $"{MATTE}{a1Padding}";
+                        Map.BinKeys[Bin.Hash(_paint_1)] = _paint_1;
+
+                        _paint_1 = $"{CHROME}{a1Padding}";
+                        Map.BinKeys[Bin.Hash(_paint_1)] = _paint_1;
+                    }
                 }
-
-                if (a1 < 11)
-                {
-                    _paint_1 = $"{MATTE}{a1Padding}";
-                    Map.BinKeys[Bin.Hash(_paint_1)] = _paint_1;
-
-                    _paint_1 = $"{CHROME}{a1Padding}";
-                    Map.BinKeys[Bin.Hash(_paint_1)] = _paint_1;
-                }
-
-
-                _paint_1 = (a1 < 10)
-                    ? GLOSS + COLOR00 + a1.ToString()
-                    : GLOSS + COLOR10 + a1.ToString();
-                _paint_2 = (a1 < 10)
-                    ? METAL + COLOR00 + a1.ToString()
-                    : METAL + COLOR10 + a1.ToString();
-                Map.BinKeys[Bin.Hash(_paint_1)] = _paint_1;
-                Map.BinKeys[Bin.Hash(_paint_2)] = _paint_2;
             }
 
             // Cop and Traffic paint types
@@ -181,17 +171,6 @@ namespace GlobalLib.Core
             for (int a1 = 1; a1 < 31; ++a1)
             {
                 var a1Padding = a1.ToString("D2");
-                if (a1 < 11)
-                {
-                    Map.UG2PaintTypes.AddRange(new string[]
-                    {
-                        $"{GLOSS}{_L}{_1}{COLOR}{a1Padding}",
-                        $"{METAL}{_L}{_2}{COLOR}{a1Padding}",
-                        $"{HOSES}{_L}{_1}{COLOR}{a1Padding}",
-                        $"{MUFFLERS}{_L}{_1}{COLOR}{a1Padding}",
-                        $"{PEARL}{a1}{_PAINT}",
-                    });
-                }
 
                 if (a1 < 21)
                 {
@@ -204,6 +183,18 @@ namespace GlobalLib.Core
                           $"{MUFFLERS}{_L}{_2}{COLOR}{a1Padding}",
                           $"{CUSTOMPAINT}{a1}",
                     });
+
+                    if (a1 < 11)
+                    {
+                        Map.UG2PaintTypes.AddRange(new string[]
+                        {
+                        $"{GLOSS}{_L}{_1}{COLOR}{a1Padding}",
+                        $"{METAL}{_L}{_2}{COLOR}{a1Padding}",
+                        $"{HOSES}{_L}{_1}{COLOR}{a1Padding}",
+                        $"{MUFFLERS}{_L}{_1}{COLOR}{a1Padding}",
+                        $"{PEARL}{a1}{_PAINT}",
+                        });
+                    }
                 }
 
                 if (a1 > 20)
