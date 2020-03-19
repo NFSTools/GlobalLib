@@ -45,9 +45,6 @@ namespace GlobalLib.Core
 
             // Extra strings
             var COLOR = "_L1_COLOR";
-            var COLOR00 = "_L1_COLOR0";
-            var COLOR10 = "_L1_COLOR";
-            var _PAINT = "_PAINT";
 
             // Main strings
             string _paint_1;
