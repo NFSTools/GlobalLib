@@ -70,7 +70,7 @@
     <Compile Include="Database\Underground2\GetClassIndex.cs" />
     <Compile Include="Database\Underground2\ToString.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />
-    <Compile Include="Reflection\Abstract\ICollectable.cs" />
+    <Compile Include="Reflection\Abstract\Collectable.cs" />
     <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
     <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />
     <Compile Include="Database\Carbon\ExportTextures.cs" />

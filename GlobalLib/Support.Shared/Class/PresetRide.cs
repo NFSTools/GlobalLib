@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public class PresetRide : Reflection.Abstract.ICollectable
+    public class PresetRide : Reflection.Abstract.Collectable
     {
         #region Private Fields
 
