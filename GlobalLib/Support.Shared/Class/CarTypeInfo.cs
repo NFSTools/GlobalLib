@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public class CarTypeInfo : Reflection.Abstract.ICollectable
+    public class CarTypeInfo : Reflection.Abstract.Collectable
     {
         #region Private Fields
 

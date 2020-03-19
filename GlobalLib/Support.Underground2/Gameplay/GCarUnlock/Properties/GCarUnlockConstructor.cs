@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class GCarUnlock : Reflection.Abstract.ICollectable, Reflection.Interface.ICastable<GCarUnlock>
+	public partial class GCarUnlock : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<GCarUnlock>
 	{
 		// Default constructor
 		public GCarUnlock() { }

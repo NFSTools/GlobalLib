@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class PartUnlockable : Reflection.Abstract.ICollectable, Reflection.Interface.ICastable<PartUnlockable>
+	public partial class PartUnlockable : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<PartUnlockable>
 	{
 		// Default constructor
 		public PartUnlockable() { }

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class PartPerformance : Reflection.Abstract.ICollectable, Reflection.Interface.ICastable<PartPerformance>
+	public partial class PartPerformance : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<PartPerformance>
 	{
 		// Default constructor
 		public PartPerformance() { }

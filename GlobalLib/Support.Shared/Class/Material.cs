@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public class Material : Reflection.Abstract.ICollectable
+    public class Material : Reflection.Abstract.Collectable
     {
         #region Private Fields
 

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public class Texture : Reflection.Abstract.ICollectable
+    public class Texture : Reflection.Abstract.Collectable
     {
         #region Private Fields
 
