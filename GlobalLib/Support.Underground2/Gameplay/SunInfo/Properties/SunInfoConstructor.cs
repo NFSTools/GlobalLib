@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class SunInfo : Reflection.Abstract.ICollectable, Reflection.Interface.ICastable<SunInfo>
+	public partial class SunInfo : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<SunInfo>
 	{
 		// Default constructor
 		public SunInfo() { }

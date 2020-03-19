@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Shared.Class
 {
-    public partial class PresetSkin : Reflection.Abstract.ICollectable
+    public partial class PresetSkin : Reflection.Abstract.Collectable
     {
         #region Private Fields
 

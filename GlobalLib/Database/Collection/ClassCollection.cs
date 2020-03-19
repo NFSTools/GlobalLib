@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GlobalLib.Database.Collection
 {
-	public class ClassCollection<TypeID> where TypeID : Reflection.Abstract.ICollectable 
+	public class ClassCollection<TypeID> where TypeID : Reflection.Abstract.Collectable 
 	{
 		public List<TypeID> Classes { get; set; }
 		public int Length { get => this.Classes.Count; }

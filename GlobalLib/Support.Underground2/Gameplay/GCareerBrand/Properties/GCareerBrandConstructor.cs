@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class GCareerBrand : Reflection.Abstract.ICollectable, Reflection.Interface.ICastable<GCareerBrand>
+	public partial class GCareerBrand : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<GCareerBrand>
 	{
 		// Default constructor
 		public GCareerBrand() { }
