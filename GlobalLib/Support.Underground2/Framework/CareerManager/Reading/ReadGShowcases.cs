@@ -5,7 +5,7 @@
 		private static unsafe void ReadGShowcases(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[5] == -1) return; // if showcases block does not exist
-			if (*(uint*)(byteptr_t + PartOffsets[5]) != Reflection.ID.GCareerInfo.SHOWCASE_BLOCK)
+			if (*(uint*)(byteptr_t + PartOffsets[5]) != Reflection.ID.CareerInfo.SHOWCASE_BLOCK)
 				return; // check showcases block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[5] + 4) / 0x40;

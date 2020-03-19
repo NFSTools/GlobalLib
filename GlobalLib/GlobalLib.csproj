@@ -470,6 +470,8 @@
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Writing\Assemble.cs" />
+    <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteGCareerStages.cs" />
     <Compile Include="Support.Underground2\Framework\VirtualClass.cs" />
     <Compile Include="Reflection\Enum\eSunAlpha.cs" />
     <Compile Include="Reflection\Enum\eSunTexture.cs" />
@@ -485,6 +487,7 @@
     <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadPerfSliderTunings.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Reading\ReadGCarUnlocks.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerBrand\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GCareerRace\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCareerStage\Functional\MemoryCast.cs" />
@@ -504,9 +507,12 @@
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\GameAddress.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\GCarUnlockConstructor.cs" />
     <Compile Include="Support.Underground2\Gameplay\GCarUnlock\Properties\CareerRaceCompletion.cs" />
+    <Compile Include="Support.Underground2\Gameplay\GShowcase\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\PartPerformance\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\PartUnlockable\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Properties\SliderSettings.cs" />
+    <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\MemoryCast.cs" />
@@ -839,7 +845,6 @@
     <Compile Include="Utils\HTML\HTMLTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Support.Underground2\Framework\CareerManager\Writing\" />
     <Folder Include="Support.Underground2\SaveData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

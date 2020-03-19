@@ -5,7 +5,7 @@
 		private static unsafe void ReadPerfSliderTunings(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[9] == -1) return; // if career brands block does not exist
-			if (*(uint*)(byteptr_t + PartOffsets[9]) != Reflection.ID.GCareerInfo.TUNING_PERF_BLOCK)
+			if (*(uint*)(byteptr_t + PartOffsets[9]) != Reflection.ID.CareerInfo.TUNING_PERF_BLOCK)
 				return; // check career brands block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[9] + 4) / 0x18;

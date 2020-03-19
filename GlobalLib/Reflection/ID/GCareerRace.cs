@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Reflection.ID
 {
-	public static class GCareerInfo
+	public static class CareerInfo
 	{
 		public const uint MAINID = 0x80034A10;
 		public const uint STRING_BLOCK = 0x00034A1D;

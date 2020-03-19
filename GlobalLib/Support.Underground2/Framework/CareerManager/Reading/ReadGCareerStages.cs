@@ -5,7 +5,7 @@
 		private static unsafe void ReadGCareerStages(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[8] == -1) return; // if career stages block does not exist
-			if (*(uint*)(byteptr_t + PartOffsets[8]) != Reflection.ID.GCareerInfo.STAGE_BLOCK)
+			if (*(uint*)(byteptr_t + PartOffsets[8]) != Reflection.ID.CareerInfo.STAGE_BLOCK)
 				return; // check career stages block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[8] + 4) / 0x50;

@@ -2,6 +2,8 @@
 {
 	public partial class GCareerRace
 	{
+		private byte _num_of_opponents = 0;
+		private byte _num_of_stages = 1;
 		private string _player_car_type = Reflection.BaseArguments.NULL;
 		private Reflection.Enum.eEventIconType _event_icon_type = Reflection.Enum.eEventIconType.REGULAR;
 		private Reflection.Enum.eTrackDifficulty _difficulty_level = Reflection.Enum.eTrackDifficulty.TRACK_DIFFICULTY_MEDIUM;
@@ -69,13 +71,31 @@
 		public byte BelongsToStage { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
-		public byte NumOpponents { get; set; }
+		public byte NumOpponents
+		{
+			get => this._num_of_opponents;
+			set
+			{
+				if (value < 0 || value > 5)
+					throw new System.ArgumentOutOfRangeException("Value passed should be in range 0-5.");
+				this._num_of_opponents = value;
+			}
+		}
 
 		[Reflection.Attributes.AccessModifiable()]
 		public byte UnknownDragValue { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
-		public byte NumStages { get; set; }
+		public byte NumStages
+		{
+			get => this._num_of_stages;
+			set
+			{
+				if (value < 0 || value > 4)
+					throw new System.ArgumentOutOfRangeException("Value passed should be in range 0-4.");
+				this._num_of_stages = value;
+			}
+		}
 
 		[Reflection.Attributes.AccessModifiable()]
 		public Reflection.Enum.eBoolean IsHiddenEvent

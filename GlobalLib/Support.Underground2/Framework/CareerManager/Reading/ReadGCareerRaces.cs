@@ -5,7 +5,7 @@
 		private static unsafe void ReadGCareerRaces(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[1] == -1) return; // if career races block does not exist
-			if (*(uint*)(byteptr_t + PartOffsets[1]) != Reflection.ID.GCareerInfo.EVENT_BLOCK)
+			if (*(uint*)(byteptr_t + PartOffsets[1]) != Reflection.ID.CareerInfo.EVENT_BLOCK)
 				return; // check career races block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[1] + 4) / 0x88;

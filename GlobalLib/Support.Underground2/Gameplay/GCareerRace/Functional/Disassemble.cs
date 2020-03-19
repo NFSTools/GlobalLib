@@ -41,11 +41,11 @@
 				this.RequiredURLWon = *(ptr_header + 0x13);
 			}
 
-			// Difficulty Level ???
+			// Earnable Respect ?
 			this.EarnableRespect = *(int*)(ptr_header + 0x14);
 
 			// Stage Values
-			this.NumStages = *(ptr_header + 0x7E);
+			this._num_of_stages = *(ptr_header + 0x7E);
 			this.TrackID_Stage1 = *(ushort*)(ptr_header + 0x18);
 			this.TrackID_Stage2 = *(ushort*)(ptr_header + 0x1C);
 			this.TrackID_Stage3 = *(ushort*)(ptr_header + 0x20);
@@ -76,8 +76,8 @@
 			// Some values
 			this.NumMapItems = *(ptr_header + 0x38);
 			this._padding1 = *(ptr_header + 0x39);
-			this.Unknown1 = *(ptr_header + 0x3A);
-			this.Unknown2 = *(ptr_header + 0x3B);
+			this.Unknown0x3A = *(ptr_header + 0x3A);
+			this.Unknown0x3B = *(ptr_header + 0x3B);
 
 			// GPS Destination
 			key = *(uint*)(ptr_header + 0x3C);
@@ -87,8 +87,8 @@
 				this._gps_destination = Core.Map.Lookup(key) ?? $"0x{key:X8}";
 
 			// Opponents Values
-			this.NumOpponents = *(ptr_header + 0x7C);
-			if (this.NumOpponents > 0)
+			this._num_of_opponents = *(ptr_header + 0x7C);
+			if (this._num_of_opponents > 0)
 			{
 				pointer = *(ushort*)(ptr_header + 0x40);
 				this.OPPONENT1.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
@@ -100,7 +100,7 @@
 				this.OPPONENT1.SkillHard = *(ptr_header + 0x4A);
 				this.OPPONENT1.CatchUp = *(ptr_header + 0x4B);
 			}
-			if (this.NumOpponents > 1)
+			if (this._num_of_opponents > 1)
 			{
 				pointer = *(ushort*)(ptr_header + 0x4C);
 				this.OPPONENT2.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
@@ -112,7 +112,7 @@
 				this.OPPONENT2.SkillHard = *(ptr_header + 0x56);
 				this.OPPONENT2.CatchUp = *(ptr_header + 0x57);
 			}
-			if (this.NumOpponents > 2)
+			if (this._num_of_opponents > 2)
 			{
 				pointer = *(ushort*)(ptr_header + 0x58);
 				this.OPPONENT3.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
@@ -124,7 +124,7 @@
 				this.OPPONENT3.SkillHard = *(ptr_header + 0x62);
 				this.OPPONENT3.CatchUp = *(ptr_header + 0x63);
 			}
-			if (this.NumOpponents > 3)
+			if (this._num_of_opponents > 3)
 			{
 				pointer = *(ushort*)(ptr_header + 0x64);
 				this.OPPONENT4.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
@@ -136,7 +136,7 @@
 				this.OPPONENT4.SkillHard = *(ptr_header + 0x6E);
 				this.OPPONENT4.CatchUp = *(ptr_header + 0x6F);
 			}
-			if (this.NumOpponents > 4)
+			if (this._num_of_opponents > 4)
 			{
 				pointer = *(ushort*)(ptr_header + 0x70);
 				this.OPPONENT5.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);

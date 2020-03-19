@@ -5,7 +5,7 @@
 		private static unsafe void ReadGCareerBrands(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[3] == -1) return; // if career brands block does not exist
-			if (*(uint*)(byteptr_t + PartOffsets[3]) != Reflection.ID.GCareerInfo.BRAND_BLOCK)
+			if (*(uint*)(byteptr_t + PartOffsets[3]) != Reflection.ID.CareerInfo.BRAND_BLOCK)
 				return; // check career brands block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[3] + 4) / 0x44;

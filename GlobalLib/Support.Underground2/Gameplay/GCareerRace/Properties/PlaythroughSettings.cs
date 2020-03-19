@@ -13,8 +13,8 @@
 		[Reflection.Attributes.AccessModifiable()]
 		public byte NumMapItems { get; set; }
 
-		public byte Unknown1 { get; set; }
-		public byte Unknown2 { get; set; }
+		public byte Unknown0x3A { get; set; }
+		public byte Unknown0x3B { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
 		public string GPSDestination

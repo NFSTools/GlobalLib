@@ -5,7 +5,7 @@
 		private static unsafe void ReadPartPerformances(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[4] == -1) return; // if part perf block does not exist
-			if (*(uint*)(byteptr_t + PartOffsets[4]) != Reflection.ID.GCareerInfo.PERF_PACK_BLOCK)
+			if (*(uint*)(byteptr_t + PartOffsets[4]) != Reflection.ID.CareerInfo.PERF_PACK_BLOCK)
 				return; // check part perf block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[4] + 4) / 0x17C;

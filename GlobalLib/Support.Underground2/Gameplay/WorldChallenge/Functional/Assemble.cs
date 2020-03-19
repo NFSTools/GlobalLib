@@ -2,31 +2,26 @@
 {
 	public partial class WorldChallenge
 	{
-		public unsafe byte[] Assemble(Utils.MemoryWriter mw)
+		public unsafe void Assemble(byte* byteptr_t, Utils.MemoryWriter mw)
 		{
-			var result = new byte[0x18];
-			fixed (byte* byteptr_t = &result[0])
-			{
-				ushort pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this._collection_name);
-				*(ushort*)byteptr_t = pointer;
+			ushort pointer = (ushort)mw.Position;
+			mw.WriteNullTerminated(this._collection_name);
+			*(ushort*)byteptr_t = pointer;
 
-				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this._world_trigger);
-				*(ushort*)(byteptr_t + 0x02) = pointer;
+			pointer = (ushort)mw.Position;
+			mw.WriteNullTerminated(this._world_trigger);
+			*(ushort*)(byteptr_t + 0x02) = pointer;
 
-				*(byteptr_t + 0x04) = this.BelongsToStage;
-				*(byteptr_t + 0x06) = (byte)((byte)this.UseOutrunsAsReqRaces * 2);
-				*(byteptr_t + 0x07) = this.RequiredRacesWon;
-				*(uint*)(byteptr_t + 0x08) = Utils.Bin.SmartHash(this.ChallengeSMSLabel);
-				*(uint*)(byteptr_t + 0x0C) = Utils.Bin.SmartHash(this.ChallengeParent);
-				*(int*)(byteptr_t + 0x10) = this.TimeLimit;
-				*(byteptr_t + 0x14) = (byte)this.WorldChallengeType;
-				*(byteptr_t + 0x15) = this.UnlockablePart1_Index;
-				*(byteptr_t + 0x16) = this.UnlockablePart2_Index;
-				*(byteptr_t + 0x17) = this.UnlockablePart3_Index;
-			}
-			return result;
+			*(byteptr_t + 0x04) = this.BelongsToStage;
+			*(byteptr_t + 0x06) = (byte)((byte)this.UseOutrunsAsReqRaces * 2);
+			*(byteptr_t + 0x07) = this.RequiredRacesWon;
+			*(uint*)(byteptr_t + 0x08) = Utils.Bin.SmartHash(this.ChallengeSMSLabel);
+			*(uint*)(byteptr_t + 0x0C) = Utils.Bin.SmartHash(this.ChallengeParent);
+			*(int*)(byteptr_t + 0x10) = this.TimeLimit;
+			*(byteptr_t + 0x14) = (byte)this.WorldChallengeType;
+			*(byteptr_t + 0x15) = this.UnlockablePart1_Index;
+			*(byteptr_t + 0x16) = this.UnlockablePart2_Index;
+			*(byteptr_t + 0x17) = this.UnlockablePart3_Index;
 		}
 	}
 }

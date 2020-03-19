@@ -5,7 +5,7 @@
 		private static unsafe void ReadSMSMessages(byte* byteptr_t, int[] PartOffsets, Database.Underground2 db)
 		{
 			if (PartOffsets[6] == -1) return; // if sms message block does not exist
-			if (*(uint*)(byteptr_t + PartOffsets[6]) != Reflection.ID.GCareerInfo.SMS_MESSAGE_BLOCK)
+			if (*(uint*)(byteptr_t + PartOffsets[6]) != Reflection.ID.CareerInfo.SMS_MESSAGE_BLOCK)
 				return; // check message block block ID
 
 			int size = *(int*)(byteptr_t + PartOffsets[6] + 4) / 0x14;
