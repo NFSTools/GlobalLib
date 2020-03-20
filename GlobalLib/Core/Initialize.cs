@@ -24,6 +24,10 @@ namespace GlobalLib.Core
             Map.AudioTypes.Clear();
             Map.WindowTintMap.Clear();
             Map.CollisionMap.Clear();
+            Map.UG2PaintTypes.Clear();
+            Map.UG2CaliperPaints.Clear();
+            Map.UG2RimPaints.Clear();
+            Map.UG2VinylPaints.Clear();
             UG2PaintTypes();
             UG2BankTriggers();
             Windshields();
@@ -214,6 +218,51 @@ namespace GlobalLib.Core
 
             // Hashing of all paint types
             foreach (var paint in Map.UG2PaintTypes)
+                Bin.Hash(paint);
+        }
+
+        private static void UG2CaliperPaints()
+        {
+            string CALIPERS_L = "CALIPERS_L";
+            string _COLOR = "_COLOR";
+
+            for (int a1 = 1; a1 < 4; ++a1)
+            {
+                for (int a2 = 1; a2 <= 10 * a1; ++a1)
+                    Map.UG2CaliperPaints.Add($"{CALIPERS_L}{a1}{_COLOR}{a2:00}");
+            }
+
+            foreach (var paint in Map.UG2CaliperPaints)
+                Bin.Hash(paint);
+        }
+
+        private static void UG2RimPaints()
+        {
+            string RIMS_L = "RIMS_L";
+            string _COLOR = "_COLOR";
+
+            for (int a1 = 1; a1 < 4; ++a1)
+            {
+                for (int a2 = 1; a2 <= 10 * a1; ++a1)
+                    Map.UG2CaliperPaints.Add($"{RIMS_L}{a1}{_COLOR}{a2:00}");
+            }
+
+            foreach (var paint in Map.UG2RimPaints)
+                Bin.Hash(paint);
+        }
+
+        private static void UG2VinylPaints()
+        {
+            string VINYL_L = "VINYL_L";
+            string _COLOR = "_COLOR";
+
+            for (int a1 = 1; a1 < 4; ++a1)
+            {
+                for (int a2 = 1; a2 <= 10 * a1; ++a1)
+                    Map.UG2VinylPaints.Add($"{VINYL_L}{a1}{_COLOR}{a2:00}");
+            }
+
+            foreach (var paint in Map.UG2VinylPaints)
                 Bin.Hash(paint);
         }
 

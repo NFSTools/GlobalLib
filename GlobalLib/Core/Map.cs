@@ -42,6 +42,21 @@ namespace GlobalLib.Core
         public static List<string> UG2PaintTypes { get; set; } = new List<string>();
 
         /// <summary>
+        /// Represents list of all possible caliper paints that can be used in UG2 support.
+        /// </summary>
+        public static List<string> UG2CaliperPaints { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Represents list of all possible rim paints that can be used in UG2 support.
+        /// </summary>
+        public static List<string> UG2RimPaints { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Represents list of all possible vinyl paints that can be used in UG2 support.
+        /// </summary>
+        public static List<string> UG2VinylPaints { get; set; } = new List<string>();
+
+        /// <summary>
         /// Index table of all performance parts.
         /// </summary>
         public static uint[,,] PerfPartTable { get; set; }

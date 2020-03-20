@@ -47,9 +47,7 @@
             }
             for (a3 = 0; a3 < 31; ++a3)
             {
-                a1 = (a3 < 10)
-                    ? Utils.Bin.Hash(MODEL + add_on._KIT + a3.ToString() + parts._FRONT_BUMPER)
-                    : Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString() + parts._FRONT_BUMPER);
+                a1 = Utils.Bin.Hash($"{MODEL}{add_on._KIT}{a3:00}{parts._FRONT_BUMPER}");
                 if (a1 == a2)
                 {
                     this._autosculpt_frontbumper = (sbyte)a3;
@@ -67,9 +65,7 @@
             }
             for (a3 = 0; a3 < 31; ++a3) // 10 rear bumper styles
             {
-                a1 = (a3 < 10)
-                    ? Utils.Bin.Hash(MODEL + add_on._KIT + a3.ToString() + parts._REAR_BUMPER)
-                    : Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString() + parts._REAR_BUMPER);
+                a1 = Utils.Bin.Hash($"{MODEL}{add_on._KIT}{a3:00}{parts._REAR_BUMPER}");
                 if (a1 == a2)
                 {
                     this._autosculpt_rearbumper = (sbyte)a3;
@@ -110,18 +106,10 @@
             {
                 for (byte x1 = 1; x1 < 18; ++x1) // all 17 roof scoop styles
                 {
-                    if (x1 < 10)
-                    {
-                        v1 = parts.ROOF_STYLE + add_on._0 + x1.ToString();
-                        v3 = parts.ROOF_STYLE + add_on._0 + x1.ToString() + add_on._OFFSET;
-                        v4 = parts.ROOF_STYLE + add_on._0 + x1.ToString() + add_on._DUAL;
-                    }
-                    else
-                    {
-                        v1 = parts.ROOF_STYLE + x1.ToString();
-                        v3 = parts.ROOF_STYLE + x1.ToString() + add_on._OFFSET;
-                        v4 = parts.ROOF_STYLE + x1.ToString() + add_on._DUAL;
-                    }
+                    string x1pad = x1.ToString("00");
+                    v1 = parts.ROOF_STYLE + x1pad;
+                    v3 = parts.ROOF_STYLE + x1pad + add_on._OFFSET;
+                    v4 = parts.ROOF_STYLE + x1pad + add_on._DUAL;
                     a1 = Utils.Bin.Hash(v1);
                     a3 = Utils.Bin.Hash(v3);
                     a4 = Utils.Bin.Hash(v4);
@@ -186,9 +174,7 @@
             {
                 for (byte x1 = 1; x1 < 29; ++x1) // 28 hood styles
                 {
-                    v1 = (x1 < 10)
-                        ? MODEL + add_on._STYLE + add_on._0 + x1.ToString() + parts._HOOD
-                        : MODEL + add_on._STYLE + x1.ToString() + parts._HOOD;
+                    v1 = $"{MODEL}{add_on._STYLE}{x1:00}{parts._HOOD}";
                     a1 = Utils.Bin.Hash(v1);
                     if (a1 == a2)
                     {
@@ -219,9 +205,7 @@
             }
             for (a3 = 0; a3 < 31; ++a3) // 10 rear bumper styles
             {
-                a1 = (a3 < 10)
-                    ? Utils.Bin.Hash(MODEL + add_on._KIT + a3.ToString() + parts._SKIRT)
-                    : Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString() + parts._SKIRT);
+                a1 = Utils.Bin.Hash($"{MODEL}{add_on._KIT}{a3:00}{parts._SKIRT}");
                 if (a1 == a2)
                 {
                     this._autosculpt_skirt = (sbyte)a3;
@@ -250,10 +234,7 @@
                 {
                     for (byte x2 = 1; x2 < 41; ++x2) // all 40 spoiler styles
                     {
-                        v3 = (x2 < 10) // check for being less than 10
-                            ? add_on.SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._USTYPE[x1]
-                            : add_on.SPOILER + add_on._STYLE + x2.ToString() + add_on._USTYPE[x1];
-
+                        v3 = $"{add_on.SPOILER}{add_on._STYLE}{x2:00}{add_on._USTYPE[x1]}";
                         a3 = Utils.Bin.Hash(v3);
                         if (a3 == a2)
                         {
@@ -278,7 +259,7 @@
 
         LABEL_ENGINE:
             // fix spoiler settings first
-            if (v4 == "")
+            if (v4 == "" || v4 == string.Empty)
                 this._spoiler_type = Reflection.Enum.eSTypes.BASE; // use BASE to make it clearer
             else
                 System.Enum.TryParse(v4, out this._spoiler_type);
@@ -310,10 +291,7 @@
             }
             for (a3 = 0; a3 < 15; ++a3)
             {
-                v1 = (a3 < 10)
-                    ? MODEL + add_on._STYLE + add_on._0 + a3.ToString() + parts._HEADLIGHT
-                    : MODEL + add_on._STYLE + a3.ToString() + parts._HEADLIGHT;
-                a1 = Utils.Bin.Hash(v1);
+                a1 = Utils.Bin.Hash($"{MODEL}{add_on._STYLE}{a3:00}{parts._HEADLIGHT}");
                 if (a1 == a2)
                 {
                     this._headlight_style = (byte)a3;
@@ -331,10 +309,7 @@
             }
             for (a3 = 0; a3 < 15; ++a3)
             {
-                v1 = (a3 < 10)
-                    ? MODEL + add_on._STYLE + add_on._0 + a3.ToString() + parts._BRAKELIGHT
-                    : MODEL + add_on._STYLE + a3.ToString() + parts._BRAKELIGHT;
-                a1 = Utils.Bin.Hash(v1);
+                a1 = Utils.Bin.Hash($"{MODEL}{add_on._STYLE}{a3:00}{parts._BRAKELIGHT}");
                 if (a1 == a2)
                 {
                     this._brakelight_style = (byte)a3;
@@ -352,10 +327,7 @@
             }
             for (a3 = 0; a3 < 11; ++a3)
             {
-                v1 = (a3 < 10)
-                    ? add_on.EXHAUST + add_on._STYLE + add_on._0 + a3.ToString() + add_on._LEVEL1
-                    : add_on.EXHAUST + add_on._STYLE + a3.ToString() + add_on._LEVEL1;
-                a1 = Utils.Bin.Hash(v1);
+                a1 = Utils.Bin.Hash($"{add_on.EXHAUST}{add_on._STYLE}{a3:00}{add_on._LEVEL1}");
                 if (a1 == a2)
                 {
                     this._exhaust_style = (byte)a3;
@@ -430,14 +402,10 @@
             a2 = *(uint*)(byteptr_t + 0xCC);
             a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._WING_MIRROR);
             if (a2 == 0 || a1 == a2)
-                this._wing_mirror_style = 0;
+                this._wing_mirror_style = Reflection.BaseArguments.STOCK;
             else
-            {
-                for (a3 = 1; a3 < 41; ++a3)
-                {
+                this._wing_mirror_style = $"0x{a2:X8}";
 
-                }
-            }
 
             // TRUNK_AUDIO
             a2 = *(uint*)(byteptr_t + 0xD4);
@@ -451,10 +419,131 @@
                 }
             }
 
+            var audios = new System.Collections.Generic.List<string>();
+            foreach (var audio in Core.Map.AudioTypes)
+            {
+                if (audio.StartsWith("AUDIO_COMP_SPEAKER"))
+                {
+                    audios.AddRange(new string[]
+                    {
+                        audio,
+                        $"{audio}_8",
+                        $"{audio}_10",
+                        $"{audio}_12",
+                        $"{audio}_15",
+                    });
+                }
+                else
+                {
+                    audios.AddRange(new string[]
+                    {
+                        audio,
+                        $"{audio}_SMALL",
+                        $"{audio}_MEDIUM",
+                        $"{audio}_LARGE",
+                    });
+                }
+            }
 
 
+            // ALL TRUNK AUDIOS AND BUFFERS
+            a2 = *(uint*)(byteptr_t + 0xD8);
+            this._audio_comp_00 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0xDC);
+            this._audio_comp_01 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0xE0);
+            this._audio_comp_02 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0xE4);
+            this._audio_comp_03 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0xE8);
+            this._audio_comp_04 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0xEC);
+            this._audio_comp_05 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0xF0);
+            this._audio_comp_06 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0xF4);
+            this._audio_comp_07 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0xF8);
+            this._audio_comp_08 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0xFC);
+            this._audio_comp_09 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0x100);
+            this._audio_comp_10 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0x104);
+            this._audio_comp_11 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
 
+            // Skip all Damage, goto decal types
+            a2 = *(uint*)(byteptr_t + 0x11C);
+            a3 = Utils.Bin.Hash(MODEL + parts._DECAL_HOOD_RECT_MEDIUM);
+            a4 = Utils.Bin.Hash(MODEL + parts._DECAL_HOOD_RECT_SMALL);
+            if (a3 == a2) this._decaltype_hood = Reflection.Enum.eDecalType.MEDIUM;
+            else if (a4 == a2) this._decaltype_hood = Reflection.Enum.eDecalType.SMALL;
+            else this._decaltype_hood = Reflection.Enum.eDecalType.NONE;
 
+            Utils.Bin.Hash(MODEL + parts._DECAL_FRONT_WINDOW_WIDE_MEDIUM);
+            Utils.Bin.Hash(MODEL + parts._DECAL_REAR_WINDOW_WIDE_MEDIUM);
+            Utils.Bin.Hash(MODEL + parts._DECAL_LEFT_DOOR_RECT_MEDIUM);
+            Utils.Bin.Hash(MODEL + parts._DECAL_RIGHT_DOOR_RECT_MEDIUM);
+
+            a2 = *(uint*)(byteptr_t + 0x130);
+            a3 = Utils.Bin.Hash(MODEL + parts._DECAL_LEFT_QUARTER_RECT_MEDIUM);
+            a4 = Utils.Bin.Hash(MODEL + parts._DECAL_LEFT_QUARTER_RECT_SMALL);
+            if (a3 == a2) this._decaltype_leftquarter = Reflection.Enum.eDecalType.MEDIUM;
+            else if (a4 == a2) this._decaltype_leftquarter = Reflection.Enum.eDecalType.SMALL;
+            else this._decaltype_leftquarter = Reflection.Enum.eDecalType.NONE;
+
+            a2 = *(uint*)(byteptr_t + 0x134);
+            a3 = Utils.Bin.Hash(MODEL + parts._DECAL_RIGHT_QUARTER_RECT_MEDIUM);
+            a4 = Utils.Bin.Hash(MODEL + parts._DECAL_RIGHT_QUARTER_RECT_SMALL);
+            if (a3 == a2) this._decaltype_rightquarter = Reflection.Enum.eDecalType.MEDIUM;
+            else if (a4 == a2) this._decaltype_rightquarter = Reflection.Enum.eDecalType.SMALL;
+            else this._decaltype_rightquarter = Reflection.Enum.eDecalType.NONE;
+
+            var widestrings = System.Enum.GetNames(typeof(Reflection.Enum.eWideDecalType));
+            a2 = *(uint*)(byteptr_t + 0x138);
+            foreach (var wide in widestrings)
+            {
+                a1 = Utils.Bin.Hash($"{MODEL}_{wide}{parts._DECAL_LEFT_DOOR_RECT_MEDIUM}");
+                if (a1 == a2)
+                {
+                    System.Enum.TryParse(wide, out this._decalwide_leftdoor);
+                    break;
+                }
+            }
+            a2 = *(uint*)(byteptr_t + 0x13C);
+            foreach (var wide in widestrings)
+            {
+                a1 = Utils.Bin.Hash($"{MODEL}_{wide}{parts._DECAL_RIGHT_DOOR_RECT_MEDIUM}");
+                if (a1 == a2)
+                {
+                    System.Enum.TryParse(wide, out this._decalwide_rightdoor);
+                    break;
+                }
+            }
+            a2 = *(uint*)(byteptr_t + 0x140);
+            foreach (var wide in widestrings)
+            {
+                a1 = Utils.Bin.Hash($"{MODEL}_{wide}{parts._DECAL_LEFT_QUARTER_RECT_MEDIUM}");
+                if (a1 == a2)
+                {
+                    System.Enum.TryParse(wide, out this._decalwide_leftquarter);
+                    break;
+                }
+            }
+            a2 = *(uint*)(byteptr_t + 0x144);
+            foreach (var wide in widestrings)
+            {
+                a1 = Utils.Bin.Hash($"{MODEL}_{wide}{parts._DECAL_RIGHT_QUARTER_RECT_MEDIUM}");
+                if (a1 == a2)
+                {
+                    System.Enum.TryParse(wide, out this._decalwide_rightquarter);
+                    break;
+                }
+            }
+
+            // Paint types and vinyls
+            a2 = *(uint*)(byteptr_t + 0x148);
+            this._base_paint_type = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.UGPAINT;
 
 
 

@@ -2,21 +2,22 @@
 {
 	public partial class PresetRide
 	{
-		private byte _wing_mirror_style = 0;
+        private string _wing_mirror_style = Reflection.BaseArguments.STOCK;
 
         /// <summary>
         /// Wing mirror style value of the preset ride. Range: 0-40.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
-        public byte WingMirrorStyle
+        public string WingMirrorStyle
         {
             get => this._wing_mirror_style;
             set
             {
-                if (value > 40)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 40.");
-                else
-                    this._wing_mirror_style = value;
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                if (value == Reflection.BaseArguments.NULL)
+                    throw new System.Exception("This value can be only STOCK or a hexadecimal hash of a mirror style.");
+                this._wing_mirror_style = value;
                 this.Modified = true;
             }
         }

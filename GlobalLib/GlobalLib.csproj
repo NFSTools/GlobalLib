@@ -88,6 +88,7 @@
     <Compile Include="Reflection\Enum\eBoolean.cs" />
     <Compile Include="Reflection\Enum\eBoundValues.cs" />
     <Compile Include="Reflection\Enum\eCarbonPaint.cs" />
+    <Compile Include="Reflection\Enum\eDecalType.cs" />
     <Compile Include="Reflection\Enum\eEventIconType.cs" />
     <Compile Include="Reflection\Enum\eMemoryType.cs" />
     <Compile Include="Reflection\Enum\ePerformanceType.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Reflection\Enum\eTextureScrollType.cs" />
     <Compile Include="Reflection\Enum\eEventBehaviorType.cs" />
     <Compile Include="Reflection\Enum\eUnlockCondition.cs" />
+    <Compile Include="Reflection\Enum\eWideDecalType.cs" />
     <Compile Include="Reflection\Enum\eWorldChallengeType.cs" />
     <Compile Include="Reflection\Enum\eWorldShopType.cs" />
     <Compile Include="Reflection\Exception\ArgumentLengthException.cs" />
@@ -674,9 +676,9 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2812%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2813%29.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2814%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2815%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2816%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2817%29.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\PaintSettings.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\WideDecalSettings.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\AudioCompSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\PresetRideConstructor.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\MirrorSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\RoofScoopSettings.cs" />

@@ -108,7 +108,10 @@
         public string _TRUNK_UNDER = "_TRUNK_UNDER";
         public string _WING_MIRROR = "_WING_MIRROR";
         public string _TRUNK_AUDIO = "_TRUNK_AUDIO";
-
+        public string _DECAL_HOOD_RECT_MEDIUM = "_DECAL_HOOD_RECT_MEDIUM";
+        public string _DECAL_HOOD_RECT_SMALL = "_DECAL_HOOD_RECT_SMALL";
+        public string _DECAL_LEFT_QUARTER_RECT_SMALL = "_DECAL_LEFT_QUARTER_RECT_SMALL";
+        public string _DECAL_RIGHT_QUARTER_RECT_SMALL = "_DECAL_RIGHT_QUARTER_RECT_SMALL";
 
 
 
