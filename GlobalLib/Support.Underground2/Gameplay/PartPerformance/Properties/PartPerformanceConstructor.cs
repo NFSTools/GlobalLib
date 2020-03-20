@@ -11,6 +11,13 @@
 			this.Database = db;
 			this._collection_name = CName;
 			this.SetToFirstAvailablePerfSlot();
+			int index = 0;
+			foreach (var cla in db.PartPerformances.Classes)
+			{
+				if (cla.PartIndex > index)
+					index = cla.PartIndex;
+			}
+			this._part_index = index + 1;
 		}
 
 		// Default constructor: disassemble part performance

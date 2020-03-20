@@ -25,7 +25,7 @@
 
 			// Event behavior
 			this._unlock_method = (Reflection.Enum.eUnlockCondition)(*(ptr_header + 0xC));
-			this._is_suv_race = (*(ptr_header + 0xD) == 0) ? Reflection.Enum.eBoolean.False : Reflection.Enum.eBoolean.True;
+			this._is_suv_race = (Reflection.Enum.eBoolean)(*(ptr_header + 0xD));
 			this._padding0 = *(ptr_header + 0xE);
 			this._event_behavior = (Reflection.Enum.eEventBehaviorType)(*(ptr_header + 0xF));
 
@@ -78,6 +78,11 @@
 			this._padding1 = *(ptr_header + 0x39);
 			this.Unknown0x3A = *(ptr_header + 0x3A);
 			this.Unknown0x3B = *(ptr_header + 0x3B);
+			this._num_of_opponents = *(ptr_header + 0x7C);
+			this.UnknownDragValue = *(ptr_header + 0x7D);
+			this.IsHiddenEvent = (Reflection.Enum.eBoolean)(*(ptr_header + 0x7F));
+			this._padding2 = *(int*)(ptr_header + 0x80);
+			this._padding3 = *(int*)(ptr_header + 0x84);
 
 			// GPS Destination
 			key = *(uint*)(ptr_header + 0x3C);
@@ -86,8 +91,15 @@
 			else
 				this._gps_destination = Core.Map.Lookup(key) ?? $"0x{key:X8}";
 
-			// Opponents Values
-			this._num_of_opponents = *(ptr_header + 0x7C);
+			// Determine to which label to go based on event and drift type
+			// Downhill drift races have NumOpponents = 0, while opponent data has always 3
+			if (this.DriftTypeIfDriftRace == Reflection.Enum.eDriftType.DOWNHILL)
+				goto LABEL_DRIFT_DOWNHILL;
+			else
+				goto LABEL_BASIC;
+
+			// If none of the events are drift downhill, read opponent data based on number of the opponents
+		LABEL_BASIC:
 			if (this._num_of_opponents > 0)
 			{
 				pointer = *(ushort*)(ptr_header + 0x40);
@@ -148,12 +160,39 @@
 				this.OPPONENT5.SkillHard = *(ptr_header + 0x7A);
 				this.OPPONENT5.CatchUp = *(ptr_header + 0x7B);
 			}
+			return;
 
-			// Last settings
-			this.UnknownDragValue = *(ptr_header + 0x7D);
-			this.IsHiddenEvent = (*(ptr_header + 0x7F) == 0) ? Reflection.Enum.eBoolean.False : Reflection.Enum.eBoolean.True;
-			this._padding2 = *(int*)(ptr_header + 0x80);
-			this._padding3 = *(int*)(ptr_header + 0x84);
+			// If at least one of the events is downhill drift, read only 3 opponents
+		LABEL_DRIFT_DOWNHILL:
+			pointer = *(ushort*)(ptr_header + 0x40);
+			this.OPPONENT1.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			this.OPPONENT1.StatsMultiplier = *(ushort*)(ptr_header + 0x42);
+			key = *(uint*)(ptr_header + 0x44);
+			this.OPPONENT1.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this.OPPONENT1.SkillEasy = *(ptr_header + 0x48);
+			this.OPPONENT1.SkillMedium = *(ptr_header + 0x49);
+			this.OPPONENT1.SkillHard = *(ptr_header + 0x4A);
+			this.OPPONENT1.CatchUp = *(ptr_header + 0x4B);
+
+			pointer = *(ushort*)(ptr_header + 0x4C);
+			this.OPPONENT2.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			this.OPPONENT2.StatsMultiplier = *(ushort*)(ptr_header + 0x4E);
+			key = *(uint*)(ptr_header + 0x50);
+			this.OPPONENT2.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this.OPPONENT2.SkillEasy = *(ptr_header + 0x54);
+			this.OPPONENT2.SkillMedium = *(ptr_header + 0x55);
+			this.OPPONENT2.SkillHard = *(ptr_header + 0x56);
+			this.OPPONENT2.CatchUp = *(ptr_header + 0x57);
+
+			pointer = *(ushort*)(ptr_header + 0x58);
+			this.OPPONENT3.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			this.OPPONENT3.StatsMultiplier = *(ushort*)(ptr_header + 0x5A);
+			key = *(uint*)(ptr_header + 0x5C);
+			this.OPPONENT3.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this.OPPONENT3.SkillEasy = *(ptr_header + 0x60);
+			this.OPPONENT3.SkillMedium = *(ptr_header + 0x61);
+			this.OPPONENT3.SkillHard = *(ptr_header + 0x62);
+			this.OPPONENT3.CatchUp = *(ptr_header + 0x63);
 		}
 	}
 }

@@ -6,7 +6,6 @@
 		{
 			var result = new byte[0x2C90]; // max size of perf part block
 			int offset = 8; // for calculating offsets
-			int index = 0; // for keeping track of perf index
 
 			fixed (byte* byteptr_t = &result[0])
 			{
@@ -21,33 +20,33 @@
 						*(int*)(byteptr_t + offset + 4) = a2 + 1;
 						if (Core.Map.PerfPartTable[a1, a2, 0] != 0)
 						{
-							var cla = db.PartPerformances.FindClass(Core.Map.PerfPartTable[a1, a2, 0], Database.Collection.eKeyType.BINKEY);
-							cla.Assemble(byteptr_t + offset + 0xC, index);
+							string CName = $"0x{Core.Map.PerfPartTable[a1, a2, 0]:X8}";
+							var cla = db.PartPerformances.FindClass(CName);
+							cla.Assemble(byteptr_t + offset + 0xC);
 							++count;
-							++index;
 						}
 						if (Core.Map.PerfPartTable[a1, a2, 1] != 0)
 						{
-							var cla = db.PartPerformances.FindClass(Core.Map.PerfPartTable[a1, a2, 1], Database.Collection.eKeyType.BINKEY);
-							cla.Assemble(byteptr_t + offset + 0x68, index);
+							string CName = $"0x{Core.Map.PerfPartTable[a1, a2, 1]:X8}";
+							var cla = db.PartPerformances.FindClass(CName);
+							cla.Assemble(byteptr_t + offset + 0x68);
 							++count;
-							++index;
 						}
 						if (Core.Map.PerfPartTable[a1, a2, 2] != 0)
 						{
-							var cla = db.PartPerformances.FindClass(Core.Map.PerfPartTable[a1, a2, 2], Database.Collection.eKeyType.BINKEY);
-							cla.Assemble(byteptr_t + offset + 0xC4, index);
+							string CName = $"0x{Core.Map.PerfPartTable[a1, a2, 2]:X8}";
+							var cla = db.PartPerformances.FindClass(CName);
+							cla.Assemble(byteptr_t + offset + 0xC4);
 							++count;
-							++index;
 						}
 						if (Core.Map.PerfPartTable[a1, a2, 3] != 0)
 						{
-							var cla = db.PartPerformances.FindClass(Core.Map.PerfPartTable[a1, a2, 3], Database.Collection.eKeyType.BINKEY);
-							cla.Assemble(byteptr_t + offset + 0x120, index);
+							string CName = $"0x{Core.Map.PerfPartTable[a1, a2, 3]:X8}";
+							var cla = db.PartPerformances.FindClass(CName);
+							cla.Assemble(byteptr_t + offset + 0x120);
 							++count;
-							++index;
 						}
-						*(int*)(byteptr_t + 8) = count;
+						*(int*)(byteptr_t + offset + 8) = count;
 						offset += 0x17C;
 					}
 				}

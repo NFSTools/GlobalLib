@@ -71,6 +71,21 @@
 			*(byteptr_t + 0x3B) = this.Unknown0x3B;
 			*(uint*)(byteptr_t + 0x3C) = Utils.Bin.SmartHash(this._gps_destination);
 
+			*(byteptr_t + 0x7C) = this._num_of_opponents;
+			*(byteptr_t + 0x7D) = this.UnknownDragValue;
+			*(byteptr_t + 0x7E) = this._num_of_stages;
+			*(byteptr_t + 0x7F) = (byte)this._is_hidden_event;
+			*(int*)(byteptr_t + 0x80) = this._padding2;
+			*(int*)(byteptr_t + 0x84) = this._padding3;
+
+			// Goto based on whether event is a drift downhill
+			if (this.DriftTypeIfDriftRace == Reflection.Enum.eDriftType.DOWNHILL)
+				goto LABEL_DRIFT_DOWNHILL;
+			else
+				goto LABEL_BASIC;
+
+			// If none of the events are drift downhill, write opponent data based on number of the opponents
+		LABEL_BASIC:
 			if (this._num_of_opponents > 0)
 			{
 				pointer = (ushort)mw.Position;
@@ -131,13 +146,65 @@
 				*(byteptr_t + 0x7A) = this.OPPONENT5.SkillHard;
 				*(byteptr_t + 0x7B) = this.OPPONENT5.CatchUp;
 			}
+			return;
 
-			*(byteptr_t + 0x7C) = this._num_of_opponents;
-			*(byteptr_t + 0x7D) = this.UnknownDragValue;
-			*(byteptr_t + 0x7E) = this._num_of_stages;
-			*(byteptr_t + 0x7F) = (byte)this._is_hidden_event;
-			*(int*)(byteptr_t + 0x80) = this._padding2;
-			*(int*)(byteptr_t + 0x84) = this._padding3;
+			// If at least one of the events is drift downhill, write at least 3 opponents
+		LABEL_DRIFT_DOWNHILL:
+			pointer = (ushort)mw.Position;
+			mw.WriteNullTerminated(this.OPPONENT1.Name);
+			*(ushort*)(byteptr_t + 0x40) = pointer;
+			*(ushort*)(byteptr_t + 0x42) = this.OPPONENT1.StatsMultiplier;
+			*(uint*)(byteptr_t + 0x44) = Utils.Bin.SmartHash(this.OPPONENT1.PresetRide);
+			*(byteptr_t + 0x48) = this.OPPONENT1.SkillEasy;
+			*(byteptr_t + 0x49) = this.OPPONENT1.SkillMedium;
+			*(byteptr_t + 0x4A) = this.OPPONENT1.SkillHard;
+			*(byteptr_t + 0x4B) = this.OPPONENT1.CatchUp;
+
+			pointer = (ushort)mw.Position;
+			mw.WriteNullTerminated(this.OPPONENT2.Name);
+			*(ushort*)(byteptr_t + 0x4C) = pointer;
+			*(ushort*)(byteptr_t + 0x4E) = this.OPPONENT2.StatsMultiplier;
+			*(uint*)(byteptr_t + 0x50) = Utils.Bin.SmartHash(this.OPPONENT2.PresetRide);
+			*(byteptr_t + 0x54) = this.OPPONENT2.SkillEasy;
+			*(byteptr_t + 0x55) = this.OPPONENT2.SkillMedium;
+			*(byteptr_t + 0x56) = this.OPPONENT2.SkillHard;
+			*(byteptr_t + 0x57) = this.OPPONENT2.CatchUp;
+
+			pointer = (ushort)mw.Position;
+			mw.WriteNullTerminated(this.OPPONENT3.Name);
+			*(ushort*)(byteptr_t + 0x58) = pointer;
+			*(ushort*)(byteptr_t + 0x5A) = this.OPPONENT3.StatsMultiplier;
+			*(uint*)(byteptr_t + 0x5C) = Utils.Bin.SmartHash(this.OPPONENT3.PresetRide);
+			*(byteptr_t + 0x60) = this.OPPONENT3.SkillEasy;
+			*(byteptr_t + 0x61) = this.OPPONENT3.SkillMedium;
+			*(byteptr_t + 0x62) = this.OPPONENT3.SkillHard;
+			*(byteptr_t + 0x63) = this.OPPONENT3.CatchUp;
+
+			if (this._num_of_opponents > 3)
+			{
+				pointer = (ushort)mw.Position;
+				mw.WriteNullTerminated(this.OPPONENT4.Name);
+				*(ushort*)(byteptr_t + 0x64) = pointer;
+				*(ushort*)(byteptr_t + 0x66) = this.OPPONENT4.StatsMultiplier;
+				*(uint*)(byteptr_t + 0x68) = Utils.Bin.SmartHash(this.OPPONENT4.PresetRide);
+				*(byteptr_t + 0x6C) = this.OPPONENT4.SkillEasy;
+				*(byteptr_t + 0x6D) = this.OPPONENT4.SkillMedium;
+				*(byteptr_t + 0x6E) = this.OPPONENT4.SkillHard;
+				*(byteptr_t + 0x6F) = this.OPPONENT4.CatchUp;
+			}
+			if (this._num_of_opponents > 4)
+			{
+				pointer = (ushort)mw.Position;
+				mw.WriteNullTerminated(this.OPPONENT5.Name);
+				*(ushort*)(byteptr_t + 0x70) = pointer;
+				*(ushort*)(byteptr_t + 0x72) = this.OPPONENT5.StatsMultiplier;
+				*(uint*)(byteptr_t + 0x74) = Utils.Bin.SmartHash(this.OPPONENT5.PresetRide);
+				*(byteptr_t + 0x78) = this.OPPONENT5.SkillEasy;
+				*(byteptr_t + 0x79) = this.OPPONENT5.SkillMedium;
+				*(byteptr_t + 0x7A) = this.OPPONENT5.SkillHard;
+				*(byteptr_t + 0x7B) = this.OPPONENT5.CatchUp;
+			}
+			return;
 		}
 	}
 }

@@ -5,6 +5,7 @@
 		private Reflection.Enum.ePerformanceType _part_perf_type = Reflection.Enum.ePerformanceType.NOS;
 		private int _upgrade_level;
 		private int _upgrade_part_index;
+		private int _part_index;
 
 		[Reflection.Attributes.AccessModifiable()]
 		public Reflection.Enum.ePerformanceType PartPerformanceType
@@ -45,6 +46,21 @@
 					this.SwitchUpgradePartIndex(value);
 				else
 					throw new System.Exception("Unable to set: the perf slot is already taken by a different part.");
+			}
+		}
+
+		[Reflection.Attributes.AccessModifiable()]
+		public int PartIndex
+		{
+			get => this._part_index;
+			set
+			{
+				foreach (var cla in this.Database.PartPerformances.Classes)
+				{
+					if (cla.PartIndex == value)
+						throw new System.Exception("Performance Part with the same PartIndex already exists.");
+				}
+				this._part_index = value;
 			}
 		}
 	}

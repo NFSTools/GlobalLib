@@ -9,18 +9,18 @@
 		public float PerfPartAmplifierFraction { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
-		public float PerfPartRangeX { get; set; }
+		public float PerfPartRangeX { get; set; } = -1;
 
 		[Reflection.Attributes.AccessModifiable()]
-		public float PerfPartRangeY { get; set; }
+		public float PerfPartRangeY { get; set; } = -1;
 
 		[Reflection.Attributes.AccessModifiable()]
-		public float PerfPartRangeZ { get; set; }
+		public float PerfPartRangeZ { get; set; } = -1;
 
 		[Reflection.Attributes.AccessModifiable()]
-		public int BeingReplacedByIndex1 { get; set; }
+		public int BeingReplacedByIndex1 { get; set; } = -1;
 
 		[Reflection.Attributes.AccessModifiable()]
-		public int BeingReplacedByIndex2 { get; set; }
+		public int BeingReplacedByIndex2 { get; set; } = -1;
 	}
 }

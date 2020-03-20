@@ -7,6 +7,7 @@
 			uint key = 0;
 
 			// CollectionName and stuff
+			this._part_index = *(int*)byteptr_t;
 			this._collection_name = $"0x{*(uint*)(byteptr_t + 4):X8}";
 			this.PerfPartCost = *(int*)(byteptr_t + 8);
 			this.NumberOfBrands = *(int*)(byteptr_t + 0xC);
