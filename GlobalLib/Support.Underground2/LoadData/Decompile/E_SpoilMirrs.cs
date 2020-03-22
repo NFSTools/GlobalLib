@@ -22,8 +22,10 @@
                 var car = db.CarTypeInfos.FindClass(Slot.CarTypeInfo);
                 if (car != null)
                 {
-                    car.Spoiler = Slot.Spoiler;
-                    car.Mirrors = Slot.Mirrors;
+                    if (Slot.SpoilerNoMirror)
+                        car.Spoiler = Slot.Spoiler;
+                    else
+                        car.Mirrors = Slot.Mirrors;
                 }
             }
         }

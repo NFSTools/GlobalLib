@@ -6,6 +6,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
 {
     public class CarSpoilMirrType
     {
+        public bool SpoilerNoMirror { get; set; } = true;
         public string CarTypeInfo { get; set; }
         public Reflection.Enum.eSpoiler Spoiler { get; set; } = Reflection.Enum.eSpoiler.SPOILER;
         public Reflection.Enum.eMirrorTypes Mirrors { get; set; } = Reflection.Enum.eMirrorTypes.MIRRORS;
@@ -69,12 +70,18 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
 
                     uint definer = *(uint*)(byteptr_t + offset + 0x4);
                     uint hash = *(uint*)(byteptr_t + offset + 0xC);
-                    
+
                     if (definer == 0xC && System.Enum.IsDefined(typeof(Reflection.Enum.eSpoiler), hash))
+                    {
                         CarSlot.Spoiler = (Reflection.Enum.eSpoiler)hash;
-                    else if (definer == 0x20 && System.Enum.IsDefined(typeof(Reflection.Enum.eMirrorTypes), hash)) 
+                        CarSlot.SpoilerNoMirror = true;
+                    }
+                    else if (definer == 0x20 && System.Enum.IsDefined(typeof(Reflection.Enum.eMirrorTypes), hash))
+                    {
                         CarSlot.Mirrors = (Reflection.Enum.eMirrorTypes)hash;
-                    
+                        CarSlot.SpoilerNoMirror = false;
+                    }
+
                     result.Add(CarSlot);
                     offset += 0x10;
                 }
@@ -96,7 +103,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
         public unsafe byte[] SetSpoilers(List<CarSpoilMirrType> list)
         {
             int newsize = list.Count * 0x10 + this.data.Length;
-            int padding = 0x10 - newsize % 0x10;
+            int padding = 0x10 - ((newsize + 8) % 0x10);
             if (padding != 0x10)
                 newsize += padding;
             int offset = this.data.Length;
@@ -108,7 +115,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
             {
                 foreach (var CarSlot in list)
                 {
-                    if (CarSlot.Spoiler != Reflection.Enum.eSpoiler.SPOILER)
+                    if (CarSlot.SpoilerNoMirror)
                     {
                         uint key = Utils.Bin.Hash(CarSlot.CarTypeInfo);
                         *(uint*)(byteptr_t + offset) = key;
@@ -117,7 +124,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
                         *(uint*)(byteptr_t + offset + 0xC) = (uint)CarSlot.Spoiler;
                         offset += 0x10;
                     }
-                    else if (CarSlot.Mirrors != Reflection.Enum.eMirrorTypes.MIRRORS)
+                    else
                     {
                         uint key = Utils.Bin.Hash(CarSlot.CarTypeInfo);
                         *(uint*)(byteptr_t + offset) = key;

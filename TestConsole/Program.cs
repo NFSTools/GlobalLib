@@ -25,6 +25,33 @@ namespace TestConsole
 
 			Console.WriteLine($"{elapsed_1}ms");
 
+			/*
+			using (var bw = new BinaryWriter(File.Open("UG2SLOTTYPES.BIN", FileMode.Create)))
+			{
+				var list = new List<GlobalLib.Support.Underground2.Parts.CarParts.CarSpoilMirrType>();
+				foreach (var car in db.CarTypeInfos.Classes)
+				{
+					if (car.Spoiler != GlobalLib.Reflection.Enum.eSpoiler.SPOILER)
+					{
+						var add = new GlobalLib.Support.Underground2.Parts.CarParts.CarSpoilMirrType();
+						add.CarTypeInfo = car.CollectionName;
+						add.Spoiler = car.Spoiler;
+						add.SpoilerNoMirror = true;
+						list.Add(add);
+					}
+					if (car.Mirrors != GlobalLib.Reflection.Enum.eMirrorTypes.MIRRORS)
+					{
+						var add = new GlobalLib.Support.Underground2.Parts.CarParts.CarSpoilMirrType();
+						add.CarTypeInfo = car.CollectionName;
+						add.Mirrors = car.Mirrors;
+						add.SpoilerNoMirror = false;
+						list.Add(add);
+					}
+				}
+
+				bw.Write(db.SlotTypes.SpoilMirrs.SetSpoilers(list));
+			}
+			*/
 
 			int aa = 0; // for debug speed test
 
