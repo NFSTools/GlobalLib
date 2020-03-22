@@ -10,14 +10,14 @@
 			mw.WriteNullTerminated(this._collection_name);
 			*(ushort*)byteptr_t = pointer;
 
-			if (!string.IsNullOrWhiteSpace(this.IntroMovie))
+			if (this._intro_movie != Reflection.BaseArguments.NULL)
 			{
 				pointer = (ushort)mw.Position;
 				mw.WriteNullTerminated(this._intro_movie);
 				*(ushort*)(byteptr_t + 0x02) = pointer;
 			}
 
-			if (!string.IsNullOrWhiteSpace(this.OutroMovie))
+			if (this._outro_movie != Reflection.BaseArguments.NULL)
 			{
 				pointer = (ushort)mw.Position;
 				mw.WriteNullTerminated(this._outro_movie);
@@ -91,9 +91,12 @@
 		LABEL_BASIC:
 			if (this._num_of_opponents > 0)
 			{
-				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this.OPPONENT1.Name);
-				*(ushort*)(byteptr_t + 0x40) = pointer;
+				if (this.OPPONENT1.Name != Reflection.BaseArguments.NULL)
+				{
+					pointer = (ushort)mw.Position;
+					mw.WriteNullTerminated(this.OPPONENT1.Name);
+					*(ushort*)(byteptr_t + 0x40) = pointer;
+				}
 				*(ushort*)(byteptr_t + 0x42) = this.OPPONENT1.StatsMultiplier;
 				*(uint*)(byteptr_t + 0x44) = Utils.Bin.SmartHash(this.OPPONENT1.PresetRide);
 				*(byteptr_t + 0x48) = this.OPPONENT1.SkillEasy;
@@ -103,9 +106,12 @@
 			}
 			if (this._num_of_opponents > 1)
 			{
-				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this.OPPONENT2.Name);
-				*(ushort*)(byteptr_t + 0x4C) = pointer;
+				if (this.OPPONENT2.Name != Reflection.BaseArguments.NULL)
+				{
+					pointer = (ushort)mw.Position;
+					mw.WriteNullTerminated(this.OPPONENT2.Name);
+					*(ushort*)(byteptr_t + 0x4C) = pointer;
+				}
 				*(ushort*)(byteptr_t + 0x4E) = this.OPPONENT2.StatsMultiplier;
 				*(uint*)(byteptr_t + 0x50) = Utils.Bin.SmartHash(this.OPPONENT2.PresetRide);
 				*(byteptr_t + 0x54) = this.OPPONENT2.SkillEasy;
@@ -115,9 +121,12 @@
 			}
 			if (this._num_of_opponents > 2)
 			{
-				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this.OPPONENT3.Name);
-				*(ushort*)(byteptr_t + 0x58) = pointer;
+				if (this.OPPONENT3.Name != Reflection.BaseArguments.NULL)
+				{
+					pointer = (ushort)mw.Position;
+					mw.WriteNullTerminated(this.OPPONENT3.Name);
+					*(ushort*)(byteptr_t + 0x58) = pointer;
+				}
 				*(ushort*)(byteptr_t + 0x5A) = this.OPPONENT3.StatsMultiplier;
 				*(uint*)(byteptr_t + 0x5C) = Utils.Bin.SmartHash(this.OPPONENT3.PresetRide);
 				*(byteptr_t + 0x60) = this.OPPONENT3.SkillEasy;
@@ -127,9 +136,12 @@
 			}
 			if (this._num_of_opponents > 3)
 			{
-				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this.OPPONENT4.Name);
-				*(ushort*)(byteptr_t + 0x64) = pointer;
+				if (this.OPPONENT4.Name != Reflection.BaseArguments.NULL)
+				{
+					pointer = (ushort)mw.Position;
+					mw.WriteNullTerminated(this.OPPONENT4.Name);
+					*(ushort*)(byteptr_t + 0x64) = pointer;
+				}
 				*(ushort*)(byteptr_t + 0x66) = this.OPPONENT4.StatsMultiplier;
 				*(uint*)(byteptr_t + 0x68) = Utils.Bin.SmartHash(this.OPPONENT4.PresetRide);
 				*(byteptr_t + 0x6C) = this.OPPONENT4.SkillEasy;
@@ -139,9 +151,12 @@
 			}
 			if (this._num_of_opponents > 4)
 			{
-				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this.OPPONENT5.Name);
-				*(ushort*)(byteptr_t + 0x70) = pointer;
+				if (this.OPPONENT5.Name != Reflection.BaseArguments.NULL)
+				{
+					pointer = (ushort)mw.Position;
+					mw.WriteNullTerminated(this.OPPONENT5.Name);
+					*(ushort*)(byteptr_t + 0x70) = pointer;
+				}
 				*(ushort*)(byteptr_t + 0x72) = this.OPPONENT5.StatsMultiplier;
 				*(uint*)(byteptr_t + 0x74) = Utils.Bin.SmartHash(this.OPPONENT5.PresetRide);
 				*(byteptr_t + 0x78) = this.OPPONENT5.SkillEasy;
@@ -153,9 +168,12 @@
 
 			// If at least one of the events is drift downhill, write at least 3 opponents
 		LABEL_DRIFT_DOWNHILL:
-			pointer = (ushort)mw.Position;
-			mw.WriteNullTerminated(this.OPPONENT1.Name);
-			*(ushort*)(byteptr_t + 0x40) = pointer;
+			if (this.OPPONENT1.Name != Reflection.BaseArguments.NULL)
+			{
+				pointer = (ushort)mw.Position;
+				mw.WriteNullTerminated(this.OPPONENT1.Name);
+				*(ushort*)(byteptr_t + 0x40) = pointer;
+			}
 			*(ushort*)(byteptr_t + 0x42) = this.OPPONENT1.StatsMultiplier;
 			*(uint*)(byteptr_t + 0x44) = Utils.Bin.SmartHash(this.OPPONENT1.PresetRide);
 			*(byteptr_t + 0x48) = this.OPPONENT1.SkillEasy;
@@ -163,9 +181,12 @@
 			*(byteptr_t + 0x4A) = this.OPPONENT1.SkillHard;
 			*(byteptr_t + 0x4B) = this.OPPONENT1.CatchUp;
 
-			pointer = (ushort)mw.Position;
-			mw.WriteNullTerminated(this.OPPONENT2.Name);
-			*(ushort*)(byteptr_t + 0x4C) = pointer;
+			if (this.OPPONENT2.Name != Reflection.BaseArguments.NULL)
+			{
+				pointer = (ushort)mw.Position;
+				mw.WriteNullTerminated(this.OPPONENT2.Name);
+				*(ushort*)(byteptr_t + 0x4C) = pointer;
+			}
 			*(ushort*)(byteptr_t + 0x4E) = this.OPPONENT2.StatsMultiplier;
 			*(uint*)(byteptr_t + 0x50) = Utils.Bin.SmartHash(this.OPPONENT2.PresetRide);
 			*(byteptr_t + 0x54) = this.OPPONENT2.SkillEasy;
@@ -173,9 +194,12 @@
 			*(byteptr_t + 0x56) = this.OPPONENT2.SkillHard;
 			*(byteptr_t + 0x57) = this.OPPONENT2.CatchUp;
 
-			pointer = (ushort)mw.Position;
-			mw.WriteNullTerminated(this.OPPONENT3.Name);
-			*(ushort*)(byteptr_t + 0x58) = pointer;
+			if (this.OPPONENT3.Name != Reflection.BaseArguments.NULL)
+			{
+				pointer = (ushort)mw.Position;
+				mw.WriteNullTerminated(this.OPPONENT3.Name);
+				*(ushort*)(byteptr_t + 0x58) = pointer;
+			}
 			*(ushort*)(byteptr_t + 0x5A) = this.OPPONENT3.StatsMultiplier;
 			*(uint*)(byteptr_t + 0x5C) = Utils.Bin.SmartHash(this.OPPONENT3.PresetRide);
 			*(byteptr_t + 0x60) = this.OPPONENT3.SkillEasy;
@@ -185,9 +209,12 @@
 
 			if (this._num_of_opponents > 3)
 			{
-				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this.OPPONENT4.Name);
-				*(ushort*)(byteptr_t + 0x64) = pointer;
+				if (this.OPPONENT4.Name != Reflection.BaseArguments.NULL)
+				{
+					pointer = (ushort)mw.Position;
+					mw.WriteNullTerminated(this.OPPONENT4.Name);
+					*(ushort*)(byteptr_t + 0x64) = pointer;
+				}
 				*(ushort*)(byteptr_t + 0x66) = this.OPPONENT4.StatsMultiplier;
 				*(uint*)(byteptr_t + 0x68) = Utils.Bin.SmartHash(this.OPPONENT4.PresetRide);
 				*(byteptr_t + 0x6C) = this.OPPONENT4.SkillEasy;
@@ -197,9 +224,12 @@
 			}
 			if (this._num_of_opponents > 4)
 			{
-				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this.OPPONENT5.Name);
-				*(ushort*)(byteptr_t + 0x70) = pointer;
+				if (this.OPPONENT5.Name != Reflection.BaseArguments.NULL)
+				{
+					pointer = (ushort)mw.Position;
+					mw.WriteNullTerminated(this.OPPONENT5.Name);
+					*(ushort*)(byteptr_t + 0x70) = pointer;
+				}
 				*(ushort*)(byteptr_t + 0x72) = this.OPPONENT5.StatsMultiplier;
 				*(uint*)(byteptr_t + 0x74) = Utils.Bin.SmartHash(this.OPPONENT5.PresetRide);
 				*(byteptr_t + 0x78) = this.OPPONENT5.SkillEasy;

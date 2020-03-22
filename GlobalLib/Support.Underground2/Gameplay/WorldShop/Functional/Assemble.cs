@@ -10,7 +10,7 @@
 			for (int a1 = 0; a1 < this._collection_name.Length; ++a1)
 				*(byteptr_t + a1) = (byte)this._collection_name[a1];
 
-			if (!string.IsNullOrWhiteSpace(this.IntroMovie))
+			if (this._intro_movie != Reflection.BaseArguments.NULL)
 			{
 				mw.WriteNullTerminated(this.IntroMovie);
 				for (int a1 = 0; a1 < this.IntroMovie.Length; ++a1)

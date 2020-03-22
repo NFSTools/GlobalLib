@@ -25,9 +25,10 @@ namespace TestConsole
 
 			Console.WriteLine($"{elapsed_1}ms");
 
-			Console.Read();
 
-			int aa = 0;
+			int aa = 0; // for debug speed test
+
+			Console.Read(); // for release speed test
 		}
 	}
 }
