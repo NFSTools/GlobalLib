@@ -106,7 +106,7 @@
                         : add_on.SPOILER;
                     parts._SPOILER += add_on._STYLE + this._spoiler_style.ToString("00");
                     if (this._spoiler_type != Reflection.Enum.eSTypes.BASE)
-                        parts._SPOILER += this.SpoilerType;
+                        parts._SPOILER += this._spoiler_type.ToString();
                     if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
                         parts._SPOILER += add_on._CF;
                 }
@@ -124,11 +124,11 @@
                 // _FRONT_DAMAGE0 + FRONT_BUMPER
                 if (this._autosculpt_frontbumper == -1)
                 {
-                    parts._DAMAGE0_FRONT = "";
-                    parts._DAMAGE0_FRONTLEFT = "";
-                    parts._DAMAGE0_FRONTRIGHT = "";
-                    parts._FRONT_BUMPER = "";
-                    parts._FRONT_BUMPER_BADGING_SET = "";
+                    parts._DAMAGE0_FRONT = string.Empty;
+                    parts._DAMAGE0_FRONTLEFT = string.Empty;
+                    parts._DAMAGE0_FRONTRIGHT = string.Empty;
+                    parts._FRONT_BUMPER = string.Empty;
+                    parts._FRONT_BUMPER_BADGING_SET = string.Empty;
                 }
                 else
                 {
@@ -143,11 +143,11 @@
                 // REAR_DAMAGE0 + REAR_BUMPER
                 if (this._autosculpt_rearbumper == -1)
                 {
-                    parts._DAMAGE0_REAR = "";
-                    parts._DAMAGE0_REARLEFT = "";
-                    parts._DAMAGE0_REARRIGHT = "";
-                    parts._REAR_BUMPER = "";
-                    parts._REAR_BUMPER_BADGING_SET = "";
+                    parts._DAMAGE0_REAR = string.Empty;
+                    parts._DAMAGE0_REARLEFT = string.Empty;
+                    parts._DAMAGE0_REARRIGHT = string.Empty;
+                    parts._REAR_BUMPER = string.Empty;
+                    parts._REAR_BUMPER_BADGING_SET = string.Empty;
                 }
                 else
                 {

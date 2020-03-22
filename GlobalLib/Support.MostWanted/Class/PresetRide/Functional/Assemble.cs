@@ -83,7 +83,7 @@
                 {
                     parts._SPOILER = add_on.SPOILER + add_on._STYLE + this._spoiler_style.ToString("00");
                     if (this.SpoilerType != Reflection.Enum.eSTypes.BASE)
-                        parts._SPOILER += this._spoiler_type;
+                        parts._SPOILER += this._spoiler_type.ToString();
                     if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
                         parts._SPOILER += add_on._CF;
                 }

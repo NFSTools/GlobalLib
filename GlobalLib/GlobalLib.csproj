@@ -477,7 +477,10 @@
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\SpoilerMirror.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\GetValidRimString.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\Initialize.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Functional\StringToKey.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\WIndowTintSettings.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\Assemble.cs" />

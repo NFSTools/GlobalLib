@@ -51,8 +51,8 @@
             get => this._under_hood_style;
             set
             {
-                if (value > 30)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 30.");
+                if (value != 0 && value < 21 && value > 25)
+                    throw new System.ArgumentOutOfRangeException("This value should be in range 21 to 25 or 0.");
                 else
                     this._hood_style = value;
                 this.Modified = true;

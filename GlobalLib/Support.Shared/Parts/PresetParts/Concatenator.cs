@@ -95,6 +95,7 @@
         public string HUD_CHARS = "WHITE";
 
         // Strings exclusive to NFSUG2
+        public string _KITW_BODY = "_BODY";
         public string _TOP = "_TOP";
         public string _TRUNK = "_TRUNK";
         public string _ENGINE = "_ENGINE";
@@ -112,6 +113,9 @@
         public string _DECAL_HOOD_RECT_SMALL = "_DECAL_HOOD_RECT_SMALL";
         public string _DECAL_LEFT_QUARTER_RECT_SMALL = "_DECAL_LEFT_QUARTER_RECT_SMALL";
         public string _DECAL_RIGHT_QUARTER_RECT_SMALL = "_DECAL_RIGHT_QUARTER_RECT_SMALL";
+        public string _DECAL_HOOD_RECT_ = "_DECAL_HOOD_RECT_";
+        public string _DECAL_LEFT_QUARTER_RECT_ = "_DECAL_LEFT_QUARTER_RECT_";
+        public string _DECAL_RIGHT_QUARTER_RECT_ = "_DECAL_RIGHT_QUARTER_RECT_";
         public string CARBON_FIBRE = "CARBON FIBRE";
         public string CARBON_FIBRE_NONE = "CARBON FIBRE NONE";
         public string NEON_NONE = "NEON_NONE";
