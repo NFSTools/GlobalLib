@@ -15,35 +15,35 @@
 			// Resolve all brands (use non-reflective for speed)
 			if (this.NumberOfBrands < 1) goto LABEL_SKIP;
 			key = *(uint*)(byteptr_t + 0x10);
-			this._perf_brand_1 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._perf_brand_1 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 
 			if (this.NumberOfBrands < 2) goto LABEL_SKIP;
 			key = *(uint*)(byteptr_t + 0x14);
-			this._perf_brand_2 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._perf_brand_2 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 
 			if (this.NumberOfBrands < 3) goto LABEL_SKIP;
 			key = *(uint*)(byteptr_t + 0x18);
-			this._perf_brand_3 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._perf_brand_3 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 
 			if (this.NumberOfBrands < 4) goto LABEL_SKIP;
 			key = *(uint*)(byteptr_t + 0x1C);
-			this._perf_brand_4 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._perf_brand_4 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 
 			if (this.NumberOfBrands < 5) goto LABEL_SKIP;
 			key = *(uint*)(byteptr_t + 0x20);
-			this._perf_brand_5 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._perf_brand_5 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 
 			if (this.NumberOfBrands < 6) goto LABEL_SKIP;
 			key = *(uint*)(byteptr_t + 0x24);
-			this._perf_brand_6 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._perf_brand_6 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 
 			if (this.NumberOfBrands < 7) goto LABEL_SKIP;
 			key = *(uint*)(byteptr_t + 0x28);
-			this._perf_brand_7 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._perf_brand_7 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 
 			if (this.NumberOfBrands < 8) goto LABEL_SKIP;
 			key = *(uint*)(byteptr_t + 0x2C);
-			this._perf_brand_8 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._perf_brand_8 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 
 			// Do the rest of the values
 		LABEL_SKIP:

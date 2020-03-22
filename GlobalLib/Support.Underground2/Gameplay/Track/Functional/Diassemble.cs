@@ -30,8 +30,7 @@
 				: Reflection.Enum.eBoolean.True;
 			this.TrackID = *(ushort*)(byteptr_t + 0x8A);
 			uint key = *(uint*)(byteptr_t + 0x90);
-			if (key == 0) this._sun_info_name = Reflection.BaseArguments.NULL;
-			else this._sun_info_name = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._sun_info_name = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			this._race_gameplay_mode = (Reflection.Enum.eRaceGameplayMode)(*(int*)(byteptr_t + 0x94));
 			this.RaceLength = *(uint*)(byteptr_t + 0x98);
 			this.TimeLimitToBeatForward = *(float*)(byteptr_t + 0x9C);

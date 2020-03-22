@@ -183,20 +183,17 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
         public unsafe void Read(byte* byteptr_t)
         {
             var key = *(uint*)byteptr_t;
-            if (key == 0)
-                this.VectorVinyl = Reflection.BaseArguments.NULL;
-            else
-                this.VectorVinyl = Core.Map.Lookup(key) ?? ("0x" + key.ToString("X8"));
+            this._vectorvinyl = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
             this.PositionY = *(short*)(byteptr_t + 0x04);
             this.PositionX = *(short*)(byteptr_t + 0x06);
             this.Rotation = *(sbyte*)(byteptr_t + 0x08);
             this.Skew = *(sbyte*)(byteptr_t + 0x09);
             this.ScaleY = *(sbyte*)(byteptr_t + 0x0A);
             this.ScaleX = *(sbyte*)(byteptr_t + 0x0B);
-            this.SwatchColor1 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x0C)));
-            this.SwatchColor2 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x14)));
-            this.SwatchColor3 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1C)));
-            this.SwatchColor4 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x24)));
+            this.SwatchColor1 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x0C), false));
+            this.SwatchColor2 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x14), false));
+            this.SwatchColor3 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1C), false));
+            this.SwatchColor4 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x24), false));
             this.Saturation1 = *(byteptr_t + 0x10);
             this.Saturation2 = *(byteptr_t + 0x18);
             this.Saturation3 = *(byteptr_t + 0x20);
@@ -209,11 +206,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
 
         public unsafe void Write(byte* byteptr_t)
         {
-            if (this.VectorVinyl == Reflection.BaseArguments.NULL) { }
-            else if (this.VectorVinyl.StartsWith("0x"))
-                *(uint*)byteptr_t = Utils.ConvertX.ToUInt32(this.VectorVinyl);
-            else
-                *(uint*)byteptr_t = Utils.Bin.Hash(this.VectorVinyl);
+            *(uint*)byteptr_t = Utils.Bin.SmartHash(this.VectorVinyl);
             *(short*)(byteptr_t + 0x04) = this.PositionY;
             *(short*)(byteptr_t + 0x06) = this.PositionX;
             *(byteptr_t + 0x08) = (byte)this.Rotation;

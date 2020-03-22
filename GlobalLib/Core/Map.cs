@@ -66,8 +66,9 @@ namespace GlobalLib.Core
         /// </summary>
         /// <param name="key">Binary memory hash to look for.</param>
         /// <returns>Result value from the key passed, if value was not found, returns null instead.</returns>
-        public static string Lookup(uint key)
+        public static string Lookup(uint key, bool nullifzero)
         {
+            if (nullifzero && key == 0) return Reflection.BaseArguments.NULL;
             if (BinKeys.TryGetValue(key, out string result))
                 return result;
             else

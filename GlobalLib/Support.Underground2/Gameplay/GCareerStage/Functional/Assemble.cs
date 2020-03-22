@@ -24,7 +24,7 @@
 			*(short*)(byteptr_t + 0x24) = this.AttribSponsor5;
 			*(short*)(byteptr_t + 0x26) = this.Unknown0x26;
 
-			*(uint*)(byteptr_t + 0x28) = Utils.Bin.SmartHash(this.LastStageEvent);
+			*(uint*)(byteptr_t + 0x28) = Utils.Bin.SmartHash(this._last_stage_event);
 
 			*(byteptr_t + 0x2C) = this.Unknown0x2C;
 			*(byteptr_t + 0x2D) = this.Unknown0x2D;

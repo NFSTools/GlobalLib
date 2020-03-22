@@ -23,9 +23,9 @@
 
 			// Hashes
 			key = *(uint*)(ptr_header + 0x8);
-			this.ChallengeSMSLabel = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._sms_label = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(ptr_header + 0xC);
-			this.ChallengeParent = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._chal_parent = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 
 			// Time Limit
 			this.TimeLimit = *(int*)(ptr_header + 0x10);

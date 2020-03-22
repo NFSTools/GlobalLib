@@ -23,7 +23,7 @@
 			// Cash and Sender
 			this.CashValue = *(int*)(ptr_header + 0x0C);
 			uint key = *(uint*)(ptr_header + 0x10);
-			this.MessageSenderLabel = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this.MessageSenderLabel = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 		}
 	}
 }

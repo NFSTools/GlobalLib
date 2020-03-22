@@ -184,7 +184,7 @@
                     else // try carbonfibre
                     {
                         a1 = Utils.Bin.Hash(v1 + add_on._CF);
-                        if (a3 == a2)
+                        if (a1 == a2)
                         {
                             this._hood_style = x1;
                             this._is_carbonfibre_hood = Reflection.Enum.eBoolean.True;
@@ -323,7 +323,7 @@
             if (a2 == 0 || a1 == a2)
             {
                 this._exhaust_style = 0;
-                goto LABEL_EXHAUST;
+                goto LABEL_HOOD_UNDER;
             }
             for (a3 = 0; a3 < 11; ++a3)
             {
@@ -420,30 +420,7 @@
             }
 
             // ALL TRUNK AUDIOS AND BUFFERS
-            a2 = *(uint*)(byteptr_t + 0xD8);
-            this.AUDIO_COMP.AudioComp00 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0xDC);
-            this.AUDIO_COMP.AudioComp01 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0xE0);
-            this.AUDIO_COMP.AudioComp02 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0xE4);
-            this.AUDIO_COMP.AudioComp03 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0xE8);
-            this.AUDIO_COMP.AudioComp04 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0xEC);
-            this.AUDIO_COMP.AudioComp05 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0xF0);
-            this.AUDIO_COMP.AudioComp06 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0xF4);
-            this.AUDIO_COMP.AudioComp07 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0xF8);
-            this.AUDIO_COMP.AudioComp08 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0xFC);
-            this.AUDIO_COMP.AudioComp09 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0x100);
-            this.AUDIO_COMP.AudioComp10 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0x104);
-            this.AUDIO_COMP.AudioComp11 = Core.Map.Lookup(a2)?.Substring(0, v1.LastIndexOf('_')) ?? Reflection.BaseArguments.NULL;
+            this.AUDIO_COMP.Read(byteptr_t + 0xD8);
 
             // Skip all Damage, goto decal types
             a2 = *(uint*)(byteptr_t + 0x11C);
@@ -516,89 +493,99 @@
 
             // Paint Types
             a2 = *(uint*)(byteptr_t + 0x148);
-            this.PAINT_TYPES.BasePaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.BasePaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
+            
             a2 = *(uint*)(byteptr_t + 0x15C);
-            this.PAINT_TYPES.EnginePaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.EnginePaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
+            
             a2 = *(uint*)(byteptr_t + 0x160);
-            this.PAINT_TYPES.SpoilerPaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.SpoilerPaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
+            
             a2 = *(uint*)(byteptr_t + 0x164);
-            this.PAINT_TYPES.BrakesPaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.BrakesPaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
+            
             a2 = *(uint*)(byteptr_t + 0x168);
-            this.PAINT_TYPES.ExhaustPaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.ExhaustPaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
+            
             a2 = *(uint*)(byteptr_t + 0x16C);
-            this.PAINT_TYPES.AudioPaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.AudioPaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
+            
             a2 = *(uint*)(byteptr_t + 0x170);
-            this.PAINT_TYPES.RimsPaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.RimsPaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
+            
             a2 = *(uint*)(byteptr_t + 0x174);
-            this.PAINT_TYPES.SpinnersPaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.SpinnersPaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
+            
             a2 = *(uint*)(byteptr_t + 0x178);
-            this.PAINT_TYPES.RoofPaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.RoofPaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
+            
             a2 = *(uint*)(byteptr_t + 0x17C);
-            this.PAINT_TYPES.MirrorsPaintType = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.PAINT_TYPES.MirrorsPaintType = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
 
             // Vinyls and Colors
             a2 = *(uint*)(byteptr_t + 0x14C);
-            if (a2 != 0) this.VINYL_SETS.VinylLayer0 = Core.Map.Lookup(a2) ?? $"0x{a2:X8}";
+            this.VINYL_SETS.VinylLayer0 = Core.Map.Lookup(a2, true) ?? $"0x{a2:X8}";
             a2 = *(uint*)(byteptr_t + 0x150);
-            if (a2 != 0) this.VINYL_SETS.VinylLayer1 = Core.Map.Lookup(a2) ?? $"0x{a2:X8}";
+            this.VINYL_SETS.VinylLayer1 = Core.Map.Lookup(a2, true) ?? $"0x{a2:X8}";
             a2 = *(uint*)(byteptr_t + 0x154);
-            if (a2 != 0) this.VINYL_SETS.VinylLayer2 = Core.Map.Lookup(a2) ?? $"0x{a2:X8}";
+            this.VINYL_SETS.VinylLayer2 = Core.Map.Lookup(a2, true) ?? $"0x{a2:X8}";
             a2 = *(uint*)(byteptr_t + 0x158);
-            if (a2 != 0) this.VINYL_SETS.VinylLayer3 = Core.Map.Lookup(a2) ?? $"0x{a2:X8}";
+            this.VINYL_SETS.VinylLayer3 = Core.Map.Lookup(a2, true) ?? $"0x{a2:X8}";
+            
             a2 = *(uint*)(byteptr_t + 0x180);
-            this.VINYL_SETS.Vinyl0_Color0 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl0_Color0 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x184);
-            this.VINYL_SETS.Vinyl0_Color1 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl0_Color1 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x188);
-            this.VINYL_SETS.Vinyl0_Color2 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl0_Color2 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x18C);
-            this.VINYL_SETS.Vinyl0_Color3 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl0_Color3 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x190);
-            this.VINYL_SETS.Vinyl1_Color0 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl1_Color0 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x194);
-            this.VINYL_SETS.Vinyl1_Color1 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl1_Color1 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x198);
-            this.VINYL_SETS.Vinyl1_Color2 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl1_Color2 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;            
             a2 = *(uint*)(byteptr_t + 0x19C);
-            this.VINYL_SETS.Vinyl1_Color3 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl1_Color3 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x1A0);
-            this.VINYL_SETS.Vinyl2_Color0 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl2_Color0 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x1A4);
-            this.VINYL_SETS.Vinyl2_Color1 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl2_Color1 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x1A8);
-            this.VINYL_SETS.Vinyl2_Color2 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl2_Color2 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x1AC);
-            this.VINYL_SETS.Vinyl2_Color3 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl2_Color3 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x1B0);
-            this.VINYL_SETS.Vinyl3_Color0 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl3_Color0 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;            
             a2 = *(uint*)(byteptr_t + 0x1B4);
-            this.VINYL_SETS.Vinyl3_Color1 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl3_Color1 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x1B8);
-            this.VINYL_SETS.Vinyl3_Color2 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl3_Color2 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x1BC);
-            this.VINYL_SETS.Vinyl3_Color3 = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.VINYL_SETS.Vinyl3_Color3 = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
 
             // Carbonfibre Settings
             a2 = *(uint*)(byteptr_t + 0x1C0);
-            if (a2 != 0 && Core.Map.Lookup(a2) == parts.CARBON_FIBRE)
+            if (Core.Map.Lookup(a2, true) == parts.CARBON_FIBRE)
                 this.HasCarbonfibreBody = Reflection.Enum.eBoolean.True;
             else
                 this.HasCarbonfibreBody = Reflection.Enum.eBoolean.False;
 
             a2 = *(uint*)(byteptr_t + 0x1C4);
-            if (a2 != 0 && Core.Map.Lookup(a2) == parts.CARBON_FIBRE)
+            if (Core.Map.Lookup(a2, true) == parts.CARBON_FIBRE)
                 this.HasCarbonfibreHood = Reflection.Enum.eBoolean.True;
             else
                 this.HasCarbonfibreHood = Reflection.Enum.eBoolean.False;
 
             a2 = *(uint*)(byteptr_t + 0x1C8);
-            if (a2 != 0 && Core.Map.Lookup(a2) == parts.CARBON_FIBRE)
+            if (Core.Map.Lookup(a2, true) == parts.CARBON_FIBRE)
                 this.HasCarbonfibreDoors = Reflection.Enum.eBoolean.True;
             else
                 this.HasCarbonfibreDoors = Reflection.Enum.eBoolean.False;
 
             a2 = *(uint*)(byteptr_t + 0x1CC);
-            if (a2 != 0 && Core.Map.Lookup(a2) == parts.CARBON_FIBRE)
+            if (Core.Map.Lookup(a2, true) == parts.CARBON_FIBRE)
                 this.HasCarbonfibreTrunk = Reflection.Enum.eBoolean.True;
             else
                 this.HasCarbonfibreTrunk = Reflection.Enum.eBoolean.False;
@@ -613,28 +600,28 @@
             this.DECALS_RIGHT_QUARTER.Read(byteptr_t + 0x290);
 
             // WINDOW_TINT
-            a2 = *(uint*)(byteptr_t + 0x2A0);
+            a2 = *(uint*)(byteptr_t + 0x2B0);
             if (a2 == 0 || a2 == Utils.Bin.Hash(parts.WINDOW_TINT_STOCK))
                 this._window_tint_type = Reflection.BaseArguments.STOCK;
             else
-                this._window_tint_type = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.STOCK;
+                this._window_tint_type = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.STOCK;
 
             // Specialties
             a1 = Utils.Bin.Hash(parts.NEON_NONE);
-            a2 = *(uint*)(byteptr_t + 0x2A4);
-            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonBody = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NeonBody = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0x2A8);
-            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonEngine = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NeonEngine = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0x2AC);
-            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonCabin = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NeonCabin = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0x2B0);
-            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonTrunk = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NeonTrunk = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
-
             a2 = *(uint*)(byteptr_t + 0x2B4);
+            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonBody = Reflection.BaseArguments.NULL;
+            else this.SPECIALTIES.NeonBody = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0x2B8);
+            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonEngine = Reflection.BaseArguments.NULL;
+            else this.SPECIALTIES.NeonEngine = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0x2BC);
+            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonCabin = Reflection.BaseArguments.NULL;
+            else this.SPECIALTIES.NeonCabin = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0x2C0);
+            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonTrunk = Reflection.BaseArguments.NULL;
+            else this.SPECIALTIES.NeonTrunk = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+
+            a2 = *(uint*)(byteptr_t + 0x2C4);
             if (a2 != 0)
             {
                 for (a3 = 0; a3 < 4; ++a3)
@@ -649,33 +636,33 @@
             }
 
             a1 = Utils.Bin.Hash(Reflection.BaseArguments.STOCK);
-            a2 = *(uint*)(byteptr_t + 0x2B8);
+            a2 = *(uint*)(byteptr_t + 0x2C8);
             if (a2 == 0 || a1 == a2) this.SPECIALTIES.HeadlightBulbStyle = Reflection.BaseArguments.STOCK;
-            else this.SPECIALTIES.HeadlightBulbStyle = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.STOCK;
-            a2 = *(uint*)(byteptr_t + 0x2BC);
+            else this.SPECIALTIES.HeadlightBulbStyle = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.STOCK;
+            a2 = *(uint*)(byteptr_t + 0x2CC);
             if (a2 == 0 || a1 == a2) this.SPECIALTIES.DoorOpeningStyle = Reflection.BaseArguments.STOCK;
-            else this.SPECIALTIES.DoorOpeningStyle = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.STOCK;
+            else this.SPECIALTIES.DoorOpeningStyle = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.STOCK;
             a1 = Utils.Bin.Hash(parts.NO_HYDRAULICS);
-            a2 = *(uint*)(byteptr_t + 0x2C0);
+            a2 = *(uint*)(byteptr_t + 0x2D0);
             if (a2 == 0 || a1 == a2) this.SPECIALTIES.HydraulicsStyle = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.HydraulicsStyle = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
-            a2 = *(uint*)(byteptr_t + 0x2C4);
+            else this.SPECIALTIES.HydraulicsStyle = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            a2 = *(uint*)(byteptr_t + 0x2D4);
             if (a2 == 0) this.SPECIALTIES.NOSPurgeStyle = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NOSPurgeStyle = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            else this.SPECIALTIES.NOSPurgeStyle = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
 
             // HUD Options
             a2 = *(uint*)(byteptr_t + 0x2D8);
             if (a2 == 0) this._custom_hud_style = Reflection.BaseArguments.STOCK;
-            else this._custom_hud_style = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.STOCK;
+            else this._custom_hud_style = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.STOCK;
             a2 = *(uint*)(byteptr_t + 0x2DC);
             if (a2 == 0) this._hud_backing_color = Reflection.BaseArguments.WHITE;
-            else this._hud_backing_color = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.WHITE;
+            else this._hud_backing_color = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.WHITE;
             a2 = *(uint*)(byteptr_t + 0x2E0);
             if (a2 == 0) this._hud_needle_color = Reflection.BaseArguments.WHITE;
-            else this._hud_needle_color = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.WHITE;
+            else this._hud_needle_color = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.WHITE;
             a2 = *(uint*)(byteptr_t + 0x2E4);
             if (a2 == 0) this._hud_character_color = Reflection.BaseArguments.WHITE;
-            else this._hud_character_color = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.WHITE;
+            else this._hud_character_color = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.WHITE;
         }
     }
 }

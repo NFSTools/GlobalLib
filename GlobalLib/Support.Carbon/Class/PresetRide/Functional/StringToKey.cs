@@ -65,8 +65,8 @@ namespace GlobalLib.Support.Carbon.Class
 	            /* 0x1B0 = 44 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts._WHEEL);
 	            /* 0x1B8 = 45 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts.LICENSE_PLATE_STYLE01);
 	            /* 0x1BC = 46 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts._KIT00_DOORLINE);
-	            /* 0x1D4 = 47 */ *(uintptr_t + offset++) = Utils.Bin.Hash(this._specific_vinyl);
-	            /* 0x1D8 = 48 */ *(uintptr_t + offset++) = Utils.Bin.Hash(this._generic_vinyl);
+	            /* 0x1D4 = 47 */ *(uintptr_t + offset++) = Utils.Bin.SmartHash(this._specific_vinyl);
+	            /* 0x1D8 = 48 */ *(uintptr_t + offset++) = Utils.Bin.SmartHash(this._generic_vinyl);
 	            /* 0x1F8 = 49 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts.WINDOW_TINT_STOCK);
 	            /* 0x20C = 50 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts.PAINT);
 	            /* 0x210 = 51 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts.SWATCH_COLOR);

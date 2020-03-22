@@ -51,7 +51,7 @@ namespace GlobalLib.Support.Carbon.Parts.CarParts
                 while (offset < this.data.Length)
                 {
                     uint key = *(uint*)(byteptr_t + offset);
-                    string CName = Core.Map.Lookup(key) ?? "";
+                    string CName = Core.Map.Lookup(key, false) ?? string.Empty;
 
                     // Write to new array if not a spoiler or if not a padding
                     if (!reached && !CNames.Contains(CName))

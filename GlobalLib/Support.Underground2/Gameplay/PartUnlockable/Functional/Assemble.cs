@@ -23,9 +23,9 @@
 			*(byteptr_t + 0x15) = (byte)2;
 			*(byteptr_t + 0x21) = (byte)3;
 
-			*(uint*)(byteptr_t + 0x0C) = Utils.Bin.Hash(this.UnlocksInShop_Level1);
-			*(uint*)(byteptr_t + 0x18) = Utils.Bin.Hash(this.UnlocksInShop_Level2);
-			*(uint*)(byteptr_t + 0x24) = Utils.Bin.Hash(this.UnlocksInShop_Level3);
+			*(uint*)(byteptr_t + 0x0C) = Utils.Bin.SmartHash(this.UnlocksInShop_Level1);
+			*(uint*)(byteptr_t + 0x18) = Utils.Bin.SmartHash(this.UnlocksInShop_Level2);
+			*(uint*)(byteptr_t + 0x24) = Utils.Bin.SmartHash(this.UnlocksInShop_Level3);
 		}
 	}
 }

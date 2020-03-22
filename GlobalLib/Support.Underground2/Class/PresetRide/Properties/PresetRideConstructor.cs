@@ -9,6 +9,7 @@
         public PresetRide(string CName, Database.Underground2 db)
         {
             this.Database = db;
+            this.Initialize();
             this.data = new byte[0x338];
             this.CollectionName = CName;
             this.MODEL = "SUPRA";
@@ -20,6 +21,7 @@
         public unsafe PresetRide(byte* byteptr_t, string CName, Database.Underground2 db)
         {
             this.Database = db;
+            this.Initialize();
             this.data = new byte[0x338];
             this.CollectionName = CName;
             this.Exists = true;

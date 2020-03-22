@@ -13,20 +13,23 @@
 			if (!string.IsNullOrWhiteSpace(this.IntroMovie))
 			{
 				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this.IntroMovie);
+				mw.WriteNullTerminated(this._intro_movie);
 				*(ushort*)(byteptr_t + 0x02) = pointer;
 			}
 
 			if (!string.IsNullOrWhiteSpace(this.OutroMovie))
 			{
 				pointer = (ushort)mw.Position;
-				mw.WriteNullTerminated(this.OutroMovie);
+				mw.WriteNullTerminated(this._outro_movie);
 				*(ushort*)(byteptr_t + 0x04) = pointer;
 			}
 
-			pointer = (ushort)mw.Position;
-			mw.WriteNullTerminated(this.EventTrigger);
-			*(ushort*)(byteptr_t + 0x06) = pointer;
+			if (this._event_trigger != Reflection.BaseArguments.NULL)
+			{
+				pointer = (ushort)mw.Position;
+				mw.WriteNullTerminated(this._event_trigger);
+				*(ushort*)(byteptr_t + 0x06) = pointer;
+			}
 
 			*(uint*)(byteptr_t + 0x08) = this.BinKey;
 			*(byteptr_t + 0x0C) = (byte)this._unlock_method;
@@ -35,7 +38,7 @@
 			*(byteptr_t + 0x0F) = (byte)this._event_behavior;
 
 			if (this._unlock_method == Reflection.Enum.eUnlockCondition.SPECIFIC_RACE_WON)
-				*(uint*)(byteptr_t + 0x10) = Utils.Bin.SmartHash(this.RequiredSpecificRaceWon);
+				*(uint*)(byteptr_t + 0x10) = Utils.Bin.SmartHash(this._required_spec_race_won);
 			else
 			{
 				*(byteptr_t + 0x10) = this.RequiredSpecificURLWon;
@@ -58,8 +61,8 @@
 			*(byteptr_t + 0x23) = this.NumLaps_Stage3;
 			*(byteptr_t + 0x27) = this.NumLaps_Stage4;
 
-			*(uint*)(byteptr_t + 0x28) = Utils.Bin.Hash(this.EventTrigger);
-			*(uint*)(byteptr_t + 0x2C) = Utils.Bin.SmartHash(this.PlayerCarType);
+			*(uint*)(byteptr_t + 0x28) = Utils.Bin.Hash(this._event_trigger);
+			*(uint*)(byteptr_t + 0x2C) = Utils.Bin.SmartHash(this._player_car_type);
 			*(int*)(byteptr_t + 0x30) = this.CashValue;
 			*(byteptr_t + 0x34) = (byte)this._event_icon_type;
 			*(byteptr_t + 0x35) = (byte)this._is_drive_to_gps;

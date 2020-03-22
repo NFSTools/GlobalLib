@@ -86,7 +86,7 @@
         public string _DECAL_RIGHT_DOOR_RECT_MEDIUM = "_DECAL_RIGHT_DOOR_RECT_MEDIUM";
         public string _DECAL_LEFT_QUARTER_RECT_MEDIUM = "_DECAL_LEFT_QUARTER_RECT_MEDIUM";
         public string _DECAL_RIGHT_QUARTER_RECT_MEDIUM = "_DECAL_RIGHT_QUARTER_RECT_MEDIUM";
-        public string RIM_PAINT = "RIMS";
+        public string RIM_PAINT = "";
         public string VINYL_LAYER = "";
         public string[] SWATCH = new string[4] { "", "", "", "" };
         public string HUD = "STOCK";

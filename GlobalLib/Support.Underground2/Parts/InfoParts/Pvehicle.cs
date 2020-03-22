@@ -2,14 +2,14 @@
 {
 	public class Pvehicle : Framework.VirtualPart, Reflection.Interface.ICopyable<Pvehicle>
 	{
-		/* 0x0220 */ public float Massx1000Multiplier { get; set; } = 1;
-        /* 0x0224 */ public float TensorScaleX { get; set; } = 4;
-        /* 0x0228 */ public float TensorScaleY { get; set; } = 3;
-        /* 0x022C */ public float TensorScaleZ { get; set; } = 2;
-        /* 0x0230 */ public float TensorScaleW { get; set; } = 1;
-        /* 0x0270 */ public float InitialHandlingRating { get; set; }
-        /* 0x0370 */ public float TopSpeedUnderflow { get; set; }
-        /* 0x03A0 */ public float StockTopSpeedLimiter { get; set; }
+		public float Massx1000Multiplier { get; set; } = 1;
+        public float TensorScaleX { get; set; } = 4;
+        public float TensorScaleY { get; set; } = 3;
+        public float TensorScaleZ { get; set; } = 2;
+        public float TensorScaleW { get; set; } = 1;
+        public float InitialHandlingRating { get; set; }
+        public float TopSpeedUnderflow { get; set; }
+        public float StockTopSpeedLimiter { get; set; }
 
         public Pvehicle() { }
 

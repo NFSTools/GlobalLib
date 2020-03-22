@@ -2,7 +2,9 @@
 {
 	public partial class WorldShop
 	{
-		private string _intro_movie;
+		private string _intro_movie = Reflection.BaseArguments.NULL;
+		private string _shop_trigger = Reflection.BaseArguments.NULL;
+		private string _event_to_complete = Reflection.BaseArguments.NULL;
 		private Reflection.Enum.eWorldShopType _shop_type = Reflection.Enum.eWorldShopType.PAINTSHOP;
 		private Reflection.Enum.eBoolean _initially_hidden = Reflection.Enum.eBoolean.True;
 		private Reflection.Enum.eBoolean _unlocked_by_event = Reflection.Enum.eBoolean.False;
@@ -13,7 +15,8 @@
 			get => this._intro_movie;
 			set
 			{
-				if (value == null) this._intro_movie = string.Empty;
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
 				else if (value.Length > 0x17)
 					throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 23 characters.");
 				else
@@ -22,7 +25,16 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string ShopTrigger { get; set; }
+		public string ShopTrigger
+		{
+			get => this._shop_trigger;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._shop_trigger = value;
+			}
+		}
 
 		[Reflection.Attributes.AccessModifiable()]
 		public Reflection.Enum.eWorldShopType ShopType
@@ -67,6 +79,15 @@
 		public byte BelongsToStage { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string EventToBeCompleted { get; set; }
+		public string EventToBeCompleted
+		{
+			get => this._event_to_complete;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._event_to_complete = value;
+			}
+		}
 	}
 }

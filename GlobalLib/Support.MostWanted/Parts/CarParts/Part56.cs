@@ -102,7 +102,7 @@
             this.Index = *(part6ptr_t + 7); // get index of the part
             this.IsCar = IsCar;
             if (IsCar)
-                this._collection_name = Core.Map.Lookup(key);
+                this._collection_name = Core.Map.Lookup(key, false);
 
             // Copy part6 into memory
             fixed (byte* dataptr_t = &this.Data[0])

@@ -21,7 +21,7 @@
 
 		#region Public Properties
 
-		public string AudioComp00
+		public string AudioCompSmall00
 		{
 			get => this._audio_comp_00;
 			set
@@ -34,7 +34,7 @@
 			}
 		}
 
-		public string AudioComp01
+		public string AudioCompSmall01
 		{
 			get => this._audio_comp_01;
 			set
@@ -47,7 +47,7 @@
 			}
 		}
 
-		public string AudioComp02
+		public string AudioCompMedium02
 		{
 			get => this._audio_comp_02;
 			set
@@ -60,7 +60,7 @@
 			}
 		}
 
-		public string AudioComp03
+		public string AudioCompMedium03
 		{
 			get => this._audio_comp_03;
 			set
@@ -73,7 +73,7 @@
 			}
 		}
 
-		public string AudioComp04
+		public string AudioCompLarge04
 		{
 			get => this._audio_comp_04;
 			set
@@ -86,7 +86,7 @@
 			}
 		}
 
-		public string AudioComp05
+		public string AudioCompLarge05
 		{
 			get => this._audio_comp_05;
 			set
@@ -99,7 +99,7 @@
 			}
 		}
 
-		public string AudioComp06
+		public string AudioCompSmall06
 		{
 			get => this._audio_comp_06;
 			set
@@ -112,7 +112,7 @@
 			}
 		}
 
-		public string AudioComp07
+		public string AudioCompSmall07
 		{
 			get => this._audio_comp_07;
 			set
@@ -125,7 +125,7 @@
 			}
 		}
 
-		public string AudioComp08
+		public string AudioCompSmall08
 		{
 			get => this._audio_comp_08;
 			set
@@ -138,7 +138,7 @@
 			}
 		}
 
-		public string AudioComp09
+		public string AudioCompSmall09
 		{
 			get => this._audio_comp_09;
 			set
@@ -151,7 +151,7 @@
 			}
 		}
 
-		public string AudioComp10
+		public string AudioCompMedium10
 		{
 			get => this._audio_comp_10;
 			set
@@ -164,7 +164,7 @@
 			}
 		}
 
-		public string AudioComp11
+		public string AudioCompMedium11
 		{
 			get => this._audio_comp_11;
 			set
@@ -194,6 +194,52 @@
 				ResultField.SetValue(result, ThisField.GetValue(this));
 			}
 			return result;
+		}
+
+		public unsafe void Read(byte* byteptr_t)
+		{
+			uint key = 0;
+
+			key = *(uint*)byteptr_t;
+			this._audio_comp_00 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x04);
+			this._audio_comp_01 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x08);
+			this._audio_comp_02 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x0C);
+			this._audio_comp_03 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x10);
+			this._audio_comp_04 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x14);
+			this._audio_comp_05 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x18);
+			this._audio_comp_06 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x1C);
+			this._audio_comp_07 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x20);
+			this._audio_comp_08 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x24);
+			this._audio_comp_09 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x28);
+			this._audio_comp_10 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			key = *(uint*)(byteptr_t + 0x2C);
+			this._audio_comp_11 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+		}
+
+		public unsafe void Write(byte* byteptr_t)
+		{
+			*(uint*)byteptr_t = Utils.Bin.SmartHash(this._audio_comp_00);
+			*(uint*)(byteptr_t + 0x04) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x08) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x0C) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x10) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x14) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x18) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x1C) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x20) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x24) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x28) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x2C) = Utils.Bin.SmartHash(this._audio_comp_01);
 		}
 	}
 }

@@ -39,14 +39,14 @@
             if (Core.Map.VltKeys.TryGetValue(a1, out v1))
                 this.Frontend = v1;
             else
-                this.Frontend = hex + a1.ToString("X8");
+                this.Frontend = $"{hex}{a1:X8}";
 
             // Pvehicle hash
             a1 = *(uint*)(byteptr_t + 0x50);
             if (Core.Map.VltKeys.TryGetValue(a1, out v1))
                 this.Pvehicle = v1;
             else
-                this.Pvehicle = hex + a1.ToString("X8");
+                this.Pvehicle = $"{hex}{a1:X8}";
 
             a1 = Utils.Bin.Hash(MODEL + parts._BASE); // for RaiderKeys
 
@@ -115,10 +115,7 @@
             {
                 for (sbyte x1 = 0; x1 < 18; ++x1) // 17 exhaust styles
                 {
-                    v1 = (x1 < 10)
-                        ? add_on.EXHAUST + add_on._STYLE + add_on._0 + x1.ToString() + add_on._LEVEL1
-                        : add_on.EXHAUST + add_on._STYLE + x1.ToString() + add_on._LEVEL1;
-                    a1 = Utils.Bin.Hash(v1);
+                    a1 = Utils.Bin.Hash(add_on.EXHAUST + add_on._STYLE + x1.ToString("00") + add_on._LEVEL1);
                     if (a1 == a2)
                     {
                         this._exhaust_style = x1;
@@ -126,10 +123,7 @@
                     }
                     else
                     {
-                        v1 = (x1 < 10)
-                            ? add_on.EXHAUST + add_on._STYLE + add_on._0 + x1.ToString() + add_on._CENTER + add_on._LEVEL1
-                            : add_on.EXHAUST + add_on._STYLE + x1.ToString() + add_on._CENTER + add_on._LEVEL1;
-                        a1 = Utils.Bin.Hash(v1);
+                        a1 = Utils.Bin.Hash(add_on.EXHAUST + add_on._STYLE + x1.ToString("00") + add_on._CENTER + add_on._LEVEL1);
                         if (a1 == a2)
                         {
                             this._exhaust_style = x1;
@@ -162,18 +156,8 @@
                 {
                     for (byte x2 = 1; x2 < 30; ++x2) // all 29 spoiler styles
                     {
-
-                        if (x2 < 10) // check for being less than 10
-                        {
-                            v3 = add_on.SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._CSTYPE[x1];
-                            v4 = add_on.AS_SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._CSTYPE[x1];
-                        }
-                        else
-                        {
-                            v3 = add_on.SPOILER + add_on._STYLE + x2.ToString() + add_on._CSTYPE[x1];
-                            v4 = add_on.AS_SPOILER + add_on._STYLE + x2.ToString() + add_on._CSTYPE[x1];
-                        }
-
+                        v3 = add_on.SPOILER + add_on._STYLE + x2.ToString("00") + add_on._CSTYPE[x1];
+                        v4 = add_on.AS_SPOILER + add_on._STYLE + x2.ToString("00") + add_on._CSTYPE[x1];
                         a3 = Utils.Bin.Hash(v3);
                         a4 = Utils.Bin.Hash(v4);
                         if (a3 == a2)
@@ -230,9 +214,7 @@
             }
             for (a3 = 0; a3 < 10; ++a3)
             {
-                a1 = (a3 < 10)
-                    ? Utils.Bin.Hash(MODEL + add_on._KIT + a3.ToString() + parts._FRONT_BUMPER)
-                    : Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString() + parts._FRONT_BUMPER);
+                a1 = Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString("00") + parts._FRONT_BUMPER);
                 if (a1 == a2)
                 {
                     this._autosculpt_frontbumper = (sbyte)a3;
@@ -250,9 +232,7 @@
             }
             for (a3 = 0; a3 < 10; ++a3) // 10 rear bumper styles
             {
-                a1 = (a3 < 10)
-                    ? Utils.Bin.Hash(MODEL + add_on._KIT + a3.ToString() + parts._REAR_BUMPER)
-                    : Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString() + parts._REAR_BUMPER);
+                a1 = Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString("00") + parts._REAR_BUMPER);
                 if (a1 == a2)
                 {
                     this._autosculpt_rearbumper = (sbyte)a3;
@@ -270,7 +250,7 @@
                 a1 = Utils.Bin.Hash(MODEL + parts._ROOF + "_CHOP_TOP");
                 if (a1 == a2)
                     this._choptop_is_on = Reflection.Enum.eBoolean.True;
-            } // _SETTINGS[26] (chop top size) is in autosculpt zone later on
+            }
 
             // Try to match ROOF_STYLE
             a2 = *(uint*)(byteptr_t + 0x194);
@@ -284,18 +264,10 @@
             {
                 for (byte x1 = 1; x1 < 19; ++x1) // all 18 roof scoop styles
                 {
-                    if (x1 < 10)
-                    {
-                        v1 = parts.ROOF_STYLE + add_on._0 + x1.ToString();
-                        v3 = parts.ROOF_STYLE + add_on._0 + x1.ToString() + add_on._AUTOSCULPT;
-                        v4 = parts.ROOF_STYLE + add_on._0 + x1.ToString() + add_on._DUAL;
-                    }
-                    else
-                    {
-                        v1 = parts.ROOF_STYLE + x1.ToString();
-                        v3 = parts.ROOF_STYLE + x1.ToString() + add_on._AUTOSCULPT;
-                        v4 = parts.ROOF_STYLE + x1.ToString() + add_on._DUAL;
-                    }
+                    var x1pad = x1.ToString("00");
+                    v1 = parts.ROOF_STYLE + x1pad;
+                    v3 = parts.ROOF_STYLE + x1pad + add_on._AUTOSCULPT;
+                    v4 = parts.ROOF_STYLE + x1pad + add_on._DUAL;
                     a1 = Utils.Bin.Hash(v1);
                     a3 = Utils.Bin.Hash(v3);
                     a4 = Utils.Bin.Hash(v4);
@@ -412,9 +384,7 @@
             }
             for (a3 = 0; a3 < 15; ++a3) // basically 14 styles max
             {
-                a1 = (a3 < 10)
-                    ? Utils.Bin.Hash(MODEL + add_on._KIT + a3.ToString() + parts._SKIRT)
-                    : Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString() + parts._SKIRT);
+                a1 = Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString("00") + parts._SKIRT);
                 if (a1 == a2)
                 {
                     this._autosculpt_skirt = (sbyte)a3;
@@ -439,9 +409,7 @@
             {
                 for (byte x1 = 1; x1 < 11; ++x1) // try autosculpt wheels
                 {
-                    a1 = (x1 < 10)
-                        ? Utils.Bin.Hash(Core.Map.RimBrands[0] + add_on._STYLE + add_on._0 + x1.ToString() + "_17" + add_on._25)
-                        : Utils.Bin.Hash(Core.Map.RimBrands[0] + add_on._STYLE + x1.ToString() + "_17" + add_on._25);
+                    a1 = Utils.Bin.Hash(Core.Map.RimBrands[0] + add_on._STYLE + x1.ToString("00") + "_17" + add_on._25);
                     if (a1 == a2)
                     {
                         this._rim_brand = Core.Map.RimBrands[0];
@@ -471,12 +439,9 @@
 
         LABEL_PRECOMPVINYL:
             a2 = *(uint*)(byteptr_t + 0x1D4);
-            if (a2 != 0)
-                this._specific_vinyl = Core.Map.Lookup(a2) ?? (hex + a2.ToString("X8"));
-
+            this._specific_vinyl = Core.Map.Lookup(a2, true) ?? $"{hex}{a2:X8}";
             a2 = *(uint*)(byteptr_t + 0x1D8);
-            if (a2 != 0)
-                this._generic_vinyl = Core.Map.Lookup(a2) ?? (hex + a2.ToString("X8"));
+            this._generic_vinyl = Core.Map.Lookup(a2, true) ?? $"{hex}{a2:X8}";
 
             // _WINDOW_TINT
             a2 = *(uint*)(byteptr_t + 0x1F8);
@@ -485,7 +450,7 @@
                 this._window_tint_type = Reflection.BaseArguments.STOCK;
             else
             {
-                v2 = Core.Map.Lookup(a2);
+                v2 = Core.Map.Lookup(a2, false);
                 this._window_tint_type = Core.Map.WindowTintMap.Contains(v2) ? v2 : Reflection.BaseArguments.STOCK;
             }
 
@@ -497,7 +462,7 @@
                 this._painttype = Reflection.Enum.eCarbonPaint.GLOSS;
 
             // Paint Swatch
-            this._paintswatch = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x210)));
+            this._paintswatch = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x210), false));
 
             // Saturation and Brightness
             this._saturation = *(float*)(byteptr_t + 0x214);

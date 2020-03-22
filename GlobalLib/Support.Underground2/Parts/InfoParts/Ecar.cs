@@ -2,14 +2,14 @@
 {
 	public class Ecar : Framework.VirtualPart, Reflection.Interface.ICopyable<Ecar>
 	{
-		/* 0x0244 */ public float EcarUnknown1 { get; set; } = 2F;
-		/* 0x0258 */ public float EcarUnknown2 { get; set; } = 3F;
-		/* 0x0710 */ public float HandlingBuffer { get; set; }
-		/* 0x0714 */ public float TopSuspFrontHeightReduce { get; set; }
-		/* 0x0718 */ public float TopSuspRearHeightReduce { get; set; }
-		/* 0x0720 */ public int NumPlayerCameras { get; set; } = 6;
-		/* 0x0724 */ public int NumAICameras { get; set; } = 6;
-        /* 0x087C */ public int Cost { get; set; }
+		public float EcarUnknown1 { get; set; } = 2F;
+		public float EcarUnknown2 { get; set; } = 3F;
+		public float HandlingBuffer { get; set; }
+		public float TopSuspFrontHeightReduce { get; set; }
+		public float TopSuspRearHeightReduce { get; set; }
+		public int NumPlayerCameras { get; set; } = 6;
+		public int NumAICameras { get; set; } = 6;
+        public int Cost { get; set; }
 
 		public Ecar() { }
 

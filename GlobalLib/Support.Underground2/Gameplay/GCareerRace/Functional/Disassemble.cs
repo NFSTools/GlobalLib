@@ -4,6 +4,7 @@
 	{
 		protected unsafe void Disassemble(byte* ptr_header, byte* ptr_string)
 		{
+			string str = null;
 			ushort pointer = 0; // used for reading pointer data
 			uint key = 0; // for reading keys and comparison
 
@@ -13,15 +14,18 @@
 
 			// Intro Movie
 			pointer = *(ushort*)(ptr_header + 2);
-			this.IntroMovie = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			if (!string.IsNullOrWhiteSpace(str)) this._intro_movie = str;
 
 			// Outro Movie
 			pointer = *(ushort*)(ptr_header + 4);
-			this.OutroMovie = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			if (!string.IsNullOrWhiteSpace(str)) this._outro_movie = str;
 
 			// Event Trigger
 			pointer = *(ushort*)(ptr_header + 6);
-			this.EventTrigger = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			if (!string.IsNullOrWhiteSpace(str)) this._event_trigger = str;
 
 			// Event behavior
 			this._unlock_method = (Reflection.Enum.eUnlockCondition)(*(ptr_header + 0xC));
@@ -32,7 +36,7 @@
 			// Unlock conditions
 			key = *(uint*)(ptr_header + 0x10);
 			if (this._unlock_method == Reflection.Enum.eUnlockCondition.SPECIFIC_RACE_WON)
-				this.RequiredSpecificRaceWon = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+				this.RequiredSpecificRaceWon = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 			else
 			{
 				this.RequiredSpecificURLWon = *(ptr_header + 0x10);
@@ -61,10 +65,7 @@
 
 			// PlayerCarType and CashValue
 			key = *(uint*)(ptr_header + 0x2C);
-			if (key == 0)
-				this._player_car_type = Reflection.BaseArguments.NULL;
-			else
-				this.PlayerCarType = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._player_car_type = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			this.CashValue = *(int*)(ptr_header + 0x30);
 
 			// Some UnknownValues
@@ -86,10 +87,7 @@
 
 			// GPS Destination
 			key = *(uint*)(ptr_header + 0x3C);
-			if (key == 0)
-				this._gps_destination = Reflection.BaseArguments.NULL;
-			else
-				this._gps_destination = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._gps_destination = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 
 			// Determine to which label to go based on event and drift type
 			// Downhill drift races have NumOpponents = 0, while opponent data has always 3
@@ -103,10 +101,11 @@
 			if (this._num_of_opponents > 0)
 			{
 				pointer = *(ushort*)(ptr_header + 0x40);
-				this.OPPONENT1.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				if (!string.IsNullOrWhiteSpace(str)) this.OPPONENT1.Name = str;
 				this.OPPONENT1.StatsMultiplier = *(ushort*)(ptr_header + 0x42);
 				key = *(uint*)(ptr_header + 0x44);
-				this.OPPONENT1.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+				this.OPPONENT1.PresetRide = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 				this.OPPONENT1.SkillEasy = *(ptr_header + 0x48);
 				this.OPPONENT1.SkillMedium = *(ptr_header + 0x49);
 				this.OPPONENT1.SkillHard = *(ptr_header + 0x4A);
@@ -115,10 +114,11 @@
 			if (this._num_of_opponents > 1)
 			{
 				pointer = *(ushort*)(ptr_header + 0x4C);
-				this.OPPONENT2.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				if (!string.IsNullOrWhiteSpace(str)) this.OPPONENT2.Name = str;
 				this.OPPONENT2.StatsMultiplier = *(ushort*)(ptr_header + 0x4E);
 				key = *(uint*)(ptr_header + 0x50);
-				this.OPPONENT2.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+				this.OPPONENT2.PresetRide = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 				this.OPPONENT2.SkillEasy = *(ptr_header + 0x54);
 				this.OPPONENT2.SkillMedium = *(ptr_header + 0x55);
 				this.OPPONENT2.SkillHard = *(ptr_header + 0x56);
@@ -127,10 +127,11 @@
 			if (this._num_of_opponents > 2)
 			{
 				pointer = *(ushort*)(ptr_header + 0x58);
-				this.OPPONENT3.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				if (!string.IsNullOrWhiteSpace(str)) this.OPPONENT3.Name = str;
 				this.OPPONENT3.StatsMultiplier = *(ushort*)(ptr_header + 0x5A);
 				key = *(uint*)(ptr_header + 0x5C);
-				this.OPPONENT3.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+				this.OPPONENT3.PresetRide = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 				this.OPPONENT3.SkillEasy = *(ptr_header + 0x60);
 				this.OPPONENT3.SkillMedium = *(ptr_header + 0x61);
 				this.OPPONENT3.SkillHard = *(ptr_header + 0x62);
@@ -139,10 +140,11 @@
 			if (this._num_of_opponents > 3)
 			{
 				pointer = *(ushort*)(ptr_header + 0x64);
-				this.OPPONENT4.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				if (!string.IsNullOrWhiteSpace(str)) this.OPPONENT4.Name = str;
 				this.OPPONENT4.StatsMultiplier = *(ushort*)(ptr_header + 0x66);
 				key = *(uint*)(ptr_header + 0x68);
-				this.OPPONENT4.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+				this.OPPONENT4.PresetRide = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 				this.OPPONENT4.SkillEasy = *(ptr_header + 0x6C);
 				this.OPPONENT4.SkillMedium = *(ptr_header + 0x6D);
 				this.OPPONENT4.SkillHard = *(ptr_header + 0x6E);
@@ -151,10 +153,11 @@
 			if (this._num_of_opponents > 4)
 			{
 				pointer = *(ushort*)(ptr_header + 0x70);
-				this.OPPONENT5.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+				if (!string.IsNullOrWhiteSpace(str)) this.OPPONENT5.Name = str;
 				this.OPPONENT5.StatsMultiplier = *(ushort*)(ptr_header + 0x72);
 				key = *(uint*)(ptr_header + 0x74);
-				this.OPPONENT5.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+				this.OPPONENT5.PresetRide = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 				this.OPPONENT5.SkillEasy = *(ptr_header + 0x78);
 				this.OPPONENT5.SkillMedium = *(ptr_header + 0x79);
 				this.OPPONENT5.SkillHard = *(ptr_header + 0x7A);
@@ -165,30 +168,33 @@
 			// If at least one of the events is downhill drift, read only 3 opponents
 		LABEL_DRIFT_DOWNHILL:
 			pointer = *(ushort*)(ptr_header + 0x40);
-			this.OPPONENT1.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			if (!string.IsNullOrWhiteSpace(str)) this.OPPONENT1.Name = str;
 			this.OPPONENT1.StatsMultiplier = *(ushort*)(ptr_header + 0x42);
 			key = *(uint*)(ptr_header + 0x44);
-			this.OPPONENT1.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this.OPPONENT1.PresetRide = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			this.OPPONENT1.SkillEasy = *(ptr_header + 0x48);
 			this.OPPONENT1.SkillMedium = *(ptr_header + 0x49);
 			this.OPPONENT1.SkillHard = *(ptr_header + 0x4A);
 			this.OPPONENT1.CatchUp = *(ptr_header + 0x4B);
 
 			pointer = *(ushort*)(ptr_header + 0x4C);
-			this.OPPONENT2.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			if (!string.IsNullOrWhiteSpace(str)) this.OPPONENT2.Name = str;
 			this.OPPONENT2.StatsMultiplier = *(ushort*)(ptr_header + 0x4E);
 			key = *(uint*)(ptr_header + 0x50);
-			this.OPPONENT2.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this.OPPONENT2.PresetRide = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			this.OPPONENT2.SkillEasy = *(ptr_header + 0x54);
 			this.OPPONENT2.SkillMedium = *(ptr_header + 0x55);
 			this.OPPONENT2.SkillHard = *(ptr_header + 0x56);
 			this.OPPONENT2.CatchUp = *(ptr_header + 0x57);
 
 			pointer = *(ushort*)(ptr_header + 0x58);
-			this.OPPONENT3.Name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			str = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			if (!string.IsNullOrWhiteSpace(str)) this.OPPONENT3.Name = str;
 			this.OPPONENT3.StatsMultiplier = *(ushort*)(ptr_header + 0x5A);
 			key = *(uint*)(ptr_header + 0x5C);
-			this.OPPONENT3.PresetRide = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this.OPPONENT3.PresetRide = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			this.OPPONENT3.SkillEasy = *(ptr_header + 0x60);
 			this.OPPONENT3.SkillMedium = *(ptr_header + 0x61);
 			this.OPPONENT3.SkillHard = *(ptr_header + 0x62);

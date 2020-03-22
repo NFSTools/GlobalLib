@@ -19,11 +19,11 @@
 
 			// Showcase Strings
 			key = *(uint*)(byteptr_t + 0x28);
-			this.DescStringLabel = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._desc_string_label = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x2C);
-			this.DestinationPoint = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._destination_point = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x38);
-			this.DescAttrib = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._desc_attrib = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 		}
 	}
 }

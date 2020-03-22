@@ -2,12 +2,22 @@
 {
 	public partial class GCareerRace
 	{
+		private string _event_trigger = Reflection.BaseArguments.NULL;
 		private Reflection.Enum.eUnlockCondition _unlock_method = Reflection.Enum.eUnlockCondition.SPECIFIC_RACE_WON;
 		private Reflection.Enum.eBoolean _is_suv_race = Reflection.Enum.eBoolean.False;
 		private Reflection.Enum.eEventBehaviorType _event_behavior = Reflection.Enum.eEventBehaviorType.Circuit;
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string EventTrigger { get; set; }
+		public string EventTrigger
+		{
+			get => this._event_trigger;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._event_trigger = value;
+			}
+		}
 
 		[Reflection.Attributes.AccessModifiable()]
 		public Reflection.Enum.eUnlockCondition UnlockMethod

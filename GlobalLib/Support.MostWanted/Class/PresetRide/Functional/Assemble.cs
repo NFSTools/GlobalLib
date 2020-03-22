@@ -15,17 +15,9 @@
                 var parts = new Shared.Parts.PresetParts.Concatenator();
                 var add_on = new Shared.Parts.PresetParts.Add_On();
 
-                // Frontend
-                if (this.Frontend.StartsWith("0x"))
-                    this._Frontend_Hash = Utils.ConvertX.ToUInt32(this.Frontend);
-                else
-                    this._Frontend_Hash = Utils.Vlt.Hash(this.Frontend);
-
-                // Pvehicle
-                if (this.Pvehicle.StartsWith("0x"))
-                    this._Pvehicle_Hash = Utils.ConvertX.ToUInt32(this.Pvehicle);
-                else
-                    this._Pvehicle_Hash = Utils.Vlt.Hash(this.Pvehicle);
+                // Frontend and Pvehicle
+                this._Frontend_Hash = Utils.Vlt.SmartHash(this.Frontend);
+                this._Pvehicle_Hash = Utils.Vlt.SmartHash(this.Pvehicle);
 
                 // _BASE
                 parts._BASE = MODEL + parts._BASE;
@@ -89,9 +81,7 @@
                     parts._SPOILER = MODEL + parts._SPOILER;
                 else
                 {
-                    parts._SPOILER = (this._spoiler_style >= 1 && this._spoiler_style <= 9)
-                        ? add_on.SPOILER + add_on._STYLE + add_on._0 + this._spoiler_style.ToString()
-                        : add_on.SPOILER + add_on._STYLE + this._spoiler_style.ToString();
+                    parts._SPOILER = add_on.SPOILER + add_on._STYLE + this._spoiler_style.ToString("00");
                     if (this.SpoilerType != Reflection.Enum.eSTypes.BASE)
                         parts._SPOILER += this._spoiler_type;
                     if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
@@ -117,9 +107,7 @@
                     parts.ROOF_STYLE += add_on._0 + add_on._0;
                 else
                 {
-                    parts.ROOF_STYLE += (this._roofscoop_style >= 1 && this._roofscoop_style <= 9)
-                        ? add_on._0 + this._roofscoop_style.ToString()
-                        : this._roofscoop_style.ToString();
+                    parts.ROOF_STYLE += this._roofscoop_style.ToString("00");
                     if (this._is_dual_roofscoop == Reflection.Enum.eBoolean.True)
                         parts.ROOF_STYLE += add_on._DUAL;
                     if (this._is_offset_roofscoop == Reflection.Enum.eBoolean.True && this._is_dual_roofscoop == Reflection.Enum.eBoolean.False)
@@ -133,9 +121,7 @@
                     parts._HOOD = MODEL + add_on._KIT + add_on._0 + parts._HOOD;
                 else
                 {
-                    parts._HOOD = (this._hood_style >= 1 && this._hood_style <= 9)
-                        ? MODEL + add_on._STYLE + add_on._0 + this._hood_style.ToString() + parts._HOOD
-                        : MODEL + add_on._STYLE + this._hood_style.ToString() + parts._HOOD;
+                    parts._HOOD = MODEL + add_on._STYLE + this._hood_style.ToString("00") + parts._HOOD;
                     if (this._is_carbonfibre_hood == Reflection.Enum.eBoolean.True)
                         parts._HOOD += add_on._CF;
                 }
@@ -148,7 +134,7 @@
                         parts._WHEEL = MODEL + parts._WHEEL; // null, empty, NULL or STOCK
                         break;
                     default:
-                        parts._WHEEL = this._rim_brand + add_on._STYLE + add_on._0 + this._rim_style.ToString() + "_" + this._rim_size.ToString() + add_on._25;
+                        parts._WHEEL = $"{this._rim_brand}{add_on._STYLE}{this._rim_style:00}_{this._rim_size}{add_on._25}";
                         break;
                 }
 
@@ -164,9 +150,7 @@
                 parts.PAINT = this._bodypaint;
 
                 // RIMPAINT
-                if (this.RimPaint == Reflection.BaseArguments.NULL)
-                    parts.RIM_PAINT = "";
-                else
+                if (this.RimPaint != Reflection.BaseArguments.NULL)
                     parts.RIM_PAINT = this._rimpaint;
 
                 // WINDOW_TINT
@@ -174,9 +158,7 @@
                     parts.WINDOW_TINT_STOCK = this._window_tint_type;
 
                 // VINYL_LAYER
-                if (this.VinylName == Reflection.BaseArguments.NULL)
-                    parts.VINYL_LAYER = "";
-                else
+                if (this.VinylName != Reflection.BaseArguments.NULL)
                     parts.VINYL_LAYER = this.VinylName;
 
                 // SWATCH
@@ -187,10 +169,6 @@
 
                 // Hash all strings to keys
                 var keys = this.StringToKey(parts);
-
-                // Finally, check if some strings are hashes themselves
-                if (this.VinylName.StartsWith("0x"))
-                    keys[73] = Utils.ConvertX.ToUInt32(this.VinylName);
 
                 // Write CollectionName
                 for (int a1 = 0; a1 < 0x20; ++a1)

@@ -35,6 +35,8 @@
 			get => this._region_name;
 			set
 			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
 				if (value.Length > 7)
 					throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 7 characters.");
 				if (!System.IO.Directory.Exists($"{Core.Process.GlobalDir}\\TRACKS\\ROUTES{value}"))

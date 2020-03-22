@@ -24,7 +24,7 @@
 			{
 				if (value == Reflection.BaseArguments.NULL)
 					this._decal_slot0 = value;
-				else if (value?.StartsWith("0x") ?? false)
+				else if (Utils.ConvertX.ToUInt32(value) != 0)
 					this._decal_slot0 = value;
 				else
 					throw new System.Exception("Value passed should be an 8-digit hexadecimal hash or NULL.");
@@ -38,7 +38,7 @@
 			{
 				if (value == Reflection.BaseArguments.NULL)
 					this._decal_slot1 = value;
-				else if (value?.StartsWith("0x") ?? false)
+				else if (Utils.ConvertX.ToUInt32(value) != 0)
 					this._decal_slot1 = value;
 				else
 					throw new System.Exception("Value passed should be an 8-digit hexadecimal hash or NULL.");
@@ -52,7 +52,7 @@
 			{
 				if (value == Reflection.BaseArguments.NULL)
 					this._decal_slot2 = value;
-				else if (value?.StartsWith("0x") ?? false)
+				else if (Utils.ConvertX.ToUInt32(value) != 0)
 					this._decal_slot2 = value;
 				else
 					throw new System.Exception("Value passed should be an 8-digit hexadecimal hash or NULL.");
@@ -66,7 +66,7 @@
 			{
 				if (value == Reflection.BaseArguments.NULL)
 					this._decal_slot3 = value;
-				else if (value?.StartsWith("0x") ?? false)
+				else if (Utils.ConvertX.ToUInt32(value) != 0)
 					this._decal_slot3 = value;
 				else
 					throw new System.Exception("Value passed should be an 8-digit hexadecimal hash or NULL.");
@@ -80,7 +80,7 @@
 			{
 				if (value == Reflection.BaseArguments.NULL)
 					this._decal_slot4 = value;
-				else if (value?.StartsWith("0x") ?? false)
+				else if (Utils.ConvertX.ToUInt32(value) != 0)
 					this._decal_slot4 = value;
 				else
 					throw new System.Exception("Value passed should be an 8-digit hexadecimal hash or NULL.");
@@ -94,7 +94,7 @@
 			{
 				if (value == Reflection.BaseArguments.NULL)
 					this._decal_slot5 = value;
-				else if (value?.StartsWith("0x") ?? false)
+				else if (Utils.ConvertX.ToUInt32(value) != 0)
 					this._decal_slot5 = value;
 				else
 					throw new System.Exception("Value passed should be an 8-digit hexadecimal hash or NULL.");
@@ -108,7 +108,7 @@
 			{
 				if (value == Reflection.BaseArguments.NULL)
 					this._decal_slot6 = value;
-				else if (value?.StartsWith("0x") ?? false)
+				else if (Utils.ConvertX.ToUInt32(value) != 0)
 					this._decal_slot6 = value;
 				else
 					throw new System.Exception("Value passed should be an 8-digit hexadecimal hash or NULL.");
@@ -122,7 +122,7 @@
 			{
 				if (value == Reflection.BaseArguments.NULL)
 					this._decal_slot7 = value;
-				else if (value?.StartsWith("0x") ?? false)
+				else if (Utils.ConvertX.ToUInt32(value) != 0)
 					this._decal_slot7 = value;
 				else
 					throw new System.Exception("Value passed should be an 8-digit hexadecimal hash or NULL.");

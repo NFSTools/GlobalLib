@@ -15,17 +15,9 @@
                 var parts = new Shared.Parts.PresetParts.Concatenator();
                 var add_on = new Shared.Parts.PresetParts.Add_On();
 
-                // Frontend
-                if (this.Frontend.StartsWith("0x"))
-                    this._Frontend_Hash = Utils.ConvertX.ToUInt32(this.Frontend);
-                else
-                    this._Frontend_Hash = Utils.Vlt.Hash(this.Frontend);
-
-                // Pvehicle
-                if (this.Pvehicle.StartsWith("0x"))
-                    this._Pvehicle_Hash = Utils.ConvertX.ToUInt32(this.Pvehicle);
-                else
-                    this._Pvehicle_Hash = Utils.Vlt.Hash(this.Pvehicle);
+                // Frontend and Pvehicle
+                this._Frontend_Hash = Utils.Vlt.SmartHash(this.Frontend);
+                this._Pvehicle_Hash = Utils.Vlt.SmartHash(this.Pvehicle);
 
                 // _BASE
                 parts._BASE = MODEL + parts._BASE;
@@ -91,15 +83,12 @@
 
                 // _KIT00_EXHAUST
                 if (this._exhaust_style == -1)
-                    parts._KIT00_EXHAUST = "";
+                    parts._KIT00_EXHAUST = string.Empty;
                 else if (this._exhaust_style == 0 || this._aftermarket_bodykit >= 1)
                     parts._KIT00_EXHAUST = MODEL + parts._KIT00_EXHAUST;
                 else
                 {
-                    parts._KIT00_EXHAUST = add_on.EXHAUST + add_on._STYLE;
-                    parts._KIT00_EXHAUST += (this._exhaust_style >= 1 && this._exhaust_style <= 9)
-                        ? add_on._0 + ExhaustStyle.ToString()
-                        : ExhaustStyle.ToString();
+                    parts._KIT00_EXHAUST = add_on.EXHAUST + add_on._STYLE + this._exhaust_style.ToString("00");
                     if (this._is_center_exhaust == Reflection.Enum.eBoolean.True)
                         parts._KIT00_EXHAUST += add_on._CENTER;
                     parts._KIT00_EXHAUST += add_on._LEVEL1;
@@ -115,9 +104,7 @@
                     parts._SPOILER = (this._is_autosculpt_spoiler == Reflection.Enum.eBoolean.True)
                         ? add_on.AS_SPOILER
                         : add_on.SPOILER;
-                    parts._SPOILER += (this._spoiler_style >= 1 && this._spoiler_style <= 9)
-                        ? add_on._STYLE + add_on._0 + this._spoiler_style.ToString()
-                        : add_on._STYLE + this._spoiler_style.ToString();
+                    parts._SPOILER += add_on._STYLE + this._spoiler_style.ToString("00");
                     if (this._spoiler_type != Reflection.Enum.eSTypes.BASE)
                         parts._SPOILER += this.SpoilerType;
                     if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
@@ -143,22 +130,16 @@
                     parts._FRONT_BUMPER = "";
                     parts._FRONT_BUMPER_BADGING_SET = "";
                 }
-                else if (this._autosculpt_frontbumper < 10)
-                {
-                    parts._DAMAGE0_FRONT = MODEL + add_on._KIT + this._autosculpt_frontbumper.ToString() + parts._DAMAGE0_FRONT;
-                    parts._DAMAGE0_FRONTLEFT = MODEL + add_on._KIT + this._autosculpt_frontbumper.ToString() + parts._DAMAGE0_FRONTLEFT;
-                    parts._DAMAGE0_FRONTRIGHT = MODEL + add_on._KIT + this._autosculpt_frontbumper.ToString() + parts._DAMAGE0_FRONTRIGHT;
-                    parts._FRONT_BUMPER = MODEL + add_on._KIT + this._autosculpt_frontbumper.ToString() + parts._FRONT_BUMPER;
-                    parts._FRONT_BUMPER_BADGING_SET = MODEL + add_on._KIT + (this._autosculpt_frontbumper % 9).ToString() + parts._FRONT_BUMPER_BADGING_SET;
-                }
                 else
                 {
-                    parts._DAMAGE0_FRONT = MODEL + add_on._K10 + this._autosculpt_frontbumper.ToString() + parts._DAMAGE0_FRONT;
-                    parts._DAMAGE0_FRONTLEFT = MODEL + add_on._K10 + this._autosculpt_frontbumper.ToString() + parts._DAMAGE0_FRONTLEFT;
-                    parts._DAMAGE0_FRONTRIGHT = MODEL + add_on._K10 + this._autosculpt_frontbumper.ToString() + parts._DAMAGE0_FRONTRIGHT;
-                    parts._FRONT_BUMPER = MODEL + add_on._K10 + this._autosculpt_frontbumper.ToString() + parts._FRONT_BUMPER;
-                    parts._FRONT_BUMPER_BADGING_SET = MODEL + add_on._KIT + add_on._0 + parts._FRONT_BUMPER_BADGING_SET;
+                    string autofpad = this._autosculpt_frontbumper.ToString("00");
+                    parts._DAMAGE0_FRONT = MODEL + add_on._K10 + autofpad + parts._DAMAGE0_FRONT;
+                    parts._DAMAGE0_FRONTLEFT = MODEL + add_on._K10 + autofpad + parts._DAMAGE0_FRONTLEFT;
+                    parts._DAMAGE0_FRONTRIGHT = MODEL + add_on._K10 + autofpad + parts._DAMAGE0_FRONTRIGHT;
+                    parts._FRONT_BUMPER = MODEL + add_on._K10 + autofpad + parts._FRONT_BUMPER;
+                    parts._FRONT_BUMPER_BADGING_SET = MODEL + add_on._KIT + (this._autosculpt_frontbumper % 9).ToString() + parts._FRONT_BUMPER_BADGING_SET;
                 }
+
                 // REAR_DAMAGE0 + REAR_BUMPER
                 if (this._autosculpt_rearbumper == -1)
                 {
@@ -168,21 +149,14 @@
                     parts._REAR_BUMPER = "";
                     parts._REAR_BUMPER_BADGING_SET = "";
                 }
-                else if (this._autosculpt_rearbumper < 10)
-                {
-                    parts._DAMAGE0_REAR = MODEL + add_on._KIT + this._autosculpt_rearbumper.ToString() + parts._DAMAGE0_REAR;
-                    parts._DAMAGE0_REARLEFT = MODEL + add_on._KIT + this._autosculpt_rearbumper.ToString() + parts._DAMAGE0_REARLEFT;
-                    parts._DAMAGE0_REARRIGHT = MODEL + add_on._KIT + this._autosculpt_rearbumper.ToString() + parts._DAMAGE0_REARRIGHT;
-                    parts._REAR_BUMPER = MODEL + add_on._KIT + this._autosculpt_rearbumper.ToString() + parts._REAR_BUMPER;
-                    parts._REAR_BUMPER_BADGING_SET = MODEL + add_on._KIT + (this._autosculpt_rearbumper % 9).ToString() + parts._REAR_BUMPER_BADGING_SET;
-                }
                 else
                 {
-                    parts._DAMAGE0_REAR = MODEL + add_on._K10 + this._autosculpt_rearbumper.ToString() + parts._DAMAGE0_REAR;
-                    parts._DAMAGE0_REARLEFT = MODEL + add_on._K10 + this._autosculpt_rearbumper.ToString() + parts._DAMAGE0_REARLEFT;
-                    parts._DAMAGE0_REARRIGHT = MODEL + add_on._K10 + this._autosculpt_rearbumper.ToString() + parts._DAMAGE0_REARRIGHT;
-                    parts._REAR_BUMPER = MODEL + add_on._K10 + this._autosculpt_rearbumper.ToString() + parts._REAR_BUMPER;
-                    parts._REAR_BUMPER_BADGING_SET = MODEL + add_on._KIT + add_on._0 + parts._REAR_BUMPER_BADGING_SET;
+                    var autorpad = this._autosculpt_rearbumper.ToString("00");
+                    parts._DAMAGE0_REAR = MODEL + add_on._K10 + autorpad + parts._DAMAGE0_REAR;
+                    parts._DAMAGE0_REARLEFT = MODEL + add_on._K10 + autorpad + parts._DAMAGE0_REARLEFT;
+                    parts._DAMAGE0_REARRIGHT = MODEL + add_on._K10 + autorpad + parts._DAMAGE0_REARRIGHT;
+                    parts._REAR_BUMPER = MODEL + add_on._K10 + autorpad + parts._REAR_BUMPER;
+                    parts._REAR_BUMPER_BADGING_SET = MODEL + add_on._KIT + (this._autosculpt_rearbumper % 9).ToString() + parts._REAR_BUMPER_BADGING_SET;
                 }
                 goto LABEL_NEXT;
 
@@ -211,9 +185,7 @@
                     parts.ROOF_STYLE += add_on._0 + add_on._0;
                 else
                 {
-                    parts.ROOF_STYLE += (this._roofscoop_style < 10)
-                        ? add_on._0 + this._roofscoop_style.ToString()
-                        : this._roofscoop_style.ToString();
+                    parts.ROOF_STYLE += this._roofscoop_style.ToString("00");
                     if (this._is_dual_roofscoop == Reflection.Enum.eBoolean.True)
                         parts.ROOF_STYLE += add_on._DUAL;
                     if ((this._is_autosculpt_roofscoop == Reflection.Enum.eBoolean.True) && (this._is_dual_roofscoop == Reflection.Enum.eBoolean.False))
@@ -227,7 +199,7 @@
                     parts._HOOD = MODEL + add_on._KIT + add_on._0 + parts._HOOD;
                 else
                 {
-                    parts._HOOD = MODEL + add_on._STYLE + add_on._0 + this._hood_style + parts._HOOD;
+                    parts._HOOD = MODEL + add_on._STYLE + add_on._0 + this._hood_style.ToString() + parts._HOOD;
                     if (this._is_autosculpt_hood == Reflection.Enum.eBoolean.True)
                         parts._HOOD += add_on._AS;
                     if (this._is_carbonfibre_hood == Reflection.Enum.eBoolean.True)
@@ -240,11 +212,7 @@
                 else if (this._autosculpt_skirt == -2)
                     parts._SKIRT = MODEL + add_on._KIT + add_on._0 + parts._SKIRT + "_CAPPED";
                 else
-                {
-                    parts._SKIRT = (this._autosculpt_skirt < 10)
-                        ? MODEL + add_on._KIT + this._autosculpt_skirt.ToString() + parts._SKIRT
-                        : MODEL + add_on._K10 + this._autosculpt_skirt.ToString() + parts._SKIRT;
-                }
+                    parts._SKIRT = MODEL + add_on._K10 + this._autosculpt_skirt.ToString("00");
 
                 // _DOOR_LEFT and _DOOR_RIGHT
                 if (this._aftermarket_bodykit == 0)
@@ -266,17 +234,17 @@
                         parts._WHEEL = MODEL + parts._WHEEL; // null, empty, NULL or STOCK
                         break;
                     case "AUTOSCLPT":
-                        parts._WHEEL = this._rim_brand + add_on._STYLE + add_on._0 + this._rim_style.ToString() + "_17" + add_on._25;
+                        parts._WHEEL = $"{this._rim_style}{add_on._STYLE}{this._rim_style:00}_17{add_on._25}";
                         break;
                     default:
-                        parts._WHEEL = this._rim_brand + add_on._STYLE + add_on._0 + this._rim_style.ToString() + "_" + this._rim_size.ToString() + add_on._25;
+                        parts._WHEEL = $"{this._rim_style}{add_on._STYLE}{this._rim_style:00}_{this._rim_size}{add_on._25}";
                         break;
                 }
 
                 // _KIT00_DOORLINE
                 parts._KIT00_DOORLINE = (this._aftermarket_bodykit <= 0)
                     ? MODEL + parts._KIT00_DOORLINE
-                    : "";
+                    : string.Empty;
 
                 // WINDOW_TINT
                 if (this._window_tint_type != Reflection.BaseArguments.STOCK)
@@ -288,17 +256,6 @@
 
                 // Hash all strings to keys
                 var keys = this.StringToKey(parts);
-
-                // Check Specific and Generic vinyls for last
-                if (this._specific_vinyl == add_on._NULL || this._specific_vinyl == add_on._0)
-                    keys[47] = 0;
-                else if (this._specific_vinyl.StartsWith("0x"))
-                    keys[47] = Utils.ConvertX.ToUInt32(this._specific_vinyl);
-
-                if (this._generic_vinyl == add_on._NULL || this._generic_vinyl == add_on._0)
-                    keys[48] = 0;
-                else if (this._generic_vinyl.StartsWith("0x"))
-                    keys[48] = Utils.ConvertX.ToUInt32(this._generic_vinyl);
 
                 // If the preset already existed, it is better to internally modify its main values
                 // rather than overwriting it, to avoid changing some other values; also, if the model
@@ -379,10 +336,6 @@
                     }
                 }
 
-                *(int*)(byteptr_t + 0x208) = 1;
-                *(float*)(byteptr_t + 0x214) = this._saturation;
-                *(float*)(byteptr_t + 0x218) = this._brightness;
-
             LABEL_FINAL:
                 // Write CollectionName
                 for (int a1 = 0; a1 < 0x20; ++a1)
@@ -393,6 +346,11 @@
                 // Write Fronend and Pvehicle
                 *(uint*)(byteptr_t + 0x48) = this._Frontend_Hash;
                 *(uint*)(byteptr_t + 0x50) = this._Pvehicle_Hash;
+
+                // Write Colors
+                *(int*)(byteptr_t + 0x208) = 1;
+                *(float*)(byteptr_t + 0x214) = this._saturation;
+                *(float*)(byteptr_t + 0x218) = this._brightness;
 
                 *(byteptr_t + 0x22C) = this.FRONTBUMPER.AutosculptZone1;
                 *(byteptr_t + 0x22D) = this.FRONTBUMPER.AutosculptZone2;

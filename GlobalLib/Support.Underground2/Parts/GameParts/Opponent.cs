@@ -2,9 +2,33 @@
 {
 	public class Opponent : Framework.VirtualPart, Reflection.Interface.ICopyable<Opponent>
 	{
-		public string Name { get; set; } = string.Empty;
+		private string _name = Reflection.BaseArguments.NULL;
+		private string _preset_ride = Reflection.BaseArguments.RANDOM;
+
+		public string Name
+		{
+			get => this._name;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._name = value;
+			}
+		}
+
 		public ushort StatsMultiplier { get; set; }
-		public string PresetRide { get; set; } = Reflection.BaseArguments.RANDOM;
+		
+		public string PresetRide
+		{
+			get => this._preset_ride;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._preset_ride = value;
+			}
+		}
+		
 		public byte SkillEasy { get; set; }
 		public byte SkillMedium { get; set; }
 		public byte SkillHard { get; set; }

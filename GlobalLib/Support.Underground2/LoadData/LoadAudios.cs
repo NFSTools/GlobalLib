@@ -55,7 +55,6 @@ namespace GlobalLib.Support.Underground2
 						br.BaseStream.Position -= 0xB0 + audio.Length + 1;
 						audio = audio.Substring(0, audio.LastIndexOf('_')); // throw away _A and _PAIN
 						Utils.Bin.Hash(audio); // put in the map
-						audio = audio.Substring(0, audio.LastIndexOf('_')); // throw away audio size
 						if (!Core.Map.AudioTypes.Contains(audio))
 							Core.Map.AudioTypes.Add(audio);
 						br.ReadBytes(br.ReadInt32());

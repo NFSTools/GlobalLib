@@ -18,14 +18,14 @@
 			}
 
 			*(uint*)(byteptr_t + 0x38) = this.BinKey;
-			*(uint*)(byteptr_t + 0x3C) = Utils.Bin.SmartHash(this.ShopTrigger);
+			*(uint*)(byteptr_t + 0x3C) = Utils.Bin.SmartHash(this._shop_trigger);
 
 			for (int a1 = 0; a1 < this._shop_filename.Length; ++a1)
 				*(byteptr_t + 0x40 + a1) = (byte)this._shop_filename[a1];
 
 			*(byteptr_t + 0x50) = (byte)this.ShopType;
 			*(byteptr_t + 0x51) = (this.InitiallyHidden == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
-			*(uint*)(byteptr_t + 0x74) = Utils.Bin.SmartHash(this.EventToBeCompleted);
+			*(uint*)(byteptr_t + 0x74) = Utils.Bin.SmartHash(this._event_to_complete);
 			*(byteptr_t + 0x9C) = (byte)this.RequiresEventCompleted;
 			*(byteptr_t + 0x9D) = this.BelongsToStage;
 		}

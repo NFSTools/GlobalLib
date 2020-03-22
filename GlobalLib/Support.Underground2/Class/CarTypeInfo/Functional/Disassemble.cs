@@ -451,9 +451,9 @@
             this.Index = *(int*)(byteptr_t + 0x840);
             this.UsageType = (Reflection.Enum.eUsageType)(*(int*)(byteptr_t + 0x844));
             key = *(uint*)(byteptr_t + 0x84C);
-            this._defaultbasepaint = Core.Map.Lookup(key) ?? "0x" + key.ToString("X8");
+            this._defaultbasepaint = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
             key = *(uint*)(byteptr_t + 0x850);
-            this._defaultbasepaint2 = Core.Map.Lookup(key) ?? "0x" + key.ToString("X8");;
+            this._defaultbasepaint2 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
             this.MaxInstances1 = *(byteptr_t + 0x854);
             this.MaxInstances2 = *(byteptr_t + 0x855);
             this.MaxInstances3 = *(byteptr_t + 0x856);

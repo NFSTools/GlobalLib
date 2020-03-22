@@ -29,6 +29,9 @@ namespace GlobalLib.Core
             Map.UG2RimPaints.Clear();
             Map.UG2VinylPaints.Clear();
             UG2PaintTypes();
+            UG2CaliperPaints();
+            UG2RimPaints();
+            UG2VinylPaints();
             UG2BankTriggers();
             Windshields();
             HashImportantStrings();
@@ -228,7 +231,7 @@ namespace GlobalLib.Core
 
             for (int a1 = 1; a1 < 4; ++a1)
             {
-                for (int a2 = 1; a2 <= 10 * a1; ++a1)
+                for (int a2 = 1; a2 <= 10 * a1; ++a2)
                     Map.UG2CaliperPaints.Add($"{CALIPERS_L}{a1}{_COLOR}{a2:00}");
             }
 
@@ -243,8 +246,8 @@ namespace GlobalLib.Core
 
             for (int a1 = 1; a1 < 4; ++a1)
             {
-                for (int a2 = 1; a2 <= 10 * a1; ++a1)
-                    Map.UG2CaliperPaints.Add($"{RIMS_L}{a1}{_COLOR}{a2:00}");
+                for (int a2 = 1; a2 <= 10 * a1; ++a2)
+                    Map.UG2RimPaints.Add($"{RIMS_L}{a1}{_COLOR}{a2:00}");
             }
 
             foreach (var paint in Map.UG2RimPaints)
@@ -258,7 +261,7 @@ namespace GlobalLib.Core
 
             for (int a1 = 1; a1 < 4; ++a1)
             {
-                for (int a2 = 1; a2 <= 10 * a1; ++a1)
+                for (int a2 = 1; a2 <= 10 * a1; ++a2)
                     Map.UG2VinylPaints.Add($"{VINYL_L}{a1}{_COLOR}{a2:00}");
             }
 

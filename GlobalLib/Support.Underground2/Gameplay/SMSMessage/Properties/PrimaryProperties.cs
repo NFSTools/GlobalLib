@@ -2,11 +2,22 @@
 {
 	public partial class SMSMessage
 	{
+		private string _message_label = Reflection.BaseArguments.NULL;
+
 		[Reflection.Attributes.AccessModifiable()]
 		public int CashValue { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string MessageSenderLabel { get; set; }
+		public string MessageSenderLabel
+		{
+			get => this._message_label;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._message_label = value;
+			}
+		}
 
 		private byte b0x02;
 		private byte b0x03;

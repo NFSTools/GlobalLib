@@ -8,11 +8,11 @@
 
 			// Resolve data
 			key = *(uint*)byteptr_t;
-			this._collection_name = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._collection_name = Core.Map.Lookup(key, false) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 4);
-			if (key != 0) this._req_event_completed1 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._req_event_completed1 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 8);
-			if (key != 0) this._req_event_completed2 = Core.Map.Lookup(key) ?? $"0x{key:X8}";
+			this._req_event_completed2 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 		}
 	}
 }

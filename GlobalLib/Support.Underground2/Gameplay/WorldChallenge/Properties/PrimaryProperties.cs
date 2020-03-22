@@ -2,6 +2,8 @@
 {
 	public partial class WorldChallenge
 	{
+		private string _sms_label = Reflection.BaseArguments.NULL;
+		private string _chal_parent = Reflection.BaseArguments.NULL;
 		private string _world_trigger = Reflection.BaseArguments.NULL;
 		private Reflection.Enum.eBoolean _use_outruns = Reflection.Enum.eBoolean.False;
 		private Reflection.Enum.eWorldChallengeType _chal_type = Reflection.Enum.eWorldChallengeType.Showcase;
@@ -40,10 +42,28 @@
 		public byte RequiredRacesWon { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string ChallengeSMSLabel { get; set; }
+		public string ChallengeSMSLabel
+		{
+			get => this._sms_label;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._sms_label = value;
+			}
+		}
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string ChallengeParent { get; set; }
+		public string ChallengeParent
+		{
+			get => this._chal_parent;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._chal_parent = value;
+			}
+		}
 
 		[Reflection.Attributes.AccessModifiable()]
 		public int TimeLimit { get; set; }

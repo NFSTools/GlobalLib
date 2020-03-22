@@ -35,14 +35,14 @@
             if (Core.Map.VltKeys.TryGetValue(a1, out v1))
                 this.Frontend = v1;
             else
-                this.Frontend = hex + a1.ToString("X8");
+                this.Frontend = $"{hex}{a1:X8}";
 
             // Pvehicle hash
             a1 = *(uint*)(byteptr_t + 0x50);
             if (Core.Map.VltKeys.TryGetValue(a1, out v1))
                 this.Pvehicle = v1;
             else
-                this.Pvehicle = hex + a1.ToString("X8");
+                this.Pvehicle = $"{hex}{a1:X8}";
 
             a1 = Utils.Bin.Hash(MODEL + parts._BASE); // for RaiderKeys
 
@@ -94,9 +94,7 @@
                 {
                     for (byte x2 = 1; x2 < 45; ++x2) // all 44 spoiler styles
                     {
-                        v3 = (x2 < 10)
-                            ? add_on.SPOILER + add_on._STYLE + add_on._0 + x2.ToString() + add_on._CSTYPE[x1]
-                            : add_on.SPOILER + add_on._STYLE + x2.ToString() + add_on._CSTYPE[x1];
+                        v3 = add_on.SPOILER + add_on._STYLE + x2.ToString("00") + add_on._CSTYPE[x1];
                         a3 = Utils.Bin.Hash(v3);
                         if (a3 == a2)
                         {
@@ -122,7 +120,7 @@
         // escape from a really big spoiler loop
         LABEL_ROOF:
             // fix spoiler settings first
-            if (v4 == "")
+            if (v4 == string.Empty)
                 this._spoiler_type = Reflection.Enum.eSTypes.BASE; // use BASE to make it clearer
             else
                 System.Enum.TryParse(v4, out this._spoiler_type);
@@ -139,18 +137,10 @@
             {
                 for (byte x1 = 1; x1 < 19; ++x1) // all 18 roof scoop styles
                 {
-                    if (x1 < 10)
-                    {
-                        v1 = parts.ROOF_STYLE + add_on._0 + x1.ToString();
-                        v3 = parts.ROOF_STYLE + add_on._0 + x1.ToString() + add_on._OFFSET;
-                        v4 = parts.ROOF_STYLE + add_on._0 + x1.ToString() + add_on._DUAL;
-                    }
-                    else
-                    {
-                        v1 = parts.ROOF_STYLE + x1.ToString();
-                        v3 = parts.ROOF_STYLE + x1.ToString() + add_on._OFFSET;
-                        v4 = parts.ROOF_STYLE + x1.ToString() + add_on._DUAL;
-                    }
+                    var x1pad = x1.ToString("00");
+                    v1 = parts.ROOF_STYLE + x1pad;
+                    v3 = parts.ROOF_STYLE + x1pad + add_on._OFFSET;
+                    v4 = parts.ROOF_STYLE + x1pad + add_on._DUAL;
                     a1 = Utils.Bin.Hash(v1);
                     a3 = Utils.Bin.Hash(v3);
                     a4 = Utils.Bin.Hash(v4);
@@ -214,9 +204,7 @@
             {
                 for (byte x1 = 1; x1 < 33; ++x1) // 33 hood styles
                 {
-                    v1 = (x1 < 10)
-                        ? MODEL + add_on._STYLE + add_on._0 + x1.ToString() + parts._HOOD
-                        : MODEL + add_on._STYLE + x1.ToString() + parts._HOOD;
+                    v1 = MODEL + add_on._STYLE + x1.ToString("00") + parts._HOOD;
                     a1 = Utils.Bin.Hash(v1);
                     if (a1 == a2)
                     {
@@ -274,24 +262,21 @@
         LABEL_PRECOMPVINYL:
             // Try find Body Paint
             a2 = *(uint*)(byteptr_t + 0x190);
-            if (a2 != 0)
-                this.BodyPaint = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.BPAINT;
+            this.BodyPaint = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.BPAINT;
 
             // Try find Vinyl Name
             a2 = *(uint*)(byteptr_t + 0x194);
-            if (a2 != 0)
-                this.VinylName = Core.Map.Lookup(a2) ?? (hex + a2.ToString("X8"));
+            this.VinylName = Core.Map.Lookup(a2, true) ?? (hex + a2.ToString("X8"));
 
             // Try find Rim Paint
             a2 = *(uint*)(byteptr_t + 0x198);
-            if (a2 != 0)
-                this.RimPaint = Core.Map.Lookup(a2) ?? Reflection.BaseArguments.NULL;
+            this.RimPaint = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
 
             // Try find swatches
-            this._vinylcolor1 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x19C)));
-            this._vinylcolor2 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1A0)));
-            this._vinylcolor3 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1A4)));
-            this._vinylcolor4 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1A8)));
+            this._vinylcolor1 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x19C), false));
+            this._vinylcolor2 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1A0), false));
+            this._vinylcolor3 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1A4), false));
+            this._vinylcolor4 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1A8), false));
 
             // _WINDOW_TINT
             a2 = *(uint*)(byteptr_t + 0x26C);
@@ -300,7 +285,7 @@
                 this._window_tint_type = Reflection.BaseArguments.STOCK;
             else
             {
-                v2 = Core.Map.Lookup(a2);
+                v2 = Core.Map.Lookup(a2, false);
                 this._window_tint_type = Core.Map.WindowTintMap.Contains(v2) ? v2 : Reflection.BaseArguments.STOCK;
             }
         }

@@ -85,7 +85,7 @@ namespace GlobalLib.Support.MostWanted.Class
                 /* 0x188 = 70 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts._DECAL_LEFT_QUARTER_RECT_MEDIUM);
                 /* 0x18C = 71 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts._DECAL_RIGHT_QUARTER_RECT_MEDIUM);
                 /* 0x190 = 72 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts.PAINT);
-                /* 0x194 = 73 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts.VINYL_LAYER);
+                /* 0x194 = 73 */ *(uintptr_t + offset++) = Utils.Bin.SmartHash(parts.VINYL_LAYER);
                 /* 0x198 = 74 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts.RIM_PAINT);
                 /* 0x19C = 75 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts.SWATCH[0]);
                 /* 0x1A0 = 76 */ *(uintptr_t + offset++) = Utils.Bin.Hash(parts.SWATCH[1]);

@@ -2,13 +2,33 @@
 {
 	public partial class GCareerRace
 	{
+		private string _intro_movie = Reflection.BaseArguments.NULL;
+		private string _outro_movie = Reflection.BaseArguments.NULL;
 		private string _gps_destination = Reflection.BaseArguments.NULL;
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string IntroMovie { get; set; }
+		public string IntroMovie
+		{
+			get => this._intro_movie;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._intro_movie = value;
+			}
+		}
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string OutroMovie { get; set; }
+		public string OutroMovie
+		{
+			get => this._outro_movie;
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new System.ArgumentNullException("This value cannot be left empty.");
+				this._outro_movie = value;
+			}
+		}
 
 		[Reflection.Attributes.AccessModifiable()]
 		public byte NumMapItems { get; set; }

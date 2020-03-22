@@ -26,11 +26,11 @@
 
 			// Unlocking Shops
 			key = *(uint*)(byteptr_t + 0x0C);
-			this.UnlocksInShop_Level1 = Core.Map.Lookup(key) ?? string.Empty;
+			this.UnlocksInShop_Level1 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x18);
-			this.UnlocksInShop_Level2 = Core.Map.Lookup(key) ?? string.Empty;
+			this.UnlocksInShop_Level2 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x24);
-			this.UnlocksInShop_Level3 = Core.Map.Lookup(key) ?? string.Empty;
+			this.UnlocksInShop_Level3 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 		}
 	}
 }
