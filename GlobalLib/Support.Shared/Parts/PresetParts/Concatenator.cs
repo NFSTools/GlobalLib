@@ -112,8 +112,11 @@
         public string _DECAL_HOOD_RECT_SMALL = "_DECAL_HOOD_RECT_SMALL";
         public string _DECAL_LEFT_QUARTER_RECT_SMALL = "_DECAL_LEFT_QUARTER_RECT_SMALL";
         public string _DECAL_RIGHT_QUARTER_RECT_SMALL = "_DECAL_RIGHT_QUARTER_RECT_SMALL";
-
-
-
+        public string CARBON_FIBRE = "CARBON FIBRE";
+        public string CARBON_FIBRE_NONE = "CARBON FIBRE NONE";
+        public string NEON_NONE = "NEON_NONE";
+        public string CABIN_NEON_STYLE0 = "CABIN_NEON_STYLE0";
+        public string NO_HYDRAULICS = "NO HYDRAULICS";
+        public string _CV = "_CV";
     }
 }

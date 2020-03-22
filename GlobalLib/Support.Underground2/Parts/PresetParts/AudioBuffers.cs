@@ -1,7 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public partial class PresetRide
+	public class AudioBuffers : Framework.VirtualPart, Reflection.Interface.ICopyable<AudioBuffers>
 	{
+		#region Private Fields
+
 		private string _audio_comp_00 = Reflection.BaseArguments.NULL;
 		private string _audio_comp_01 = Reflection.BaseArguments.NULL;
 		private string _audio_comp_02 = Reflection.BaseArguments.NULL;
@@ -15,7 +17,10 @@
 		private string _audio_comp_10 = Reflection.BaseArguments.NULL;
 		private string _audio_comp_11 = Reflection.BaseArguments.NULL;
 
-		[Reflection.Attributes.AccessModifiable()]
+		#endregion
+
+		#region Public Properties
+
 		public string AudioComp00
 		{
 			get => this._audio_comp_00;
@@ -26,11 +31,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_00 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp01
 		{
 			get => this._audio_comp_01;
@@ -41,11 +44,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_01 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp02
 		{
 			get => this._audio_comp_02;
@@ -56,11 +57,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_02 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp03
 		{
 			get => this._audio_comp_03;
@@ -71,11 +70,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_03 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp04
 		{
 			get => this._audio_comp_04;
@@ -86,11 +83,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_04 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp05
 		{
 			get => this._audio_comp_05;
@@ -101,11 +96,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_05 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp06
 		{
 			get => this._audio_comp_06;
@@ -116,11 +109,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_06 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp07
 		{
 			get => this._audio_comp_07;
@@ -131,11 +122,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_07 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp08
 		{
 			get => this._audio_comp_08;
@@ -146,11 +135,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_08 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp09
 		{
 			get => this._audio_comp_09;
@@ -161,11 +148,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_09 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp10
 		{
 			get => this._audio_comp_10;
@@ -176,11 +161,9 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_10 = value;
-				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
 		public string AudioComp11
 		{
 			get => this._audio_comp_11;
@@ -191,8 +174,26 @@
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
 				this._audio_comp_11 = value;
-				this.Modified = true;
 			}
+		}
+
+		#endregion
+
+		/// <summary>
+		/// Creates a plane copy of the objects that contains same values.
+		/// </summary>
+		/// <returns>Exact plain copy of the object.</returns>
+		public AudioBuffers PlainCopy()
+		{
+			var result = new AudioBuffers();
+			var ThisType = this.GetType();
+			var ResultType = result.GetType();
+			foreach (var ThisField in ThisType.GetFields())
+			{
+				var ResultField = ResultType.GetProperty(ThisField.Name);
+				ResultField.SetValue(result, ThisField.GetValue(this));
+			}
+			return result;
 		}
 	}
 }

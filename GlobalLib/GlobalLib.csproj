@@ -472,6 +472,7 @@
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\WIndowTintSettings.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\Assemble.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteBankTriggers.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteGCareerBrands.cs" />
@@ -673,12 +674,11 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\ValidateSpinning.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\AutosculptRearBumper.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\TrunkAudioSettings.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2812%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2813%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\1 - Copy %2814%29.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\PaintSettings.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\NeonSettings.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\CarbonfibreSettings.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\HUDSettings.cs" />
+    <Compile Include="Support.Underground2\Class\PresetRide\Properties\SubClassesSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\WideDecalSettings.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\AudioCompSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\PresetRideConstructor.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\MirrorSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\RoofScoopSettings.cs" />
@@ -823,6 +823,11 @@
     <Compile Include="Support.Underground2\Parts\InfoParts\Tires.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Transmission.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\WeightReduction.cs" />
+    <Compile Include="Support.Underground2\Parts\PresetParts\AudioBuffers.cs" />
+    <Compile Include="Support.Underground2\Parts\PresetParts\DecalArray.cs" />
+    <Compile Include="Support.Underground2\Parts\PresetParts\Specialties.cs" />
+    <Compile Include="Support.Underground2\Parts\PresetParts\PaintTypes.cs" />
+    <Compile Include="Support.Underground2\Parts\PresetParts\VinylSets.cs" />
     <Compile Include="Utils\Cast\DynamicCast.cs" />
     <Compile Include="Utils\Cast\MemoryCast.cs" />
     <Compile Include="Utils\Cast\ReinterpretCast.cs" />

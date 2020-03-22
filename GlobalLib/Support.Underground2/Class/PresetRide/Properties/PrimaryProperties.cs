@@ -5,7 +5,19 @@
         private byte[] data;
         private uint _unknown1 = 0;
         private uint _unknown2 = 0;
-        private int uversion_ = 2;
+        private int _performance_level = 0;
+
+        [Reflection.Attributes.AccessModifiable()]
+        public int PerformanceLevel
+        {
+            get => this._performance_level;
+            set
+            {
+                if (value > 3 || value < 0)
+                    throw new System.ArgumentOutOfRangeException("The value should be in range 0-3.");
+                this._performance_level = value;
+            }
+        }
 
         /// <summary>
         /// Provides info on whether this preset ride already exists in Global data.
