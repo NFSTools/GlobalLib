@@ -808,6 +808,7 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarTypeInfo.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_FNGroup.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_Materials.cs" />
+    <Compile Include="Support.Underground2\LoadData\LoadGlobalA.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadGlobalB.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadLanguage.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadAudios.cs" />
