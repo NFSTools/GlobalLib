@@ -801,6 +801,8 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarParts.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarSkins.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_PresetRides.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_SlotType.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_SpoilMirrs.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_Tracks.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SunInfo.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarTypeInfo.cs" />
@@ -813,6 +815,7 @@
     <Compile Include="Support.Underground2\Parts\CarParts\CarSkin.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\Part56.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\RigidControls.cs" />
+    <Compile Include="Support.Underground2\Parts\CarParts\SpoilMirr.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\UsageType.cs" />
     <Compile Include="Support.Underground2\Parts\GameParts\Opponent.cs" />
     <Compile Include="Support.Underground2\Parts\GameParts\SunLayer.cs" />

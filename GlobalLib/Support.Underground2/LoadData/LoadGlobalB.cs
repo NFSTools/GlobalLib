@@ -117,10 +117,10 @@ namespace GlobalLib.Support.Underground2
                             cssize = size;
                             break;
 
-                        //case Reflection.ID.Global.SlotTypes:
-                        //    E_SlotType(byteptr_t + offset, size + 8, db);
-                        //    break;
-                        //
+                        case Reflection.ID.Global.SlotTypes:
+                            E_SlotType(byteptr_t + offset, size + 8, db);
+                            break;
+                        
 
                         case Reflection.ID.Global.CareerInfo:
                             if (gcoff == 0xFFFFFFFF)
@@ -147,7 +147,7 @@ namespace GlobalLib.Support.Underground2
             }
 
             // Disperse spoilers across cartypeinfo
-            //E_Spoilers(db);
+            E_SpoilMirrs(db);
             return true;
         }
     }

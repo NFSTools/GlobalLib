@@ -5,12 +5,12 @@
         /// <summary>
         /// Game index to which the class belongs to.
         /// </summary>
-        public int GameINT { get => (int)Core.GameINT.MostWanted; }
+        public int GameINT { get => (int)Core.GameINT.Underground2; }
 
         /// <summary>
         /// Game string to which the class belongs to.
         /// </summary>
-        public string GameSTR { get => Core.GameSTR.MostWanted; }
+        public string GameSTR { get => Core.GameSTR.Underground2; }
 
         /// <summary>
         /// Database to which the class belongs to.

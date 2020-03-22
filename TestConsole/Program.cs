@@ -23,7 +23,9 @@ namespace TestConsole
 			var elapsed_1 = watch.ElapsedMilliseconds;
 
 
+			Console.WriteLine($"{elapsed_1}ms");
 
+			Console.Read();
 
 			int aa = 0;
 		}
