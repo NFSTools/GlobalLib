@@ -25,11 +25,6 @@ namespace TestConsole
 
 
 
-			Console.WriteLine($"Loaded data in {elapsed_1}ms");
-			Console.Read();
-
-
-
 
 			int aa = 0;
 		}

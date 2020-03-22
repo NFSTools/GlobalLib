@@ -10,7 +10,7 @@
         /// <param name="db">Database to which add classes.</param>
         private static unsafe void E_PresetRides(byte* byteptr_t, uint length, Database.Underground2 db)
         {
-            uint size = 0x338;
+            const uint size = 0x338;
 
             for (uint loop = 0; loop < length / size; ++loop)
             {

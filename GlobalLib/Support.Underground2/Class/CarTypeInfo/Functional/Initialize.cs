@@ -46,6 +46,16 @@
             this.WHEEL_FRONT_RIGHT = new Parts.InfoParts.CarInfoWheel();
             this.WHEEL_REAR_LEFT = new Parts.InfoParts.CarInfoWheel();
             this.WHEEL_REAR_RIGHT = new Parts.InfoParts.CarInfoWheel();
+            this.CARSKIN01 = new Parts.CarParts.CarSkin();
+            this.CARSKIN02 = new Parts.CarParts.CarSkin();
+            this.CARSKIN03 = new Parts.CarParts.CarSkin();
+            this.CARSKIN04 = new Parts.CarParts.CarSkin();
+            this.CARSKIN05 = new Parts.CarParts.CarSkin();
+            this.CARSKIN06 = new Parts.CarParts.CarSkin();
+            this.CARSKIN07 = new Parts.CarParts.CarSkin();
+            this.CARSKIN08 = new Parts.CarParts.CarSkin();
+            this.CARSKIN09 = new Parts.CarParts.CarSkin();
+            this.CARSKIN10 = new Parts.CarParts.CarSkin();
         }
     }
 }

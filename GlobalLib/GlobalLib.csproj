@@ -88,9 +88,11 @@
     <Compile Include="Reflection\Enum\eBoolean.cs" />
     <Compile Include="Reflection\Enum\eBoundValues.cs" />
     <Compile Include="Reflection\Enum\eCarbonPaint.cs" />
+    <Compile Include="Reflection\Enum\eCarSkinClass.cs" />
     <Compile Include="Reflection\Enum\eDecalType.cs" />
     <Compile Include="Reflection\Enum\eEventIconType.cs" />
     <Compile Include="Reflection\Enum\eMemoryType.cs" />
+    <Compile Include="Reflection\Enum\eMirrorTypes.cs" />
     <Compile Include="Reflection\Enum\ePerformanceType.cs" />
     <Compile Include="Reflection\Enum\eSpoilerAS.cs" />
     <Compile Include="Reflection\Enum\eSpoiler.cs" />
@@ -114,7 +116,7 @@
     <Compile Include="Reflection\Exception\CollectionExistenceException.cs" />
     <Compile Include="Reflection\ID\CarParts.cs" />
     <Compile Include="Reflection\ID\EAComp.cs" />
-    <Compile Include="Reflection\ID\GCareerRace.cs" />
+    <Compile Include="Reflection\ID\CareerInfo.cs" />
     <Compile Include="Reflection\ID\Global.cs" />
     <Compile Include="Reflection\ID\TPK.cs" />
     <Compile Include="Reflection\Interface\IGetIndex.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CarSkins.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CollectionName.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\GameAddress.cs" />
@@ -472,6 +475,7 @@
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\SpoilerMirror.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\Initialize.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\WIndowTintSettings.cs" />
@@ -794,6 +798,7 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part4.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part56.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarParts.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_CarSkins.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_PresetRides.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_Tracks.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SunInfo.cs" />
@@ -804,6 +809,7 @@
     <Compile Include="Support.Underground2\LoadData\LoadLanguage.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadAudios.cs" />
     <Compile Include="Support.Underground2\LoadData\LoadWheels.cs" />
+    <Compile Include="Support.Underground2\Parts\CarParts\CarSkin.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\Part56.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\RigidControls.cs" />
     <Compile Include="Support.Underground2\Parts\CarParts\UsageType.cs" />

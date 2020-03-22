@@ -55,6 +55,9 @@ namespace GlobalLib.Support.Underground2
                 uint troff = 0; // offset of the tracks block
                 uint trsize = 0; // size of the tracks block
 
+                uint csoff = 0; // offset of the carskins block
+                uint cssize = 0; // size of the carskins block
+
                 uint gcoff = 0xFFFFFFFF; // offset of the gcareerinfo block
 
                 while (offset < db._GlobalBLZC.Length)
@@ -109,16 +112,17 @@ namespace GlobalLib.Support.Underground2
                             trsize = size;
                             break;
 
+                        case Reflection.ID.Global.CarSkins:
+                            csoff = offset + 8;
+                            cssize = size;
+                            break;
+
                         //case Reflection.ID.Global.SlotTypes:
                         //    E_SlotType(byteptr_t + offset, size + 8, db);
                         //    break;
                         //
-                        //case Reflection.ID.Global.Collisions:
-                        //    cooff = offset + 8;
-                        //    cosize = size;
-                        //    break;
 
-                        case Reflection.ID.Global.GCareerInfo:
+                        case Reflection.ID.Global.CareerInfo:
                             if (gcoff == 0xFFFFFFFF)
                                 gcoff = offset;
                             break;
@@ -137,8 +141,8 @@ namespace GlobalLib.Support.Underground2
                 // CarParts and Collisions blocks are the last ones to disassemble
                 E_CarParts(byteptr_t + cpoff, cpsize, db);
                 E_Tracks(byteptr_t + troff, trsize, db);
-                //E_Collisions(byteptr_t + cooff, cosize, db);
                 E_PresetRides(byteptr_t + proff, prsize, db);
+                E_CarSkins(byteptr_t + csoff, cssize, db);
                 Framework.CareerManager.Disassemble(byteptr_t + gcoff, db);
             }
 
