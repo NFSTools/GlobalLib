@@ -25,7 +25,6 @@ namespace TestConsole
 
 
 
-
 			int aa = 0;
 		}
 	}

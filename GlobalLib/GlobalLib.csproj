@@ -125,6 +125,7 @@
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\GetCarSkins.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CarSkins.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CollectionName.cs" />

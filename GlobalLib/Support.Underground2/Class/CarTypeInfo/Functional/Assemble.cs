@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="index">Index of the cartypeinfo.</param>
         /// <returns>Byte array of the cartypeinfo.</returns>
-        public override unsafe byte[] Assemble(int index)
+        public override unsafe byte[] Assemble(int index = 0xFF)
         {
             var result = new byte[0x890];
             fixed (byte* byteptr_t = &result[0])
