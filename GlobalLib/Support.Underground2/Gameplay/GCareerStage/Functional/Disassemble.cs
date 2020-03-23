@@ -57,6 +57,9 @@
 			this.Unknown0x3D = *(byteptr_t + 0x3D);
 			this.Unknown0x3E = *(byteptr_t + 0x3E);
 			this.Unknown0x3F = *(byteptr_t + 0x3F);
+			this.Unknown0x41 = *(byteptr_t + 0x41);
+			this.Unknown0x42 = *(byteptr_t + 0x42);
+			this.Unknown0x43 = *(byteptr_t + 0x43);
 			this.Unknown0x44 = *(float*)(byteptr_t + 0x44);
 			this.Unknown0x48 = *(float*)(byteptr_t + 0x48);
 			this.Unknown0x4C = *(float*)(byteptr_t + 0x4C);

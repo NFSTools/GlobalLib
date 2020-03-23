@@ -2,9 +2,9 @@
 {
 	public partial class PartUnlockable
 	{
-		private string _unlock_shop1 = Reflection.BaseArguments.NULL;
-		private string _unlock_shop2 = Reflection.BaseArguments.NULL;
-		private string _unlock_shop3 = Reflection.BaseArguments.NULL;
+		private Reflection.Enum.ePartUnlockReq _unlock_method_level1 = Reflection.Enum.ePartUnlockReq.INITIALLY_UNLOCKED;
+		private Reflection.Enum.ePartUnlockReq _unlock_method_level2 = Reflection.Enum.ePartUnlockReq.INITIALLY_UNLOCKED;
+		private Reflection.Enum.ePartUnlockReq _unlock_method_level3 = Reflection.Enum.ePartUnlockReq.INITIALLY_UNLOCKED;
 
 		[Reflection.Attributes.AccessModifiable()]
 		public float VisualRating_Level1 { get; set; }
@@ -25,47 +25,41 @@
 		public short PartPrice_Level3 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
-		public byte ReqStageDone_Level1 { get; set; }
-
-		[Reflection.Attributes.AccessModifiable()]
-		public byte ReqStageDone_Level2 { get; set; }
-
-		[Reflection.Attributes.AccessModifiable()]
-		public byte ReqStageDone_Level3 { get; set; }
-
-		[Reflection.Attributes.AccessModifiable()]
-		public string UnlocksInShop_Level1
+		public Reflection.Enum.ePartUnlockReq UnlockMethod_Level1
 		{
-			get => this._unlock_shop1;
+			get => this._unlock_method_level1;
 			set
 			{
-				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				this._unlock_shop1 = value;
+				if (!System.Enum.IsDefined(typeof(Reflection.Enum.ePartUnlockReq), value))
+					throw new Reflection.Exception.MappingFailException();
+				else
+					this._unlock_method_level1 = value;
 			}
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string UnlocksInShop_Level2
+		public Reflection.Enum.ePartUnlockReq UnlockMethod_Level2
 		{
-			get => this._unlock_shop2;
+			get => this._unlock_method_level2;
 			set
 			{
-				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				this._unlock_shop2 = value;
+				if (!System.Enum.IsDefined(typeof(Reflection.Enum.ePartUnlockReq), value))
+					throw new Reflection.Exception.MappingFailException();
+				else
+					this._unlock_method_level2 = value;
 			}
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
-		public string UnlocksInShop_Level3
+		public Reflection.Enum.ePartUnlockReq UnlockMethod_Level3
 		{
-			get => this._unlock_shop3;
+			get => this._unlock_method_level3;
 			set
 			{
-				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				this._unlock_shop3 = value;
+				if (!System.Enum.IsDefined(typeof(Reflection.Enum.ePartUnlockReq), value))
+					throw new Reflection.Exception.MappingFailException();
+				else
+					this._unlock_method_level3 = value;
 			}
 		}
 	}

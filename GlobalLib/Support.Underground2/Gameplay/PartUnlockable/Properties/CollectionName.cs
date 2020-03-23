@@ -13,13 +13,7 @@
 			get => this._collection_name;
 			set
 			{
-				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left left empty.");
-				if (!Framework.Validate.PartUnlockableCollectionName(value))
-					throw new System.Exception("Unable to parse CarPartID from the collection name provided.");
-				if (this.Database.PartUnlockables.GetClassIndex(value) != -1)
-					throw new Reflection.Exception.CollectionExistenceException();
-				this._collection_name = value;
+				throw new System.NotSupportedException("CollectionName of PartUnlockables cannot be changed.");
 			}
 		}
 

@@ -93,6 +93,7 @@
     <Compile Include="Reflection\Enum\eEventIconType.cs" />
     <Compile Include="Reflection\Enum\eMemoryType.cs" />
     <Compile Include="Reflection\Enum\eMirrorTypes.cs" />
+    <Compile Include="Reflection\Enum\ePartUnlockReq.cs" />
     <Compile Include="Reflection\Enum\ePerformanceType.cs" />
     <Compile Include="Reflection\Enum\eSpoilerAS.cs" />
     <Compile Include="Reflection\Enum\eSpoiler.cs" />
@@ -497,6 +498,7 @@
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteSponsors.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteWorldChallenges.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteWorldShops.cs" />
+    <Compile Include="Support.Underground2\Framework\PartCNames.cs" />
     <Compile Include="Support.Underground2\Framework\VirtualClass.cs" />
     <Compile Include="Reflection\Enum\eSunAlpha.cs" />
     <Compile Include="Reflection\Enum\eSunTexture.cs" />
@@ -535,6 +537,8 @@
     <Compile Include="Support.Underground2\Gameplay\GShowcase\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\PartPerformance\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\PartUnlockable\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Gameplay\PartUnlockable\Functional\GetValidIndexName.cs" />
+    <Compile Include="Support.Underground2\Gameplay\PartUnlockable\Properties\UnlockRequirements.cs" />
     <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Gameplay\PerfSliderTuning\Properties\SliderSettings.cs" />
     <Compile Include="Support.Underground2\Gameplay\SMSMessage\Functional\Assemble.cs" />
