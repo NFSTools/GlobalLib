@@ -609,17 +609,17 @@
             // Specialties
             a1 = Utils.Bin.Hash(parts.NEON_NONE);
             a2 = *(uint*)(byteptr_t + 0x2B4);
-            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonBody = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NeonBody = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            if (a1 == a2) this.SPECIALTIES.NeonBody = parts.NEON_NONE;
+            else this.SPECIALTIES.NeonBody = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x2B8);
-            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonEngine = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NeonEngine = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            if (a1 == a2) this.SPECIALTIES.NeonEngine = parts.NEON_NONE;
+            else this.SPECIALTIES.NeonEngine = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x2BC);
-            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonCabin = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NeonCabin = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            if (a1 == a2) this.SPECIALTIES.NeonCabin = parts.NEON_NONE;
+            else this.SPECIALTIES.NeonCabin = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x2C0);
-            if (a2 == 0 || a1 == a2) this.SPECIALTIES.NeonTrunk = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NeonTrunk = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            if (a1 == a2) this.SPECIALTIES.NeonTrunk = parts.NEON_NONE;
+            else this.SPECIALTIES.NeonTrunk = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
 
             a2 = *(uint*)(byteptr_t + 0x2C4);
             if (a2 != 0)
@@ -644,11 +644,10 @@
             else this.SPECIALTIES.DoorOpeningStyle = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.STOCK;
             a1 = Utils.Bin.Hash(parts.NO_HYDRAULICS);
             a2 = *(uint*)(byteptr_t + 0x2D0);
-            if (a2 == 0 || a1 == a2) this.SPECIALTIES.HydraulicsStyle = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.HydraulicsStyle = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            if (a1 == a2) this.SPECIALTIES.HydraulicsStyle = parts.NO_HYDRAULICS;
+            else this.SPECIALTIES.HydraulicsStyle = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
             a2 = *(uint*)(byteptr_t + 0x2D4);
-            if (a2 == 0) this.SPECIALTIES.NOSPurgeStyle = Reflection.BaseArguments.NULL;
-            else this.SPECIALTIES.NOSPurgeStyle = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.NULL;
+            this.SPECIALTIES.NOSPurgeStyle = Core.Map.Lookup(a2, true) ?? Reflection.BaseArguments.NULL;
 
             // HUD Options
             a2 = *(uint*)(byteptr_t + 0x2D8);
@@ -663,6 +662,24 @@
             a2 = *(uint*)(byteptr_t + 0x2E4);
             if (a2 == 0) this._hud_character_color = Reflection.BaseArguments.WHITE;
             else this._hud_character_color = Core.Map.Lookup(a2, false) ?? Reflection.BaseArguments.WHITE;
+
+            // _CV
+            a2 = *(uint*)(byteptr_t + 0x2F0);
+            a1 = Utils.Bin.Hash(MODEL + parts._CV);
+            if (a2 == 0 || a1 == a2)
+                this._cv_misc_style = 0;
+            else
+            {
+                for (a3 = 1; a3 < 5; ++a3)
+                {
+                    a1 = Utils.Bin.Hash(MODEL + add_on._KITW + a3.ToString() + parts._CV);
+                    if (a1 == a2)
+                    {
+                        this._cv_misc_style = (byte)a3;
+                        break;
+                    }
+                }
+            }
         }
     }
 }

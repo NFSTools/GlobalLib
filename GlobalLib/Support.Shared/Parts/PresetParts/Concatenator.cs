@@ -116,8 +116,14 @@
         public string _DECAL_HOOD_RECT_ = "_DECAL_HOOD_RECT_";
         public string _DECAL_LEFT_QUARTER_RECT_ = "_DECAL_LEFT_QUARTER_RECT_";
         public string _DECAL_RIGHT_QUARTER_RECT_ = "_DECAL_RIGHT_QUARTER_RECT_";
+        public string _DECAL_LEFT_DOOR_RECT_ = "_DECAL_LEFT_DOOR_RECT_MEDIUM";
+        public string _DECAL_RIGHT_DOOR_RECT_ = "_DECAL_RIGHT_DOOR_RECT_MEDIUM";
         public string CARBON_FIBRE = "CARBON FIBRE";
         public string CARBON_FIBRE_NONE = "CARBON FIBRE NONE";
+        public string KIT_CARBON = string.Empty;
+        public string HOOD_CARBON = string.Empty;
+        public string DOOR_CARBON = string.Empty;
+        public string TRUNK_CARBON = string.Empty;
         public string NEON_NONE = "NEON_NONE";
         public string CABIN_NEON_STYLE0 = "CABIN_NEON_STYLE0";
         public string NO_HYDRAULICS = "NO HYDRAULICS";

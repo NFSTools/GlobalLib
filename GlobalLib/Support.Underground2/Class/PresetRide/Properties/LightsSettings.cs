@@ -17,7 +17,7 @@
                 if (value > 14)
                     throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 14.");
                 else
-                    this._roofscoop_style = value;
+                    this._headlight_style = value;
                 this.Modified = true;
             }
         }

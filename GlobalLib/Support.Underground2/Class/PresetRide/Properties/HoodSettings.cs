@@ -43,7 +43,7 @@
         }
 
         /// <summary>
-        /// Under hood style value of the preset ride. Range: 0-30.
+        /// Under hood style value of the preset ride. Range: 21-25 or 0.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
         public byte UnderHoodStyle
