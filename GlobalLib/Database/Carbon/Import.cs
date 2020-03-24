@@ -44,44 +44,44 @@
                         if (*(uint*)dataptr_t != Reflection.ID.Global.Materials)
                             goto LABEL_IDEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t + 0x1C, 0x1C);
-                        if (this.GetClassIndex(CName, type) != -1)
+                        if (!this.Materials.Classes.ContainsKey(CName))
                             goto LABEL_EXISTEXCEPT;
                         var material = new Support.Carbon.Class.Material(dataptr_t, CName, this);
-                        this.Materials.Classes.Add(material);
+                        this.Materials.Classes[CName] = material;
                         return true;
 
                     case eClassType.CarTypeInfo:
                         if (data.Length != 0xD0)
                             goto LABEL_LENGTHEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t, 0x10);
-                        if (this.GetClassIndex(CName, type) != -1)
+                        if (!this.CarTypeInfos.Classes.ContainsKey(CName))
                             goto LABEL_EXISTEXCEPT;
                         var cartypeinfo = new Support.Carbon.Class.CarTypeInfo(dataptr_t, CName, this);
                         cartypeinfo.Modified = true;
                         cartypeinfo.Deletable = true;
                         cartypeinfo.CollisionExternalName = CName;
                         cartypeinfo.CollisionInternalName = "CARRERAGT";
-                        this.CarTypeInfos.Classes.Add(cartypeinfo);
+                        this.CarTypeInfos.Classes[CName] = cartypeinfo;
                         return true;
 
                     case eClassType.PresetRide:
                         if (data.Length != 0x600)
                             goto LABEL_LENGTHEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t + 0x28, 0x20);
-                        if (this.GetClassIndex(CName, type) != -1)
+                        if (!this.PresetRides.Classes.ContainsKey(CName))
                             goto LABEL_EXISTEXCEPT;
                         var presetride = new Support.Carbon.Class.PresetRide(dataptr_t, CName, this);
-                        this.PresetRides.Classes.Add(presetride);
+                        this.PresetRides.Classes[CName] = presetride;
                         return true;
 
                     case eClassType.PresetSkin:
                         if (data.Length != 0x68)
                             goto LABEL_LENGTHEXCEPT;
                         CName = Utils.ScriptX.NullTerminatedString(dataptr_t + 0x8, 0x1C);
-                        if (this.GetClassIndex(CName, type) != -1)
+                        if (!this.PresetSkins.Classes.ContainsKey(CName))
                             goto LABEL_EXISTEXCEPT;
                         var presetskin = new Support.Carbon.Class.PresetSkin(dataptr_t, CName, this);
-                        this.PresetSkins.Classes.Add(presetskin);
+                        this.PresetSkins.Classes[CName] = presetskin;
                         return true;
 
                     default:

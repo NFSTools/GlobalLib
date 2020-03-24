@@ -17,7 +17,7 @@
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
 				if (value.Length > 0x1F)
 					throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 31 characters.");
-				if (this.Database.WorldShops.GetClassIndex(value) != -1)
+				if (this.Database.WorldShops.Classes.ContainsKey(value))
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

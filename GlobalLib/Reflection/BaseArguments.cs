@@ -3,6 +3,7 @@
     public static class BaseArguments
     {
         public const string NULL    = "NULL";
+        public const string AUTO    = "AUTO";
         public const string TRUE    = "True";
         public const string FALSE   = "False";
         public const string DEFAULT = "DEFAULT";

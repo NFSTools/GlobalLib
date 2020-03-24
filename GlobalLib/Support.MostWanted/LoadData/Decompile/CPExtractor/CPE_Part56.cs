@@ -10,7 +10,7 @@
             // Exclude padding
             while (*(int*)(part5ptr_t + len5 - 4) == 0)
                 len5 -= 4;
-            while (*(int*)(part6ptr_t + len6 - 4) == 0)
+            while (*(int*)(part6ptr_t + len6 + 4) == 0)
                 len6 -= 4;
             len6 = len6 / 0xE * 0xE + 8;
 

@@ -12,7 +12,7 @@
 			this._size = 0x10 + this._unknown.Length + this._stringinfo.Count * 8;
 			foreach (var info in this._stringinfo)
 				this._size += info.NulledTextLength;
-			int padding = 0x10 - ((this._size + 8) % 0x10);
+			int padding = 0x10 - (this._size % 0x10);
 			if (padding != 0x10) this._size += padding;
 
 			// var mark = "GlobalLib by MaxHwoy " + System.DateTime.Today.ToString("dd-MM-yyyy");

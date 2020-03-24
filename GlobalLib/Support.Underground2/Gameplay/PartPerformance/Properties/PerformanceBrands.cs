@@ -24,7 +24,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				else if (value == Reflection.BaseArguments.NULL)
 					this._perf_brand_1 = value;
-				else if (this.Database.GCareerBrands.GetClassIndex(value) == -1)
+				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException();
 				else
 					this._perf_brand_1 = value;
@@ -41,7 +41,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				else if (value == Reflection.BaseArguments.NULL)
 					this._perf_brand_2 = value;
-				else if (this.Database.GCareerBrands.GetClassIndex(value) == -1)
+				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException();
 				else
 					this._perf_brand_2 = value;
@@ -58,7 +58,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				else if (value == Reflection.BaseArguments.NULL)
 					this._perf_brand_3 = value;
-				else if (this.Database.GCareerBrands.GetClassIndex(value) == -1)
+				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException();
 				else
 					this._perf_brand_3 = value;
@@ -75,7 +75,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				else if (value == Reflection.BaseArguments.NULL)
 					this._perf_brand_4 = value;
-				else if (this.Database.GCareerBrands.GetClassIndex(value) == -1)
+				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException();
 				else
 					this._perf_brand_4 = value;
@@ -92,7 +92,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				else if (value == Reflection.BaseArguments.NULL)
 					this._perf_brand_5 = value;
-				else if (this.Database.GCareerBrands.GetClassIndex(value) == -1)
+				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException();
 				else
 					this._perf_brand_5 = value;
@@ -109,7 +109,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				else if (value == Reflection.BaseArguments.NULL)
 					this._perf_brand_6 = value;
-				else if (this.Database.GCareerBrands.GetClassIndex(value) == -1)
+				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException();
 				else
 					this._perf_brand_6 = value;
@@ -126,7 +126,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				else if (value == Reflection.BaseArguments.NULL)
 					this._perf_brand_7 = value;
-				else if (this.Database.GCareerBrands.GetClassIndex(value) == -1)
+				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException();
 				else
 					this._perf_brand_7 = value;
@@ -143,7 +143,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				else if (value == Reflection.BaseArguments.NULL)
 					this._perf_brand_8 = value;
-				else if (this.Database.GCareerBrands.GetClassIndex(value) == -1)
+				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException();
 				else
 					this._perf_brand_8 = value;

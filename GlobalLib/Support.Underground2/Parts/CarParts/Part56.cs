@@ -69,18 +69,19 @@
             }
         }
 
+        public Part56() { }
+
         // Default constructor: initialize new part56
-        /*
         public unsafe Part56(string CName, byte index)
         {
             this._key = Utils.Bin.Hash(CName);
             this._collection_name = CName;
             this.Index = index;
             this.IsCar = true;
-            this.Data = new byte[0xA72];
+            this.Data = new byte[0xEC4];
             fixed (byte* byteptr_t = &this.Data[0])
             {
-                for (int a1 = 0, a2 = 0; a1 < 0xBF; ++a1, a2 += 14)
+                for (int a1 = 0, a2 = 0; a1 < 0x10E; ++a1, a2 += 14)
                 {
                     *(uint*)(byteptr_t + a2) = Utils.Bin.Hash(CName + UsageType.PartName[a1]);
                     *(byteptr_t + a2 + 4) = UsageType.CarSlotID[a1];
@@ -92,7 +93,6 @@
                 }
             }
         }
-        */
 
         // Default constructor: initialize from Global data.
         public unsafe Part56(uint key, byte* part6ptr_t, int length, bool IsCar)
@@ -110,6 +110,53 @@
                 for (int a1 = 0; a1 < length; ++a1)
                     *(dataptr_t + a1) = *(part6ptr_t + a1);
             }
+        }
+
+        public override string ToString()
+        {
+            string str = this._collection_name ?? string.Empty;
+            return $"BelongsTo: {str} | Index: {this.Index}";
+        }
+
+        /// <summary>
+        /// Returns new class with casted memory of this class.
+        /// </summary>
+        /// <param name="CName">Collection Name of the classes, null by default.</param>
+        /// <returns>Copy of this class.</returns>
+        public unsafe Part56 MemoryCast(string CName = null)
+        {
+            var result = new Part56();
+            result.Data = new byte[this.Data.Length];
+            System.Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
+            result._collection_name = this._collection_name;
+            result._key = this._key;
+            result.IsCar = this.IsCar;
+            result.Index = this.Index;
+            return result;
+        }
+
+        /// <summary>
+        /// Casts all record and parts IDs of one carpart to another, while changing part hashes
+        /// to have new collection name prefix and changing index of the part.
+        /// </summary>
+        /// <param name="CName">Collection Name of the new carpart.</param>
+        /// <param name="index">Index of the new carpart.</param>
+        /// <returns></returns>
+        public unsafe Part56 SmartMemoryCast(string CName, byte index)
+        {
+            if (this.Data.Length != 0xEC4)
+                return new Part56(CName, index);
+
+            var result = this.MemoryCast();
+            result.BelongsTo = CName;
+
+            fixed (byte* byteptr_t = &result.Data[0])
+            {
+                for (int a1 = 0, a2 = 0; a1 < 0x10E; ++a1, a2 += 0xE)
+                    *(uint*)(byteptr_t + a2) = Utils.Bin.Hash(CName + UsageType.PartName[a1]);
+            }
+            result.SetIndex(index);
+            return result;
         }
     }
 }

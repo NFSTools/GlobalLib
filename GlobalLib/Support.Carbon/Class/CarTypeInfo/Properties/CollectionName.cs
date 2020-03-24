@@ -13,6 +13,8 @@
             get => this._collection_name;
             set
             {
+                if (!this.Deletable)
+                    throw new Reflection.Exception.CollectionExistenceException("CollectionName of a non-addon car cannot be changed.");
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (value.Length > 13)
@@ -20,6 +22,8 @@
                 if (this.Database.GetClassIndex(value, GlobalLib.Database.eClassType.CarTypeInfo) != -1)
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;
+                if (this._collision_external_name != Reflection.BaseArguments.NULL)
+                    this._collision_external_name = value;
             }
         }
 

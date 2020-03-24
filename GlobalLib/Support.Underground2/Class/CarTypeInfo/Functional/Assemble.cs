@@ -566,8 +566,8 @@
                 *(byteptr_t + 0x887) = this.AvailableSkinNumbers08;
                 *(byteptr_t + 0x888) = this.AvailableSkinNumbers09;
                 *(byteptr_t + 0x889) = this.AvailableSkinNumbers10;
-                *(byteptr_t + 0x88A) = this._is_suv ? (byte)1 : (byte)0;
-                *(byteptr_t + 0x88C) = (this.IsSkinnable == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
+                *(byteptr_t + 0x88A) = (byte)this._is_suv;
+                *(byteptr_t + 0x88C) = (byte)this.IsSkinnable;
             }
             return result;
         }

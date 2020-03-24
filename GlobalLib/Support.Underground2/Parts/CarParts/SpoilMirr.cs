@@ -100,7 +100,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
         /// </summary>
         /// <param name="list">List of spoilers to be set.</param>
         /// <returns>Slottype block as a byte array.</returns>
-        public unsafe byte[] SetSpoilers(List<CarSpoilMirrType> list)
+        public unsafe byte[] SetSpoilMirrs(List<CarSpoilMirrType> list)
         {
             int newsize = list.Count * 0x10 + this.data.Length;
             int padding = 0x10 - ((newsize + 8) % 0x10);

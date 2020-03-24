@@ -1,76 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
+using GlobalLib.Reflection.Abstract;
 
 
 
 namespace GlobalLib.Database.Collection
 {
-	public class ClassCollection<TypeID> where TypeID : Reflection.Abstract.Collectable 
+	public class Binary<TypeID> where TypeID : Collectable, new()
 	{
-		public List<TypeID> Classes { get; set; }
+		public Dictionary<string, TypeID> Classes { get; set; }
 		public int Length { get => this.Classes.Count; }
+		public int MaxCNameLength { get; }
+		public Basic Database { get; set; }
 
-		public ClassCollection()
+		public Binary(int maxlength)
 		{
-			this.Classes = new List<TypeID>();
-		}
-
-		public int GetClassIndex(string CName)
-		{
-			for (int a1 = 0; a1 < this.Classes.Count; ++a1)
-			{
-				if (this.Classes[a1].CollectionName == CName)
-					return a1;
-			}
-			return -1;
-		}
-		public int GetClassIndex(uint key, eKeyType type)
-		{
-			for (int a1 = 0; a1 < this.Classes.Count; ++a1)
-			{
-				switch (type)
-				{
-					case eKeyType.BINKEY:
-						if (Utils.Bin.Hash(this.Classes[a1].CollectionName) == key)
-							return a1;
-						continue;
-					case eKeyType.VLTKEY:
-						if (Utils.Vlt.Hash(this.Classes[a1].CollectionName) == key)
-							return a1;
-						continue;
-					case eKeyType.CUSTOM:
-						throw new NotImplementedException("No custom hashing method is available.");
-					default:
-						return -1;
-				}
-			}
-			return -1;
+			this.Classes = new Dictionary<string, TypeID>();
+			this.MaxCNameLength = maxlength;
 		}
 
 		public TypeID FindClass(string CName)
 		{
-			return this.Classes.Find(c => c.CollectionName == CName);
+			return this.Classes.TryGetValue(CName ?? string.Empty, out var result) ? result : null;
 		}
 		public TypeID FindClass(uint key, eKeyType type)
 		{
 			switch (type)
 			{
 				case eKeyType.BINKEY:
-					return this.Classes.Find(c => Utils.Bin.Hash(c.CollectionName) == key);
+					foreach (var bin in this.Classes.Values)
+						if (Utils.Bin.SmartHash(bin.CollectionName) == key)
+							return bin;
+					goto default;
+
 				case eKeyType.VLTKEY:
-					return this.Classes.Find(c => Utils.Vlt.Hash(c.CollectionName) == key);
+					foreach (var vlt in this.Classes.Values)
+						if (Utils.Bin.SmartHash(vlt.CollectionName) == key)
+							return vlt;
+					goto default;
+
 				case eKeyType.CUSTOM:
 					throw new NotImplementedException();
 				default:
 					return null;
 			}
 		}
+		public TypeID FindClassWithValue(string field, object value)
+		{
+			try
+			{
+				foreach (var obj in this.Classes.Values)
+				{
+					if (obj.GetType().GetProperty(field).GetValue(obj) == value)
+						return obj;
+				}
+				return null;
+			}
+			catch (Exception)
+			{
+				return null;
+			}
+		}
 
 		public string[] GetAccessibleProperties(string CName)
 		{
-			int index = this.GetClassIndex(CName);
-			if (index == -1) return null;
-			else return this.Classes[index].GetAccessibles();
+			if (!this.Classes.TryGetValue(CName, out var cla)) return null;
+			else return cla.GetAccessibles();
 		}
 
 		public bool TrySetClassValue(params string[] tokens)
@@ -98,6 +93,109 @@ namespace GlobalLib.Database.Collection
 					error = $"Invalid amount of parameters passed";
 					return false;
 			}
+		}
+
+		public bool TrySetStaticValue(params string[] tokens)
+		{
+			switch (tokens.Length)
+			{
+				case 3:
+					return this.FindClass(tokens[0]).SetStaticValue(tokens[1], tokens[2]);
+				default:
+					return false;
+			}
+		}
+
+		public bool TryAddClass(string value)
+		{
+			if (string.IsNullOrWhiteSpace(value)) return false;
+			if (value.Length > MaxCNameLength) return false;
+			if (this.Classes.ContainsKey(value)) return false;
+			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), typeof(Basic) });
+			var instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
+			this.Classes[value] = instance;
+			return true;
+		}
+		public bool TryAddClass(string value, out string error)
+		{
+			error = null;
+			if (string.IsNullOrWhiteSpace(value))
+			{
+				error = "CollectionName cannot be empty or whitespace.";
+				return false;
+			}
+			if (value.Length >= MaxCNameLength)
+			{
+				error = $"Length of the value passed should not exceed {MaxCNameLength} characters.";
+				return false;
+			}
+			if (this.Classes.ContainsKey(value))
+			{
+				error = $"Class with CollectionName {value} already exists.";
+				return false;
+			}
+			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), typeof(Basic) });
+			var instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
+			this.Classes[value] = instance;
+			return true;
+		}
+
+		public bool TryRemoveClass(string value)
+		{
+			if (string.IsNullOrWhiteSpace(value)) return false;
+			return this.Classes.Remove(value);
+		}
+		public bool TryRemoveClass(string value, out string error)
+		{
+			error = null;
+			if (string.IsNullOrWhiteSpace(value))
+			{
+				error = "Class with empty or whitespace CollectionName does not exist.";
+				return false;
+			}
+			bool done = this.Classes.Remove(value);
+			if (!done) error = $"Class with CollectionName {value} does not exist.";
+			return done;
+		}
+
+		public bool TryCloneClass(string value, string copyfrom)
+		{
+			if (string.IsNullOrWhiteSpace(value)) return false;
+			if (value.Length > MaxCNameLength) return false;
+			if (this.Classes.ContainsKey(value)) return false;
+			if (!this.Classes.TryGetValue(copyfrom, out var cla)) return false;
+
+			var copy = cla.MemoryCast(value);
+			this.Classes[value] = (TypeID)copy;
+			return true;
+		}
+		public bool TryCloneClass(string value, string copyfrom, out string error)
+		{
+			error = null;
+			if (string.IsNullOrWhiteSpace(value))
+			{
+				error = "CollectionName cannot be empty or whitespace.";
+				return false;
+			}
+			if (value.Length > MaxCNameLength)
+			{
+				error = $"Length of the value passed should not exceed {MaxCNameLength} characters.";
+				return false;
+			}
+			if (this.Classes.ContainsKey(value))
+			{
+				error = $"Class with CollectionName {value} already exists.";
+				return false;
+			}
+			if (!this.Classes.TryGetValue(copyfrom, out var cla))
+			{
+				error = $"Class with CollectionName {copyfrom} does not exist.";
+				return false;
+			}
+
+			var copy = cla.MemoryCast(value);
+			this.Classes[value] = (TypeID)copy;
+			return true;
 		}
 
 		public override string ToString()

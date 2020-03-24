@@ -21,7 +21,7 @@
                     this._sun_info_name = value;
                 else
                 {
-                    if (this.Database.SunInfos.GetClassIndex(value) == -1)
+                    if (this.Database.SunInfos.Classes.ContainsKey(value))
                         throw new Reflection.Exception.MappingFailException();
                     else
                         this._sun_info_name = value;

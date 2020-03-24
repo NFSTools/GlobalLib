@@ -15,31 +15,31 @@
             switch (type)
             {
                 case eClassType.Material:
-                    if (this.Materials.GetClassIndex(CName) != -1) return false;
+                    if (this.Materials.Classes.ContainsKey(CName)) return false;
                     if (CName.Length > 0x1B) return false;
                     var material = new Support.Carbon.Class.Material(CName, this);
-                    this.Materials.Classes.Add(material);
+                    this.Materials.Classes[CName] = material;
                     return true;
 
                 case eClassType.CarTypeInfo:
-                    if (this.CarTypeInfos.GetClassIndex(CName) != -1) return false;
+                    if (this.CarTypeInfos.Classes.ContainsKey(CName)) return false;
                     if (CName.Length > 0xD) return false;
                     var car = new Support.Carbon.Class.CarTypeInfo(CName, this);
-                    this.CarTypeInfos.Classes.Add(car);
+                    this.CarTypeInfos.Classes[CName] = car;
                     return true;
 
                 case eClassType.PresetRide:
-                    if (this.PresetRides.GetClassIndex(CName) != -1) return false;
+                    if (this.PresetRides.Classes.ContainsKey(CName)) return false;
                     if (CName.Length > 0x1E) return false;
                     var ride = new Support.Carbon.Class.PresetRide(CName, this);
-                    this.PresetRides.Classes.Add(ride);
+                    this.PresetRides.Classes[CName] = ride;
                     return true;
 
                 case eClassType.PresetSkin:
-                    if (this.PresetSkins.GetClassIndex(CName) != -1) return false;
+                    if (this.PresetSkins.Classes.ContainsKey(CName)) return false;
                     if (CName.Length > 0x1E) return false;
                     var skin = new Support.Carbon.Class.PresetRide(CName, this);
-                    this.PresetRides.Classes.Add(skin);
+                    this.PresetRides.Classes[CName] = skin;
                     return true;
 
                 default:

@@ -15,6 +15,7 @@
             uint size = 0;
             byte* part5ptr_t = byteptr_t; // pointer to the part5 of the block
             byte* part6ptr_t = byteptr_t; // pointer to the part6 of the block
+            byte* globallib = byteptr_t;  // pointer to the carparts globallib block
 
             while (offset < length)
             {
@@ -24,6 +25,11 @@
 
                 switch (ID)
                 {
+                    case 0:
+                        if (*(uint*)(byteptr_t + offset + 8) == Reflection.ID.Global.GlobalLib)
+                            globallib = byteptr_t + offset;
+                        goto default;
+
                     case Reflection.ID.CarParts.Part0:
                         db.SlotTypes.Part0.Data = CPE_Part0(byteptr_t + offset, size + 8);
                         goto default;
@@ -59,6 +65,7 @@
             }
             // Disassemble part5 and part6
             CPE_Part56(part5ptr_t, part6ptr_t, db);
+            E_GlobalLibBlock(globallib, *(uint*)(globallib + 4), db);
         }
     }
 }

@@ -10,6 +10,8 @@
             // Exclude padding
             while (*(int*)(part5ptr_t + len5 - 4) == 0)
                 len5 -= 4;
+            while (*(int*)(part6ptr_t + len6 + 4) == 0)
+                len6 -= 4;
             len6 = len6 / 0xE * 0xE + 8;
 
             int off5 = 8; // offset in part5
@@ -24,8 +26,8 @@
             db.SlotTypes.Part56 = new System.Collections.Generic.List<Parts.CarParts.Part56>();
             var CarCNames = new System.Collections.Generic.List<uint>();
 
-            for (int a1 = 0; a1 < db.CarTypeInfos.Classes.Count; ++a1)
-                CarCNames.Add(db.CarTypeInfos.Classes[a1].BinKey);
+            foreach (var car in db.CarTypeInfos.Classes.Values)
+                CarCNames.Add(car.BinKey);
 
             while (off5 < len5)
             {
@@ -48,6 +50,8 @@
                 off6 += size;
                 size = 0;
             }
+
+            int aa = 0;
         }
     }
 }

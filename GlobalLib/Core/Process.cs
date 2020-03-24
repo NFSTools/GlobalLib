@@ -109,8 +109,7 @@
             bool A = Support.Carbon.SaveData.SaveGlobalA(GlobalDir, database);
             bool B = Support.Carbon.SaveData.SaveGlobalB(GlobalDir, database);
             bool C = Support.Carbon.SaveData.SaveLanguage(GlobalDir, database);
-            if (B && compressed)
-                CompressFiles();
+            if (B && compressed) CompressFiles();
             return A && B && C;
         }
 
@@ -133,8 +132,30 @@
             bool A = Support.MostWanted.SaveData.SaveGlobalA(GlobalDir, database);
             bool B = Support.MostWanted.SaveData.SaveGlobalB(GlobalDir, database);
             bool C = Support.MostWanted.SaveData.SaveLanguage(GlobalDir, database);
-            if (B && compressed)
-                CompressFiles();
+            if (B && compressed) CompressFiles();
+            return A && B && C;
+        }
+
+        /// <summary>
+        /// Saves data into Global files in the directory chosen.
+        /// </summary>
+        /// <param name="database">MostWanted database of classes.</param>
+        /// <param name="compressed">Compress GlobalB file on the output.</param>
+        /// <returns>True if game is supported.</returns>
+        public static bool SaveData(Database.Underground2 database, bool compressed)
+        {
+            if (Set != (int)GameINT.Underground2)
+            {
+                if (MessageShow)
+                    System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
+                else
+                    System.Console.WriteLine("Game set is not valid for MostWanted database load.");
+                return false;
+            }
+            bool A = Support.Underground2.SaveData.SaveGlobalA(GlobalDir, database);
+            bool B = Support.Underground2.SaveData.SaveGlobalB(GlobalDir, database);
+            bool C = Support.Underground2.SaveData.SaveLanguage(GlobalDir, database);
+            if (B && compressed) CompressFiles();
             return A && B && C;
         }
 

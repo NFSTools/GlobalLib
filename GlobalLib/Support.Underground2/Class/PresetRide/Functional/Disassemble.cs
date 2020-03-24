@@ -9,7 +9,6 @@
                 this.data[x] = *(byteptr_t + x);
 
             string MODEL = ""; // MODEL of the car
-            string hex = "0x"; // for hex representations
             string v1 = "";    // main for class strings
             string v2 = "";    // main for system strings
             string v3 = "";    // extra for strings

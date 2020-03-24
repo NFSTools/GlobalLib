@@ -20,5 +20,8 @@
         public const uint FNGCompress = 0x00030210;
         public const uint FEngFiles   = 0x00030203;
         public const uint PaddingReq  = 0x8003CE0D;
+        public const uint ELabGlobal  = 0x80134000;
+        public const uint XenonTrig   = 0x00035021;
+        public const uint FloatChunk  = 0x00E34009;
     }
 }

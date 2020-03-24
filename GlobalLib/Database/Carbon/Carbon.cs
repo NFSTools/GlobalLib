@@ -5,16 +5,12 @@ using GlobalLib.Support.Carbon.Class;
 
 namespace GlobalLib.Database
 {
-    public partial class Carbon : Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
+    public partial class Carbon : Reflection.Abstract.Basic, Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
     {
-        public byte[] _GlobalABUN;
-        public byte[] _GlobalBLZC;
-        public byte[] _LngGlobal;
-        public byte[] _LngLabels;
-        public Collection.ClassCollection<Material> Materials { get; set; }
-        public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
-        public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
-        public Collection.ClassCollection<PresetSkin> PresetSkins { get; set; }
+        public Collection.Binary<Material> Materials { get; set; }
+        public Collection.Binary<CarTypeInfo> CarTypeInfos { get; set; }
+        public Collection.Binary<PresetRide> PresetRides { get; set; }
+        public Collection.Binary<PresetSkin> PresetSkins { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -22,10 +18,10 @@ namespace GlobalLib.Database
 
         public Carbon()
         {
-            this.CarTypeInfos = new Collection.ClassCollection<CarTypeInfo>();
-            this.Materials = new Collection.ClassCollection<Material>();
-            this.PresetRides = new Collection.ClassCollection<PresetRide>();
-            this.PresetSkins = new Collection.ClassCollection<PresetSkin>();
+            this.CarTypeInfos = new Collection.Binary<CarTypeInfo>();
+            this.Materials = new Collection.Binary<Material>();
+            this.PresetRides = new Collection.Binary<PresetRide>();
+            this.PresetSkins = new Collection.Binary<PresetSkin>();
             this.FNGroups = new List<FNGroup>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Reflection.Abstract
 {
-	public abstract class Collectable
+	public abstract class Collectable : Interface.ICastable<Collectable>
 	{
         /// <summary>
         /// Collection name of the variable.
@@ -41,6 +41,49 @@
         public virtual string[] GetPropertyEnumerableTypes(string property)
         {
             return this.GetType().GetProperty(property).PropertyType.GetEnumNames();
+        }
+
+        /// <summary>
+        /// Gets all nodes and subnodes from the class.
+        /// </summary>
+        /// <returns>Array of virtual nodes that can be used to build treeview.</returns>
+        public virtual VirtualNode[] GetAllNodes()
+        {
+            var list = new System.Collections.Generic.List<VirtualNode>();
+            foreach (var property in this.GetType().GetProperties())
+            {
+                foreach (var obj in property.GetCustomAttributes(typeof(Attributes.ExpandableAttribute), true))
+                {
+                    var attrib = obj as Attributes.ExpandableAttribute;
+                    var node = list.Find(c => c.NodeName == attrib.Name);
+                    if (node == null) list.Add(new VirtualNode(attrib.Name));
+                    node.SubNodes.Add(property.Name);
+                }
+            }
+            list.Sort();
+            return list.ToArray();
+        }
+
+        public virtual string[] GetSubnodeFields(string NodeName)
+        {
+            var property = this.GetType().GetProperty(NodeName);
+            if (property == null) return null;
+            var result = new System.Collections.Generic.List<string>();
+            foreach (var field in property.PropertyType.GetProperties())
+                result.Add(field.Name);
+            return result.ToArray();
+        }
+
+        public virtual string GetValueOfInternalObject(string NodeName, string field)
+        {
+            var property = this.GetType().GetProperty(NodeName);
+            if (property == null) return null;
+            if (!System.Attribute.IsDefined(property, typeof(Reflection.Attributes.ExpandableAttribute)))
+                return null;
+            return (string)property.PropertyType
+                            .GetMethod("GetValue")
+                            .Invoke(property.GetValue(this), new object[1] { field });
+
         }
 
         /// <summary>
@@ -210,5 +253,12 @@
                 return false;
             }
         }
+    
+        public virtual bool SetStaticValue(string PropertyName, object value)
+        {
+            return false;
+        }
+
+        public abstract Collectable MemoryCast(string CName);
     }
 }

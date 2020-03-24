@@ -482,7 +482,9 @@
             this.AvailableSkinNumbers08 = *(byteptr_t + 0x887);
             this.AvailableSkinNumbers09 = *(byteptr_t + 0x888);
             this.AvailableSkinNumbers10 = *(byteptr_t + 0x889);
-            this._is_suv = (*(short*)(byteptr_t + 0x88A) == 1) ? true : false;
+            this._is_suv = (*(short*)(byteptr_t + 0x88A) == 1)
+                ? Reflection.Enum.eBoolean.True
+                : Reflection.Enum.eBoolean.False;
             this.IsSkinnable = (*(int*)(byteptr_t + 0x88C) == 0)
                 ? Reflection.Enum.eBoolean.False
                 : Reflection.Enum.eBoolean.True;

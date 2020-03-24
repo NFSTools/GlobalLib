@@ -15,7 +15,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
-				if (this.Database.WorldChallenges.GetClassIndex(value) != -1)
+				if (this.Database.WorldChallenges.Classes.ContainsKey(value))
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

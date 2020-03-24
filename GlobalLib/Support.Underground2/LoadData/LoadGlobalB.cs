@@ -8,7 +8,7 @@ namespace GlobalLib.Support.Underground2
 {
     public static partial class LoadData
     {
-        private static bool LibColBlockExists = false;
+        private static bool LibPartBlockExists = false;
 
         /// <summary>
         /// Loads GlobalB file and disassembles its blocks
@@ -18,7 +18,7 @@ namespace GlobalLib.Support.Underground2
         /// <returns>True if success.</returns>
         public static unsafe bool LoadGlobalB(string GlobalB_dir, Database.Underground2 db)
         {
-            LibColBlockExists = false;
+            LibPartBlockExists = false;
             GlobalB_dir += @"\GLOBAL\GlobalB.lzc";
 
             // Get everything from GlobalB.lzc
@@ -49,9 +49,6 @@ namespace GlobalLib.Support.Underground2
                 uint proff = 0; // offset of the preset rides block
                 uint prsize = 0; // size of the preset rides block
 
-                uint cpoff = 0; // offset of the carparts block
-                uint cpsize = 0; // size of the carparts block
-
                 uint troff = 0; // offset of the tracks block
                 uint trsize = 0; // size of the tracks block
 
@@ -75,11 +72,11 @@ namespace GlobalLib.Support.Underground2
 
                     switch (ID)
                     {
-                        //case 0:
-                        //    if (*(uint*)(byteptr_t + offset + 8) == Reflection.ID.Global.GlobalLib)
-                        //        E_GlobalLibBlock(byteptr_t + offset, size + 8);
-                        //    break;
-                        //
+                        case 0:
+                            if (*(uint*)(byteptr_t + offset + 8) == Reflection.ID.Global.GlobalLib)
+                                E_GlobalLibBlock(byteptr_t + offset, size + 8, db);
+                            break;
+                        
                         case Reflection.ID.Global.Materials:
                             E_Material(byteptr_t + offset, db);
                             break;
@@ -99,8 +96,7 @@ namespace GlobalLib.Support.Underground2
                             break;
 
                         case Reflection.ID.Global.CarParts:
-                            cpoff = offset + 8;
-                            cpsize = size;
+                            E_CarParts(byteptr_t + offset + 8, size, db);
                             break;
 
                         case Reflection.ID.Global.SunInfos:
@@ -138,8 +134,7 @@ namespace GlobalLib.Support.Underground2
                     offset += 8 + size; // advance in offset
                 }
 
-                // CarParts and Collisions blocks are the last ones to disassemble
-                E_CarParts(byteptr_t + cpoff, cpsize, db);
+                // Track, Presets and CarSkins are last one to disperse
                 E_Tracks(byteptr_t + troff, trsize, db);
                 E_PresetRides(byteptr_t + proff, prsize, db);
                 E_CarSkins(byteptr_t + csoff, cssize, db);
@@ -148,6 +143,7 @@ namespace GlobalLib.Support.Underground2
 
             // Disperse spoilers across cartypeinfo
             E_SpoilMirrs(db);
+            if (!LibPartBlockExists) E_DefaultCarPartValues(db);
             return true;
         }
     }

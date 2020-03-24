@@ -17,34 +17,34 @@
             {
                 case eClassType.Material:
                     var material = this.Materials.FindClass(copyfrom);
-                    if (this.Materials.GetClassIndex(newname) != -1) return false;
+                    if (this.Materials.Classes.ContainsKey(newname)) return false;
                     if (material == null) return false;
                     if (newname.Length > 0x1B) return false;
-                    this.Materials.Classes.Add(material.MemoryCast(newname));
+                    this.Materials.Classes[newname] = material.MemoryCast(newname);
                     return true;
 
                 case eClassType.CarTypeInfo:
                     var car = this.CarTypeInfos.FindClass(copyfrom);
-                    if (this.CarTypeInfos.GetClassIndex(newname) != -1) return false;
+                    if (this.CarTypeInfos.Classes.ContainsKey(newname)) return false;
                     if (car == null) return false;
                     if (newname.Length > 0xD) return false;
-                    this.CarTypeInfos.Classes.Add(car.MemoryCast(newname));
+                    this.CarTypeInfos.Classes[newname] = car.MemoryCast(newname);
                     return true;
 
                 case eClassType.PresetRide:
                     var ride = this.PresetRides.FindClass(copyfrom);
-                    if (this.PresetRides.GetClassIndex(newname) != -1) return false;
+                    if (this.PresetRides.Classes.ContainsKey(newname)) return false;
                     if (ride == null) return false;
                     if (newname.Length > 0x1E) return false;
-                    this.PresetRides.Classes.Add(ride.MemoryCast(newname));
+                    this.PresetRides.Classes[newname] = ride.MemoryCast(newname);
                     return true;
 
                 case eClassType.PresetSkin:
                     var skin = this.PresetSkins.FindClass(copyfrom);
-                    if (this.PresetSkins.GetClassIndex(newname) != -1) return false;
+                    if (this.PresetSkins.Classes.ContainsKey(newname)) return false;
                     if (skin == null) return false;
                     if (newname.Length > 0x1E) return false;
-                    this.PresetSkins.Classes.Add(skin.MemoryCast(newname));
+                    this.PresetSkins.Classes[newname] = skin.MemoryCast(newname);
                     return true;
 
                 default:

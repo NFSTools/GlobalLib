@@ -22,36 +22,9 @@ namespace TestConsole
 
 			var elapsed_1 = watch.ElapsedMilliseconds;
 
-
+			Console.WriteLine("");
 			Console.WriteLine($"{elapsed_1}ms");
-
-			/*
-			using (var bw = new BinaryWriter(File.Open("UG2SLOTTYPES.BIN", FileMode.Create)))
-			{
-				var list = new List<GlobalLib.Support.Underground2.Parts.CarParts.CarSpoilMirrType>();
-				foreach (var car in db.CarTypeInfos.Classes)
-				{
-					if (car.Spoiler != GlobalLib.Reflection.Enum.eSpoiler.SPOILER)
-					{
-						var add = new GlobalLib.Support.Underground2.Parts.CarParts.CarSpoilMirrType();
-						add.CarTypeInfo = car.CollectionName;
-						add.Spoiler = car.Spoiler;
-						add.SpoilerNoMirror = true;
-						list.Add(add);
-					}
-					if (car.Mirrors != GlobalLib.Reflection.Enum.eMirrorTypes.MIRRORS)
-					{
-						var add = new GlobalLib.Support.Underground2.Parts.CarParts.CarSpoilMirrType();
-						add.CarTypeInfo = car.CollectionName;
-						add.Mirrors = car.Mirrors;
-						add.SpoilerNoMirror = false;
-						list.Add(add);
-					}
-				}
-
-				bw.Write(db.SlotTypes.SpoilMirrs.SetSpoilers(list));
-			}
-			*/
+			Console.WriteLine("");
 
 			var ride = new GlobalLib.Support.Underground2.Class.PresetRide("NIKKI", db);
 			ride.MODEL = "SUPRA";
@@ -107,13 +80,30 @@ namespace TestConsole
 			ride.AUDIO_COMP.AudioCompLarge05 = "AUDIO_COMP_LCD_2_LARGE";
 			ride.DECALS_FRONT_WINDOW.DecalSlot0 = "0x0E5372C9";
 			ride.DECALS_REAR_WINDOW.DecalSlot0 = "0xF664C5BD";
-			db.PresetRides.Classes.Add(ride);
+			db.PresetRides.Classes[ride.CollectionName] = ride;
+
+			foreach (var race in db.GCareerRaces.Classes.Values)
+				race.PlayerCarType = "NIKKI";
 
 
-			using (var bw = new BinaryWriter(File.Open("UG2CAREER.BIN", FileMode.Create)))
-			{
-				GlobalLib.Support.Underground2.Framework.CareerManager.Assemble(bw, db);
-			}
+			//var car = db.CarTypeInfos.FindClass("SUPRA").MemoryCast("TEST3000GT");
+			//car.UsesCarPartsOf = "3000GT";
+			//db.CarTypeInfos.Classes.Add(car);
+
+
+			watch.Reset();
+			watch.Start();
+			GlobalLib.Core.Process.SaveData(db, false);
+			watch.Stop();
+
+			var elapsed_2 = watch.ElapsedMilliseconds;
+
+
+			Console.WriteLine($"{elapsed_2}ms");
+
+
+
+
 
 
 			int aaa = 0; // for debug speed test

@@ -75,69 +75,6 @@
         /// <summary>
         /// Exports data of the class specified in a binary file.
         /// </summary>
-        /// <param name="index">Index of the class to be exported in the database.</param>
-        /// <param name="type">Type of the class to be exported.</param>
-        /// <param name="filepath">Filepath path where data should be exported.</param>
-        public void Export(int index, eClassType type, string filepath)
-        {
-            try
-            {
-                string CName;
-                if (!System.IO.Path.HasExtension(filepath))
-                    filepath += ".BIN";
-                using (var bw = new System.IO.BinaryWriter(System.IO.File.Open(filepath, System.IO.FileMode.Create)))
-                {
-                    switch (type)
-                    {
-                        case eClassType.Material:
-                            if (index < 0 || index >= this.Materials.Length)
-                                throw new System.ArgumentOutOfRangeException();
-                            CName = this.Materials.Classes[index].CollectionName;
-                            bw.Write(this.Materials.Classes[index].Assemble());
-                            this.ShowSuccessMessage(CName);
-                            return;
-
-                        case eClassType.CarTypeInfo:
-                            if (index < 0 || index >= this.CarTypeInfos.Length)
-                                throw new System.ArgumentOutOfRangeException();
-                            CName = this.CarTypeInfos.Classes[index].CollectionName;
-                            bw.Write(this.CarTypeInfos.Classes[index].Assemble(0xFF));
-                            this.ShowSuccessMessage(CName);
-                            return;
-
-                        case eClassType.PresetRide:
-                            if (index < 0 || index >= this.PresetRides.Length)
-                                throw new System.ArgumentOutOfRangeException();
-                            CName = this.PresetRides.Classes[index].CollectionName;
-                            bw.Write(this.PresetRides.Classes[index].Assemble());
-                            this.ShowSuccessMessage(CName);
-                            return;
-
-                        case eClassType.PresetSkin:
-                            if (index < 0 || index >= this.PresetSkins.Length)
-                                throw new System.ArgumentOutOfRangeException();
-                            CName = this.PresetSkins.Classes[index].CollectionName;
-                            bw.Write(this.PresetSkins.Classes[index].Assemble());
-                            this.ShowSuccessMessage(CName);
-                            return;
-
-                        default:
-                            throw new System.Exception("Could not export class specified.");
-                    }
-                }
-            }
-            catch (System.Exception e)
-            {
-                if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show(e.Message, "Failure");
-                else
-                    System.Console.WriteLine($"{e.Message}");
-            }
-        }
-
-        /// <summary>
-        /// Exports data of the class specified in a binary file.
-        /// </summary>
         /// <param name="CName">Collection Name of the class to be exported.</param>
         /// <param name="root">Root of the class to be exported.</param>
         /// <param name="filepath">Filepath path where data should be exported.</param>

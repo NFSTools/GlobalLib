@@ -18,7 +18,7 @@
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
 				if (!Framework.Validate.PerfSliderCollectionName(value))
 					throw new System.Exception("Unable to parse value provided as a hexadecimal containing tuning settings.");
-				if (this.Database.PerfSliderTunings.GetClassIndex(value) != -1)
+				if (this.Database.PerfSliderTunings.Classes.ContainsKey(value))
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

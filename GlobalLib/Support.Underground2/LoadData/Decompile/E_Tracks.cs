@@ -24,7 +24,7 @@
                 Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 
                 var Class = new Gameplay.Track(byteptr_t + offset, CName, db);
-                db.Tracks.Classes.Add(Class);
+                db.Tracks.Classes[CName] = Class;
             }
         }
     }

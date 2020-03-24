@@ -11,13 +11,12 @@
         public bool TryRemoveClass(string CName, eClassType type)
         {
             int index = -1;
+            if (string.IsNullOrEmpty(CName)) return false;
 
             switch (type)
             {
                 case eClassType.Material:
-                    if ((index = this.Materials.GetClassIndex(CName)) == -1) return false;
-                    this.Materials.Classes.RemoveAt(index);
-                    return true;
+                    return this.Materials.Classes.Remove(CName);
 
                 case eClassType.CarTypeInfo:
                     if ((index = this.CarTypeInfos.GetClassIndex(CName)) == -1) return false;

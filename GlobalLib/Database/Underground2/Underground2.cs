@@ -5,30 +5,26 @@ using GlobalLib.Support.Underground2.Gameplay;
 
 namespace GlobalLib.Database
 {
-    public partial class Underground2 : Reflection.Interface.IGetIndex//, Reflection.Interface.IOperative
+    public partial class Underground2 : Reflection.Abstract.Basic, Reflection.Interface.IGetIndex//, Reflection.Interface.IOperative
     {
-        public byte[] _GlobalABUN;
-        public byte[] _GlobalBLZC;
-        public byte[] _LngGlobal;
-        public byte[] _LngLabels;
-        public Collection.ClassCollection<Material> Materials { get; set; }
-        public Collection.ClassCollection<CarTypeInfo> CarTypeInfos { get; set; }
-        public Collection.ClassCollection<PresetRide> PresetRides { get; set; }
-        public Collection.ClassCollection<SunInfo> SunInfos { get; set; }
-        public Collection.ClassCollection<Track> Tracks { get; set; }
-        public Collection.ClassCollection<GCareerRace> GCareerRaces { get; set; }
-        public Collection.ClassCollection<WorldShop> WorldShops { get; set; }
-        public Collection.ClassCollection<GCareerBrand> GCareerBrands { get; set; }
-        public Collection.ClassCollection<PartPerformance> PartPerformances { get; set; }
-        public Collection.ClassCollection<GShowcase> GShowcases { get; set; }
-        public Collection.ClassCollection<SMSMessage> SMSMessages { get; set; }
-        public Collection.ClassCollection<Sponsor> Sponsors { get; set; }
-        public Collection.ClassCollection<GCareerStage> GCareerStages { get; set; }
-        public Collection.ClassCollection<PerfSliderTuning> PerfSliderTunings { get; set; }
-        public Collection.ClassCollection<WorldChallenge> WorldChallenges { get; set; }
-        public Collection.ClassCollection<PartUnlockable> PartUnlockables { get; set; }
-        public Collection.ClassCollection<BankTrigger> BankTriggers { get; set; }
-        public Collection.ClassCollection<GCarUnlock> GCarUnlocks { get; set; }
+        public Collection.Binary<Material> Materials { get; set; }
+        public Collection.Binary<CarTypeInfo> CarTypeInfos { get; set; }
+        public Collection.Binary<PresetRide> PresetRides { get; set; }
+        public Collection.Binary<SunInfo> SunInfos { get; set; }
+        public Collection.Binary<Track> Tracks { get; set; }
+        public Collection.Binary<GCareerRace> GCareerRaces { get; set; }
+        public Collection.Binary<WorldShop> WorldShops { get; set; }
+        public Collection.Binary<GCareerBrand> GCareerBrands { get; set; }
+        public Collection.Binary<PartPerformance> PartPerformances { get; set; }
+        public Collection.Binary<GShowcase> GShowcases { get; set; }
+        public Collection.Binary<SMSMessage> SMSMessages { get; set; }
+        public Collection.Binary<Sponsor> Sponsors { get; set; }
+        public Collection.Binary<GCareerStage> GCareerStages { get; set; }
+        public Collection.Binary<PerfSliderTuning> PerfSliderTunings { get; set; }
+        public Collection.Binary<WorldChallenge> WorldChallenges { get; set; }
+        public Collection.Binary<PartUnlockable> PartUnlockables { get; set; }
+        public Collection.Binary<BankTrigger> BankTriggers { get; set; }
+        public Collection.Binary<GCarUnlock> GCarUnlocks { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -36,25 +32,25 @@ namespace GlobalLib.Database
 
         public Underground2()
         {
-            this.CarTypeInfos = new Collection.ClassCollection<CarTypeInfo>();
+            this.CarTypeInfos = new Collection.Binary<CarTypeInfo>();
             this.FNGroups = new List<FNGroup>();
-            this.Materials = new Collection.ClassCollection<Material>();
-            this.PresetRides = new Collection.ClassCollection<PresetRide>();
-            this.SunInfos = new Collection.ClassCollection<SunInfo>();
-            this.Tracks = new Collection.ClassCollection<Track>();
-            this.GCareerRaces = new Collection.ClassCollection<GCareerRace>();
-            this.WorldShops = new Collection.ClassCollection<WorldShop>();
-            this.GCareerBrands = new Collection.ClassCollection<GCareerBrand>();
-            this.PartPerformances = new Collection.ClassCollection<PartPerformance>();
-            this.GShowcases = new Collection.ClassCollection<GShowcase>();
-            this.SMSMessages = new Collection.ClassCollection<SMSMessage>();
-            this.Sponsors = new Collection.ClassCollection<Sponsor>();
-            this.GCareerStages = new Collection.ClassCollection<GCareerStage>();
-            this.PerfSliderTunings = new Collection.ClassCollection<PerfSliderTuning>();
-            this.WorldChallenges = new Collection.ClassCollection<WorldChallenge>();
-            this.PartUnlockables = new Collection.ClassCollection<PartUnlockable>();
-            this.BankTriggers = new Collection.ClassCollection<BankTrigger>();
-            this.GCarUnlocks = new Collection.ClassCollection<GCarUnlock>();
+            this.Materials = new Collection.Binary<Material>();
+            this.PresetRides = new Collection.Binary<PresetRide>();
+            this.SunInfos = new Collection.Binary<SunInfo>();
+            this.Tracks = new Collection.Binary<Track>();
+            this.GCareerRaces = new Collection.Binary<GCareerRace>();
+            this.WorldShops = new Collection.Binary<WorldShop>();
+            this.GCareerBrands = new Collection.Binary<GCareerBrand>();
+            this.PartPerformances = new Collection.Binary<PartPerformance>();
+            this.GShowcases = new Collection.Binary<GShowcase>();
+            this.SMSMessages = new Collection.Binary<SMSMessage>();
+            this.Sponsors = new Collection.Binary<Sponsor>();
+            this.GCareerStages = new Collection.Binary<GCareerStage>();
+            this.PerfSliderTunings = new Collection.Binary<PerfSliderTuning>();
+            this.WorldChallenges = new Collection.Binary<WorldChallenge>();
+            this.PartUnlockables = new Collection.Binary<PartUnlockable>();
+            this.BankTriggers = new Collection.Binary<BankTrigger>();
+            this.GCarUnlocks = new Collection.Binary<GCarUnlock>();
             this.TPKBlocks = new List<TPKBlock>();
             this.SlotTypes = new SlotType();
             this.STRBlocks = new STRBlock();

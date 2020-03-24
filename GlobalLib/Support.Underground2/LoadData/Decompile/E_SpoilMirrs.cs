@@ -9,10 +9,7 @@
         private static void E_SpoilMirrs(Database.Underground2 db)
         {
             if (db.SlotTypes.SpoilMirrs == null) return;
-            var CNameList = new System.Collections.Generic.List<string>();
-            
-            for (int a1 = 0; a1 < db.CarTypeInfos.Length; ++a1)
-                CNameList.Add(db.CarTypeInfos.Classes[a1].CollectionName);
+            var CNameList = new System.Collections.Generic.List<string>(db.CarTypeInfos.Classes.Keys);
             
             var AllSlots = db.SlotTypes.SpoilMirrs.GetSpoilMirrs(CNameList);
             if (AllSlots == null || AllSlots.Count == 0) return;

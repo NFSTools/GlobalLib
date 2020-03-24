@@ -70,7 +70,9 @@
     <Compile Include="Database\Underground2\GetClassIndex.cs" />
     <Compile Include="Database\Underground2\ToString.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />
+    <Compile Include="Reflection\Abstract\Basic.cs" />
     <Compile Include="Reflection\Abstract\Collectable.cs" />
+    <Compile Include="Reflection\Abstract\VirtualNode.cs" />
     <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
     <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />
     <Compile Include="Database\Carbon\ExportTextures.cs" />
@@ -807,6 +809,8 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part56.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarParts.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarSkins.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_DefaultCarPartValues.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_GlobalLibBlock.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_PresetRides.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SlotType.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SpoilMirrs.cs" />
@@ -848,6 +852,21 @@
     <Compile Include="Support.Underground2\Parts\PresetParts\Specialties.cs" />
     <Compile Include="Support.Underground2\Parts\PresetParts\PaintTypes.cs" />
     <Compile Include="Support.Underground2\Parts\PresetParts\VinylSets.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_CarParts.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_CarSkins.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_LibCarParts.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_Tracks.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_SunInfos.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_CarTypeInfo.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_FNGroup.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_GlobalLibBlock.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_Materials.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_PresetRides.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_SlotType.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_TPKBlock.cs" />
+    <Compile Include="Support.Underground2\SaveData\SaveGlobalA.cs" />
+    <Compile Include="Support.Underground2\SaveData\SaveGlobalB.cs" />
+    <Compile Include="Support.Underground2\SaveData\SaveLanguage.cs" />
     <Compile Include="Utils\Cast\DynamicCast.cs" />
     <Compile Include="Utils\Cast\MemoryCast.cs" />
     <Compile Include="Utils\Cast\ReinterpretCast.cs" />
@@ -883,8 +902,6 @@
     <Compile Include="Utils\HTML\TagFormatter.cs" />
     <Compile Include="Utils\HTML\HTMLTextBox.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Support.Underground2\SaveData\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

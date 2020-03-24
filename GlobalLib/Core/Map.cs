@@ -17,9 +17,9 @@ namespace GlobalLib.Core
         public static Dictionary<uint, string> VltKeys { get; } = new Dictionary<uint, string>();
 
         /// <summary>
-        /// Used to store all preset labels and save them in global data.
+        /// Represents map of all possible carparts that can be used.
         /// </summary>
-        public static List<string> PresetLabels { get; set; }
+        public static List<string> CarPartsMap { get; set; } = new List<string>();
 
         /// <summary>
         /// Represents map of all possible collisions that can be used.

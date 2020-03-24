@@ -12,7 +12,7 @@
 
 				var Reader = new Parts.CarParts.CarSkin();
 				Reader.Read(byteptr_t + offset, out int id, out int index);
-				var car = db.CarTypeInfos.Classes.Find(c => c.Index == id);
+				var car = db.CarTypeInfos.FindClassWithValue("Index", index);
 				if (car == null) continue;
 				
 				switch (index)
