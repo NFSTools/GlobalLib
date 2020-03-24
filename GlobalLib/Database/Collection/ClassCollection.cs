@@ -14,16 +14,18 @@ namespace GlobalLib.Database.Collection
 		public int MaxCNameLength { get; }
 		public int CNameOffsetAt { get; }
 		public int BaseClassSize { get; }
+		public bool Resizable { get; }
 		private readonly bool importable = false;
 		public BasicBase Database { get; set; }
 
-		public Binary(string name, int maxlength, int offsetat, int basesize, bool importable)
+		public Binary(string name, int maxlength, int offsetat, int basesize, bool resizable, bool importable)
 		{
 			this.Classes = new Dictionary<string, TypeID>();
 			this.ThisName = name;
 			this.MaxCNameLength = maxlength;
 			this.CNameOffsetAt = offsetat;
 			this.BaseClassSize = basesize;
+			this.Resizable = resizable;
 			this.importable = importable;
 		}
 

@@ -1,23 +1,59 @@
-﻿namespace GlobalLib.Database
+﻿using System.Collections.Generic;
+using GlobalLib.Database.Collection;
+using GlobalLib.Support.Carbon.Class;
+
+
+
+namespace GlobalLib.Database
 {
 	public partial class Carbon
 	{
 		private void Initialize()
 		{
-			this.CarTypeInfos = new Collection.Binary<CarTypeInfo>();
-			this.Materials = new Collection.Binary<Material>();
-			this.PresetRides = new Collection.Binary<PresetRide>();
-			this.PresetSkins = new Collection.Binary<PresetSkin>();
-			
-			
-			
-			
+			this.Materials = new Binary<Material>
+			(
+				"Materials",
+				Material.MaxCNameLength,
+				Material.CNameOffsetAt,
+				Material.BaseClassSize,
+				true,
+				true
+			);
+
+			this.CarTypeInfos = new Binary<CarTypeInfo>
+			(
+				"CarTypeInfos",
+				CarTypeInfo.MaxCNameLength,
+				CarTypeInfo.CNameOffsetAt,
+				CarTypeInfo.BaseClassSize,
+				true,
+				true
+			);
+
+			this.PresetRides = new Binary<PresetRide>
+			(
+				"PresetRides",
+				PresetRide.MaxCNameLength,
+				PresetRide.CNameOffsetAt,
+				PresetRide.BaseClassSize,
+				true,
+				true
+			);
+
+			this.PresetSkins = new Binary<PresetSkin>
+			(
+				"PresetSkins",
+				PresetSkin.MaxCNameLength,
+				PresetSkin.CNameOffsetAt,
+				PresetSkin.BaseClassSize,
+				true,
+				true
+			);
 			
 			this.FNGroups = new List<FNGroup>();
 			this.TPKBlocks = new List<TPKBlock>();
 			this.SlotTypes = new SlotType();
 			this.STRBlocks = new STRBlock();
-
 		}
 	}
 }

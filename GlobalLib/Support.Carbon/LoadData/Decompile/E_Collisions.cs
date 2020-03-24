@@ -11,7 +11,6 @@ namespace GlobalLib.Support.Carbon
             db.SlotTypes.Collisions = new Dictionary<uint, Parts.CarParts.Collision>();
 
             // Make a map of vlt hash cartypeinfo and indexes
-            int at = 0;
             var CNameToIndex = new Dictionary<uint, string>();
             foreach (var pair in db.CarTypeInfos.Classes)
                 CNameToIndex[pair.Value.VltKey] = pair.Key;
