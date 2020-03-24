@@ -21,7 +21,7 @@
 
             if (newname.Length > 0x22) return false;
 
-            var texture = this.Textures[index].MemoryCast(newname);
+            var texture = (Texture)this.Textures[index].MemoryCast(newname);
             this.Textures.Add(texture);
             return true;
         }

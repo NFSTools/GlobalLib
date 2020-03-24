@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Carbon.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo
     {
         /// <summary>
         /// Casts all attributes from this object to another one.
