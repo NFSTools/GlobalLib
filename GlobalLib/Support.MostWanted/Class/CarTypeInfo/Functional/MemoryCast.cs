@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public CarTypeInfo MemoryCast(string CName)
+        public new CarTypeInfo MemoryCast(string CName)
         {
             var result = new CarTypeInfo(CName, this.Database);
 

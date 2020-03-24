@@ -14,11 +14,11 @@
         }
 
         // Default constructor: disassemble material
-        public unsafe Material(byte* byteptr_t, string CName, Database.MostWanted db)
+        public unsafe Material(System.IntPtr byteptr_t, string CName, Database.MostWanted db)
         {
             this.Database = db;
             this.CollectionName = CName;
-            this.Disassemble(byteptr_t);
+            this.Disassemble((byte*)byteptr_t);
         }
 
         ~Material() { }

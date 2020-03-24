@@ -26,13 +26,13 @@
                 Intermid56.Add(db.SlotTypes.Part56[a1].MemoryCast());
 
             // Go through all cartypeinfo, set correct usagetype and keys
-            for (int a1 = 0; a1 < db.CarTypeInfos.Length; ++a1)
+            foreach (var car in db.CarTypeInfos.Classes.Values)
             {
                 bool CarDoesExist = false;
                 int index = 0;
-                string CName = db.CarTypeInfos.Classes[a1].CollectionName;
-                uint ckey = db.CarTypeInfos.Classes[a1].BinKey;
-                uint okey = Utils.Bin.Hash(db.CarTypeInfos.Classes[a1].OriginalName);
+                string CName = car.CollectionName;
+                uint ckey = car.BinKey;
+                uint okey = Utils.Bin.Hash(car.OriginalName);
                 keylists.Add(ckey);
                 for (index = 0; index < Intermid56.Count; ++index)
                 {
@@ -44,7 +44,7 @@
                 }
                 if (CarDoesExist)
                 {
-                    if (ckey != okey || db.CarTypeInfos.Classes[a1].Modified)
+                    if (ckey != okey || car.Modified)
                         Intermid56[index] = new Parts.CarParts.Part56(CName, (byte)index);
                 }
                 else

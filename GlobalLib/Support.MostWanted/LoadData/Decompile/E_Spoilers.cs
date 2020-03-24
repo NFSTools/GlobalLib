@@ -10,20 +10,15 @@
         {
             if (db.SlotTypes.Spoilers == null) return;
             var CNameList = new System.Collections.Generic.List<string>();
-            for (int a1 = 0; a1 < db.CarTypeInfos.Length; ++a1)
-                CNameList.Add(db.CarTypeInfos.Classes[a1].CollectionName);
+            foreach (var car in db.CarTypeInfos.Classes.Values)
+                CNameList.Add(car.CollectionName);
             var AllSlots = db.SlotTypes.Spoilers.GetSpoilers(CNameList);
             if (AllSlots == null || AllSlots.Count == 0) return;
             foreach (var Slot in AllSlots)
             {
-                for (int a1 = 0; a1 < db.CarTypeInfos.Length; ++a1)
-                {
-                    if (Slot.CarTypeInfo == db.CarTypeInfos.Classes[a1].CollectionName)
-                    {
-                        db.CarTypeInfos.Classes[a1].Spoiler = Slot.Spoiler;
-                        break;
-                    }
-                }
+                var car = db.CarTypeInfos.FindClass(Slot.CarTypeInfo);
+                if (car == null) continue;
+                car.Spoiler = Slot.Spoiler;
             }
         }
     }

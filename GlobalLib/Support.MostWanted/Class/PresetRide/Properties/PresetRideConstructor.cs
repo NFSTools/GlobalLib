@@ -19,13 +19,13 @@
         }
 
         // Default constructor: disassemble preset
-        public unsafe PresetRide(byte* byteptr_t, string CName, Database.MostWanted db)
+        public unsafe PresetRide(System.IntPtr byteptr_t, string CName, Database.MostWanted db)
         {
             this.Database = db;
             this.data = new byte[0x290];
             this.CollectionName = CName;
             this.Exists = true;
-            this.Disassemble(byteptr_t);
+            this.Disassemble((byte*)byteptr_t);
             this.Modified = false;
         }
 

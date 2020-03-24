@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public PresetRide MemoryCast(string CName)
+        public new PresetRide MemoryCast(string CName)
         {
             var result = new PresetRide(CName, this.Database);
 

@@ -9,8 +9,8 @@
         /// <param name="bw">BinaryWriter for writing data.</param>
         private static void I_Materials(Database.MostWanted db, System.IO.BinaryWriter bw)
         {
-            for (int a1 = 0; a1 < db.Materials.Length; ++a1)
-                bw.Write(db.Materials.Classes[a1].Assemble());
+            foreach (var material in db.Materials.Classes.Values)
+                bw.Write(material.Assemble());
         }
     }
 }

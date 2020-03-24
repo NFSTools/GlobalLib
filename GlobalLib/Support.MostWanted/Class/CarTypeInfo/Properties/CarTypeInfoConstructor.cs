@@ -24,12 +24,12 @@
         }
 
         // Default constructor: disassemble cartypeinfo
-        public unsafe CarTypeInfo(byte* byteptr_t, string CName, Database.MostWanted db)
+        public unsafe CarTypeInfo(System.IntPtr byteptr_t, string CName, Database.MostWanted db)
         {
             this.Database = db;
             this.CollectionName = CName;
             this.OriginalName = CName;
-            this.Disassemble(byteptr_t);
+            this.Disassemble((byte*)byteptr_t);
             if (this.Index <= (int)Reflection.Enum.eBoundValues.MIN_INFO_MOSTWANTED)
                 this.Deletable = false;
             this.Modified = false;
