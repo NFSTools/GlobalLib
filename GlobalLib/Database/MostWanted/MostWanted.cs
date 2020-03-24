@@ -5,7 +5,7 @@ using GlobalLib.Support.MostWanted.Class;
 
 namespace GlobalLib.Database
 {
-    public partial class MostWanted : Reflection.Abstract.BasicBase, Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
+    public partial class MostWanted : Reflection.Abstract.BasicBase
     {
         public Collection.Binary<Material> Materials { get; set; }
         public Collection.Binary<CarTypeInfo> CarTypeInfos { get; set; }
@@ -17,13 +17,7 @@ namespace GlobalLib.Database
 
         public MostWanted()
         {
-            this.CarTypeInfos = new Collection.Binary<CarTypeInfo>();
-            this.Materials = new Collection.Binary<Material>();
-            this.PresetRides = new Collection.Binary<PresetRide>();
-            this.FNGroups = new List<FNGroup>();
-            this.TPKBlocks = new List<TPKBlock>();
-            this.SlotTypes = new SlotType();
-            this.STRBlocks = new STRBlock();
+            this.Initialize();
         }
 
         ~MostWanted()

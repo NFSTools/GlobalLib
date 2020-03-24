@@ -12,15 +12,6 @@
         {
             switch (classtype)
             {
-                case eClassType.Material:
-                    return this.Materials.GetClassIndex(CName);
-                
-                case eClassType.CarTypeInfo:
-                    return this.CarTypeInfos.GetClassIndex(CName);
-                    
-                case eClassType.PresetRide:
-                    return this.PresetRides.GetClassIndex(CName);
-
                 case eClassType.FNGroup:
                     for (int a1 = 0; a1 < this.FNGroups.Count; ++a1)
                         if (CName == this.FNGroups[a1].CollectionName)

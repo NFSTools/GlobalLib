@@ -12,24 +12,6 @@
         {
             switch (classtype)
             {
-                //case ClassType.Material:
-                //    for (int a1 = 0; a1 < this.Materials.Count; ++a1)
-                //        if (CName == this.Materials[a1].CollectionName)
-                //            return a1;
-                //    break;
-                
-                //case ClassType.CarTypeInfo:
-                //    for (int a1 = 0; a1 < this.CarTypeInfos.Count; ++a1)
-                //        if (CName == this.CarTypeInfos[a1].CollectionName)
-                //            return a1;
-                //    break;
-                
-                //case ClassType.PresetRide:
-                //    for (int a1 = 0; a1 < this.PresetRides.Count; ++a1)
-                //        if (CName == this.PresetRides[a1].CollectionName)
-                //            return a1;
-                //    break;
-
                 case eClassType.FNGroup:
                     for (int a1 = 0; a1 < this.FNGroups.Count; ++a1)
                         if (CName == this.FNGroups[a1].CollectionName)

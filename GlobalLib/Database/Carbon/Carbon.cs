@@ -5,7 +5,7 @@ using GlobalLib.Support.Carbon.Class;
 
 namespace GlobalLib.Database
 {
-    public partial class Carbon : Reflection.Abstract.BasicBase, Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
+    public partial class Carbon : Reflection.Abstract.BasicBase, Reflection.Interface.IGetIndex
     {
         public Collection.Binary<Material> Materials { get; set; }
         public Collection.Binary<CarTypeInfo> CarTypeInfos { get; set; }
@@ -18,14 +18,7 @@ namespace GlobalLib.Database
 
         public Carbon()
         {
-            this.CarTypeInfos = new Collection.Binary<CarTypeInfo>();
-            this.Materials = new Collection.Binary<Material>();
-            this.PresetRides = new Collection.Binary<PresetRide>();
-            this.PresetSkins = new Collection.Binary<PresetSkin>();
-            this.FNGroups = new List<FNGroup>();
-            this.TPKBlocks = new List<TPKBlock>();
-            this.SlotTypes = new SlotType();
-            this.STRBlocks = new STRBlock();
+            this.Initialize();
         }
 
         ~Carbon()

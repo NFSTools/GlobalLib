@@ -9,14 +9,22 @@ namespace GlobalLib.Database.Collection
 	public class Binary<TypeID> where TypeID : Collectable, new()
 	{
 		public Dictionary<string, TypeID> Classes { get; set; }
+		public string ThisName { get; set; }
 		public int Length { get => this.Classes.Count; }
 		public int MaxCNameLength { get; }
+		public int CNameOffsetAt { get; }
+		public int BaseClassSize { get; }
+		private readonly bool importable = false;
 		public BasicBase Database { get; set; }
 
-		public Binary(int maxlength)
+		public Binary(string name, int maxlength, int offsetat, int basesize, bool importable)
 		{
 			this.Classes = new Dictionary<string, TypeID>();
+			this.ThisName = name;
 			this.MaxCNameLength = maxlength;
+			this.CNameOffsetAt = offsetat;
+			this.BaseClassSize = basesize;
+			this.importable = importable;
 		}
 
 		public TypeID FindClass(string CName)
@@ -80,7 +88,6 @@ namespace GlobalLib.Database.Collection
 					return false;
 			}
 		}
-
 		public bool TrySetClassValue(ref string error, params string[] tokens)
 		{
 			switch (tokens.Length)
@@ -94,7 +101,6 @@ namespace GlobalLib.Database.Collection
 					return false;
 			}
 		}
-
 		public bool TrySetStaticValue(params string[] tokens)
 		{
 			switch (tokens.Length)
@@ -198,9 +204,57 @@ namespace GlobalLib.Database.Collection
 			return true;
 		}
 
+		public unsafe bool TryImportClass(byte[] data)
+		{
+			if (!this.importable) return false;
+			if (data.Length != this.BaseClassSize) return false;
+			
+			string CName = string.Empty;
+			fixed (byte* dataptr_t = &data[0])
+			{
+				CName = Utils.ScriptX.NullTerminatedString(dataptr_t, this.MaxCNameLength);
+				if (this.Classes.ContainsKey(CName)) return false;
+
+				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(byte).MakePointerType(), typeof(string), typeof(BasicBase) });
+				var instance = (TypeID)ctor.Invoke(new object[] { (IntPtr)dataptr_t, CName, this.Database });
+				this.Classes[CName] = instance;
+			}
+			return true;
+		}
+		public unsafe bool TryImportClass(byte[] data, out string error)
+		{
+			error = null;
+			if (!this.importable)
+			{
+				error = "Class collection specified is not importable.";
+				return false;
+			}
+			if (data.Length != this.BaseClassSize)
+			{
+				error = $"Size of the class imported is {data.Length} bytes, while should be {this.BaseClassSize} bytes.";
+				return false;
+			}
+
+			string CName = string.Empty;
+			fixed (byte* dataptr_t = &data[0])
+			{
+				CName = Utils.ScriptX.NullTerminatedString(dataptr_t, this.MaxCNameLength);
+				if (this.Classes.ContainsKey(CName))
+				{
+					error = $"Class with CollectionName {CName} already exists.";
+					return false;
+				}
+
+				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(byte).MakePointerType(), typeof(string), typeof(BasicBase) });
+				var instance = (TypeID)ctor.Invoke(new object[] { (IntPtr)dataptr_t, CName, this.Database });
+				this.Classes[CName] = instance;
+			}
+			return true;
+		}
+
 		public override string ToString()
 		{
-			return $"Count = {this.Length}";
+			return $"Collection: {this.ThisName} | Count = {this.Length}";
 		}
 	}
 }

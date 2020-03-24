@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Reflection.Abstract
 {
-	public abstract class BasicBase
+	public abstract class BasicBase : Interface.IOperative
 	{
 		public virtual byte[] _GlobalABUN { get; set; }
 		public virtual byte[] _GlobalBLZC { get; set; }
@@ -15,8 +15,8 @@
         /// <returns>True if class adding was successful, false otherwise.</returns>
         public bool TryAddClass(string CName, string root)
         {
-            var node = this.GetType().GetProperty(root);
-            if (root == null) return false;
+            var node = this.GetType().GetProperty(root ?? string.Empty);
+            if (node == null) return false;
 
             try
             {
@@ -37,8 +37,12 @@
         public bool TryAddClass(string CName, string root, out string error)
         {
             error = null;
-            var node = this.GetType().GetProperty(root);
-            if (root == null) return false;
+            var node = this.GetType().GetProperty(root ?? string.Empty);
+            if (node == null)
+            {
+                error = $"Root named {root} does not exist in the database.";
+                return false;
+            }
 
             try
             {
@@ -64,8 +68,8 @@
         /// <returns>True if class removing was successful, false otherwise.</returns>
         public bool TryRemoveClass(string CName, string root)
         {
-            var node = this.GetType().GetProperty(root);
-            if (root == null) return false;
+            var node = this.GetType().GetProperty(root ?? string.Empty);
+            if (node == null) return false;
 
             try
             {
@@ -86,8 +90,12 @@
         public bool TryRemoveClass(string CName, string root, out string error)
         {
             error = null;
-            var node = this.GetType().GetProperty(root);
-            if (root == null) return false;
+            var node = this.GetType().GetProperty(root ?? string.Empty);
+            if (node == null)
+            {
+                error = $"Root named {root} does not exist in the database.";
+                return false;
+            }
 
             try
             {
@@ -114,8 +122,8 @@
         /// <returns>True if class cloning was successful, false otherwise.</returns>
         public bool TryCloneClass(string newname, string copyfrom, string root)
         {
-            var node = this.GetType().GetProperty(root);
-            if (root == null) return false;
+            var node = this.GetType().GetProperty(root ?? string.Empty);
+            if (node == null) return false;
 
             try
             {
@@ -137,8 +145,12 @@
         public bool TryCloneClass(string newname, string copyfrom, string root, out string error)
         {
             error = null;
-            var node = this.GetType().GetProperty(root);
-            if (root == null) return false;
+            var node = this.GetType().GetProperty(root ?? string.Empty);
+            if (node == null)
+            {
+                error = $"Root named {root} does not exist in the database.";
+                return false;
+            }
 
             try
             {
@@ -152,6 +164,79 @@
             catch (System.Exception)
             {
                 error = $"Unable to copy class in root {root}.";
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Imports class data from a file specified.
+        /// </summary>
+        /// <param name="type">Class type to be imported. Range: Material, CarTypeInfo, PresetRide, PresetSkin.</param>
+        /// <param name="filepath">File with data to be imported.</param>
+        /// <returns>True if class import was successful, false otherwise.</returns>
+        public unsafe bool TryImportClass(string root, string filepath)
+        {
+            byte[] data;
+
+            try
+            {
+                data = System.IO.File.ReadAllBytes(filepath);
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+
+            var node = this.GetType().GetProperty(root);
+            if (root == null) return false;
+
+            return (bool)node.PropertyType
+                .GetMethod("TryImportClass", new System.Type[] { typeof(byte).MakeArrayType() })
+                .Invoke(node.GetValue(this), new object[] { data });
+        }
+
+        /// <summary>
+        /// Imports class data from a file specified.
+        /// </summary>
+        /// <param name="type">Class type to be imported. Range: Material, CarTypeInfo, PresetRide, PresetSkin.</param>
+        /// <param name="filepath">File with data to be imported.</param>
+        /// <param name="error"></param>
+        /// <returns>True if class import was successful, false otherwise.</returns>
+        public bool TryImportClass(string root, string filepath, out string error)
+        {
+            byte[] data;
+            error = null;
+
+            try
+            {
+                data = System.IO.File.ReadAllBytes(filepath);
+            }
+            catch (System.Exception e)
+            {
+                while (e.InnerException != null) e = e.InnerException;
+                error = e.Message;
+                return false;
+            }
+
+            var node = this.GetType().GetProperty(root ?? string.Empty);
+            if (node == null)
+            {
+                error = $"Root named {root} does not exist in the database.";
+                return false;
+            }
+
+            try
+            {
+                var callargs = new object[] { data, error };
+                bool result = (bool)node.PropertyType
+                    .GetMethod("TryImportClass", new System.Type[] { typeof(byte).MakeArrayType(), typeof(string).MakeByRefType() })
+                    .Invoke(node.GetValue(this), callargs);
+                error = callargs[1].ToString();
+                return result;
+            }
+            catch (System.Exception)
+            {
+                if (error == null) error = $"Unable to import class to the root {root}.";
                 return false;
             }
         }
