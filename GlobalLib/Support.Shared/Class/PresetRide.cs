@@ -113,6 +113,16 @@
         /// <returns>Sorted array of all preset parts hashes.</returns>
         protected virtual unsafe uint[] StringToKey(Parts.PresetParts.Concatenator parts) { return null; }
 
+        /// <summary>
+        /// Casts all attributes from this object to another one.
+        /// </summary>
+        /// <param name="CName">CollectionName of the new created object.</param>
+        /// <returns>Memory casted copy of the object.</returns>
+        public override Reflection.Abstract.Collectable MemoryCast(string CName)
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
     }
 }

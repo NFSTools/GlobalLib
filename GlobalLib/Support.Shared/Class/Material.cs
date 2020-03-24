@@ -48,6 +48,16 @@
         /// <param name="byteptr_t">Pointer to the material array.</param>
         protected virtual unsafe void Disassemble(byte* byteptr_t) { }
 
+        /// <summary>
+        /// Casts all attributes from this object to another one.
+        /// </summary>
+        /// <param name="CName">CollectionName of the new created object.</param>
+        /// <returns>Memory casted copy of the object.</returns>
+        public override Reflection.Abstract.Collectable MemoryCast(string CName)
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
     }
 }
