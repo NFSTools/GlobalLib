@@ -11,7 +11,7 @@ namespace GlobalLib.Database.Collection
 		public Dictionary<string, TypeID> Classes { get; set; }
 		public int Length { get => this.Classes.Count; }
 		public int MaxCNameLength { get; }
-		public Basic Database { get; set; }
+		public BasicBase Database { get; set; }
 
 		public Binary(int maxlength)
 		{
@@ -111,7 +111,7 @@ namespace GlobalLib.Database.Collection
 			if (string.IsNullOrWhiteSpace(value)) return false;
 			if (value.Length > MaxCNameLength) return false;
 			if (this.Classes.ContainsKey(value)) return false;
-			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), typeof(Basic) });
+			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), typeof(BasicBase) });
 			var instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
 			this.Classes[value] = instance;
 			return true;
@@ -134,7 +134,7 @@ namespace GlobalLib.Database.Collection
 				error = $"Class with CollectionName {value} already exists.";
 				return false;
 			}
-			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), typeof(Basic) });
+			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), typeof(BasicBase) });
 			var instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
 			this.Classes[value] = instance;
 			return true;

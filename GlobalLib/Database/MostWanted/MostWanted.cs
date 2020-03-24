@@ -5,7 +5,7 @@ using GlobalLib.Support.MostWanted.Class;
 
 namespace GlobalLib.Database
 {
-    public partial class MostWanted : Reflection.Abstract.Basic, Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
+    public partial class MostWanted : Reflection.Abstract.BasicBase, Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
     {
         public Collection.Binary<Material> Materials { get; set; }
         public Collection.Binary<CarTypeInfo> CarTypeInfos { get; set; }

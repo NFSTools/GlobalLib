@@ -56,17 +56,11 @@
     <Compile Include="Core\Map.cs" />
     <Compile Include="Core\Process.cs" />
     <Compile Include="Database\Carbon\ToString.cs" />
-    <Compile Include="Database\Carbon\TryAddClass.cs" />
     <Compile Include="Database\Carbon\AddCollision.cs" />
     <Compile Include="Database\Carbon\Carbon.cs" />
-    <Compile Include="Database\Carbon\TryCloneClass.cs" />
-    <Compile Include="Database\Carbon\TryRemoveClass.cs" />
     <Compile Include="Database\Collection\ClassCollection.cs" />
     <Compile Include="Database\Collection\eKeyType.cs" />
     <Compile Include="Database\MostWanted\ToString.cs" />
-    <Compile Include="Database\MostWanted\TryAddClass.cs" />
-    <Compile Include="Database\MostWanted\TryCloneClass.cs" />
-    <Compile Include="Database\MostWanted\TryRemoveClass.cs" />
     <Compile Include="Database\Underground2\GetClassIndex.cs" />
     <Compile Include="Database\Underground2\ToString.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />

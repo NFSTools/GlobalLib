@@ -5,7 +5,7 @@ using GlobalLib.Support.Carbon.Class;
 
 namespace GlobalLib.Database
 {
-    public partial class Carbon : Reflection.Abstract.Basic, Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
+    public partial class Carbon : Reflection.Abstract.BasicBase, Reflection.Interface.IGetIndex, Reflection.Interface.IOperative
     {
         public Collection.Binary<Material> Materials { get; set; }
         public Collection.Binary<CarTypeInfo> CarTypeInfos { get; set; }
