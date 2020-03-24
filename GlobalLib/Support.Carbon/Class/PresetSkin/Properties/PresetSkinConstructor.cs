@@ -14,11 +14,11 @@
         }
 
         // Default constructor: disassemble skin
-        public unsafe PresetSkin(byte* byteptr_t, string CName, Database.Carbon db)
+        public unsafe PresetSkin(System.IntPtr byteptr_t, string CName, Database.Carbon db)
         {
             this.Database = db;
             this.CollectionName = CName;
-            this.Disassemble(byteptr_t);
+            this.Disassemble((byte*)byteptr_t);
         }
 
         // Default destructor

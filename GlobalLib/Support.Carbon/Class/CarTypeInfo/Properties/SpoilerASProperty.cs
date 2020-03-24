@@ -14,10 +14,7 @@
             set
             {
                 if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoilerAS2), value))
-                {
                     this._spoilerAS = value;
-                    this.Modified = true;
-                }
                 else
                     throw new Reflection.Exception.MappingFailException();
             }

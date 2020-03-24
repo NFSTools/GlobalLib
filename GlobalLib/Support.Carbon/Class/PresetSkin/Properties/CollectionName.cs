@@ -15,9 +15,9 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException("This value cannot be left empty.");
-                if (value.Length > 0x1F)
+                if (value.Length > MaxCNameLength)
                     throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 31 characters.");
-                if (this.Database.GetClassIndex(value, GlobalLib.Database.eClassType.PresetSkin) != -1)
+                if (this.Database.PresetSkins.Classes.ContainsKey(value))
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;
             }

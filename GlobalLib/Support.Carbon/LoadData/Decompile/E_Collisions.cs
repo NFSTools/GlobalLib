@@ -11,9 +11,10 @@ namespace GlobalLib.Support.Carbon
             db.SlotTypes.Collisions = new Dictionary<uint, Parts.CarParts.Collision>();
 
             // Make a map of vlt hash cartypeinfo and indexes
-            var CNameToIndex = new Dictionary<uint, int>();
-            for (int a1 = 0; a1 < db.CarTypeInfos.Length; ++a1)
-                CNameToIndex[db.CarTypeInfos.Classes[a1].VltKey] = a1;
+            int at = 0;
+            var CNameToIndex = new Dictionary<uint, string>();
+            foreach (var pair in db.CarTypeInfos.Classes)
+                CNameToIndex[pair.Value.VltKey] = pair.Key;
 
             uint offset = 0;
             while (offset < length)
@@ -44,10 +45,10 @@ namespace GlobalLib.Support.Carbon
                         }
 
                         // Check if cartypeinfo with a set external key exists
-                        if (CNameToIndex.TryGetValue(extkey, out int index))
+                        if (CNameToIndex.TryGetValue(extkey, out var name))
                         {
-                            db.CarTypeInfos.Classes[index].CollisionExternalName = db.CarTypeInfos.Classes[index].CollectionName;
-                            db.CarTypeInfos.Classes[index].CollisionInternalName = CName;
+                            db.CarTypeInfos.Classes[name].CollisionExternalName = db.CarTypeInfos.Classes[name].CollectionName;
+                            db.CarTypeInfos.Classes[name].CollisionInternalName = CName;
                         }
                     }
                     else
@@ -69,10 +70,10 @@ namespace GlobalLib.Support.Carbon
                             db.SlotTypes.Collisions[extkey] = Class;
 
                             // Check if cartypeinfo with a set external key exists
-                            if (CNameToIndex.TryGetValue(extkey, out int index))
+                            if (CNameToIndex.TryGetValue(extkey, out var name))
                             {
-                                db.CarTypeInfos.Classes[index].CollisionExternalName = db.CarTypeInfos.Classes[index].CollectionName;
-                                db.CarTypeInfos.Classes[index].CollisionInternalName = db.CarTypeInfos.Classes[index].CollectionName;
+                                db.CarTypeInfos.Classes[name].CollisionExternalName = db.CarTypeInfos.Classes[name].CollectionName;
+                                db.CarTypeInfos.Classes[name].CollisionInternalName = db.CarTypeInfos.Classes[name].CollectionName;
                             }
                         }
                         else

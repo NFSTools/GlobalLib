@@ -9,7 +9,7 @@
 
             // Collision Block
             var CollisionsUsed = new System.Collections.Generic.List<string>();
-            foreach (var info in db.CarTypeInfos.Classes)
+            foreach (var info in db.CarTypeInfos.Classes.Values)
             {
                 if (info.CollisionExternalName == Reflection.BaseArguments.NULL)
                     continue;

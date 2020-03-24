@@ -22,8 +22,8 @@
                 CName = Utils.EA.Resolve.GetPathFromCollection(CName);
                 Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 
-                var Class = new Class.PresetRide(byteptr_t + offset, CName, db);
-                db.PresetRides.Classes.Add(Class);
+                var Class = new Class.PresetRide((System.IntPtr)(byteptr_t + offset), CName, db);
+                db.PresetRides.Classes[CName] = Class;
             }
         }
     }

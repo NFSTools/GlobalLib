@@ -5,19 +5,19 @@
 namespace GlobalLib.Reflection.Attributes
 {
 	/// <summary>
-	/// Indicates that the property is an expandable class of a node.
+	/// Indicates what the property/field is used for and its optional boundaries.
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-	class ExpandableAttribute : Attribute
+	class LabelAttribute : Attribute
 	{
 		/// <summary>
 		/// Parent of the property and/or node.
 		/// </summary>
-		public string Name { get; set; }
+		public string Label { get; set; }
 
-		public ExpandableAttribute(string Name)
+		public LabelAttribute(string Label)
 		{
-			this.Name = Name;
+			this.Label = Label;
 		}
 	}
 }

@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public PresetSkin MemoryCast(string CName)
+        public new PresetSkin MemoryCast(string CName)
         {
             var result = new PresetSkin(CName, this.Database);
 

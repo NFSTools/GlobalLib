@@ -24,8 +24,8 @@
                 if (!LibColBlockExists)
                     Core.Map.CollisionMap[Utils.Vlt.Hash(CName)] = CName;
 
-                var Class = new Class.CarTypeInfo(byteptr_t + offset, CName, db);
-                db.CarTypeInfos.Classes.Add(Class);
+                var Class = new Class.CarTypeInfo((System.IntPtr)(byteptr_t + offset), CName, db);
+                db.CarTypeInfos.Classes[CName] = Class;
             }
         }
     }

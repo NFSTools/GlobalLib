@@ -212,7 +212,7 @@ namespace GlobalLib.Database.Collection
 			string CName = string.Empty;
 			fixed (byte* dataptr_t = &data[0])
 			{
-				CName = Utils.ScriptX.NullTerminatedString(dataptr_t, this.MaxCNameLength);
+				CName = Utils.ScriptX.NullTerminatedString(dataptr_t);
 				if (this.Classes.ContainsKey(CName)) return false;
 
 				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(byte).MakePointerType(), typeof(string), typeof(BasicBase) });
@@ -238,7 +238,7 @@ namespace GlobalLib.Database.Collection
 			string CName = string.Empty;
 			fixed (byte* dataptr_t = &data[0])
 			{
-				CName = Utils.ScriptX.NullTerminatedString(dataptr_t, this.MaxCNameLength);
+				CName = Utils.ScriptX.NullTerminatedString(dataptr_t);
 				if (this.Classes.ContainsKey(CName))
 				{
 					error = $"Class with CollectionName {CName} already exists.";

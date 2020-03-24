@@ -20,14 +20,14 @@
         }
 
         // Default constructor: disassemble preset
-        public unsafe PresetRide(byte* byteptr_t, string CName, Database.Carbon db)
+        public unsafe PresetRide(System.IntPtr byteptr_t, string CName, Database.Carbon db)
         {
             this.Database = db;
             this.data = new byte[0x600];
             this.CollectionName = CName;
             this.Exists = true;
             this.Initialize();
-            this.Disassemble(byteptr_t);
+            this.Disassemble((byte*)byteptr_t);
             this.Modified = false;
         }
 

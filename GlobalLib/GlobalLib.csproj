@@ -82,6 +82,7 @@
     <Compile Include="Database\MostWanted\GetClassIndex.cs" />
     <Compile Include="Database\MostWanted\MostWanted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\Attributes\LabelAttribute.cs" />
     <Compile Include="Reflection\Enum\eBoolean.cs" />
     <Compile Include="Reflection\Enum\eBoundValues.cs" />
     <Compile Include="Reflection\Enum\eCarbonPaint.cs" />
