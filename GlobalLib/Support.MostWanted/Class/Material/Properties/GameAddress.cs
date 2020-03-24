@@ -17,7 +17,7 @@
         /// </summary>
         public Database.MostWanted Database { get; set; }
 
-        public const int MaxCNameLength = 0x1C;
+        public const int MaxCNameLength = 0x1B;
         public const int CNameOffsetAt = 0x1C;
         public const int BaseClassSize = 0xB0;
     }

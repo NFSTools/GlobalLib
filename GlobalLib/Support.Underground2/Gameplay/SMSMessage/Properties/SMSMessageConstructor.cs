@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class SMSMessage : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<SMSMessage>
+	public partial class SMSMessage : Reflection.Abstract.Collectable
 	{
 		// Default constructor
 		public SMSMessage() { }

@@ -14,7 +14,7 @@
 			{
 				int ptr_header = PartOffsets[2] + a1 * 0xA0 + 8;
 				var Class = new Gameplay.WorldShop(byteptr_t + ptr_header, db);
-				db.WorldShops.Classes.Add(Class);
+				db.WorldShops.Classes[Class.CollectionName] = Class;
 			}
 		}
 	}

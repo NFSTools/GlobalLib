@@ -10,9 +10,9 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.BRAND_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				for (int a1 = 0; a1 < db.GCareerBrands.Length; ++a1)
+				foreach (var brand in db.GCareerBrands.Classes.Values)
 				{
-					db.GCareerBrands.Classes[a1].Assemble(byteptr_t + offset, mw);
+					brand.Assemble(byteptr_t + offset, mw);
 					offset += 0x44;
 				}
 			}

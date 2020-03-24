@@ -686,7 +686,6 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\ValidateSpinning.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\AutosculptRearBumper.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\TrunkAudioSettings.cs" />
-    <Compile Include="Support.Underground2\Class\PresetRide\Properties\NeonSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\CarbonfibreSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\HUDSettings.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\SubClassesSettings.cs" />

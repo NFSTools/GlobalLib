@@ -10,9 +10,9 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.SMS_MESSAGE_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				for (int a1 = 0; a1 < db.SMSMessages.Length; ++a1)
+				foreach (var message in db.SMSMessages.Classes.Values)
 				{
-					db.SMSMessages.Classes[a1].Assemble(byteptr_t + offset, mw);
+					message.Assemble(byteptr_t + offset, mw);
 					offset += 0x14;
 				}
 			}

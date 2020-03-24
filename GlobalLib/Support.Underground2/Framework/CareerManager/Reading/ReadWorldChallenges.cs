@@ -15,7 +15,7 @@
 				int ptr_string = PartOffsets[0] + 8;
 				int ptr_header = PartOffsets[10] + a1 * 0x18 + 8;
 				var Class = new Gameplay.WorldChallenge(byteptr_t + ptr_header, byteptr_t + ptr_string, db);
-				db.WorldChallenges.Classes.Add(Class);
+				db.WorldChallenges.Classes[Class.CollectionName] = Class;
 			}
 		}
 	}

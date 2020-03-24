@@ -13,7 +13,7 @@
 
 			// Challenge Trigger
 			pointer = *(ushort*)(ptr_header + 2);
-			this.WorldChallengeTrigger = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			this._world_trigger = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
 
 			// Stage and Unlock settings
 			this.BelongsToStage = *(ptr_header + 4);

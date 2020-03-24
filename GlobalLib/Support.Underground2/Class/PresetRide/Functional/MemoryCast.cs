@@ -2,7 +2,7 @@
 {
 	public partial class PresetRide
 	{
-		public PresetRide MemoryCast(string CName)
+		public override Reflection.Abstract.Collectable MemoryCast(string CName)
 		{
 			var result = new PresetRide(CName, this.Database);
 

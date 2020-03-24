@@ -50,8 +50,6 @@
                 off6 += size;
                 size = 0;
             }
-
-            int aa = 0;
         }
     }
 }

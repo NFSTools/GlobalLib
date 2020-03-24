@@ -21,10 +21,8 @@
 
                 CName = Utils.EA.Resolve.GetPathFromCollection(CName);
                 Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
-                if (!LibPartBlockExists)
-                    Core.Map.CollisionMap[Utils.Vlt.Hash(CName)] = CName;
 
-                var Class = new Class.CarTypeInfo(byteptr_t + offset, CName, db);
+                var Class = new Class.CarTypeInfo((System.IntPtr)(byteptr_t + offset), CName, db);
                 db.CarTypeInfos.Classes[CName] = Class;
             }
         }

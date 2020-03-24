@@ -2,9 +2,19 @@
 {
 	public partial class GShowcase
 	{
-		public GShowcase MemoryCast(string CName)
+		public override Reflection.Abstract.Collectable MemoryCast(string CName)
 		{
-			return new GShowcase();
+			var result = new GShowcase(CName, this.Database);
+			result._desc_attrib = this._desc_attrib;
+			result._desc_string_label = this._desc_string_label;
+			result._destination_point = this._destination_point;
+			result._take_photo = this._take_photo;
+			result.BelongsToStage = this.BelongsToStage;
+			result.CashValue = this.CashValue;
+			result.RequiredVisualRating = this.RequiredVisualRating;
+			result.Unknown0x34 = this.Unknown0x34;
+			result.Unknown0x35 = this.Unknown0x35;
+			return result;
 		}
 	}
 }

@@ -2,9 +2,11 @@
 {
 	public partial class GCareerBrand
 	{
-		public GCareerBrand MemoryCast(string CName)
+		public override Reflection.Abstract.Collectable MemoryCast(string CName)
 		{
-			return new GCareerBrand();
+			var result = new GCareerBrand(CName, this.Database);
+			result._ingame_brand_name = this._ingame_brand_name;
+			return result;
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide : Shared.Class.PresetRide
 	{
         // Default constructor
         public PresetRide() { }
@@ -18,14 +18,14 @@
         }
 
         // Default constructor: disassemble preset
-        public unsafe PresetRide(byte* byteptr_t, string CName, Database.Underground2 db)
+        public unsafe PresetRide(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
         {
             this.Database = db;
             this.Initialize();
             this.data = new byte[0x338];
             this.CollectionName = CName;
             this.Exists = true;
-            this.Disassemble(byteptr_t);
+            this.Disassemble((byte*)byteptr_t);
             this.Modified = false;
         }
 

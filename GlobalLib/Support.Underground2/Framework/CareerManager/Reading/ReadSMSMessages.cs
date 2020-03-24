@@ -15,7 +15,7 @@
 				int ptr_string = PartOffsets[0] + 8;
 				int ptr_header = PartOffsets[6] + a1 * 0x14 + 8;
 				var Class = new Gameplay.SMSMessage(byteptr_t + ptr_header, byteptr_t + ptr_string, db);
-				db.SMSMessages.Classes.Add(Class);
+				db.SMSMessages.Classes[Class.CollectionName] = Class;
 			}
 		}
 	}

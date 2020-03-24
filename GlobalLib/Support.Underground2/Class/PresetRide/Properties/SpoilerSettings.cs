@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class PresetRide : Shared.Class.PresetRide, Reflection.Interface.ICastable<PresetRide>
+	public partial class PresetRide
 	{
         private byte _spoiler_style = 0;
         private Reflection.Enum.eSTypes _spoiler_type = Reflection.Enum.eSTypes.STOCK;

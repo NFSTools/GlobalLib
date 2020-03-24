@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class Sponsor : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<Sponsor>
+	public partial class Sponsor : Reflection.Abstract.Collectable
 	{
 		// Default constructor
 		public Sponsor() { }

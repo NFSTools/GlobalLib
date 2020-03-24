@@ -21,7 +21,7 @@
 				{
 					int ptr_header = 12 + a2 * 0x5C;
 					var Class = new Gameplay.PartPerformance(offset_ptr + ptr_header, db, index, level, a2);
-					db.PartPerformances.Classes.Add(Class);
+					db.PartPerformances.Classes[Class.CollectionName] = Class;
 				}
 			}
 		}

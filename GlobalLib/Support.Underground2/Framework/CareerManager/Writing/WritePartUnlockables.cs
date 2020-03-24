@@ -10,9 +10,9 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.PART_UNLOCKS_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				for (int a1 = 0; a1 < db.PartUnlockables.Length; ++a1)
+				foreach (var part in db.PartUnlockables.Classes.Values)
 				{
-					db.PartUnlockables.Classes[a1].Assemble(byteptr_t + offset);
+					part.Assemble(byteptr_t + offset);
 					offset += 0x28;
 				}
 			}

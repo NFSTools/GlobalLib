@@ -15,7 +15,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
-				if (this.Database.GCareerRaces.GetClassIndex(value) != -1)
+				if (this.Database.GCareerRaces.Classes.ContainsKey(value))
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

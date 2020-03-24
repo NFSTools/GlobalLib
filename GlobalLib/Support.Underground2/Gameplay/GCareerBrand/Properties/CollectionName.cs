@@ -17,7 +17,7 @@
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
 				if (value.Length > 0x1F)
 					throw new Reflection.Exception.ArgumentLengthException("Length of the value should not exceed 31 character.");
-				if (this.Database.GCareerBrands.GetClassIndex(value) != -1)
+				if (this.Database.GCareerBrands.Classes.ContainsKey(value))
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

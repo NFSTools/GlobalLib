@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class CarTypeInfo : Shared.Class.CarTypeInfo, Reflection.Interface.ICastable<CarTypeInfo>
+    public partial class CarTypeInfo : Shared.Class.CarTypeInfo
     {
         // Default constructor
         public CarTypeInfo() { }
@@ -23,13 +23,13 @@
         }
 
         // Default constructor: disassemble cartypeinfo
-        public unsafe CarTypeInfo(byte* byteptr_t, string CName, Database.Underground2 db)
+        public unsafe CarTypeInfo(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
         {
             this.Database = db;
             this.CollectionName = CName;
             this.OriginalName = CName;
             this.Initialize();
-            this.Disassemble(byteptr_t);
+            this.Disassemble((byte*)byteptr_t);
             if (this.Index <= (int)Reflection.Enum.eBoundValues.MIN_INFO_UNDERGROUND2)
                 this.Deletable = false;
             this.Modified = false;

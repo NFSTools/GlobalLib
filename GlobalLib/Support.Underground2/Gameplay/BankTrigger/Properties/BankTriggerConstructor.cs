@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class BankTrigger : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<BankTrigger>
+	public partial class BankTrigger : Reflection.Abstract.Collectable
 	{
 		// Default constructor
 		public BankTrigger() { }
@@ -10,6 +10,10 @@
 		{
 			this.Database = db;
 			this._collection_name = CName;
+			byte maxindex = 0;
+			foreach (var bank in this.Database.BankTriggers.Classes.Values)
+				if (bank.BankIndex > maxindex) maxindex = bank.BankIndex;
+			this.BankIndex = (byte)(maxindex + 1);
 			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 		}
 

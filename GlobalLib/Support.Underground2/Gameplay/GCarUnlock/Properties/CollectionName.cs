@@ -15,9 +15,9 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
-				if (this.Database.CarTypeInfos.GetClassIndex(value) == -1)
+				if (this.Database.CarTypeInfos.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException("CarTypeInfo with the given CollectionName does not exist.");
-				if (this.Database.GCarUnlocks.GetClassIndex(value) != -1)
+				if (this.Database.GCarUnlocks.Classes.ContainsKey(value))
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

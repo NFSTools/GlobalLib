@@ -17,7 +17,7 @@
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
 				if (!Framework.Validate.CareerStageCollectionName(value))
 					throw new System.Exception("Unable to parse stage number from the value provided.");
-				if (this.Database.GCareerStages.GetClassIndex(value) != -1)
+				if (this.Database.GCareerStages.Classes.ContainsKey(value))
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

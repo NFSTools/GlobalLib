@@ -17,9 +17,9 @@
                     throw new Reflection.Exception.CollectionExistenceException("CollectionName of a non-addon car cannot be changed.");
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException("This value cannot be left empty.");
-                if (value.Length > 13)
+                if (value.Length > MaxCNameLength)
                     throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 13 characters.");
-                if (this.Database.GetClassIndex(value, GlobalLib.Database.eClassType.CarTypeInfo) != -1)
+                if (this.Database.CarTypeInfos.Classes.ContainsKey(value))
                     throw new Reflection.Exception.CollectionExistenceException();
                 if (this._used_carparts_of == this._collection_name)
                     this._used_carparts_of = value;

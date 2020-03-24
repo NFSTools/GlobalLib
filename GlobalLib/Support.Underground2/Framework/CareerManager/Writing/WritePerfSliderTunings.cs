@@ -10,9 +10,9 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.TUNING_PERF_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				for (int a1 = 0; a1 < db.PerfSliderTunings.Length; ++a1)
+				foreach (var slider in db.PerfSliderTunings.Classes.Values)
 				{
-					db.PerfSliderTunings.Classes[a1].Assemble(byteptr_t + offset);
+					slider.Assemble(byteptr_t + offset);
 					offset += 0x18;
 				}
 			}

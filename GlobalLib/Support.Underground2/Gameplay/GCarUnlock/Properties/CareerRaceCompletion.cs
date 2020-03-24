@@ -13,7 +13,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (this.Database.GCareerRaces.GetClassIndex(value) == -1)
+				if (this.Database.GCareerRaces.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException("Career Event with the given CollectionName does not exist.");
 				this._req_event_completed1 = value;
 			}
@@ -27,7 +27,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (this.Database.GCareerRaces.GetClassIndex(value) == -1)
+				if (this.Database.GCareerRaces.Classes.ContainsKey(value))
 					throw new Reflection.Exception.MappingFailException("Career Event with the given CollectionName does not exist.");
 				this._req_event_completed2 = value;
 			}

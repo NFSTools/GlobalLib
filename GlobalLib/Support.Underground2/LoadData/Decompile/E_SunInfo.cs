@@ -22,7 +22,7 @@
                 CName = Utils.EA.Resolve.GetPathFromCollection(CName);
                 Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 
-                var Class = new Gameplay.SunInfo(byteptr_t + offset, CName, db);
+                var Class = new Gameplay.SunInfo((System.IntPtr)(byteptr_t + offset), CName, db);
                 db.SunInfos.Classes[CName] = Class;
             }
         }

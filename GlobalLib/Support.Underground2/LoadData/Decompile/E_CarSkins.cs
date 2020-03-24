@@ -5,6 +5,10 @@
 		private static unsafe void E_CarSkins(byte* byteptr_t, uint length, Database.Underground2 db)
 		{
 			const uint size = 0x40;
+			var map = new System.Collections.Generic.Dictionary<int, string>();
+
+			foreach (var car in db.CarTypeInfos.Classes.Values)
+				map[car.Index] = car.CollectionName;
 
 			for (uint loop = 0; loop < length / size; ++loop)
 			{
@@ -12,7 +16,7 @@
 
 				var Reader = new Parts.CarParts.CarSkin();
 				Reader.Read(byteptr_t + offset, out int id, out int index);
-				var car = db.CarTypeInfos.FindClassWithValue("Index", index);
+				var car = db.CarTypeInfos.FindClass(map[id]);
 				if (car == null) continue;
 				
 				switch (index)

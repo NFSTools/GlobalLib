@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class SunInfo : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<SunInfo>
+	public partial class SunInfo : Reflection.Abstract.Collectable
 	{
 		// Default constructor
 		public SunInfo() { }
@@ -20,7 +20,7 @@
 		}
 
 		// Default constructor: disassemble suninfo
-		public unsafe SunInfo(byte* byteptr_t, string CName, Database.Underground2 db)
+		public unsafe SunInfo(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
 		{
 			this.Database = db;
 			this._collection_name = CName;
@@ -30,7 +30,7 @@
 			this.SUNLAYER4 = new Parts.GameParts.SunLayer();
 			this.SUNLAYER5 = new Parts.GameParts.SunLayer();
 			this.SUNLAYER6 = new Parts.GameParts.SunLayer();
-			this.Disassemble(byteptr_t);
+			this.Disassemble((byte*)byteptr_t);
 		}
 
 		~SunInfo() { }

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class PartPerformance : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<PartPerformance>
+	public partial class PartPerformance : Reflection.Abstract.Collectable
 	{
 		// Default constructor
 		public PartPerformance() { }
@@ -12,7 +12,7 @@
 			this._collection_name = CName;
 			this.SetToFirstAvailablePerfSlot();
 			int index = 0;
-			foreach (var cla in db.PartPerformances.Classes)
+			foreach (var cla in db.PartPerformances.Classes.Values)
 			{
 				if (cla.PartIndex > index)
 					index = cla.PartIndex;

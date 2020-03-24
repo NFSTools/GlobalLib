@@ -2,9 +2,12 @@
 {
 	public partial class GCarUnlock
 	{
-		public GCarUnlock MemoryCast(string CName)
+		public override Reflection.Abstract.Collectable MemoryCast(string CName)
 		{
-			return new GCarUnlock();
+			var result = new GCarUnlock(CName, this.Database);
+			result._req_event_completed1 = this._req_event_completed1;
+			result._req_event_completed2 = this._req_event_completed2;
+			return result;
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class GCareerStage : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<GCareerStage>
+	public partial class GCareerStage : Reflection.Abstract.Collectable
 	{
 		// Default constructor
 		public GCareerStage() { }

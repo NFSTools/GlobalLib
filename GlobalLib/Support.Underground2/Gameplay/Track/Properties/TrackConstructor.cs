@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class Track : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<Track>
+	public partial class Track : Reflection.Abstract.Collectable
 	{
 		// Default constructor
 		public Track() { }
@@ -14,11 +14,11 @@
 		}
 
 		// Default constructor: disassemble track
-		public unsafe Track(byte* byteptr_t, string CName, Database.Underground2 db)
+		public unsafe Track(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
 		{
 			this.Database = db;
 			this._collection_name = CName;
-			this.Disassemble(byteptr_t);
+			this.Disassemble((byte*)byteptr_t);
 		}
 	}
 }

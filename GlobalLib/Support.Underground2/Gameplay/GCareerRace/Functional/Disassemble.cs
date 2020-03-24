@@ -36,7 +36,7 @@
 			// Unlock conditions
 			key = *(uint*)(ptr_header + 0x10);
 			if (this._unlock_method == Reflection.Enum.eUnlockCondition.SPECIFIC_RACE_WON)
-				this.RequiredSpecificRaceWon = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+				this._required_spec_race_won = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
 			else
 			{
 				this.RequiredSpecificURLWon = *(ptr_header + 0x10);

@@ -10,9 +10,9 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.SPONSOR_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				for (int a1 = 0; a1 < db.Sponsors.Length; ++a1)
+				foreach (var sponsor in db.Sponsors.Classes.Values)
 				{
-					db.Sponsors.Classes[a1].Assemble(byteptr_t + offset, mw);
+					sponsor.Assemble(byteptr_t + offset, mw);
 					offset += 0x10;
 				}
 			}

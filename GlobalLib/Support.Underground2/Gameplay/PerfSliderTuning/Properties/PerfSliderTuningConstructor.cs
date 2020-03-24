@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class PerfSliderTuning : Reflection.Abstract.Collectable, Reflection.Interface.ICastable<PerfSliderTuning>
+	public partial class PerfSliderTuning : Reflection.Abstract.Collectable
 	{
 		// Default constructor
 		public PerfSliderTuning() { }

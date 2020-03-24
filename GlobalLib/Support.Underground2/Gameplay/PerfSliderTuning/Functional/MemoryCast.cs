@@ -2,9 +2,18 @@
 {
 	public partial class PerfSliderTuning
 	{
-		public PerfSliderTuning MemoryCast(string CName)
+		public override Reflection.Abstract.Collectable MemoryCast(string CName)
 		{
-			return new PerfSliderTuning();
+			var result = new PerfSliderTuning(CName, this.Database);
+			uint maxkey = 0;
+			foreach (var slider in this.Database.PerfSliderTunings.Classes.Values)
+				if (slider.BinKey > maxkey) maxkey = slider.BinKey;
+			result._collection_name = (maxkey + 1).ToString();
+			result.MaxSliderValueRatio = this.MaxSliderValueRatio;
+			result.MinSliderValueRatio = this.MinSliderValueRatio;
+			result.ValueSpread1 = this.ValueSpread1;
+			result.ValueSpread2 = this.ValueSpread2;
+			return result;
 		}
 	}
 }

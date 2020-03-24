@@ -10,9 +10,9 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.CAR_UNLOCKS_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				for (int a1 = 0; a1 < db.GCarUnlocks.Length; ++a1)
+				foreach (var carunlock in db.GCarUnlocks.Classes.Values)
 				{
-					db.GCarUnlocks.Classes[a1].Assemble(byteptr_t + offset);
+					carunlock.Assemble(byteptr_t + offset);
 					offset += 0xC;
 				}
 			}

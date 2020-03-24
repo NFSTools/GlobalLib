@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class Material : Shared.Class.Material, Reflection.Interface.ICastable<Material>
+    public partial class Material : Shared.Class.Material
     {
         // Default constructor
         public Material() { }
@@ -14,11 +14,11 @@
         }
 
         // Default constructor: disassemble material
-        public unsafe Material(byte* byteptr_t, string CName, Database.Underground2 db)
+        public unsafe Material(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
         {
             this.Database = db;
             this.CollectionName = CName;
-            this.Disassemble(byteptr_t);
+            this.Disassemble((byte*)byteptr_t);
         }
 
         ~Material() { }

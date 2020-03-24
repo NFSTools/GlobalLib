@@ -10,9 +10,9 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.STAGE_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				for (int a1 = 0; a1 < db.GCareerStages.Length; ++a1)
+				foreach (var stage in db.GCareerStages.Classes.Values)
 				{
-					db.GCareerStages.Classes[a1].Assemble(byteptr_t + offset);
+					stage.Assemble(byteptr_t + offset);
 					offset += 0x50;
 				}
 			}
