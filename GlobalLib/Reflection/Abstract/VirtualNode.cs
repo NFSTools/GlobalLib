@@ -14,5 +14,10 @@ namespace GlobalLib.Reflection.Abstract
 			this.NodeName = NodeName;
 			this.SubNodes = new List<string>();
 		}
+
+		public override string ToString()
+		{
+			return $"{this.NodeName}: {SubNodes.Count} nodes";
+		}
 	}
 }

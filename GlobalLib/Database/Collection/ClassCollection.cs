@@ -18,7 +18,7 @@ namespace GlobalLib.Database.Collection
 		private readonly bool importable = false;
 		public BasicBase Database { get; set; }
 
-		public Binary(string name, int maxlength, int offsetat, int basesize, bool resizable, bool importable)
+		public Binary(string name, int maxlength, int offsetat, int basesize, bool resizable, bool importable, BasicBase data)
 		{
 			this.Classes = new Dictionary<string, TypeID>();
 			this.ThisName = name;
@@ -27,6 +27,7 @@ namespace GlobalLib.Database.Collection
 			this.BaseClassSize = basesize;
 			this.Resizable = resizable;
 			this.importable = importable;
+			this.Database = data;
 		}
 
 		public TypeID FindClass(string CName)
@@ -75,7 +76,7 @@ namespace GlobalLib.Database.Collection
 		public string[] GetAccessibleProperties(string CName)
 		{
 			if (!this.Classes.TryGetValue(CName, out var cla)) return null;
-			else return cla.GetAccessibles();
+			else return (string[])cla.GetAccessibles(eGetInfoType.PROPERTY_NAMES);
 		}
 
 		public bool TrySetClassValue(params string[] tokens)
@@ -119,7 +120,7 @@ namespace GlobalLib.Database.Collection
 			if (string.IsNullOrWhiteSpace(value)) return false;
 			if (value.Length > MaxCNameLength) return false;
 			if (this.Classes.ContainsKey(value)) return false;
-			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), typeof(BasicBase) });
+			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), this.Database.GetType() });
 			var instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
 			this.Classes[value] = instance;
 			return true;
@@ -142,7 +143,7 @@ namespace GlobalLib.Database.Collection
 				error = $"Class with CollectionName {value} already exists.";
 				return false;
 			}
-			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), typeof(BasicBase) });
+			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), this.Database.GetType() });
 			var instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
 			this.Classes[value] = instance;
 			return true;
@@ -217,7 +218,7 @@ namespace GlobalLib.Database.Collection
 				CName = Utils.ScriptX.NullTerminatedString(dataptr_t);
 				if (this.Classes.ContainsKey(CName)) return false;
 
-				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(byte).MakePointerType(), typeof(string), typeof(BasicBase) });
+				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(IntPtr), typeof(string), this.Database.GetType() });
 				var instance = (TypeID)ctor.Invoke(new object[] { (IntPtr)dataptr_t, CName, this.Database });
 				this.Classes[CName] = instance;
 			}
@@ -247,12 +248,50 @@ namespace GlobalLib.Database.Collection
 					return false;
 				}
 
-				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(byte).MakePointerType(), typeof(string), typeof(BasicBase) });
+				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(IntPtr), typeof(string), this.Database.GetType() });
 				var instance = (TypeID)ctor.Invoke(new object[] { (IntPtr)dataptr_t, CName, this.Database });
 				this.Classes[CName] = instance;
 			}
 			return true;
 		}
+
+		public Dictionary<string, CollectionAttrib> GetAttributeMap()
+		{
+			var map = new Dictionary<string, CollectionAttrib>();
+			foreach (var Class in this.Classes)
+			{
+				string path = $"{this.ThisName}\\{Class.Key}";
+				var properties = Class.Value.GetAccessibles(eGetInfoType.PROPERTY_INFOS);
+				foreach (var property in properties)
+				{
+					var attrib = new CollectionAttrib((System.Reflection.PropertyInfo)property, Class.Value);
+					string subpath = $"{path}\\{attrib.PropertyName}";
+					attrib.FullPath = subpath;
+					map[subpath] = attrib;
+				}
+
+				var nodes = Class.Value.GetAllNodes();
+				foreach (var node in nodes)
+				{
+					if (node.SubNodes == null) continue;
+					foreach (var subnode in node.SubNodes)
+					{
+						var name = Class.Value.GetType().GetProperty(subnode).GetValue(Class.Value);
+						var attribs = Class.Value.GetSubnodeAttribs(subnode, eGetInfoType.PROPERTY_INFOS);
+						foreach (var attrib in attribs)
+						{
+							var field = new CollectionAttrib((System.Reflection.PropertyInfo)attrib, name);
+							string subpath = $"{path}\\{node.NodeName}\\{subnode}\\{field.PropertyName}";
+							field.FullPath = subpath;
+							map[subpath] = field;
+						}
+					}
+				}
+
+			}
+			return map;
+		}
+
 
 		public override string ToString()
 		{

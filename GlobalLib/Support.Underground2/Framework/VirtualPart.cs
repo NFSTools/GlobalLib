@@ -22,13 +22,8 @@
         /// <returns>String value of a field name.</returns>
         public virtual string GetValue(string PropertyName)
         {
-            var ThisType = this.GetType();
-            foreach (var ThisProperty in ThisType.GetProperties())
-            {
-                if (ThisProperty.Name == PropertyName)
-                    return ThisProperty.GetValue(this).ToString();
-            }
-            return null;
+            var property = this.GetType().GetProperty(PropertyName);
+            return (property == null) ? null : property.GetValue(this).ToString();
         }
 
         /// <summary>
@@ -40,16 +35,10 @@
         {
             try
             {
-                var ThisType = this.GetType();
-                foreach (var ThisProperty in ThisType.GetProperties())
-                {
-                    if (ThisProperty.Name == PropertyName)
-                    {
-                        ThisProperty.SetValue(this, Utils.Cast.RuntimeCast(value, ThisProperty.GetValue(this)));
-                        return true;
-                    }
-                }
-                return false;
+                var property = this.GetType().GetProperty(PropertyName);
+                if (property == null) return false;
+                property.SetValue(this, Utils.Cast.RuntimeCast(value, property.PropertyType));
+                return true;
             }
             catch (System.Exception e)
             {
@@ -72,17 +61,14 @@
         {
             try
             {
-                var ThisType = this.GetType();
-                foreach (var ThisProperty in ThisType.GetProperties())
+                var property = this.GetType().GetProperty(PropertyName);
+                if (property == null)
                 {
-                    if (ThisProperty.Name == PropertyName)
-                    {
-                        ThisProperty.SetValue(this, Utils.Cast.RuntimeCast(value, ThisProperty.GetValue(this)));
-                        return true;
-                    }
+                    error = $"Field named {PropertyName} does not exist.";
+                    return false;
                 }
-                error = $"Field named {PropertyName} does not exist.";
-                return false;
+                property.SetValue(this, Utils.Cast.RuntimeCast(value, property.PropertyType));
+                return true;
             }
             catch (System.Exception e)
             {

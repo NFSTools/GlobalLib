@@ -23,10 +23,14 @@ namespace TestConsole
 			var elapsed_1 = watch.ElapsedMilliseconds;
 
 			Console.WriteLine("");
-			Console.WriteLine($"Loading: {elapsed_1}ms");
+			Console.WriteLine($"{elapsed_1}ms");
 			Console.WriteLine("");
 
 
+			watch.Reset();
+
+
+			var map = db.CarTypeInfos.GetAttributeMap();
 
 
 
@@ -38,7 +42,7 @@ namespace TestConsole
 			var elapsed_2 = watch.ElapsedMilliseconds;
 
 
-			Console.WriteLine($"Saving: {elapsed_2}ms");
+			Console.WriteLine($"{elapsed_2}ms");
 
 
 

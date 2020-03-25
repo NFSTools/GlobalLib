@@ -60,6 +60,7 @@
     <Compile Include="Database\Carbon\AddCollision.cs" />
     <Compile Include="Database\Carbon\Carbon.cs" />
     <Compile Include="Database\Collection\ClassCollection.cs" />
+    <Compile Include="Database\Collection\eGetInfoType.cs" />
     <Compile Include="Database\Collection\eKeyType.cs" />
     <Compile Include="Database\MostWanted\Initialize.cs" />
     <Compile Include="Database\MostWanted\ToString.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Database\Underground2\Underground2.cs" />
     <Compile Include="Reflection\Abstract\Basic.cs" />
     <Compile Include="Reflection\Abstract\Collectable.cs" />
+    <Compile Include="Reflection\Abstract\CollectionAttrib.cs" />
     <Compile Include="Reflection\Abstract\VirtualNode.cs" />
     <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
     <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />

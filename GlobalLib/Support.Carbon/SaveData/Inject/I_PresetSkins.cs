@@ -11,7 +11,7 @@
         {
             bw.Write(Reflection.ID.Global.PresetSkins);
             bw.Write(db.PresetSkins.Length * 0x68);
-            foreach (var skin in db.PresetRides.Classes.Values)
+            foreach (var skin in db.PresetSkins.Classes.Values)
                 bw.Write(skin.Assemble());
         }
     }

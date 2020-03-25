@@ -18,7 +18,8 @@ namespace GlobalLib.Database
 				Material.CNameOffsetAt,
 				Material.BaseClassSize,
 				true,
-				true
+				true,
+				this
 			);
 
 			this.CarTypeInfos = new Binary<CarTypeInfo>
@@ -28,7 +29,8 @@ namespace GlobalLib.Database
 				CarTypeInfo.CNameOffsetAt,
 				CarTypeInfo.BaseClassSize,
 				true,
-				true
+				true,
+				this
 			);
 
 			this.PresetRides = new Binary<PresetRide>
@@ -38,7 +40,8 @@ namespace GlobalLib.Database
 				PresetRide.CNameOffsetAt,
 				PresetRide.BaseClassSize,
 				true,
-				true
+				true,
+				this
 			);
 
 			this.SunInfos = new Binary<SunInfo>
@@ -48,7 +51,8 @@ namespace GlobalLib.Database
 				SunInfo.CNameOffsetAt,
 				SunInfo.BaseClassSize,
 				true,
-				false
+				false,
+				this
 			);
 
 			this.Tracks = new Binary<Track>
@@ -58,7 +62,8 @@ namespace GlobalLib.Database
 				Track.CNameOffsetAt,
 				Track.BaseClassSize,
 				true,
-				false
+				false,
+				this
 			);
 
 			this.GCareerRaces = new Binary<GCareerRace>
@@ -68,7 +73,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				true,
-				false
+				false,
+				this
 			);
 
 			this.WorldShops = new Binary<WorldShop>
@@ -78,7 +84,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				true,
-				false
+				false,
+				this
 			);
 
 			this.GCareerBrands = new Binary<GCareerBrand>
@@ -88,7 +95,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				true,
-				false
+				false,
+				this
 			);
 
 
@@ -99,7 +107,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				true,
-				false
+				false,
+				this
 			);
 
 			this.GShowcases = new Binary<GShowcase>
@@ -109,7 +118,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				true,
-				false
+				false,
+				this
 			);
 
 			this.SMSMessages = new Binary<SMSMessage>
@@ -119,7 +129,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				false,
-				false
+				false,
+				this
 			);
 
 			this.Sponsors = new Binary<Sponsor>
@@ -129,7 +140,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				true,
-				false
+				false,
+				this
 			);
 
 			this.GCareerStages = new Binary<GCareerStage>
@@ -139,7 +151,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				false,
-				false
+				false,
+				this
 			);
 
 			this.PerfSliderTunings = new Binary<PerfSliderTuning>
@@ -149,7 +162,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				false,
-				false
+				false,
+				this
 			);
 
 			this.WorldChallenges = new Binary<WorldChallenge>
@@ -159,7 +173,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				true,
-				false
+				false,
+				this
 			);
 
 			this.PartUnlockables = new Binary<PartUnlockable>
@@ -169,7 +184,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				false,
-				false
+				false,
+				this
 			);
 
 			this.BankTriggers = new Binary<BankTrigger>
@@ -179,7 +195,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				true,
-				true
+				true,
+				this
 			);
 
 			this.GCarUnlocks = new Binary<GCarUnlock>
@@ -189,7 +206,8 @@ namespace GlobalLib.Database
 				-1,
 				-1,
 				true,
-				false
+				false,
+				this
 			);
 
 			this.FNGroups = new List<FNGroup>();

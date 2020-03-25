@@ -17,7 +17,8 @@ namespace GlobalLib.Database
 				Material.CNameOffsetAt,
 				Material.BaseClassSize,
 				true,
-				true
+				true,
+				this
 			);
 
 			this.CarTypeInfos = new Binary<CarTypeInfo>
@@ -27,7 +28,8 @@ namespace GlobalLib.Database
 				CarTypeInfo.CNameOffsetAt,
 				CarTypeInfo.BaseClassSize,
 				true,
-				true
+				true,
+				this
 			);
 
 			this.PresetRides = new Binary<PresetRide>
@@ -37,7 +39,8 @@ namespace GlobalLib.Database
 				PresetRide.CNameOffsetAt,
 				PresetRide.BaseClassSize,
 				true,
-				true
+				true,
+				this
 			);
 
 			this.PresetSkins = new Binary<PresetSkin>
@@ -47,7 +50,8 @@ namespace GlobalLib.Database
 				PresetSkin.CNameOffsetAt,
 				PresetSkin.BaseClassSize,
 				true,
-				true
+				true,
+				this
 			);
 			
 			this.FNGroups = new List<FNGroup>();

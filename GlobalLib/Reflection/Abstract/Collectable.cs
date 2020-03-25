@@ -11,15 +11,19 @@
         /// Returns array of all accessible and modifiable properties and fields.
         /// </summary>
         /// <returns>Array of strings.</returns>
-        public virtual string[] GetAccessibles()
+        public virtual object[] GetAccessibles(Database.Collection.eGetInfoType type)
         {
-            var list = new System.Collections.Generic.List<string>();
+            var list = new System.Collections.Generic.List<object>();
             foreach (var property in this.GetType().GetProperties())
             {
                 if (System.Attribute.IsDefined(property, typeof(Attributes.AccessModifiableAttribute)))
-                    list.Add(property.Name);
+                {
+                    if (type == Database.Collection.eGetInfoType.PROPERTY_NAMES)
+                        list.Add(property.Name);
+                    else
+                        list.Add(property);
+                }
             }
-            list.Sort();
             return list.ToArray();
         }
 
@@ -56,21 +60,30 @@
                 {
                     var attrib = obj as Attributes.ExpandableAttribute;
                     var node = list.Find(c => c.NodeName == attrib.Name);
-                    if (node == null) list.Add(new VirtualNode(attrib.Name));
+                    if (node == null)
+                    {
+                        node = new VirtualNode(attrib.Name);
+                        list.Add(node);
+                    }
                     node.SubNodes.Add(property.Name);
                 }
             }
-            list.Sort();
+            list.Sort((x, y) => x.NodeName.CompareTo(y.NodeName));
             return list.ToArray();
         }
 
-        public virtual string[] GetSubnodeFields(string NodeName)
+        public virtual object[] GetSubnodeAttribs(string NodeName, Database.Collection.eGetInfoType type)
         {
             var property = this.GetType().GetProperty(NodeName);
             if (property == null) return null;
-            var result = new System.Collections.Generic.List<string>();
+            var result = new System.Collections.Generic.List<object>();
             foreach (var field in property.PropertyType.GetProperties())
-                result.Add(field.Name);
+            {
+                if (type == Database.Collection.eGetInfoType.PROPERTY_NAMES)
+                    result.Add(field.Name);
+                else
+                    result.Add(field);
+            }
             return result.ToArray();
         }
 
@@ -78,10 +91,9 @@
         {
             var property = this.GetType().GetProperty(NodeName);
             if (property == null) return null;
-            if (!System.Attribute.IsDefined(property, typeof(Reflection.Attributes.ExpandableAttribute)))
-                return null;
-            return (string)property.PropertyType
-                            .GetMethod("GetValue")
+            return !System.Attribute.IsDefined(property, typeof(Attributes.ExpandableAttribute))
+                ? null
+                : (string)property.PropertyType.GetMethod("GetValue")
                             .Invoke(property.GetValue(this), new object[1] { field });
 
         }
@@ -198,9 +210,8 @@
                 else
                 {
                     property.SetValue(this, typeof(Utils.Cast)
-                        .GetMethod("StaticCast")
-                        .MakeGenericMethod(property.PropertyType)
-                        .Invoke(null, new object[1] { value }));
+                        .GetMethod("RuntimeCast")
+                        .Invoke(null, new object[] { value, property.PropertyType }));
                 }
                 return true;
             }
