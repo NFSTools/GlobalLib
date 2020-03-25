@@ -4,11 +4,16 @@
     {
         private static unsafe void CPE_Part56(byte* part5ptr_t, byte* part6ptr_t, Database.Underground2 db)
         {
-            int len5 = *(int*)(part5ptr_t + 4) + 8; // size of part5
+            int len5 = *(int*)(part5ptr_t + 4); // size of part5
             int len6 = *(int*)(part6ptr_t + 4); // size of part6
 
+            if (len5 + 8 < Framework.Assert.CPPart5_AssertSize)
+                throw new System.IO.FileLoadException("Detected corrupted GlobalB.lzc CarParts block. Unable to load database.");
+            if (len6 + 8 < Framework.Assert.CPPart6_AssertSize)
+                throw new System.IO.FileLoadException("Detected corrupted GlobalB.lzc CarParts block. Unable to load database.");
+
             // Exclude padding
-            while (*(int*)(part5ptr_t + len5 - 4) == 0)
+            while (*(int*)(part5ptr_t + len5 + 4) == 0)
                 len5 -= 4;
             while (*(int*)(part6ptr_t + len6 + 4) == 0)
                 len6 -= 4;
@@ -20,7 +25,7 @@
 
             // Validation check
             int check = *(part6ptr_t + len6 - 7) + 1;
-            int total = (len5 - 8) / 4;
+            int total = len5 / 4;
             if (check < total) len5 = check * 4 + 8;
 
             db.SlotTypes.Part56 = new System.Collections.Generic.List<Parts.CarParts.Part56>();
@@ -29,7 +34,7 @@
             foreach (var car in db.CarTypeInfos.Classes.Values)
                 CarCNames.Add(car.BinKey);
 
-            while (off5 < len5)
+            while (off5 < len5 + 8 && db.SlotTypes.Part56.Count < 75)
             {
                 uint ckey = *(uint*)(part5ptr_t + off5);
                 if (ckey == 0) break; // padding means end

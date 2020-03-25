@@ -8,7 +8,7 @@
 			{
 				if (!part.IsCar) continue;
 				var car = db.CarTypeInfos.FindClass(part.BelongsTo);
-				if (car == null) continue;
+				if (car == null || car.Deletable) continue;
 				if (!Core.Map.CarPartsMap.Contains(part.BelongsTo))
 					Core.Map.CarPartsMap.Add(part.BelongsTo);
 				car.UsesCarPartsOf = part.BelongsTo;

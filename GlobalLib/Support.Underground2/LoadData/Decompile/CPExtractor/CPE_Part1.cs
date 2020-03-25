@@ -10,20 +10,20 @@
         /// <returns>Part1 data as a byte array.</returns>
         private static unsafe byte[] CPE_Part1(byte* byteptr_t, uint length)
         {
-            byte[] data = new byte[length];
+            if (length < Framework.Assert.CPPart1_AssertSize)
+                throw new System.IO.FileLoadException("Detected corrupted GlobalB.lzc CarParts block. Unable to load database.");
+            byte[] data = new byte[Framework.Assert.CPPart1_AssertSize];
             uint offset = 8;
-            while (offset < length)
+            while (offset < Framework.Assert.CPPart1_AssertSize)
             {
                 string debug = Utils.ScriptX.NullTerminatedString(byteptr_t + offset);
                 if (debug == null) offset += 1;
                 else offset += (uint)debug.Length + 1;
                 Core.Map.BinKeys[Utils.Bin.Hash(debug)] = debug;
             }
-            fixed (byte* dataptr_t = &data[0])
-            {
-                for (int a1 = 0; a1 < length; ++a1)
-                    *(dataptr_t + a1) = *(byteptr_t + a1);
-            }
+            for (int a1 = 0; a1 < Framework.Assert.CPPart1_AssertSize; ++a1)
+                data[a1] = *(byteptr_t + a1);
+            
             return data;
         }
     }

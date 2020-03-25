@@ -108,6 +108,8 @@
             {
                 if (System.Enum.IsDefined(typeof(Reflection.Enum.eUsageType), value))
                 {
+                    //if (!this.Deletable)
+                    //    throw new System.Exception("Usage type of a core car cannot be changed.");
                     if (this._usagetype != value)
                         this.Modified = true;
                     this._usagetype = value;

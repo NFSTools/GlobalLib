@@ -10,12 +10,11 @@
         /// <returns>Part3 data as a byte array.</returns>
         private static unsafe byte[] CPE_Part3(byte* byteptr_t, uint length)
         {
-            byte[] data = new byte[length];
-            fixed (byte* dataptr_t = &data[0])
-            {
-                for (int a1 = 0; a1 < length; ++a1)
-                    *(dataptr_t + a1) = *(byteptr_t + a1);
-            }
+            if (length < Framework.Assert.CPPart3_AssertSize)
+                throw new System.IO.FileLoadException("Detected corrupted GlobalB.lzc CarParts block. Unable to load database.");
+            byte[] data = new byte[Framework.Assert.CPPart3_AssertSize];
+            for (int a1 = 0; a1 < Framework.Assert.CPPart3_AssertSize; ++a1)
+                data[a1] = *(byteptr_t + a1);
             return data;
         }
     }

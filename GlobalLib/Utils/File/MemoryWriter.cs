@@ -155,11 +155,8 @@ namespace GlobalLib.Utils
 		{
 			if (array == null) return;
 			this.CheckLength(sizeof(byte) * array.Length);
-			fixed (byte* dataptr_t = &this.stream[this.Position])
-			{
-				for (int a1 = 0; a1 < array.Length; ++a1)
-					*(dataptr_t + a1) = array[a1];
-			}
+			for (int a1 = 0; a1 < array.Length; ++a1)
+				this.stream[this.Position + a1] = array[a1];
 			this.Position += array.Length;
 		}
 		/// <summary>
@@ -189,11 +186,8 @@ namespace GlobalLib.Utils
 			if (array == null || offset < 0 || count <= 0 || offset + count > array.Length)
 				return;
 			this.CheckLength(count * sizeof(byte));
-			fixed (byte* dataptr_t = &this.stream[this.Position])
-			{
-				for (int a1 = 0; a1 < count; ++a1)
-					*(dataptr_t + a1) = array[offset + a1];
-			}
+			for (int a1 = 0; a1 < count; ++a1)
+				this.stream[this.Position + a1] = array[offset + a1];
 			this.Position += count;
 		}
 		/// <summary>

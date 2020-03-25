@@ -2,7 +2,7 @@
 {
 	public partial class SaveData
 	{
-		private static unsafe void I_LibCarParts(Database.Underground2 db, System.IO.BinaryWriter bw)
+		private static byte[] I_LibCarParts(Database.Underground2 db)
 		{
 			int strsize = 0;
 			int libsize = 0x58;
@@ -29,7 +29,7 @@
 				mw.WriteNullTerminated(car.CollectionName);
 				mw.WriteNullTerminated(car.UsesCarPartsOf);
 			}
-			bw.Write(mw.Data);
+			return mw.Data;
 		}
 	}
 }

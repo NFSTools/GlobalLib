@@ -30,7 +30,7 @@
 						var ofpart = db.SlotTypes.Part56.Find(c => c.BelongsTo == part && c.IsCar);
 						if (ofpart == null) continue;
 
-						if (!Core.Map.CarPartsMap.Contains(part))
+						if (!Core.Map.CarPartsMap.Contains(part) && !car.Deletable)
 							Core.Map.CarPartsMap.Add(part);
 
 						car.UsesCarPartsOf = part;

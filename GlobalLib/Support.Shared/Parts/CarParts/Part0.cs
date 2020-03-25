@@ -30,5 +30,29 @@
                 *(int*)(byteptr_t + 0x40) = number;
             }
         }
+
+        /// <summary>
+        /// Sets total number of records in part3.
+        /// </summary>
+        /// <param name="number">Total number of records in part3.</param>
+        public unsafe void SetRecordNumber(int number)
+        {
+            fixed (byte* byteptr_t = &this.Data[0])
+            {
+                *(int*)(byteptr_t + 0x28) = number;
+            }
+        }
+
+        /// <summary>
+        /// Sets total number of misc types in part4.
+        /// </summary>
+        /// <param name="number">Total number of misc types in part4.</param>
+        public unsafe void SetMiscNumber(int number)
+        {
+            fixed (byte* byteptr_t = &this.Data[0])
+            {
+                *(int*)(byteptr_t + 0x38) = number;
+            }
+        }
     }
 }

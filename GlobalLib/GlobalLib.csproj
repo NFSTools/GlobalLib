@@ -484,6 +484,7 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\StringToKey.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\WIndowTintSettings.cs" />
+    <Compile Include="Support.Underground2\Framework\Assert.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\Assemble.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteBankTriggers.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteGCareerBrands.cs" />
@@ -849,9 +850,14 @@
     <Compile Include="Support.Underground2\Parts\PresetParts\Specialties.cs" />
     <Compile Include="Support.Underground2\Parts\PresetParts\PaintTypes.cs" />
     <Compile Include="Support.Underground2\Parts\PresetParts\VinylSets.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\CPInjector\CPI_Part1.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\CPInjector\CPI_Part2.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\CPInjector\CPI_Part3.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\CPInjector\CPI_Part4.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\CPInjector\CPI_Part56.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_CarParts.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_CarSkins.cs" />
-    <Compile Include="Support.Underground2\SaveData\Inject\I_LibCarParts.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\CPInjector\I_LibCarParts.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_Tracks.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_SunInfos.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_CarTypeInfo.cs" />
