@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public class AudioBuffers : Framework.VirtualPart, Reflection.Interface.ICopyable<AudioBuffers>
+	public class AudioBuffers : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<AudioBuffers>
 	{
 		#region Private Fields
 

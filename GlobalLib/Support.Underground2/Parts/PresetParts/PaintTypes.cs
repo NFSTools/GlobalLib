@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public class PaintTypes : Framework.VirtualPart, Reflection.Interface.ICopyable<PaintTypes>
+	public class PaintTypes : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<PaintTypes>
 	{
 		#region Private Fields
 

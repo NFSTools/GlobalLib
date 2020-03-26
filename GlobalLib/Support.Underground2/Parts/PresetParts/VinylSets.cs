@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public class VinylSets : Framework.VirtualPart, Reflection.Interface.ICopyable<VinylSets>
+	public class VinylSets : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<VinylSets>
 	{
 		#region Private Fields
 

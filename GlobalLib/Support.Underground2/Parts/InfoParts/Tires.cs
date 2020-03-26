@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Tires : Framework.VirtualPart, Reflection.Interface.ICopyable<Tires>
+	public class Tires : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Tires>
 	{
 		public float StaticGripScale { get; set; }
 		public float YawSpeedScale { get; set; } 

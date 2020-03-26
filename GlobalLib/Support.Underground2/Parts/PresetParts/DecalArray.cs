@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public class DecalArray : Framework.VirtualPart, Reflection.Interface.ICopyable<DecalArray>
+	public class DecalArray : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<DecalArray>
 	{
 		#region Private Fields
 

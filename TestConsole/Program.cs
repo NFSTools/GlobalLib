@@ -26,7 +26,7 @@ namespace TestConsole
 			Console.WriteLine($"{elapsed_1}ms");
 			Console.WriteLine("");
 
-
+			var c = db.GetCollection("SUPRA", "CarTypeInfos");
 
 			watch.Reset();
 

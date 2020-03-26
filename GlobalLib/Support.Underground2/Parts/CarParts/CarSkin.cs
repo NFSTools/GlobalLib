@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.CarParts
 {
-	public class CarSkin : Framework.VirtualPart, Reflection.Interface.ICopyable<CarSkin>
+	public class CarSkin : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<CarSkin>
 	{
 		private string _skin_description = "Silver";
 		private string _materialused = Reflection.BaseArguments.NULL;

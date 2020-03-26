@@ -267,6 +267,7 @@ namespace GlobalLib.Database.Collection
 					var attrib = new CollectionAttrib((System.Reflection.PropertyInfo)property, Class.Value);
 					string subpath = $"{path}\\{attrib.PropertyName}";
 					attrib.FullPath = subpath;
+					attrib.Directory = path;
 					map[subpath] = attrib;
 				}
 
@@ -276,12 +277,12 @@ namespace GlobalLib.Database.Collection
 					if (node.SubNodes == null) continue;
 					foreach (var subnode in node.SubNodes)
 					{
-						var name = Class.Value.GetType().GetProperty(subnode).GetValue(Class.Value);
-						var attribs = Class.Value.GetSubnodeAttribs(subnode, eGetInfoType.PROPERTY_INFOS);
+						var name = Class.Value.GetType().GetProperty(subnode.NodeName).GetValue(Class.Value);
+						var attribs = Class.Value.GetSubnodeAttribs(subnode.NodeName, eGetInfoType.PROPERTY_INFOS);
 						foreach (var attrib in attribs)
 						{
 							var field = new CollectionAttrib((System.Reflection.PropertyInfo)attrib, name);
-							string subpath = $"{path}\\{node.NodeName}\\{subnode}\\{field.PropertyName}";
+							string subpath = $"{path}\\{node.NodeName}\\{subnode.NodeName}\\{field.PropertyName}";
 							field.FullPath = subpath;
 							map[subpath] = field;
 						}
@@ -291,7 +292,17 @@ namespace GlobalLib.Database.Collection
 			}
 			return map;
 		}
-
+		public List<VirtualNode> GetAllNodes()
+		{
+			var list = new List<VirtualNode>(this.Length);
+			foreach (var cla in this.Classes)
+			{
+				var node = new VirtualNode(cla.Key);
+				node.SubNodes = cla.Value.GetAllNodes();
+				list.Add(node);
+			}
+			return list;
+		}
 
 		public override string ToString()
 		{

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Reflection.Abstract
 {
-	public abstract class Collectable : Interface.ICastable<Collectable>
+	public abstract class Collectable : Primitive, Interface.ICastable<Collectable>
 	{
         /// <summary>
         /// Collection name of the variable.
@@ -11,7 +11,7 @@
         /// Returns array of all accessible and modifiable properties and fields.
         /// </summary>
         /// <returns>Array of strings.</returns>
-        public virtual object[] GetAccessibles(Database.Collection.eGetInfoType type)
+        public override object[] GetAccessibles(Database.Collection.eGetInfoType type)
         {
             var list = new System.Collections.Generic.List<object>();
             foreach (var property in this.GetType().GetProperties())
@@ -27,31 +27,39 @@
             return list.ToArray();
         }
 
-        /// <summary>
-        /// Checks if the property is of enumerable type.
-        /// </summary>
-        /// <param name="property">Name of the property to check.</param>
-        /// <returns>True if property is enum; false otherwise.</returns>
-        public virtual bool OfEnumerableType(string property)
+        public SubPart GetSubPart(string name, string node)
         {
-            return this.GetType().GetProperty(property).PropertyType.IsEnum;
+            var property = this.GetType().GetProperty(name);
+            if (property == null) return null;
+            foreach (var obj in property.GetCustomAttributes(typeof(Attributes.ExpandableAttribute), true))
+            {
+                var attrib = obj as Attributes.ExpandableAttribute;
+                if (attrib.Name == node) return (SubPart)property.GetValue(this);
+            }
+            return null;
         }
-
-        /// <summary>
-        /// Returns all enumerable strings of the property.
-        /// </summary>
-        /// <param name="property">Name of the enumerable property.</param>
-        /// <returns>Array of strings.</returns>
-        public virtual string[] GetPropertyEnumerableTypes(string property)
+        public bool GetSubPart(string name, string node, out SubPart part)
         {
-            return this.GetType().GetProperty(property).PropertyType.GetEnumNames();
+            part = null;
+            var property = this.GetType().GetProperty(name);
+            if (property == null) return false;
+            foreach (var obj in property.GetCustomAttributes(typeof(Attributes.ExpandableAttribute), true))
+            {
+                var attrib = obj as Attributes.ExpandableAttribute;
+                if (attrib.Name == node)
+                {
+                    part = (SubPart)property.GetValue(this);
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
         /// Gets all nodes and subnodes from the class.
         /// </summary>
         /// <returns>Array of virtual nodes that can be used to build treeview.</returns>
-        public virtual VirtualNode[] GetAllNodes()
+        public virtual System.Collections.Generic.List<VirtualNode> GetAllNodes()
         {
             var list = new System.Collections.Generic.List<VirtualNode>();
             foreach (var property in this.GetType().GetProperties())
@@ -65,11 +73,11 @@
                         node = new VirtualNode(attrib.Name);
                         list.Add(node);
                     }
-                    node.SubNodes.Add(property.Name);
+                    node.SubNodes.Add(new VirtualNode(property.Name));
                 }
             }
             list.Sort((x, y) => x.NodeName.CompareTo(y.NodeName));
-            return list.ToArray();
+            return list;
         }
 
         public virtual object[] GetSubnodeAttribs(string NodeName, Database.Collection.eGetInfoType type)
@@ -183,7 +191,7 @@
         /// </summary>
         /// <param name="PropertyName">Field name to get the value from.</param>
         /// <returns>String value of a field name.</returns>
-        public virtual string GetValue(string PropertyName)
+        public override string GetValue(string PropertyName)
         {
             var result = this.GetType().GetProperty(PropertyName);
             if (result == null) return null;
@@ -195,7 +203,7 @@
         /// </summary>
         /// <param name="PropertyName">Name of the field to be modified.</param>
         /// <param name="value">Value to be set at the field specified.</param>
-        public virtual bool SetValue(string PropertyName, object value)
+        public override bool SetValue(string PropertyName, object value)
         {
             try
             {
@@ -231,7 +239,7 @@
         /// </summary>
         /// <param name="PropertyName">Name of the field to be modified.</param>
         /// <param name="value">Value to be set at the field specified.</param>
-        public virtual bool SetValue(string PropertyName, object value, ref string error)
+        public override bool SetValue(string PropertyName, object value, ref string error)
         {
             try
             {

@@ -71,6 +71,8 @@
     <Compile Include="Reflection\Abstract\Basic.cs" />
     <Compile Include="Reflection\Abstract\Collectable.cs" />
     <Compile Include="Reflection\Abstract\CollectionAttrib.cs" />
+    <Compile Include="Reflection\Abstract\Primitive.cs" />
+    <Compile Include="Reflection\Abstract\SubPart.cs" />
     <Compile Include="Reflection\Abstract\VirtualNode.cs" />
     <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
     <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />
@@ -500,7 +502,6 @@
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteWorldChallenges.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteWorldShops.cs" />
     <Compile Include="Support.Underground2\Framework\PartCNames.cs" />
-    <Compile Include="Support.Underground2\Framework\VirtualClass.cs" />
     <Compile Include="Reflection\Enum\eSunAlpha.cs" />
     <Compile Include="Reflection\Enum\eSunTexture.cs" />
     <Compile Include="Support.Underground2\Gameplay\BankTrigger\Functional\Assemble.cs" />
@@ -839,7 +840,6 @@
     <Compile Include="Support.Underground2\Parts\InfoParts\Turbo.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\RPM.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Engine.cs" />
-    <Compile Include="Support.Underground2\Framework\VirtualPart.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\CarInfoWheel.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Suspension.cs" />
     <Compile Include="Support.Underground2\Parts\InfoParts\Tires.cs" />

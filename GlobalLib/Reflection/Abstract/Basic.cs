@@ -7,6 +7,47 @@
 		public virtual byte[] _LngGlobal { get; set; }
 		public virtual byte[] _LngLabels { get; set; }
 
+        public Collectable GetCollection(string CName, string root)
+        {
+            var property = this.GetType().GetProperty(root);
+            if (property == null) return null;
+
+            return (Collectable)property.PropertyType
+                .GetMethod("FindClass", new System.Type[] { typeof(string) })
+                .Invoke(property.GetValue(this), new object[] { CName });
+        }
+
+        public bool TryGetCollection(string CName, string root, out Collectable collection)
+        {
+            collection = null;
+            try
+            {
+                collection = this.GetCollection(CName, root);
+                if (collection == null) return false;
+                else return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+        }
+
+        public Primitive GetPrimitive(params string[] path)
+        {
+            switch (path.Length)
+            {
+                case 2:
+                    return this.GetCollection(path[1], path[0]);
+
+                case 4:
+                    var collection = this.GetCollection(path[1], path[0]);
+                    return collection.GetSubPart(path[3], path[2]);
+
+                default:
+                    return null;
+            }
+        }
+
         /// <summary>
         /// Attempts to add class specfified to the database.
         /// </summary>

@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.GameParts
 {
-	public class Opponent : Framework.VirtualPart, Reflection.Interface.ICopyable<Opponent>
+	public class Opponent : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Opponent>
 	{
 		private string _name = Reflection.BaseArguments.NULL;
 		private string _preset_ride = Reflection.BaseArguments.RANDOM;

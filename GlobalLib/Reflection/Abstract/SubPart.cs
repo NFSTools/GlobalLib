@@ -1,17 +1,23 @@
-﻿namespace GlobalLib.Support.Underground2.Framework
+﻿namespace GlobalLib.Reflection.Abstract
 {
-	public class VirtualPart : Reflection.Interface.IGetValue, Reflection.Interface.ISetValue
-	{
+    public abstract class SubPart : Primitive
+    {
+        Collectable Parent { get; set; }
+
         /// <summary>
         /// Returns array of all accessible and modifiable properties and fields.
         /// </summary>
         /// <returns>Array of strings.</returns>
-        public string[] GetAccessibles()
+        public override object[] GetAccessibles(Database.Collection.eGetInfoType type)
         {
-            var list = new System.Collections.Generic.List<string>();
+            var list = new System.Collections.Generic.List<object>();
             foreach (var property in this.GetType().GetProperties())
-                list.Add(property.Name);
-            list.Sort();
+            {
+                if (type == Database.Collection.eGetInfoType.PROPERTY_NAMES)
+                    list.Add(property.Name);
+                else if (type == Database.Collection.eGetInfoType.PROPERTY_INFOS)
+                    list.Add(property);
+            }
             return list.ToArray();
         }
 
@@ -20,7 +26,7 @@
         /// </summary>
         /// <param name="PropertyName">Field name to get the value from.</param>
         /// <returns>String value of a field name.</returns>
-        public virtual string GetValue(string PropertyName)
+        public override string GetValue(string PropertyName)
         {
             var property = this.GetType().GetProperty(PropertyName);
             return (property == null) ? null : property.GetValue(this).ToString();
@@ -31,7 +37,7 @@
         /// </summary>
         /// <param name="PropertyName">Name of the field to be modified.</param>
         /// <param name="value">Value to be set at the field specified.</param>
-        public virtual bool SetValue(string PropertyName, object value)
+        public override bool SetValue(string PropertyName, object value)
         {
             try
             {
@@ -57,7 +63,7 @@
         /// <param name="PropertyName">Name of the field to be modified.</param>
         /// <param name="value">Value to be set at the field specified.</param>
         /// <param name="error">Error occured in case setting value fails.</param>
-        public virtual bool SetValue(string PropertyName, object value, ref string error)
+        public override bool SetValue(string PropertyName, object value, ref string error)
         {
             try
             {

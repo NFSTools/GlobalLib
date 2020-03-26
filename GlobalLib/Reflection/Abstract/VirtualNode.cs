@@ -7,12 +7,12 @@ namespace GlobalLib.Reflection.Abstract
 	public class VirtualNode
 	{
 		public string NodeName { get; set; }
-		public List<string> SubNodes { get; set; }
+		public List<VirtualNode> SubNodes { get; set; }
 
 		public VirtualNode(string NodeName)
 		{
 			this.NodeName = NodeName;
-			this.SubNodes = new List<string>();
+			this.SubNodes = new List<VirtualNode>();
 		}
 
 		public override string ToString()

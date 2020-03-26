@@ -12,6 +12,7 @@ namespace GlobalLib.Reflection.Abstract
 		public PropertyInfo Attribute { get; set; }
 		public object Parent { get; set; }
 		public string FullPath { get; set; }
+		public string Directory { get; set; }
 		public string PropertyName { get => this.Attribute.Name; }
 		public string Value { get => this.Attribute.GetValue(Parent).ToString(); }
 		public Type PropertyType { get => this.Attribute.PropertyType; }

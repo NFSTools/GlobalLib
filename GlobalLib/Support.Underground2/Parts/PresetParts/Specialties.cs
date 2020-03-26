@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public class Specialties : Framework.VirtualPart, Reflection.Interface.ICopyable<Specialties>
+	public class Specialties : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Specialties>
 	{
 		#region Private Fields
 
