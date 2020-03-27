@@ -6,6 +6,7 @@
 		private int _upgrade_level;
 		private int _upgrade_part_index;
 		private int _part_index;
+		private readonly bool _cname_is_set = false;
 
 		[Reflection.Attributes.AccessModifiable()]
 		public Reflection.Enum.ePerformanceType PartPerformanceType

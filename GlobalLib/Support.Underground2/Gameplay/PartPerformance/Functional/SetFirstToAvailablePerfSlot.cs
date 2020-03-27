@@ -15,6 +15,7 @@
 							this._part_perf_type = (Reflection.Enum.ePerformanceType)a1;
 							this._upgrade_level = a2;
 							this._upgrade_part_index = a3;
+							Core.Map.PerfPartTable[a1, a2, a3] = this.BinKey;
 							return;
 						}
 					}

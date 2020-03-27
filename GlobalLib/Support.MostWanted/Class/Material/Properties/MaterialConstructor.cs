@@ -17,7 +17,7 @@
         public unsafe Material(System.IntPtr byteptr_t, string CName, Database.MostWanted db)
         {
             this.Database = db;
-            this.CollectionName = CName;
+            this._collection_name = CName;
             this.Disassemble((byte*)byteptr_t);
         }
 

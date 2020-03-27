@@ -11,7 +11,7 @@
 
 			// Move to another
 			this._upgrade_part_index = value;
-			Core.Map.PerfPartTable[index, level, value] = Utils.ConvertX.ToUInt32(this._collection_name);
+			Core.Map.PerfPartTable[index, level, value] = this.BinKey;
 		}
 	}
 }

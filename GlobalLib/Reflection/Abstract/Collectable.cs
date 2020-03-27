@@ -1,11 +1,18 @@
 ﻿namespace GlobalLib.Reflection.Abstract
 {
+    /// <summary>
+    /// <see cref="Collectable"/> class is a default collection of properties and fields of any 
+    /// global type, which information can be accessed and modified through those properties. 
+    /// It inherits from <see cref="Primitive"/> class and <see cref="Interface.ICastable{TypeID}"/> 
+    /// interface and implements/overrides most of their methods.
+    /// </summary>
 	public abstract class Collectable : Primitive, Interface.ICastable<Collectable>
 	{
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
         public abstract string CollectionName { get; set; }
+        public virtual bool Deletable { get; set; } = true;
 
         /// <summary>
         /// Returns array of all accessible and modifiable properties and fields.

@@ -9,7 +9,7 @@
 		public BankTrigger(string CName, Database.Underground2 db)
 		{
 			this.Database = db;
-			this._collection_name = CName;
+			this.CollectionName = CName;
 			byte maxindex = 0;
 			foreach (var bank in this.Database.BankTriggers.Classes.Values)
 				if (bank.BankIndex > maxindex) maxindex = bank.BankIndex;

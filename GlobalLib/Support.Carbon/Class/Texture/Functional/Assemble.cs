@@ -10,7 +10,7 @@
         /// <param name="offdata">Current offset in the tpk data.</param>
         public override unsafe void Assemble(byte* byteptr_t, ref int offheader, ref int offdata)
         {
-            int a1 = this._collection_name.Length; // size of the collection name
+            int a1 = (this._collection_name.Length > 0x22) ? 0x22 : this._collection_name.Length;
             int a2 = 0x5D + a1 - ((1 + a1) % 4); // size of the texture header
 
             this.Offset = offdata;
@@ -56,8 +56,8 @@
             *(byteptr_t + offheader + 0x58) = (byte)(a2 - 0x59);
 
             // Write CollectionName
-            for (a1 = 0; a1 < this.CollectionName.Length; ++a1)
-                *(byteptr_t + offheader + 0x59 + a1) = (byte)this.CollectionName[a1];
+            for (int a3 = 0; a3 < a1; ++a3)
+                *(byteptr_t + offheader + 0x59 + a3) = (byte)this.CollectionName[a3];
 
             // Precalculate next offsets
             offheader += a2; // set next header offset

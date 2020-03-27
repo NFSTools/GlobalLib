@@ -7,24 +7,24 @@ namespace GlobalLib.Database
 {
     public partial class Underground2 : Reflection.Abstract.BasicBase, Reflection.Interface.IGetIndex//, Reflection.Interface.IOperative
     {
-        public Collection.Binary<Material> Materials { get; set; }
-        public Collection.Binary<CarTypeInfo> CarTypeInfos { get; set; }
-        public Collection.Binary<PresetRide> PresetRides { get; set; }
-        public Collection.Binary<SunInfo> SunInfos { get; set; }
-        public Collection.Binary<Track> Tracks { get; set; }
-        public Collection.Binary<GCareerRace> GCareerRaces { get; set; }
-        public Collection.Binary<WorldShop> WorldShops { get; set; }
-        public Collection.Binary<GCareerBrand> GCareerBrands { get; set; }
-        public Collection.Binary<PartPerformance> PartPerformances { get; set; }
-        public Collection.Binary<GShowcase> GShowcases { get; set; }
-        public Collection.Binary<SMSMessage> SMSMessages { get; set; }
-        public Collection.Binary<Sponsor> Sponsors { get; set; }
-        public Collection.Binary<GCareerStage> GCareerStages { get; set; }
-        public Collection.Binary<PerfSliderTuning> PerfSliderTunings { get; set; }
-        public Collection.Binary<WorldChallenge> WorldChallenges { get; set; }
-        public Collection.Binary<PartUnlockable> PartUnlockables { get; set; }
-        public Collection.Binary<BankTrigger> BankTriggers { get; set; }
-        public Collection.Binary<GCarUnlock> GCarUnlocks { get; set; }
+        public Collection.Root<Material> Materials { get; set; }
+        public Collection.Root<CarTypeInfo> CarTypeInfos { get; set; }
+        public Collection.Root<PresetRide> PresetRides { get; set; }
+        public Collection.Root<SunInfo> SunInfos { get; set; }
+        public Collection.Root<Track> Tracks { get; set; }
+        public Collection.Root<GCareerRace> GCareerRaces { get; set; }
+        public Collection.Root<WorldShop> WorldShops { get; set; }
+        public Collection.Root<GCareerBrand> GCareerBrands { get; set; }
+        public Collection.Root<PartPerformance> PartPerformances { get; set; }
+        public Collection.Root<GShowcase> GShowcases { get; set; }
+        public Collection.Root<SMSMessage> SMSMessages { get; set; }
+        public Collection.Root<Sponsor> Sponsors { get; set; }
+        public Collection.Root<GCareerStage> GCareerStages { get; set; }
+        public Collection.Root<PerfSliderTuning> PerfSliderTunings { get; set; }
+        public Collection.Root<WorldChallenge> WorldChallenges { get; set; }
+        public Collection.Root<PartUnlockable> PartUnlockables { get; set; }
+        public Collection.Root<BankTrigger> BankTriggers { get; set; }
+        public Collection.Root<GCarUnlock> GCarUnlocks { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }

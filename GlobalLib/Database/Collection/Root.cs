@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using GlobalLib.Reflection.Abstract;
 
@@ -6,7 +7,7 @@ using GlobalLib.Reflection.Abstract;
 
 namespace GlobalLib.Database.Collection
 {
-	public class Binary<TypeID> where TypeID : Collectable, new()
+	public class Root<TypeID> where TypeID : Collectable, new()
 	{
 		public Dictionary<string, TypeID> Classes { get; set; }
 		public string ThisName { get; set; }
@@ -18,7 +19,7 @@ namespace GlobalLib.Database.Collection
 		private readonly bool importable = false;
 		public BasicBase Database { get; set; }
 
-		public Binary(string name, int maxlength, int offsetat, int basesize, bool resizable, bool importable, BasicBase data)
+		public Root(string name, int maxlength, int offsetat, int basesize, bool resizable, bool importable, BasicBase data)
 		{
 			this.Classes = new Dictionary<string, TypeID>();
 			this.ThisName = name;
@@ -117,94 +118,171 @@ namespace GlobalLib.Database.Collection
 
 		public bool TryAddClass(string value)
 		{
-			if (string.IsNullOrWhiteSpace(value)) return false;
-			if (value.Length > MaxCNameLength) return false;
-			if (this.Classes.ContainsKey(value)) return false;
-			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), this.Database.GetType() });
-			var instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
-			this.Classes[value] = instance;
-			return true;
+			TypeID instance = null;
+
+			try
+			{
+				if (!this.Resizable) return false;
+				if (string.IsNullOrWhiteSpace(value)) return false;
+				if (this.MaxCNameLength != -1 && value.Length > this.MaxCNameLength) return false;
+				if (this.Classes.ContainsKey(value)) return false;
+				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), this.Database.GetType() });
+				instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
+				this.Classes.Add(value, instance);
+				return true;
+			}
+			catch (Exception)
+			{
+				instance = null;
+				return false;
+			}
 		}
 		public bool TryAddClass(string value, out string error)
 		{
+			TypeID instance = null;
 			error = null;
-			if (string.IsNullOrWhiteSpace(value))
+
+			try
 			{
-				error = "CollectionName cannot be empty or whitespace.";
+				if (!this.Resizable)
+				{
+					error = "Class collection specified is non-resizable.";
+					return false;
+				}
+				if (string.IsNullOrWhiteSpace(value))
+				{
+					error = "CollectionName cannot be empty or whitespace.";
+					return false;
+				}
+				if (this.MaxCNameLength != -1 && value.Length > this.MaxCNameLength)
+				{
+					error = $"Length of the value passed should not exceed {MaxCNameLength} characters.";
+					return false;
+				}
+				if (this.Classes.ContainsKey(value))
+				{
+					error = $"Class with CollectionName {value} already exists.";
+					return false;
+				}
+				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), this.Database.GetType() });
+				instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
+				this.Classes.Add(value, instance);
+				return true;
+			}
+			catch (Exception e)
+			{
+				while (e.InnerException != null) e = e.InnerException;
+				error = e.Message;
+				instance = null;
 				return false;
 			}
-			if (value.Length >= MaxCNameLength)
-			{
-				error = $"Length of the value passed should not exceed {MaxCNameLength} characters.";
-				return false;
-			}
-			if (this.Classes.ContainsKey(value))
-			{
-				error = $"Class with CollectionName {value} already exists.";
-				return false;
-			}
-			var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(string), this.Database.GetType() });
-			var instance = (TypeID)ctor.Invoke(new object[] { value, this.Database });
-			this.Classes[value] = instance;
-			return true;
 		}
 
 		public bool TryRemoveClass(string value)
 		{
+			if (!this.Resizable) return false;
 			if (string.IsNullOrWhiteSpace(value)) return false;
-			return this.Classes.Remove(value);
+			if (!this.Classes.TryGetValue(value, out var cla)) return false;
+			if (!cla.Deletable) return false;
+			bool done = this.Classes.Remove(value);
+			if (done) this.ResortClasses();
+			return done;
 		}
 		public bool TryRemoveClass(string value, out string error)
 		{
 			error = null;
+			if (!this.Resizable)
+			{
+				error = "Class collection specified is non-resizable.";
+				return false;
+			}
 			if (string.IsNullOrWhiteSpace(value))
 			{
 				error = "Class with empty or whitespace CollectionName does not exist.";
 				return false;
 			}
+			if (!this.Classes.TryGetValue(value, out var cla))
+			{
+				error = $"Class with CollectionName {value} does not exist.";
+				return false;
+			}
+			if (!cla.Deletable)
+			{
+				error = $"This collection cannot be deleted because it is important to the game.";
+				return false;
+			}
 			bool done = this.Classes.Remove(value);
-			if (!done) error = $"Class with CollectionName {value} does not exist.";
+			if (done) this.ResortClasses();
+			else error = $"Unable to remove class with CollectionName {value}.";
 			return done;
 		}
 
 		public bool TryCloneClass(string value, string copyfrom)
 		{
-			if (string.IsNullOrWhiteSpace(value)) return false;
-			if (value.Length > MaxCNameLength) return false;
-			if (this.Classes.ContainsKey(value)) return false;
-			if (!this.Classes.TryGetValue(copyfrom, out var cla)) return false;
+			TypeID instance = null;
 
-			var copy = cla.MemoryCast(value);
-			this.Classes[value] = (TypeID)copy;
-			return true;
+			try
+			{
+				if (!this.Resizable) return false;
+				if (string.IsNullOrWhiteSpace(value)) return false;
+				if (this.MaxCNameLength != -1 && value.Length > this.MaxCNameLength) return false;
+				if (this.Classes.ContainsKey(value)) return false;
+				if (!this.Classes.TryGetValue(copyfrom, out var cla)) return false;
+
+				instance = (TypeID)cla.MemoryCast(value);
+				this.Classes.Add(value, instance);
+				return true;
+			}
+			catch (Exception)
+			{
+				instance = null;
+				return false;
+			}
 		}
 		public bool TryCloneClass(string value, string copyfrom, out string error)
 		{
+			TypeID instance = null;
 			error = null;
-			if (string.IsNullOrWhiteSpace(value))
-			{
-				error = "CollectionName cannot be empty or whitespace.";
-				return false;
-			}
-			if (value.Length > MaxCNameLength)
-			{
-				error = $"Length of the value passed should not exceed {MaxCNameLength} characters.";
-				return false;
-			}
-			if (this.Classes.ContainsKey(value))
-			{
-				error = $"Class with CollectionName {value} already exists.";
-				return false;
-			}
-			if (!this.Classes.TryGetValue(copyfrom, out var cla))
-			{
-				error = $"Class with CollectionName {copyfrom} does not exist.";
-				return false;
-			}
 
-			var copy = cla.MemoryCast(value);
-			this.Classes[value] = (TypeID)copy;
-			return true;
+			try
+			{
+				if (!this.Resizable)
+				{
+					error = "Class collection specified is non-resizable.";
+					return false;
+				}
+				if (string.IsNullOrWhiteSpace(value))
+				{
+					error = "CollectionName cannot be empty or whitespace.";
+					return false;
+				}
+				if (this.MaxCNameLength != -1 && value.Length > this.MaxCNameLength)
+				{
+					error = $"Length of the value passed should not exceed {MaxCNameLength} characters.";
+					return false;
+				}
+				if (this.Classes.ContainsKey(value))
+				{
+					error = $"Class with CollectionName {value} already exists.";
+					return false;
+				}
+				if (!this.Classes.TryGetValue(copyfrom, out var cla))
+				{
+					error = $"Class with CollectionName {copyfrom} does not exist.";
+					return false;
+				}
+
+				instance = (TypeID)cla.MemoryCast(value);
+				this.Classes.Add(value, instance);
+				return true;
+			}
+			catch (Exception e)
+			{
+				while (e.InnerException != null) e = e.InnerException;
+				error = e.Message;
+				instance = null;
+				return false;
+			}
 		}
 
 		public unsafe bool TryImportClass(byte[] data)
@@ -220,7 +298,7 @@ namespace GlobalLib.Database.Collection
 
 				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(IntPtr), typeof(string), this.Database.GetType() });
 				var instance = (TypeID)ctor.Invoke(new object[] { (IntPtr)dataptr_t, CName, this.Database });
-				this.Classes[CName] = instance;
+				this.Classes.Add(CName, instance);
 			}
 			return true;
 		}
@@ -250,7 +328,55 @@ namespace GlobalLib.Database.Collection
 
 				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(IntPtr), typeof(string), this.Database.GetType() });
 				var instance = (TypeID)ctor.Invoke(new object[] { (IntPtr)dataptr_t, CName, this.Database });
-				this.Classes[CName] = instance;
+				this.Classes.Add(CName, instance);
+			}
+			return true;
+		}
+
+		public bool TryExportClass(string value, string filepath)
+		{
+			if (!this.importable) return false;
+			if (string.IsNullOrWhiteSpace(value)) return false;
+			if (!this.Classes.TryGetValue(value, out var cla)) return false;
+			if (!Directory.Exists(Path.GetDirectoryName(filepath))) return false;
+
+			var arr = (byte[])cla.GetType()
+				.GetMethod("Assemble").Invoke(cla, new object[0] { });
+
+			using (var bw = new BinaryWriter(File.Open(filepath, FileMode.Create)))
+			{
+				bw.Write(arr);
+			}
+			return true;
+		}
+		public bool TryExportClass(string value, string filepath, out string error)
+		{
+			error = null;
+			if (!this.importable)
+			{
+				error = "Class collection specified is not exportable.";
+				return false;
+			}
+			if (string.IsNullOrWhiteSpace(value))
+			{
+				error = "CollectionName cannot be empty or whitespace.";
+				return false;
+			}
+			if (!this.Classes.TryGetValue(value, out var cla))
+			{
+				error = $"Class with CollectionName {value} does not exist.";
+				return false;
+			}
+			if (!Directory.Exists(Path.GetDirectoryName(filepath)))
+			{
+				error = $"Directory of the file path {filepath} specified does not exist.";
+				return false;
+			}
+			var arr = (byte[])cla.GetType().GetMethod("Assemble").Invoke(cla, new object[0] { });
+
+			using (var bw = new BinaryWriter(File.Open(filepath, FileMode.Create)))
+			{
+				bw.Write(arr);
 			}
 			return true;
 		}
@@ -302,6 +428,17 @@ namespace GlobalLib.Database.Collection
 				list.Add(node);
 			}
 			return list;
+		}
+		private void ResortClasses()
+		{
+			var newdict = new Dictionary<string, TypeID>(this.Length);
+			foreach (var Class in this.Classes)
+				newdict.Add(Class.Key, Class.Value);
+			this.Classes = null; // for GC
+			this.Classes = newdict;
+			GC.Collect(0, GCCollectionMode.Forced);
+			GC.Collect(1, GCCollectionMode.Forced);
+			GC.Collect(2, GCCollectionMode.Forced);
 		}
 
 		public override string ToString()

@@ -44,12 +44,7 @@ namespace GlobalLib.Utils.EA
         /// <returns>String as a hexadecimal representation of the color.</returns>
         public static string ColorToHex(byte alpha, byte red, byte green, byte blue)
         {
-            string result = "0x";
-            result += alpha.ToString("X2");
-            result += red.ToString("X2");
-            result += green.ToString("X2");
-            result += blue.ToString("X2");
-            return result;
+            return $"0x{alpha:X2}{red:X2}{green:X2}{blue:X2}";
         }
 
         /// <summary>

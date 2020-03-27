@@ -30,7 +30,7 @@ namespace GlobalLib.Support.Underground2.Framework
 			try
 			{
 				uint _ = System.Convert.ToUInt32(CName, 16);
-				return false;
+				return true;
 			}
 			catch (System.Exception)
 			{

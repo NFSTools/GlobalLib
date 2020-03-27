@@ -7,10 +7,10 @@ namespace GlobalLib.Database
 {
     public partial class Carbon : Reflection.Abstract.BasicBase, Reflection.Interface.IGetIndex
     {
-        public Collection.Binary<Material> Materials { get; set; }
-        public Collection.Binary<CarTypeInfo> CarTypeInfos { get; set; }
-        public Collection.Binary<PresetRide> PresetRides { get; set; }
-        public Collection.Binary<PresetSkin> PresetSkins { get; set; }
+        public Collection.Root<Material> Materials { get; set; }
+        public Collection.Root<CarTypeInfo> CarTypeInfos { get; set; }
+        public Collection.Root<PresetRide> PresetRides { get; set; }
+        public Collection.Root<PresetSkin> PresetSkins { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }

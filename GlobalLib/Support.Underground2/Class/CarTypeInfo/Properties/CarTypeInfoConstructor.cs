@@ -26,7 +26,7 @@
         public unsafe CarTypeInfo(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
         {
             this.Database = db;
-            this.CollectionName = CName;
+            this._collection_name = CName;
             this.OriginalName = CName;
             this.Initialize();
             this.Disassemble((byte*)byteptr_t);

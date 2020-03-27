@@ -1,12 +1,22 @@
 ﻿namespace GlobalLib.Reflection.Abstract
 {
+    /// <summary>
+    /// <see cref="SubPart"/> is a class that any <see cref="Collectable"/> may include in itself. 
+    /// This class is not allowed to have any <see cref="Attributes.AccessModifiableAttribute"/> 
+    /// because all properties should be public, accessible and modifiable from the outside.
+    /// </summary>
     public abstract class SubPart : Primitive
     {
+        /// <summary>
+        /// Optionable <see cref="Collectable"/> parent of this <see cref="SubPart"/> class.
+        /// </summary>
         Collectable Parent { get; set; }
 
         /// <summary>
-        /// Returns array of all accessible and modifiable properties and fields.
+        /// Returns object array of all accessible and modifiable properties and fields.
         /// </summary>
+        /// <param name="type"><see cref="Database.Collection.eGetInfoType"/> enum value 
+        /// that tells what objects type should be returned.</param>
         /// <returns>Array of strings.</returns>
         public override object[] GetAccessibles(Database.Collection.eGetInfoType type)
         {
@@ -25,7 +35,6 @@
         /// Returns the value of a field name provided.
         /// </summary>
         /// <param name="PropertyName">Field name to get the value from.</param>
-        /// <returns>String value of a field name.</returns>
         public override string GetValue(string PropertyName)
         {
             var property = this.GetType().GetProperty(PropertyName);

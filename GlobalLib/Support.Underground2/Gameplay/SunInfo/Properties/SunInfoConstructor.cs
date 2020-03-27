@@ -9,7 +9,7 @@
 		public SunInfo(string CName, Database.Underground2 db)
 		{
 			this.Database = db;
-			this._collection_name = CName;
+			this.CollectionName = CName;
 			this.SUNLAYER1 = new Parts.GameParts.SunLayer();
 			this.SUNLAYER2 = new Parts.GameParts.SunLayer();
 			this.SUNLAYER3 = new Parts.GameParts.SunLayer();

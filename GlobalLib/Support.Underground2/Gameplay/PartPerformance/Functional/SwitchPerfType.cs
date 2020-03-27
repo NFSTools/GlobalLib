@@ -16,7 +16,7 @@
 				{
 					if (Core.Map.PerfPartTable[index, a1, a2] == 0)
 					{
-						Core.Map.PerfPartTable[index, a1, a2] = Utils.ConvertX.ToUInt32(this._collection_name);
+						Core.Map.PerfPartTable[index, a1, a2] = this.BinKey;
 						this._upgrade_level = a1;
 						this._upgrade_part_index = a2;
 						return;

@@ -59,7 +59,7 @@
     <Compile Include="Database\Carbon\ToString.cs" />
     <Compile Include="Database\Carbon\AddCollision.cs" />
     <Compile Include="Database\Carbon\Carbon.cs" />
-    <Compile Include="Database\Collection\ClassCollection.cs" />
+    <Compile Include="Database\Collection\Root.cs" />
     <Compile Include="Database\Collection\eGetInfoType.cs" />
     <Compile Include="Database\Collection\eKeyType.cs" />
     <Compile Include="Database\MostWanted\Initialize.cs" />
@@ -68,7 +68,7 @@
     <Compile Include="Database\Underground2\Initialize.cs" />
     <Compile Include="Database\Underground2\ToString.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />
-    <Compile Include="Reflection\Abstract\Basic.cs" />
+    <Compile Include="Reflection\Abstract\BasicBase.cs" />
     <Compile Include="Reflection\Abstract\Collectable.cs" />
     <Compile Include="Reflection\Abstract\CollectionAttrib.cs" />
     <Compile Include="Reflection\Abstract\Primitive.cs" />
@@ -78,10 +78,8 @@
     <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />
     <Compile Include="Database\Carbon\ExportTextures.cs" />
     <Compile Include="Database\Carbon\GetClassIndex.cs" />
-    <Compile Include="Database\Carbon\Export.cs" />
     <Compile Include="Database\eClassType.cs" />
     <Compile Include="Database\MostWanted\AddCollision.cs" />
-    <Compile Include="Database\MostWanted\Export.cs" />
     <Compile Include="Database\MostWanted\ExportTextures.cs" />
     <Compile Include="Database\MostWanted\GetClassIndex.cs" />
     <Compile Include="Database\MostWanted\MostWanted.cs" />

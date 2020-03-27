@@ -9,7 +9,8 @@
 		public Track(string CName, Database.Underground2 db)
 		{
 			this.Database = db;
-			this._collection_name = CName;
+			this.CollectionName = CName;
+			this.RegionName = "L4RA";
 			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 		}
 
@@ -20,5 +21,7 @@
 			this._collection_name = CName;
 			this.Disassemble((byte*)byteptr_t);
 		}
+
+		~Track() { System.Console.WriteLine("Track destroyed."); }
 	}
 }

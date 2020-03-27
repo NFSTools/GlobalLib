@@ -31,11 +31,11 @@ namespace TestConsole
 			watch.Reset();
 
 
-			//var map = db.CarTypeInfos.GetAttributeMap();
+			var map = db.CarTypeInfos.GetAttributeMap();
 
-			//db.CarTypeInfos.TryCloneClass("TEST3000GT", "SUPRA");
-			//
-			//db.CarTypeInfos.FindClass("TEST3000GT").Deletable = true;
+			db.CarTypeInfos.TryCloneClass("TEST3000GT", "SUPRA");
+			
+			db.CarTypeInfos.FindClass("TEST3000GT").Deletable = true;
 
 			watch.Reset();
 			watch.Start();

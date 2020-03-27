@@ -27,7 +27,7 @@
         public unsafe CarTypeInfo(System.IntPtr byteptr_t, string CName, Database.Carbon db)
         {
             this.Database = db;
-            this.CollectionName = CName;
+            this._collection_name = CName;
             this.OriginalName = CName;
             this.Disassemble((byte*)byteptr_t);
             if (this.Index <= (int)Reflection.Enum.eBoundValues.MIN_INFO_CARBON)

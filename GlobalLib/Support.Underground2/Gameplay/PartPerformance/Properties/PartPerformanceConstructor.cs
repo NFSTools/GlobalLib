@@ -9,7 +9,7 @@
 		public PartPerformance(string CName, Database.Underground2 db)
 		{
 			this.Database = db;
-			this._collection_name = CName;
+			this.CollectionName = CName;
 			this.SetToFirstAvailablePerfSlot();
 			int index = 0;
 			foreach (var cla in db.PartPerformances.Classes.Values)
@@ -18,6 +18,7 @@
 					index = cla.PartIndex;
 			}
 			this._part_index = index + 1;
+			this._cname_is_set = true;
 		}
 
 		// Default constructor: disassemble part performance
@@ -29,6 +30,7 @@
 			this._upgrade_part_index = args[2];
 			this.Disassemble(byteptr_t);
 			Core.Map.PerfPartTable[args[0], args[1], args[2]] = this.BinKey;
+			this._cname_is_set = true;
 		}
 
 		~PartPerformance() { }

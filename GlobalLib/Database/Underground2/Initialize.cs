@@ -11,7 +11,7 @@ namespace GlobalLib.Database
 	{
 		private void Initialize()
 		{
-			this.Materials = new Binary<Material>
+			this.Materials = new Root<Material>
 			(
 				"Materials",
 				Material.MaxCNameLength,
@@ -22,7 +22,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.CarTypeInfos = new Binary<CarTypeInfo>
+			this.CarTypeInfos = new Root<CarTypeInfo>
 			(
 				"CarTypeInfos",
 				CarTypeInfo.MaxCNameLength,
@@ -33,7 +33,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.PresetRides = new Binary<PresetRide>
+			this.PresetRides = new Root<PresetRide>
 			(
 				"PresetRides",
 				PresetRide.MaxCNameLength,
@@ -44,7 +44,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.SunInfos = new Binary<SunInfo>
+			this.SunInfos = new Root<SunInfo>
 			(
 				"SunInfos",
 				SunInfo.MaxCNameLength,
@@ -55,7 +55,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.Tracks = new Binary<Track>
+			this.Tracks = new Root<Track>
 			(
 				"Tracks",
 				Track.MaxCNameLength,
@@ -66,7 +66,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.GCareerRaces = new Binary<GCareerRace>
+			this.GCareerRaces = new Root<GCareerRace>
 			(
 				"GCareerRaces",
 				-1,
@@ -77,10 +77,10 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.WorldShops = new Binary<WorldShop>
+			this.WorldShops = new Root<WorldShop>
 			(
 				"WorldShops",
-				-1,
+				0x1F,
 				-1,
 				-1,
 				true,
@@ -88,10 +88,10 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.GCareerBrands = new Binary<GCareerBrand>
+			this.GCareerBrands = new Root<GCareerBrand>
 			(
 				"GCareerBrands",
-				-1,
+				0x1F,
 				-1,
 				-1,
 				true,
@@ -100,7 +100,7 @@ namespace GlobalLib.Database
 			);
 
 
-			this.PartPerformances = new Binary<PartPerformance>
+			this.PartPerformances = new Root<PartPerformance>
 			(
 				"PartPerformances",
 				-1,
@@ -111,10 +111,10 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.GShowcases = new Binary<GShowcase>
+			this.GShowcases = new Root<GShowcase>
 			(
 				"GShowcases",
-				-1,
+				0x1F,
 				-1,
 				-1,
 				true,
@@ -122,7 +122,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.SMSMessages = new Binary<SMSMessage>
+			this.SMSMessages = new Root<SMSMessage>
 			(
 				"SMSMessages",
 				-1,
@@ -133,7 +133,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.Sponsors = new Binary<Sponsor>
+			this.Sponsors = new Root<Sponsor>
 			(
 				"Sponsors",
 				-1,
@@ -144,7 +144,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.GCareerStages = new Binary<GCareerStage>
+			this.GCareerStages = new Root<GCareerStage>
 			(
 				"GCareerStages",
 				-1,
@@ -155,7 +155,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.PerfSliderTunings = new Binary<PerfSliderTuning>
+			this.PerfSliderTunings = new Root<PerfSliderTuning>
 			(
 				"PerfSliderTunings",
 				-1,
@@ -166,7 +166,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.WorldChallenges = new Binary<WorldChallenge>
+			this.WorldChallenges = new Root<WorldChallenge>
 			(
 				"WorldChallenges",
 				-1,
@@ -177,7 +177,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.PartUnlockables = new Binary<PartUnlockable>
+			this.PartUnlockables = new Root<PartUnlockable>
 			(
 				"PartUnlockables",
 				-1,
@@ -188,7 +188,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.BankTriggers = new Binary<BankTrigger>
+			this.BankTriggers = new Root<BankTrigger>
 			(
 				"BankTriggers",
 				-1,
@@ -199,7 +199,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.GCarUnlocks = new Binary<GCarUnlock>
+			this.GCarUnlocks = new Root<GCarUnlock>
 			(
 				"GCarUnlocks",
 				-1,

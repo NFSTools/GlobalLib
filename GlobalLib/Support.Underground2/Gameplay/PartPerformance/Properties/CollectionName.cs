@@ -23,7 +23,8 @@
 				if (this.Database.PartPerformances.Classes.ContainsKey(value))
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
-				Core.Map.PerfPartTable[(int)this._part_perf_type, this._upgrade_level, this._upgrade_part_index] = Utils.ConvertX.ToUInt32(value);
+				if (this._cname_is_set)
+					Core.Map.PerfPartTable[(int)this._part_perf_type, this._upgrade_level, this._upgrade_part_index] = Utils.ConvertX.ToUInt32(value);
 			}
 		}
 

@@ -20,7 +20,8 @@
                 this.Offset = offdata;
 
             // Write CollectionName
-            for (int a1 = 0; a1 < this._collection_name.Length; ++a1)
+            int a3 = (this._collection_name.Length > 0x17) ? 0x17 : this._collection_name.Length;
+            for (int a1 = 0; a1 < a3; ++a1)
                 *(byteptr_t + offheader + 0xC + a1) = (byte)this._collection_name[a1];
 
             // Write all settings

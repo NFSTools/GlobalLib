@@ -17,7 +17,7 @@
         public unsafe PresetSkin(System.IntPtr byteptr_t, string CName, Database.Carbon db)
         {
             this.Database = db;
-            this.CollectionName = CName;
+            this._collection_name = CName;
             this.Disassemble((byte*)byteptr_t);
         }
 

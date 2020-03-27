@@ -2,7 +2,7 @@
 {
 	public partial class Track
 	{
-		private string _race_descrition;
+		private string _race_descrition = Reflection.BaseArguments.NULL;
 		private string _track_directory;
 		private string _region_name;
 		private string _region_directory;

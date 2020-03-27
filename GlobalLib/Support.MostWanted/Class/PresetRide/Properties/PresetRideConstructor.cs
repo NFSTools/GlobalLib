@@ -9,8 +9,8 @@
         public PresetRide(string CName, Database.MostWanted db)
         {
             this.Database = db;
-            this.data = new byte[0x290];
             this.CollectionName = CName;
+            this.data = new byte[0x290];
             this.MODEL = "SUPRA";
             this.Frontend = "supra";
             this.Pvehicle = "supra";
@@ -23,7 +23,7 @@
         {
             this.Database = db;
             this.data = new byte[0x290];
-            this.CollectionName = CName;
+            this._collection_name = CName;
             this.Exists = true;
             this.Disassemble((byte*)byteptr_t);
             this.Modified = false;

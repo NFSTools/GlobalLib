@@ -10,7 +10,7 @@ namespace GlobalLib.Database
 	{
 		private void Initialize()
 		{
-			this.Materials = new Binary<Material>
+			this.Materials = new Root<Material>
 			(
 				"Materials",
 				Material.MaxCNameLength,
@@ -21,7 +21,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.CarTypeInfos = new Binary<CarTypeInfo>
+			this.CarTypeInfos = new Root<CarTypeInfo>
 			(
 				"CarTypeInfos",
 				CarTypeInfo.MaxCNameLength,
@@ -32,7 +32,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.PresetRides = new Binary<PresetRide>
+			this.PresetRides = new Root<PresetRide>
 			(
 				"PresetRides",
 				PresetRide.MaxCNameLength,
@@ -43,7 +43,7 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.PresetSkins = new Binary<PresetSkin>
+			this.PresetSkins = new Root<PresetSkin>
 			(
 				"PresetSkins",
 				PresetSkin.MaxCNameLength,

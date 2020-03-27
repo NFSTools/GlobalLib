@@ -7,9 +7,9 @@ namespace GlobalLib.Database
 {
     public partial class MostWanted : Reflection.Abstract.BasicBase
     {
-        public Collection.Binary<Material> Materials { get; set; }
-        public Collection.Binary<CarTypeInfo> CarTypeInfos { get; set; }
-        public Collection.Binary<PresetRide> PresetRides { get; set; }
+        public Collection.Root<Material> Materials { get; set; }
+        public Collection.Root<CarTypeInfo> CarTypeInfos { get; set; }
+        public Collection.Root<PresetRide> PresetRides { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }

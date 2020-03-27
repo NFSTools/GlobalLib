@@ -9,8 +9,8 @@
         public PresetRide(string CName, Database.Carbon db)
         {
             this.Database = db;
-            this.data = new byte[0x600];
             this.CollectionName = CName;
+            this.data = new byte[0x600];
             this.MODEL = "SUPRA";
             this.Frontend = "supra";
             this.Pvehicle = "supra";
@@ -23,8 +23,8 @@
         public unsafe PresetRide(System.IntPtr byteptr_t, string CName, Database.Carbon db)
         {
             this.Database = db;
+            this._collection_name = CName;
             this.data = new byte[0x600];
-            this.CollectionName = CName;
             this.Exists = true;
             this.Initialize();
             this.Disassemble((byte*)byteptr_t);

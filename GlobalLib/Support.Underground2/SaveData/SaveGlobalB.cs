@@ -16,7 +16,7 @@ namespace GlobalLib.Support.Underground2
         /// <returns>True if success.</returns>
         public static bool SaveGlobalB(string GlobalB_dir, Database.Underground2 db)
         {
-            GlobalB_dir += @"\GLOBAL\GlobalBTest.lzc";
+            GlobalB_dir += @"\GLOBAL\GlobalB.lzc";
 
             using (var br = new BinaryReader(new MemoryStream(db._GlobalBLZC)))
             using (var bw = new BinaryWriter(File.Open(GlobalB_dir, FileMode.Create)))

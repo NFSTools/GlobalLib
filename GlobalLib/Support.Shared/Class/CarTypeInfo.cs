@@ -32,11 +32,6 @@
         public virtual uint VltKey { get => Utils.Vlt.Hash(this.CollectionName); }
 
         /// <summary>
-        /// Provides info on whether this cartypeinfo can be deleted or not.
-        /// </summary>
-        public bool Deletable { get; set; } = true;
-
-        /// <summary>
         /// Provides info on whether this cartypeinfo was modified.
         /// </summary>
         public bool Modified { get; set; } = false;

@@ -9,7 +9,7 @@
 		public GCareerRace(string CName, Database.Underground2 db)
 		{
 			this.Database = db;
-			this._collection_name = CName;
+			this.CollectionName = CName;
 			this.OPPONENT1 = new Parts.GameParts.Opponent();
 			this.OPPONENT2 = new Parts.GameParts.Opponent();
 			this.OPPONENT3 = new Parts.GameParts.Opponent();
