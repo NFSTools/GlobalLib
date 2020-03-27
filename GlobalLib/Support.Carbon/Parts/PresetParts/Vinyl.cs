@@ -87,7 +87,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
         }
 
         /// <summary>
-        /// Creates a plane copy of the objects that contains same values.
+        /// Creates a plain copy of the objects that contains same values.
         /// </summary>
         /// <returns>Exact plain copy of the object.</returns>
         public Vinyl PlainCopy()

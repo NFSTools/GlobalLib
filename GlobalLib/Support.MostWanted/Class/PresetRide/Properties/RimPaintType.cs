@@ -2,7 +2,7 @@
 {
     public partial class PresetRide
     {
-        private string _rimpaint = Reflection.BaseArguments.NULL;
+        private string _rim_paint = Reflection.BaseArguments.NULL;
 
         /// <summary>
         /// Rim paint value of the preset ride.
@@ -10,13 +10,13 @@
         [Reflection.Attributes.AccessModifiable()]
         public string RimPaint
         {
-            get => this._rimpaint;
+            get => this._rim_paint;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (value == Reflection.BaseArguments.NULL || Core.Map.BinKeys.ContainsValue(value))
-                    this._rimpaint = value;
+                    this._rim_paint = value;
                 else
                     throw new Reflection.Exception.MappingFailException();
                 this.Modified = true;

@@ -457,12 +457,12 @@
             // COLOR TYPE
             a2 = *(uint*)(byteptr_t + 0x20C);
             if (System.Enum.IsDefined(typeof(Reflection.Enum.eCarbonPaint), a2))
-                this._painttype = (Reflection.Enum.eCarbonPaint)a2;
+                this._paint_type = (Reflection.Enum.eCarbonPaint)a2;
             else
-                this._painttype = Reflection.Enum.eCarbonPaint.GLOSS;
+                this._paint_type = Reflection.Enum.eCarbonPaint.GLOSS;
 
             // Paint Swatch
-            this._paintswatch = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x210), false));
+            this._paint_swatch = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x210), false));
 
             // Saturation and Brightness
             this._saturation = *(float*)(byteptr_t + 0x214);

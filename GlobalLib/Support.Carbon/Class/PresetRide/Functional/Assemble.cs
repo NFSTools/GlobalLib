@@ -251,8 +251,8 @@
                     parts.WINDOW_TINT_STOCK = this._window_tint_type;
 
                 // Carpaint
-                parts.PAINT = this._painttype.ToString();
-                parts.SWATCH_COLOR = Utils.EA.Resolve.GetSwatchString(this._paintswatch);
+                parts.PAINT = this._paint_type.ToString();
+                parts.SWATCH_COLOR = Utils.EA.Resolve.GetSwatchString(this._paint_swatch);
 
                 // Hash all strings to keys
                 var keys = this.StringToKey(parts);

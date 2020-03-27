@@ -147,11 +147,11 @@
                 parts._DECAL_RIGHT_QUARTER_RECT_MEDIUM = MODEL + add_on._KIT + this._aftermarket_bodykit.ToString() + parts._DECAL_RIGHT_QUARTER_RECT_MEDIUM;
 
                 // PAINT
-                parts.PAINT = this._bodypaint;
+                parts.PAINT = this._body_paint;
 
                 // RIMPAINT
                 if (this.RimPaint != Reflection.BaseArguments.NULL)
-                    parts.RIM_PAINT = this._rimpaint;
+                    parts.RIM_PAINT = this._rim_paint;
 
                 // WINDOW_TINT
                 if (this.WindowTintType != Reflection.BaseArguments.STOCK)

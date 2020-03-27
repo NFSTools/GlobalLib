@@ -8,9 +8,9 @@
 			result.CashValuePerWin = this.CashValuePerWin;
 			result.SignCashBonus = this.SignCashBonus;
 			result.PotentialCashBonus = this.PotentialCashBonus;
-			result.ReqSponsorRace1 = this.ReqSponsorRace1;
-			result.ReqSponsorRace2 = this.ReqSponsorRace2;
-			result.ReqSponsorRace3 = this.ReqSponsorRace3;
+			result._sponsor_race1 = this._sponsor_race1;
+			result._sponsor_race2 = this._sponsor_race2;
+			result._sponsor_race3 = this._sponsor_race3;
 			return result;
 		}
 	}

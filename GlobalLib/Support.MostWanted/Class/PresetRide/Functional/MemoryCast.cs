@@ -11,31 +11,33 @@
         {
             var result = new PresetRide(CName, this.Database);
 
-            var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance
-                | System.Reflection.BindingFlags.NonPublic;
-            var args = new object[0] { };
+            result._hood_style = this._hood_style;
+            result._is_carbonfibre_hood = this._is_carbonfibre_hood;
+            result._spoiler_style = this._spoiler_style;
+            result._spoiler_type = this._spoiler_type;
+            result._is_carbonfibre_spoiler = this._is_carbonfibre_spoiler;
+            result._roofscoop_style = this._roofscoop_style;
+            result._is_offset_roofscoop = this._is_offset_roofscoop;
+            result._is_dual_roofscoop = this._is_dual_roofscoop;
+            result.IsCarbonfibreRoofScoop = this._is_carbonfibre_roofscoop;
+            result._rim_brand = this._rim_brand;
+            result._rim_style = this._rim_style;
+            result._rim_size = this._rim_size;
+            result._window_tint_type = this._window_tint_type;
+            result._aftermarket_bodykit = this._aftermarket_bodykit;
+            result._body_paint = this._body_paint;
+            result._rim_paint = this._rim_paint;
+            result._vinylname = this._vinylname;
+            result._vinylcolor1 = this._vinylcolor1;
+            result._vinylcolor2 = this._vinylcolor2;
+            result._vinylcolor3 = this._vinylcolor3;
+            result._vinylcolor4 = this._vinylcolor4;
+            result.MODEL = this.MODEL;
+            result.Pvehicle = this.Pvehicle;
+            result.Frontend = this.Frontend;
 
-            foreach (var property in this.GetType().GetProperties(flags))
-            {
-                if (property.Name == "CollectionName" || property.Name == "BinKey") continue;
-                if (Utils.ReflectX.IsAssignableToGeneric(property.PropertyType, typeof(Reflection.Interface.ICopyable<>)))
-                    result.GetType().GetProperty(property.Name, flags)
-                        .SetValue(result, property.PropertyType
-                        .GetMethod("PlainCopy")
-                        .Invoke(property.GetValue(this), args));
-                else if (Utils.ReflectX.IsEnumerableType(property))
-                    result.GetType().GetProperty(property.Name, flags)
-                        .SetValue(result, property.PropertyType.IsArray
-                        ? typeof(Utils.ReflectX).GetMethod("GetArrayCopy")
-                            .MakeGenericMethod(property.PropertyType.GetElementType())
-                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default
-                        : typeof(Utils.ReflectX).GetMethod("GetEnumerableCopy")
-                            .MakeGenericMethod(property.PropertyType.GetGenericArguments()[0])
-                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default);
-                else if (result.GetType().GetProperty(property.Name, flags).GetSetMethod() != null)
-                    result.GetType().GetProperty(property.Name, flags)
-                        .SetValue(result, property.GetValue(this));
-            }
+            System.Buffer.BlockCopy(this.data, 0, result.data, 0, this.data.Length);
+
             return result;
         }
     }

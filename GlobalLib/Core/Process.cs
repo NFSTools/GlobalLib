@@ -172,21 +172,4 @@
             }
         }
     }
-
-    /// <summary>
-    /// Contains game process enumeration.
-    /// </summary>
-    public enum GameINT : int
-    {
-        Carbon = 1,
-        MostWanted = 2,
-        Underground2 = 3,
-    }
-
-    public static class GameSTR
-    {
-        public const string Carbon = "Carbon";
-        public const string MostWanted = "MostWanted";
-        public const string Underground2 = "Underground2";
-    }
 }

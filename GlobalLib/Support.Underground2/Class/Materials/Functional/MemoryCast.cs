@@ -10,32 +10,36 @@
         public override Reflection.Abstract.Collectable MemoryCast(string CName)
         {
             var result = new Material(CName, this.Database);
-            
-            var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance
-                | System.Reflection.BindingFlags.NonPublic;
-            var args = new object[0] { };
 
-            foreach (var property in this.GetType().GetProperties(flags))
-            {
-                if (property.Name == "CollectionName" || property.Name == "BinKey") continue;
-                if (Utils.ReflectX.IsAssignableToGeneric(property.PropertyType, typeof(Reflection.Interface.ICopyable<>)))
-                    result.GetType().GetProperty(property.Name, flags)
-                        .SetValue(result, property.PropertyType
-                        .GetMethod("PlainCopy")
-                        .Invoke(property.GetValue(this), args));
-                else if (Utils.ReflectX.IsEnumerableType(property))
-                    result.GetType().GetProperty(property.Name, flags)
-                        .SetValue(result, property.PropertyType.IsArray
-                        ? typeof(Utils.ReflectX).GetMethod("GetArrayCopy")
-                            .MakeGenericMethod(property.PropertyType.GetElementType())
-                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default
-                        : typeof(Utils.ReflectX).GetMethod("GetEnumerableCopy")
-                            .MakeGenericMethod(property.PropertyType.GetGenericArguments()[0])
-                            .Invoke(null, new object[1] { property.GetValue(this) }) ?? default);
-                else if (result.GetType().GetProperty(property.Name, flags).GetSetMethod() != null)
-                    result.GetType().GetProperty(property.Name, flags)
-                        .SetValue(result, property.GetValue(this));
-            }
+            result._brightcolor1_blue = this._brightcolor1_blue;
+            result._brightcolor1_green = this._brightcolor1_green;
+            result._brightcolor1_level = this._brightcolor1_level;
+            result._brightcolor1_red = this._brightcolor1_red;
+            result._brightcolor2_blue = this._brightcolor2_blue;
+            result._brightcolor2_green = this._brightcolor2_green;
+            result._brightcolor2_level = this._brightcolor2_level;
+            result._brightcolor2_red = this._brightcolor2_red;
+            result._strongcolor1_blue = this._strongcolor1_blue;
+            result._strongcolor1_green = this._strongcolor1_green;
+            result._strongcolor1_level = this._strongcolor1_level;
+            result._strongcolor1_red = this._strongcolor1_red;
+            result._strongcolor2_blue = this._strongcolor2_blue;
+            result._strongcolor2_green = this._strongcolor2_green;
+            result._strongcolor2_level = this._strongcolor2_level;
+            result._strongcolor2_red = this._strongcolor2_red;
+            result._strongcolor3_blue = this._strongcolor3_blue;
+            result._strongcolor3_green = this._strongcolor3_green;
+            result._strongcolor3_level = this._strongcolor3_level;
+            result._strongcolor3_red = this._strongcolor3_red;
+            result._strongcolor4_blue = this._strongcolor4_blue;
+            result._strongcolor4_green = this._strongcolor4_green;
+            result._strongcolor4_level = this._strongcolor4_level;
+            result._strongcolor4_red = this._strongcolor4_red;
+            result._strong_1_to_2_ratio = this._strong_1_to_2_ratio;
+            result._strong_3_to_4_ratio = this._strong_3_to_4_ratio;
+            result._transparency1 = this._transparency1;
+            result._transparency2 = this._transparency2;
+
             return result;
         }
     }

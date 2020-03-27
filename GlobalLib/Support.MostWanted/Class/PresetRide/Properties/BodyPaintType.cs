@@ -2,7 +2,7 @@
 {
     public partial class PresetRide
     {
-        private string _bodypaint = Reflection.BaseArguments.BPAINT;
+        private string _body_paint = Reflection.BaseArguments.BPAINT;
 
         /// <summary>
         /// Body paint value of the preset ride.
@@ -10,13 +10,13 @@
         [Reflection.Attributes.AccessModifiable()]
         public string BodyPaint
         {
-            get => this._bodypaint;
+            get => this._body_paint;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (Core.Map.BinKeys.ContainsValue(value))
-                    this._bodypaint = value;
+                    this._body_paint = value;
                 else
                     throw new Reflection.Exception.MappingFailException();
                 this.Modified = true;

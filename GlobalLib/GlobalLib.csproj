@@ -52,6 +52,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\GameINT.cs" />
+    <Compile Include="Core\GameSTR.cs" />
     <Compile Include="Core\Initialize.cs" />
     <Compile Include="Core\Map.cs" />
     <Compile Include="Core\Process.cs" />
