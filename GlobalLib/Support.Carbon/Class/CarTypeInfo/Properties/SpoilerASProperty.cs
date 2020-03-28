@@ -8,6 +8,7 @@
         /// Aftermarket spoiler type of the cartypeinfo.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eSpoilerAS2 SpoilerAS
         {
             get => this._spoilerAS;

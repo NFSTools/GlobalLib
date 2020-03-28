@@ -11,6 +11,7 @@
         /// Level value of the first strong color of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float StrongColor1Level
         {
             get => this._strongcolor1_level;
@@ -27,6 +28,7 @@
         /// Red value of the first strong color of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float StrongColor1Red
         {
             get => this._strongcolor1_red;
@@ -43,6 +45,7 @@
         /// Green value of the first strong color of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float StrongColor1Green
         {
             get => this._strongcolor1_green;
@@ -59,6 +62,7 @@
         /// Blue value of the first strong color of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float StrongColor1Blue
         {
             get => this._strongcolor1_blue;

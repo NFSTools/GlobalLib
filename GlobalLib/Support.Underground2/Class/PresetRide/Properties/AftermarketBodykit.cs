@@ -9,6 +9,7 @@
         /// Aftermarket bodykit value of the preset ride. Range: 0-4, NULL.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string AftermarketBodykit
         {
             get
@@ -34,6 +35,7 @@
         }
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte CVMiscStyle
         {
             get => this._cv_misc_style;

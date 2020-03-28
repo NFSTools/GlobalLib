@@ -8,6 +8,7 @@
         /// Engine style value of the preset ride. Range: 0-3.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte EngineStyle
         {
             get => this._engine_style;

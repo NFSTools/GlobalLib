@@ -9,6 +9,7 @@
         /// Front brake style value of the preset ride. Range: 0-3.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte FrontBrakeStyle
         {
             get => this._front_brake_style;
@@ -26,6 +27,7 @@
         /// Rear brake style value of the preset ride. Range: 0-3.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte RearBrakeStyle
         {
             get => this._rear_brake_style;

@@ -8,30 +8,39 @@
 		private Reflection.Enum.eBoolean _in_reverse_stage4 = Reflection.Enum.eBoolean.False;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public ushort TrackID_Stage1 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public ushort TrackID_Stage2 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public ushort TrackID_Stage3 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public ushort TrackID_Stage4 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte NumLaps_Stage1 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte NumLaps_Stage2 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte NumLaps_Stage3 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte NumLaps_Stage4 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean InReverseDirection_Stage1
 		{
 			get => this._in_reverse_stage1;
@@ -45,6 +54,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean InReverseDirection_Stage2
 		{
 			get => this._in_reverse_stage2;
@@ -58,6 +68,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean InReverseDirection_Stage3
 		{
 			get => this._in_reverse_stage3;
@@ -71,6 +82,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean InReverseDirection_Stage4
 		{
 			get => this._in_reverse_stage4;

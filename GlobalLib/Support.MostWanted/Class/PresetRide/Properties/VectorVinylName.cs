@@ -8,6 +8,7 @@
         /// Vinyl name value of the preset ride.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string VinylName
         {
             get => this._vinylname;

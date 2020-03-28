@@ -9,6 +9,7 @@
         /// Represents first paint type of the cartypeinfo.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public override string DefaultBasePaint
         {
             get => this._defaultbasepaint;
@@ -25,6 +26,7 @@
         /// Represents second paint type of the cartypeinfo.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string DefaultBasePaint2
         {
             get => this._defaultbasepaint2;

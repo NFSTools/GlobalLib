@@ -8,6 +8,7 @@
         /// Aftermarket bodykit value of the preset ride. Range: 0-5, NULL.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string AftermarketBodykit
         {
             get

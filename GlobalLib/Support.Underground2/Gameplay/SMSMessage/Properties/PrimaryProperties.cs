@@ -5,6 +5,7 @@
 		private string _message_label = Reflection.BaseArguments.NULL;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public int CashValue { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]

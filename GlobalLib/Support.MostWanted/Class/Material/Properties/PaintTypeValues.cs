@@ -10,6 +10,7 @@
         /// Shadow level value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float ShadowLevel
         {
             get => this._shadowlevel;
@@ -26,6 +27,7 @@
         /// Matte level value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float MatteLevel
         {
             get => this._mattelevel;
@@ -42,6 +44,7 @@
         /// Chrome level value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float ChromeLevel
         {
             get => this._chromelevel;

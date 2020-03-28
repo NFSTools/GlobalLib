@@ -8,6 +8,7 @@
         /// First alpha value of the material colors.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float AlphaValue
         {
             get => this._transparency;

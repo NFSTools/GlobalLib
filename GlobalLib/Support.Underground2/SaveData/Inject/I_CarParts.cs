@@ -15,10 +15,9 @@
             var _part4 = CPI_Part4(db);
             var _part56 = CPI_Part56(db);
             var _part0 = db.SlotTypes.Part0.Data;
-            var _lib = I_LibCarParts(db);
 
             int size = _part0.Length + _part1.Length + _part2.Length;
-            size += _part3.Length + _part4.Length + _part56.Length + _lib.Length;
+            size += _part3.Length + _part4.Length + _part56.Length;
 
             bw.Write(Reflection.ID.Global.CarParts);
             bw.Write(size);
@@ -28,7 +27,6 @@
             bw.Write(_part3);
             bw.Write(_part4);
             bw.Write(_part56);
-            bw.Write(_lib);
         }
     }
 }

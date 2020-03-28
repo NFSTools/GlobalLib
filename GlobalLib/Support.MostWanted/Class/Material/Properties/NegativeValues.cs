@@ -9,6 +9,7 @@
         /// Linear negativity of the material colors.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float LinearNegative
         {
             get => this._linear_negative;
@@ -25,6 +26,7 @@
         /// Gradient negativity of the material colors.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float GradientNegative
         {
             get => this._gradient_negative;

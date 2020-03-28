@@ -10,6 +10,7 @@
         /// Hood style value of the preset ride. Range: 0-28.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte HoodStyle
         {
             get => this._hood_style;
@@ -27,6 +28,7 @@
         /// True if hood is carbonfibre, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean IsCarbonfibreHood
         {
             get => this._is_carbonfibre_hood;
@@ -46,6 +48,7 @@
         /// Under hood style value of the preset ride. Range: 21-25 or 0.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte UnderHoodStyle
         {
             get => this._under_hood_style;

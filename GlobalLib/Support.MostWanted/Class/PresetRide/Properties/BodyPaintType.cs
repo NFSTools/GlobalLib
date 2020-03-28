@@ -8,6 +8,7 @@
         /// Body paint value of the preset ride.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string BodyPaint
         {
             get => this._body_paint;

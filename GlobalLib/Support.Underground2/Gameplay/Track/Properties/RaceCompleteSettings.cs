@@ -17,48 +17,56 @@
 		/// Indicates maximum time allowed to complete the race in forward direction.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public float TimeLimitToBeatForward { get; set; }
 
 		/// <summary>
 		/// Indicates maximum time allowed to complete the race in reverse direction.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public float TimeLimitToBeatReverse { get; set; }
 
 		/// <summary>
 		/// Indicates score needed to beat the drift race in forward direction.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public int ScoreToBeatDriftForward { get; set; }
 
 		/// <summary>
 		/// Indicates score needed to beat the drift race in reverse direction.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public int ScoreToBeatDriftReverse { get; set; }
 
 		/// <summary>
 		/// Indicates number of seconds that should pass before opponents can take first shortcut.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public short NumSecBeforeShorcutsAllowed { get; set; }
 
 		/// <summary>
 		/// Indicates minimum amount of seconds to drift.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public short DriftSecondsMin { get; set; }
 
 		/// <summary>
 		/// Indicates maximum amount of seconds to drift.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public short DriftSecondsMax { get; set; }
 
 		/// <summary>
 		/// Indicates configuration settings of the car at the start.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public short CarRaceStartConfig { get; set; }
 	}
 }

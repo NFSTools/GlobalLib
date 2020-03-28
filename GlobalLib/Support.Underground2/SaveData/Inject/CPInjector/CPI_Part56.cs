@@ -24,25 +24,10 @@
             {
                 if (!car.Deletable) continue; // Else (if car is old) continue
 
-                string CName = car.CollectionName;
-                string UsePartsOf = car.UsesCarPartsOf;
-
                 // If car is new and uses its own auto-generated carparts
-                if (CName == UsePartsOf)
-                {
-                    Intermid56.Add(new Parts.CarParts.Part56(CName, car.UsageType, entries, racers, trafs));
-                    if (car.UsageType == Reflection.Enum.eUsageType.Traffic) ++trafs;
-                    else if (car.UsageType == Reflection.Enum.eUsageType.Racer) ++racers;
-                }
-
-                // If car is new and uses some other car's carparts
-                else
-                {
-                    var carpart = db.SlotTypes.Part56.Find(c => c.BelongsTo == UsePartsOf);
-                    Intermid56.Add(carpart.SmartMemoryCast(CName, entries, racers, trafs));
-                    if (car.UsageType == Reflection.Enum.eUsageType.Traffic) ++trafs;
-                    else if (car.UsageType == Reflection.Enum.eUsageType.Racer) ++racers;
-                }
+                Intermid56.Add(new Parts.CarParts.Part56(car.CollectionName, car.UsageType, entries, racers, trafs));
+                if (car.UsageType == Reflection.Enum.eUsageType.Traffic) ++trafs;
+                else if (car.UsageType == Reflection.Enum.eUsageType.Racer) ++racers;
             }
 
             // Make new list of only used Part56 to write

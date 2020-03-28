@@ -8,6 +8,7 @@
         /// Exhaust style value of the preset ride. Range: 0-10.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte ExhaustStyle
         {
             get => this._exhaust_style;

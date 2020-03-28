@@ -11,6 +11,7 @@
 		/// Indicates whether race is valid.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean IsValidRace
 		{
 			get => this._is_valid_race;
@@ -27,6 +28,7 @@
 		/// Indicates whether race is looping.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean IsLoopingRace
 		{
 			get => this._is_looping_race;
@@ -43,6 +45,7 @@
 		/// Indicates whether reverse version of the race exists.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean ReverseVersionExists
 		{
 			get => this._reverse_version_exists;
@@ -59,6 +62,7 @@
 		/// Indicates whether the race is used in performance tuning events.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean IsPerformanceTuning
 		{
 			get => this._is_performance_tuning;

@@ -121,15 +121,41 @@ namespace GlobalLib.Database.Collection
 					return false;
 			}
 		}
-		public bool TrySetStaticValue(params string[] tokens)
+		public bool TrySetStaticValue(string field, string value)
 		{
-			switch (tokens.Length)
+			// Works only for Collectable and StaticModifiable properties
+			var property = typeof(TypeID).GetProperty(field);
+			if (property == null) return false;
+			if (!Attribute.IsDefined(property, typeof(Reflection.Attributes.StaticModifiableAttribute)))
+				return false;
+
+			foreach (var collection in this.Collections)
 			{
-				case 3:
-					return this.FindCollection(tokens[0]).SetStaticValue(tokens[1], tokens[2]);
-				default:
-					return false;
+				bool pass = collection.SetValue(field, value);
+				if (!pass) return false;
 			}
+			return true;
+		}
+		public bool TrySetStaticValue(string field, string value, out string error)
+		{
+			error = null;
+			var property = typeof(TypeID).GetProperty(field);
+			if (property == null)
+			{
+				error = $"Field named {field} does not exist.";
+				return false;
+			}
+			if (!Attribute.IsDefined(property, typeof(Reflection.Attributes.StaticModifiableAttribute)))
+			{
+				error = $"Field named {field} is not a static-modifiable field.";
+				return false;
+			}
+			foreach (var collection in this.Collections)
+			{
+				bool pass = collection.SetValue(field, value, ref error);
+				if (!pass) return false;
+			}
+			return true;
 		}
 
 		public bool TryAddCollection(string value)

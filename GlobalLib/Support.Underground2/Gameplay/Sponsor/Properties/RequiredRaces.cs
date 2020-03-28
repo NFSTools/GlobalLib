@@ -7,6 +7,7 @@
 		private Reflection.Enum.eSponsorRaceType _sponsor_race3 = Reflection.Enum.eSponsorRaceType.Circuit;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eSponsorRaceType ReqSponsorRace1
 		{
 			get => this._sponsor_race1;
@@ -20,6 +21,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eSponsorRaceType ReqSponsorRace2
 		{
 			get => this._sponsor_race2;
@@ -33,6 +35,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eSponsorRaceType ReqSponsorRace3
 		{
 			get => this._sponsor_race3;

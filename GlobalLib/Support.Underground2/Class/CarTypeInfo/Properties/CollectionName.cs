@@ -21,8 +21,6 @@
                     throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 13 characters.");
                 if (this.Database.CarTypeInfos.FindCollection(value) != null)
                     throw new Reflection.Exception.CollectionExistenceException();
-                if (this._used_carparts_of == this._collection_name)
-                    this._used_carparts_of = value;
                 this._collection_name = value;
             }
         }

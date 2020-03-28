@@ -16,6 +16,7 @@
         /// Unknown 1 value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Unknown1
         {
             get => this._unk1;
@@ -32,6 +33,7 @@
         /// Unknown 2 value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Unknown2
         {
             get => this._unk2;
@@ -48,6 +50,7 @@
         /// Unknown 3 value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Unknown3
         {
             get => this._unk3;
@@ -64,6 +67,7 @@
         /// Unknown 4 value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Unknown4
         {
             get => this._unk4;
@@ -80,6 +84,7 @@
         /// Unknown 5 value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Unknown5
         {
             get => this._unk5;
@@ -96,6 +101,7 @@
         /// Unknown 6 value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Unknown6
         {
             get => this._unk6;
@@ -112,6 +118,7 @@
         /// Unknown 7 value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Unknown7
         {
             get => this._unk7;
@@ -128,6 +135,7 @@
         /// Unknown 8 value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Unknown8
         {
             get => this._unk8;
@@ -144,6 +152,7 @@
         /// Unknown 9 value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Unknown9
         {
             get => this._unk9;

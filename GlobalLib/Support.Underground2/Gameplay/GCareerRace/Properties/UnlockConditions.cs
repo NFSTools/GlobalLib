@@ -5,6 +5,7 @@
 		private string _required_spec_race_won = Reflection.BaseArguments.NULL;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string RequiredSpecificRaceWon
 		{
 			get => this._required_spec_race_won;
@@ -17,15 +18,19 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte RequiredSpecificURLWon { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte SponsorChosenToUnlock { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte RequiredRacesWon { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte RequiredURLWon { get; set; }
 	}
 }

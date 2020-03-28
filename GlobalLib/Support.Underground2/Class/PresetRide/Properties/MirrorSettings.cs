@@ -8,6 +8,7 @@
         /// Wing mirror style value of the preset ride. Range: 0-40.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string WingMirrorStyle
         {
             get => this._wing_mirror_style;

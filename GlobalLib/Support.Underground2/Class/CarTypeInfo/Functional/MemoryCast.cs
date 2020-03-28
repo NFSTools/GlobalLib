@@ -13,7 +13,6 @@
 
             result._spoiler = this._spoiler;
             result._mirrors = this._mirrors;
-            result._used_carparts_of = this._used_carparts_of;
             result.UsageType = this.UsageType;
             result.MemoryType = this.MemoryType;
             result.IsSkinnable = this.IsSkinnable;

@@ -8,6 +8,7 @@
 
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string UnlocksInShop_Level1
 		{
 			get => this._unlock_shop1;
@@ -20,6 +21,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string UnlocksInShop_Level2
 		{
 			get => this._unlock_shop2;
@@ -32,6 +34,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string UnlocksInShop_Level3
 		{
 			get => this._unlock_shop3;
@@ -44,21 +47,27 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte RequiredRacesWon_Level1 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte RequiredRacesWon_Level2 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte RequiredRacesWon_Level3 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte BelongsToStage_Level1 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte BelongsToStage_Level2 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte BelongsToStage_Level3 { get; set; }
 	}
 }

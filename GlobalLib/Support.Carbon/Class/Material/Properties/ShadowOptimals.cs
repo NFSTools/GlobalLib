@@ -9,6 +9,7 @@
         /// Outer radius of the shadow fading.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float ShadowOuterRadius
         {
             get => this._shadow_outer_radius;
@@ -25,6 +26,7 @@
         /// Value of the optimal light reflection on the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float OptimalLightReflection
         {
             get => this._optimal_light_reflection;

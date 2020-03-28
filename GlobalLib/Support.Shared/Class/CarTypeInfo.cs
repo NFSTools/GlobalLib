@@ -133,6 +133,7 @@
         /// Represents boolean as an int of whether cartypeinfo is skinnable.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean IsSkinnable
         {
             get => this._is_skinnable;
@@ -149,6 +150,7 @@
         /// Represents paint type of the cartypeinfo.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public virtual string DefaultBasePaint
         {
             get => this._defaultbasepaint;
@@ -162,150 +164,199 @@
         }
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float HeadlightFOV { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte PadHighPerformance { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte NumAvailableSkinNumbers { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte WhatGame { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte ConvertibleFlag { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte WheelOuterRadius { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte WheelOuterRadiusMin { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte WheelInnerRadiusMax { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte Padding0 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float HeadlightPositionX { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float HeadlightPositionY { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float HeadlightPositionZ { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float HeadlightPositionW { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float DriverRenderingOffsetX { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float DriverRenderingOffsetY { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float DriverRenderingOffsetZ { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float DriverRenderingOffsetW { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float SteeringWheelRenderingX { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float SteeringWheelRenderingY { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float SteeringWheelRenderingZ { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float SteeringWheelRenderingW { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte MaxInstances1 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte MaxInstances2 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte MaxInstances3 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte MaxInstances4 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte MaxInstances5 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte KeepLoaded1 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte KeepLoaded2 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte KeepLoaded3 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte KeepLoaded4 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte KeepLoaded5 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public short Padding1 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float MinTimeBetweenUses1 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float MinTimeBetweenUses2 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float MinTimeBetweenUses3 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float MinTimeBetweenUses4 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float MinTimeBetweenUses5 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers01 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers02 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers03 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers04 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers05 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers06 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers07 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers08 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers09 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte AvailableSkinNumbers10 { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte DefaultSkinNumber { get; set; } = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public int Padding2 { get; set; } = 0;
 
         #endregion

@@ -4,7 +4,6 @@
     {
         private ushort[] _rigid_controls;
         private Reflection.Enum.eBoolean _is_suv = Reflection.Enum.eBoolean.False;
-        private string _used_carparts_of = "SUPRA";
 
         /// <summary>
         /// Defines whether the car is an SUV.
@@ -19,18 +18,6 @@
                     this._is_suv = value;
                 else
                     throw new System.InvalidCastException("Value passed is not of boolean type.");
-            }
-        }
-
-        [Reflection.Attributes.AccessModifiable()]
-        public string UsesCarPartsOf
-        {
-            get => this._used_carparts_of;
-            set
-            {
-                if (value != this._collection_name && !Core.Map.CarPartsMap.Contains(value))
-                    throw new Reflection.Exception.MappingFailException("CarPart list of the car specified does not exist.");
-                this._used_carparts_of = value;
             }
         }
 

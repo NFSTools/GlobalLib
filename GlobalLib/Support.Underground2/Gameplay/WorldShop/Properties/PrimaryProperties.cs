@@ -37,6 +37,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eWorldShopType ShopType
 		{
 			get => this._shop_type;
@@ -50,6 +51,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean InitiallyHidden
 		{
 			get => this._initially_hidden;
@@ -63,6 +65,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean RequiresEventCompleted
 		{
 			get => this._unlocked_by_event;
@@ -76,9 +79,11 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte BelongsToStage { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string EventToBeCompleted
 		{
 			get => this._event_to_complete;

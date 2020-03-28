@@ -10,6 +10,7 @@
         /// Main grayscale value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Grayscale
         {
             get => this._grayscale;
@@ -26,6 +27,7 @@
         /// Linear negativity of the material colors.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float LinearNegative
         {
             get => this._linear_negative;
@@ -42,6 +44,7 @@
         /// Gradient negativity of the material colors.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float GradientNegative
         {
             get => this._gradient_negative;

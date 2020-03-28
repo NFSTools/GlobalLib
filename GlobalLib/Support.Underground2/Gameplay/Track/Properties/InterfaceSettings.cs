@@ -8,6 +8,7 @@
         /// Represents sun type during race.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string SunInfoName
         {
             get => this._sun_info_name;

@@ -11,9 +11,11 @@
 		private Reflection.Enum.eBoolean _is_hidden_event = Reflection.Enum.eBoolean.False;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public int EarnableRespect { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string PlayerCarType
 		{
 			get => this._player_car_type;
@@ -26,9 +28,11 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public int CashValue { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eEventIconType EventIconType
 		{
 			get => this._event_icon_type;
@@ -55,6 +59,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eTrackDifficulty DifficultyLevel
 		{
 			get => this._difficulty_level;
@@ -68,9 +73,11 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte BelongsToStage { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte NumOpponents
 		{
 			get => this._num_of_opponents;
@@ -83,9 +90,11 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte UnknownDragValue { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte NumStages
 		{
 			get => this._num_of_stages;
@@ -98,6 +107,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean IsHiddenEvent
 		{
 			get => this._is_hidden_event;

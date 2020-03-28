@@ -9,6 +9,7 @@
         /// Headlight style value of the preset ride. Range: 0-14.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte HeadlightStyle
         {
             get => this._headlight_style;
@@ -26,6 +27,7 @@
         /// RoofScoop style value of the preset ride. Range: 0-14.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte BrakelightStyle
         {
             get => this._brakelight_style;

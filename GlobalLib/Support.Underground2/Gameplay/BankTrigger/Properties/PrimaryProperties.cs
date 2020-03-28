@@ -5,9 +5,11 @@
 		private Reflection.Enum.eBoolean _initially_unlocked = Reflection.Enum.eBoolean.False;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public ushort CashValue { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean InitiallyUnlocked
 		{
 			get => this._initially_unlocked;
@@ -24,6 +26,7 @@
 		public byte BankIndex { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public int RequiredStagesCompleted { get; set; }
 	}
 }

@@ -9,6 +9,7 @@
         /// Specific vinyl value of the preset ride.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string SpecificVinyl
         {
             get => this._specific_vinyl;
@@ -25,6 +26,7 @@
         /// Generic vinyl value of the preset car.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string GenericVinyl
         {
             get => this._generic_vinyl;

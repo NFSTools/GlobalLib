@@ -8,6 +8,7 @@
         /// Autosculpt front bumper value of the preset ride. Range: 0-30, NULL.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string AutosculptFrontBumper
         {
             get

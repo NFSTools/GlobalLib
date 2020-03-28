@@ -33,7 +33,10 @@
 		[Reflection.Attributes.AccessModifiable()]
 		public byte NumMapItems { get; set; }
 
+		[Reflection.Attributes.AccessModifiable()]
 		public byte Unknown0x3A { get; set; }
+
+		[Reflection.Attributes.AccessModifiable()]
 		public byte Unknown0x3B { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]

@@ -12,6 +12,7 @@
         /// Rim brand value of the preset ride.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string RimBrand
         {
             get => this._rim_brand;
@@ -46,6 +47,7 @@
         /// Rim style value of the preset ride. Range varies for different brands.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte RimStyle
         {
             get => this._rim_style;
@@ -68,6 +70,7 @@
         /// Rim size value of the preset ride. Range varies for different brands and styles.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte RimSize
         {
             get => this._rim_size;
@@ -89,6 +92,7 @@
         /// Rim outer max value of the preset ride. Range varies for different brands, styles, and sizes.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte RimOuterMax
         {
             get => this._rim_outer_max;
@@ -109,6 +113,7 @@
         /// If set to true, rim is a spinner type, otherwise a regular rim.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean IsSpinningRim
         {
             get => this._is_spinning_rim;

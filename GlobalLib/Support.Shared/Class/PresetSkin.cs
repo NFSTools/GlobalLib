@@ -36,6 +36,7 @@
         /// Paint type value of the preset skin.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eCarbonPaint PaintType
         {
             get => this._painttype;
@@ -52,6 +53,7 @@
         /// Gradient color value of the paint of the preset skin. Range: 0-90.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte PaintSwatch
         {
             get => this._paintswatch;
@@ -68,6 +70,7 @@
         /// Saturation value of the paint of the preset skin. Range: (float)0-1.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float PaintSaturation
         {
             get => this._paintsaturation;
@@ -84,6 +87,7 @@
         /// Brightness value of the paint of the preset skin. Range: (float)0-1.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float PaintBrightness
         {
             get => this._paintbrightness;

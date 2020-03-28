@@ -11,6 +11,7 @@
         /// True if popup headlights of the preset ride model exist, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean PopupHeadlightsExist
         {
             get => this._popup_headlights_exist;
@@ -30,6 +31,7 @@
         /// True if preset ride's popup headlights are on, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean PopupHeadlightsOn
         {
             get => this._popup_heaglights_on;
@@ -49,6 +51,7 @@
         /// True if preset ride's roof is a chop top, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean ChopTopIsOn
         {
             get => this._choptop_is_on;
@@ -68,6 +71,7 @@
         /// Choptop size value of the preset car. Range: 0-100.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte ChopTopSize
         {
             get => this._choptop_size;

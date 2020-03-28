@@ -17,11 +17,6 @@ namespace GlobalLib.Core
         public static Dictionary<uint, string> VltKeys { get; } = new Dictionary<uint, string>();
 
         /// <summary>
-        /// Represents map of all possible carparts that can be used.
-        /// </summary>
-        public static List<string> CarPartsMap { get; set; } = new List<string>();
-
-        /// <summary>
         /// Represents map of all possible collisions that can be used.
         /// </summary>
         public static Dictionary<uint, string> CollisionMap { get; set; } = new Dictionary<uint, string>();

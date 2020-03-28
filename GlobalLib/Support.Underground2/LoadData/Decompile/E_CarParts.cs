@@ -25,11 +25,6 @@
 
                 switch (ID)
                 {
-                    case 0:
-                        if (*(uint*)(byteptr_t + offset + 8) == Reflection.ID.Global.GlobalLib)
-                            globallib = byteptr_t + offset;
-                        goto default;
-
                     case Reflection.ID.CarParts.Part0:
                         db.SlotTypes.Part0.Data = CPE_Part0(byteptr_t + offset, size + 8);
                         goto default;
@@ -65,7 +60,6 @@
             }
             // Disassemble part5 and part6
             CPE_Part56(part5ptr_t, part6ptr_t, db);
-            E_GlobalLibBlock(globallib, *(uint*)(globallib + 4), db);
         }
     }
 }

@@ -11,6 +11,7 @@
         /// Disable value of reflection colors of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float DisableReflection
         {
             get => this._disable_reflection;
@@ -27,6 +28,7 @@
         /// Increment value of reflection colors of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float StrongerReflection
         {
             get => this._stronger_reflection;
@@ -43,6 +45,7 @@
         /// Blend value of strong colors of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float BlendStrongColors
         {
             get => this._blend_strong_colors;
@@ -59,6 +62,7 @@
         /// Disable value of strong colors of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float DisableStrongColors
         {
             get => this._disable_strong_colors;

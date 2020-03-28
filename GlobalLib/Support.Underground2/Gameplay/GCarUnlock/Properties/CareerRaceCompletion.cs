@@ -6,6 +6,7 @@
 		private string _req_event_completed2 = Reflection.BaseArguments.NULL;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string ReqEventCompleted1
 		{
 			get => this._req_event_completed1;
@@ -18,6 +19,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string ReqEventCompleted2
 		{
 			get => this._req_event_completed2;

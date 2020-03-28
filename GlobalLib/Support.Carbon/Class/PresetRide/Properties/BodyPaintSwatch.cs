@@ -8,6 +8,7 @@
         /// Gradient color value of the paint of the preset ride. Range: 0-90.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte PaintSwatch
         {
             get => this._paint_swatch;

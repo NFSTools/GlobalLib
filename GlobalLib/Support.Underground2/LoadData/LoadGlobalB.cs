@@ -143,7 +143,6 @@ namespace GlobalLib.Support.Underground2
 
             // Disperse spoilers across cartypeinfo
             E_SpoilMirrs(db);
-            if (!LibPartBlockExists) E_DefaultCarPartValues(db);
             return true;
         }
     }

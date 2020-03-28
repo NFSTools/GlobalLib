@@ -21,11 +21,13 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte BelongsToStage { get; set; }
 
 		public byte _padding0 { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean UseOutrunsAsReqRaces
 		{
 			get => this._use_outruns;
@@ -39,6 +41,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public byte RequiredRacesWon { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]
@@ -66,6 +69,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public int TimeLimit { get; set; }
 
 		[Reflection.Attributes.AccessModifiable()]

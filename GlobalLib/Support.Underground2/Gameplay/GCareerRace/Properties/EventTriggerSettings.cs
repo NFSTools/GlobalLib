@@ -20,6 +20,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eUnlockCondition UnlockMethod
 		{
 			get => this._unlock_method;
@@ -33,6 +34,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eBoolean IsSUVRace
 		{
 			get => this._is_suv_race;

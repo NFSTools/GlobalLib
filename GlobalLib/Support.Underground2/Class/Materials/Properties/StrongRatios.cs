@@ -9,6 +9,7 @@
         /// Ratio between first and second strong colors of the material
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Strong1to2Ratio
         {
             get => this._strong_1_to_2_ratio;
@@ -25,6 +26,7 @@
         /// Ratio between third and fourth strong colors of the material
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Strong3to4Ratio
         {
             get => this._strong_3_to_4_ratio;

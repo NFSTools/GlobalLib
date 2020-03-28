@@ -8,6 +8,7 @@
 		private string _hud_character_color = Reflection.BaseArguments.WHITE;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string CustomHUDStyle
 		{
 			get => this._custom_hud_style;
@@ -23,6 +24,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string HUDBackingColor
 		{
 			get => this._hud_backing_color;
@@ -38,6 +40,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string HUDNeedleColor
 		{
 			get => this._hud_needle_color;
@@ -53,6 +56,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string HUDCharacterColor
 		{
 			get => this._hud_character_color;

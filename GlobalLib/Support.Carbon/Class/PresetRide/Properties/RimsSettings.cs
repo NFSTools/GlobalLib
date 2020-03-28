@@ -10,6 +10,7 @@
         /// Rim brand value of the preset ride.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string RimBrand
         {
             get => this._rim_brand;
@@ -40,6 +41,7 @@
         /// Rim style value of the preset ride. Range: 0-10 for AUTOSCLPT rim brand, 0-6 otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte RimStyle
         {
             get => this._rim_style;
@@ -60,6 +62,7 @@
         /// Rim size value of the preset ride. Range: 17-21.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte RimSize
         {
             get => this._rim_size;

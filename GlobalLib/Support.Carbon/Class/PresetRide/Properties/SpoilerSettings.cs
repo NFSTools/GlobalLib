@@ -11,6 +11,7 @@
         /// Spoiler style of the preset ride. Range: 0-29.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte SpoilerStyle
         {
             get => this._spoiler_style;
@@ -28,6 +29,7 @@
         /// Spoiler type of the preset ride. Range: STOCK, BASE, _HATCH, _PORSCHES, _CARRERA, NULL.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eSTypes SpoilerType
         {
             get => this._spoiler_type;
@@ -47,6 +49,7 @@
         /// True if spoiler is autosculpt, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean IsAutosculptSpoiler
         {
             get => this._is_autosculpt_spoiler;
@@ -66,6 +69,7 @@
         /// True if spoiler is carbonfibre, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean IsCarbonfibreSpoiler
         {
             get => this._is_carbonfibre_spoiler;

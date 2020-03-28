@@ -11,6 +11,7 @@
         /// Level value of the reflection color of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float ReflectionColorLevel
         {
             get => this._reflectioncolor_level;
@@ -27,6 +28,7 @@
         /// Red value of the reflection color of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float ReflectionColorRed
         {
             get => this._reflectioncolor_red;
@@ -43,6 +45,7 @@
         /// Green value of the reflection color of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float ReflectionColorGreen
         {
             get => this._reflectioncolor_green;
@@ -59,6 +62,7 @@
         /// Blue value of the reflection color of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float ReflectionColorBlue
         {
             get => this._reflectioncolor_blue;

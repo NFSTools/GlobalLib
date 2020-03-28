@@ -11,6 +11,7 @@
         /// Exhaust style value of the preset ride. Possible values: 0-17, NULL.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string ExhaustStyle
         {
             get
@@ -39,6 +40,7 @@
         /// Exhaust size value of the preset ride. Range: 0-100.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte ExhaustSize
         {
             get => this._exhaust_size;
@@ -56,6 +58,7 @@
         /// True if exhaust is centered, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean IsCenterExhaust
         {
             get => this._is_center_exhaust;

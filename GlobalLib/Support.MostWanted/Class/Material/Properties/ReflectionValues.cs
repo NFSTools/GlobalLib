@@ -10,6 +10,7 @@
         /// First reflection value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Reflection1
         {
             get => this._reflection1;
@@ -26,6 +27,7 @@
         /// Second reflection value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Reflection2
         {
             get => this._reflection2;
@@ -42,6 +44,7 @@
         /// Third reflection value of the material.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float Reflection3
         {
             get => this._reflection3;

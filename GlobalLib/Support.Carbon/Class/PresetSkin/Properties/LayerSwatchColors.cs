@@ -11,6 +11,7 @@
         /// Swatch color value of the first color of the vector vinyl of the preset skin.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte SwatchColor1
         {
             get => this._swatch1;
@@ -27,6 +28,7 @@
         /// Swatch color value of the second color of the vector vinyl of the preset skin.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte SwatchColor2
         {
             get => this._swatch2;
@@ -43,6 +45,7 @@
         /// Swatch color value of the third color of the vector vinyl of the preset skin.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte SwatchColor3
         {
             get => this._swatch3;
@@ -59,6 +62,7 @@
         /// Swatch color value of the fourth color of the vector vinyl of the preset skin.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte SwatchColor4
         {
             get => this._swatch4;

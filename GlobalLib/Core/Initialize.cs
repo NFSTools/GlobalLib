@@ -28,7 +28,6 @@ namespace GlobalLib.Core
             Map.UG2CaliperPaints.Clear();
             Map.UG2RimPaints.Clear();
             Map.UG2VinylPaints.Clear();
-            Map.CarPartsMap.Clear();
             UG2PaintTypes();
             UG2CaliperPaints();
             UG2RimPaints();

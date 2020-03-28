@@ -8,6 +8,7 @@
         /// Window tint type value of the preset ride.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string WindowTintType
         {
             get => this._window_tint_type;

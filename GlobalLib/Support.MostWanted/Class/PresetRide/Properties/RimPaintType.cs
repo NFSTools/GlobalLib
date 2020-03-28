@@ -8,6 +8,7 @@
         /// Rim paint value of the preset ride.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string RimPaint
         {
             get => this._rim_paint;

@@ -87,6 +87,7 @@
     <Compile Include="Database\MostWanted\MostWanted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\Attributes\LabelAttribute.cs" />
+    <Compile Include="Reflection\Attributes\StaticModifiable.cs" />
     <Compile Include="Reflection\Enum\eBoolean.cs" />
     <Compile Include="Reflection\Enum\eBoundValues.cs" />
     <Compile Include="Reflection\Enum\eCarbonPaint.cs" />
@@ -808,7 +809,6 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part56.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarParts.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarSkins.cs" />
-    <Compile Include="Support.Underground2\LoadData\Decompile\E_DefaultCarPartValues.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_GlobalLibBlock.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_PresetRides.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SlotType.cs" />
@@ -857,7 +857,6 @@
     <Compile Include="Support.Underground2\SaveData\Inject\CPInjector\CPI_Part56.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_CarParts.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_CarSkins.cs" />
-    <Compile Include="Support.Underground2\SaveData\Inject\CPInjector\I_LibCarParts.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_Tracks.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_SunInfos.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_CarTypeInfo.cs" />

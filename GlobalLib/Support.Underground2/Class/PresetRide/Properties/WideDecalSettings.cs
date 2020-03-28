@@ -11,6 +11,7 @@
 		private Reflection.Enum.eWideDecalType _decalwide_rightquarter = Reflection.Enum.eWideDecalType.NONE;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eDecalType DecalTypeHood
 		{
 			get => this._decaltype_hood;
@@ -24,6 +25,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eDecalType DecalTypeLeftQuarter
 		{
 			get => this._decaltype_leftquarter;
@@ -37,6 +39,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eDecalType DecalTypeRightQuarter
 		{
 			get => this._decaltype_rightquarter;
@@ -50,6 +53,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eWideDecalType DecalWideLeftDoor
 		{
 			get => this._decalwide_leftdoor;
@@ -63,6 +67,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eWideDecalType DecalWideRightDoor
 		{
 			get => this._decalwide_rightdoor;
@@ -76,6 +81,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eWideDecalType DecalWideLeftQuarter
 		{
 			get => this._decalwide_leftquarter;
@@ -89,6 +95,7 @@
 		}
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public Reflection.Enum.eWideDecalType DecalWideRightQuarter
 		{
 			get => this._decalwide_rightquarter;

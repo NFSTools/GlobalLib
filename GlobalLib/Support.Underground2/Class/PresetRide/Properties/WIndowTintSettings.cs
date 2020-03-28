@@ -5,6 +5,7 @@
 		private string _window_tint_type = Reflection.BaseArguments.STOCK;
 
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public string WindowTintType
 		{
 			get => this._window_tint_type;

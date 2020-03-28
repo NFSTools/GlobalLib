@@ -16,6 +16,7 @@ namespace GlobalLib.Support.Underground2.Gameplay
 		/// Location type of the track.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public eLocationType LocationType
 		{
 			get => this._location_type;
@@ -31,6 +32,7 @@ namespace GlobalLib.Support.Underground2.Gameplay
 		/// Drift type of the track.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public eDriftType DriftType
 		{
 			get => this._drift_type;
@@ -61,6 +63,7 @@ namespace GlobalLib.Support.Underground2.Gameplay
 		/// Difficulty of the track when it has a forward direction.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public eTrackDifficulty DifficultyForward
 		{
 			get => this._difficulty_forward;
@@ -76,6 +79,7 @@ namespace GlobalLib.Support.Underground2.Gameplay
 		/// Difficulty of the track when it has a reverse direction.
 		/// </summary>
 		[Reflection.Attributes.AccessModifiable()]
+		[Reflection.Attributes.StaticModifiable()]
 		public eTrackDifficulty DifficultyReverse
 		{
 			get => this._difficulty_reverse;

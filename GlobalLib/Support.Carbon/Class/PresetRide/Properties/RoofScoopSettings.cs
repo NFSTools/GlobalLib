@@ -11,6 +11,7 @@
         /// RoofScoop style value of the preset ride. Range: 0-18.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte RoofScoopStyle
         {
             get => this._roofscoop_style;
@@ -28,6 +29,7 @@
         /// True if roof scoop is autosculpt, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean IsAutosculptRoofScoop
         {
             get => this._is_autosculpt_roofscoop;
@@ -47,6 +49,7 @@
         /// True if roof scoop is dual, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean IsDualRoofScoop
         {
             get => this._is_dual_roofscoop;
@@ -66,6 +69,7 @@
         /// True if roof scoop is carbonfibre, false otherwise.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eBoolean IsCarbonfibreRoofScoop
         {
             get => this._is_carbonfibre_roofscoop;

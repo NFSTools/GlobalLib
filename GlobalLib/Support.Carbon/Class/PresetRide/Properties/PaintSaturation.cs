@@ -8,6 +8,7 @@
         /// Saturation value of the paint of the preset ride. Range: (float)0-1.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public float PaintSaturation
         {
             get => this._saturation;

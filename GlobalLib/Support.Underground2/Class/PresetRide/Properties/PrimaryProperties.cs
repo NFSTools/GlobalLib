@@ -8,6 +8,7 @@
         private int _performance_level = 0;
 
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public int PerformanceLevel
         {
             get => this._performance_level;

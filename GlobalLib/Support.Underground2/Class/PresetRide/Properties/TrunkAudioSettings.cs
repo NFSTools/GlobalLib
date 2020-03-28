@@ -8,6 +8,7 @@
         /// Hood style value of the preset ride. Range: 0-3.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public byte TrunkAudioStyle
         {
             get => this._trunk_audio_style;

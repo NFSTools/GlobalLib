@@ -8,6 +8,7 @@
         /// Paint type value of the preset ride.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public Reflection.Enum.eCarbonPaint PaintType
         {
             get => this._paint_type;

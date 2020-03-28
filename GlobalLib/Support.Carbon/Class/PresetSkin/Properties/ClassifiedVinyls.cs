@@ -9,6 +9,7 @@
         /// Generic vinyl value of the preset skin.
         /// </summary>
         [Reflection.Attributes.AccessModifiable()]
+        [Reflection.Attributes.StaticModifiable()]
         public string GenericVinyl
         {
             get => this._genericvinyl;
