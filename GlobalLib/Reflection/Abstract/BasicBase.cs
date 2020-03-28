@@ -66,6 +66,45 @@
             }
         }
 
+        public virtual bool TrySetStaticValue(string root, string field, string value)
+        {
+            var property = this.GetType().GetProperty(root ?? string.Empty);
+            if (property == null) return false;
+            try
+            {
+                return (bool)property.PropertyType
+                    .GetMethod("TrySetStaticValue", new System.Type[] { typeof(string), typeof(string) })
+                    .Invoke(property.GetValue(this), new object[] { field, value });
+            }
+            catch (System.Exception) { return false; }
+        }
+
+        public virtual bool TrySetStaticValue(string root, string field, string value, out string error)
+        {
+            error = null;
+            var node = this.GetType().GetProperty(root ?? string.Empty);
+            if (node == null)
+            {
+                error = $"Root named {root} does not exist in the database.";
+                return false;
+            }
+
+            try
+            {
+                var callargs = new object[] { field, value, error };
+                bool result = (bool)node.PropertyType
+                    .GetMethod("TrySetStaticValue", new System.Type[] { typeof(string), typeof(string), typeof(string).MakeByRefType() })
+                    .Invoke(node.GetValue(this), callargs);
+                error = callargs[2]?.ToString();
+                return result;
+            }
+            catch (System.Exception)
+            {
+                if (error == null) error = $"Unable to statically set value in the root {root}.";
+                return false;
+            }
+        }
+
         /// <summary>
         /// Attempts to add class specfified to the database.
         /// </summary>
