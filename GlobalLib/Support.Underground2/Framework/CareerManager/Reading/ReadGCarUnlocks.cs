@@ -14,7 +14,7 @@
 			{
 				int ptr_header = PartOffsets[13] + a1 * 0xC + 8;
 				var Class = new Gameplay.GCarUnlock(byteptr_t + ptr_header, db);
-				db.GCarUnlocks.Classes[Class.CollectionName] = Class;
+				db.GCarUnlocks.Collections.Add(Class);
 			}
 		}
 	}

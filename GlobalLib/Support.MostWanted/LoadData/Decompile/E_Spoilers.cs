@@ -10,13 +10,13 @@
         {
             if (db.SlotTypes.Spoilers == null) return;
             var CNameList = new System.Collections.Generic.List<string>();
-            foreach (var car in db.CarTypeInfos.Classes.Values)
+            foreach (var car in db.CarTypeInfos.Collections)
                 CNameList.Add(car.CollectionName);
             var AllSlots = db.SlotTypes.Spoilers.GetSpoilers(CNameList);
             if (AllSlots == null || AllSlots.Count == 0) return;
             foreach (var Slot in AllSlots)
             {
-                var car = db.CarTypeInfos.FindClass(Slot.CarTypeInfo);
+                var car = db.CarTypeInfos.FindCollection(Slot.CarTypeInfo);
                 if (car == null) continue;
                 car.Spoiler = Slot.Spoiler;
             }

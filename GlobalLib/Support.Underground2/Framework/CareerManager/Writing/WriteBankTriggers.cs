@@ -10,7 +10,7 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.BANK_TRIGS_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				foreach (var bank in db.BankTriggers.Classes.Values)
+				foreach (var bank in db.BankTriggers.Collections)
 				{
 					bank.Assemble(byteptr_t + offset);
 					offset += 0xC;

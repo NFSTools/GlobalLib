@@ -14,7 +14,7 @@
 			{
 				int ptr_header = PartOffsets[12] + a1 * 0xC + 8;
 				var Class = new Gameplay.BankTrigger(byteptr_t + ptr_header, db);
-				db.BankTriggers.Classes[Class.CollectionName] = Class;
+				db.BankTriggers.Collections.Add(Class);
 			}
 		}
 	}

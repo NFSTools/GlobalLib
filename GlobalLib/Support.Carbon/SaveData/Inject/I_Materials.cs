@@ -9,7 +9,7 @@
         /// <param name="bw">BinaryWriter for writing data.</param>
         private static void I_Materials(Database.Carbon db, System.IO.BinaryWriter bw)
         {
-            foreach (var material in db.Materials.Classes.Values)
+            foreach (var material in db.Materials.Collections)
                 bw.Write(material.Assemble());
         }
     }

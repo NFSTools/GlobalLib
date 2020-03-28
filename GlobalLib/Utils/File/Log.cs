@@ -31,7 +31,7 @@ namespace GlobalLib.Utils
         /// <param name="LogEntry">String to write.</param>
         public static void Write(string LogEntry)
         {
-            if (!File.Exists(FileName))
+            if (EnableLog && !File.Exists(FileName))
                 File.Create(FileName);
 
             if (EnableLog)
@@ -59,7 +59,7 @@ namespace GlobalLib.Utils
         /// <param name="LogEntries">Strings to write.</param>
         public static void Write(string[] LogEntries)
         {
-            if (!File.Exists(FileName))
+            if (EnableLog && !File.Exists(FileName))
                 File.Create(FileName);
 
             if (EnableLog)

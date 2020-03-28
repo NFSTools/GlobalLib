@@ -26,7 +26,7 @@
                 Intermid56.Add(db.SlotTypes.Part56[a1].MemoryCast());
 
             // Go through all cartypeinfo, set correct usagetype and keys
-            foreach (var car in db.CarTypeInfos.Classes.Values)
+            foreach (var car in db.CarTypeInfos.Collections)
             {
                 bool CarDoesExist = false;
                 int index = 0;

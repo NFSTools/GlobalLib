@@ -10,7 +10,7 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.EVENT_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				foreach (var race in db.GCareerRaces.Classes.Values)
+				foreach (var race in db.GCareerRaces.Collections)
 				{
 					race.Assemble(byteptr_t + offset, mw);
 					offset += 0x88;

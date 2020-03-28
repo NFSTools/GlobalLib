@@ -15,7 +15,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
-				if (this.Database.Sponsors.Classes.ContainsKey(value))
+				if (this.Database.Sponsors.FindCollection(value) != null)
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

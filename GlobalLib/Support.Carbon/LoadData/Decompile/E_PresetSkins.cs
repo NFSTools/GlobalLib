@@ -23,7 +23,7 @@
                 Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 
                 var Class = new Class.PresetSkin((System.IntPtr)(byteptr_t + offset), CName, db);
-                db.PresetSkins.Classes[CName] = Class;
+                db.PresetSkins.Collections.Add(Class);
             }
         }
 

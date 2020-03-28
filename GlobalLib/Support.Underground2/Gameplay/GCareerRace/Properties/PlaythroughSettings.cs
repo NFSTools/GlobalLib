@@ -55,10 +55,10 @@
 				if (this.EventBehaviorType != Reflection.Enum.eEventBehaviorType.Drift)
 					return Reflection.Enum.eDriftType.VS_AI;
 
-				var track1 = this.Database.Tracks.FindClass($"Track_{this.TrackID_Stage1}");
-				var track2 = this.Database.Tracks.FindClass($"Track_{this.TrackID_Stage2}");
-				var track3 = this.Database.Tracks.FindClass($"Track_{this.TrackID_Stage3}");
-				var track4 = this.Database.Tracks.FindClass($"Track_{this.TrackID_Stage4}");
+				var track1 = this.Database.Tracks.FindCollection($"Track_{this.TrackID_Stage1}");
+				var track2 = this.Database.Tracks.FindCollection($"Track_{this.TrackID_Stage2}");
+				var track3 = this.Database.Tracks.FindCollection($"Track_{this.TrackID_Stage3}");
+				var track4 = this.Database.Tracks.FindCollection($"Track_{this.TrackID_Stage4}");
 
 				var drift1 = (track1 != null) ? track1.DriftType : Reflection.Enum.eDriftType.VS_AI;
 				var drift2 = (track2 != null) ? track2.DriftType : Reflection.Enum.eDriftType.VS_AI;

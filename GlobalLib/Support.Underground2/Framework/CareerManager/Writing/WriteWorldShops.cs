@@ -10,7 +10,7 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.SHOP_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				foreach (var shop in db.WorldShops.Classes.Values)
+				foreach (var shop in db.WorldShops.Collections)
 				{
 					shop.Assemble(byteptr_t + offset, mw);
 					offset += 0xA0;

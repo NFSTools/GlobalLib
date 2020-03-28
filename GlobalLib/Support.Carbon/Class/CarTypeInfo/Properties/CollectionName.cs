@@ -19,7 +19,7 @@
                     throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (value.Length > MaxCNameLength)
                     throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 13 characters.");
-                if (this.Database.CarTypeInfos.Classes.ContainsKey(value))
+                if (this.Database.CarTypeInfos.FindCollection(value) != null)
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;
                 if (this._collision_external_name != Reflection.BaseArguments.NULL)

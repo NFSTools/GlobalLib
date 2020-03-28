@@ -14,7 +14,7 @@
 			{
 				int ptr_header = PartOffsets[5] + a1 * 0x40 + 8;
 				var Class = new Gameplay.GShowcase(byteptr_t + ptr_header, db);
-				db.GShowcases.Classes[Class.CollectionName] = Class;
+				db.GShowcases.Collections.Add(Class);
 			}
 		}
 	}

@@ -12,7 +12,7 @@
             I_GlobalLibBlock(bw);
             bw.Write(Reflection.ID.Global.PresetRides);
             bw.Write(db.PresetRides.Length * 0x338);
-            foreach (var ride in db.PresetRides.Classes.Values)
+            foreach (var ride in db.PresetRides.Collections)
                 bw.Write(ride.Assemble());
         }
     }

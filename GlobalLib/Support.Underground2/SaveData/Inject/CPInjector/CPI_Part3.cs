@@ -9,7 +9,7 @@
 			var carlist = new System.Collections.Generic.List<string>();
 
 			// Precalculate size of part3
-			foreach (var car in db.CarTypeInfos.Classes.Values)
+			foreach (var car in db.CarTypeInfos.Collections)
 			{
 				if (car.Deletable && car.UsageType == Reflection.Enum.eUsageType.Racer)
 					carlist.Add(car.CollectionName);

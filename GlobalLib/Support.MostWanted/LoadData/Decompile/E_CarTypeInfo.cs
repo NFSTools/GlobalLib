@@ -25,7 +25,7 @@
                     Core.Map.CollisionMap[Utils.Vlt.Hash(CName)] = CName;
 
                 var Class = new Class.CarTypeInfo((System.IntPtr)(byteptr_t + offset), CName, db);
-                db.CarTypeInfos.Classes[CName] = Class;
+                db.CarTypeInfos.Collections.Add(Class);
             }
         }
     }

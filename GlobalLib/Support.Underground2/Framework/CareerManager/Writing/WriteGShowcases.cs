@@ -10,7 +10,7 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.SHOWCASE_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				foreach (var showcase in db.GShowcases.Classes.Values)
+				foreach (var showcase in db.GShowcases.Collections)
 				{
 					showcase.Assemble(byteptr_t + offset, mw);
 					offset += 0x40;

@@ -12,7 +12,7 @@
             var SetList = new System.Collections.Generic.List<Parts.CarParts.CarSpoilMirrType>();
 
 			// Get all cartypeinfos with non-base spoilers and mirrors
-			foreach (var car in db.CarTypeInfos.Classes.Values)
+			foreach (var car in db.CarTypeInfos.Collections)
 			{
 				if (car.Spoiler != Reflection.Enum.eSpoiler.SPOILER)
 				{

@@ -8,7 +8,7 @@
 			bw.Write(-1);
 			var pos = bw.BaseStream.Position;
 			int a1 = 0;
-			foreach (var car in db.CarTypeInfos.Classes.Values)
+			foreach (var car in db.CarTypeInfos.Collections)
 				bw.Write(car.GetCarSkins(a1++));
 			bw.BaseStream.Position = pos - 4;
 			bw.Write((int)(bw.BaseStream.Length - pos));

@@ -23,7 +23,7 @@
                 Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 
                 var Class = new Gameplay.SunInfo((System.IntPtr)(byteptr_t + offset), CName, db);
-                db.SunInfos.Classes[CName] = Class;
+                db.SunInfos.Collections.Add(Class);
             }
         }
     }

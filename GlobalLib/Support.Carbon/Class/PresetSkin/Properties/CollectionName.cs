@@ -17,7 +17,7 @@
                     throw new System.ArgumentNullException("This value cannot be left empty.");
                 if (value.Length > MaxCNameLength)
                     throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 31 characters.");
-                if (this.Database.PresetSkins.Classes.ContainsKey(value))
+                if (this.Database.PresetSkins.FindCollection(value) != null)
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;
             }

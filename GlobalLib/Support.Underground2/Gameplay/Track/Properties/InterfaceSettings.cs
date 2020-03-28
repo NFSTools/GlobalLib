@@ -15,17 +15,7 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException("This value cannot be left empty.");
-                if (value == Reflection.BaseArguments.NULL)
-                    this._sun_info_name = value;
-                else if (value.StartsWith("0x") && Utils.ConvertX.ToUInt32(value) != 0)
-                    this._sun_info_name = value;
-                else
-                {
-                    if (this.Database.SunInfos.Classes.ContainsKey(value))
-                        throw new Reflection.Exception.MappingFailException();
-                    else
-                        this._sun_info_name = value;
-                }
+                this._sun_info_name = value;
             }
         }
     }

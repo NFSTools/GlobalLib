@@ -56,7 +56,7 @@
 			get => this._part_index;
 			set
 			{
-				foreach (var cla in this.Database.PartPerformances.Classes.Values)
+				foreach (var cla in this.Database.PartPerformances.Collections)
 				{
 					if (cla.PartIndex == value)
 						throw new System.Exception("Performance Part with the same PartIndex already exists.");

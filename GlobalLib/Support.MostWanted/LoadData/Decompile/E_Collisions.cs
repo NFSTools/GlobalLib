@@ -12,8 +12,8 @@ namespace GlobalLib.Support.MostWanted
 
             // Make a map of vlt hash cartypeinfo and indexes
             var CNameToIndex = new Dictionary<uint, string>();
-            foreach (var car in db.CarTypeInfos.Classes)
-                CNameToIndex[car.Value.VltKey] = car.Key;
+            foreach (var car in db.CarTypeInfos.Collections)
+                CNameToIndex[car.VltKey] = car.CollectionName;
 
             uint offset = 0;
             while (offset < length)
@@ -46,8 +46,9 @@ namespace GlobalLib.Support.MostWanted
                         // Check if cartypeinfo with a set external key exists
                         if (CNameToIndex.TryGetValue(extkey, out var name))
                         {
-                            db.CarTypeInfos.Classes[name].CollisionExternalName = db.CarTypeInfos.Classes[name].CollectionName;
-                            db.CarTypeInfos.Classes[name].CollisionInternalName = CName;
+                            var car = db.CarTypeInfos.FindCollection(name);
+                            car.CollisionExternalName = car.CollectionName;
+                            car.CollisionInternalName = CName;
                         }
                     }
                     else
@@ -71,8 +72,9 @@ namespace GlobalLib.Support.MostWanted
                             // Check if cartypeinfo with a set external key exists
                             if (CNameToIndex.TryGetValue(extkey, out var name))
                             {
-                                db.CarTypeInfos.Classes[name].CollisionExternalName = db.CarTypeInfos.Classes[name].CollectionName;
-                                db.CarTypeInfos.Classes[name].CollisionInternalName = db.CarTypeInfos.Classes[name].CollectionName;
+                                var car = db.CarTypeInfos.FindCollection(name);
+                                car.CollisionExternalName = car.CollectionName;
+                                car.CollisionInternalName = car.CollectionName;
                             }
                         }
                         else

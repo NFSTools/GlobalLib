@@ -12,7 +12,7 @@
 			this.CollectionName = CName;
 			this.SetToFirstAvailablePerfSlot();
 			int index = 0;
-			foreach (var cla in db.PartPerformances.Classes.Values)
+			foreach (var cla in db.PartPerformances.Collections)
 			{
 				if (cla.PartIndex > index)
 					index = cla.PartIndex;

@@ -10,7 +10,7 @@
 			{
 				*(uint*)byteptr_t = Reflection.ID.CareerInfo.WORLD_CHAL_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
-				foreach (var challenge in db.WorldChallenges.Classes.Values)
+				foreach (var challenge in db.WorldChallenges.Collections)
 				{
 					challenge.Assemble(byteptr_t + offset, mw);
 					offset += 0x18;

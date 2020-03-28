@@ -23,7 +23,7 @@
 						var name = mr.ReadNullTerminated();
 						var part = mr.ReadNullTerminated();
 
-						var car = db.CarTypeInfos.FindClass(name);
+						var car = db.CarTypeInfos.FindCollection(name);
 						if (car == null) continue;
 						var ofname = db.SlotTypes.Part56.Find(c => c.BelongsTo == name && c.IsCar);
 						if (ofname == null) continue;

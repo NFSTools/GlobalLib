@@ -7,7 +7,7 @@
 			foreach (var part in db.SlotTypes.Part56)
 			{
 				if (!part.IsCar) continue;
-				var car = db.CarTypeInfos.FindClass(part.BelongsTo);
+				var car = db.CarTypeInfos.FindCollection(part.BelongsTo);
 				if (car == null || car.Deletable) continue;
 				if (!Core.Map.CarPartsMap.Contains(part.BelongsTo))
 					Core.Map.CarPartsMap.Add(part.BelongsTo);

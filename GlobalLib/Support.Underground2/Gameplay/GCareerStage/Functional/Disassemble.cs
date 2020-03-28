@@ -12,15 +12,15 @@
 			// Sponsor Settings
 			this.NumberOfSponsorsToChoose = *(byteptr_t + 0x01);
 			key = *(uint*)(byteptr_t + 0x08);
-			this._stage_sponsor1 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._stage_sponsor1 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x0C);
-			this._stage_sponsor2 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._stage_sponsor2 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x10);
-			this._stage_sponsor3 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._stage_sponsor3 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x14);
-			this._stage_sponsor4 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._stage_sponsor4 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x18);
-			this._stage_sponsor5 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._stage_sponsor5 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
 			this.AttribSponsor1 = *(short*)(byteptr_t + 0x1C);
 			this.AttribSponsor2 = *(short*)(byteptr_t + 0x1E);
 			this.AttribSponsor3 = *(short*)(byteptr_t + 0x20);

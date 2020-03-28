@@ -14,7 +14,7 @@
 			{
 				int ptr_header = PartOffsets[9] + a1 * 0x18 + 8;
 				var Class = new Gameplay.PerfSliderTuning(byteptr_t + ptr_header, db);
-				db.PerfSliderTunings.Classes[Class.CollectionName] = Class;
+				db.PerfSliderTunings.Collections.Add(Class);
 			}
 		}
 	}

@@ -16,12 +16,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._stage_sponsor1 = value;
-				else if (this.Database.Sponsors.Classes.ContainsKey(value))
-					throw new System.Exception($"Sponsor named {value} does not exist in the database.");
-				else
-					this._stage_sponsor1 = value;
+				this._stage_sponsor1 = value;
 			}
 		}
 
@@ -33,12 +28,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._stage_sponsor2 = value;
-				else if (this.Database.Sponsors.Classes.ContainsKey(value))
-					throw new System.Exception($"Sponsor named {value} does not exist in the database.");
-				else
-					this._stage_sponsor2 = value;
+				this._stage_sponsor2 = value;
 			}
 		}
 
@@ -50,12 +40,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._stage_sponsor3 = value;
-				else if (this.Database.Sponsors.Classes.ContainsKey(value))
-					throw new System.Exception($"Sponsor named {value} does not exist in the database.");
-				else
-					this._stage_sponsor3 = value;
+				this._stage_sponsor3 = value;
 			}
 		}
 
@@ -67,12 +52,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._stage_sponsor4 = value;
-				else if (this.Database.Sponsors.Classes.ContainsKey(value))
-					throw new System.Exception($"Sponsor named {value} does not exist in the database.");
-				else
-					this._stage_sponsor4 = value;
+				this._stage_sponsor4 = value;
 			}
 		}
 
@@ -84,12 +64,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._stage_sponsor5 = value;
-				else if (this.Database.Sponsors.Classes.ContainsKey(value))
-					throw new System.Exception($"Sponsor named {value} does not exist in the database.");
-				else
-					this._stage_sponsor5 = value;
+				this._stage_sponsor5 = value;
 			}
 		}
 	}

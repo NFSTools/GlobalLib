@@ -22,12 +22,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._perf_brand_1 = value;
-				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
-					throw new Reflection.Exception.MappingFailException();
-				else
-					this._perf_brand_1 = value;
+				this._perf_brand_1 = value;
 			}
 		}
 
@@ -39,12 +34,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._perf_brand_2 = value;
-				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
-					throw new Reflection.Exception.MappingFailException();
-				else
-					this._perf_brand_2 = value;
+				this._perf_brand_2 = value;
 			}
 		}
 
@@ -56,12 +46,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._perf_brand_3 = value;
-				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
-					throw new Reflection.Exception.MappingFailException();
-				else
-					this._perf_brand_3 = value;
+				this._perf_brand_3 = value;
 			}
 		}
 
@@ -73,12 +58,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._perf_brand_4 = value;
-				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
-					throw new Reflection.Exception.MappingFailException();
-				else
-					this._perf_brand_4 = value;
+				this._perf_brand_4 = value;
 			}
 		}
 
@@ -90,12 +70,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._perf_brand_5 = value;
-				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
-					throw new Reflection.Exception.MappingFailException();
-				else
-					this._perf_brand_5 = value;
+				this._perf_brand_5 = value;
 			}
 		}
 
@@ -107,12 +82,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._perf_brand_6 = value;
-				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
-					throw new Reflection.Exception.MappingFailException();
-				else
-					this._perf_brand_6 = value;
+				this._perf_brand_6 = value;
 			}
 		}
 
@@ -124,12 +94,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._perf_brand_7 = value;
-				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
-					throw new Reflection.Exception.MappingFailException();
-				else
-					this._perf_brand_7 = value;
+				this._perf_brand_7 = value;
 			}
 		}
 
@@ -141,12 +106,7 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value == Reflection.BaseArguments.NULL)
-					this._perf_brand_8 = value;
-				else if (!this.Database.GCareerBrands.Classes.ContainsKey(value))
-					throw new Reflection.Exception.MappingFailException();
-				else
-					this._perf_brand_8 = value;
+				this._perf_brand_8 = value;
 			}
 		}
 	}

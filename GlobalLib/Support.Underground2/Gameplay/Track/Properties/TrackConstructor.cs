@@ -22,6 +22,6 @@
 			this.Disassemble((byte*)byteptr_t);
 		}
 
-		~Track() { System.Console.WriteLine("Track destroyed."); }
+		~Track() { }
 	}
 }

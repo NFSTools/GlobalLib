@@ -9,7 +9,7 @@
 			var carlist = new System.Collections.Generic.List<string>();
 
 			// Precalculate size of part4
-			foreach (var car in db.CarTypeInfos.Classes.Values)
+			foreach (var car in db.CarTypeInfos.Collections)
 			{
 				if (car.Deletable && car.UsageType == Reflection.Enum.eUsageType.Racer)
 				{
@@ -35,7 +35,7 @@
 
 			foreach (var name in carlist)
 			{
-				var car = db.CarTypeInfos.Classes[name];
+				var car = db.CarTypeInfos.FindCollection(name);
 				switch (car.UsageType)
 				{
 					case Reflection.Enum.eUsageType.Racer:

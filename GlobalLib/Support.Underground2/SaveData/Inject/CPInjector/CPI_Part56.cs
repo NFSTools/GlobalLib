@@ -20,7 +20,7 @@
                 Intermid56.Add(db.SlotTypes.Part56[a1].MemoryCast());
 
             // Go through all cartypeinfo, set correct usagetype and keys
-            foreach (var car in db.CarTypeInfos.Classes.Values)
+            foreach (var car in db.CarTypeInfos.Collections)
             {
                 if (!car.Deletable) continue; // Else (if car is old) continue
 
@@ -51,7 +51,7 @@
             for (int a1 = 0; a1 < Intermid56.Count; ++a1)
             {
                 var _56 = Intermid56[a1];
-                if (_56.IsCar && !db.CarTypeInfos.Classes.ContainsKey(_56.BelongsTo))
+                if (_56.IsCar && !db.CarTypeInfos.TryGetCollectionIndex(_56.BelongsTo, out int _))
                     continue;
                 _56.SetIndex(curlength++);
                 UsedPart56.Add(_56);

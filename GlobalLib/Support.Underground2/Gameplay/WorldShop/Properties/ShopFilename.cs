@@ -14,7 +14,7 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				if (value.Length > 0xF)
 					throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 15 characters.");
-				string filepath = $"{Core.Process.GlobalDir}\\FRONTEND\\PLATFORMS\\{value}.BIN";
+				string filepath = $"{Core.Process.GlobalDir}\\FRONTEND\\PLATFORMS\\{value}";
 				if (!System.IO.File.Exists(filepath))
 					throw new System.IO.FileNotFoundException($"File named {filepath} does not exist.");
 				this._shop_filename = value;

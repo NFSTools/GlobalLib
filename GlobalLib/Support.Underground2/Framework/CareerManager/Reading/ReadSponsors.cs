@@ -15,7 +15,7 @@
 				int ptr_string = PartOffsets[0] + 8;
 				int ptr_header = PartOffsets[7] + a1 * 0x10 + 8;
 				var Class = new Gameplay.Sponsor(byteptr_t + ptr_header, byteptr_t + ptr_string, db);
-				db.Sponsors.Classes[Class.CollectionName] = Class;
+				db.Sponsors.Collections.Add(Class);
 			}
 		}
 	}

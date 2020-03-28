@@ -20,29 +20,29 @@
 						*(int*)(byteptr_t + offset + 4) = a2 + 1;
 						if (Core.Map.PerfPartTable[a1, a2, 0] != 0)
 						{
-							string CName = $"0x{Core.Map.PerfPartTable[a1, a2, 0]:X8}";
-							var cla = db.PartPerformances.FindClass(CName);
+							uint key = Core.Map.PerfPartTable[a1, a2, 0];
+							var cla = db.PartPerformances.FindCollection(key, Database.Collection.eKeyType.BINKEY);
 							cla.Assemble(byteptr_t + offset + 0xC);
 							++count;
 						}
 						if (Core.Map.PerfPartTable[a1, a2, 1] != 0)
 						{
-							string CName = $"0x{Core.Map.PerfPartTable[a1, a2, 1]:X8}";
-							var cla = db.PartPerformances.FindClass(CName);
+							uint key = Core.Map.PerfPartTable[a1, a2, 1];
+							var cla = db.PartPerformances.FindCollection(key, Database.Collection.eKeyType.BINKEY);
 							cla.Assemble(byteptr_t + offset + 0x68);
 							++count;
 						}
 						if (Core.Map.PerfPartTable[a1, a2, 2] != 0)
 						{
-							string CName = $"0x{Core.Map.PerfPartTable[a1, a2, 2]:X8}";
-							var cla = db.PartPerformances.FindClass(CName);
+							uint key = Core.Map.PerfPartTable[a1, a2, 2];
+							var cla = db.PartPerformances.FindCollection(key, Database.Collection.eKeyType.BINKEY);
 							cla.Assemble(byteptr_t + offset + 0xC4);
 							++count;
 						}
 						if (Core.Map.PerfPartTable[a1, a2, 3] != 0)
 						{
-							string CName = $"0x{Core.Map.PerfPartTable[a1, a2, 3]:X8}";
-							var cla = db.PartPerformances.FindClass(CName);
+							uint key = Core.Map.PerfPartTable[a1, a2, 3];
+							var cla = db.PartPerformances.FindCollection(key, Database.Collection.eKeyType.BINKEY);
 							cla.Assemble(byteptr_t + offset + 0x120);
 							++count;
 						}

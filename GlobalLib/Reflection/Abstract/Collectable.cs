@@ -266,9 +266,8 @@
                 else
                 {
                     property.SetValue(this, typeof(Utils.Cast)
-                        .GetMethod("StaticCast")
-                        .MakeGenericMethod(value.GetType())
-                        .Invoke(null, new object[1] { value }));
+                        .GetMethod("RuntimeCast")
+                        .Invoke(null, new object[] { value, property.PropertyType }));
                 }
                 return true;
             }

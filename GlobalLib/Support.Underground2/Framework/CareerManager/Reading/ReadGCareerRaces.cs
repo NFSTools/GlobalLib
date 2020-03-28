@@ -15,7 +15,7 @@
 				int ptr_string = PartOffsets[0] + 8;
 				int ptr_header = PartOffsets[1] + a1 * 0x88 + 8;
 				var Class = new Gameplay.GCareerRace(byteptr_t + ptr_header, byteptr_t + ptr_string, db);
-				db.GCareerRaces.Classes[Class.CollectionName] = Class;
+				db.GCareerRaces.Collections.Add(Class);
 			}
 		}
 	}

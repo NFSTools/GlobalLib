@@ -6,7 +6,7 @@
 		{
 			var result = new PerfSliderTuning(CName, this.Database);
 			uint maxkey = 0;
-			foreach (var slider in this.Database.PerfSliderTunings.Classes.Values)
+			foreach (var slider in this.Database.PerfSliderTunings.Collections)
 				if (slider.BinKey > maxkey) maxkey = slider.BinKey;
 			result._collection_name = (maxkey + 1).ToString();
 			result.MaxSliderValueRatio = this.MaxSliderValueRatio;

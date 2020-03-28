@@ -17,7 +17,7 @@
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
 				if (!Framework.Validate.BankTriggerCollectionName(value))
 					throw new System.Exception("CollectionName should be of format BANK_TRIGGER_# with 2-digit index.");
-				if (this.Database.BankTriggers.Classes.ContainsKey(value))
+				if (this.Database.BankTriggers.FindCollection(value) != null)
 					throw new Reflection.Exception.CollectionExistenceException();
 				this._collection_name = value;
 			}

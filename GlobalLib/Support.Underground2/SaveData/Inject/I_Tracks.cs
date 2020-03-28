@@ -12,7 +12,7 @@
             I_GlobalLibBlock(bw);
             bw.Write(Reflection.ID.Global.Tracks);
             bw.Write(db.Tracks.Length * 0x128);
-            foreach (var track in db.Tracks.Classes.Values)
+            foreach (var track in db.Tracks.Collections)
                 bw.Write(track.Assemble());
         }
     }

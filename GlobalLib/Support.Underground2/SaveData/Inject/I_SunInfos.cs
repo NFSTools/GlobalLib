@@ -13,7 +13,7 @@
             bw.Write(Reflection.ID.Global.SunInfos);
             bw.Write(db.SunInfos.Length * 0x110 + 8);
             bw.Write(0x1111111111111111);
-            foreach (var suninfo in db.SunInfos.Classes.Values)
+            foreach (var suninfo in db.SunInfos.Collections)
                 bw.Write(suninfo.Assemble());
         }
     }

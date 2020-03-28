@@ -14,7 +14,7 @@
 			{
 				int ptr_header = PartOffsets[3] + a1 * 0x44 + 8;
 				var Class = new Gameplay.GCareerBrand(byteptr_t + ptr_header, db);
-				db.GCareerBrands.Classes[Class.CollectionName] = Class;
+				db.GCareerBrands.Collections.Add(Class);
 			}
 		}
 	}

@@ -16,7 +16,7 @@
             Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
 
             var Class = new Class.Material((System.IntPtr)byteptr_t, CName, db);
-            db.Materials.Classes[CName] = Class;
+            db.Materials.Collections.Add(Class);
         }
     }
 }

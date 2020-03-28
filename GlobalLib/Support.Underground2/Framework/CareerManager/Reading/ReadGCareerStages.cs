@@ -14,7 +14,7 @@
 			{
 				int ptr_header = PartOffsets[8] + a1 * 0x50 + 8;
 				var Class = new Gameplay.GCareerStage(byteptr_t + ptr_header, db);
-				db.GCareerStages.Classes[Class.CollectionName] = Class;
+				db.GCareerStages.Collections.Add(Class);
 			}
 		}
 	}

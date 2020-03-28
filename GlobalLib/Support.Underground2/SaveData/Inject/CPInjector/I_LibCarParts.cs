@@ -8,7 +8,7 @@
 			int libsize = 0x58;
 			int padding = 0;
 
-			foreach (var car in db.CarTypeInfos.Classes.Values)
+			foreach (var car in db.CarTypeInfos.Collections)
 				strsize += car.CollectionName.Length + car.UsesCarPartsOf.Length + 2;
 
 			padding = 0x10 - ((strsize + libsize) % 0x10);
@@ -24,7 +24,7 @@
 			mw.WriteNullTerminated("CarParts Block", 0x20);
 			mw.Write(db.CarTypeInfos.Length);
 			mw.Write(strsize);
-			foreach (var car in db.CarTypeInfos.Classes.Values)
+			foreach (var car in db.CarTypeInfos.Collections)
 			{
 				mw.WriteNullTerminated(car.CollectionName);
 				mw.WriteNullTerminated(car.UsesCarPartsOf);

@@ -7,7 +7,7 @@
 			const uint size = 0x40;
 			var map = new System.Collections.Generic.Dictionary<int, string>();
 
-			foreach (var car in db.CarTypeInfos.Classes.Values)
+			foreach (var car in db.CarTypeInfos.Collections)
 				map[car.Index] = car.CollectionName;
 
 			for (uint loop = 0; loop < length / size; ++loop)
@@ -16,7 +16,7 @@
 
 				var Reader = new Parts.CarParts.CarSkin();
 				Reader.Read(byteptr_t + offset, out int id, out int index);
-				var car = db.CarTypeInfos.FindClass(map[id]);
+				var car = db.CarTypeInfos.FindCollection(map[id]);
 				if (car == null) continue;
 				
 				switch (index)
