@@ -31,6 +31,8 @@ namespace GlobalLib.Database.Collection
 			this.Database = data;
 		}
 
+		public TypeID this[string CName] => this.FindCollection(CName);
+
 		public bool TryGetCollectionIndex(string CName, out int index)
 		{
 			for (index = 0; index < this.Length; ++index)

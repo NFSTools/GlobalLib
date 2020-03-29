@@ -234,10 +234,10 @@
                         parts._WHEEL = MODEL + parts._WHEEL; // null, empty, NULL or STOCK
                         break;
                     case "AUTOSCLPT":
-                        parts._WHEEL = $"{this._rim_style}{add_on._STYLE}{this._rim_style:00}_17{add_on._25}";
+                        parts._WHEEL = $"{this._rim_brand}{add_on._STYLE}{this._rim_style:00}_17{add_on._25}";
                         break;
                     default:
-                        parts._WHEEL = $"{this._rim_style}{add_on._STYLE}{this._rim_style:00}_{this._rim_size}{add_on._25}";
+                        parts._WHEEL = $"{this._rim_brand}{add_on._STYLE}{this._rim_style:00}_{this._rim_size}{add_on._25}";
                         break;
                 }
 
