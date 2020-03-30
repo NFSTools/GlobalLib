@@ -22,6 +22,21 @@
                 result += value[first++].ToString();
             return result;
         }
+
+        /// <summary>
+        /// Gets string from inside quotation marks in the string passed safely. It can be
+        /// any string of type "string str = "strlen" param", where result returned
+        /// will be "strlen". Returns null if string is not in quotation marks.
+        /// </summary>
+        /// <param name="value">String with quotes inside from which get the result.</param>
+        /// <returns>String from quotation marks.</returns>
+        public static string SafeQuotedString(string value)
+        {
+            if (!value.Contains("\"")) return null; // if no quotes at all
+            var index = value.IndexOf('\"');
+            if (!value.Substring(index + 1).Contains("\"")) return null; // if just one quote
+            return QuotedString(value);
+        }
         
         /// <summary>
         /// Gets strings from inside all quotation marks of the string passed.

@@ -153,7 +153,7 @@
 			var result = new Specialties();
 			var ThisType = this.GetType();
 			var ResultType = result.GetType();
-			foreach (var ThisField in ThisType.GetFields())
+			foreach (var ThisField in ThisType.GetProperties())
 			{
 				var ResultField = ResultType.GetProperty(ThisField.Name);
 				ResultField.SetValue(result, ThisField.GetValue(this));
