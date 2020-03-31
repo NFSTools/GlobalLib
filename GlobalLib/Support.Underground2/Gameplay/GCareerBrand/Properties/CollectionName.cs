@@ -15,6 +15,8 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
+				if (value.Contains(" "))
+					throw new System.Exception("CollectionName cannot contain whitespace.");
 				if (value.Length > 0x1F)
 					throw new Reflection.Exception.ArgumentLengthException("Length of the value should not exceed 31 character.");
 				if (this.Database.GCareerBrands.FindCollection(value) != null)

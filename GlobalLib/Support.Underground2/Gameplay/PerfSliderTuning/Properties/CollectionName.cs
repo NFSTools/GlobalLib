@@ -16,6 +16,8 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
+				if (value.Contains(" "))
+					throw new System.Exception("CollectionName cannot contain whitespace.");
 				if (!Framework.Validate.PerfSliderCollectionName(value))
 					throw new System.Exception("Unable to parse value provided as a hexadecimal containing tuning settings.");
 				if (this.Database.PerfSliderTunings.FindCollection(value) != null)

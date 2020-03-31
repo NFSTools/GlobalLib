@@ -125,7 +125,7 @@
 			{
 				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2PaintTypes.Contains(value))
 					throw new Reflection.Exception.MappingFailException();
-				this._audio_paint_type = value;
+				this._mirrors_paint_type = value;
 			}
 		}
 

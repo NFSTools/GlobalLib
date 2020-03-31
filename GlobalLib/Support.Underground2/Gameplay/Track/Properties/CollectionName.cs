@@ -15,6 +15,8 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left empty.");
+				if (value.Contains(" "))
+					throw new System.Exception("CollectionName cannot contain whitespace.");
 				if (!Framework.Validate.TrackCollectionName(value))
 					throw new System.Exception("Unable to parse TrackID from the collection name provided.");
 				if (this.Database.Tracks.FindCollection(value) != null)

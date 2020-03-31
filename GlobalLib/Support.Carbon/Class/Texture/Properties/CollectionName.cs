@@ -15,6 +15,8 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException("This value cannot be left empty.");
+                if (value.Contains(" "))
+                    throw new System.Exception("CollectionName cannot contain whitespace.");
                 int index = this.Database.GetClassIndex(this._parent_TPK, GlobalLib.Database.eClassType.TPKBlock);
                 if (this.Database.TPKBlocks[index].GetTextureIndex(value) != -1)
                     throw new Reflection.Exception.CollectionExistenceException();

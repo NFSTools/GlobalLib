@@ -15,6 +15,8 @@
             {
                 if (string.IsNullOrWhiteSpace(value))
                     throw new System.ArgumentNullException("This value cannot be left empty.");
+                if (value.Contains(" "))
+                    throw new System.Exception("CollectionName cannot contain whitespace.");
                 if (value.Length > MaxCNameLength)
                     throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 27 characters.");
                 if (this.Database.Materials.FindCollection(value) != null)

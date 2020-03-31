@@ -15,6 +15,8 @@
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new System.ArgumentNullException("This value cannot be left left empty.");
+				if (value.Contains(" "))
+					throw new System.Exception("CollectionName cannot contain whitespace.");
 				if (!Framework.Validate.CareerStageCollectionName(value))
 					throw new System.Exception("Unable to parse stage number from the value provided.");
 				if (this.Database.GCareerStages.FindCollection(value) != null)
