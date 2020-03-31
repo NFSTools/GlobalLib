@@ -15,7 +15,7 @@
             if (string.IsNullOrWhiteSpace(value)) // check for being null
                 return 0;
 
-            var arr = System.Text.Encoding.GetEncoding(1252).GetBytes(value);
+            var arr = System.Text.Encoding.ASCII.GetBytes(value);
             var len = 0;
             var result = 0xFFFFFFFF;
 
