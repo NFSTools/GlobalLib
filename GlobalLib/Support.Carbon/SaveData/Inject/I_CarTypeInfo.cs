@@ -14,7 +14,10 @@
             bw.Write(db.CarTypeInfos.Length * 0xD0 + 8);
             bw.Write(0x1111111111111111);
             foreach (var car in db.CarTypeInfos.Collections)
-                bw.Write(car.Assemble(index++));
+            {
+                car.Index = index++;
+                bw.Write(car.Assemble());
+            }
         }
     }
 }

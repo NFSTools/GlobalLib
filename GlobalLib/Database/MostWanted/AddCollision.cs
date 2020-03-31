@@ -7,8 +7,9 @@
         /// </summary>
         /// <param name="CName">Collection Name of the collision block.</param>
         /// <param name="filepath">Filepath of the collision block to be imported.</param>
-        public unsafe bool AddCollision(string CName, string filepath)
+        public unsafe bool AddCollision(string CName, string filepath, out string error)
         {
+            error = null;
             try
             {
                 if (!System.IO.File.Exists(filepath))
@@ -38,10 +39,8 @@
             }
             catch (System.Exception e)
             {
-                if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show(e.Message, "Warning");
-                else
-                    System.Console.WriteLine($"{e.Message}");
+                while (e.InnerException != null) e = e.InnerException;
+                error = e.Message;
                 return false;
             }
         }

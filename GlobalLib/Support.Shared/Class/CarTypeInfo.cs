@@ -366,9 +366,8 @@
         /// <summary>
         /// Assembles cartypeinfo into a byte array.
         /// </summary>
-        /// <param name="index">Index of the cartypeinfo.</param>
         /// <returns>Byte array of the cartypeinfo.</returns>
-        public virtual unsafe byte[] Assemble(int index) { return null; }
+        public virtual unsafe byte[] Assemble() { return null; }
 
         /// <summary>
         /// Disassembles cartypeinfo array into separate properties.

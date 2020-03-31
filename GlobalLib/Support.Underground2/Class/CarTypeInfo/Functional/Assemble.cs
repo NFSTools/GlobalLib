@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="index">Index of the cartypeinfo.</param>
         /// <returns>Byte array of the cartypeinfo.</returns>
-        public override unsafe byte[] Assemble(int index = 0xFF)
+        public override unsafe byte[] Assemble()
         {
             var result = new byte[0x890];
             fixed (byte* byteptr_t = &result[0])
@@ -534,7 +534,7 @@
                         *(ushort*)(byteptr_t + 0x7F0 + a1 * 2) = this._rigid_controls[a1];
                 }
                  // Secondary Properties
-                *(int*)(byteptr_t + 0x840) = index;
+                *(int*)(byteptr_t + 0x840) = this.Index;
                 *(int*)(byteptr_t + 0x844) = (int)this.UsageType;
                 *(uint*)(byteptr_t + 0x84C) = Utils.Bin.Hash(this._defaultbasepaint);
                 *(uint*)(byteptr_t + 0x850) = Utils.Bin.Hash(this._defaultbasepaint2);

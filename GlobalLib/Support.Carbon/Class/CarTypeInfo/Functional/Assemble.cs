@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="index">Index of the cartypeinfo.</param>
         /// <returns>Byte array of the cartypeinfo.</returns>
-        public override unsafe byte[] Assemble(int index = 0xFF)
+        public override unsafe byte[] Assemble()
         {
             byte[] result = new byte[0xD0];
             fixed (byte* byteptr_t = &result[0])
@@ -53,7 +53,7 @@
                 *(float*)(byteptr_t + 0x88) = this.SteeringWheelRenderingZ;
                 *(float*)(byteptr_t + 0x8C) = this.SteeringWheelRenderingW;
 
-                *(int*)(byteptr_t + 0x90) = index;
+                *(int*)(byteptr_t + 0x90) = this.Index;
                 *(int*)(byteptr_t + 0x94) = (int)this.UsageType;
                 *(uint*)(byteptr_t + 0x98) = (uint)this.MemoryType;
 
