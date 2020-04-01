@@ -10,7 +10,7 @@
         /// <param name="index">Index of the TPK block in the database</param>
         private static void I_TPKBlock(Database.MostWanted db, System.IO.BinaryWriter bw, ref int index)
         {
-            bw.Write(Utils.EA.Resolve.GetPaddingArray((int)bw.BaseStream.Length, 0x80));
+            I_GlobalLibBlock(bw);
             bw.Write(db.TPKBlocks[index++].Assemble());
         }
     }

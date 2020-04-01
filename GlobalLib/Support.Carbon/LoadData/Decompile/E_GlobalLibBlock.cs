@@ -8,12 +8,13 @@
             int num = 0; // number of strings
             int len = 0; // length of strings
 
-            string blocktype = "";
-            for (int a1 = 0x30; *(byteptr_t + a1) != 0; ++a1)
-                blocktype += ((char)*(byteptr_t + a1)).ToString();
+            string blocktype = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x30, 0x20);
 
             switch (blocktype)
             {
+                case "Padding Block":
+                    return;
+
                 case "Collision Block":
                     num = *(int*)(byteptr_t + off); // get number of strings allocated
                     len = *(int*)(byteptr_t + off + 4); // get total length of characters

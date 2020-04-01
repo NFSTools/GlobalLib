@@ -23,9 +23,7 @@ namespace GlobalLib.Support.Carbon
             {
                 int tpkindex = 0;
                 I_Materials(db, bw);
-                I_GlobalLibBlock(db, bw);
-                bool padding_was_last = false; // to keep track of last id (if true, last id is padding id)
-                int total_pad_size = 0; // length of last padding array (including id and size)
+                I_CollisionLibBlock(db, bw);
 
                 while (br.BaseStream.Position < br.BaseStream.Length)
                 {
@@ -43,22 +41,13 @@ namespace GlobalLib.Support.Carbon
                             if (key == Reflection.ID.Global.GlobalLib)
                             {
                                 br.BaseStream.Position += WriterSlotSize;
-                                padding_was_last = false;
                                 break;
                             }
                             else
-                            {
-                                bw.Write(WriterSlotID);
-                                bw.Write(WriterSlotSize);
-                                bw.Write(br.ReadBytes(WriterSlotSize));
-                                padding_was_last = true;
-                                total_pad_size = WriterSlotSize + 8;
-                                break;
-                            }
+                                goto default;
 
                         case Reflection.ID.Global.Materials:
                             br.BaseStream.Position += WriterSlotSize;
-                            padding_was_last = false;
                             break;
 
                         case Reflection.ID.Global.TPKBlocks:
@@ -66,57 +55,46 @@ namespace GlobalLib.Support.Carbon
                                 ++tpkindex;
                             I_TPKBlock(db, bw, ref tpkindex);
                             br.BaseStream.Position += WriterSlotSize;
-                            padding_was_last = false;
                             break;
 
                         case Reflection.ID.Global.CarTypeInfo:
                             I_CarTypeInfo(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
-                            padding_was_last = false;
                             break;
 
                         case Reflection.ID.Global.PresetRides:
                             I_PresetRides(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
-                            padding_was_last = false;
                             break;
 
                         case Reflection.ID.Global.PresetSkins:
                             I_PresetSkins(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
-                            padding_was_last = false;
                             break;
 
                         case Reflection.ID.Global.CarParts:
                             I_CarParts(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
-                            padding_was_last = false;
                             break;
 
                         case Reflection.ID.Global.Collisions:
                             I_Collisions(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
-                            padding_was_last = false;
                             break;
 
                         case Reflection.ID.Global.SlotTypes:
                             I_SlotType(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
-                            padding_was_last = false;
                             break;
 
                         case Reflection.ID.Global.PaddingReq:
-                            if (!padding_was_last || total_pad_size < 0x10)
-                                bw.Write(Utils.EA.Resolve.GetPaddingArray((int)bw.BaseStream.Length, 0x10));
-                            else if (bw.BaseStream.Length % 0x10 != 0)
-                                bw.Write(Utils.EA.Resolve.GetPaddingArray((int)bw.BaseStream.Length, 0x10));
+                            I_GlobalLibBlock(bw);
                             goto default;
 
                         default:
                             bw.Write(WriterSlotID);
                             bw.Write(WriterSlotSize);
                             bw.Write(br.ReadBytes(WriterSlotSize));
-                            padding_was_last = false;
                             break;
                     }
                 }

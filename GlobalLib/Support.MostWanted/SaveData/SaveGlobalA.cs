@@ -33,6 +33,17 @@ namespace GlobalLib.Support.MostWanted
                     // If one of the necessary slots is reached, replace it
                     switch (WriterSlotID)
                     {
+                        case 0:
+                            uint key = br.ReadUInt32();
+                            br.BaseStream.Position -= 4;
+                            if (key == Reflection.ID.Global.GlobalLib)
+                            {
+                                br.BaseStream.Position += WriterSlotSize;
+                                break;
+                            }
+                            else
+                                goto default;
+
                         case Reflection.ID.Global.TPKBlocks:
                             while (!db.TPKBlocks[tpkindex].InGlobalA)
                                 ++tpkindex;

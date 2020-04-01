@@ -14,6 +14,9 @@
 
             switch (blocktype)
             {
+                case "Padding Block":
+                    return;
+
                 case "Collision Block":
                     num = *(int*)(byteptr_t + off); // get number of strings allocated
                     len = *(int*)(byteptr_t + off + 4); // get total length of characters

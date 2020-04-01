@@ -72,11 +72,6 @@ namespace GlobalLib.Support.Underground2
 
                     switch (ID)
                     {
-                        case 0:
-                            if (*(uint*)(byteptr_t + offset + 8) == Reflection.ID.Global.GlobalLib)
-                                E_GlobalLibBlock(byteptr_t + offset, size + 8, db);
-                            break;
-                        
                         case Reflection.ID.Global.Materials:
                             E_Material(byteptr_t + offset, db);
                             break;

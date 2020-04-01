@@ -129,6 +129,8 @@
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\ToString.cs" />
+    <Compile Include="Support.Carbon\SaveData\Inject\I_GlobalLibBlock.cs" />
+    <Compile Include="Support.MostWanted\SaveData\Inject\I_GlobalLibBlock.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\GetCarSkins.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CarSkins.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
@@ -294,7 +296,7 @@
     <Compile Include="Support.Carbon\SaveData\Inject\I_CarTypeInfo.cs" />
     <Compile Include="Support.Carbon\SaveData\Inject\I_Collisions.cs" />
     <Compile Include="Support.Carbon\SaveData\Inject\I_FNGroup.cs" />
-    <Compile Include="Support.Carbon\SaveData\Inject\I_GlobalLibBlock.cs" />
+    <Compile Include="Support.Carbon\SaveData\Inject\I_CollisionLibBlock.cs" />
     <Compile Include="Support.Carbon\SaveData\Inject\I_Materials.cs" />
     <Compile Include="Support.Carbon\SaveData\Inject\I_PresetRides.cs" />
     <Compile Include="Support.Carbon\SaveData\Inject\I_PresetSkins.cs" />
@@ -443,7 +445,7 @@
     <Compile Include="Support.MostWanted\SaveData\Inject\I_CarTypeInfo.cs" />
     <Compile Include="Support.MostWanted\SaveData\Inject\I_Collisions.cs" />
     <Compile Include="Support.MostWanted\SaveData\Inject\I_FNGroup.cs" />
-    <Compile Include="Support.MostWanted\SaveData\Inject\I_GlobalLibBlock.cs" />
+    <Compile Include="Support.MostWanted\SaveData\Inject\I_CollisionLibBlock.cs" />
     <Compile Include="Support.MostWanted\SaveData\Inject\I_Materials.cs" />
     <Compile Include="Support.MostWanted\SaveData\Inject\I_PresetRides.cs" />
     <Compile Include="Support.MostWanted\SaveData\Inject\I_SlotType.cs" />
@@ -809,7 +811,6 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\CPExtractor\CPE_Part56.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarParts.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarSkins.cs" />
-    <Compile Include="Support.Underground2\LoadData\Decompile\E_GlobalLibBlock.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_PresetRides.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SlotType.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SpoilMirrs.cs" />

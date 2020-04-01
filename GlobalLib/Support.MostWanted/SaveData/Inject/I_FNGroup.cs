@@ -11,7 +11,7 @@
         {
             for (int a1 = 0; a1 < db.FNGroups.Count; ++a1)
             {
-                bw.Write(Utils.EA.Resolve.GetPaddingArray((int)bw.BaseStream.Position, 0x10));
+                I_GlobalLibBlock(bw);
                 bw.Write(db.FNGroups[a1].Assemble());
             }
         }

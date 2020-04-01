@@ -23,7 +23,7 @@ namespace GlobalLib.Support.MostWanted
             {
                 int tpkindex = 0;
                 I_Materials(db, bw);
-                I_GlobalLibBlock(db, bw);
+                I_CollisionLibBlock(db, bw);
 
                 while (br.BaseStream.Position < br.BaseStream.Length)
                 {
