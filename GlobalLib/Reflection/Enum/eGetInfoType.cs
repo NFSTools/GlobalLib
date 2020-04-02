@@ -1,4 +1,4 @@
-﻿namespace GlobalLib.Database.Collection
+﻿namespace GlobalLib.Reflection.Enum
 {
 	public enum eGetInfoType : int
 	{

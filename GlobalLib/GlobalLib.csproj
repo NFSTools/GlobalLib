@@ -62,8 +62,8 @@
     <Compile Include="Database\Carbon\AddCollision.cs" />
     <Compile Include="Database\Carbon\Carbon.cs" />
     <Compile Include="Database\Collection\Root.cs" />
-    <Compile Include="Database\Collection\eGetInfoType.cs" />
-    <Compile Include="Database\Collection\eKeyType.cs" />
+    <Compile Include="Reflection\Enum\eGetInfoType.cs" />
+    <Compile Include="Reflection\Enum\eKeyType.cs" />
     <Compile Include="Database\MostWanted\Initialize.cs" />
     <Compile Include="Database\MostWanted\ToString.cs" />
     <Compile Include="Database\Underground2\GetClassIndex.cs" />

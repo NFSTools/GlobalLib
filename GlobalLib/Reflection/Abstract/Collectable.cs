@@ -18,14 +18,14 @@
         /// Returns array of all accessible and modifiable properties and fields.
         /// </summary>
         /// <returns>Array of strings.</returns>
-        public override object[] GetAccessibles(Database.Collection.eGetInfoType type)
+        public override object[] GetAccessibles(Enum.eGetInfoType type)
         {
             var list = new System.Collections.Generic.List<object>();
             foreach (var property in this.GetType().GetProperties())
             {
                 if (System.Attribute.IsDefined(property, typeof(Attributes.AccessModifiableAttribute)))
                 {
-                    if (type == Database.Collection.eGetInfoType.PROPERTY_NAMES)
+                    if (type == Enum.eGetInfoType.PROPERTY_NAMES)
                         list.Add(property.Name);
                     else
                         list.Add(property);
@@ -87,14 +87,14 @@
             return list;
         }
 
-        public virtual object[] GetSubnodeAttribs(string NodeName, Database.Collection.eGetInfoType type)
+        public virtual object[] GetSubnodeAttribs(string NodeName, Enum.eGetInfoType type)
         {
             var property = this.GetType().GetProperty(NodeName);
             if (property == null) return null;
             var result = new System.Collections.Generic.List<object>();
             foreach (var field in property.PropertyType.GetProperties())
             {
-                if (type == Database.Collection.eGetInfoType.PROPERTY_NAMES)
+                if (type == Enum.eGetInfoType.PROPERTY_NAMES)
                     result.Add(field.Name);
                 else
                     result.Add(field);

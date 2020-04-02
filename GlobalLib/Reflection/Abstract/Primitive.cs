@@ -27,7 +27,7 @@
             return this.GetType().GetProperty(property).PropertyType.GetEnumNames();
         }
 
-        public abstract object[] GetAccessibles(Database.Collection.eGetInfoType type);
+        public abstract object[] GetAccessibles(Enum.eGetInfoType type);
         public abstract string GetValue(string PropertyName);
         public abstract bool SetValue(string PropertyName, object value);
         public abstract bool SetValue(string PropertyName, object value, ref string error);

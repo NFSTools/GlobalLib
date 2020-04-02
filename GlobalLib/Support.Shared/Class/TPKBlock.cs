@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.Shared.Class
+﻿using GlobalLib.Reflection.Enum;
+
+
+
+namespace GlobalLib.Support.Shared.Class
 {
     public class TPKBlock
     {
@@ -66,14 +70,15 @@
         /// <param name="key">Key of the <see cref="Texture"/> Collection Name.</param>
         /// <param name="type">Type of the key passed.</param>
         /// <returns>Texture if it is found; null otherwise.</returns>
-        public virtual Texture FindTexture(uint key, Database.Collection.eKeyType type) { return null; }
+        public virtual Texture FindTexture(uint key, eKeyType type) { return null; }
 
         /// <summary>
         /// Gets index of the <see cref="Texture"/> in the <see cref="TPKBlock"/>.
         /// </summary>
-        /// <param name="CName">Collection Name of the <see cref="Texture"/>.</param>
+        /// <param name="key">Key of the Collection Name of the <see cref="Texture"/>.</param>
+        /// <param name="type">Key type passed.</param>
         /// <returns>Index number as an integer. If element does not exist, returns -1.</returns>
-        public virtual int GetTextureIndex(string CName) { return -1; }
+        public virtual int GetTextureIndex(uint key, eKeyType type) { return -1; }
 
         /// <summary>
         /// Attempts to add <see cref="Texture"/> to the <see cref="TPKBlock"/> data.
@@ -99,17 +104,19 @@
         /// <summary>
         /// Attempts to remove <see cref="Texture"/> specified from <see cref="TPKBlock"/> data.
         /// </summary>
-        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be deleted.</param>
+        /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to be deleted.</param>
+        /// <param name="type">Type fo the key passed.</param>
         /// <returns>True if texture removing was successful, false otherwise.</returns>
-        public virtual bool TryRemoveTexture(string CName) { return false; }
+        public virtual bool TryRemoveTexture(uint key, eKeyType type) { return false; }
 
         /// <summary>
         /// Attempts to remove <see cref="Texture"/> specified from <see cref="TPKBlock"/> data.
         /// </summary>
-        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be deleted.</param>
+        /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to be deleted.</param>
+        /// <param name="type">Type of the key passed.</param>
         /// <param name="error">Error occured when trying to remove a texture.</param>
         /// <returns>True if texture removing was successful, false otherwise.</returns>
-        public virtual bool TryRemoveTexture(string CName, out string error)
+        public virtual bool TryRemoveTexture(uint key, eKeyType type, out string error)
         {
             error = null;
             return false;
@@ -119,18 +126,20 @@
         /// Attempts to clone <see cref="Texture"/> specified in the <see cref="TPKBlock"/> data.
         /// </summary>
         /// <param name="newname">Collection Name of the new <see cref="Texture"/>.</param>
-        /// <param name="copyfrom">Collection Name of the <see cref="Texture"/> to clone.</param>
+        /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to clone.</param>
+        /// <param name="type">Type of the key passed.</param>
         /// <returns>True if texture cloning was successful, false otherwise.</returns>
-        public virtual bool TryCloneTexture(string newname, string copyfrom) { return false; }
+        public virtual bool TryCloneTexture(string newname, uint key, eKeyType type) { return false; }
 
         /// <summary>
         /// Attempts to clone <see cref="Texture"/> specified in the <see cref="TPKBlock"/> data.
         /// </summary>
         /// <param name="newname">Collection Name of the new <see cref="Texture"/>.</param>
-        /// <param name="copyfrom">Collection Name of the <see cref="Texture"/> to clone.</param>
+        /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to clone.</param>
+        /// <param name="type">Type of the key passed.</param>
         /// <param name="error">Error occured when trying to clone a texture.</param>
         /// <returns>True if texture cloning was successful, false otherwise.</returns>
-        public virtual bool TryCloneTexture(string newname, string copyfrom, out string error)
+        public virtual bool TryCloneTexture(string newname, uint key, eKeyType type, out string error)
         {
             error = null;
             return false;
@@ -139,19 +148,21 @@
         /// <summary>
         /// Attemps to replace <see cref="Texture"/> specified in the <see cref="TPKBlock"/> data with a new one.
         /// </summary>
-        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be replaced.</param>
+        /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to be replaced.</param>
+        /// <param name="type">Type of the key passed.</param>
         /// <param name="filename">Path of the texture that replaces the current one.</param>
         /// <returns>True if texture replacing was successful, false otherwise.</returns>
-        public virtual bool TryReplaceTexture(string CName, string filename) { return false; }
+        public virtual bool TryReplaceTexture(uint key, eKeyType type, string filename) { return false; }
 
         /// <summary>
         /// Attemps to replace <see cref="Texture"/> specified in the <see cref="TPKBlock"/> data with a new one.
         /// </summary>
-        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be replaced.</param>
+        /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to be replaced.</param>
+        /// <param name="type">Type of the key passed.</param>
         /// <param name="filename">Path of the texture that replaces the current one.</param>
         /// <param name="error">Error occured when trying to replace a texture.</param>
         /// <returns>True if texture replacing was successful, false otherwise.</returns>
-        public virtual bool TryReplaceTexture(string CName, string filename, out string error)
+        public virtual bool TryReplaceTexture(uint key, eKeyType type, string filename, out string error)
         {
             error = null;
             return false;
@@ -160,21 +171,23 @@
         /// <summary>
         /// Attemps to export <see cref="Texture"/> specified to the path and mode provided.
         /// </summary>
-        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be exported.</param>
+        /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to be exported.</param>
+        /// <param name="type">Type of the key passed.</param>
         /// <param name="path">Path where the texture should be exported.</param>
         /// <param name="mode">Mode in which export the texture. Range: ".dds", ".png", ".jpg", ".tiff", ".bmp".</param>
         /// <returns>True if texture export was successful, false otherwise.</returns>
-        public virtual bool TryExportTexture(string CName, string path, string mode) { return false; }
+        public virtual bool TryExportTexture(uint key, eKeyType type, string path, string mode) { return false; }
 
         /// <summary>
         /// Attemps to export <see cref="Texture"/> specified to the path and mode provided.
         /// </summary>
-        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be exported.</param>
+        /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to be exported.</param>
+        /// <param name="type">Type of the key passed.</param>
         /// <param name="path">Path where the texture should be exported.</param>
         /// <param name="mode">Mode in which export the texture. Range: ".dds", ".png", ".jpg", ".tiff", ".bmp".</param>
         /// <param name="error">Error occured when trying to clone a texture.</param>
         /// <returns>True if texture export was successful, false otherwise.</returns>
-        public virtual bool TryExportTexture(string CName, string path, string mode, out string error)
+        public virtual bool TryExportTexture(uint key, eKeyType type, string path, string mode, out string error)
         {
             error = null;
             return false;

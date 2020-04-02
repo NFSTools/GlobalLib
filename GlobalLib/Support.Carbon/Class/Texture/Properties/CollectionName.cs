@@ -18,7 +18,9 @@
                 if (value.Contains(" "))
                     throw new System.Exception("CollectionName cannot contain whitespace.");
                 int index = this.Database.GetClassIndex(this._parent_TPK, GlobalLib.Database.eClassType.TPKBlock);
-                if (this.Database.TPKBlocks[index].GetTextureIndex(value) != -1)
+                var key = Utils.Bin.Hash(value);
+                var type = Reflection.Enum.eKeyType.BINKEY;
+                if (this.Database.TPKBlocks[index].GetTextureIndex(key, type) != -1)
                     throw new Reflection.Exception.CollectionExistenceException();
                 this._collection_name = value;
                 this.BinKey = Utils.Bin.Hash(value);

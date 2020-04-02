@@ -15,17 +15,17 @@
         /// <summary>
         /// Returns object array of all accessible and modifiable properties and fields.
         /// </summary>
-        /// <param name="type"><see cref="Database.Collection.eGetInfoType"/> enum value 
+        /// <param name="type"><see cref="Enum.eGetInfoType"/> enum value 
         /// that tells what objects type should be returned.</param>
         /// <returns>Array of strings.</returns>
-        public override object[] GetAccessibles(Database.Collection.eGetInfoType type)
+        public override object[] GetAccessibles(Enum.eGetInfoType type)
         {
             var list = new System.Collections.Generic.List<object>();
             foreach (var property in this.GetType().GetProperties())
             {
-                if (type == Database.Collection.eGetInfoType.PROPERTY_NAMES)
+                if (type == Enum.eGetInfoType.PROPERTY_NAMES)
                     list.Add(property.Name);
-                else if (type == Database.Collection.eGetInfoType.PROPERTY_INFOS)
+                else if (type == Enum.eGetInfoType.PROPERTY_INFOS)
                     list.Add(property);
             }
             return list.ToArray();
