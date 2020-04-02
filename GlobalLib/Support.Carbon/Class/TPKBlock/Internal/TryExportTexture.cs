@@ -37,12 +37,12 @@
                     return false;
             }
 
-            int index = this.GetTextureIndex(CName);
-            if (index == -1) return false;
+            var tex = this.FindTexture(CName);
+            if (tex == null) return false;
 
             try
             {
-                var data = this.Textures[index].GetDDSArray();
+                var data = tex.GetDDSArray();
                 if (mode == ".dds")
                 {
                     using (var bw = new System.IO.BinaryWriter(System.IO.File.Open(path, System.IO.FileMode.Create)))

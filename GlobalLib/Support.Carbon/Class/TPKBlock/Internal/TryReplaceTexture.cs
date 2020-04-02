@@ -12,13 +12,13 @@
         {
             if (string.IsNullOrWhiteSpace(CName)) return false;
 
-            int index = this.GetTextureIndex(CName);
-            if (index == -1) return false;
+            var tex = this.FindTexture(CName);
+            if (tex == null) return false;
 
             if (!Utils.EA.Comp.IsDDSTexture(filename))
                 return false;
 
-            this.Textures[index].Reload(filename);
+            tex.Reload(filename);
             return true;
         }
     }

@@ -7,7 +7,7 @@
 			// Initialize MemoryWriter for string block to its maximum size
 			var mw = new Utils.MemoryWriter(0xFFFF);
 			mw.Write((byte)0); // write null-termination
-			mw.WriteNullTerminated("GlobalLib by MaxHwoy " + System.DateTime.Today.ToString("dd-MM-yyyy"));
+			mw.WriteNullTerminated(Core.Process.Watermark);
 
 			// Get arrays of all blocks
 			var GCareerRacesBlock = WriteGCareerRaces(mw, db);

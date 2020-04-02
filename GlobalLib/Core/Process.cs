@@ -21,6 +21,11 @@
         public static string GlobalDir { get; set; }
 
         /// <summary>
+        /// Watermark that will be written in the files on saving.
+        /// </summary>
+        public static string Watermark { get; set; } = $"GlobalLib by MaxHwoy";
+
+        /// <summary>
         /// Loads data from Global files in the directory chosen.
         /// </summary>
         /// <param name="database">Carbon database to be loaded into.</param>

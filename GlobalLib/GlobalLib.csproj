@@ -129,7 +129,9 @@
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\MemoryCast.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\ToString.cs" />
+    <Compile Include="Support.Carbon\Class\TPKBlock\Internal\FindTexture.cs" />
     <Compile Include="Support.Carbon\SaveData\Inject\I_GlobalLibBlock.cs" />
+    <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\FindTexture.cs" />
     <Compile Include="Support.MostWanted\SaveData\Inject\I_GlobalLibBlock.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\GetCarSkins.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CarSkins.cs" />

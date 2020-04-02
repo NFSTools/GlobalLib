@@ -12,7 +12,7 @@
         {
             if (string.IsNullOrWhiteSpace(CName)) return false;
 
-            if (this.GetTextureIndex(CName) != -1)
+            if (this.FindTexture(Utils.Bin.Hash(CName), GlobalLib.Database.Collection.eKeyType.BINKEY) != null)
                 return false;
 
             if (CName.Length > 0x17) return false;

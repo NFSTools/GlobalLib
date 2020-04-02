@@ -26,6 +26,7 @@
             if (db.GetClassIndex(Class.CollectionName, Database.eClassType.FNGroup) != -1)
                 return;
             db.FNGroups.Add(Class);
+            Utils.Bin.Hash(Class.CollectionName);
         }
     }
 }
