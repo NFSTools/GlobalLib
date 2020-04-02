@@ -2,12 +2,13 @@
 {
 	public partial class TPKBlock
 	{
-		public Texture FindTexture(string CName)
-		{
-			return this.Textures.Find(t => t.CollectionName == CName);
-		}
-
-		public Texture FindTexture(uint key, Database.Collection.eKeyType type)
+		/// <summary>
+		/// Tries to find texture based on the key passed.
+		/// </summary>
+		/// <param name="key">Key of the texture's CollectionName.</param>
+		/// <param name="type">Type of the key passed.</param>
+		/// <returns>Texture if it is found; null otherwise.</returns>
+		public override Shared.Class.Texture FindTexture(uint key, Database.Collection.eKeyType type)
 		{
 			switch (type)
 			{

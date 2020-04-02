@@ -49,63 +49,136 @@
         #region Internal Methods
 
         /// <summary>
-        /// Assembles tpk block into a byte array.
+        /// Assembles <see cref="TPKBlock"/> into a byte array.
         /// </summary>
         /// <returns>Byte array of the tpk block.</returns>
         public virtual unsafe byte[] Assemble() { return null; }
 
         /// <summary>
-        /// Disassembles tpk block array into separate properties.
+        /// Disassembles <see cref="TPKBlock"/> array into separate properties.
         /// </summary>
         /// <param name="byteptr_t">Pointer to the tpk block array.</param>
         protected virtual unsafe void Disassemble(byte* byteptr_t) { }
 
         /// <summary>
-        /// Gets index of the texture in the TPKBlock.
+        /// Tries to find <see cref="Texture"/> based on the key passed.
         /// </summary>
-        /// <param name="CName">Collection Name of the texture.</param>
+        /// <param name="key">Key of the <see cref="Texture"/> Collection Name.</param>
+        /// <param name="type">Type of the key passed.</param>
+        /// <returns>Texture if it is found; null otherwise.</returns>
+        public virtual Texture FindTexture(uint key, Database.Collection.eKeyType type) { return null; }
+
+        /// <summary>
+        /// Gets index of the <see cref="Texture"/> in the <see cref="TPKBlock"/>.
+        /// </summary>
+        /// <param name="CName">Collection Name of the <see cref="Texture"/>.</param>
         /// <returns>Index number as an integer. If element does not exist, returns -1.</returns>
         public virtual int GetTextureIndex(string CName) { return -1; }
 
         /// <summary>
-        /// Attempts to add texture to the TPKBlock data.
+        /// Attempts to add <see cref="Texture"/> to the <see cref="TPKBlock"/> data.
         /// </summary>
-        /// <param name="CName">Collection Name of the new texture.</param>
+        /// <param name="CName">Collection Name of the new <see cref="Texture"/>.</param>
         /// <param name="filename">Path of the texture to be imported.</param>
         /// <returns>True if texture adding was successful, false otherwise.</returns>
         public virtual bool TryAddTexture(string CName, string filename) { return false; }
 
         /// <summary>
-        /// Attempts to remove texture specified from TPKBlock data.
+        /// Attempts to add <see cref="Texture"/> to the <see cref="TPKBlock"/> data.
         /// </summary>
-        /// <param name="CName">Collection Name of the texture to be deleted.</param>
+        /// <param name="CName">Collection Name of the new <see cref="Texture"/>.</param>
+        /// <param name="filename">Path of the texture to be imported.</param>
+        /// <param name="error">Error occured when trying to add a texture.</param>
+        /// <returns>True if texture adding was successful, false otherwise.</returns>
+        public virtual bool TryAddTexture(string CName, string filename, out string error)
+        {
+            error = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Attempts to remove <see cref="Texture"/> specified from <see cref="TPKBlock"/> data.
+        /// </summary>
+        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be deleted.</param>
         /// <returns>True if texture removing was successful, false otherwise.</returns>
         public virtual bool TryRemoveTexture(string CName) { return false; }
 
         /// <summary>
-        /// Attempts to clone texture specified in the TPKBlock data.
+        /// Attempts to remove <see cref="Texture"/> specified from <see cref="TPKBlock"/> data.
         /// </summary>
-        /// <param name="newname">Collection Name of the new texture.</param>
-        /// <param name="copyfrom">Collection Name of the texture to clone.</param>
+        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be deleted.</param>
+        /// <param name="error">Error occured when trying to remove a texture.</param>
+        /// <returns>True if texture removing was successful, false otherwise.</returns>
+        public virtual bool TryRemoveTexture(string CName, out string error)
+        {
+            error = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Attempts to clone <see cref="Texture"/> specified in the <see cref="TPKBlock"/> data.
+        /// </summary>
+        /// <param name="newname">Collection Name of the new <see cref="Texture"/>.</param>
+        /// <param name="copyfrom">Collection Name of the <see cref="Texture"/> to clone.</param>
         /// <returns>True if texture cloning was successful, false otherwise.</returns>
         public virtual bool TryCloneTexture(string newname, string copyfrom) { return false; }
 
         /// <summary>
-        /// Attemps to replace texture specified in the TPKBlock data with a new one.
+        /// Attempts to clone <see cref="Texture"/> specified in the <see cref="TPKBlock"/> data.
         /// </summary>
-        /// <param name="CName">Collection Name of the texture to be replaced.</param>
+        /// <param name="newname">Collection Name of the new <see cref="Texture"/>.</param>
+        /// <param name="copyfrom">Collection Name of the <see cref="Texture"/> to clone.</param>
+        /// <param name="error">Error occured when trying to clone a texture.</param>
+        /// <returns>True if texture cloning was successful, false otherwise.</returns>
+        public virtual bool TryCloneTexture(string newname, string copyfrom, out string error)
+        {
+            error = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Attemps to replace <see cref="Texture"/> specified in the <see cref="TPKBlock"/> data with a new one.
+        /// </summary>
+        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be replaced.</param>
         /// <param name="filename">Path of the texture that replaces the current one.</param>
         /// <returns>True if texture replacing was successful, false otherwise.</returns>
         public virtual bool TryReplaceTexture(string CName, string filename) { return false; }
 
         /// <summary>
-        /// Attemps to export texture specified to the path and mode provided.
+        /// Attemps to replace <see cref="Texture"/> specified in the <see cref="TPKBlock"/> data with a new one.
         /// </summary>
-        /// <param name="CName">Collection Name of the texture to be exported.</param>
+        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be replaced.</param>
+        /// <param name="filename">Path of the texture that replaces the current one.</param>
+        /// <param name="error">Error occured when trying to replace a texture.</param>
+        /// <returns>True if texture replacing was successful, false otherwise.</returns>
+        public virtual bool TryReplaceTexture(string CName, string filename, out string error)
+        {
+            error = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Attemps to export <see cref="Texture"/> specified to the path and mode provided.
+        /// </summary>
+        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be exported.</param>
         /// <param name="path">Path where the texture should be exported.</param>
         /// <param name="mode">Mode in which export the texture. Range: ".dds", ".png", ".jpg", ".tiff", ".bmp".</param>
         /// <returns>True if texture export was successful, false otherwise.</returns>
         public virtual bool TryExportTexture(string CName, string path, string mode) { return false; }
+
+        /// <summary>
+        /// Attemps to export <see cref="Texture"/> specified to the path and mode provided.
+        /// </summary>
+        /// <param name="CName">Collection Name of the <see cref="Texture"/> to be exported.</param>
+        /// <param name="path">Path where the texture should be exported.</param>
+        /// <param name="mode">Mode in which export the texture. Range: ".dds", ".png", ".jpg", ".tiff", ".bmp".</param>
+        /// <param name="error">Error occured when trying to clone a texture.</param>
+        /// <returns>True if texture export was successful, false otherwise.</returns>
+        public virtual bool TryExportTexture(string CName, string path, string mode, out string error)
+        {
+            error = null;
+            return false;
+        }
 
         #endregion
 

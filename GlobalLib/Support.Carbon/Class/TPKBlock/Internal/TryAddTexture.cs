@@ -15,8 +15,6 @@
             if (this.FindTexture(Utils.Bin.Hash(CName), GlobalLib.Database.Collection.eKeyType.BINKEY) != null)
                 return false;
 
-            if (CName.Length > 0x22) return false;
-
             if (!Utils.EA.Comp.IsDDSTexture(filename))
                 return false;
 
