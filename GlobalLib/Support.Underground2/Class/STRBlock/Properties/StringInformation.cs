@@ -15,44 +15,81 @@ namespace GlobalLib.Support.Underground2.Class
 		public int InfoLength { get => this._stringinfo.Count; }
 
 		/// <summary>
+		/// Gets the <see cref="StringRecord"/> from the internal list.
+		/// </summary>
+		/// <param name="key">Key of the <see cref="StringRecord"/> to find.</param>
+		/// <returns>StringRecord is it exists; otherwise null;</returns>
+		public override StringRecord GetRecord(uint key)
+		{
+			return this._stringinfo.Find(s => s.Key == key);
+		}
+
+		/// <summary>
 		/// Gets text from the binary key of a label provided.
 		/// </summary>
 		/// <param name="key">Key of the string label.</param>
 		/// <returns>Text of the label as a string.</returns>
-		public string GetText(uint key)
+		public override string GetText(uint key)
 		{
-			for (int a1 = 0; a1 < this._stringinfo.Count; ++a1)
-			{
-				if (key == this._stringinfo[a1].Key)
-					return this._stringinfo[a1].Text;
-			}
-			return null;
+			return base.GetText(key);
 		}
 
 		/// <summary>
-		/// Gets string record from index provided.
+		/// Attempts to add <see cref="StringRecord"/> in the <see cref="STRBlock"/>.
 		/// </summary>
-		/// <param name="index">Index of the record in the array.</param>
-		/// <returns>String record class.</returns>
-		public StringRecord GetRecord(int index)
+		/// <param name="key">Key of the new <see cref="StringRecord"/></param>
+		/// <param name="label">Label of the new <see cref="StringRecord"/></param>
+		/// <param name="text">Text of the new <see cref="StringRecord"/></param>
+		/// <returns>True if adding was successful; false otherwise.</returns>
+		public override bool TryAddRecord(string key, string label, string text)
 		{
-			if (index < 0 || index >= this._stringinfo.Count) return null;
-			else return this._stringinfo[index];
+			uint hash = 0;
+			if (key == Reflection.BaseArguments.AUTO) hash = Utils.Bin.Hash(key);
+			else hash = Utils.ConvertX.ToUInt32(key);
+
+			if (hash == 0) return false;
+			if (this.GetRecord(hash) != null) return false;
+			this._stringinfo.Add(new StringRecord(this)
+			{
+				Key = hash,
+				Label = label,
+				Text = text
+			});
+			return true;
 		}
 
 		/// <summary>
-		/// Gets string record from hash provided.
+		/// Attempts to add <see cref="StringRecord"/> in the <see cref="STRBlock"/>.
 		/// </summary>
-		/// <param name="key">Hash of the record in the array.</param>
-		/// <returns>String record class.</returns>
-		public StringRecord GetRecord(uint key)
+		/// <param name="key">Key of the new <see cref="StringRecord"/></param>
+		/// <param name="label">Label of the new <see cref="StringRecord"/></param>
+		/// <param name="text">Text of the new <see cref="StringRecord"/></param>
+		/// <param name="error">Error occured when trying to add the record.</param>
+		/// <returns>True if adding was successful; false otherwise.</returns>
+		public override bool TryAddRecord(string key, string label, string text, out string error)
 		{
-			foreach (var info in this._stringinfo)
+			error = null;
+			uint hash = 0;
+			if (key == Reflection.BaseArguments.AUTO) hash = Utils.Bin.Hash(key);
+			else hash = Utils.ConvertX.ToUInt32(key);
+
+			if (hash == 0)
 			{
-				if (key == info.Key)
-					return info;
+				error = $"Unable to convert string to a hexadecimal hash or hash is equals 0.";
+				return false;
 			}
-			return null;
+			if (this.GetRecord(hash) != null)
+			{
+				error = $"StringRecord with key 0x{key:X8} already exist.";
+				return false;
+			}
+			this._stringinfo.Add(new StringRecord(this)
+			{
+				Key = hash,
+				Label = label,
+				Text = text
+			});
+			return true;
 		}
 
 		/// <summary>
@@ -60,79 +97,51 @@ namespace GlobalLib.Support.Underground2.Class
 		/// </summary>
 		/// <param name="index">Index of the record to be removed.</param>
 		/// <returns>True if deleting was successful.</returns>
-		public bool DeleteRecord(int index)
+		public override bool TryRemoveRecord(uint key)
 		{
-			if (index < 0 || index >= this._stringinfo.Count) return false;
+			var record = this.GetRecord(key);
+			if (record == null) return false;
 			else
 			{
-				this._stringinfo.RemoveAt(index);
+				this._stringinfo.Remove(record);
 				return true;
 			}
 		}
 
 		/// <summary>
-		/// Removes string record at the index specified.
+		/// Attempts to remove <see cref="StringRecord"/> with the key provided.
 		/// </summary>
-		/// <param name="key">Hash of the string record to be removed.</param>
-		/// <returns>True if deleting was successful.</returns>
-		public bool DeleteRecord(uint key)
+		/// <param name="index">Key of the <see cref="StringRecord"/> to be removed.</param>
+		/// <param name="error">Error occured when trying to remove the record.</param>
+		/// <returns>True if removing was successful; false otherwise.</returns>
+		public override bool TryRemoveRecord(uint key, out string error)
 		{
-			for (int a1 = 0; a1 < this._stringinfo.Count; ++a1)
+			error = null;
+			var record = this.GetRecord(key);
+			if (record == null)
 			{
-				if (key == this._stringinfo[a1].Key)
-					return this.DeleteRecord(a1);
+				error = $"StringRecord with key 0x{key:X8} does not exist.";
+				return false;
 			}
-			return false;
+			else
+			{
+				this._stringinfo.Remove(record);
+				return true;
+			}
 		}
 
 		/// <summary>
-		/// Attepts to add text and its label in the string information array.
+		/// Retrieves all <see cref="StringRecord"/> that have their texts containing text provided.
 		/// </summary>
-		/// <param name="label">Label of the text.</param>
-		/// <param name="text">Text to be set.</param>
-		/// <returns>True if label and its hash are unique, false otherwise.</returns>
-		public bool SetRecord(string label, string text)
+		/// <param name="text">Text that other <see cref="StringRecord"/> should match.</param>
+		/// <returns>Enumerable of records containing text provided.</returns>
+		public override IEnumerable<StringRecord> FindWithText(string text)
 		{
-			if (string.IsNullOrEmpty(label))
-				return false;
-			var key = Utils.Bin.Hash(label);
-			foreach (var str in this._stringinfo)
+			foreach (var record in this._stringinfo)
 			{
-				if (key == str.Key || label == str.Label)
-					return false;
+				if (record.Text?.Contains(text) ?? false)
+					yield return record;
 			}
-
-			var info = new StringRecord(this);
-			info.Key = key;
-			info.Label = label;
-			info.Text = text ?? string.Empty;
-			this._stringinfo.Add(info);
-			return true;
-		}
-
-		/// <summary>
-		/// Attepts to add text and its label in the string information array.
-		/// </summary>
-		/// <param name="key">Hash of the string record.</param>
-		/// <param name="label">Label of the text.</param>
-		/// <param name="text">Text to be set.</param>
-		/// <returns>True if label and its hash are unique, false otherwise.</returns>
-		public bool SetRecord(uint key, string label, string text)
-		{
-			if (string.IsNullOrEmpty(label) || key == 0)
-				return false;
-			foreach (var str in this._stringinfo)
-			{
-				if (key == str.Key || label == str.Label)
-					return false;
-			}
-
-			var info = new StringRecord(this);
-			info.Key = key;
-			info.Label = label;
-			info.Text = text ?? string.Empty;
-			this._stringinfo.Add(info);
-			return true;
 		}
 	}
 }
