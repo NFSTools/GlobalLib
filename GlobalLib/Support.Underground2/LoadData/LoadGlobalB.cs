@@ -8,8 +8,6 @@ namespace GlobalLib.Support.Underground2
 {
     public static partial class LoadData
     {
-        private static bool LibPartBlockExists = false;
-
         /// <summary>
         /// Loads GlobalB file and disassembles its blocks
         /// </summary>
@@ -18,7 +16,6 @@ namespace GlobalLib.Support.Underground2
         /// <returns>True if success.</returns>
         public static unsafe bool LoadGlobalB(string GlobalB_dir, Database.Underground2 db)
         {
-            LibPartBlockExists = false;
             GlobalB_dir += @"\GLOBAL\GlobalB.lzc";
 
             // Get everything from GlobalB.lzc

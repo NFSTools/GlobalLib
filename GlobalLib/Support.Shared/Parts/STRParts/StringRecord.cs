@@ -17,6 +17,26 @@
 			this.ThisList = thislist;
 		}
 
+		public override bool Equals(object obj)
+		{
+			return obj is StringRecord && this == (StringRecord)obj;
+		}
+
+		public override int GetHashCode()
+		{
+			return System.Tuple.Create(this.Key, this.Label ?? string.Empty, this.Text ?? string.Empty).GetHashCode();
+		}
+
+		public static bool operator== (StringRecord s1, StringRecord s2)
+		{
+			return s1.Key == s2.Key || s1.Label == s2.Label;
+		}
+
+		public static bool operator!= (StringRecord s1, StringRecord s2)
+		{
+			return !(s1 == s2);
+		}
+
 		public override string ToString()
 		{
 			return $"BinKey: {this.Key.ToString("X8")} | Label: {this.Label} | Text: {this.Text}";
