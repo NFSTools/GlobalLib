@@ -102,7 +102,7 @@ namespace GlobalLib.Support.Underground2.Class
 					return false;
 			}
 
-			var info = new StringRecord(this._stringinfo);
+			var info = new StringRecord(this);
 			info.Key = key;
 			info.Label = label;
 			info.Text = text ?? string.Empty;
@@ -127,7 +127,7 @@ namespace GlobalLib.Support.Underground2.Class
 					return false;
 			}
 
-			var info = new StringRecord(this._stringinfo);
+			var info = new StringRecord(this);
 			info.Key = key;
 			info.Label = label;
 			info.Text = text ?? string.Empty;

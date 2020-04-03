@@ -49,7 +49,7 @@ namespace GlobalLib.Support.Carbon.Class
 			
 			if (hash == 0) return false;
 			if (this.GetRecord(hash) != null) return false;
-			this._stringinfo.Add(new StringRecord(this._stringinfo)
+			this._stringinfo.Add(new StringRecord(this)
 			{
 				Key = hash,
 				Label = label,
@@ -83,7 +83,7 @@ namespace GlobalLib.Support.Carbon.Class
 				error = $"StringRecord with key 0x{key:X8} already exist.";
 				return false;
 			}
-			this._stringinfo.Add(new StringRecord(this._stringinfo)
+			this._stringinfo.Add(new StringRecord(this)
 			{
 				Key = hash,
 				Label = label,

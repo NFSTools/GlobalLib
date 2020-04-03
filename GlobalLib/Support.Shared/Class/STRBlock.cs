@@ -55,11 +55,28 @@ namespace GlobalLib.Support.Shared.Class
 		public virtual StringRecord GetRecord(uint key) { return null; }
 
 		/// <summary>
+		/// Gets the <see cref="StringRecord"/> from the internal list.
+		/// </summary>
+		/// <param name="key">Key of the <see cref="StringRecord"/> to find.</param>
+		/// <returns>StringRecord is it exists; otherwise null;</returns>
+		public virtual StringRecord GetRecord(string key) { return null; }
+
+		/// <summary>
 		/// Gets text from the binary key of a label provided.
 		/// </summary>
 		/// <param name="key">Key of the string label.</param>
 		/// <returns>Text of the label as a string.</returns>
 		public virtual string GetText(uint key)
+		{
+			return this.GetRecord(key)?.Text;
+		}
+
+		/// <summary>
+		/// Gets text from the binary key of a label provided.
+		/// </summary>
+		/// <param name="key">Key of the string label.</param>
+		/// <returns>Text of the label as a string.</returns>
+		public virtual string GetText(string key)
 		{
 			return this.GetRecord(key)?.Text;
 		}
@@ -98,9 +115,28 @@ namespace GlobalLib.Support.Shared.Class
 		/// Attempts to remove <see cref="StringRecord"/> with the key provided.
 		/// </summary>
 		/// <param name="index">Key of the <see cref="StringRecord"/> to be removed.</param>
+		/// <returns>True if removing was successful; false otherwise.</returns>
+		public virtual bool TryRemoveRecord(string key) { return false; }
+
+		/// <summary>
+		/// Attempts to remove <see cref="StringRecord"/> with the key provided.
+		/// </summary>
+		/// <param name="index">Key of the <see cref="StringRecord"/> to be removed.</param>
 		/// <param name="error">Error occured when trying to remove the record.</param>
 		/// <returns>True if removing was successful; false otherwise.</returns>
 		public virtual bool TryRemoveRecord(uint key, out string error)
+		{
+			error = null;
+			return false;
+		}
+
+		/// <summary>
+		/// Attempts to remove <see cref="StringRecord"/> with the key provided.
+		/// </summary>
+		/// <param name="index">Key of the <see cref="StringRecord"/> to be removed.</param>
+		/// <param name="error">Error occured when trying to remove the record.</param>
+		/// <returns>True if removing was successful; false otherwise.</returns>
+		public virtual bool TryRemoveRecord(string key, out string error)
 		{
 			error = null;
 			return false;
