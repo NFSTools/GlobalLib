@@ -1,16 +1,20 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Core;
+
+
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class STRBlock
     {
         /// <summary>
-        /// Game index to which the class belongs to.
+        /// Game to which the class belongs to.
         /// </summary>
-        public int GameINT { get => (int)Core.GameINT.MostWanted; }
+        public override GameINT GameINT { get => GameINT.MostWanted; }
 
         /// <summary>
         /// Game string to which the class belongs to.
         /// </summary>
-        public string GameSTR { get => Core.GameSTR.MostWanted; }
+        public override string GameSTR { get => GameINT.MostWanted.ToString(); }
 
         /// <summary>
         /// Database to which the class belongs to.
