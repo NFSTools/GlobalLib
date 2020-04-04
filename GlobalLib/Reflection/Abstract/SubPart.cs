@@ -1,8 +1,15 @@
-﻿namespace GlobalLib.Reflection.Abstract
+﻿using System.Collections.Generic;
+using GlobalLib.Utils;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Attributes;
+
+
+
+namespace GlobalLib.Reflection.Abstract
 {
     /// <summary>
     /// <see cref="SubPart"/> is a class that any <see cref="Collectable"/> may include in itself. 
-    /// This class is not allowed to have any <see cref="Attributes.AccessModifiableAttribute"/> 
+    /// This class is not allowed to have any <see cref="AccessModifiableAttribute"/> 
     /// because all properties should be public, accessible and modifiable from the outside.
     /// </summary>
     public abstract class SubPart : Primitive
@@ -15,17 +22,17 @@
         /// <summary>
         /// Returns object array of all accessible and modifiable properties and fields.
         /// </summary>
-        /// <param name="type"><see cref="Enum.eGetInfoType"/> enum value 
+        /// <param name="type"><see cref="eGetInfoType"/> enum value 
         /// that tells what objects type should be returned.</param>
         /// <returns>Array of strings.</returns>
-        public override object[] GetAccessibles(Enum.eGetInfoType type)
+        public override object[] GetAccessibles(eGetInfoType type)
         {
-            var list = new System.Collections.Generic.List<object>();
+            var list = new List<object>();
             foreach (var property in this.GetType().GetProperties())
             {
-                if (type == Enum.eGetInfoType.PROPERTY_NAMES)
+                if (type == eGetInfoType.PROPERTY_NAMES)
                     list.Add(property.Name);
-                else if (type == Enum.eGetInfoType.PROPERTY_INFOS)
+                else if (type == eGetInfoType.PROPERTY_INFOS)
                     list.Add(property);
             }
             return list.ToArray();
@@ -52,18 +59,10 @@
             {
                 var property = this.GetType().GetProperty(PropertyName);
                 if (property == null) return false;
-                property.SetValue(this, Utils.Cast.RuntimeCast(value, property.PropertyType));
+                property.SetValue(this, Cast.RuntimeCast(value, property.PropertyType));
                 return true;
             }
-            catch (System.Exception e)
-            {
-                while (e.InnerException != null) e = e.InnerException;
-                if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show(e.Message);
-                else
-                    System.Console.WriteLine($"{e.Message}");
-                return false;
-            }
+            catch (System.Exception) { return false; }
         }
 
         /// <summary>
@@ -82,7 +81,7 @@
                     error = $"Field named {PropertyName} does not exist.";
                     return false;
                 }
-                property.SetValue(this, Utils.Cast.RuntimeCast(value, property.PropertyType));
+                property.SetValue(this, Cast.RuntimeCast(value, property.PropertyType));
                 return true;
             }
             catch (System.Exception e)

@@ -1,6 +1,13 @@
-﻿namespace GlobalLib.Reflection.Abstract
+﻿using System;
+using System.IO;
+using GlobalLib.Database.Collection;
+using GlobalLib.Reflection.Interface;
+
+
+
+namespace GlobalLib.Reflection.Abstract
 {
-	public abstract class BasicBase : Interface.IOperative
+	public abstract class BasicBase : IOperative
 	{
 		public virtual byte[] _GlobalABUN { get; set; }
 		public virtual byte[] _GlobalBLZC { get; set; }
@@ -19,7 +26,7 @@
             if (property == null) return null;
 
             return (Collectable)property.PropertyType
-                .GetMethod("FindCollection", new System.Type[] { typeof(string) })
+                .GetMethod("FindCollection", new Type[] { typeof(string) })
                 .Invoke(property.GetValue(this), new object[] { CName });
         }
 
@@ -73,7 +80,7 @@
             try
             {
                 return (bool)property.PropertyType
-                    .GetMethod("TrySetStaticValue", new System.Type[] { typeof(string), typeof(string) })
+                    .GetMethod("TrySetStaticValue", new Type[] { typeof(string), typeof(string) })
                     .Invoke(property.GetValue(this), new object[] { field, value });
             }
             catch (System.Exception) { return false; }
@@ -93,7 +100,7 @@
             {
                 var callargs = new object[] { field, value, error };
                 bool result = (bool)node.PropertyType
-                    .GetMethod("TrySetStaticValue", new System.Type[] { typeof(string), typeof(string), typeof(string).MakeByRefType() })
+                    .GetMethod("TrySetStaticValue", new Type[] { typeof(string), typeof(string), typeof(string).MakeByRefType() })
                     .Invoke(node.GetValue(this), callargs);
                 error = callargs[2]?.ToString();
                 return result;
@@ -119,7 +126,7 @@
             try
             {
                 return (bool)node.PropertyType
-                    .GetMethod("TryAddCollection", new System.Type[] { typeof(string) })
+                    .GetMethod("TryAddCollection", new Type[] { typeof(string) })
                     .Invoke(node.GetValue(this), new object[] { CName });
             }
             catch (System.Exception) { return false; }
@@ -146,7 +153,7 @@
             {
                 var callargs = new object[] { CName, error };
                 bool result = (bool)node.PropertyType
-                    .GetMethod("TryAddCollection", new System.Type[] { typeof(string), typeof(string).MakeByRefType() })
+                    .GetMethod("TryAddCollection", new Type[] { typeof(string), typeof(string).MakeByRefType() })
                     .Invoke(node.GetValue(this), callargs);
                 error = callargs[1]?.ToString();
                 return result;
@@ -172,7 +179,7 @@
             try
             {
                 return (bool)node.PropertyType
-                    .GetMethod("TryRemoveCollection", new System.Type[] { typeof(string) })
+                    .GetMethod("TryRemoveCollection", new Type[] { typeof(string) })
                     .Invoke(node.GetValue(this), new object[] { CName });
             }
             catch (System.Exception) { return false; }
@@ -199,7 +206,7 @@
             {
                 var callargs = new object[] { CName, error };
                 bool result = (bool)node.PropertyType
-                    .GetMethod("TryRemoveCollection", new System.Type[] { typeof(string), typeof(string).MakeByRefType() })
+                    .GetMethod("TryRemoveCollection", new Type[] { typeof(string), typeof(string).MakeByRefType() })
                     .Invoke(node.GetValue(this), callargs);
                 error = callargs[1]?.ToString();
                 return result;
@@ -226,7 +233,7 @@
             try
             {
                 return (bool)node.PropertyType
-                    .GetMethod("TryCloneCollection", new System.Type[] { typeof(string), typeof(string) })
+                    .GetMethod("TryCloneCollection", new Type[] { typeof(string), typeof(string) })
                     .Invoke(node.GetValue(this), new object[] { newname, copyfrom });
             }
             catch (System.Exception) { return false; }
@@ -254,7 +261,7 @@
             {
                 var callargs = new object[] { newname, copyfrom, error };
                 bool result = (bool)node.PropertyType
-                    .GetMethod("TryCloneCollection", new System.Type[] { typeof(string), typeof(string), typeof(string).MakeByRefType() })
+                    .GetMethod("TryCloneCollection", new Type[] { typeof(string), typeof(string), typeof(string).MakeByRefType() })
                     .Invoke(node.GetValue(this), callargs);
                 error = callargs[2]?.ToString();
                 return result;
@@ -278,7 +285,7 @@
 
             try
             {
-                data = System.IO.File.ReadAllBytes(filepath);
+                data = File.ReadAllBytes(filepath);
             }
             catch (System.Exception)
             {
@@ -289,7 +296,7 @@
             if (root == null) return false;
 
             return (bool)node.PropertyType
-                .GetMethod("TryImportCollection", new System.Type[] { typeof(byte).MakeArrayType() })
+                .GetMethod("TryImportCollection", new Type[] { typeof(byte).MakeArrayType() })
                 .Invoke(node.GetValue(this), new object[] { data });
         }
 
@@ -307,7 +314,7 @@
 
             try
             {
-                data = System.IO.File.ReadAllBytes(filepath);
+                data = File.ReadAllBytes(filepath);
             }
             catch (System.Exception e)
             {
@@ -327,7 +334,7 @@
             {
                 var callargs = new object[] { data, error };
                 bool result = (bool)node.PropertyType
-                    .GetMethod("TryImportCollection", new System.Type[] { typeof(byte).MakeArrayType(), typeof(string).MakeByRefType() })
+                    .GetMethod("TryImportCollection", new Type[] { typeof(byte).MakeArrayType(), typeof(string).MakeByRefType() })
                     .Invoke(node.GetValue(this), callargs);
                 error = callargs[1]?.ToString();
                 return result;
@@ -340,11 +347,11 @@
         }
 
         /// <summary>
-        /// Exports <see cref="Collectable"/> data from <see cref="Database.Collection.Root{TypeID}"/> 
+        /// Exports <see cref="Collectable"/> data from <see cref="Root{TypeID}"/> 
         /// root to a file path specified.
         /// </summary>
         /// <param name="CName">CollectionName of <see cref="Collectable"/> class.</param>
-        /// <param name="root">Name of the <see cref="Database.Collection.Root{TypeID}"/> collection.</param>
+        /// <param name="root">Name of the <see cref="Root{TypeID}"/> collection.</param>
         /// <param name="filepath">Filepath where data should be exported.</param>
         /// <returns>True if class export was successful, false otherwise.</returns>
         public virtual bool TryExportCollection(string CName, string root, string filepath)
@@ -355,18 +362,18 @@
             try
             {
                 return (bool)node.PropertyType
-                    .GetMethod("TryExportCollection", new System.Type[] { typeof(string), typeof(string) })
+                    .GetMethod("TryExportCollection", new Type[] { typeof(string), typeof(string) })
                     .Invoke(node.GetValue(this), new object[] { CName, filepath });
             }
             catch (System.Exception) { return false; }
         }
 
         /// <summary>
-        /// Exports <see cref="Collectable"/> data from <see cref="Database.Collection.Root{TypeID}"/> 
+        /// Exports <see cref="Collectable"/> data from <see cref="Root{TypeID}"/> 
         /// root to a file path specified.
         /// </summary>
         /// <param name="CName">CollectionName of <see cref="Collectable"/> class.</param>
-        /// <param name="root">Name of the <see cref="Database.Collection.Root{TypeID}"/> collection.</param>
+        /// <param name="root">Name of the <see cref="Root{TypeID}"/> collection.</param>
         /// <param name="filepath">Filepath where data should be exported.</param>
         /// <param name="error">Error occured while trying to export class.</param>
         /// <returns>True if class export was successful, false otherwise.</returns>
@@ -384,7 +391,7 @@
             {
                 var callargs = new object[] { CName, filepath, error };
                 bool result = (bool)node.PropertyType
-                    .GetMethod("TryExportCollection", new System.Type[] { typeof(string), typeof(string), typeof(string).MakeByRefType() })
+                    .GetMethod("TryExportCollection", new Type[] { typeof(string), typeof(string), typeof(string).MakeByRefType() })
                     .Invoke(node.GetValue(this), callargs);
                 error = callargs[2]?.ToString();
                 return result;

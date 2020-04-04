@@ -1,33 +1,44 @@
-﻿namespace GlobalLib.Reflection.Abstract
+﻿using System;
+using System.Reflection;
+using System.Collections.Generic;
+using GlobalLib.Core;
+using GlobalLib.Utils;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Interface;
+using GlobalLib.Reflection.Attributes;
+
+
+
+namespace GlobalLib.Reflection.Abstract
 {
     /// <summary>
     /// <see cref="Collectable"/> class is a default collection of properties and fields of any 
     /// global type, which information can be accessed and modified through those properties. 
-    /// It inherits from <see cref="Primitive"/> class and <see cref="Interface.ICastable{TypeID}"/> 
+    /// It inherits from <see cref="Primitive"/> class and <see cref="ICastable{TypeID}"/> 
     /// interface and implements/overrides most of their methods.
     /// </summary>
-	public abstract class Collectable : Primitive, Interface.ICastable<Collectable>
+	public abstract class Collectable : Primitive, ICastable<Collectable>
 	{
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
         public abstract string CollectionName { get; set; }
         public virtual bool Deletable { get; set; } = true;
-        public abstract Core.GameINT GameINT { get; }
+        public abstract GameINT GameINT { get; }
         public abstract string GameSTR { get; }
 
         /// <summary>
         /// Returns array of all accessible and modifiable properties and fields.
         /// </summary>
         /// <returns>Array of strings.</returns>
-        public override object[] GetAccessibles(Enum.eGetInfoType type)
+        public override object[] GetAccessibles(eGetInfoType type)
         {
-            var list = new System.Collections.Generic.List<object>();
+            var list = new List<object>();
             foreach (var property in this.GetType().GetProperties())
             {
-                if (System.Attribute.IsDefined(property, typeof(Attributes.AccessModifiableAttribute)))
+                if (Attribute.IsDefined(property, typeof(AccessModifiableAttribute)))
                 {
-                    if (type == Enum.eGetInfoType.PROPERTY_NAMES)
+                    if (type == eGetInfoType.PROPERTY_NAMES)
                         list.Add(property.Name);
                     else
                         list.Add(property);
@@ -40,9 +51,9 @@
         {
             var property = this.GetType().GetProperty(name);
             if (property == null) return null;
-            foreach (var obj in property.GetCustomAttributes(typeof(Attributes.ExpandableAttribute), true))
+            foreach (var obj in property.GetCustomAttributes(typeof(ExpandableAttribute), true))
             {
-                var attrib = obj as Attributes.ExpandableAttribute;
+                var attrib = obj as ExpandableAttribute;
                 if (attrib.Name == node) return (SubPart)property.GetValue(this);
             }
             return null;
@@ -52,9 +63,9 @@
             part = null;
             var property = this.GetType().GetProperty(name);
             if (property == null) return false;
-            foreach (var obj in property.GetCustomAttributes(typeof(Attributes.ExpandableAttribute), true))
+            foreach (var obj in property.GetCustomAttributes(typeof(ExpandableAttribute), true))
             {
-                var attrib = obj as Attributes.ExpandableAttribute;
+                var attrib = obj as ExpandableAttribute;
                 if (attrib.Name == node)
                 {
                     part = (SubPart)property.GetValue(this);
@@ -68,14 +79,14 @@
         /// Gets all nodes and subnodes from the class.
         /// </summary>
         /// <returns>Array of virtual nodes that can be used to build treeview.</returns>
-        public virtual System.Collections.Generic.List<VirtualNode> GetAllNodes()
+        public virtual List<VirtualNode> GetAllNodes()
         {
-            var list = new System.Collections.Generic.List<VirtualNode>();
+            var list = new List<VirtualNode>();
             foreach (var property in this.GetType().GetProperties())
             {
-                foreach (var obj in property.GetCustomAttributes(typeof(Attributes.ExpandableAttribute), true))
+                foreach (var obj in property.GetCustomAttributes(typeof(ExpandableAttribute), true))
                 {
-                    var attrib = obj as Attributes.ExpandableAttribute;
+                    var attrib = obj as ExpandableAttribute;
                     var node = list.Find(c => c.NodeName == attrib.Name);
                     if (node == null)
                     {
@@ -89,14 +100,14 @@
             return list;
         }
 
-        public virtual object[] GetSubnodeAttribs(string NodeName, Enum.eGetInfoType type)
+        public virtual object[] GetSubnodeAttribs(string NodeName, eGetInfoType type)
         {
             var property = this.GetType().GetProperty(NodeName);
             if (property == null) return null;
-            var result = new System.Collections.Generic.List<object>();
+            var result = new List<object>();
             foreach (var field in property.PropertyType.GetProperties())
             {
-                if (type == Enum.eGetInfoType.PROPERTY_NAMES)
+                if (type == eGetInfoType.PROPERTY_NAMES)
                     result.Add(field.Name);
                 else
                     result.Add(field);
@@ -108,7 +119,7 @@
         {
             var property = this.GetType().GetProperty(NodeName);
             if (property == null) return null;
-            return !System.Attribute.IsDefined(property, typeof(Attributes.ExpandableAttribute))
+            return !Attribute.IsDefined(property, typeof(ExpandableAttribute))
                 ? null
                 : (string)property.PropertyType.GetMethod("GetValue")
                             .Invoke(property.GetValue(this), new object[1] { field });
@@ -124,7 +135,7 @@
         {
             var property = this.GetType().GetProperty(PropertyName);
             if (property == null) return false;
-            return System.Attribute.IsDefined(property, typeof(Attributes.AccessModifiableAttribute));
+            return Attribute.IsDefined(property, typeof(AccessModifiableAttribute));
         }
 
         /// <summary>
@@ -140,20 +151,20 @@
 
             var property = this.GetType().GetProperty(nodename);
             if (property == null) return false;
-            foreach (var obj in property.GetCustomAttributes(typeof(Attributes.ExpandableAttribute), true))
+            foreach (var obj in property.GetCustomAttributes(typeof(ExpandableAttribute), true))
             {
-                var attrib = obj as Attributes.ExpandableAttribute;
+                var attrib = obj as ExpandableAttribute;
                 if (attrib.Name == subroute)
                     goto LABEL_CHANGE_VAL;
             }
             return false;
 
         LABEL_CHANGE_VAL:
-            if (!typeof(Interface.ISetValue).IsAssignableFrom(property.PropertyType))
+            if (!typeof(ISetValue).IsAssignableFrom(property.PropertyType))
                 return false;
-            var method = property.PropertyType.GetMethod("SetValue", System.Reflection.BindingFlags.Public |
-                System.Reflection.BindingFlags.Instance, null, System.Reflection.CallingConventions.Any,
-                new System.Type[] { typeof(string), typeof(object) }, null);
+            var method = property.PropertyType.GetMethod("SetValue", BindingFlags.Public |
+                BindingFlags.Instance, null, CallingConventions.Any,
+                new Type[] { typeof(string), typeof(object) }, null);
             return (bool)method.Invoke(property.GetValue(this), new object[2] { propertyname, value });
         }
 
@@ -174,9 +185,9 @@
                 error = $"Node named {nodename} could not be found.";
                 return false;
             }
-            foreach (var obj in property.GetCustomAttributes(typeof(Attributes.ExpandableAttribute), true))
+            foreach (var obj in property.GetCustomAttributes(typeof(ExpandableAttribute), true))
             {
-                var attrib = obj as Attributes.ExpandableAttribute;
+                var attrib = obj as ExpandableAttribute;
                 if (attrib.Name == subroute)
                     goto LABEL_CHANGE_VAL;
             }
@@ -184,11 +195,11 @@
             return false;
 
         LABEL_CHANGE_VAL:
-            if (!typeof(Interface.ISetValue).IsAssignableFrom(property.PropertyType))
+            if (!typeof(ISetValue).IsAssignableFrom(property.PropertyType))
                 return false;
-            var method = property.PropertyType.GetMethod("SetValue", System.Reflection.BindingFlags.Public |
-                System.Reflection.BindingFlags.Instance, null, System.Reflection.CallingConventions.Any,
-                new System.Type[] { typeof(string), typeof(object), typeof(string).MakeByRefType() }, null);
+            var method = property.PropertyType.GetMethod("SetValue", BindingFlags.Public |
+                BindingFlags.Instance, null, CallingConventions.Any,
+                new Type[] { typeof(string), typeof(object), typeof(string).MakeByRefType() }, null);
             var objs = new object[3] { propertyname, value, null };
             var result = (bool)method.Invoke(property.GetValue(this), objs);
             if (objs[2] != null) error = objs[2].ToString();
@@ -218,29 +229,21 @@
             {
                 var property = this.GetType().GetProperty(PropertyName);
                 if (property == null) return false;
-                if (!System.Attribute.IsDefined(property, typeof(Attributes.AccessModifiableAttribute)))
-                    throw new System.FieldAccessException("This field is either non-modifiable or non-accessible");
+                if (!Attribute.IsDefined(property, typeof(AccessModifiableAttribute)))
+                    throw new FieldAccessException("This field is either non-modifiable or non-accessible");
                 if (property.PropertyType.IsEnum)
                 {
                     property.SetValue(this, System.Enum.Parse(property.PropertyType, value.ToString()));
                 }
                 else
                 {
-                    property.SetValue(this, typeof(Utils.Cast)
+                    property.SetValue(this, typeof(Cast)
                         .GetMethod("RuntimeCast")
                         .Invoke(null, new object[] { value, property.PropertyType }));
                 }
                 return true;
             }
-            catch (System.Exception e)
-            {
-                while (e.InnerException != null) e = e.InnerException;
-                if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show(e.Message);
-                else
-                    System.Console.WriteLine($"{e.Message}");
-                return false;
-            }
+            catch (System.Exception) { return false; }
         }
 
         /// <summary>
@@ -258,8 +261,8 @@
                     error = $"Field named {PropertyName} does not exist.";
                     return false;
                 }
-                if (!System.Attribute.IsDefined(property, typeof(Attributes.AccessModifiableAttribute)))
-                    throw new System.FieldAccessException("This field is either non-modifiable or non-accessible");
+                if (!Attribute.IsDefined(property, typeof(AccessModifiableAttribute)))
+                    throw new FieldAccessException("This field is either non-modifiable or non-accessible");
                 var type = property.GetType();
                 if (property.PropertyType.IsEnum)
                 {
@@ -267,7 +270,7 @@
                 }
                 else
                 {
-                    property.SetValue(this, typeof(Utils.Cast)
+                    property.SetValue(this, typeof(Cast)
                         .GetMethod("RuntimeCast")
                         .Invoke(null, new object[] { value, property.PropertyType }));
                 }
@@ -279,11 +282,6 @@
                 error = e.Message;
                 return false;
             }
-        }
-    
-        public virtual bool SetStaticValue(string PropertyName, object value)
-        {
-            return false;
         }
 
         public abstract Collectable MemoryCast(string CName);
