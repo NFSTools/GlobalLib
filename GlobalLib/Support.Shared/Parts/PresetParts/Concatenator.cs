@@ -2,7 +2,7 @@
 {
     public class Concatenator
     {
-        // Strings in both NFSC and NFSMW
+        // Strings in both NFSC, NFSMW and NFSUG2
         public string _BASE = "_BASE";                                        // has nothing
         public string _BASE_KIT = "_BODY";                                    // has _KIT00/KITW01-KITW05 attached
         public string _FRONT_BRAKE = "_FRONT_BRAKE";                          // has nothing

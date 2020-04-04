@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Support.Shared.Parts.FNGParts
+﻿using System;
+using GlobalLib.Utils.EA;
+
+
+
+namespace GlobalLib.Support.Shared.Parts.FNGParts
 {
     public class FEngColor
     {
@@ -15,7 +20,7 @@
 
         public override int GetHashCode()
         {
-            return System.Tuple.Create(this.Alpha, this.Red, this.Green, this.Blue, this.Offset).GetHashCode();
+            return Tuple.Create(this.Alpha, this.Red, this.Green, this.Blue, this.Offset).GetHashCode();
         }
 
         public static bool operator== (FEngColor c1, FEngColor c2)
@@ -31,7 +36,7 @@
         public override string ToString()
         {
             return $"Offset: {this.Offset:X8} | Color: " +
-                $"{Utils.EA.SAT.ColorToHex(this.Alpha, this.Red, this.Green, this.Blue)}";
+                $"{SAT.ColorToHex(this.Alpha, this.Red, this.Green, this.Blue)}";
         }
     }
 }
