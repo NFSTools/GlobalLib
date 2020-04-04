@@ -18,7 +18,7 @@
             if (this._use_current_cname)
                 this._collection_name = Utils.ScriptX.NullTerminatedString(byteptr_t + offset + 0xC, 0x1C);
             else
-                this._collection_name = this.Index.ToString() + "_" + Utils.EA.Comp.GetTPKName(this.Index);
+                this._collection_name = this.Index.ToString() + "_" + Utils.EA.Comp.GetTPKName(this.Index, this.GameINT);
 
             // Get Filename
             this.filename = Utils.ScriptX.NullTerminatedString(byteptr_t + offset + 0x28, 0x40);

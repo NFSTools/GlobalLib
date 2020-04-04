@@ -34,6 +34,7 @@ namespace GlobalLib.Core
             switch (db.GameINT)
             {
                 case GameINT.Carbon:
+                    Initialize.Init();
                     done &= Support.Carbon.LoadData.LoadVaults(dir);
                     done &= Support.Carbon.LoadData.LoadLanguage(dir, (Database.Carbon)db);
                     done &= Support.Carbon.LoadData.LoadGlobalA(dir, (Database.Carbon)db);
@@ -41,6 +42,7 @@ namespace GlobalLib.Core
                     return done;
 
                 case GameINT.MostWanted:
+                    Initialize.Init();
                     done &= Support.MostWanted.LoadData.LoadVaults(dir);
                     done &= Support.MostWanted.LoadData.LoadLanguage(dir, (Database.MostWanted)db);
                     done &= Support.MostWanted.LoadData.LoadGlobalA(dir, (Database.MostWanted)db);
@@ -48,6 +50,7 @@ namespace GlobalLib.Core
                     return done;
 
                 case GameINT.Underground2:
+                    Initialize.InitUG2();
                     done &= Support.Underground2.LoadData.LoadLanguage(dir, (Database.Underground2)db);
                     done &= Support.Underground2.LoadData.LoadAudios(dir);
                     done &= Support.Underground2.LoadData.LoadWheels(dir);

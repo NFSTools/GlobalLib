@@ -307,58 +307,60 @@ namespace GlobalLib.Utils.EA
         /// </summary>
         /// <param name="index">Index of the .tpk in the array.</param>
         /// <returns>Collection Name of the .tpk</returns>
-        public static string GetTPKName(int index)
+        public static string GetTPKName(int index, GameINT game)
         {
-            if (Process.Set == GameINT.Carbon)
+            switch (game)
             {
-                switch (index)
-                {
-                    case 0:
-                        return "GLOBALMESSAGETEXTURES";
-                    case 1:
-                        return "GLOBALTEXTURES";
-                    case 2:
-                        return "FLARETEXTURES";
-                    case 3:
-                        return "GLOBALTEXTURESPC";
-                    case 4:
-                        return "EMITTER_SYSTEM_TEXTURE_PAGE";
-                    case 5:
-                        return "EMITTER_SYSTEM_NORMALMAPS_P";
-                    case 6:
-                        return "FLARE_TEXTURE_PAGE";
-                    default:
-                        return null;
-                }
+                case GameINT.Carbon:
+                    switch (index)
+                    {
+                        case 0:
+                            return "GLOBALMESSAGETEXTURES";
+                        case 1:
+                            return "GLOBALTEXTURES";
+                        case 2:
+                            return "FLARETEXTURES";
+                        case 3:
+                            return "GLOBALTEXTURESPC";
+                        case 4:
+                            return "EMITTER_SYSTEM_TEXTURE_PAGE";
+                        case 5:
+                            return "EMITTER_SYSTEM_NORMALMAPS_P";
+                        case 6:
+                            return "FLARE_TEXTURE_PAGE";
+                        default:
+                            return null;
+                    }
+
+
+                case GameINT.MostWanted:
+                    switch (index)
+                    {
+                        case 0:
+                            return "GLOBALMESSAGE";
+                        case 1:
+                        case 2:
+                        case 3:
+                            return "GLOBAL";
+                        default:
+                            return null;
+                    }
+
+                case GameINT.Underground2:
+                    switch (index)
+                    {
+                        case 0:
+                            return "GLOBALMESSAGE";
+                        case 1:
+                        case 2:
+                            return "GLOBAL";
+                        default:
+                            return null;
+                    }
+
+                default:
+                    return null;
             }
-            else if (Process.Set == GameINT.MostWanted)
-            {
-                switch (index)
-                {
-                    case 0:
-                        return "GLOBALMESSAGE";
-                    case 1:
-                    case 2:
-                    case 3:
-                        return "GLOBAL";
-                    default:
-                        return null;
-                }
-            }
-            else if (Process.Set == GameINT.Underground2)
-            {
-                switch (index)
-                {
-                    case 0:
-                        return "GLOBALMESSAGE";
-                    case 1:
-                    case 2:
-                        return "GLOBAL";
-                    default:
-                        return null;
-                }
-            }
-            return null;
         }
     }
 }
