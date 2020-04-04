@@ -15,6 +15,7 @@ namespace GlobalLib.Utils
         /// <param name="filename">Filename to be created/replaced/overwritten.</param>
         public static void FastUnlock(string filename)
         {
+            if (!File.Exists(filename)) return;
             using (var MemoryWriter = new BinaryWriter(File.Open(filename, FileMode.Create)))
             {
                 MemoryWriter.Write(0x00000000);
@@ -30,6 +31,7 @@ namespace GlobalLib.Utils
         /// <param name="filename">Filename to be created/replaced/overwritten.</param>
         public static void LongUnlock(string filename)
         {
+            if (!File.Exists(filename)) return;
             using (var MemoryWriter = new BinaryWriter(File.Open(filename, FileMode.Create)))
             {
                 MemoryWriter.Write(0x00000000);
