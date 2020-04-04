@@ -1,7 +1,11 @@
-﻿namespace GlobalLib.Reflection.Interface
+﻿using GlobalLib.Database;
+
+
+
+namespace GlobalLib.Reflection.Interface
 {
     public interface IGetIndex
     {
-        int GetClassIndex(string CName, Database.eClassType ClassType);
+        int GetClassIndex(string CName, eClassType ClassType);
     }
 }

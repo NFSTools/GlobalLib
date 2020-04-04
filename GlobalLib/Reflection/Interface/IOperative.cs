@@ -10,7 +10,7 @@
         bool TryCloneCollection(string newname, string copyfrom, string root, out string error);
         bool TryImportCollection(string root, string filepath);
         bool TryImportCollection(string root, string filepath, out string error);
-        //bool TryExportClass(string CName, string root, string filepath);
-        //bool TryExportClass(string CName, string root, string filepath, out string error);
+        bool TryExportCollection(string CName, string root, string filepath);
+        bool TryExportCollection(string CName, string root, string filepath, out string error);
     }
 }
