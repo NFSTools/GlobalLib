@@ -1,6 +1,16 @@
-﻿namespace GlobalLib.Support.Shared.Class
+﻿using System;
+using System.Drawing;
+using GlobalLib.Core;
+using GlobalLib.Utils;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Attributes;
+
+
+
+namespace GlobalLib.Support.Shared.Class
 {
-    public class Texture : Reflection.Abstract.Collectable
+    public class Texture : Collectable
     {
         #region Private Fields
 
@@ -22,6 +32,16 @@
         public override string CollectionName { get; set; }
 
         /// <summary>
+        /// Game to which the class belongs to.
+        /// </summary>
+        public override GameINT GameINT { get => GameINT.None; }
+
+        /// <summary>
+        /// Game string to which the class belongs to.
+        /// </summary>
+        public override string GameSTR { get => GameINT.None.ToString(); }
+
+        /// <summary>
         /// Binary memory hash of the collection name.
         /// </summary>
         public virtual uint BinKey { get; set; }
@@ -29,7 +49,7 @@
         /// <summary>
         /// Vault memory hash of the collection name.
         /// </summary>
-        public virtual uint VltKey { get => Utils.Vlt.Hash(this.CollectionName); }
+        public virtual uint VltKey { get => Vlt.Hash(this.CollectionName); }
 
         /// <summary>
         /// Represents data offset of the block in Global data.
@@ -64,11 +84,11 @@
             set
             {
                 if (value <= 0)
-                    throw new System.ArgumentOutOfRangeException("Value passed should be a positive value.");
+                    throw new ArgumentOutOfRangeException("Value passed should be a positive value.");
                 else
                 {
                     this._width = value;
-                    this._log_2_width = (byte)System.Math.Log(value, 2);
+                    this._log_2_width = (byte)Math.Log(value, 2);
                 }
             }
         }
@@ -82,11 +102,11 @@
             set
             {
                 if (value <= 0)
-                    throw new System.ArgumentOutOfRangeException("Value passed should be a positive value.");
+                    throw new ArgumentOutOfRangeException("Value passed should be a positive value.");
                 else
                 {
                     this._height = value;
-                    this._log_2_height = (byte)System.Math.Log(value, 2);
+                    this._log_2_height = (byte)Math.Log(value, 2);
                 }
             }
         }
@@ -99,7 +119,7 @@
             get
             {
                 byte b1 = this._log_2_width;
-                byte b2 = (byte)System.Math.Log(this._width, 2);
+                byte b2 = (byte)Math.Log(this._width, 2);
                 if (b1 == b2)
                     return b1;
                 else
@@ -119,7 +139,7 @@
             get
             {
                 byte b1 = this._log_2_height;
-                byte b2 = (byte)System.Math.Log(this._height, 2);
+                byte b2 = (byte)Math.Log(this._height, 2);
                 if (b1 == b2)
                     return b1;
                 else
@@ -140,7 +160,7 @@
             set
             {
                 if (value > 15)
-                    throw new System.ArgumentOutOfRangeException("Value passed should be in range 0 to 15.");
+                    throw new ArgumentOutOfRangeException("Value passed should be in range 0 to 15.");
                 else
                     this._mipmaps = value;
             }
@@ -154,10 +174,10 @@
             get => this._mipmap_bias_type;
             set
             {
-                if (System.Enum.IsDefined(typeof(Reflection.Enum.eTextureMipmapBiasType), (int)value))
+                if (Enum.IsDefined(typeof(eTextureMipmapBiasType), (int)value))
                     this._mipmap_bias_type = value;
                 else
-                    throw new System.ArgumentOutOfRangeException("Value passed falls out of range of possible values.");
+                    throw new ArgumentOutOfRangeException("Value passed falls out of range of possible values.");
             }
         }
 
@@ -168,14 +188,14 @@
         /// <summary>
         /// Represents tileable level of the texture.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
+        [AccessModifiable()]
         public byte TileableUV
         {
             get => this._tileableuv;
             set
             {
                 if (value > 3)
-                    throw new System.ArgumentOutOfRangeException("Value passed should be in range 0 to 3.");
+                    throw new ArgumentOutOfRangeException("Value passed should be in range 0 to 3.");
                 else
                     this._tileableuv = value;
             }
@@ -209,7 +229,7 @@
         /// Gets .png format image of the .dds texture.
         /// </summary>
         /// <returns>.png format image of the .dds texture.</returns>
-        public virtual unsafe System.Drawing.Image GetImage() { return null; }
+        public virtual unsafe Image GetImage() { return null; }
 
         /// <summary>
         /// Initializes all properties of the new texture.
@@ -240,9 +260,9 @@
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public override Reflection.Abstract.Collectable MemoryCast(string CName)
+        public override Collectable MemoryCast(string CName)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         #endregion

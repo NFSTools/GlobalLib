@@ -147,7 +147,6 @@
     <Compile Include="Support.Carbon\Class\FNGroup\Functional\Disassemble.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Functional\Assemble.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Functional\ToString.cs" />
-    <Compile Include="Support.Carbon\Class\FNGroup\Properties\ColorInformation.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Properties\FNGroupConstructor.cs" />
     <Compile Include="Support.Carbon\Class\FNGroup\Properties\GameAddress.cs" />
@@ -319,7 +318,6 @@
     <Compile Include="Support.MostWanted\Class\FNGroup\Functional\Assemble.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Functional\Disassemble.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Functional\ToString.cs" />
-    <Compile Include="Support.MostWanted\Class\FNGroup\Properties\ColorInformation.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Properties\FNGroupConstructor.cs" />
     <Compile Include="Support.MostWanted\Class\FNGroup\Properties\GameAddress.cs" />
@@ -661,7 +659,6 @@
     <Compile Include="Support.Underground2\Class\FNGroup\Functional\Assemble.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Functional\ToString.cs" />
-    <Compile Include="Support.Underground2\Class\FNGroup\Properties\ColorInformation.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FEngGroupData.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\FNGroupConstructor.cs" />
     <Compile Include="Support.Underground2\Class\FNGroup\Properties\GameAddress.cs" />

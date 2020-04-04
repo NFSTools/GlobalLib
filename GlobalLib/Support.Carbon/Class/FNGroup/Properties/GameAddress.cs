@@ -5,7 +5,7 @@
         /// <summary>
         /// Game index to which the class belongs to.
         /// </summary>
-        public int GameINT { get => (int)Core.GameINT.Carbon; }
+        public Core.GameINT GameINT { get => Core.GameINT.Carbon; }
 
         /// <summary>
         /// Game string to which the class belongs to.

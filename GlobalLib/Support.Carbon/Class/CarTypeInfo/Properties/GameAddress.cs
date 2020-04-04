@@ -3,14 +3,14 @@
     public partial class CarTypeInfo
     {
         /// <summary>
-        /// Game index to which the class belongs to.
+        /// Game to which the class belongs to.
         /// </summary>
-        public int GameINT { get => (int)Core.GameINT.Carbon; }
+        public override Core.GameINT GameINT { get => Core.GameINT.Carbon; }
 
         /// <summary>
         /// Game string to which the class belongs to.
         /// </summary>
-        public string GameSTR { get => Core.GameSTR.Carbon; }
+        public override string GameSTR { get => Core.GameINT.Carbon.ToString(); }
 
         /// <summary>
         /// Database to which the class belongs to.

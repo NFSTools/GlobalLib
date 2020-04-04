@@ -1,10 +1,15 @@
-﻿using GlobalLib.Reflection.Enum;
+﻿using System;
+using GlobalLib.Core;
+using GlobalLib.Utils;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Support.Shared.Parts.TPKParts;
 
 
 
 namespace GlobalLib.Support.Shared.Class
 {
-    public class TPKBlock
+    public class TPKBlock : Collectable
     {
         #region Private Fields
 
@@ -26,17 +31,27 @@ namespace GlobalLib.Support.Shared.Class
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
-        public string CollectionName { get => this._collection_name; }
+        public override string CollectionName { get => this._collection_name; set => throw new NotImplementedException(); }
+
+        /// <summary>
+        /// Game to which the class belongs to.
+        /// </summary>
+        public override GameINT GameINT { get => GameINT.None; }
+
+        /// <summary>
+        /// Game string to which the class belongs to.
+        /// </summary>
+        public override string GameSTR { get => GameINT.None.ToString(); }
 
         /// <summary>
         /// Binary memory hash of the collection name.
         /// </summary>
-        public uint BinKey { get => Utils.Bin.Hash(this._collection_name); }
+        public uint BinKey { get => Bin.Hash(this._collection_name); }
 
         /// <summary>
         /// Vault memory hash of the collection name.
         /// </summary>
-        public uint VltKey { get => Utils.Vlt.Hash(this._collection_name); }
+        public uint VltKey { get => Vlt.Hash(this._collection_name); }
 
         /// <summary>
         /// Index of the TPK in the Global data.
@@ -51,6 +66,16 @@ namespace GlobalLib.Support.Shared.Class
         #endregion
 
         #region Internal Methods
+
+        /// <summary>
+        /// Casts all attributes from this object to another one.
+        /// </summary>
+        /// <param name="CName">CollectionName of the new created object.</param>
+        /// <returns>Memory casted copy of the object.</returns>
+        public override Collectable MemoryCast(string CName)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Assembles <see cref="TPKBlock"/> into a byte array.
@@ -254,7 +279,7 @@ namespace GlobalLib.Support.Shared.Class
         /// <param name="byteptr_t">Pointer to the tpk block array.</param>
         /// <param name="offslot">Offslot of the texture to be parsed</param>
         /// <returns>Decompressed texture valid to the current support.</returns>
-        protected virtual unsafe void ParseCompTexture(byte* byteptr_t, Parts.TPKParts.OffSlot offslot) { }
+        protected virtual unsafe void ParseCompTexture(byte* byteptr_t, OffSlot offslot) { }
 
         #endregion
 

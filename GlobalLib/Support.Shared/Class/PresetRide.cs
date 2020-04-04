@@ -1,6 +1,15 @@
-﻿namespace GlobalLib.Support.Shared.Class
+﻿using System;
+using GlobalLib.Core;
+using GlobalLib.Utils;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Attributes;
+using GlobalLib.Support.Shared.Parts.PresetParts;
+
+
+
+namespace GlobalLib.Support.Shared.Class
 {
-    public class PresetRide : Reflection.Abstract.Collectable
+    public class PresetRide : Collectable
     {
         #region Private Fields
 
@@ -18,24 +27,34 @@
         public override string CollectionName { get; set; }
 
         /// <summary>
+        /// Game to which the class belongs to.
+        /// </summary>
+        public override GameINT GameINT { get => GameINT.None; }
+
+        /// <summary>
+        /// Game string to which the class belongs to.
+        /// </summary>
+        public override string GameSTR { get => GameINT.None.ToString(); }
+
+        /// <summary>
         /// Binary memory hash of the collection name.
         /// </summary>
-        public virtual uint BinKey { get => Utils.Bin.Hash(this.CollectionName); }
+        public virtual uint BinKey { get => Bin.Hash(this.CollectionName); }
 
         /// <summary>
         /// Vault memory hash of the collection name.
         /// </summary>
-        public virtual uint VltKey { get => Utils.Vlt.Hash(this.CollectionName); }
+        public virtual uint VltKey { get => Vlt.Hash(this.CollectionName); }
 
         /// <summary>
         /// Vault memory hash of the frontend value.
         /// </summary>
-        public virtual uint FrontendKey { get => Utils.Vlt.Hash(this._frontend); }
+        public virtual uint FrontendKey { get => Vlt.Hash(this._frontend); }
 
         /// <summary>
         /// Vault memory hash of the pvehicle value.
         /// </summary>
-        public virtual uint PvehicleKey { get => Utils.Vlt.Hash(this._pvehicle); }
+        public virtual uint PvehicleKey { get => Vlt.Hash(this._pvehicle); }
 
         /// <summary>
         /// Original model name of the preset ride.
@@ -49,14 +68,14 @@
         /// <summary>
         /// Represents model of the preset ride.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
+        [AccessModifiable()]
         public string MODEL
         {
             get => this._model;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                    throw new ArgumentNullException("This value cannot be left empty.");
                 else
                     this._model = value;
             }
@@ -71,7 +90,7 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                    throw new ArgumentNullException("This value cannot be left empty.");
                 this._frontend = value;
             }
         }
@@ -85,7 +104,7 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                    throw new ArgumentNullException("This value cannot be left empty.");
                 this._pvehicle = value;
             }
         }
@@ -111,16 +130,16 @@
         /// </summary>
         /// <param name="parts">PresetParts concatenator class of all preset ride's parts.</param>
         /// <returns>Sorted array of all preset parts hashes.</returns>
-        protected virtual unsafe uint[] StringToKey(Parts.PresetParts.Concatenator parts) { return null; }
+        protected virtual unsafe uint[] StringToKey(Concatenator parts) { return null; }
 
         /// <summary>
         /// Casts all attributes from this object to another one.
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public override Reflection.Abstract.Collectable MemoryCast(string CName)
+        public override Collectable MemoryCast(string CName)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         #endregion

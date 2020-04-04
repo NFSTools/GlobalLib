@@ -1,28 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using GlobalLib.Core;
+using GlobalLib.Utils;
+using GlobalLib.Reflection.Abstract;
 using GlobalLib.Support.Shared.Parts.FNGParts;
 
 
 
 namespace GlobalLib.Support.Shared.Class
 {
-    public class FNGroup
+    public class FNGroup : Collectable
     {
         #region Main Properties
 
         /// <summary>
         /// Collection Name of the class.
         /// </summary>
-        public string CollectionName { get; protected set; }
+        public override string CollectionName { get; set; }
+
+        /// <summary>
+        /// Game to which the class belongs to.
+        /// </summary>
+        public override GameINT GameINT { get => GameINT.None; }
+
+        /// <summary>
+        /// Game string to which the class belongs to.
+        /// </summary>
+        public override string GameSTR { get => GameINT.None.ToString(); }
 
         /// <summary>
         /// Binary memory hash of the Collection Name.
         /// </summary>
-        public uint BinKey { get => Utils.Bin.Hash(this.CollectionName); }
+        public uint BinKey { get => Bin.Hash(this.CollectionName); }
 
         /// <summary>
         /// Vault memory hash of the Collection Name.
         /// </summary>
-        public uint VltKey { get => Utils.Vlt.Hash(this.CollectionName); }
+        public uint VltKey { get => Vlt.Hash(this.CollectionName); }
 
         /// <summary>
         /// Size of the <see cref="FNGroup"/> in Global memory.
@@ -47,6 +61,16 @@ namespace GlobalLib.Support.Shared.Class
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Casts all attributes from this object to another one.
+        /// </summary>
+        /// <param name="CName">CollectionName of the new created object.</param>
+        /// <returns>Memory casted copy of the object.</returns>
+        public override Collectable MemoryCast(string CName)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Assembles frontend group into a byte array.

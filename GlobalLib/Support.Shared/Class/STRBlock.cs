@@ -1,13 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using GlobalLib.Core;
+using GlobalLib.Reflection.Abstract;
 using GlobalLib.Support.Shared.Parts.STRParts;
 
 
 
 namespace GlobalLib.Support.Shared.Class
 {
-	public class STRBlock
+	public class STRBlock : Collectable
 	{
 		#region Main Properties
+
+		/// <summary>
+		/// Collection name of the variable.
+		/// </summary>
+		public override string CollectionName { get; set; }
+
+		/// <summary>
+		/// Game to which the class belongs to.
+		/// </summary>
+		public override GameINT GameINT { get => GameINT.None; }
+
+		/// <summary>
+		/// Game string to which the class belongs to.
+		/// </summary>
+		public override string GameSTR { get => GameINT.None.ToString(); }
 
 		/// <summary>
 		/// Binary memory hash of the collection name.
@@ -22,6 +40,16 @@ namespace GlobalLib.Support.Shared.Class
 		#endregion
 
 		#region Methods
+
+		/// <summary>
+		/// Casts all attributes from this object to another one.
+		/// </summary>
+		/// <param name="CName">CollectionName of the new created object.</param>
+		/// <returns>Memory casted copy of the object.</returns>
+		public override Collectable MemoryCast(string CName)
+		{
+			throw new NotImplementedException();
+		}
 
 		/// <summary>
 		/// Assembles string block into a byte array.

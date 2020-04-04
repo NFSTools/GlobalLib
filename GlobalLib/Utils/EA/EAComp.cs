@@ -301,7 +301,7 @@ namespace GlobalLib.Utils.EA
         /// <returns>Collection Name of the .tpk</returns>
         public static string GetTPKName(int index)
         {
-            if (Core.Process.Set == (int)Core.GameINT.Carbon)
+            if (Core.Process.Set == Core.GameINT.Carbon)
             {
                 switch (index)
                 {
@@ -323,7 +323,7 @@ namespace GlobalLib.Utils.EA
                         return null;
                 }
             }
-            else if (Core.Process.Set == (int)Core.GameINT.MostWanted)
+            else if (Core.Process.Set == Core.GameINT.MostWanted)
             {
                 switch (index)
                 {
@@ -337,7 +337,7 @@ namespace GlobalLib.Utils.EA
                         return null;
                 }
             }
-            else if (Core.Process.Set == (int)Core.GameINT.Underground2)
+            else if (Core.Process.Set == Core.GameINT.Underground2)
             {
                 switch (index)
                 {

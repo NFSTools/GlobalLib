@@ -13,6 +13,8 @@
         /// </summary>
         public abstract string CollectionName { get; set; }
         public virtual bool Deletable { get; set; } = true;
+        public abstract Core.GameINT GameINT { get; }
+        public abstract string GameSTR { get; }
 
         /// <summary>
         /// Returns array of all accessible and modifiable properties and fields.

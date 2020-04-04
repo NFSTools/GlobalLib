@@ -1,6 +1,14 @@
-﻿namespace GlobalLib.Support.Shared.Class
+﻿using System;
+using GlobalLib.Core;
+using GlobalLib.Utils;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Reflection.Abstract;
+
+
+
+namespace GlobalLib.Support.Shared.Class
 {
-    public class Material : Reflection.Abstract.Collectable
+    public class Material : Collectable
     {
         #region Private Fields
 
@@ -15,7 +23,7 @@
         /// <summary>
         /// ID of the material block
         /// </summary>
-        public uint ID { get => Reflection.ID.Global.Materials; }
+        public uint ID { get => Global.Materials; }
 
         /// <summary>
         /// Collection name of the variable.
@@ -23,14 +31,24 @@
         public override string CollectionName { get; set; }
 
         /// <summary>
+        /// Game to which the class belongs to.
+        /// </summary>
+        public override GameINT GameINT { get => GameINT.None; }
+
+        /// <summary>
+        /// Game string to which the class belongs to.
+        /// </summary>
+        public override string GameSTR { get => GameINT.None.ToString(); }
+
+        /// <summary>
         /// Binary memory hash of the collection name.
         /// </summary>
-        public virtual uint BinKey { get => Utils.Bin.Hash(this.CollectionName); }
+        public virtual uint BinKey { get => Bin.Hash(this.CollectionName); }
 
         /// <summary>
         /// Vault memory hash of the collection name.
         /// </summary>
-        public virtual uint VltKey { get => Utils.Vlt.Hash(this.CollectionName); }
+        public virtual uint VltKey { get => Vlt.Hash(this.CollectionName); }
 
         #endregion
 
@@ -53,9 +71,9 @@
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public override Reflection.Abstract.Collectable MemoryCast(string CName)
+        public override Collectable MemoryCast(string CName)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         #endregion

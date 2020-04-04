@@ -8,7 +8,7 @@
         /// <summary>
         /// Current game set based on the Game enum.
         /// </summary>
-        public static int Set { get; set; }
+        public static GameINT Set { get; set; }
 
         /// <summary>
         /// If true, enables showing message boxes when exceptions are being thrown.
@@ -32,7 +32,7 @@
         /// <returns>True if loading was successful.</returns>
         public static bool LoadData(Database.Carbon database)
         {
-            if (Set != (int)GameINT.Carbon)
+            if (Set != GameINT.Carbon)
             {
                 if (MessageShow)
                     System.Windows.Forms.MessageBox.Show("Game set is not valid for Carbon database load.", "Warning");
@@ -55,7 +55,7 @@
         /// <returns>True if loading was successful.</returns>
         public static bool LoadData(Database.MostWanted database)
         {
-            if (Set != (int)GameINT.MostWanted)
+            if (Set != GameINT.MostWanted)
             {
                 if (MessageShow)
                     System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
@@ -78,7 +78,7 @@
         /// <returns>True if loading was successful.</returns>
         public static bool LoadData(Database.Underground2 database)
         {
-            if (Set != (int)GameINT.Underground2)
+            if (Set != GameINT.Underground2)
             {
                 if (MessageShow)
                     System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
@@ -103,7 +103,7 @@
         /// <returns>True if game is supported.</returns>
         public static bool SaveData(Database.Carbon database, bool compressed)
         {
-            if (Set != (int)GameINT.Carbon)
+            if (Set != GameINT.Carbon)
             {
                 if (MessageShow)
                     System.Windows.Forms.MessageBox.Show("Game set is not valid for Carbon database load.", "Warning");
@@ -126,7 +126,7 @@
         /// <returns>True if game is supported.</returns>
         public static bool SaveData(Database.MostWanted database, bool compressed)
         {
-            if (Set != (int)GameINT.MostWanted)
+            if (Set != GameINT.MostWanted)
             {
                 if (MessageShow)
                     System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
@@ -149,7 +149,7 @@
         /// <returns>True if game is supported.</returns>
         public static bool SaveData(Database.Underground2 database, bool compressed)
         {
-            if (Set != (int)GameINT.Underground2)
+            if (Set != GameINT.Underground2)
             {
                 if (MessageShow)
                     System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
