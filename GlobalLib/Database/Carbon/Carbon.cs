@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
+using GlobalLib.Database.Collection;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
 using GlobalLib.Support.Carbon.Class;
 
 
 
 namespace GlobalLib.Database
 {
-    public partial class Carbon : Reflection.Abstract.BasicBase, Reflection.Interface.IGetIndex
+    public partial class Carbon : BasicBase, IGetIndex
     {
-        public Collection.Root<Material> Materials { get; set; }
-        public Collection.Root<CarTypeInfo> CarTypeInfos { get; set; }
-        public Collection.Root<PresetRide> PresetRides { get; set; }
-        public Collection.Root<PresetSkin> PresetSkins { get; set; }
+        public Root<Material> Materials { get; set; }
+        public Root<CarTypeInfo> CarTypeInfos { get; set; }
+        public Root<PresetRide> PresetRides { get; set; }
+        public Root<PresetSkin> PresetSkins { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -35,7 +38,6 @@ namespace GlobalLib.Database
             this.TPKBlocks = null;
             this.SlotTypes = null;
             this.STRBlocks = null;
-            System.GC.Collect();
         }
     }
 }

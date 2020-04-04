@@ -1,4 +1,13 @@
-﻿namespace GlobalLib.Database
+﻿using System;
+using System.IO;
+using GlobalLib.Core;
+using GlobalLib.Utils;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Support.MostWanted.Parts.CarParts;
+
+
+
+namespace GlobalLib.Database
 {
     public partial class MostWanted
     {
@@ -12,32 +21,32 @@
             error = null;
             try
             {
-                if (!System.IO.File.Exists(filepath))
-                    throw new System.IO.FileNotFoundException();
+                if (!File.Exists(filepath))
+                    throw new FileNotFoundException();
 
-                foreach (var pair in Core.Map.CollisionMap)
+                foreach (var pair in Map.CollisionMap)
                 {
                     if (CName == pair.Value)
-                        throw new System.Exception("Collision with the same collection name already exists.");
+                        throw new Exception("Collision with the same collection name already exists.");
                 }
 
-                var data = System.IO.File.ReadAllBytes(filepath);
+                var data = File.ReadAllBytes(filepath);
                 fixed (byte* dataptr_t = &data[0])
                 {
-                    if (*(uint*)dataptr_t != Reflection.ID.CarParts.Collision)
-                        throw new System.Exception("File specified is not a collision file.");
+                    if (*(uint*)dataptr_t != CarParts.Collision)
+                        throw new Exception("File specified is not a collision file.");
                     if (*(int*)(dataptr_t + 4) != data.Length - 8)
-                        throw new System.Exception("File has incorrect length parameters.");
-                    uint key = Utils.Vlt.Hash(CName);
+                        throw new Exception("File has incorrect length parameters.");
+                    uint key = Vlt.Hash(CName);
                     *(uint*)(dataptr_t + 8) = key;
                     *(uint*)(dataptr_t + 16) = 0xFFFFFFFF;
-                    var collision = new Support.MostWanted.Parts.CarParts.Collision(data, CName);
+                    var collision = new Collision(data, CName);
                     this.SlotTypes.Collisions[key] = collision;
-                    Core.Map.CollisionMap[key] = CName;
+                    Map.CollisionMap[key] = CName;
                 }
                 return true;
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 while (e.InnerException != null) e = e.InnerException;
                 error = e.Message;

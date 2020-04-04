@@ -1,8 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Collections.Generic;
-using GlobalLib.Reflection.Abstract;
+using GlobalLib.Utils;
 using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Attributes;
 
 
 
@@ -32,8 +35,9 @@ namespace GlobalLib.Database.Collection
 			this.Database = data;
 		}
 
-		public TypeID this[string CName] => this.FindCollection(CName);
+		#region Collection Access
 
+		public TypeID this[string CName] => this.FindCollection(CName);
 		public bool TryGetCollectionIndex(string CName, out int index)
 		{
 			for (index = 0; index < this.Length; ++index)
@@ -53,15 +57,13 @@ namespace GlobalLib.Database.Collection
 			switch (type)
 			{
 				case eKeyType.BINKEY:
-					foreach (var bin in this.Collections)
-						if (Utils.Bin.SmartHash(bin.CollectionName) == key)
-							return bin;
+					var bin = this.Collections.Find(c => Bin.SmartHash(c.CollectionName) == key);
+					if (bin != null) return bin;
 					goto default;
 
 				case eKeyType.VLTKEY:
-					foreach (var vlt in this.Collections)
-						if (Utils.Bin.SmartHash(vlt.CollectionName) == key)
-							return vlt;
+					var vlt = this.Collections.Find(c => Vlt.SmartHash(c.CollectionName) == key);
+					if (vlt != null) return vlt;
 					goto default;
 
 				case eKeyType.CUSTOM:
@@ -93,11 +95,9 @@ namespace GlobalLib.Database.Collection
 			else return false;
 		}
 
-		public object[] GetAccessibleProperties(string CName)
-		{
-			if (!this.TryGetCollection(CName, out var cla)) return null;
-			else return cla.GetAccessibles(eGetInfoType.PROPERTY_NAMES);
-		}
+		#endregion
+
+		#region Collection Statics
 
 		public bool TrySetClassValue(params string[] tokens)
 		{
@@ -129,7 +129,7 @@ namespace GlobalLib.Database.Collection
 			// Works only for Collectable and StaticModifiable properties
 			var property = typeof(TypeID).GetProperty(field);
 			if (property == null) return false;
-			if (!Attribute.IsDefined(property, typeof(Reflection.Attributes.StaticModifiableAttribute)))
+			if (!Attribute.IsDefined(property, typeof(StaticModifiableAttribute)))
 				return false;
 
 			foreach (var collection in this.Collections)
@@ -148,7 +148,7 @@ namespace GlobalLib.Database.Collection
 				error = $"Field named {field} does not exist.";
 				return false;
 			}
-			if (!Attribute.IsDefined(property, typeof(Reflection.Attributes.StaticModifiableAttribute)))
+			if (!Attribute.IsDefined(property, typeof(StaticModifiableAttribute)))
 			{
 				error = $"Field named {field} is not a static-modifiable field.";
 				return false;
@@ -160,6 +160,10 @@ namespace GlobalLib.Database.Collection
 			}
 			return true;
 		}
+
+		#endregion
+
+		#region Collection Methods
 
 		public bool TryAddCollection(string value)
 		{
@@ -335,7 +339,7 @@ namespace GlobalLib.Database.Collection
 			string CName = string.Empty;
 			fixed (byte* dataptr_t = &data[0])
 			{
-				CName = Utils.ScriptX.NullTerminatedString(dataptr_t);
+				CName = ScriptX.NullTerminatedString(dataptr_t);
 				if (this.FindCollection(CName) != null) return false;
 
 				var ctor = typeof(TypeID).GetConstructor(new Type[] { typeof(IntPtr), typeof(string), this.Database.GetType() });
@@ -361,7 +365,7 @@ namespace GlobalLib.Database.Collection
 			string CName = string.Empty;
 			fixed (byte* dataptr_t = &data[0])
 			{
-				CName = Utils.ScriptX.NullTerminatedString(dataptr_t);
+				CName = ScriptX.NullTerminatedString(dataptr_t);
 				if (this.FindCollection(CName) != null)
 				{
 					error = $"Class with CollectionName {CName} already exists.";
@@ -423,6 +427,15 @@ namespace GlobalLib.Database.Collection
 			return true;
 		}
 
+		#endregion
+
+		#region Collection Reflection
+
+		public object[] GetAccessibleProperties(string CName)
+		{
+			if (!this.TryGetCollection(CName, out var cla)) return null;
+			else return cla.GetAccessibles(eGetInfoType.PROPERTY_NAMES);
+		}
 		public Dictionary<string, CollectionAttrib> GetAttributeMap()
 		{
 			var map = new Dictionary<string, CollectionAttrib>();
@@ -432,7 +445,7 @@ namespace GlobalLib.Database.Collection
 				var properties = Class.GetAccessibles(eGetInfoType.PROPERTY_INFOS);
 				foreach (var property in properties)
 				{
-					var attrib = new CollectionAttrib((System.Reflection.PropertyInfo)property, Class);
+					var attrib = new CollectionAttrib((PropertyInfo)property, Class);
 					string subpath = $"{path}\\{attrib.PropertyName}";
 					attrib.FullPath = subpath;
 					attrib.Directory = path;
@@ -449,7 +462,7 @@ namespace GlobalLib.Database.Collection
 						var attribs = Class.GetSubnodeAttribs(subnode.NodeName, eGetInfoType.PROPERTY_INFOS);
 						foreach (var attrib in attribs)
 						{
-							var field = new CollectionAttrib((System.Reflection.PropertyInfo)attrib, name);
+							var field = new CollectionAttrib((PropertyInfo)attrib, name);
 							string subpath = $"{path}\\{node.NodeName}\\{subnode.NodeName}\\{field.PropertyName}";
 							field.FullPath = subpath;
 							map[subpath] = field;
@@ -471,6 +484,8 @@ namespace GlobalLib.Database.Collection
 			}
 			return list;
 		}
+
+		#endregion
 
 		public override string ToString()
 		{

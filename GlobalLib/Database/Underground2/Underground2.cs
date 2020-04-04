@@ -1,30 +1,33 @@
 ﻿using System.Collections.Generic;
+using GlobalLib.Database.Collection;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
 using GlobalLib.Support.Underground2.Class;
 using GlobalLib.Support.Underground2.Gameplay;
 
 
 namespace GlobalLib.Database
 {
-    public partial class Underground2 : Reflection.Abstract.BasicBase, Reflection.Interface.IGetIndex//, Reflection.Interface.IOperative
+    public partial class Underground2 : BasicBase, IGetIndex
     {
-        public Collection.Root<Material> Materials { get; set; }
-        public Collection.Root<CarTypeInfo> CarTypeInfos { get; set; }
-        public Collection.Root<PresetRide> PresetRides { get; set; }
-        public Collection.Root<SunInfo> SunInfos { get; set; }
-        public Collection.Root<Track> Tracks { get; set; }
-        public Collection.Root<GCareerRace> GCareerRaces { get; set; }
-        public Collection.Root<WorldShop> WorldShops { get; set; }
-        public Collection.Root<GCareerBrand> GCareerBrands { get; set; }
-        public Collection.Root<PartPerformance> PartPerformances { get; set; }
-        public Collection.Root<GShowcase> GShowcases { get; set; }
-        public Collection.Root<SMSMessage> SMSMessages { get; set; }
-        public Collection.Root<Sponsor> Sponsors { get; set; }
-        public Collection.Root<GCareerStage> GCareerStages { get; set; }
-        public Collection.Root<PerfSliderTuning> PerfSliderTunings { get; set; }
-        public Collection.Root<WorldChallenge> WorldChallenges { get; set; }
-        public Collection.Root<PartUnlockable> PartUnlockables { get; set; }
-        public Collection.Root<BankTrigger> BankTriggers { get; set; }
-        public Collection.Root<GCarUnlock> GCarUnlocks { get; set; }
+        public Root<Material> Materials { get; set; }
+        public Root<CarTypeInfo> CarTypeInfos { get; set; }
+        public Root<PresetRide> PresetRides { get; set; }
+        public Root<SunInfo> SunInfos { get; set; }
+        public Root<Track> Tracks { get; set; }
+        public Root<GCareerRace> GCareerRaces { get; set; }
+        public Root<WorldShop> WorldShops { get; set; }
+        public Root<GCareerBrand> GCareerBrands { get; set; }
+        public Root<PartPerformance> PartPerformances { get; set; }
+        public Root<GShowcase> GShowcases { get; set; }
+        public Root<SMSMessage> SMSMessages { get; set; }
+        public Root<Sponsor> Sponsors { get; set; }
+        public Root<GCareerStage> GCareerStages { get; set; }
+        public Root<PerfSliderTuning> PerfSliderTunings { get; set; }
+        public Root<WorldChallenge> WorldChallenges { get; set; }
+        public Root<PartUnlockable> PartUnlockables { get; set; }
+        public Root<BankTrigger> BankTriggers { get; set; }
+        public Root<GCarUnlock> GCarUnlocks { get; set; }
         public List<FNGroup> FNGroups { get; set; }
         public List<TPKBlock> TPKBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
@@ -63,7 +66,6 @@ namespace GlobalLib.Database
             this.PartUnlockables = null;
             this.BankTriggers = null;
             this.GCarUnlocks = null;
-            System.GC.Collect();
         }
     }
 }

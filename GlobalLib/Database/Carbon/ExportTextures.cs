@@ -1,4 +1,12 @@
-﻿namespace GlobalLib.Database
+﻿using System;
+using System.IO;
+using System.Windows.Forms;
+using DevIL;
+using GlobalLib.Core;
+
+
+
+namespace GlobalLib.Database
 {
     public partial class Carbon
     {
@@ -23,38 +31,38 @@
         /// <returns>True if export was successful.</returns>
         public bool ExportTextures(string dir, string mode)
         {
-            DevIL.ImageType type;
+            ImageType type;
             switch (mode)
             {
                 case ".dds":
-                    type = DevIL.ImageType.Dds;
+                    type = ImageType.Dds;
                     break;
                 case ".png":
-                    type = DevIL.ImageType.Png;
+                    type = ImageType.Png;
                     break;
                 case ".jpg":
-                    type = DevIL.ImageType.Jpg;
+                    type = ImageType.Jpg;
                     break;
                 case ".tiff":
-                    type = DevIL.ImageType.Tiff;
+                    type = ImageType.Tiff;
                     break;
                 case ".bmp":
-                    type = DevIL.ImageType.Bmp;
+                    type = ImageType.Bmp;
                     break;
                 default:
-                    if (Core.Process.MessageShow)
-                        System.Windows.Forms.MessageBox.Show("Export mode provided is not supported.", "Warning");
+                    if (Process.MessageShow)
+                        MessageBox.Show("Export mode provided is not supported.", "Warning");
                     else
-                        System.Console.WriteLine("Export mode provided is not supported.");
+                        Console.WriteLine("Export mode provided is not supported.");
                     return false;
             }
 
-            if (!System.IO.Directory.Exists(dir))
+            if (!Directory.Exists(dir))
             {
-                if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show("Directory provided does not exist.", "Warning");
+                if (Process.MessageShow)
+                    MessageBox.Show("Directory provided does not exist.", "Warning");
                 else
-                    System.Console.WriteLine("Directory provided does not exist.");
+                    Console.WriteLine("Directory provided does not exist.");
                 return false;
             }
 
@@ -63,26 +71,26 @@
                 foreach (var tpk in this.TPKBlocks)
                 {
                     string tpkdir = tpk.CollectionName.Substring(2, tpk.CollectionName.Length - 2);
-                    tpkdir = System.IO.Path.Combine(dir, tpkdir);
-                    if (!System.IO.Directory.Exists(tpkdir))
-                        System.IO.Directory.CreateDirectory(tpkdir);
+                    tpkdir = Path.Combine(dir, tpkdir);
+                    if (!Directory.Exists(tpkdir))
+                        Directory.CreateDirectory(tpkdir);
                     foreach (var tex in tpk.Textures)
                     {
-                        string texdir = System.IO.Path.Combine(tpkdir, tex.CollectionName);
+                        string texdir = Path.Combine(tpkdir, tex.CollectionName);
                         texdir += mode;
                         var data = tex.GetDDSArray();
                         if (mode == ".dds")
                         {
-                            using (var bw = new System.IO.BinaryWriter(System.IO.File.Open(texdir, System.IO.FileMode.Create)))
+                            using (var bw = new BinaryWriter(File.Open(texdir, FileMode.Create)))
                             {
                                 bw.Write(data);
                             }
                         }
                         else
                         {
-                            using (var sr = new System.IO.MemoryStream(data))
-                            using (var im = new DevIL.ImageImporter())
-                            using (var ex = new DevIL.ImageExporter())
+                            using (var sr = new MemoryStream(data))
+                            using (var im = new ImageImporter())
+                            using (var ex = new ImageExporter())
                             {
                                 using (var image = im.LoadImageFromStream(sr))
                                 {
@@ -94,12 +102,12 @@
                 }
                 return true;
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
-                if (Core.Process.MessageShow)
-                    System.Windows.Forms.MessageBox.Show(e.Message, "Warning");
+                if (Process.MessageShow)
+                    MessageBox.Show(e.Message, "Warning");
                 else
-                    System.Console.WriteLine($"{e.Message}");
+                    Console.WriteLine($"{e.Message}");
                 return false;
             }
         }

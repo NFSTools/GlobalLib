@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Database
+﻿using System;
+
+
+
+namespace GlobalLib.Database
 {
 	public partial class MostWanted
 	{
@@ -13,7 +17,7 @@
 		/// <returns></returns>
 		public override string GetDatabaseInfo()
 		{
-			string nl = System.Environment.NewLine;
+			string nl = Environment.NewLine;
 			string info = this.ToString() + nl;
 			info += $"{this.CarTypeInfos.ThisName} = {this.CarTypeInfos.Length} collections.{nl}";
 			info += $"{this.Materials.ThisName} = {this.Materials.Length} collections.{nl}";
