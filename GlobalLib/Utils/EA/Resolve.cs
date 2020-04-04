@@ -1,4 +1,12 @@
-﻿namespace GlobalLib.Utils.EA
+﻿using System;
+using System.IO;
+using System.Drawing;
+using System.Windows.Forms;
+using GlobalLib.Core;
+
+
+
+namespace GlobalLib.Utils.EA
 {
     /// <summary>
     /// Collection of functions to resolve major disassembly/assembly tasks.
@@ -66,17 +74,17 @@
                     string color = FormatX.GetString(tint, "WINDSHIELD_TINT_L3_{X}");
                     string var1 = "WINDSHIELD_TINT_L3_PEARL_" + color;
                     string var2 = "WINDSHIELD_TINT_L3_PEARL " + color;
-                    Core.Map.WindowTintMap.Add(var1);
-                    Core.Map.WindowTintMap.Add(var2);
+                    Map.WindowTintMap.Add(var1);
+                    Map.WindowTintMap.Add(var2);
                     Bin.Hash(var1);
                     Bin.Hash(var2);
                     return;
                 }
                 else
-                    if (!Core.Map.WindowTintMap.Contains(tint))
-                        Core.Map.WindowTintMap.Add(tint);
+                    if (!Map.WindowTintMap.Contains(tint))
+                        Map.WindowTintMap.Add(tint);
             }
-            catch (System.Exception) { }
+            catch (Exception) { }
         }
 
         /// <summary>
@@ -87,7 +95,7 @@
         public static string GetPathFromCollection(string name)
         {
             string result = name;
-            string illegal = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
+            string illegal = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
             foreach (char letter in illegal)
                 result = result.Replace(letter.ToString(), ".");
             return result;
@@ -98,13 +106,7 @@
         /// </summary>
         /// <param name="number">Number passed to be based on.</param>
         /// <returns>True if odd, false if even.</returns>
-        public static bool IsOdd(int number)
-        {
-            if (number % 2 == 0)
-                return false;
-            else
-                return true;
-        }
+        public static bool IsOdd(int number) => number % 2 != 0;
 
         /// <summary>
         /// Determines if values passed can make a color.
@@ -114,19 +116,8 @@
         /// <param name="g">Green value as an unsigned int.</param>
         /// <param name="b">Blue value as an unsigned int.</param>
         /// <returns>True if values passed can form a color.</returns>
-        public static bool IsColor(uint a, uint r, uint g, uint b)
-        {
-            if (b < 0 || b > 255)
-                return false;
-            if (g < 0 || g > 255)
-                return false;
-            if (r < 0 || r > 255)
-                return false;
-            if (a < 0 || a > 255)
-                return false;
-
-            return true;
-        }
+        public static bool IsColor(uint a, uint r, uint g, uint b) =>
+            b <= byte.MaxValue && g <= byte.MaxValue && r <= byte.MaxValue && a <= byte.MaxValue;
 
         /// <summary>
         /// Returns byte array of padding bytes required to start at offset % start_at = 0
@@ -164,16 +155,11 @@
         /// <param name="font1">Font style 1 to be compared.</param>
         /// <param name="font2">Font style 2 to be compared.</param>
         /// <returns>True if two fonts passed are equal.</returns>
-        public static bool EqualFonts(System.Drawing.Font font1, System.Drawing.Font font2)
+        public static bool EqualFonts(Font font1, Font font2)
         {
-            if (font1.Unit != font2.Unit) return false;
-            if (font1.Bold != font2.Bold) return false;
-            if (font1.Italic != font2.Italic) return false;
-            if (font1.Underline != font2.Underline) return false;
-            if (font1.Strikeout != font2.Strikeout) return false;
-            if (font1.Name != font2.Name) return false;
-            if (font1.Style != font2.Style) return false;
-            return true;
+            return font1.Unit == font2.Unit && font1.Bold == font2.Bold && font1.Italic == font2.Italic &&
+                font1.Underline == font2.Underline && font1.Strikeout == font2.Strikeout &&
+                font1.Name == font2.Name && font1.Style == font2.Style;
         }
 
         /// <summary>
@@ -181,16 +167,16 @@
         /// </summary>
         /// <param name="value">String to be checked.</param>
         /// <returns>True if string is of HTML color type, false otherwise.</returns>
-        public static bool TryParseHTMLColor(string value, out System.Drawing.Color color)
+        public static bool TryParseHTMLColor(string value, out Color color)
         {
             try
             {
-                color = System.Drawing.ColorTranslator.FromHtml(value);
+                color = ColorTranslator.FromHtml(value);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-                color = System.Windows.Forms.Control.DefaultBackColor;
+                color = Control.DefaultBackColor;
                 return false;
             }
         }
@@ -204,9 +190,9 @@
         {
             if (string.IsNullOrEmpty(filepath))
                 return false;
-            if (!System.IO.File.Exists(filepath))
+            if (!File.Exists(filepath))
                 return false;
-            string ext = System.IO.Path.GetExtension(filepath);
+            string ext = Path.GetExtension(filepath);
             switch (ext)
             {
                 case ".png":

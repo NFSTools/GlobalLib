@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Utils
+﻿using System.Collections.Generic;
+
+
+
+namespace GlobalLib.Utils
 {
     /// <summary>
     /// Collection of P8 compression and decompression functions.
@@ -11,7 +15,7 @@
         /// <param name="data">binary data block to be converted</param>
         /// <param name="length">palette length in bytes</param>
         /// <returns>32-bit RGBA byte array converted based on PAL8 palette</returns>
-        public static unsafe byte[] P8toRGBA(byte[] data, int length)
+        public static unsafe byte[] P8toRGBA(byte[] data, int length = 0x400)
         {
             uint[] palette = new uint[length / 4]; // palette size is 0x400 bytes = 0x100 ints
             byte[] result = new byte[(data.Length - length) * 4]; // 8 bpp * 4 bytes per color
@@ -43,7 +47,7 @@
         {
             int size = 0x400 + (data.Length - 0x80) / 4;
             var result = new byte[size];
-            var map = new System.Collections.Generic.Dictionary<uint, byte>();
+            var map = new Dictionary<uint, byte>();
             int used = 0; // num of palette colors used; max = 0x100
 
             fixed (byte* byteptr_t = &data[0])

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 
 
+
 namespace GlobalLib.Utils.HTML
 {
 	public class MenuSettings

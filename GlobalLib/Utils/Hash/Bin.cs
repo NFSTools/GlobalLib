@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Utils
+﻿using System.Text;
+using GlobalLib.Core;
+using GlobalLib.Reflection;
+
+
+
+namespace GlobalLib.Utils
 {
     /// <summary>
     /// Collection with methods of binary hashing.
@@ -15,7 +21,7 @@
             if (string.IsNullOrWhiteSpace(value)) // check for being null
                 return 0;
 
-            var arr = System.Text.Encoding.ASCII.GetBytes(value);
+            var arr = Encoding.ASCII.GetBytes(value);
             var len = 0;
             var result = 0xFFFFFFFF;
 
@@ -26,7 +32,7 @@
             }
 
             // Put into raider keys
-            Core.Map.BinKeys[result] = value;
+            Map.BinKeys[result] = value;
             return result;
         }
 
@@ -38,7 +44,7 @@
         /// <returns>Bin Memory Hash of the string as an unsigned integer.</returns>
         public static uint SmartHash(string value)
         {
-            if (value == Reflection.BaseArguments.NULL) return 0;
+            if (value == BaseArguments.NULL) return 0;
             return (value?.StartsWith("0x") ?? false) ? ConvertX.ToUInt32(value) : Hash(value);
         }
 

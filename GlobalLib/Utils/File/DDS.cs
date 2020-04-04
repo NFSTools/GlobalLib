@@ -131,10 +131,10 @@
         // MAKEFOURCC that uses ReinterpretCast to cast any passed objects to it into uint
         public static uint MAKEFOURCC_R(object c1, object c2, object c3, object c4)
         {
-            var a1 = Cast.ReinterpretCast<uint>(c1);
-            var a2 = Cast.ReinterpretCast<uint>(c2);
-            var a3 = Cast.ReinterpretCast<uint>(c3);
-            var a4 = Cast.ReinterpretCast<uint>(c4);
+            var a1 = (uint)Cast.ReinterpretCast(c1, typeof(uint));
+            var a2 = (uint)Cast.ReinterpretCast(c2, typeof(uint));
+            var a3 = (uint)Cast.ReinterpretCast(c3, typeof(uint));
+            var a4 = (uint)Cast.ReinterpretCast(c4, typeof(uint));
             return a1 | a2 << 8 | a3 << 16 | a4 << 24;
         }
 

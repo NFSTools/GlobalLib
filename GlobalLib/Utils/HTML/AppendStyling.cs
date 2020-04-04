@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Text;
-using System.Threading.Tasks;
+using GlobalLib.Utils.EA;
 
 
 
@@ -171,11 +168,11 @@ namespace GlobalLib.Utils.HTML
 							RTX.SelectionFont = new Font(fontfamily, RTX.SelectionFont.Size, RTX.SelectionFont.Style);
 						continue;
 					case FontStyling.Color:
-						if (EA.Resolve.TryParseHTMLColor(split[a * 2 + 1], out Color fcolor))
+						if (Resolve.TryParseHTMLColor(split[a * 2 + 1], out var fcolor))
 							RTX.SelectionColor = fcolor;
 						continue;
 					case FontStyling.BackgroundColor:
-						if (EA.Resolve.TryParseHTMLColor(split[a * 2 + 1], out Color bcolor))
+						if (Resolve.TryParseHTMLColor(split[a * 2 + 1], out var bcolor))
 							RTX.SelectionBackColor = bcolor;
 						continue;
 					case FontStyling.Align:
@@ -215,11 +212,11 @@ namespace GlobalLib.Utils.HTML
 						Menu.Height = height;
 					return;
 				case HTMLTagType.WFColor:
-					if (EA.Resolve.TryParseHTMLColor(tag.SpecialSetting, out Color fcolor))
+					if (Resolve.TryParseHTMLColor(tag.SpecialSetting, out var fcolor))
 						Menu.WFColor = fcolor;
 					return;
 				case HTMLTagType.WBColor:
-					if (EA.Resolve.TryParseHTMLColor(tag.SpecialSetting, out Color bcolor))
+					if (Resolve.TryParseHTMLColor(tag.SpecialSetting, out var bcolor))
 						Menu.WBColor = bcolor;
 					return;
 				default:

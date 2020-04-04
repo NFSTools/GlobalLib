@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Utils
+﻿using System;
+using GlobalLib.Utils.EA;
+
+
+
+namespace GlobalLib.Utils
 {
     /// <summary>
     /// Collection with JDLZ compressor and decompressor.
@@ -45,9 +50,9 @@
                     ++ReaderPosition; // advance position
                 }
 
-                if (EA.Resolve.IsOdd(param1))
+                if (Resolve.IsOdd(param1))
                 {
-                    if (EA.Resolve.IsOdd(param2))
+                    if (Resolve.IsOdd(param2))
                     {
                         length = (block[ReaderPosition + 1] | ((block[ReaderPosition] & 0xF0) << 4)) + 3;
                         offset = (block[ReaderPosition] & 0x0F) + 1;
@@ -250,7 +255,7 @@
             output[14] = (byte)(outPos >> 16);
             output[15] = (byte)(outPos >> 24);
 
-            System.Array.Resize(ref output, outPos);
+            Array.Resize(ref output, outPos);
             return output;
         }
     }

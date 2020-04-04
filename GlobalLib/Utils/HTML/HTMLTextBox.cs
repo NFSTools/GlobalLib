@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+
+
 
 namespace GlobalLib.Utils.HTML
 {
@@ -16,9 +15,6 @@ namespace GlobalLib.Utils.HTML
 
 		private const char Listable = '\u02E3';
 		public static Color LinkColor { get; } = Color.FromArgb(1, 1, 0xEE);
-
-
-
 
 		public void LoadHTMLTextBox(string[] lines)
 		{

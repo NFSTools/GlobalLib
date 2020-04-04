@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Utils.HTML
 {
-	public partial class HTMLTextBox : System.IDisposable
+	public partial class HTMLTextBox
 	{
 		public bool IsStartTag(string tag)
 		{

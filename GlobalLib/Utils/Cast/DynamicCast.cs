@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Utils
+﻿using System;
+
+
+
+namespace GlobalLib.Utils
 {
     /// <summary>
     /// Collection of cast functions.
@@ -11,13 +15,13 @@
         /// <param name="source">Object passed to be casted.</param>
         /// <param name="dest">Type to be converted to.</param>
         /// <returns>Dynamically allocated object of type specified, if fails, returns null.</returns>
-        public static dynamic DynamicCast(dynamic source, System.Type dest)
+        public static dynamic DynamicCast(dynamic source, Type dest)
         {
             try
             {
-                return System.Convert.ChangeType(source, dest);
+                return Convert.ChangeType(source, dest);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return null;
             }

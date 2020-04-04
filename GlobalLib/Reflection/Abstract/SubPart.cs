@@ -59,7 +59,7 @@ namespace GlobalLib.Reflection.Abstract
             {
                 var property = this.GetType().GetProperty(PropertyName);
                 if (property == null) return false;
-                property.SetValue(this, Cast.RuntimeCast(value, property.PropertyType));
+                property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
                 return true;
             }
             catch (System.Exception) { return false; }
@@ -81,7 +81,7 @@ namespace GlobalLib.Reflection.Abstract
                     error = $"Field named {PropertyName} does not exist.";
                     return false;
                 }
-                property.SetValue(this, Cast.RuntimeCast(value, property.PropertyType));
+                property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
                 return true;
             }
             catch (System.Exception e)

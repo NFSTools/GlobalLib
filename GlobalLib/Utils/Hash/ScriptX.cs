@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Utils
+﻿using System.IO;
+using System.Collections.Generic;
+
+
+
+namespace GlobalLib.Utils
 {
     /// <summary>
     /// Collection of functions used for parsing files and their data.
@@ -47,7 +52,7 @@
         {
             if (string.IsNullOrWhiteSpace(value)) return null;
             int first = -1;
-            var result = new System.Collections.Generic.List<string>();
+            var result = new List<string>();
             while (first++ < value.Length)
             {
                 string inter = null;
@@ -92,7 +97,7 @@
         /// </summary>
         /// <param name="br">Binary reader with which read the null-terminated string.</param>
         /// <returns>String read using binary reader.</returns>
-        public static string NullTerminatedString(System.IO.BinaryReader br)
+        public static string NullTerminatedString(BinaryReader br)
         {
             string result = string.Empty;
             byte reader;
@@ -107,7 +112,7 @@
         /// <param name="br">Binary reader with which read the null-terminated string.</param>
         /// <param name="maxlen">Maximum length to be read.</param>
         /// <returns>String read using binary reader.</returns>
-        public static string NullTerminatedString(System.IO.BinaryReader br, int maxlen)
+        public static string NullTerminatedString(BinaryReader br, int maxlen)
         {
             string result = string.Empty;
             byte reader;

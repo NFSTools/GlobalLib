@@ -1,16 +1,20 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Core;
+
+
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class PresetRide
     {
         /// <summary>
-        /// Game index to which the class belongs to.
+        /// Game to which the class belongs to.
         /// </summary>
-        public int GameINT { get => (int)Core.GameINT.Carbon; }
+        public override GameINT GameINT { get => GameINT.Carbon; }
 
         /// <summary>
         /// Game string to which the class belongs to.
         /// </summary>
-        public string GameSTR { get => Core.GameSTR.Carbon; }
+        public override string GameSTR { get => GameINT.Carbon.ToString(); }
 
         /// <summary>
         /// Database to which the class belongs to.

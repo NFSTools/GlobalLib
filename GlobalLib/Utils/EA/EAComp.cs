@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using GlobalLib.Core;
+using GlobalLib.Utils.DDS;
 using GlobalLib.Reflection.ID;
 
 
@@ -10,6 +12,12 @@ namespace GlobalLib.Utils.EA
     /// </summary>
     public static class Comp
     {
+        private const string DXT1 = "DXT1";
+        private const string DXT3 = "DXT3";
+        private const string DXT5 = "DXT5";
+        private const string ARGB = "ARGB";
+        private const string P8   = "P8";
+
         /// <summary>
         /// Determines if an unsigned integer passed is an EA compression.
         /// </summary>
@@ -62,13 +70,13 @@ namespace GlobalLib.Utils.EA
         {
             switch (value)
             {
-                case "DXT1":
+                case DXT1:
                     return EAComp.DXT1_08;
-                case "DXT3":
+                case DXT3:
                     return EAComp.DXT3_08;
-                case "DXT5":
+                case DXT5:
                     return EAComp.DXT5_08;
-                case "P8":
+                case P8:
                     return EAComp.P8_08;
                 default:
                     return EAComp.RGBA_08;
@@ -85,15 +93,15 @@ namespace GlobalLib.Utils.EA
             switch (value)
             {
                 case EAComp.DXT1_08:
-                    return "DXT1";
+                    return DXT1;
                 case EAComp.DXT3_08:
-                    return "DXT3";
+                    return DXT3;
                 case EAComp.DXT5_08:
-                    return "DXT5";
+                    return DXT5;
                 case EAComp.P8_08:
-                    return "P8";
+                    return P8;
                 default:
-                    return "ARGB";
+                    return ARGB;
             }
         }
 
@@ -107,15 +115,15 @@ namespace GlobalLib.Utils.EA
             switch (value)
             {
                 case EAComp.DXT1_32:
-                    return "DXT1";
+                    return DXT1;
                 case EAComp.DXT3_32:
-                    return "DXT3";
+                    return DXT3;
                 case EAComp.DXT5_32:
-                    return "DXT5";
+                    return DXT5;
                 case EAComp.P8_32:
-                    return "P8";
+                    return P8;
                 default:
-                    return "ARGB";
+                    return ARGB;
             }
         }
 
@@ -128,13 +136,13 @@ namespace GlobalLib.Utils.EA
         {
             switch (value)
             {
-                case "DXT1":
+                case DXT1:
                     return EAComp.DXT1_32;
-                case "DXT3":
+                case DXT3:
                     return EAComp.DXT3_32;
-                case "DXT5":
+                case DXT5:
                     return EAComp.DXT5_32;
-                case "P8":
+                case P8:
                     return EAComp.P8_32;
                 default:
                     return EAComp.RGBA_32;
@@ -171,12 +179,12 @@ namespace GlobalLib.Utils.EA
         public static int FlipToBase(int size)
         {
             uint x = (uint)size;
-            x = x | (x >> 1);
-            x = x | (x >> 2);
-            x = x | (x >> 4);
-            x = x | (x >> 8);
-            x = x | (x >> 16);
-            x -= (x >> 1);
+            x |= x >> 1;
+            x |= x >> 2;
+            x |= x >> 4;
+            x |= x >> 8;
+            x |= x >> 16;
+            x -= x >> 1;
             return (int)x;
         }
 
@@ -219,24 +227,24 @@ namespace GlobalLib.Utils.EA
         /// </summary>
         /// <param name="_PIXELFORMAT">.dds pixelformat of the .dds header passed as a reference type.</param>
         /// <param name="compression">EA compression byte of the image.</param>
-        public static void GetPixelFormat(ref DDS.DDS_PIXELFORMAT _PIXELFORMAT, byte compression)
+        public static void GetPixelFormat(ref DDS_PIXELFORMAT _PIXELFORMAT, byte compression)
         {
             switch (compression)
             {
                 case EAComp.DXT1_08:
-                    Utils.DDS.DDS_CONST.DDSPF_DXT1(ref _PIXELFORMAT);
+                    DDS_CONST.DDSPF_DXT1(ref _PIXELFORMAT);
                     break;
 
                 case EAComp.DXT3_08:
-                    Utils.DDS.DDS_CONST.DDSPF_DXT3(ref _PIXELFORMAT);
+                    DDS_CONST.DDSPF_DXT3(ref _PIXELFORMAT);
                     break;
 
                 case EAComp.DXT5_08:
-                    Utils.DDS.DDS_CONST.DDSPF_DXT5(ref _PIXELFORMAT);
+                    DDS_CONST.DDSPF_DXT5(ref _PIXELFORMAT);
                     break;
 
                 default: // set to be RGB in case of mismatch
-                    Utils.DDS.DDS_CONST.DDSPF_A8R8G8B8(ref _PIXELFORMAT);
+                    DDS_CONST.DDSPF_A8R8G8B8(ref _PIXELFORMAT);
                     break;
             }
         }
@@ -252,11 +260,11 @@ namespace GlobalLib.Utils.EA
             {
                 string name = Path.GetFileNameWithoutExtension(filename);
                 if (OpenReader.BaseStream.Length < 0x80) return false;
-                if (OpenReader.ReadUInt32() != DDS.DDS_MAIN.MAGIC) return false;
+                if (OpenReader.ReadUInt32() != DDS_MAIN.MAGIC) return false;
                 OpenReader.BaseStream.Position = 0x50;
                 uint num1 = OpenReader.ReadUInt32();
                 uint num2 = OpenReader.ReadUInt32();
-                if (!IsComp(num2) && (num1 != DDS.DDS_TYPE.RGBA)) return false;
+                if (!IsComp(num2) && (num1 != DDS_TYPE.RGBA)) return false;
             }
             return true;
         }
@@ -277,7 +285,7 @@ namespace GlobalLib.Utils.EA
                     error = "Texture " + name + " has invalid header type.";
                     return false;
                 }
-                if (OpenReader.ReadUInt32() != DDS.DDS_MAIN.MAGIC)
+                if (OpenReader.ReadUInt32() != DDS_MAIN.MAGIC)
                 {
                     error = "Texture " + name + " has invalid header type.";
                     return false;
@@ -285,7 +293,7 @@ namespace GlobalLib.Utils.EA
                 OpenReader.BaseStream.Position = 0x50;
                 uint num1 = OpenReader.ReadUInt32();
                 uint num2 = OpenReader.ReadUInt32();
-                if (!IsComp(num2) && (num1 != DDS.DDS_TYPE.RGBA))
+                if (!IsComp(num2) && (num1 != DDS_TYPE.RGBA))
                 {
                     error = name + ": invalid DDS compression type";
                     return false;
@@ -301,7 +309,7 @@ namespace GlobalLib.Utils.EA
         /// <returns>Collection Name of the .tpk</returns>
         public static string GetTPKName(int index)
         {
-            if (Core.Process.Set == Core.GameINT.Carbon)
+            if (Process.Set == GameINT.Carbon)
             {
                 switch (index)
                 {
@@ -323,7 +331,7 @@ namespace GlobalLib.Utils.EA
                         return null;
                 }
             }
-            else if (Core.Process.Set == Core.GameINT.MostWanted)
+            else if (Process.Set == GameINT.MostWanted)
             {
                 switch (index)
                 {
@@ -337,7 +345,7 @@ namespace GlobalLib.Utils.EA
                         return null;
                 }
             }
-            else if (Core.Process.Set == Core.GameINT.Underground2)
+            else if (Process.Set == GameINT.Underground2)
             {
                 switch (index)
                 {

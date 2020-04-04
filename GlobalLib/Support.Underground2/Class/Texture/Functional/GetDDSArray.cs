@@ -12,7 +12,7 @@
             if (this._compression == Reflection.ID.EAComp.P8_08)
             {
                 data = new byte[this.Size * 4 + 0x80];
-                var copy = Utils.Palette.P8toRGBA(this.Data, this.PaletteSize);
+                var copy = Utils.Palette.P8toRGBA(this.Data);
                 System.Buffer.BlockCopy(copy, 0, data, 0x80, copy.Length);
             }
             else

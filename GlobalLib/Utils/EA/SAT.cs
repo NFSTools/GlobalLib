@@ -1,5 +1,6 @@
 ﻿using System;
-using GlobalLib.Support.Shared.Parts.FNGParts;
+using GlobalLib.Reflection.ID;
+
 
 
 namespace GlobalLib.Utils.EA
@@ -26,7 +27,7 @@ namespace GlobalLib.Utils.EA
             byte[] result = new byte[8 + NewData.Length];
             fixed (byte* byteptr_t = &result[0])
             {
-                *(uint*)(byteptr_t + 0) = Reflection.ID.Global.FEngFiles;
+                *(uint*)(byteptr_t + 0) = Global.FEngFiles;
                 *(int*)(byteptr_t + 4) = NewData.Length;
             }
 
@@ -66,23 +67,6 @@ namespace GlobalLib.Utils.EA
             }
             catch { }
             return result;
-        }
-
-        /// <summary>
-        /// Compares two FEngColors.
-        /// </summary>
-        /// <param name="a1">FEngColor 1.</param>
-        /// <param name="a2">FEngColor 2.</param>
-        /// <param name="comparealpha">True if do compared alpha values.</param>
-        /// <returns>True if two FEngColors are equal.</returns>
-        public static bool EqualColors(FEngColor a1, FEngColor a2, bool comparealpha)
-        {
-            if (a1.Red != a2.Red) return false;
-            if (a1.Green != a2.Green) return false;
-            if (a1.Blue != a2.Blue) return false;
-            if (comparealpha)
-                if (a1.Alpha != a2.Alpha) return false;
-            return true;
         }
 
         /// <summary>

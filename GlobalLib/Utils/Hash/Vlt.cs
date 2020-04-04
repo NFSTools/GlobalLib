@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Utils
+﻿using System;
+using System.Text;
+using GlobalLib.Reflection;
+
+
+
+namespace GlobalLib.Utils
 {
     /// <summary>
     /// Collection with methods of vault hashing.
@@ -14,7 +20,7 @@
         {
             if (string.IsNullOrWhiteSpace(value)) return 0;
 
-            var arr = System.Text.Encoding.ASCII.GetBytes(value);
+            var arr = Encoding.ASCII.GetBytes(value);
             var a = 0x9E3779B9;
             var b = 0x9E3779B9;
             var c = 0xABCDEF00;
@@ -23,9 +29,9 @@
 
             while (v2 >= 12)
             {
-                a += System.BitConverter.ToUInt32(arr, v1);
-                b += System.BitConverter.ToUInt32(arr, v1 + 4);
-                c += System.BitConverter.ToUInt32(arr, v1 + 8);
+                a += BitConverter.ToUInt32(arr, v1);
+                b += BitConverter.ToUInt32(arr, v1 + 4);
+                c += BitConverter.ToUInt32(arr, v1 + 8);
                 Mix32_1(ref a, ref b, ref c);
                 v1 += 12;
                 v2 -= 12;
@@ -83,7 +89,7 @@
         public static ulong Hash64(string value)
         {
             if (string.IsNullOrWhiteSpace(value)) return 0;
-            var arr = System.Text.Encoding.ASCII.GetBytes(value);
+            var arr = Encoding.ASCII.GetBytes(value);
             ulong a = 0x9E3779B97F4A7C13;
             ulong b = 0x9E3779B97F4A7C13;
             ulong c = 0x11223344ABCDEF00;
@@ -92,9 +98,9 @@
 
             while (v2 >= 24)
             {
-                a += System.BitConverter.ToUInt64(arr, v1);
-                b += System.BitConverter.ToUInt64(arr, v1 + 8);
-                c += System.BitConverter.ToUInt64(arr, v1 + 16);
+                a += BitConverter.ToUInt64(arr, v1);
+                b += BitConverter.ToUInt64(arr, v1 + 8);
+                c += BitConverter.ToUInt64(arr, v1 + 16);
                 Mix64_1(ref a, ref b, ref c);
                 v1 += 24;
                 v2 -= 24;
@@ -188,7 +194,7 @@
         /// <returns>Vlt Memory Hash of the string as an unsigned integer.</returns>
         public static uint SmartHash(string value)
         {
-            if (value == Reflection.BaseArguments.NULL) return 0;
+            if (value == BaseArguments.NULL) return 0;
             return (value?.StartsWith("0x") ?? false) ? ConvertX.ToUInt32(value) : Hash(value);
         }
 
@@ -200,7 +206,7 @@
         /// <returns>Vlt64 Memory Hash of the string as an unsigned long.</returns>
         public static ulong SmartHash64(string value)
         {
-            if (value == Reflection.BaseArguments.NULL) return 0;
+            if (value == BaseArguments.NULL) return 0;
             return (value?.StartsWith("0x") ?? false) ? ConvertX.ToUInt64(value) : Hash64(value);
         }
 

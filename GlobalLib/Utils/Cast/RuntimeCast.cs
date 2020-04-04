@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Utils
+﻿using System;
+
+
+
+namespace GlobalLib.Utils
 {
     /// <summary>
     /// Collection of cast functions.
@@ -11,10 +15,10 @@
         /// <param name="value">Object passed to be casted.</param>
         /// <param name="oftype">Primitive type to be converted to.</param>
         /// <returns>Casted value of the passed object.</returns>
-        public static object RuntimeCast(object value, System.Type oftype)
+        public static object ReinterpretCast(object value, Type oftype)
         {
             if (oftype == typeof(string)) return value.ToString();
-            else return System.Convert.ChangeType(value, oftype);
+            else return Convert.ChangeType(value, oftype);
         }
     }
 }

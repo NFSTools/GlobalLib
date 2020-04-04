@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Utils
+﻿using System;
+
+
+
+namespace GlobalLib.Utils
 {
 	public static partial class Cast
 	{
@@ -8,9 +12,9 @@
 		/// <typeparam name="TypeID">Type to be converted to.</typeparam>
 		/// <param name="value">Object passed to be casted.</param>
 		/// <returns>Casted value of type specified. If casting fails, exception will be thrown.</returns>
-		public static TypeID StaticCast<TypeID>(object value)
+		public static TypeID StaticCast<TypeID>(IConvertible value) where TypeID : IConvertible
 		{
-			return (TypeID)System.Convert.ChangeType(value, typeof(TypeID));
+			return (TypeID)Convert.ChangeType(value, typeof(TypeID));
 		}
 	}
 }

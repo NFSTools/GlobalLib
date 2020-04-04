@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Diagnostics;
 using System.Windows.Forms;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using GlobalLib.Utils.EA;
 
 
 
@@ -14,7 +15,7 @@ namespace GlobalLib.Utils.HTML
 	{
 		public void Dispose()
 		{
-			if (this.RTX != null) return;
+			if (this.RTX == null) return;
 			if (this.RTX.Disposing) return;
 			if (this.RTX.IsDisposed) return;
 			this.RTX.Dispose();
@@ -47,7 +48,7 @@ namespace GlobalLib.Utils.HTML
 		{
 			if (box.SelectionColor != LinkColor) return;
 			var linkfont = new Font(box.SelectionFont, FontStyle.Underline);
-			if (!EA.Resolve.EqualFonts(box.SelectionFont, linkfont)) return;
+			if (!Resolve.EqualFonts(box.SelectionFont, linkfont)) return;
 
 			int selectionstart = index;
 			int selectionend = index;
@@ -55,7 +56,7 @@ namespace GlobalLib.Utils.HTML
 			for (int c = index - 1; c >= 0; --c)
 			{
 				box.SelectionStart = c;
-				if (!EA.Resolve.EqualFonts(box.SelectionFont, linkfont) || box.SelectionColor != LinkColor)
+				if (!Resolve.EqualFonts(box.SelectionFont, linkfont) || box.SelectionColor != LinkColor)
 				{
 					selectionstart = c;
 					break;
@@ -65,7 +66,7 @@ namespace GlobalLib.Utils.HTML
 			for (int c = index + 1; c < box.Text.Length; ++c)
 			{
 				box.SelectionStart = c;
-				if (!EA.Resolve.EqualFonts(box.SelectionFont, linkfont) || box.SelectionColor != LinkColor)
+				if (!Resolve.EqualFonts(box.SelectionFont, linkfont) || box.SelectionColor != LinkColor)
 				{
 					selectionend = c - 1;
 					break;
@@ -82,7 +83,7 @@ namespace GlobalLib.Utils.HTML
 
 		private void RichTextBox_LinkClickedEvent(object sender, LinkClickedEventArgs e)
 		{
-			System.Diagnostics.Process.Start(e.LinkText);
+			Process.Start(e.LinkText);
 		}
 
 		public void RichTextBox_MouseClickEvent(object sender, MouseEventArgs e)

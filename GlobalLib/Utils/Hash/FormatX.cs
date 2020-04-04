@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Utils
+﻿using System;
+
+
+
+namespace GlobalLib.Utils
 {
     /// <summary>
     /// Collection that gets values from formats provided. In case getting a value fails,
@@ -22,7 +26,7 @@
                 string result = value.Substring(formatstart, value.Length - formatend - formatstart);
                 return result;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return null;
             }
@@ -40,10 +44,10 @@
             try
             {
                 string str = GetString(value, format);
-                result = System.Convert.ToInt32(str);
+                result = Convert.ToInt32(str);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 result = 0;
                 return false;
@@ -62,10 +66,10 @@
             try
             {
                 string str = GetString(value, format);
-                result = System.Convert.ToUInt32(str);
+                result = Convert.ToUInt32(str);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 result = 0;
                 return false;
@@ -84,10 +88,10 @@
             try
             {
                 string str = GetString(value, format);
-                result = System.Convert.ToInt16(str);
+                result = Convert.ToInt16(str);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 result = 0;
                 return false;
@@ -106,10 +110,10 @@
             try
             {
                 string str = GetString(value, format);
-                result = System.Convert.ToUInt16(str);
+                result = Convert.ToUInt16(str);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 result = 0;
                 return false;
@@ -128,10 +132,10 @@
             try
             {
                 string str = GetString(value, format);
-                result = System.Convert.ToInt64(str);
+                result = Convert.ToInt64(str);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 result = 0;
                 return false;
@@ -150,10 +154,10 @@
             try
             {
                 string str = GetString(value, format);
-                result = System.Convert.ToUInt64(str);
+                result = Convert.ToUInt64(str);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 result = 0;
                 return false;
@@ -172,10 +176,10 @@
             try
             {
                 string str = GetString(value, format);
-                result = System.Convert.ToByte(str);
+                result = Convert.ToByte(str);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 result = 0;
                 return false;
@@ -194,10 +198,10 @@
             try
             {
                 string str = GetString(value, format);
-                result = System.Convert.ToSByte(str);
+                result = Convert.ToSByte(str);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 result = 0;
                 return false;
