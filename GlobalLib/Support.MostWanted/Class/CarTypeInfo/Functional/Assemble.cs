@@ -87,15 +87,7 @@
                 *(byteptr_t + 0xC6) = this.DefaultSkinNumber;
                 *(byteptr_t + 0xC7) = (this.IsSkinnable == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
                 *(int*)(byteptr_t + 0xC8) = this.Padding2;
-
-                if (string.IsNullOrWhiteSpace(this.DefaultBasePaint)) { }
-                else if (this.DefaultBasePaint.StartsWith("0x"))
-                    *(uint*)(byteptr_t + 0xCC) = Utils.ConvertX.ToUInt32(this.DefaultBasePaint);
-                else
-                    *(uint*)(byteptr_t + 0xCC) = Utils.Bin.Hash(this.DefaultBasePaint);
-
-                if (*(uint*)(byteptr_t + 0xCC) == 0)
-                    *(uint*)(byteptr_t + 0xCC) = Utils.Bin.Hash(Reflection.BaseArguments.BPAINT);
+                *(uint*)(byteptr_t + 0xCC) = Utils.Bin.SmartHash(this.DefaultBasePaint);
             }
             return result;
         }
