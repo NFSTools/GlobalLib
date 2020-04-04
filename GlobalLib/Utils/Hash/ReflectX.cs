@@ -9,23 +9,33 @@ namespace GlobalLib.Utils
 {
 	public static class ReflectX
 	{
-        public static bool IsAssignableToGeneric(Type givenType, Type genericType)
+        public static bool IsAssignableToGeneric(Type giventype, Type generictype)
         {
-            var interfaceTypes = givenType.GetInterfaces();
+            var interfaceTypes = giventype.GetInterfaces();
 
-            foreach (var it in interfaceTypes)
+            foreach (var inter in interfaceTypes)
             {
-                if (it.IsGenericType && it.GetGenericTypeDefinition() == genericType)
+                if (inter.IsGenericType && inter.GetGenericTypeDefinition() == generictype)
                     return true;
             }
 
-            if (givenType.IsGenericType && givenType.GetGenericTypeDefinition() == genericType)
+            if (giventype.IsGenericType && giventype.GetGenericTypeDefinition() == generictype)
                 return true;
 
-            Type baseType = givenType.BaseType;
-            if (baseType == null) return false;
+            var basetype = giventype.BaseType;
+            if (basetype == null) return false;
 
-            return IsAssignableToGeneric(baseType, genericType);
+            return IsAssignableToGeneric(basetype, generictype);
+        }
+        public static bool IsFromGenericClass(Type givenType, Type generictype)
+        {
+            var basetype = givenType.BaseType;
+            if (basetype == null) return false;
+
+            if (basetype.IsGenericType && basetype.GetGenericTypeDefinition() == generictype)
+                return true;
+            else
+                return IsFromGenericClass(basetype, generictype);
         }
 
         public static bool IsEnumerableType(PropertyInfo property)
@@ -47,7 +57,6 @@ namespace GlobalLib.Utils
                 result.Add((TypeID)s);
             return (IEnumerable<TypeID>)result;
         }
-
         public static TypeID[] GetArrayCopy<TypeID>(object obj)
         {
             var result = new List<TypeID>();
