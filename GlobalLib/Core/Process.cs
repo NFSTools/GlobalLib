@@ -1,4 +1,11 @@
-﻿namespace GlobalLib.Core
+﻿using System;
+using System.IO;
+using GlobalLib.Utils;
+using System.Windows.Forms;
+
+
+
+namespace GlobalLib.Core
 {
     /// <summary>
     /// Defines the game process set during the run of the application.
@@ -35,9 +42,9 @@
             if (Set != GameINT.Carbon)
             {
                 if (MessageShow)
-                    System.Windows.Forms.MessageBox.Show("Game set is not valid for Carbon database load.", "Warning");
+                    MessageBox.Show("Game set is not valid for Carbon database load.", "Warning");
                 else
-                    System.Console.WriteLine("Game set is not valid for Carbon database load.");
+                    Console.WriteLine("Game set is not valid for Carbon database load.");
                 return false;
             }
             Initialize.Init();
@@ -58,9 +65,9 @@
             if (Set != GameINT.MostWanted)
             {
                 if (MessageShow)
-                    System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
+                    MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
                 else
-                    System.Console.WriteLine("Game set is not valid for MostWanted database load.");
+                    Console.WriteLine("Game set is not valid for MostWanted database load.");
                 return false;
             }
             Initialize.Init();
@@ -81,9 +88,9 @@
             if (Set != GameINT.Underground2)
             {
                 if (MessageShow)
-                    System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
+                    MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
                 else
-                    System.Console.WriteLine("Game set is not valid for MostWanted database load.");
+                    Console.WriteLine("Game set is not valid for MostWanted database load.");
                 return false;
             }
             Initialize.InitUG2();
@@ -106,9 +113,9 @@
             if (Set != GameINT.Carbon)
             {
                 if (MessageShow)
-                    System.Windows.Forms.MessageBox.Show("Game set is not valid for Carbon database load.", "Warning");
+                    MessageBox.Show("Game set is not valid for Carbon database load.", "Warning");
                 else
-                    System.Console.WriteLine("Game set is not valid for Carbon database load.");
+                    Console.WriteLine("Game set is not valid for Carbon database load.");
                 return false;
             }
             bool A = Support.Carbon.SaveData.SaveGlobalA(GlobalDir, database);
@@ -129,9 +136,9 @@
             if (Set != GameINT.MostWanted)
             {
                 if (MessageShow)
-                    System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
+                    MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
                 else
-                    System.Console.WriteLine("Game set is not valid for MostWanted database load.");
+                    Console.WriteLine("Game set is not valid for MostWanted database load.");
                 return false;
             }
             bool A = Support.MostWanted.SaveData.SaveGlobalA(GlobalDir, database);
@@ -152,9 +159,9 @@
             if (Set != GameINT.Underground2)
             {
                 if (MessageShow)
-                    System.Windows.Forms.MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
+                    MessageBox.Show("Game set is not valid for MostWanted database load.", "Warning");
                 else
-                    System.Console.WriteLine("Game set is not valid for MostWanted database load.");
+                    Console.WriteLine("Game set is not valid for MostWanted database load.");
                 return false;
             }
             bool A = Support.Underground2.SaveData.SaveGlobalA(GlobalDir, database);
@@ -170,10 +177,10 @@
         private static void CompressFiles()
         {
             string dirB = GlobalDir + @"\GLOBAL\GlobalB.lzc";
-            using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(dirB)))
-            using (var bw = new System.IO.BinaryWriter(System.IO.File.Open(dirB, System.IO.FileMode.Create)))
+            using (var ms = new MemoryStream(File.ReadAllBytes(dirB)))
+            using (var bw = new BinaryWriter(File.Open(dirB, FileMode.Create)))
             {
-                bw.Write(Utils.JDLZ.Compress(ms.ToArray()));
+                bw.Write(JDLZ.Compress(ms.ToArray()));
             }
         }
     }

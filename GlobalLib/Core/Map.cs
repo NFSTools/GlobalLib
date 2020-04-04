@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GlobalLib.Reflection;
 
 
 
@@ -68,7 +69,7 @@ namespace GlobalLib.Core
         /// <returns>Result value from the key passed, if value was not found, returns null instead.</returns>
         public static string Lookup(uint key, bool nullifzero)
         {
-            if (nullifzero && key == 0) return Reflection.BaseArguments.NULL;
+            if (nullifzero && key == 0) return BaseArguments.NULL;
             if (BinKeys.TryGetValue(key, out string result))
                 return result;
             else

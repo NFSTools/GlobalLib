@@ -1,6 +1,9 @@
-﻿using GlobalLib.Reflection.Enum;
+﻿using System;
 using GlobalLib.Utils;
-using System;
+using GlobalLib.Reflection;
+using GlobalLib.Reflection.Enum;
+
+
 
 namespace GlobalLib.Core
 {
@@ -274,9 +277,9 @@ namespace GlobalLib.Core
         /// </summary>
         private static void HashImportantStrings()
         {
-            Bin.Hash(Reflection.BaseArguments.RANDOM);
-            Bin.Hash(Reflection.BaseArguments.GLOBAL);
-            Bin.Hash(Reflection.BaseArguments.DEFAULT);
+            Bin.Hash(BaseArguments.RANDOM);
+            Bin.Hash(BaseArguments.GLOBAL);
+            Bin.Hash(BaseArguments.DEFAULT);
         }
 
         /// <summary>
