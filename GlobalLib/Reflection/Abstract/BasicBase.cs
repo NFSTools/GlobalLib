@@ -415,6 +415,15 @@ namespace GlobalLib.Reflection.Abstract
         }
 
         /// <summary>
+        /// Adds collision block to the database memory.
+        /// </summary>
+        /// <param name="CName">Collection Name of the collision block.</param>
+        /// <param name="filepath">Filepath of the collision block to be imported.</param>
+        /// <param name="error">Error occured when trying to add collision.</param>
+        /// <returns>True if adding was successful; false otherwise.</returns>
+        public abstract unsafe bool TryAddCollision(string CName, string filename, out string error);
+
+        /// <summary>
         /// Gets information about <see cref="BasicBase"/> database.
         /// </summary>
         /// <returns></returns>

@@ -12,11 +12,13 @@ namespace GlobalLib.Database
     public partial class Carbon
     {
         /// <summary>
-        /// Adds collision block to the database memory.
+        /// Adds <see cref="Collision"/> block to the database memory.
         /// </summary>
-        /// <param name="CName">Collection Name of the collision block.</param>
-        /// <param name="filepath">Filepath of the collision block to be imported.</param>
-        public unsafe bool AddCollision(string CName, string filepath, out string error)
+        /// <param name="CName">Collection Name of the <see cref="Collision"/> block.</param>
+        /// <param name="filepath">Filepath of the <see cref="Collision"/> block to be imported.</param>
+        /// <param name="error">Error occured when trying to add collision.</param>
+        /// <returns>True if adding was successful; false otherwise.</returns>
+        public override unsafe bool TryAddCollision(string CName, string filepath, out string error)
         {
             error = null;
             try

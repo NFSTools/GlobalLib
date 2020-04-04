@@ -59,9 +59,10 @@
     <Compile Include="Core\Process.cs" />
     <Compile Include="Database\Carbon\Initialize.cs" />
     <Compile Include="Database\Carbon\ToString.cs" />
-    <Compile Include="Database\Carbon\AddCollision.cs" />
+    <Compile Include="Database\Carbon\TryAddCollision.cs" />
     <Compile Include="Database\Carbon\Carbon.cs" />
     <Compile Include="Database\Collection\Root.cs" />
+    <Compile Include="Database\Underground2\TryAddCollision.cs" />
     <Compile Include="Reflection\Enum\eGetInfoType.cs" />
     <Compile Include="Reflection\Enum\eKeyType.cs" />
     <Compile Include="Database\MostWanted\Initialize.cs" />
@@ -81,7 +82,7 @@
     <Compile Include="Database\Carbon\ExportTextures.cs" />
     <Compile Include="Database\Carbon\GetClassIndex.cs" />
     <Compile Include="Database\eClassType.cs" />
-    <Compile Include="Database\MostWanted\AddCollision.cs" />
+    <Compile Include="Database\MostWanted\TryAddCollision.cs" />
     <Compile Include="Database\MostWanted\ExportTextures.cs" />
     <Compile Include="Database\MostWanted\GetClassIndex.cs" />
     <Compile Include="Database\MostWanted\MostWanted.cs" />
