@@ -39,8 +39,6 @@
 					throw new System.ArgumentNullException("This value cannot be left empty.");
 				if (value.Length > 7)
 					throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 7 characters.");
-				if (!System.IO.Directory.Exists($"{Core.Process.GlobalDir}\\TRACKS\\ROUTES{value}"))
-					throw new System.IO.DirectoryNotFoundException($"Directory named {value} does not exist.");
 				if (!Framework.Validate.TrackRegionName(value))
 					throw new System.Exception("Value passed cannot be a recognizable game directory.");
 				this._region_name = value;

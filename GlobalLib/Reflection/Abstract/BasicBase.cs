@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using GlobalLib.Core;
 using GlobalLib.Database.Collection;
 using GlobalLib.Reflection.Interface;
 
@@ -13,6 +14,16 @@ namespace GlobalLib.Reflection.Abstract
 		public virtual byte[] _GlobalBLZC { get; set; }
 		public virtual byte[] _LngGlobal { get; set; }
 		public virtual byte[] _LngLabels { get; set; }
+
+        /// <summary>
+        /// Game to which the class belongs to.
+        /// </summary>
+        public abstract GameINT GameINT { get; }
+
+        /// <summary>
+        /// Game string to which the class belongs to.
+        /// </summary>
+        public abstract string GameSTR { get; }
 
         /// <summary>
         /// Gets a <see cref="Collectable"/> class from CollectionName and root provided.

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GlobalLib.Core;
 using GlobalLib.Database.Collection;
 using GlobalLib.Reflection.Abstract;
 using GlobalLib.Reflection.Interface;
@@ -10,6 +11,16 @@ namespace GlobalLib.Database
 {
     public partial class Carbon : BasicBase, IGetIndex
     {
+        /// <summary>
+        /// Game to which the class belongs to.
+        /// </summary>
+        public override GameINT GameINT { get => GameINT.Carbon; }
+
+        /// <summary>
+        /// Game string to which the class belongs to.
+        /// </summary>
+        public override string GameSTR { get => GameINT.Carbon.ToString(); }
+
         public Root<Material> Materials { get; set; }
         public Root<CarTypeInfo> CarTypeInfos { get; set; }
         public Root<PresetRide> PresetRides { get; set; }
