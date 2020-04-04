@@ -1,16 +1,20 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+
+
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class GCareerStage
 	{
         /// <summary>
-        /// Game index to which the class belongs to.
+        /// Game to which the class belongs to.
         /// </summary>
-        public int GameINT { get => (int)Core.GameINT.Underground2; }
+        public override GameINT GameINT { get => GameINT.Underground2; }
 
         /// <summary>
         /// Game string to which the class belongs to.
         /// </summary>
-        public string GameSTR { get => Core.GameSTR.Underground2; }
+        public override string GameSTR { get => GameINT.Underground2.ToString(); }
 
         /// <summary>
         /// Database to which the class belongs to.

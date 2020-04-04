@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GlobalLib.Support.Underground2.Parts.CarParts;
 
 
 
@@ -6,8 +7,8 @@ namespace GlobalLib.Support.Underground2.Class
 {
     public partial class SlotType : Shared.Class.SlotType
     {
-        public List<Parts.CarParts.Part56> Part56 { get; set; }
-        public Parts.CarParts.SpoilMirr SpoilMirrs { get; set; }
+        public List<Part56> Part56 { get; set; }
+        public SpoilMirr SpoilMirrs { get; set; }
 
         public override string ToString()
         {
