@@ -1,15 +1,13 @@
-﻿using System.Collections.Generic;
-using GlobalLib.Core;
+﻿using GlobalLib.Core;
 using GlobalLib.Database.Collection;
 using GlobalLib.Reflection.Abstract;
-using GlobalLib.Reflection.Interface;
 using GlobalLib.Support.Underground2.Class;
 using GlobalLib.Support.Underground2.Gameplay;
 
 
 namespace GlobalLib.Database
 {
-    public partial class Underground2 : BasicBase, IGetIndex
+    public partial class Underground2 : BasicBase
     {
         /// <summary>
         /// Game to which the class belongs to.
@@ -39,10 +37,10 @@ namespace GlobalLib.Database
         public Root<PartUnlockable> PartUnlockables { get; set; }
         public Root<BankTrigger> BankTriggers { get; set; }
         public Root<GCarUnlock> GCarUnlocks { get; set; }
-        public List<FNGroup> FNGroups { get; set; }
-        public List<TPKBlock> TPKBlocks { get; set; }
+        public Root<FNGroup> FNGroups { get; set; }
+        public Root<TPKBlock> TPKBlocks { get; set; }
+        public Root<STRBlock> STRBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
-        public STRBlock STRBlocks { get; set; }
 
         public Underground2()
         {

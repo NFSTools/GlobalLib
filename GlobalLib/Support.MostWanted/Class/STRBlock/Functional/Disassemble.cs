@@ -22,6 +22,7 @@
 				{
 					this._offset = ReaderOffset;
 					this._size = BlockSize;
+					this.CollectionName = Reflection.BaseArguments.GLOBAL;
 					found = true;
 				}
 				ReaderOffset += 8 + BlockSize;

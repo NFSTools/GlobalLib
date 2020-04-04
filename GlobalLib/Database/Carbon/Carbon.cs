@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GlobalLib.Core;
+﻿using GlobalLib.Core;
 using GlobalLib.Database.Collection;
 using GlobalLib.Reflection.Abstract;
 using GlobalLib.Reflection.Interface;
@@ -9,7 +8,7 @@ using GlobalLib.Support.Carbon.Class;
 
 namespace GlobalLib.Database
 {
-    public partial class Carbon : BasicBase, IGetIndex
+    public partial class Carbon : BasicBase
     {
         /// <summary>
         /// Game to which the class belongs to.
@@ -25,10 +24,10 @@ namespace GlobalLib.Database
         public Root<CarTypeInfo> CarTypeInfos { get; set; }
         public Root<PresetRide> PresetRides { get; set; }
         public Root<PresetSkin> PresetSkins { get; set; }
-        public List<FNGroup> FNGroups { get; set; }
-        public List<TPKBlock> TPKBlocks { get; set; }
+        public Root<FNGroup> FNGroups { get; set; }
+        public Root<TPKBlock> TPKBlocks { get; set; }
+        public Root<STRBlock> STRBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
-        public STRBlock STRBlocks { get; set; }
 
         public Carbon()
         {

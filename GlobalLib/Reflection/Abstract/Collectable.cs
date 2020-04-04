@@ -237,9 +237,7 @@ namespace GlobalLib.Reflection.Abstract
                 }
                 else
                 {
-                    property.SetValue(this, typeof(Cast)
-                        .GetMethod("RuntimeCast")
-                        .Invoke(null, new object[] { value, property.PropertyType }));
+                    property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
                 }
                 return true;
             }
@@ -270,9 +268,7 @@ namespace GlobalLib.Reflection.Abstract
                 }
                 else
                 {
-                    property.SetValue(this, typeof(Cast)
-                        .GetMethod("RuntimeCast")
-                        .Invoke(null, new object[] { value, property.PropertyType }));
+                    property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
                 }
                 return true;
             }

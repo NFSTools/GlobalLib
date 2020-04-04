@@ -35,7 +35,7 @@ namespace GlobalLib.Support.Underground2
                         case Reflection.ID.Global.STRBlocks:
                             if (!finished)
                             {
-                                bw.Write(db.STRBlocks.Assemble());
+                                bw.Write(db.STRBlocks[0].Assemble());
                                 br.BaseStream.Position += WriterSlotSize;
                                 finished = true;
                                 break;
@@ -69,7 +69,7 @@ namespace GlobalLib.Support.Underground2
                         case Reflection.ID.Global.STRBlocks:
                             if (!finished)
                             {
-                                bw.Write(db.STRBlocks.ParseLabels());
+                                bw.Write(db.STRBlocks[0].ParseLabels());
                                 br.BaseStream.Position += WriterSlotSize;
                                 finished = true;
                                 break;

@@ -37,7 +37,7 @@ namespace GlobalLib.Support.Carbon
                             br.BaseStream.Position = WriterSlotOffset + 8;
                             if (categ == "Global")
                             {
-                                bw.Write(db.STRBlocks.Assemble());
+                                bw.Write(db.STRBlocks[0].Assemble());
                                 br.BaseStream.Position += WriterSlotSize;
                                 break;
                             }
@@ -72,7 +72,7 @@ namespace GlobalLib.Support.Carbon
                             br.BaseStream.Position = WriterSlotOffset + 8;
                             if (categ == "Global")
                             {
-                                bw.Write(db.STRBlocks.ParseLabels());
+                                bw.Write(db.STRBlocks[0].ParseLabels());
                                 br.BaseStream.Position += WriterSlotSize;
                                 break;
                             }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GlobalLib.Core;
+﻿using GlobalLib.Core;
 using GlobalLib.Database.Collection;
 using GlobalLib.Reflection.Abstract;
 using GlobalLib.Reflection.Interface;
@@ -9,7 +8,7 @@ using GlobalLib.Support.MostWanted.Class;
 
 namespace GlobalLib.Database
 {
-    public partial class MostWanted : BasicBase, IGetIndex
+    public partial class MostWanted : BasicBase
     {
         /// <summary>
         /// Game to which the class belongs to.
@@ -24,10 +23,10 @@ namespace GlobalLib.Database
         public Root<Material> Materials { get; set; }
         public Root<CarTypeInfo> CarTypeInfos { get; set; }
         public Root<PresetRide> PresetRides { get; set; }
-        public List<FNGroup> FNGroups { get; set; }
-        public List<TPKBlock> TPKBlocks { get; set; }
+        public Root<FNGroup> FNGroups { get; set; }
+        public Root<TPKBlock> TPKBlocks { get; set; }
+        public Root<STRBlock> STRBlocks { get; set; }
         public SlotType SlotTypes { get; set; }
-        public STRBlock STRBlocks { get; set; }
 
         public MostWanted()
         {

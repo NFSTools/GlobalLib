@@ -43,10 +43,40 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.FNGroups = new List<FNGroup>();
-			this.TPKBlocks = new List<TPKBlock>();
+			this.FNGroups = new Root<FNGroup>
+			(
+				"FNGroups",
+				-1,
+				-1,
+				-1,
+				false,
+				false,
+				this
+			);
+
+			this.TPKBlocks = new Root<TPKBlock>
+			(
+				"TPKBlocks",
+				-1,
+				-1,
+				-1,
+				false,
+				false,
+				this
+			);
+
+			this.STRBlocks = new Root<STRBlock>
+			(
+				"STRBlocks",
+				-1,
+				-1,
+				-1,
+				false,
+				false,
+				this
+			);
+
 			this.SlotTypes = new SlotType();
-			this.STRBlocks = new STRBlock();
 		}
 	}
 }

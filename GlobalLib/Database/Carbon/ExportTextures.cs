@@ -68,7 +68,7 @@ namespace GlobalLib.Database
 
             try
             {
-                foreach (var tpk in this.TPKBlocks)
+                foreach (var tpk in this.TPKBlocks.Collections)
                 {
                     string tpkdir = tpk.CollectionName.Substring(2, tpk.CollectionName.Length - 2);
                     tpkdir = Path.Combine(dir, tpkdir);

@@ -3,7 +3,7 @@
     public partial class FNGroup : Shared.Class.FNGroup
     {
         // Default constructor
-        FNGroup() { }
+        public FNGroup() { }
 
         // Default constructor: disassemble frontend group
         public FNGroup(byte[] data, Database.MostWanted db)

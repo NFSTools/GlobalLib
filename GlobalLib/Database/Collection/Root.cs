@@ -38,6 +38,7 @@ namespace GlobalLib.Database.Collection
 		#region Collection Access
 
 		public TypeID this[string CName] => this.FindCollection(CName);
+		public TypeID this[int index] => index < this.Length ? this.Collections[index] : null;
 		public bool TryGetCollectionIndex(string CName, out int index)
 		{
 			for (index = 0; index < this.Length; ++index)

@@ -27,15 +27,19 @@ namespace GlobalLib.Utils
 
             return IsAssignableToGeneric(basetype, generictype);
         }
-        public static bool IsFromGenericClass(Type givenType, Type generictype)
+        public static bool IsFromGenericClass(Type giventype, Type generictype)
         {
-            var basetype = givenType.BaseType;
+            var basetype = giventype.BaseType;
             if (basetype == null) return false;
 
             if (basetype.IsGenericType && basetype.GetGenericTypeDefinition() == generictype)
                 return true;
             else
                 return IsFromGenericClass(basetype, generictype);
+        }
+        public static bool IsGenericDefinition(Type giventype, Type generictype)
+        {
+            return giventype.IsGenericType && giventype.GetGenericTypeDefinition() == generictype;
         }
 
         public static bool IsEnumerableType(PropertyInfo property)

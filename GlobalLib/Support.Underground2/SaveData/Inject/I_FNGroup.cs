@@ -9,10 +9,10 @@
         /// <param name="bw">BinaryWriter for writing data.</param>
         private static void I_FNGroup(Database.Underground2 db, System.IO.BinaryWriter bw)
         {
-            for (int a1 = 0; a1 < db.FNGroups.Count; ++a1)
+            for (int a1 = 0; a1 < db.FNGroups.Length; ++a1)
             {
                 I_GlobalLibBlock(bw);
-                bw.Write(db.FNGroups[a1].Assemble());
+                bw.Write(db.FNGroups.Collections[a1].Assemble());
             }
         }
     }

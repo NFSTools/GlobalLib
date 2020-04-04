@@ -11,7 +11,7 @@
         private static void I_TPKBlock(Database.Underground2 db, System.IO.BinaryWriter bw, ref int index)
         {
             I_GlobalLibBlock(bw);
-            bw.Write(db.TPKBlocks[index++].Assemble());
+            bw.Write(db.TPKBlocks.Collections[index++].Assemble());
         }
     }
 }

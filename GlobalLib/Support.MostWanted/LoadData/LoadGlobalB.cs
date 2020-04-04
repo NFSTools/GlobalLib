@@ -81,8 +81,8 @@ namespace GlobalLib.Support.MostWanted
                             break;
 
                         case Reflection.ID.Global.TPKBlocks:
-                            int count = db.TPKBlocks.Count;
-                            db.TPKBlocks.Add(new Class.TPKBlock(byteptr_t + offset, count, db));
+                            int count = db.TPKBlocks.Length;
+                            db.TPKBlocks.Collections.Add(new Class.TPKBlock(byteptr_t + offset, count, db));
                             break;
 
                         case Reflection.ID.Global.CarTypeInfo:

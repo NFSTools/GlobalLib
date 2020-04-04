@@ -43,7 +43,7 @@ namespace GlobalLib.Support.Carbon
             // Use pointers to speed up process
             fixed (byte* strptr = &db._LngGlobal[0], labptr = &db._LngLabels[0])
             {
-                db.STRBlocks = new Class.STRBlock(strptr, labptr, db._LngGlobal.Length, db._LngLabels.Length, db);
+                db.STRBlocks.Collections.Add(new Class.STRBlock(strptr, labptr, db._LngGlobal.Length, db._LngLabels.Length, db));
             }
             return true;
         }

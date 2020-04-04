@@ -23,9 +23,9 @@
             // Check whether this FEng class already exists in the database
             if (Class.Destroy)
                 return;
-            if (db.GetClassIndex(Class.CollectionName, Database.eClassType.FNGroup) != -1)
+            if (db.FNGroups.FindCollection(Class.CollectionName) != null)
                 return;
-            db.FNGroups.Add(Class);
+            db.FNGroups.Collections.Add(Class);
             Utils.Bin.Hash(Class.CollectionName);
         }
     }

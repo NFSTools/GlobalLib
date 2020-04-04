@@ -67,7 +67,6 @@
     <Compile Include="Reflection\Enum\eKeyType.cs" />
     <Compile Include="Database\MostWanted\Initialize.cs" />
     <Compile Include="Database\MostWanted\ToString.cs" />
-    <Compile Include="Database\Underground2\GetClassIndex.cs" />
     <Compile Include="Database\Underground2\Initialize.cs" />
     <Compile Include="Database\Underground2\ToString.cs" />
     <Compile Include="Database\Underground2\Underground2.cs" />
@@ -80,11 +79,9 @@
     <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
     <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />
     <Compile Include="Database\Carbon\ExportTextures.cs" />
-    <Compile Include="Database\Carbon\GetClassIndex.cs" />
     <Compile Include="Database\eClassType.cs" />
     <Compile Include="Database\MostWanted\TryAddCollision.cs" />
     <Compile Include="Database\MostWanted\ExportTextures.cs" />
-    <Compile Include="Database\MostWanted\GetClassIndex.cs" />
     <Compile Include="Database\MostWanted\MostWanted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\Attributes\LabelAttribute.cs" />
