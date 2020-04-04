@@ -28,12 +28,13 @@ namespace GlobalLib.Support.MostWanted
 				Utils.Log.Write("Reading data from attributes.bin...");
 				Utils.Log.Write("Reading data from fe_attrib.bin...");
 			}
-			catch (Exception) // If any of files is opened in editing mode in another program
+			catch (Exception e)
 			{
+				while (e.InnerException != null) e = e.InnerException;
 				if (Core.Process.MessageShow)
-					MessageBox.Show("Unable to read vault file. Please close all\napplications that have it opened or\ncheck its internal data.", "Failure");
+					MessageBox.Show($"Error occured: {e.Message}", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				else
-					Console.WriteLine("Unable to read vault file.");
+					Console.WriteLine(e.Message);
 				return false;
 			}
 

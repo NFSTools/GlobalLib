@@ -24,12 +24,13 @@ namespace GlobalLib.Support.MostWanted
                 db._GlobalABUN = File.ReadAllBytes(GlobalA_dir);
                 Utils.Log.Write("Reading data from GlobalA.bun...");
             }
-            catch (Exception) // If GlobalA.bun is opened in editing mode in another program
+            catch (Exception e)
             {
+                while (e.InnerException != null) e = e.InnerException;
                 if (Core.Process.MessageShow)
-                    MessageBox.Show("Unable to read GlobalA.bun file. Please close all\napplications that have it opened or\ncheck its internal data.", "Failure");
+                    MessageBox.Show($"Error occured: {e.Message}", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                    Console.WriteLine("Unable to read GlobalA.bun file.");
+                    Console.WriteLine(e.Message);
                 return false;
             }
 

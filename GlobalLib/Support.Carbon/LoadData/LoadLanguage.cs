@@ -26,12 +26,13 @@ namespace GlobalLib.Support.Carbon
                 Utils.Log.Write("Reading data from English_Global.bin...");
                 Utils.Log.Write("Reading data from Labels_Global.bin...");
             }
-            catch (Exception) // If files are opened in editing mode in another program
+            catch (Exception e)
             {
+                while (e.InnerException != null) e = e.InnerException;
                 if (Core.Process.MessageShow)
-                    MessageBox.Show("Unable to read language files. Please close all\napplications that have them opened or\ncheck their internal data.", "Failure");
+                    MessageBox.Show($"Error occured: {e.Message}", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                    Console.WriteLine("Unable to read language files.");
+                    Console.WriteLine(e.Message);
                 return false;
             }
 
