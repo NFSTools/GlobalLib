@@ -146,7 +146,7 @@ namespace GlobalLib.Support.Shared.Class
         {
             var excolor = this.GetColor(index);
             if (excolor == null) return false;
-            var sample = new FEngColor(this)
+            var sample = new FEngColor(null)
             {
                 Alpha = excolor.Alpha,
                 Red = excolor.Red,
@@ -157,10 +157,10 @@ namespace GlobalLib.Support.Shared.Class
             {
                 if (color == sample)
                 {
-                    color.Red = sample.Red;
-                    color.Green = sample.Green;
-                    color.Blue = sample.Blue;
-                    if (!keepalpha) color.Alpha = sample.Alpha;
+                    color.Red = newbase.Red;
+                    color.Green = newbase.Green;
+                    color.Blue = newbase.Blue;
+                    if (!keepalpha) color.Alpha = newbase.Alpha;
                 }
             }
             return true;
@@ -183,7 +183,7 @@ namespace GlobalLib.Support.Shared.Class
                 error = $"Color with index {index} does not exist.";
                 return false;
             }
-            var sample = new FEngColor(this)
+            var sample = new FEngColor(null)
             {
                 Alpha = excolor.Alpha,
                 Red = excolor.Red,
@@ -194,10 +194,10 @@ namespace GlobalLib.Support.Shared.Class
             {
                 if (color == sample)
                 {
-                    color.Red = sample.Red;
-                    color.Green = sample.Green;
-                    color.Blue = sample.Blue;
-                    if (!keepalpha) color.Alpha = sample.Alpha;
+                    color.Red = newbase.Red;
+                    color.Green = newbase.Green;
+                    color.Blue = newbase.Blue;
+                    if (!keepalpha) color.Alpha = newbase.Alpha;
                 }
             }
             return true;

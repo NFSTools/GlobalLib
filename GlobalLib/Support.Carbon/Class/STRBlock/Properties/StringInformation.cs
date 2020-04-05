@@ -53,7 +53,7 @@ namespace GlobalLib.Support.Carbon.Class
 		public override bool TryAddRecord(string key, string label, string text)
 		{
 			uint hash = 0;
-			if (key == Reflection.BaseArguments.AUTO) hash = Utils.Bin.Hash(key);
+			if (key == Reflection.BaseArguments.AUTO) hash = Utils.Bin.Hash(label);
 			else hash = Utils.ConvertX.ToUInt32(key);
 			
 			if (hash == 0) return false;
@@ -79,7 +79,7 @@ namespace GlobalLib.Support.Carbon.Class
 		{
 			error = null;
 			uint hash = 0;
-			if (key == Reflection.BaseArguments.AUTO) hash = Utils.Bin.Hash(key);
+			if (key == Reflection.BaseArguments.AUTO) hash = Utils.Bin.Hash(label);
 			else hash = Utils.ConvertX.ToUInt32(key);
 
 			if (hash == 0)

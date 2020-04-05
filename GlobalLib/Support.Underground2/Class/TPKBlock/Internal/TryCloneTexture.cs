@@ -21,7 +21,7 @@
 
             var texture = (Texture)copyfrom.MemoryCast(newname);
             this.Textures.Add(texture);
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -56,7 +56,7 @@
 
             var texture = (Texture)copyfrom.MemoryCast(newname);
             this.Textures.Add(texture);
-            return false;
+            return true;
         }
     }
 }

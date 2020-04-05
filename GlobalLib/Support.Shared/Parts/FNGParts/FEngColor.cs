@@ -33,7 +33,9 @@ namespace GlobalLib.Support.Shared.Parts.FNGParts
 
         public static bool operator== (FEngColor c1, FEngColor c2)
         {
-            return c1.Red == c2.Red && c1.Green == c2.Green && c1.Blue == c2.Blue;
+            if (ReferenceEquals(c1, null)) return ReferenceEquals(c2, null);
+            else if (ReferenceEquals(c2, null)) return false;
+            else return c1.Red == c2.Red && c1.Green == c2.Green && c1.Blue == c2.Blue;
         }
 
         public static bool operator!= (FEngColor c1, FEngColor c2)

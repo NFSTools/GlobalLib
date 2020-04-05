@@ -39,7 +39,9 @@ namespace GlobalLib.Support.Shared.Parts.STRParts
 
 		public static bool operator== (StringRecord s1, StringRecord s2)
 		{
-			return s1.Key == s2.Key || s1.Label == s2.Label;
+			if (ReferenceEquals(s1, null)) return ReferenceEquals(s2, null);
+			else if (ReferenceEquals(s2, null)) return false;
+			else return s1.Key == s2.Key;
 		}
 
 		public static bool operator!= (StringRecord s1, StringRecord s2)

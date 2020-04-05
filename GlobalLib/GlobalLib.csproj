@@ -488,6 +488,7 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\StringToKey.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Functional\ToString.cs" />
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\WIndowTintSettings.cs" />
+    <Compile Include="Support.Underground2\Class\TPKBlock\Internal\FindTexture.cs" />
     <Compile Include="Support.Underground2\Framework\Assert.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\Assemble.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteBankTriggers.cs" />
