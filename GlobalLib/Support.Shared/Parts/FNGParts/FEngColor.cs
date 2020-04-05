@@ -1,5 +1,6 @@
 ﻿using System;
 using GlobalLib.Utils.EA;
+using GlobalLib.Support.Shared.Class;
 
 
 
@@ -12,6 +13,13 @@ namespace GlobalLib.Support.Shared.Parts.FNGParts
         public byte Blue   { get; set; } = 0;
         public byte Alpha  { get; set; } = 0;
         public uint Offset { get; set; } = 0;
+
+        public FNGroup ThisFNGroup { get; set; }
+
+        public FEngColor(FNGroup fng)
+        {
+            this.ThisFNGroup = fng;
+        }
 
         public override bool Equals(object obj)
         {

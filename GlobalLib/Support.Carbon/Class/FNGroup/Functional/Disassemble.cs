@@ -45,7 +45,7 @@
                         // If it is a color, add to the list
                         if (Utils.EA.Resolve.IsColor(Alpha, Red, Green, Blue))
                         {
-                            var TempColor = new Shared.Parts.FNGParts.FEngColor();
+                            var TempColor = new Shared.Parts.FNGParts.FEngColor(this);
                             TempColor.Offset = offset;
                             TempColor.Alpha = (byte)Alpha;
                             TempColor.Red = (byte)Red;

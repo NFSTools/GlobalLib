@@ -146,7 +146,7 @@ namespace GlobalLib.Support.Shared.Class
         {
             var excolor = this.GetColor(index);
             if (excolor == null) return false;
-            var sample = new FEngColor()
+            var sample = new FEngColor(this)
             {
                 Alpha = excolor.Alpha,
                 Red = excolor.Red,
@@ -183,7 +183,7 @@ namespace GlobalLib.Support.Shared.Class
                 error = $"Color with index {index} does not exist.";
                 return false;
             }
-            var sample = new FEngColor()
+            var sample = new FEngColor(this)
             {
                 Alpha = excolor.Alpha,
                 Red = excolor.Red,
