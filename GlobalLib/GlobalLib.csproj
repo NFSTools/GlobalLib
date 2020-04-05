@@ -62,6 +62,7 @@
     <Compile Include="Database\Carbon\TryAddCollision.cs" />
     <Compile Include="Database\Carbon\Carbon.cs" />
     <Compile Include="Database\Collection\Root.cs" />
+    <Compile Include="Database\Underground2\ExportTextures.cs" />
     <Compile Include="Database\Underground2\TryAddCollision.cs" />
     <Compile Include="Reflection\Enum\eGetInfoType.cs" />
     <Compile Include="Reflection\Enum\eKeyType.cs" />

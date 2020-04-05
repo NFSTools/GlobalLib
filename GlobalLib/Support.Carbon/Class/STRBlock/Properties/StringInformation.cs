@@ -12,7 +12,7 @@ namespace GlobalLib.Support.Carbon.Class
 		/// <summary>
 		/// Length of the string information array.
 		/// </summary>
-		public int InfoLength { get => this._stringinfo.Count; }
+		public override int InfoLength { get => this._stringinfo.Count; }
 		
 		/// <summary>
 		/// Gets the <see cref="StringRecord"/> from the internal list.
@@ -22,6 +22,15 @@ namespace GlobalLib.Support.Carbon.Class
 		public override StringRecord GetRecord(uint key)
 		{
 			return this._stringinfo.Find(s => s.Key == key);
+		}
+
+		/// <summary>
+		/// Gets all <see cref="StringRecord"/> stored in <see cref="STRBlock"/>.
+		/// </summary>
+		/// <returns><see cref="IEnumerable{T}"/> of <see cref="StringRecord"/>.</returns>
+		public override IEnumerable<StringRecord> GetRecords()
+		{
+			return this._stringinfo;
 		}
 
 		/// <summary>

@@ -37,6 +37,11 @@ namespace GlobalLib.Support.Shared.Class
         /// </summary>
         public virtual uint VltKey { get => 0; }
 
+		/// <summary>
+		/// Length of the string information array.
+		/// </summary>
+		public virtual int InfoLength { get; }
+
 		#endregion
 
 		#region Methods
@@ -88,6 +93,12 @@ namespace GlobalLib.Support.Shared.Class
 		/// <param name="key">Key of the <see cref="StringRecord"/> to find.</param>
 		/// <returns>StringRecord is it exists; otherwise null;</returns>
 		public virtual StringRecord GetRecord(string key) { return null; }
+
+		/// <summary>
+		/// Gets all <see cref="StringRecord"/> stored in <see cref="STRBlock"/>.
+		/// </summary>
+		/// <returns><see cref="IEnumerable{T}"/> of <see cref="StringRecord"/>.</returns>
+		public virtual IEnumerable<StringRecord> GetRecords() { return null; }
 
 		/// <summary>
 		/// Gets text from the binary key of a label provided.
