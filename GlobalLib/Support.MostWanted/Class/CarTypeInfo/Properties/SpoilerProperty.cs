@@ -1,23 +1,28 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class CarTypeInfo
     {
-        private Reflection.Enum.eSpoiler _spoiler = Reflection.Enum.eSpoiler.SPOILER;
+        private eSpoiler _spoiler = eSpoiler.SPOILER;
 
         /// <summary>
         /// Aftermarket spoiler type of the cartypeinfo.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
-        public Reflection.Enum.eSpoiler Spoiler
+        [AccessModifiable()]
+        [StaticModifiable()]
+        public eSpoiler Spoiler
         {
             get => this._spoiler;
             set
             {
-                if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoiler), value))
+                if (Enum.IsDefined(typeof(eSpoiler), value))
                     this._spoiler = value;
                 else
-                    throw new Reflection.Exception.MappingFailException();
+                    throw new MappingFailException();
             }
         }
     }

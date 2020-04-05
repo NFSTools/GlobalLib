@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Enum;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class CarTypeInfo
     {
@@ -35,8 +38,8 @@
             this.SteeringWheelRenderingW = *(float*)(byteptr_t + 0x8C);
 
             this.Index = *(int*)(byteptr_t + 0x90);
-            this.UsageType = (Reflection.Enum.eUsageType)(*(int*)(byteptr_t + 0x94));
-            this.MemoryType = (Reflection.Enum.eMemoryType)(*(uint*)(byteptr_t + 0x98));
+            this.UsageType = (eUsageType)(*(int*)(byteptr_t + 0x94));
+            this.MemoryType = (eMemoryType)(*(uint*)(byteptr_t + 0x98));
 
             this.MaxInstances1 = *(byteptr_t + 0x9C);
             this.MaxInstances2 = *(byteptr_t + 0x9D);
@@ -67,12 +70,12 @@
 
             this.DefaultSkinNumber = *(byteptr_t + 0xC6);
             this.IsSkinnable = (*(byteptr_t + 0xC7) == 0)
-                ? Reflection.Enum.eBoolean.False
-                : Reflection.Enum.eBoolean.True;
+                ? eBoolean.False
+                : eBoolean.True;
             this.Padding2 = *(int*)(byteptr_t + 0xC8);
 
             uint key = *(uint*)(byteptr_t + 0xCC);
-            this.DefaultBasePaint = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
+            this.DefaultBasePaint = Map.Lookup(key, true) ?? $"0x{key:X8}";
         }
     }
 }

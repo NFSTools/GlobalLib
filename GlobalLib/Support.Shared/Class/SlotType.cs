@@ -1,7 +1,5 @@
 ﻿using GlobalLib.Support.Shared.Parts.CarParts;
 
-
-
 namespace GlobalLib.Support.Shared.Class
 {
     public class SlotType

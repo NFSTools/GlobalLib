@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Support.Underground2.Parts.CarParts;
+using System.Collections.Generic;
+using System.IO;
+
+namespace GlobalLib.Support.Underground2
 {
     public static partial class SaveData
     {
@@ -7,24 +12,24 @@
         /// </summary>
         /// <param name="db">Database with classes.</param>
         /// <param name="bw">BinaryWriter for writing data.</param>
-        private static void I_SlotType(Database.Underground2 db, System.IO.BinaryWriter bw)
+        private static void I_SlotType(Database.Underground2 db, BinaryWriter bw)
         {
-            var SetList = new System.Collections.Generic.List<Parts.CarParts.CarSpoilMirrType>();
+            var SetList = new List<CarSpoilMirrType>();
 
 			// Get all cartypeinfos with non-base spoilers and mirrors
 			foreach (var car in db.CarTypeInfos.Collections)
 			{
-				if (car.Spoiler != Reflection.Enum.eSpoiler.SPOILER)
+				if (car.Spoiler != eSpoiler.SPOILER)
 				{
-					var add = new Parts.CarParts.CarSpoilMirrType();
+					var add = new CarSpoilMirrType();
 					add.CarTypeInfo = car.CollectionName;
 					add.Spoiler = car.Spoiler;
 					add.SpoilerNoMirror = true;
 					SetList.Add(add);
 				}
-				if (car.Mirrors != Reflection.Enum.eMirrorTypes.MIRRORS)
+				if (car.Mirrors != eMirrorTypes.MIRRORS)
 				{
-					var add = new Parts.CarParts.CarSpoilMirrType();
+					var add = new CarSpoilMirrType();
 					add.CarTypeInfo = car.CollectionName;
 					add.Mirrors = car.Mirrors;
 					add.SpoilerNoMirror = false;

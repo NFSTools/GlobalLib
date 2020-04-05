@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.ID;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class TPKBlock
     {
@@ -13,7 +15,7 @@
             if (offset == -1) return 0; // check if Part2 even exists
             uint ReaderID = *(uint*)(byteptr_t + offset);
             int ReaderSize = *(int*)(byteptr_t + offset + 4);
-            if (ReaderID != Reflection.ID.TPK.INFO_PART2_BLOCKID) return 0; // check if ID matches
+            if (ReaderID != TPK.INFO_PART2_BLOCKID) return 0; // check if ID matches
 
             return (ReaderSize / 8); // 8 bytes for one texture
         }

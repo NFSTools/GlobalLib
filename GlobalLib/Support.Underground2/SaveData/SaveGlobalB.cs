@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Support.Underground2.Framework;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -38,7 +40,7 @@ namespace GlobalLib.Support.Underground2
                         case 0:
                             uint key = br.ReadUInt32();
                             br.BaseStream.Position -= 4;
-                            if (key == Reflection.ID.Global.GlobalLib)
+                            if (key == Global.GlobalLib)
                             {
                                 br.BaseStream.Position += WriterSlotSize;
                                 break;
@@ -46,69 +48,69 @@ namespace GlobalLib.Support.Underground2
                             else
                                 goto default;
 
-                        case Reflection.ID.Global.Materials:
+                        case Global.Materials:
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.TPKBlocks:
+                        case Global.TPKBlocks:
                             while (db.TPKBlocks[tpkindex].InGlobalA)
                                 ++tpkindex;
                             I_TPKBlock(db, bw, ref tpkindex);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.ELabGlobal:
+                        case Global.ELabGlobal:
                             I_GlobalLibBlock(bw);
                             goto default;
 
-                        case Reflection.ID.Global.CarTypeInfo:
+                        case Global.CarTypeInfo:
                             I_CarTypeInfo(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.CarSkins:
+                        case Global.CarSkins:
                             I_CarSkins(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.SlotTypes:
+                        case Global.SlotTypes:
                             I_SlotType(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.CarParts:
+                        case Global.CarParts:
                             I_CarParts(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.Tracks:
+                        case Global.Tracks:
                             I_Tracks(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.SunInfos:
+                        case Global.SunInfos:
                             I_SunInfos(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.XenonTrig:
+                        case Global.XenonTrig:
                             I_GlobalLibBlock(bw);
                             goto default;
 
-                        case Reflection.ID.Global.CareerInfo:
+                        case Global.CareerInfo:
                             if (careerdone) goto default;
                             I_GlobalLibBlock(bw);
-                            Framework.CareerManager.Assemble(bw, db);
+                            CareerManager.Assemble(bw, db);
                             br.BaseStream.Position += WriterSlotSize;
                             careerdone = true;
                             break;
 
-                        case Reflection.ID.Global.PresetRides:
+                        case Global.PresetRides:
                             I_PresetRides(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.FloatChunk:
+                        case Global.FloatChunk:
                             I_GlobalLibBlock(bw);
                             goto default;
 

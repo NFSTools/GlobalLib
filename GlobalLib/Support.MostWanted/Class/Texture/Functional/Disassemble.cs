@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class Texture
     {
@@ -8,7 +11,7 @@
         /// <param name="byteptr_t">Pointer to the texture header array.</param>
         protected override unsafe void Disassemble(byte* byteptr_t)
         {
-            this._collection_name = Utils.ScriptX.NullTerminatedString(byteptr_t + 0xC , 0x18);
+            this._collection_name = ScriptX.NullTerminatedString(byteptr_t + 0xC , 0x18);
 
             this.BinKey = *(uint*)(byteptr_t  + 0x24);
             this._class = *(uint*)(byteptr_t  + 0x28);
@@ -51,9 +54,9 @@
             this._unknown5 = *(int*)(byteptr_t  + 0x78);
 
             // Get compression name
-            if (this._compression == Reflection.ID.EAComp.SECRET)
+            if (this._compression == EAComp.SECRET)
             {
-                this._compression = Reflection.ID.EAComp.P8_08;
+                this._compression = EAComp.P8_08;
                 this._secretp8 = true;
             }
         }

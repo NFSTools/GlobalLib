@@ -1,4 +1,12 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Support.Carbon.Parts.PresetParts;
+using GlobalLib.Support.Shared.Parts.PresetParts;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class PresetRide
     {
@@ -9,15 +17,15 @@
         public override unsafe byte[] Assemble()
         {
             var result = new byte[this.data.Length];
-            System.Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
+            Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
             fixed (byte* byteptr_t = &result[0])
             {
-                var parts = new Shared.Parts.PresetParts.Concatenator();
-                var add_on = new Shared.Parts.PresetParts.Add_On();
+                var parts = new Concatenator();
+                var add_on = new Add_On();
 
                 // Frontend and Pvehicle
-                this._Frontend_Hash = Utils.Vlt.SmartHash(this.Frontend);
-                this._Pvehicle_Hash = Utils.Vlt.SmartHash(this.Pvehicle);
+                this._Frontend_Hash = Vlt.SmartHash(this.Frontend);
+                this._Pvehicle_Hash = Vlt.SmartHash(this.Pvehicle);
 
                 // _BASE
                 parts._BASE = MODEL + parts._BASE;
@@ -41,11 +49,11 @@
                 parts._LEFT_BRAKELIGHT_GLASS = MODEL + parts._LEFT_BRAKELIGHT_GLASS;
 
                 // _LEFT_HEADLIGHT
-                if (this._popup_headlights_exist == Reflection.Enum.eBoolean.False)
+                if (this._popup_headlights_exist == eBoolean.False)
                     parts._LEFT_HEADLIGHT = MODEL + parts._LEFT_HEADLIGHT;
                 else
                 {
-                    parts._LEFT_HEADLIGHT = (this._popup_heaglights_on == Reflection.Enum.eBoolean.True)
+                    parts._LEFT_HEADLIGHT = (this._popup_heaglights_on == eBoolean.True)
                         ? MODEL + parts._LEFT_HEADLIGHT + add_on._ON
                         : MODEL + parts._LEFT_HEADLIGHT + add_on._OFF;
                 }
@@ -64,11 +72,11 @@
                 parts._RIGHT_BRAKELIGHT_GLASS = MODEL + parts._RIGHT_BRAKELIGHT_GLASS;
 
                 // _RIGHT_HEADLIGHT
-                if (this._popup_headlights_exist == Reflection.Enum.eBoolean.False)
+                if (this._popup_headlights_exist == eBoolean.False)
                     parts._RIGHT_HEADLIGHT = MODEL + parts._RIGHT_HEADLIGHT;
                 else
                 {
-                    parts._RIGHT_HEADLIGHT = (this._popup_heaglights_on == Reflection.Enum.eBoolean.True)
+                    parts._RIGHT_HEADLIGHT = (this._popup_heaglights_on == eBoolean.True)
                         ? MODEL + parts._RIGHT_HEADLIGHT + add_on._ON
                         : MODEL + parts._RIGHT_HEADLIGHT + add_on._OFF;
                 }
@@ -89,25 +97,25 @@
                 else
                 {
                     parts._KIT00_EXHAUST = add_on.EXHAUST + add_on._STYLE + this._exhaust_style.ToString("00");
-                    if (this._is_center_exhaust == Reflection.Enum.eBoolean.True)
+                    if (this._is_center_exhaust == eBoolean.True)
                         parts._KIT00_EXHAUST += add_on._CENTER;
                     parts._KIT00_EXHAUST += add_on._LEVEL1;
                 }
 
                 // _SPOILER
-                if (this._spoiler_type == Reflection.Enum.eSTypes.NULL)
+                if (this._spoiler_type == eSTypes.NULL)
                     parts._SPOILER = "";
-                else if (this._spoiler_type == Reflection.Enum.eSTypes.STOCK || this._spoiler_style == 0)
+                else if (this._spoiler_type == eSTypes.STOCK || this._spoiler_style == 0)
                     parts._SPOILER = MODEL + parts._SPOILER;
                 else
                 {
-                    parts._SPOILER = (this._is_autosculpt_spoiler == Reflection.Enum.eBoolean.True)
+                    parts._SPOILER = (this._is_autosculpt_spoiler == eBoolean.True)
                         ? add_on.AS_SPOILER
                         : add_on.SPOILER;
                     parts._SPOILER += add_on._STYLE + this._spoiler_style.ToString("00");
-                    if (this._spoiler_type != Reflection.Enum.eSTypes.BASE)
+                    if (this._spoiler_type != eSTypes.BASE)
                         parts._SPOILER += this._spoiler_type.ToString();
-                    if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
+                    if (this._is_carbonfibre_spoiler == eBoolean.True)
                         parts._SPOILER += add_on._CF;
                 }
 
@@ -176,7 +184,7 @@
 
             LABEL_NEXT:
                 // _ROOF (_CHOP_TOP)
-                parts._ROOF = (this._choptop_is_on == Reflection.Enum.eBoolean.True)
+                parts._ROOF = (this._choptop_is_on == eBoolean.True)
                     ? MODEL + parts._ROOF + "_CHOP_TOP"
                     : MODEL + parts._ROOF;
 
@@ -186,11 +194,11 @@
                 else
                 {
                     parts.ROOF_STYLE += this._roofscoop_style.ToString("00");
-                    if (this._is_dual_roofscoop == Reflection.Enum.eBoolean.True)
+                    if (this._is_dual_roofscoop == eBoolean.True)
                         parts.ROOF_STYLE += add_on._DUAL;
-                    if ((this._is_autosculpt_roofscoop == Reflection.Enum.eBoolean.True) && (this._is_dual_roofscoop == Reflection.Enum.eBoolean.False))
+                    if ((this._is_autosculpt_roofscoop == eBoolean.True) && (this._is_dual_roofscoop == eBoolean.False))
                         parts.ROOF_STYLE += add_on._AUTOSCULPT;
-                    if (this._is_carbonfibre_roofscoop == Reflection.Enum.eBoolean.True)
+                    if (this._is_carbonfibre_roofscoop == eBoolean.True)
                         parts.ROOF_STYLE += add_on._CF;
                 }
 
@@ -200,9 +208,9 @@
                 else
                 {
                     parts._HOOD = MODEL + add_on._STYLE + add_on._0 + this._hood_style.ToString() + parts._HOOD;
-                    if (this._is_autosculpt_hood == Reflection.Enum.eBoolean.True)
+                    if (this._is_autosculpt_hood == eBoolean.True)
                         parts._HOOD += add_on._AS;
-                    if (this._is_carbonfibre_hood == Reflection.Enum.eBoolean.True)
+                    if (this._is_carbonfibre_hood == eBoolean.True)
                         parts._HOOD += add_on._CF;
                 }
 
@@ -229,8 +237,8 @@
                 // _WHEEL
                 switch (this._rim_brand)
                 {
-                    case Reflection.BaseArguments.NULL:
-                    case Reflection.BaseArguments.STOCK:
+                    case BaseArguments.NULL:
+                    case BaseArguments.STOCK:
                         parts._WHEEL = MODEL + parts._WHEEL; // null, empty, NULL or STOCK
                         break;
                     case "AUTOSCLPT":
@@ -247,12 +255,12 @@
                     : string.Empty;
 
                 // WINDOW_TINT
-                if (this._window_tint_type != Reflection.BaseArguments.STOCK)
+                if (this._window_tint_type != BaseArguments.STOCK)
                     parts.WINDOW_TINT_STOCK = this._window_tint_type;
 
                 // Carpaint
                 parts.PAINT = this._paint_type.ToString();
-                parts.SWATCH_COLOR = Utils.EA.Resolve.GetSwatchString(this._paint_swatch);
+                parts.SWATCH_COLOR = Resolve.GetSwatchString(this._paint_swatch);
 
                 // Hash all strings to keys
                 var keys = this.StringToKey(parts);
@@ -372,7 +380,7 @@
                 *(byteptr_t + 0x23E) = this.REARBUMPER.AutosculptZone8;
                 *(byteptr_t + 0x23F) = this.REARBUMPER.AutosculptZone9;
                 if (this._autosculpt_rearbumper >= 1 && this._autosculpt_rearbumper <= 10)
-                    *(byteptr_t + 0x237 + Parts.PresetParts.Zones.ExhPos[this._autosculpt_rearbumper]) = this._exhaust_size;
+                    *(byteptr_t + 0x237 + Zones.ExhPos[this._autosculpt_rearbumper]) = this._exhaust_size;
 
                 *(byteptr_t + 0x242) = this.SKIRT.AutosculptZone1;
                 *(byteptr_t + 0x243) = this.SKIRT.AutosculptZone2;

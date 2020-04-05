@@ -1,10 +1,10 @@
-﻿using GlobalLib.Reflection.Interface;
-
-
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+using System;
 
 namespace GlobalLib.Support.Carbon.Parts.PresetParts
 {
-    public class Autosculpt : Reflection.Abstract.SubPart, ICopyable<Autosculpt>
+    public class Autosculpt : SubPart, ICopyable<Autosculpt>
     {
         private byte _zone1 = 0;
         private byte _zone2 = 0;
@@ -22,7 +22,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone1 = value;
             }
@@ -34,7 +34,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone2 = value;
             }
@@ -46,7 +46,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone3 = value;
             }
@@ -58,7 +58,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone4 = value;
             }
@@ -70,7 +70,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone5 = value;
             }
@@ -82,7 +82,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone6 = value;
             }
@@ -94,7 +94,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone7 = value;
             }
@@ -106,7 +106,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone8 = value;
             }
@@ -118,7 +118,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 100)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 100.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 100.");
                 else
                     this._zone9 = value;
             }

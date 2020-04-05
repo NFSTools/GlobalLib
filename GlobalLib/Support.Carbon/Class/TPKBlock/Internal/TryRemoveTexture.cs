@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.Enum;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class TPKBlock
     {
@@ -8,7 +10,7 @@
         /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to be deleted.</param>
         /// <param name="type">Type fo the key passed.</param>
         /// <returns>True if texture removing was successful, false otherwise.</returns>
-        public override bool TryRemoveTexture(uint key, Reflection.Enum.eKeyType type)
+        public override bool TryRemoveTexture(uint key, eKeyType type)
         {
             var index = this.GetTextureIndex(key, type);
             if (index == -1) return false;
@@ -23,7 +25,7 @@
         /// <param name="type">Type of the key passed.</param>
         /// <param name="error">Error occured when trying to remove a texture.</param>
         /// <returns>True if texture removing was successful, false otherwise.</returns>
-        public override bool TryRemoveTexture(uint key, Reflection.Enum.eKeyType type, out string error)
+        public override bool TryRemoveTexture(uint key, eKeyType type, out string error)
         {
             error = null;
             var index = this.GetTextureIndex(key, type);

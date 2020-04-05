@@ -1,6 +1,9 @@
-﻿using System;
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+using System;
 using System.IO;
 using System.Windows.Forms;
+//using System.Windows.Forms;
 
 
 
@@ -19,7 +22,7 @@ namespace GlobalLib.Support.Underground2
             Audios_dir += @"\CARS\AUDIO\GEOMETRY.BIN";
             if (!File.Exists(Audios_dir))
 			{
-				if (Core.Process.MessageShow)
+				if (Process.MessageShow)
 					MessageBox.Show(@"File CARS\AUDIO\GEOMETRY.BIN does not exist.", "Failure");
 				else
 					Console.WriteLine(@"File CARS\AUDIO\GEOMETRY.BIN does not exist.");
@@ -51,12 +54,12 @@ namespace GlobalLib.Support.Underground2
 						}
 						if (ID != 0x00134011) continue;
 						br.BaseStream.Position += 0xA4;
-						string audio = Utils.ScriptX.NullTerminatedString(br);
+						string audio = ScriptX.NullTerminatedString(br);
 						br.BaseStream.Position -= 0xB0 + audio.Length + 1;
 						audio = audio.Substring(0, audio.LastIndexOf('_')); // throw away _A and _PAIN
-						Utils.Bin.Hash(audio); // put in the map
-						if (!Core.Map.AudioTypes.Contains(audio))
-							Core.Map.AudioTypes.Add(audio);
+						Bin.Hash(audio); // put in the map
+						if (!Map.AudioTypes.Contains(audio))
+							Map.AudioTypes.Add(audio);
 						br.ReadBytes(br.ReadInt32());
 					}
 				}
@@ -64,18 +67,18 @@ namespace GlobalLib.Support.Underground2
 			catch (Exception e)
 			{
 				while (e.InnerException != null) e = e.InnerException;
-				if (Core.Process.MessageShow)
+				if (Process.MessageShow)
 					MessageBox.Show(e.Message, "Failure");
 				else
 					Console.WriteLine(e.Message);
 				return false;
 			}
 
-			for (int a1 = 0; a1 < Core.Map.AudioTypes.Count; ++a1)
+			for (int a1 = 0; a1 < Map.AudioTypes.Count; ++a1)
 			{
-				string audio = Core.Map.AudioTypes[a1];
+				string audio = Map.AudioTypes[a1];
 				if (audio.StartsWith("AUDIO_COMP_SPEAKER"))
-					Core.Map.AudioTypes[a1] = $"{audio.Substring(0, 18)}_{audio.Substring(18, audio.Length - 18)}";
+					Map.AudioTypes[a1] = $"{audio.Substring(0, 18)}_{audio.Substring(18, audio.Length - 18)}";
 			}
 			return true;
         }

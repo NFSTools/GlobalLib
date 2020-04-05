@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.CarParts
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Underground2.Parts.CarParts
 {
     public class Part56
     {
@@ -7,7 +13,7 @@
         public bool IsCar { get; set; } = false;
         public byte[] Data { get; private set; }
         public byte Index { get; private set; } = 0xFF;
-        public Reflection.Enum.eUsageType Usage { get; set; } = Reflection.Enum.eUsageType.Racer;
+        public eUsageType Usage { get; set; } = eUsageType.Racer;
 
         /// <summary>
         /// Game index to which the class belongs to.
@@ -27,12 +33,12 @@
             get => this._key;
             set
             {
-                if (!Core.Map.BinKeys.ContainsKey(_key))
-                    throw new Reflection.Exception.MappingFailException();
+                if (!Map.BinKeys.ContainsKey(_key))
+                    throw new MappingFailException();
                 else
                 {
                     this._key = value;
-                    this._collection_name = Core.Map.BinKeys[value];
+                    this._collection_name = Map.BinKeys[value];
                 }
             }
         }
@@ -46,11 +52,11 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new ArgumentNullException();
                 else
                 {
                     this._collection_name = value;
-                    uint temp = Utils.Bin.Hash(value);
+                    uint temp = Bin.Hash(value);
                     this._key = temp;
                 }
             }
@@ -70,21 +76,21 @@
         public Part56() { }
 
         // Default constructor: initialize new part56
-        public unsafe Part56(string CName, Reflection.Enum.eUsageType type, int entries, int racers, int trafs)
+        public unsafe Part56(string CName, eUsageType type, int entries, int racers, int trafs)
         {
-            this._key = Utils.Bin.Hash(CName);
+            this._key = Bin.Hash(CName);
             this._collection_name = CName;
             this.IsCar = true;
             this.Usage = type;
 
-            if (type == Reflection.Enum.eUsageType.Racer)
+            if (type == eUsageType.Racer)
             {
                 this.Data = new byte[0xEC4];
                 fixed (byte* byteptr_t = &this.Data[0])
                 {
                     for (int a1 = 0, a2 = 0; a1 < 0x10E; ++a1, a2 += 0xE)
                     {
-                        *(uint*)(byteptr_t + a2) = Utils.Bin.Hash(CName + UsageType.PartName[a1]);
+                        *(uint*)(byteptr_t + a2) = Bin.Hash(CName + UsageType.PartName[a1]);
                         *(byteptr_t + a2 + 4) = UsageType.CarSlotID[a1];
                         *(ushort*)(byteptr_t + a2 + 5) = UsageType.Unknown1[a1];
                         *(byteptr_t + a2 + 7) = this.Index;
@@ -99,14 +105,14 @@
                     }
                 }
             }
-            else if (type == Reflection.Enum.eUsageType.Traffic)
+            else if (type == eUsageType.Traffic)
             {
                 this.Data = new byte[0x2A];
                 fixed (byte* byteptr_t = &this.Data[0])
                 {
                     for (int a1 = 0, a2 = 0; a1 < 3; ++a1, a2 += 0xE)
                     {
-                        *(uint*)(byteptr_t + a2) = Utils.Bin.Hash(CName + UsageType.TrafficPartName[a1]);
+                        *(uint*)(byteptr_t + a2) = Bin.Hash(CName + UsageType.TrafficPartName[a1]);
                         *(byteptr_t + a2 + 4) = UsageType.CarSlotID[a1];
                         *(ushort*)(byteptr_t + a2 + 5) = UsageType.TrafficUnknown1[a1];
                         *(byteptr_t + a2 + 7) = this.Index;
@@ -128,14 +134,14 @@
             this.Index = *(part6ptr_t + 7); // get index of the part
             this.IsCar = IsCar;
             if (IsCar)
-                this._collection_name = Core.Map.Lookup(key, false);
+                this._collection_name = Map.Lookup(key, false);
 
             // Copy part6 into memory
             for (int a1 = 0; a1 < length; ++a1)
                 this.Data[a1] = *(part6ptr_t + a1);
 
-            if (length == 0x2A && IsCar) this.Usage = Reflection.Enum.eUsageType.Traffic;
-            else if (length == 0xEC4 && IsCar) this.Usage = Reflection.Enum.eUsageType.Racer;
+            if (length == 0x2A && IsCar) this.Usage = eUsageType.Traffic;
+            else if (length == 0xEC4 && IsCar) this.Usage = eUsageType.Racer;
         }
 
         public override string ToString()
@@ -153,7 +159,7 @@
         {
             var result = new Part56();
             result.Data = new byte[this.Data.Length];
-            System.Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
+            Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
             result._collection_name = this._collection_name;
             result._key = this._key;
             result.IsCar = this.IsCar;
@@ -175,11 +181,11 @@
 
             fixed (byte* byteptr_t = &result.Data[0])
             {
-                if (this.Usage == Reflection.Enum.eUsageType.Racer)
+                if (this.Usage == eUsageType.Racer)
                 {
                     for (int a1 = 0, a2 = 0; a1 < 0x10E; ++a1, a2 += 0xE)
                     {
-                        *(uint*)(byteptr_t + a2) = Utils.Bin.Hash(CName + UsageType.PartName[a1]);
+                        *(uint*)(byteptr_t + a2) = Bin.Hash(CName + UsageType.PartName[a1]);
                         *(ushort*)(byteptr_t + a2 + 10) = (a1 == 63 || (a1 >= 65 && a1 <= 68) ||
                             (a1 >= 94 && a1 <= 98) || (a1 >= 122 && a1 <= 126) || (a1 >= 160 && a1 <= 193))
                             ? (ushort)(UsageType.Unknown2[a1] + 0x8F * (racers + 1) + 1)
@@ -189,11 +195,11 @@
                             : UsageType.FeCustRecID[a1];
                     }
                 }
-                else if (this.Usage == Reflection.Enum.eUsageType.Traffic)
+                else if (this.Usage == eUsageType.Traffic)
                 {
                     for (int a1 = 0, a2 = 0; a1 < 3; ++a1, a2 += 0xE)
                     {
-                        *(uint*)(byteptr_t + a2) = Utils.Bin.Hash(CName + UsageType.TrafficPartName[a1]);
+                        *(uint*)(byteptr_t + a2) = Bin.Hash(CName + UsageType.TrafficPartName[a1]);
                         *(ushort*)(byteptr_t + a2 + 12) = (a1 == 0)
                             ? UsageType.TrafficFeCustRecID[a1]
                             : (ushort)(entries + (trafs * 2) + (racers * 6) + UsageType.TrafficFeCustRecID[a1]);

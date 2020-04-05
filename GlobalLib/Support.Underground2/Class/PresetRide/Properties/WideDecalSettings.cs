@@ -1,108 +1,113 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class PresetRide
 	{
-		private Reflection.Enum.eDecalType _decaltype_hood = Reflection.Enum.eDecalType.MEDIUM;
-		private Reflection.Enum.eDecalType _decaltype_leftquarter = Reflection.Enum.eDecalType.MEDIUM;
-		private Reflection.Enum.eDecalType _decaltype_rightquarter = Reflection.Enum.eDecalType.MEDIUM;
-		private Reflection.Enum.eWideDecalType _decalwide_leftdoor = Reflection.Enum.eWideDecalType.NONE;
-		private Reflection.Enum.eWideDecalType _decalwide_rightdoor = Reflection.Enum.eWideDecalType.NONE;
-		private Reflection.Enum.eWideDecalType _decalwide_leftquarter = Reflection.Enum.eWideDecalType.NONE;
-		private Reflection.Enum.eWideDecalType _decalwide_rightquarter = Reflection.Enum.eWideDecalType.NONE;
+		private eDecalType _decaltype_hood = eDecalType.MEDIUM;
+		private eDecalType _decaltype_leftquarter = eDecalType.MEDIUM;
+		private eDecalType _decaltype_rightquarter = eDecalType.MEDIUM;
+		private eWideDecalType _decalwide_leftdoor = eWideDecalType.NONE;
+		private eWideDecalType _decalwide_rightdoor = eWideDecalType.NONE;
+		private eWideDecalType _decalwide_leftquarter = eWideDecalType.NONE;
+		private eWideDecalType _decalwide_rightquarter = eWideDecalType.NONE;
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eDecalType DecalTypeHood
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eDecalType DecalTypeHood
 		{
 			get => this._decaltype_hood;
 			set
 			{
-				if (!System.Enum.IsDefined(typeof(Reflection.Enum.eDecalType), value))
-					throw new Reflection.Exception.MappingFailException();
+				if (!Enum.IsDefined(typeof(eDecalType), value))
+					throw new MappingFailException();
 				this._decaltype_hood = value;
 				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eDecalType DecalTypeLeftQuarter
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eDecalType DecalTypeLeftQuarter
 		{
 			get => this._decaltype_leftquarter;
 			set
 			{
-				if (!System.Enum.IsDefined(typeof(Reflection.Enum.eDecalType), value))
-					throw new Reflection.Exception.MappingFailException();
+				if (!Enum.IsDefined(typeof(eDecalType), value))
+					throw new MappingFailException();
 				this._decaltype_leftquarter = value;
 				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eDecalType DecalTypeRightQuarter
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eDecalType DecalTypeRightQuarter
 		{
 			get => this._decaltype_rightquarter;
 			set
 			{
-				if (!System.Enum.IsDefined(typeof(Reflection.Enum.eDecalType), value))
-					throw new Reflection.Exception.MappingFailException();
+				if (!Enum.IsDefined(typeof(eDecalType), value))
+					throw new MappingFailException();
 				this._decaltype_rightquarter = value;
 				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eWideDecalType DecalWideLeftDoor
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eWideDecalType DecalWideLeftDoor
 		{
 			get => this._decalwide_leftdoor;
 			set
 			{
-				if (!System.Enum.IsDefined(typeof(Reflection.Enum.eWideDecalType), value))
-					throw new Reflection.Exception.MappingFailException();
+				if (!Enum.IsDefined(typeof(eWideDecalType), value))
+					throw new MappingFailException();
 				this._decalwide_leftdoor = value;
 				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eWideDecalType DecalWideRightDoor
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eWideDecalType DecalWideRightDoor
 		{
 			get => this._decalwide_rightdoor;
 			set
 			{
-				if (!System.Enum.IsDefined(typeof(Reflection.Enum.eWideDecalType), value))
-					throw new Reflection.Exception.MappingFailException();
+				if (!Enum.IsDefined(typeof(eWideDecalType), value))
+					throw new MappingFailException();
 				this._decalwide_rightdoor = value;
 				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eWideDecalType DecalWideLeftQuarter
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eWideDecalType DecalWideLeftQuarter
 		{
 			get => this._decalwide_leftquarter;
 			set
 			{
-				if (!System.Enum.IsDefined(typeof(Reflection.Enum.eWideDecalType), value))
-					throw new Reflection.Exception.MappingFailException();
+				if (!Enum.IsDefined(typeof(eWideDecalType), value))
+					throw new MappingFailException();
 				this._decalwide_leftquarter = value;
 				this.Modified = true;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eWideDecalType DecalWideRightQuarter
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eWideDecalType DecalWideRightQuarter
 		{
 			get => this._decalwide_rightquarter;
 			set
 			{
-				if (!System.Enum.IsDefined(typeof(Reflection.Enum.eWideDecalType), value))
-					throw new Reflection.Exception.MappingFailException();
+				if (!Enum.IsDefined(typeof(eWideDecalType), value))
+					throw new MappingFailException();
 				this._decalwide_rightquarter = value;
 				this.Modified = true;
 			}

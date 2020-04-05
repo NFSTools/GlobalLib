@@ -1,11 +1,14 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Support.Underground2.Parts.CarParts;
+using System.Collections.Generic;
+
+namespace GlobalLib.Support.Underground2
 {
 	public static partial class LoadData
 	{
 		private static unsafe void E_CarSkins(byte* byteptr_t, uint length, Database.Underground2 db)
 		{
 			const uint size = 0x40;
-			var map = new System.Collections.Generic.Dictionary<int, string>();
+			var map = new Dictionary<int, string>();
 
 			foreach (var car in db.CarTypeInfos.Collections)
 				map[car.Index] = car.CollectionName;
@@ -14,7 +17,7 @@
 			{
 				uint offset = loop * size;
 
-				var Reader = new Parts.CarParts.CarSkin();
+				var Reader = new CarSkin();
 				Reader.Read(byteptr_t + offset, out int id, out int index);
 				var car = db.CarTypeInfos.FindCollection(map[id]);
 				if (car == null) continue;

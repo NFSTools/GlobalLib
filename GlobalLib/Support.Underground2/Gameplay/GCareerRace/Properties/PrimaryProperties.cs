@@ -1,122 +1,128 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using System;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class GCareerRace
 	{
 		private byte _num_of_opponents = 0;
 		private byte _num_of_stages = 1;
-		private string _player_car_type = Reflection.BaseArguments.NULL;
-		private Reflection.Enum.eEventIconType _event_icon_type = Reflection.Enum.eEventIconType.REGULAR;
-		private Reflection.Enum.eTrackDifficulty _difficulty_level = Reflection.Enum.eTrackDifficulty.TRACK_DIFFICULTY_MEDIUM;
-		private Reflection.Enum.eBoolean _is_drive_to_gps = Reflection.Enum.eBoolean.False;
-		private Reflection.Enum.eBoolean _is_hidden_event = Reflection.Enum.eBoolean.False;
+		private string _player_car_type = BaseArguments.NULL;
+		private eEventIconType _event_icon_type = eEventIconType.REGULAR;
+		private eTrackDifficulty _difficulty_level = eTrackDifficulty.TRACK_DIFFICULTY_MEDIUM;
+		private eBoolean _is_drive_to_gps = eBoolean.False;
+		private eBoolean _is_hidden_event = eBoolean.False;
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public int EarnableRespect { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public string PlayerCarType
 		{
 			get => this._player_car_type;
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				this._player_car_type = value;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public int CashValue { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eEventIconType EventIconType
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eEventIconType EventIconType
 		{
 			get => this._event_icon_type;
 			set
 			{
-				if (System.Enum.IsDefined(typeof(Reflection.Enum.eEventIconType), value))
+				if (Enum.IsDefined(typeof(eEventIconType), value))
 					this._event_icon_type = value;
 				else
-					throw new Reflection.Exception.MappingFailException();
+					throw new MappingFailException();
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		public Reflection.Enum.eBoolean IsDriveToGPS
+		[AccessModifiable()]
+		public eBoolean IsDriveToGPS
 		{
 			get => this._is_drive_to_gps;
 			set
 			{
-				if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+				if (Enum.IsDefined(typeof(eBoolean), value))
 					this._is_drive_to_gps = value;
 				else
-					throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
+					throw new ArgumentOutOfRangeException("Value passed is not of boolean type.");
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eTrackDifficulty DifficultyLevel
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eTrackDifficulty DifficultyLevel
 		{
 			get => this._difficulty_level;
 			set
 			{
-				if (System.Enum.IsDefined(typeof(Reflection.Enum.eTrackDifficulty), value))
+				if (Enum.IsDefined(typeof(eTrackDifficulty), value))
 					this._difficulty_level = value;
 				else
-					throw new Reflection.Exception.MappingFailException();
+					throw new MappingFailException();
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public byte BelongsToStage { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public byte NumOpponents
 		{
 			get => this._num_of_opponents;
 			set
 			{
 				if (value < 0 || value > 5)
-					throw new System.ArgumentOutOfRangeException("Value passed should be in range 0-5.");
+					throw new ArgumentOutOfRangeException("Value passed should be in range 0-5.");
 				this._num_of_opponents = value;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public byte UnknownDragValue { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public byte NumStages
 		{
 			get => this._num_of_stages;
 			set
 			{
 				if (value < 0 || value > 4)
-					throw new System.ArgumentOutOfRangeException("Value passed should be in range 0-4.");
+					throw new ArgumentOutOfRangeException("Value passed should be in range 0-4.");
 				this._num_of_stages = value;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eBoolean IsHiddenEvent
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eBoolean IsHiddenEvent
 		{
 			get => this._is_hidden_event;
 			set
 			{
-				if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+				if (Enum.IsDefined(typeof(eBoolean), value))
 					this._is_hidden_event = value;
 				else
-					throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
+					throw new ArgumentOutOfRangeException("Value passed is not of boolean type.");
 			}
 		}
 

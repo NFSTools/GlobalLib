@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.MostWanted
+﻿using GlobalLib.Support.MostWanted.Parts.CarParts;
+
+namespace GlobalLib.Support.MostWanted
 {
     public static partial class LoadData
     {
@@ -16,7 +18,7 @@
                 for (int a1 = 0; a1 < length; ++a1)
                     *(dataptr_t + a1) = *(byteptr_t + a1);
             }
-            db.SlotTypes.Spoilers = new Parts.CarParts.Spoilers(Data);
+            db.SlotTypes.Spoilers = new Spoilers(Data);
         }
     }
 }

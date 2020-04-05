@@ -4,8 +4,6 @@ using GlobalLib.Utils;
 using GlobalLib.Reflection.ID;
 using GlobalLib.Reflection.Abstract;
 
-
-
 namespace GlobalLib.Support.Shared.Class
 {
     public class Material : Collectable

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Support.MostWanted.Parts.CarParts;
+using System.Collections.Generic;
 
 
 
@@ -8,7 +11,7 @@ namespace GlobalLib.Support.MostWanted
     {
         private static unsafe void E_Collisions(byte* byteptr_t, uint length, Database.MostWanted db)
         {
-            db.SlotTypes.Collisions = new Dictionary<uint, Parts.CarParts.Collision>();
+            db.SlotTypes.Collisions = new Dictionary<uint, Collision>();
 
             // Make a map of vlt hash cartypeinfo and indexes
             var CNameToIndex = new Dictionary<uint, string>();
@@ -20,13 +23,13 @@ namespace GlobalLib.Support.MostWanted
             {
                 uint ID = *(uint*)(byteptr_t + offset);
                 int size = *(int*)(byteptr_t + offset + 4);
-                if (ID == Reflection.ID.CarParts.Collision)
+                if (ID == CarParts.Collision)
                 {
                     uint intkey = *(uint*)(byteptr_t + offset + 8);
                     uint extkey = *(uint*)(byteptr_t + offset + 16);
 
                     // If internal key exists and map shows a string for it
-                    if (intkey != 0x11111111 && intkey != 0 && Core.Map.CollisionMap.TryGetValue(intkey, out string CName))
+                    if (intkey != 0x11111111 && intkey != 0 && Map.CollisionMap.TryGetValue(intkey, out string CName))
                     {
                         // If collision is not in the map, plug it in
                         if (!db.SlotTypes.Collisions.ContainsKey(intkey))
@@ -39,7 +42,7 @@ namespace GlobalLib.Support.MostWanted
                                     *(dataptr_t + a1) = *(byteptr_t + offset + a1);
                                 *(uint*)(dataptr_t + 16) = 0xFFFFFFFF;
                             }
-                            var Class = new Parts.CarParts.Collision(data, CName);
+                            var Class = new Collision(data, CName);
                             db.SlotTypes.Collisions[intkey] = Class;
                         }
 
@@ -64,9 +67,9 @@ namespace GlobalLib.Support.MostWanted
                         }
 
                         // If collision map has value for external key
-                        if (Core.Map.CollisionMap.TryGetValue(extkey, out string ExName))
+                        if (Map.CollisionMap.TryGetValue(extkey, out string ExName))
                         {
-                            var Class = new Parts.CarParts.Collision(data, ExName);
+                            var Class = new Collision(data, ExName);
                             db.SlotTypes.Collisions[extkey] = Class;
 
                             // Check if cartypeinfo with a set external key exists
@@ -79,7 +82,7 @@ namespace GlobalLib.Support.MostWanted
                         }
                         else
                         {
-                            var Class = new Parts.CarParts.Collision(data, null);
+                            var Class = new Collision(data, null);
                             db.SlotTypes.Collisions[extkey] = Class;
                         }
                     }
@@ -88,11 +91,11 @@ namespace GlobalLib.Support.MostWanted
             }
 
             // New collision map based on real collisions
-            Core.Map.CollisionMap.Clear();
+            Map.CollisionMap.Clear();
             foreach (var collision in db.SlotTypes.Collisions)
             {
                 if (!collision.Value.Unknown)
-                    Core.Map.CollisionMap[collision.Key] = collision.Value.BelongsTo;
+                    Map.CollisionMap[collision.Key] = collision.Value.BelongsTo;
             }
         }
     }

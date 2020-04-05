@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Utils.EA;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class TPKBlock
     {
@@ -10,7 +13,7 @@
         protected override unsafe void GetCompressionList(byte* byteptr_t, int offset)
         {
             if (offset == -1) return;  // if Part5 does not exist
-            if (*(uint*)(byteptr_t + offset) != Reflection.ID.TPK.INFO_PART5_BLOCKID)
+            if (*(uint*)(byteptr_t + offset) != TPK.INFO_PART5_BLOCKID)
                 return; // check Part5 ID
 
             int ReaderSize = 8 + *(int*)(byteptr_t + offset + 4);
@@ -18,7 +21,7 @@
             while (current < ReaderSize)
             {
                 uint comp = *(uint*)(byteptr_t + offset + current);
-                if (Utils.EA.Comp.IsComp(comp))
+                if (Comp.IsComp(comp))
                     this.compressions.Add(comp);
                 current += 0x18;
             }

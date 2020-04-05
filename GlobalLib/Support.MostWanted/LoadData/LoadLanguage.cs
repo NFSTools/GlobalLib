@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GlobalLib.Core;
+using GlobalLib.Support.MostWanted.Class;
+using GlobalLib.Utils;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -23,13 +26,13 @@ namespace GlobalLib.Support.MostWanted
             {
                 db._LngGlobal = File.ReadAllBytes(Language_dir + "English.bin");
                 db._LngLabels = File.ReadAllBytes(Language_dir + "Labels.bin");
-                Utils.Log.Write("Reading data from English.bin...");
-                Utils.Log.Write("Reading data from Labels.bin...");
+                Log.Write("Reading data from English.bin...");
+                Log.Write("Reading data from Labels.bin...");
             }
             catch (Exception e)
             {
                 while (e.InnerException != null) e = e.InnerException;
-                if (Core.Process.MessageShow)
+                if (Process.MessageShow)
                     MessageBox.Show($"Error occured: {e.Message}", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     Console.WriteLine(e.Message);
@@ -37,13 +40,13 @@ namespace GlobalLib.Support.MostWanted
             }
 
             // Decompress if compressed
-            db._LngGlobal = Utils.JDLZ.Decompress(db._LngGlobal);
-            db._LngLabels = Utils.JDLZ.Decompress(db._LngLabels);
+            db._LngGlobal = JDLZ.Decompress(db._LngGlobal);
+            db._LngLabels = JDLZ.Decompress(db._LngLabels);
 
             // Use pointers to speed up process
             fixed (byte* strptr = &db._LngGlobal[0], labptr = &db._LngLabels[0])
             {
-                db.STRBlocks.Collections.Add(new Class.STRBlock(strptr, labptr, db._LngGlobal.Length, db._LngLabels.Length, db));
+                db.STRBlocks.Collections.Add(new STRBlock(strptr, labptr, db._LngGlobal.Length, db._LngLabels.Length, db));
             }
             return true;
         }

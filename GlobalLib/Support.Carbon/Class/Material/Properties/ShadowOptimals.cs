@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.Attributes;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class Material
     {
@@ -8,15 +11,15 @@
         /// <summary>
         /// Outer radius of the shadow fading.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float ShadowOuterRadius
         {
             get => this._shadow_outer_radius;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._shadow_outer_radius = value;
             }
@@ -25,15 +28,15 @@
         /// <summary>
         /// Value of the optimal light reflection on the material.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float OptimalLightReflection
         {
             get => this._optimal_light_reflection;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._optimal_light_reflection = value;
             }

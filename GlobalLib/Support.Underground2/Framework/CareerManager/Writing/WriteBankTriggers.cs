@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2.Framework
+﻿using GlobalLib.Reflection.ID;
+
+namespace GlobalLib.Support.Underground2.Framework
 {
 	public static partial class CareerManager
 	{
@@ -8,7 +10,7 @@
 			int offset = 8; // for calculating offsets
 			fixed (byte* byteptr_t = &result[0])
 			{
-				*(uint*)byteptr_t = Reflection.ID.CareerInfo.BANK_TRIGS_BLOCK; // write ID
+				*(uint*)byteptr_t = CareerInfo.BANK_TRIGS_BLOCK; // write ID
 				*(int*)(byteptr_t + 4) = result.Length - 8; // write size
 				foreach (var bank in db.BankTriggers.Collections)
 				{

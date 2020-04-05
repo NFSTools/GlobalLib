@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Attributes;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class Material
     {
@@ -8,15 +11,15 @@
         /// <summary>
         /// First alpha value of the material colors.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float AlphaValue1
         {
             get => this._transparency1;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._transparency1 = value;
             }
@@ -25,15 +28,15 @@
         /// <summary>
         /// Second alpha value of the material colors.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float AlphaValue2
         {
             get => this._transparency2;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._transparency2 = value;
             }

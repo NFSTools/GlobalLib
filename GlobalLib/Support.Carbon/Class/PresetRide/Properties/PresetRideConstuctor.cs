@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class PresetRide : Shared.Class.PresetRide
     {
@@ -15,7 +18,7 @@
             this.Frontend = "supra";
             this.Pvehicle = "supra";
             this.Initialize();
-            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+            Map.BinKeys[Bin.Hash(CName)] = CName;
             this.Modified = true;
         }
 

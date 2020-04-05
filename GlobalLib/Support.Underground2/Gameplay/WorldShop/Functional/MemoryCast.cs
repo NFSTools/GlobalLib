@@ -1,8 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Abstract;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class WorldShop
 	{
-		public override Reflection.Abstract.Collectable MemoryCast(string CName)
+		public override Collectable MemoryCast(string CName)
 		{
 			var result = new WorldShop(CName, this.Database);
 			result._event_to_complete = this._event_to_complete;

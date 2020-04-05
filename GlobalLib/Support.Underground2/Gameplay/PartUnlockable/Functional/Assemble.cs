@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class PartUnlockable
 	{
@@ -22,24 +25,24 @@
 			*(byteptr_t + 0x15) = (byte)2;
 			*(byteptr_t + 0x21) = (byte)3;
 
-			if (this._unlock_method_level1 == Reflection.Enum.ePartUnlockReq.SPECIFIC_SHOP_FOUND)
-				*(uint*)(byteptr_t + 0x0C) = Utils.Bin.SmartHash(this.UnlocksInShop_Level1);
+			if (this._unlock_method_level1 == ePartUnlockReq.SPECIFIC_SHOP_FOUND)
+				*(uint*)(byteptr_t + 0x0C) = Bin.SmartHash(this.UnlocksInShop_Level1);
 			else
 			{
 				*(byteptr_t + 0x0C) = this.RequiredRacesWon_Level1;
 				*(byteptr_t + 0x0E) = this.BelongsToStage_Level1;
 			}
 
-			if (this._unlock_method_level2 == Reflection.Enum.ePartUnlockReq.SPECIFIC_SHOP_FOUND)
-				*(uint*)(byteptr_t + 0x18) = Utils.Bin.SmartHash(this.UnlocksInShop_Level2);
+			if (this._unlock_method_level2 == ePartUnlockReq.SPECIFIC_SHOP_FOUND)
+				*(uint*)(byteptr_t + 0x18) = Bin.SmartHash(this.UnlocksInShop_Level2);
 			else
 			{
 				*(byteptr_t + 0x18) = this.RequiredRacesWon_Level2;
 				*(byteptr_t + 0x1A) = this.BelongsToStage_Level2;
 			}
 
-			if (this._unlock_method_level3 == Reflection.Enum.ePartUnlockReq.SPECIFIC_SHOP_FOUND)
-				*(uint*)(byteptr_t + 0x24) = Utils.Bin.SmartHash(this.UnlocksInShop_Level3);
+			if (this._unlock_method_level3 == ePartUnlockReq.SPECIFIC_SHOP_FOUND)
+				*(uint*)(byteptr_t + 0x24) = Bin.SmartHash(this.UnlocksInShop_Level3);
 			else
 			{
 				*(byteptr_t + 0x24) = this.RequiredRacesWon_Level3;

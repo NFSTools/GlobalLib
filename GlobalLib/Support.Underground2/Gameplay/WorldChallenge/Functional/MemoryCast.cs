@@ -1,8 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Abstract;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class WorldChallenge
 	{
-		public override Reflection.Abstract.Collectable MemoryCast(string CName)
+		public override Collectable MemoryCast(string CName)
 		{
 			var result = new WorldChallenge(CName, this.Database);
 			result._world_trigger = this._world_trigger;

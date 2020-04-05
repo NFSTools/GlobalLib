@@ -1,13 +1,20 @@
-﻿namespace GlobalLib.Support.Carbon.Parts.CarParts
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Reflection.Interface;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Carbon.Parts.CarParts
 {
-    public class Part56 : Reflection.Interface.ICastable<Part56>
+    public class Part56 : ICastable<Part56>
     {
         private uint _key = 0;
         private string _collection_name;
         public bool IsCar { get; set; } = false;
         public byte[] Data { get; private set; }
         public byte Index { get; private set; } = 0xFF;
-        public Reflection.Enum.eUsageType Usage { get; private set; } = Reflection.Enum.eUsageType.Racer;
+        public eUsageType Usage { get; private set; } = eUsageType.Racer;
 
         /// <summary>
         /// Game index to which the class belongs to.
@@ -27,12 +34,12 @@
             get => this._key;
             set
             {
-                if (!Core.Map.BinKeys.ContainsKey(_key))
-                    throw new Reflection.Exception.MappingFailException();
+                if (!Map.BinKeys.ContainsKey(_key))
+                    throw new MappingFailException();
                 else
                 {
                     this._key = value;
-                    this._collection_name = Core.Map.BinKeys[value];
+                    this._collection_name = Map.BinKeys[value];
                 }
             }
         }
@@ -46,11 +53,11 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new ArgumentNullException();
                 else
                 {
                     this._collection_name = value;
-                    uint temp = Utils.Bin.Hash(value);
+                    uint temp = Bin.Hash(value);
                     this._key = temp;
                 }
             }
@@ -74,14 +81,14 @@
         /// Sets new usage in the part56.
         /// </summary>
         /// <param name="usage">New usage to be set.</param>
-        public unsafe void SetUsage(Reflection.Enum.eUsageType usage)
+        public unsafe void SetUsage(eUsageType usage)
         {
             if (this.Usage == usage) return;
             this.Usage = usage;
             this.Data = null;
             switch (usage)
             {
-                case Reflection.Enum.eUsageType.Cop:
+                case eUsageType.Cop:
                     this.Data = new byte[204];
                     fixed (byte* byteptr_t = &this.Data[0])
                     {
@@ -94,7 +101,7 @@
                     }
                     break;
 
-                case Reflection.Enum.eUsageType.Traffic:
+                case eUsageType.Traffic:
                     this.Data = new byte[128];
                     fixed (byte* byteptr_t = &this.Data[0])
                     {
@@ -125,16 +132,16 @@
         public Part56() { }
 
         // Default constructor: initialize new part56
-        public unsafe Part56(string CName, byte index, Reflection.Enum.eUsageType usage)
+        public unsafe Part56(string CName, byte index, eUsageType usage)
         {
-            this._key = Utils.Bin.Hash(CName);
+            this._key = Bin.Hash(CName);
             this._collection_name = CName;
             this.Index = index;
             this.Usage = usage;
             this.IsCar = true;
             switch (usage)
             {
-                case Reflection.Enum.eUsageType.Cop:
+                case eUsageType.Cop:
                     this.Data = new byte[204];
                     fixed (byte* byteptr_t = &this.Data[0])
                     {
@@ -147,7 +154,7 @@
                     }
                     break;
 
-                case Reflection.Enum.eUsageType.Traffic:
+                case eUsageType.Traffic:
                     this.Data = new byte[128];
                     fixed (byte* byteptr_t = &this.Data[0])
                     {
@@ -183,7 +190,7 @@
             this.Index = *(part6ptr_t + 1); // get index of the part
             this.IsCar = IsCar;
             if (IsCar)
-                this._collection_name = Core.Map.Lookup(key, false);
+                this._collection_name = Map.Lookup(key, false);
 
             // Copy part6 data into memory
             fixed (byte* dataptr_t = &this.Data[0])
@@ -196,16 +203,16 @@
             switch (Data.Length)
             {
                 case 204:
-                    this.Usage = Reflection.Enum.eUsageType.Cop;
+                    this.Usage = eUsageType.Cop;
                     break;
                 case 128:
-                    this.Usage = Reflection.Enum.eUsageType.Traffic;
+                    this.Usage = eUsageType.Traffic;
                     break;
                 case 1108:
-                    this.Usage = Reflection.Enum.eUsageType.Racer;
+                    this.Usage = eUsageType.Racer;
                     break;
                 default:
-                    this.Usage = Reflection.Enum.eUsageType.Universal;
+                    this.Usage = eUsageType.Universal;
                     break;
             }
         }
@@ -225,7 +232,7 @@
         {
             var result = new Part56();
             result.Data = new byte[this.Data.Length];
-            System.Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
+            Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
             result._collection_name = this._collection_name;
             result._key = this._key;
             result.IsCar = this.IsCar;

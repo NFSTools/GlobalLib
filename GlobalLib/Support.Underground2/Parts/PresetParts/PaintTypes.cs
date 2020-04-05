@@ -1,19 +1,25 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public class PaintTypes : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<PaintTypes>
+	public class PaintTypes : SubPart, ICopyable<PaintTypes>
 	{
 		#region Private Fields
 
-		private string _base_paint_type = Reflection.BaseArguments.NULL;
-		private string _engine_paint_type = Reflection.BaseArguments.NULL;
-		private string _spoiler_paint_type = Reflection.BaseArguments.NULL;
-		private string _brakes_paint_type = Reflection.BaseArguments.NULL;
-		private string _exhaust_paint_type = Reflection.BaseArguments.NULL;
-		private string _audio_paint_type = Reflection.BaseArguments.NULL;
-		private string _rims_paint_type = Reflection.BaseArguments.NULL;
-		private string _spinners_paint_type = Reflection.BaseArguments.NULL;
-		private string _roof_paint_type = Reflection.BaseArguments.NULL;
-		private string _mirrors_paint_type = Reflection.BaseArguments.NULL;
+		private string _base_paint_type = BaseArguments.NULL;
+		private string _engine_paint_type = BaseArguments.NULL;
+		private string _spoiler_paint_type = BaseArguments.NULL;
+		private string _brakes_paint_type = BaseArguments.NULL;
+		private string _exhaust_paint_type = BaseArguments.NULL;
+		private string _audio_paint_type = BaseArguments.NULL;
+		private string _rims_paint_type = BaseArguments.NULL;
+		private string _spinners_paint_type = BaseArguments.NULL;
+		private string _roof_paint_type = BaseArguments.NULL;
+		private string _mirrors_paint_type = BaseArguments.NULL;
 
 		#endregion
 
@@ -24,8 +30,8 @@
 			get => this._base_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2PaintTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2PaintTypes.Contains(value))
+					throw new MappingFailException();
 				this._base_paint_type = value;
 			}
 		}
@@ -35,8 +41,8 @@
 			get => this._engine_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2PaintTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2PaintTypes.Contains(value))
+					throw new MappingFailException();
 				this._engine_paint_type = value;
 			}
 		}
@@ -46,8 +52,8 @@
 			get => this._spoiler_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2PaintTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2PaintTypes.Contains(value))
+					throw new MappingFailException();
 				this._spoiler_paint_type = value;
 			}
 		}
@@ -57,8 +63,8 @@
 			get => this._brakes_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2CaliperPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2CaliperPaints.Contains(value))
+					throw new MappingFailException();
 				this._brakes_paint_type = value;
 			}
 		}
@@ -68,8 +74,8 @@
 			get => this._exhaust_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2PaintTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2PaintTypes.Contains(value))
+					throw new MappingFailException();
 				this._exhaust_paint_type = value;
 			}
 		}
@@ -79,8 +85,8 @@
 			get => this._audio_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2PaintTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2PaintTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_paint_type = value;
 			}
 		}
@@ -90,8 +96,8 @@
 			get => this._rims_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2RimPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2RimPaints.Contains(value))
+					throw new MappingFailException();
 				this._rims_paint_type = value;
 			}
 		}
@@ -101,8 +107,8 @@
 			get => this._spinners_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2RimPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2RimPaints.Contains(value))
+					throw new MappingFailException();
 				this._spinners_paint_type = value;
 			}
 		}
@@ -112,8 +118,8 @@
 			get => this._roof_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2PaintTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2PaintTypes.Contains(value))
+					throw new MappingFailException();
 				this._roof_paint_type = value;
 			}
 		}
@@ -123,8 +129,8 @@
 			get => this._mirrors_paint_type;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2PaintTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2PaintTypes.Contains(value))
+					throw new MappingFailException();
 				this._mirrors_paint_type = value;
 			}
 		}

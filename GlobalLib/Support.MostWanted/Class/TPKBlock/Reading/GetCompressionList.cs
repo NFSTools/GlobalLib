@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Support.Shared.Parts.TPKParts;
+using GlobalLib.Utils.EA;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class TPKBlock
     {
@@ -10,7 +14,7 @@
         protected override unsafe void GetCompressionList(byte* byteptr_t, int offset)
         {
             if (offset == -1) return;  // if Part5 does not exist
-            if (*(uint*)(byteptr_t + offset) != Reflection.ID.TPK.INFO_PART5_BLOCKID)
+            if (*(uint*)(byteptr_t + offset) != TPK.INFO_PART5_BLOCKID)
                 return; // check Part5 ID
 
             int ReaderSize = 8 + *(int*)(byteptr_t + offset + 4);
@@ -18,9 +22,9 @@
             while (current < ReaderSize)
             {
                 uint comp = *(uint*)(byteptr_t + offset + current + 12);
-                if (Utils.EA.Comp.IsComp(comp))
+                if (Comp.IsComp(comp))
                 {
-                    var Slot = new Shared.Parts.TPKParts.CompSlot();
+                    var Slot = new CompSlot();
                     Slot.var1 = *(int*)(byteptr_t + offset + current);
                     Slot.var2 = *(int*)(byteptr_t + offset + current + 4);
                     Slot.var3 = *(int*)(byteptr_t + offset + current + 8);

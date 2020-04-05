@@ -1,4 +1,8 @@
-﻿using System;
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Support.MostWanted.Class;
+using GlobalLib.Utils;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -22,12 +26,12 @@ namespace GlobalLib.Support.MostWanted
             try
             {
                 db._GlobalABUN = File.ReadAllBytes(GlobalA_dir);
-                Utils.Log.Write("Reading data from GlobalA.bun...");
+                Log.Write("Reading data from GlobalA.bun...");
             }
             catch (Exception e)
             {
                 while (e.InnerException != null) e = e.InnerException;
-                if (Core.Process.MessageShow)
+                if (Process.MessageShow)
                     MessageBox.Show($"Error occured: {e.Message}", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     Console.WriteLine(e.Message);
@@ -35,7 +39,7 @@ namespace GlobalLib.Support.MostWanted
             }
 
             // Decompress if compressed
-            db._GlobalABUN = Utils.JDLZ.Decompress(db._GlobalABUN);
+            db._GlobalABUN = JDLZ.Decompress(db._GlobalABUN);
 
             // Use pointers to speed up process
             fixed (byte* byteptr_t = &db._GlobalABUN[0])
@@ -50,7 +54,7 @@ namespace GlobalLib.Support.MostWanted
                     size = *(uint*)(byteptr_t + offset + 4); // read size
                     if (offset + size > db._GlobalABUN.Length)
                     {
-                        if (Core.Process.MessageShow)
+                        if (Process.MessageShow)
                             MessageBox.Show("GlobalA: unable to read beyond the stream.", "Failure");
                         else
                             Console.WriteLine("GlobalA: unable to read beyond the stream.");
@@ -59,14 +63,14 @@ namespace GlobalLib.Support.MostWanted
 
                     switch (ID)
                     {
-                        case Reflection.ID.Global.TPKBlocks:
+                        case Global.TPKBlocks:
                             int count = db.TPKBlocks.Length;
-                            db.TPKBlocks.Collections.Add(new Class.TPKBlock(byteptr_t + offset, count, db));
+                            db.TPKBlocks.Collections.Add(new TPKBlock(byteptr_t + offset, count, db));
                             db.TPKBlocks[count].InGlobalA = true;
                             break;
 
-                        case Reflection.ID.Global.FEngFiles:
-                        case Reflection.ID.Global.FNGCompress:
+                        case Global.FEngFiles:
+                        case Global.FNGCompress:
                             E_FNGroup(byteptr_t + offset, size + 8, db);
                             break;
 

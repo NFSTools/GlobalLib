@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class PartPerformance
 	{
@@ -10,14 +12,14 @@
 			*(int*)(byteptr_t + 0x0C) = this.NumberOfBrands;
 
 			uint negative = 0xFFFFFFFF;
-			uint perfkey1 = Utils.Bin.SmartHash(this._perf_brand_1);
-			uint perfkey2 = Utils.Bin.SmartHash(this._perf_brand_2);
-			uint perfkey3 = Utils.Bin.SmartHash(this._perf_brand_3);
-			uint perfkey4 = Utils.Bin.SmartHash(this._perf_brand_4);
-			uint perfkey5 = Utils.Bin.SmartHash(this._perf_brand_5);
-			uint perfkey6 = Utils.Bin.SmartHash(this._perf_brand_6);
-			uint perfkey7 = Utils.Bin.SmartHash(this._perf_brand_7);
-			uint perfkey8 = Utils.Bin.SmartHash(this._perf_brand_8);
+			uint perfkey1 = Bin.SmartHash(this._perf_brand_1);
+			uint perfkey2 = Bin.SmartHash(this._perf_brand_2);
+			uint perfkey3 = Bin.SmartHash(this._perf_brand_3);
+			uint perfkey4 = Bin.SmartHash(this._perf_brand_4);
+			uint perfkey5 = Bin.SmartHash(this._perf_brand_5);
+			uint perfkey6 = Bin.SmartHash(this._perf_brand_6);
+			uint perfkey7 = Bin.SmartHash(this._perf_brand_7);
+			uint perfkey8 = Bin.SmartHash(this._perf_brand_8);
 
 			*(uint*)(byteptr_t + 0x10) = (perfkey1 == 0) ? negative : perfkey1;
 			*(uint*)(byteptr_t + 0x14) = (perfkey2 == 0) ? negative : perfkey2;

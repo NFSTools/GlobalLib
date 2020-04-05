@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.Attributes;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class PresetRide
     {
@@ -19,13 +21,13 @@
         /// <summary>
         /// Represents frontend name of the preset ride.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
+        [AccessModifiable()]
         public override string Frontend { get => base.Frontend; set => base.Frontend = value; }
 
         /// <summary>
         /// Represents pvehicle name of the preset ride.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
+        [AccessModifiable()]
         public override string Pvehicle { get => base.Pvehicle; set => base.Pvehicle = value; }
     }
 }

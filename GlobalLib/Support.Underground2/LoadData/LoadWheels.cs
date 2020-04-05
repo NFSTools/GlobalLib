@@ -1,8 +1,8 @@
-﻿using System;
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+using System;
 using System.IO;
 using System.Windows.Forms;
-
-
 
 namespace GlobalLib.Support.Underground2
 {
@@ -19,7 +19,7 @@ namespace GlobalLib.Support.Underground2
             Wheels_dir += @"\CARS\WHEELS";
             if (!Directory.Exists(Wheels_dir))
 			{
-				if (Core.Process.MessageShow)
+				if (Process.MessageShow)
 					MessageBox.Show(@"Directory CARS\WHEELS does not exist.", "Failure");
 				else
 					Console.WriteLine(@"Directory CARS\WHEELS does not exist.");
@@ -29,7 +29,7 @@ namespace GlobalLib.Support.Underground2
 			var files = Directory.GetFiles(Wheels_dir);
 			if (files == null || files.Length == 0)
 			{
-				if (Core.Process.MessageShow)
+				if (Process.MessageShow)
 					MessageBox.Show(@"Directory CARS\WHEELS is empty.", "Failure");
 				else
 					Console.WriteLine(@"Directory CARS\WHEELS is empty.");
@@ -65,11 +65,11 @@ namespace GlobalLib.Support.Underground2
 							}
 							if (ID != 0x00134011) continue;
 							br.BaseStream.Position += 0xA4;
-							string rim = Utils.ScriptX.NullTerminatedString(br);
+							string rim = ScriptX.NullTerminatedString(br);
 							br.BaseStream.Position -= 0xB0 + rim.Length + 1;
-							rim = Utils.FormatX.GetString(rim, "{X}_X");
-							if (!Core.Map.RimBrands.Contains(rim))
-								Core.Map.RimBrands.Add(rim);
+							rim = FormatX.GetString(rim, "{X}_X");
+							if (!Map.RimBrands.Contains(rim))
+								Map.RimBrands.Add(rim);
 							br.ReadBytes(br.ReadInt32());
 						}
 					}
@@ -77,15 +77,15 @@ namespace GlobalLib.Support.Underground2
 				catch (Exception e)
 				{
 					while (e.InnerException != null) e = e.InnerException;
-					if (Core.Process.MessageShow)
+					if (Process.MessageShow)
 						MessageBox.Show(e.Message, "Failure");
 					else
 						Console.WriteLine(e.Message);
 					return false;
 				}
 			}
-			foreach (var rim in Core.Map.RimBrands)
-				Utils.Bin.Hash(rim);
+			foreach (var rim in Map.RimBrands)
+				Bin.Hash(rim);
 			return true;
         }
     }

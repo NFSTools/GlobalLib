@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Utils;
+using System.Collections.Generic;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
 	public partial class STRBlock
 	{
@@ -18,7 +22,7 @@
 			{
 				ReaderID = *(uint*)(byteptr_t + ReaderOffset);
 				BlockSize = *(int*)(byteptr_t + ReaderOffset + 4);
-				if (!found && ReaderID == Reflection.ID.Global.STRBlocks)
+				if (!found && ReaderID == Global.STRBlocks)
 				{
 					this._offset = ReaderOffset;
 					this._size = BlockSize;
@@ -31,7 +35,7 @@
 			if (this._offset == -1 || this._size == -1) return;
 
 			// Initialize map with keys and indexes
-			var key_to_index = new System.Collections.Generic.Dictionary<uint, int>();
+			var key_to_index = new Dictionary<uint, int>();
 			for (int a1 = 0; a1 < this._stringinfo.Count; ++a1)
 				key_to_index[this._stringinfo[a1].Key] = a1;
 
@@ -52,7 +56,7 @@
 			{
 				var key = *(uint*)(byteptr_t + this._key_offset + a1 * 8);
 				var pos = this._text_offset + *(int*)(byteptr_t + this._key_offset + a1 * 8 + 4);
-				var label = Utils.ScriptX.NullTerminatedString(byteptr_t + pos);
+				var label = ScriptX.NullTerminatedString(byteptr_t + pos);
 				if (key_to_index.TryGetValue(key, out int index))
 					this._stringinfo[index].Label = label;
 			}

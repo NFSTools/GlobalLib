@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Utils;
+using GlobalLib.Utils.DDS;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class Texture
     {
@@ -9,26 +15,26 @@
         public override unsafe byte[] GetDDSArray()
         {
             byte[] data;
-            if (this._compression == Reflection.ID.EAComp.P8_08)
+            if (this._compression == EAComp.P8_08)
             {
                 data = new byte[this.Size * 4 + 0x80];
-                var copy = Utils.Palette.P8toRGBA(this.Data);
-                System.Buffer.BlockCopy(copy, 0, data, 0x80, copy.Length);
+                var copy = Palette.P8toRGBA(this.Data);
+                Buffer.BlockCopy(copy, 0, data, 0x80, copy.Length);
             }
             else
             {
                 data = new byte[this.Data.Length + 0x80];
-                System.Buffer.BlockCopy(this.Data, 0, data, 0x80, this.Data.Length);
+                Buffer.BlockCopy(this.Data, 0, data, 0x80, this.Data.Length);
             }
 
             // Initialize header first
-            var DDSHeader = new Utils.DDS.DDS_HEADER();
-            DDSHeader.dwFlags = Utils.DDS.DDS_HEADER_FLAGS.TEXTURE; // add texture definition
-            DDSHeader.dwFlags += Utils.DDS.DDS_HEADER_FLAGS.MIPMAP; // add mipmap definition
-            if (this._compression == Reflection.ID.EAComp.RGBA_08 || this._compression == Reflection.ID.EAComp.P8_08)
-                DDSHeader.dwFlags += Utils.DDS.DDS_HEADER_FLAGS.PITCH; // add pitch for uncompressed
+            var DDSHeader = new DDS_HEADER();
+            DDSHeader.dwFlags = DDS_HEADER_FLAGS.TEXTURE; // add texture definition
+            DDSHeader.dwFlags += DDS_HEADER_FLAGS.MIPMAP; // add mipmap definition
+            if (this._compression == EAComp.RGBA_08 || this._compression == EAComp.P8_08)
+                DDSHeader.dwFlags += DDS_HEADER_FLAGS.PITCH; // add pitch for uncompressed
             else
-                DDSHeader.dwFlags += Utils.DDS.DDS_HEADER_FLAGS.LINEARSIZE; // add linearsize for compressed
+                DDSHeader.dwFlags += DDS_HEADER_FLAGS.LINEARSIZE; // add linearsize for compressed
 
             DDSHeader.dwHeight = (uint)this.Height;
             DDSHeader.dwWidth = (uint)this.Width;
@@ -36,15 +42,15 @@
             DDSHeader.dwDepth = 1; // considering it is not a cubic texture
             DDSHeader.dwMipMapCount = (uint)this.Mipmaps;
 
-            Utils.EA.Comp.GetPixelFormat(ref DDSHeader.ddspf, this._compression);
-            DDSHeader.dwCaps = Utils.DDS.DDSCAPS.SURFACE_FLAGS_TEXTURE; // by default is a texture
-            DDSHeader.dwCaps += Utils.DDS.DDSCAPS.SURFACE_FLAGS_MIPMAP; // mipmaps should be included
-            DDSHeader.dwPitchOrLinearSize = Utils.EA.Comp.PitchLinearSize(this._compression, this.Width, this.Height, DDSHeader.ddspf.dwRGBBitCount);
+            Comp.GetPixelFormat(ref DDSHeader.ddspf, this._compression);
+            DDSHeader.dwCaps = DDSCAPS.SURFACE_FLAGS_TEXTURE; // by default is a texture
+            DDSHeader.dwCaps += DDSCAPS.SURFACE_FLAGS_MIPMAP; // mipmaps should be included
+            DDSHeader.dwPitchOrLinearSize = Comp.PitchLinearSize(this._compression, this.Width, this.Height, DDSHeader.ddspf.dwRGBBitCount);
 
             // Write header using ptr
             fixed (byte* byteptr_t = &data[0])
             {
-                *(uint*)(byteptr_t + 0) = Utils.DDS.DDS_MAIN.MAGIC;
+                *(uint*)(byteptr_t + 0) = DDS_MAIN.MAGIC;
                 *(uint*)(byteptr_t + 4) = DDSHeader.dwSize;
                 *(uint*)(byteptr_t + 8) = DDSHeader.dwFlags;
                 *(uint*)(byteptr_t + 0xC) = DDSHeader.dwHeight;

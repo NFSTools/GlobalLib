@@ -1,11 +1,13 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using System.Collections.Generic;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class CarTypeInfo
 	{
 		public unsafe byte[] GetCarSkins(int index = 0xFF)
 		{
 			// Precalculate size of the array first
-			var skinsused = new System.Collections.Generic.List<byte>();
+			var skinsused = new List<byte>();
 			if (this.AvailableSkinNumbers01 > 0) skinsused.Add(1);
 			if (this.AvailableSkinNumbers02 > 0) skinsused.Add(2);
 			if (this.AvailableSkinNumbers03 > 0) skinsused.Add(3);

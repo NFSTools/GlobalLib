@@ -487,7 +487,7 @@ namespace GlobalLib.Utils
 		/// Saves current stream to the file specified.
 		/// </summary>
 		/// <param name="filename">The file to open.</param>
-		/// <param name="mode">A System.IO.FileMode value that specifies whether a file is 
+		/// <param name="mode">A FileMode value that specifies whether a file is 
 		/// created if one does not exist, and determines whether the contents of existing 
 		/// files are retained or overwritten.</param>
 		public void SaveToFile(string filename, FileMode mode)
@@ -498,10 +498,10 @@ namespace GlobalLib.Utils
 		/// Saves current stream to the file specified.
 		/// </summary>
 		/// <param name="filename">The file to open.</param>
-		/// <param name="mode">A System.IO.FileMode value that specifies whether a file is 
+		/// <param name="mode">A FileMode value that specifies whether a file is 
 		/// created if one does not exist, and determines whether the contents of existing 
 		/// files are retained or overwritten.</param>
-		/// <param name="access">A System.IO.FileAccess value that specifies the operations 
+		/// <param name="access">A FileAccess value that specifies the operations 
 		/// that can be performed on the file.</param>
 		public void SaveToFile(string filename, FileMode mode, FileAccess access)
 		{
@@ -516,7 +516,7 @@ namespace GlobalLib.Utils
 		/// Sets the position within the current stream.
 		/// </summary>
 		/// <param name="offset">A byte offset relative to the origin parameter.</param>
-		/// <param name="origin">A value of type System.IO.SeekOrigin indicating the 
+		/// <param name="origin">A value of type SeekOrigin indicating the 
 		/// reference point used to obtain the new position.</param>
 		public void Seek(int offset, SeekOrigin origin)
 		{

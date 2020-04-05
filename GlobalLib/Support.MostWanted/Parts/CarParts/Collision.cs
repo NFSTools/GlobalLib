@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted.Parts.CarParts
+﻿using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Parts.CarParts
 {
     public class Collision
     {
@@ -8,9 +11,9 @@
 
         public string BelongsTo { get; private set; }
 
-        public uint BinKey { get => Utils.Bin.Hash(this.BelongsTo); }
+        public uint BinKey { get => Bin.Hash(this.BelongsTo); }
 
-        public uint VltKey { get => Utils.Vlt.Hash(this.BelongsTo); }
+        public uint VltKey { get => Vlt.Hash(this.BelongsTo); }
 
         /// <summary>
         /// Gets collision array with the specified external key.
@@ -20,7 +23,7 @@
         public unsafe byte[] GetData(uint externalkey)
         {
             var result = new byte[this.data.Length];
-            System.Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
+            Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
             fixed (byte* dataptr_t = &result[0])
             {
                 if (this.Unknown)

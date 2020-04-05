@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Support.Underground2.Parts.CarParts;
+
+namespace GlobalLib.Support.Underground2
 {
     public static partial class LoadData
     {
@@ -16,7 +18,7 @@
                 for (int a1 = 0; a1 < length; ++a1)
                     *(dataptr_t + a1) = *(byteptr_t + a1);
             }
-            db.SlotTypes.SpoilMirrs = new Parts.CarParts.SpoilMirr(Data);
+            db.SlotTypes.SpoilMirrs = new SpoilMirr(Data);
         }
     }
 }

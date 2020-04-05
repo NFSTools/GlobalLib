@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class WeightReduction : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<WeightReduction>
+	public class WeightReduction : SubPart, ICopyable<WeightReduction>
 	{
         public float WeightReductionMassMultiplier { get; set; }
         public float WeightReductionGripAddon { get; set; }

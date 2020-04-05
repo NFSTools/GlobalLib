@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Support.Shared.Parts.STRParts;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class STRBlock
 	{
@@ -18,11 +23,11 @@
 			{
 				ReaderID = *(uint*)(byteptr_t + ReaderOffset);
 				BlockSize = *(int*)(byteptr_t + ReaderOffset + 4);
-				if (!found && ReaderID == Reflection.ID.Global.STRBlocks)
+				if (!found && ReaderID == Global.STRBlocks)
 				{
 					this._offset = ReaderOffset;
 					this._size = BlockSize;
-					this.CollectionName = Reflection.BaseArguments.GLOBAL;
+					this.CollectionName = BaseArguments.GLOBAL;
 					found = true;
 				}
 				ReaderOffset += 8 + BlockSize;
@@ -46,10 +51,10 @@
 			// Begin reading through string records
 			for (int a1 = 0; a1 < this._num_entries; ++a1)
 			{
-				var info = new Shared.Parts.STRParts.StringRecord(this);
+				var info = new StringRecord(this);
 				info.Key = *(uint*)(byteptr_t + this._key_offset + a1 * 8);
 				var pos = this._text_offset + *(int*)(byteptr_t + this._key_offset + a1 * 8 + 4);
-				info.Text = Utils.ScriptX.NullTerminatedString(byteptr_t + pos);
+				info.Text = ScriptX.NullTerminatedString(byteptr_t + pos);
 				this._stringinfo.Add(info);
 			}
 		}

@@ -5,8 +5,6 @@ using GlobalLib.Utils;
 using GlobalLib.Reflection.Abstract;
 using GlobalLib.Support.Shared.Parts.FNGParts;
 
-
-
 namespace GlobalLib.Support.Shared.Class
 {
     public class FNGroup : Collectable

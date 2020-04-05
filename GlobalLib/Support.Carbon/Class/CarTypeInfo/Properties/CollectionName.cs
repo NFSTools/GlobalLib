@@ -1,4 +1,11 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class CarTypeInfo
     {
@@ -7,24 +14,24 @@
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
+        [AccessModifiable()]
         public override string CollectionName
         {
             get => this._collection_name;
             set
             {
                 if (!this.Deletable)
-                    throw new Reflection.Exception.CollectionExistenceException("CollectionName of a non-addon car cannot be changed.");
+                    throw new CollectionExistenceException("CollectionName of a non-addon car cannot be changed.");
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                    throw new ArgumentNullException("This value cannot be left empty.");
                 if (value.Contains(" "))
-                    throw new System.Exception("CollectionName cannot contain whitespace.");
+                    throw new Exception("CollectionName cannot contain whitespace.");
                 if (value.Length > MaxCNameLength)
-                    throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 13 characters.");
+                    throw new ArgumentLengthException("Length of the value passed should not exceed 13 characters.");
                 if (this.Database.CarTypeInfos.FindCollection(value) != null)
-                    throw new Reflection.Exception.CollectionExistenceException();
+                    throw new CollectionExistenceException();
                 this._collection_name = value;
-                if (this._collision_external_name != Reflection.BaseArguments.NULL)
+                if (this._collision_external_name != BaseArguments.NULL)
                     this._collision_external_name = value;
             }
         }
@@ -32,17 +39,17 @@
         /// <summary>
         /// Binary memory hash of the collection name.
         /// </summary>
-        public override uint BinKey { get => Utils.Bin.Hash(this._collection_name); }
+        public override uint BinKey { get => Bin.Hash(this._collection_name); }
 
         /// <summary>
         /// Vault memory hash of the collection name.
         /// </summary>
-        public override uint VltKey { get => Utils.Vlt.Hash(this._collection_name); }
+        public override uint VltKey { get => Vlt.Hash(this._collection_name); }
 
         /// <summary>
         /// Represents memory type of the cartypeinfo.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        public override Reflection.Enum.eMemoryType MemoryType { get => base.MemoryType; set => base.MemoryType = value; }
+        [AccessModifiable()]
+        public override eMemoryType MemoryType { get => base.MemoryType; set => base.MemoryType = value; }
     }
 }

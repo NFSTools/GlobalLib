@@ -4,8 +4,6 @@ using GlobalLib.Core;
 using GlobalLib.Reflection.Abstract;
 using GlobalLib.Support.Shared.Parts.STRParts;
 
-
-
 namespace GlobalLib.Support.Shared.Class
 {
 	public class STRBlock : Collectable

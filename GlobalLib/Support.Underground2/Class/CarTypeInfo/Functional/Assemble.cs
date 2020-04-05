@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Support.Underground2.Parts.CarParts;
+using GlobalLib.Support.Underground2.Parts.InfoParts;
+using GlobalLib.Utils;
+using System.IO;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class CarTypeInfo
     {
@@ -21,12 +27,12 @@
                     *(byteptr_t + 0x20 + a1) = (byte)this.CollectionName[a1];
 
                 // Write GeometryBINFileName
-                string pathbin = System.IO.Path.Combine("CARS", this.CollectionName, "GEOMETRY.BIN");
+                string pathbin = Path.Combine("CARS", this.CollectionName, "GEOMETRY.BIN");
                 for (int a1 = 0; a1 < pathbin.Length; ++a1)
                     *(byteptr_t + 0x40 + a1) = (byte)pathbin[a1];
 
                 // Write GeometryLZCFileName
-                string pathlzc = System.IO.Path.Combine("CARS", this.CollectionName, "GEOMETRY.LZC");
+                string pathlzc = Path.Combine("CARS", this.CollectionName, "GEOMETRY.LZC");
                 for (int a1 = 0; a1 < pathbin.Length; ++a1)
                     *(byteptr_t + 0x60 + a1) = (byte)pathlzc[a1];
 
@@ -451,64 +457,64 @@
                 *(float*)(byteptr_t + 0x70C) = this.TOP_SUSPENSION.ShockDigressionRear;
 
                 // Player Cameras
-                *(short*)(byteptr_t + 0x730) = (short)Parts.InfoParts.CameraType.FAR;
+                *(short*)(byteptr_t + 0x730) = (short)CameraType.FAR;
                 *(short*)(byteptr_t + 0x732) = (short)(this.PLAYER_CAMERA_FAR.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x734) = this.PLAYER_CAMERA_FAR.CameraLag;
                 *(float*)(byteptr_t + 0x738) = this.PLAYER_CAMERA_FAR.CameraHeight;
                 *(float*)(byteptr_t + 0x73C) = this.PLAYER_CAMERA_FAR.CameraLatOffset;
-                *(short*)(byteptr_t + 0x740) = (short)Parts.InfoParts.CameraType.CLOSE;
+                *(short*)(byteptr_t + 0x740) = (short)CameraType.CLOSE;
                 *(short*)(byteptr_t + 0x742) = (short)(this.PLAYER_CAMERA_CLOSE.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x744) = this.PLAYER_CAMERA_CLOSE.CameraLag;
                 *(float*)(byteptr_t + 0x748) = this.PLAYER_CAMERA_CLOSE.CameraHeight;
                 *(float*)(byteptr_t + 0x74C) = this.PLAYER_CAMERA_CLOSE.CameraLatOffset;
-                *(short*)(byteptr_t + 0x750) = (short)Parts.InfoParts.CameraType.BUMPER;
+                *(short*)(byteptr_t + 0x750) = (short)CameraType.BUMPER;
                 *(short*)(byteptr_t + 0x752) = (short)(this.PLAYER_CAMERA_BUMPER.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x754) = this.PLAYER_CAMERA_BUMPER.CameraLag;
                 *(float*)(byteptr_t + 0x758) = this.PLAYER_CAMERA_BUMPER.CameraHeight;
                 *(float*)(byteptr_t + 0x75C) = this.PLAYER_CAMERA_BUMPER.CameraLatOffset;
-                *(short*)(byteptr_t + 0x760) = (short)Parts.InfoParts.CameraType.DRIVER;
+                *(short*)(byteptr_t + 0x760) = (short)CameraType.DRIVER;
                 *(short*)(byteptr_t + 0x762) = (short)(this.PLAYER_CAMERA_DRIVER.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x764) = this.PLAYER_CAMERA_DRIVER.CameraLag;
                 *(float*)(byteptr_t + 0x768) = this.PLAYER_CAMERA_DRIVER.CameraHeight;
                 *(float*)(byteptr_t + 0x76C) = this.PLAYER_CAMERA_DRIVER.CameraLatOffset;
-                *(short*)(byteptr_t + 0x770) = (short)Parts.InfoParts.CameraType.HOOD;
+                *(short*)(byteptr_t + 0x770) = (short)CameraType.HOOD;
                 *(short*)(byteptr_t + 0x772) = (short)(this.PLAYER_CAMERA_HOOD.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x774) = this.PLAYER_CAMERA_HOOD.CameraLag;
                 *(float*)(byteptr_t + 0x778) = this.PLAYER_CAMERA_HOOD.CameraHeight;
                 *(float*)(byteptr_t + 0x77C) = this.PLAYER_CAMERA_HOOD.CameraLatOffset;
-                *(short*)(byteptr_t + 0x780) = (short)Parts.InfoParts.CameraType.DRIFT;
+                *(short*)(byteptr_t + 0x780) = (short)CameraType.DRIFT;
                 *(short*)(byteptr_t + 0x782) = (short)(this.PLAYER_CAMERA_DRIFT.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x784) = this.PLAYER_CAMERA_DRIFT.CameraLag;
                 *(float*)(byteptr_t + 0x788) = this.PLAYER_CAMERA_DRIFT.CameraHeight;
                 *(float*)(byteptr_t + 0x78C) = this.PLAYER_CAMERA_DRIFT.CameraLatOffset;
 
                 // AI Cameras
-                *(short*)(byteptr_t + 0x790) = (short)Parts.InfoParts.CameraType.FAR;
+                *(short*)(byteptr_t + 0x790) = (short)CameraType.FAR;
                 *(short*)(byteptr_t + 0x792) = (short)(this.AI_CAMERA_FAR.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x794) = this.AI_CAMERA_FAR.CameraLag;
                 *(float*)(byteptr_t + 0x798) = this.AI_CAMERA_FAR.CameraHeight;
                 *(float*)(byteptr_t + 0x79C) = this.AI_CAMERA_FAR.CameraLatOffset;
-                *(short*)(byteptr_t + 0x7A0) = (short)Parts.InfoParts.CameraType.CLOSE;
+                *(short*)(byteptr_t + 0x7A0) = (short)CameraType.CLOSE;
                 *(short*)(byteptr_t + 0x7A2) = (short)(this.AI_CAMERA_CLOSE.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x7A4) = this.AI_CAMERA_CLOSE.CameraLag;
                 *(float*)(byteptr_t + 0x7A8) = this.AI_CAMERA_CLOSE.CameraHeight;
                 *(float*)(byteptr_t + 0x7AC) = this.AI_CAMERA_CLOSE.CameraLatOffset;
-                *(short*)(byteptr_t + 0x7B0) = (short)Parts.InfoParts.CameraType.BUMPER;
+                *(short*)(byteptr_t + 0x7B0) = (short)CameraType.BUMPER;
                 *(short*)(byteptr_t + 0x7B2) = (short)(this.AI_CAMERA_BUMPER.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x7B4) = this.AI_CAMERA_BUMPER.CameraLag;
                 *(float*)(byteptr_t + 0x7B8) = this.AI_CAMERA_BUMPER.CameraHeight;
                 *(float*)(byteptr_t + 0x7BC) = this.AI_CAMERA_BUMPER.CameraLatOffset;
-                *(short*)(byteptr_t + 0x7C0) = (short)Parts.InfoParts.CameraType.DRIVER;
+                *(short*)(byteptr_t + 0x7C0) = (short)CameraType.DRIVER;
                 *(short*)(byteptr_t + 0x7C2) = (short)(this.AI_CAMERA_DRIVER.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x7C4) = this.AI_CAMERA_DRIVER.CameraLag;
                 *(float*)(byteptr_t + 0x7C8) = this.AI_CAMERA_DRIVER.CameraHeight;
                 *(float*)(byteptr_t + 0x7CC) = this.AI_CAMERA_DRIVER.CameraLatOffset;
-                *(short*)(byteptr_t + 0x7D0) = (short)Parts.InfoParts.CameraType.HOOD;
+                *(short*)(byteptr_t + 0x7D0) = (short)CameraType.HOOD;
                 *(short*)(byteptr_t + 0x7D2) = (short)(this.AI_CAMERA_HOOD.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x7D4) = this.AI_CAMERA_HOOD.CameraLag;
                 *(float*)(byteptr_t + 0x7D8) = this.AI_CAMERA_HOOD.CameraHeight;
                 *(float*)(byteptr_t + 0x7DC) = this.AI_CAMERA_HOOD.CameraLatOffset;
-                *(short*)(byteptr_t + 0x7E0) = (short)Parts.InfoParts.CameraType.DRIFT;
+                *(short*)(byteptr_t + 0x7E0) = (short)CameraType.DRIFT;
                 *(short*)(byteptr_t + 0x7E2) = (short)(this.AI_CAMERA_DRIFT.CameraAngle / 180 * 32768);
                 *(float*)(byteptr_t + 0x7E4) = this.AI_CAMERA_DRIFT.CameraLag;
                 *(float*)(byteptr_t + 0x7E8) = this.AI_CAMERA_DRIFT.CameraHeight;
@@ -517,15 +523,15 @@
                 // Rigid Controls (if an added car, or usagetype modified, or rigid controls are missing or broken
                 if (this.Deletable || this.Modified || this._rigid_controls == null || this._rigid_controls.Length != 40)
                 {
-                    if (this.UsageType == Reflection.Enum.eUsageType.Traffic)
+                    if (this.UsageType == eUsageType.Traffic)
                     {
                         for (int a1 = 0; a1 < 40; ++a1)
-                            *(ushort*)(byteptr_t + 0x7F0 + a1 * 2) = Parts.CarParts.RigidControls.RigidTrafControls[a1];
+                            *(ushort*)(byteptr_t + 0x7F0 + a1 * 2) = RigidControls.RigidTrafControls[a1];
                     }
                     else
                     {
                         for (int a1 = 0; a1 < 40; ++a1)
-                            *(ushort*)(byteptr_t + 0x7F0 + a1 * 2) = Parts.CarParts.RigidControls.RigidRacerControls[a1];
+                            *(ushort*)(byteptr_t + 0x7F0 + a1 * 2) = RigidControls.RigidRacerControls[a1];
                     }
                 }
                 else
@@ -536,8 +542,8 @@
                  // Secondary Properties
                 *(int*)(byteptr_t + 0x840) = this.Index;
                 *(int*)(byteptr_t + 0x844) = (int)this.UsageType;
-                *(uint*)(byteptr_t + 0x84C) = Utils.Bin.Hash(this._defaultbasepaint);
-                *(uint*)(byteptr_t + 0x850) = Utils.Bin.Hash(this._defaultbasepaint2);
+                *(uint*)(byteptr_t + 0x84C) = Bin.Hash(this._defaultbasepaint);
+                *(uint*)(byteptr_t + 0x850) = Bin.Hash(this._defaultbasepaint2);
                 *(byteptr_t + 0x854) = this.MaxInstances1;
                 *(byteptr_t + 0x855) = this.MaxInstances2;
                 *(byteptr_t + 0x856) = this.MaxInstances3;

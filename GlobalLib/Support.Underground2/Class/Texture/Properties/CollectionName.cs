@@ -1,4 +1,11 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Utils;
+using System;
+
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class Texture
     {
@@ -7,23 +14,23 @@
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
+        [AccessModifiable()]
         public override string CollectionName
         {
             get => this._collection_name;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                    throw new ArgumentNullException("This value cannot be left empty.");
                 if (value.Contains(" "))
-                    throw new System.Exception("CollectionName cannot contain whitespace.");
+                    throw new Exception("CollectionName cannot contain whitespace.");
                 var tpk = this.Database.TPKBlocks.FindCollection(this._parent_TPK);
-                var key = Utils.Bin.Hash(value);
-                var type = Reflection.Enum.eKeyType.BINKEY;
+                var key = Bin.Hash(value);
+                var type = eKeyType.BINKEY;
                 if (tpk.GetTextureIndex(key, type) != -1)
-                    throw new Reflection.Exception.CollectionExistenceException();
+                    throw new CollectionExistenceException();
                 this._collection_name = value;
-                this.BinKey = Utils.Bin.Hash(value);
+                this.BinKey = Bin.Hash(value);
             }
         }
     }

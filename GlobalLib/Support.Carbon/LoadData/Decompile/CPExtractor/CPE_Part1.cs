@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Carbon
 {
     public static partial class LoadData
     {
@@ -14,10 +17,10 @@
             uint offset = 8;
             while (offset < length)
             {
-                string debug = Utils.ScriptX.NullTerminatedString(byteptr_t + offset);
+                string debug = ScriptX.NullTerminatedString(byteptr_t + offset);
                 if (debug == null) offset += 1;
                 else offset += (uint)debug.Length + 1;
-                Core.Map.BinKeys[Utils.Bin.Hash(debug)] = debug;
+                Map.BinKeys[Bin.Hash(debug)] = debug;
             }
             fixed (byte* dataptr_t = &data[0])
             {

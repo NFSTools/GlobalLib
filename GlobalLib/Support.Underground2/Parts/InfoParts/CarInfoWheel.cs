@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class CarInfoWheel : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<CarInfoWheel>
+	public class CarInfoWheel : SubPart, ICopyable<CarInfoWheel>
 	{
 		public float XValue { get; set; }
 		public float Springs { get; set; }
