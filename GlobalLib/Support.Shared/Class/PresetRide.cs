@@ -5,8 +5,6 @@ using GlobalLib.Reflection.Abstract;
 using GlobalLib.Reflection.Attributes;
 using GlobalLib.Support.Shared.Parts.PresetParts;
 
-
-
 namespace GlobalLib.Support.Shared.Class
 {
     public class PresetRide : Collectable

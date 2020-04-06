@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalLib.Reflection.ID;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -38,7 +39,7 @@ namespace GlobalLib.Support.MostWanted
                         case 0:
                             uint key = br.ReadUInt32();
                             br.BaseStream.Position -= 4;
-                            if (key == Reflection.ID.Global.GlobalLib)
+                            if (key == Global.GlobalLib)
                             {
                                 br.BaseStream.Position += WriterSlotSize;
                                 break;
@@ -46,38 +47,38 @@ namespace GlobalLib.Support.MostWanted
                             else
                                 goto default;
 
-                        case Reflection.ID.Global.Materials:
+                        case Global.Materials:
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.TPKBlocks:
+                        case Global.TPKBlocks:
                             while (db.TPKBlocks[tpkindex].InGlobalA)
                                 ++tpkindex;
                             I_TPKBlock(db, bw, ref tpkindex);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.CarTypeInfo:
+                        case Global.CarTypeInfo:
                             I_CarTypeInfo(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.PresetRides:
+                        case Global.PresetRides:
                             I_PresetRides(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.CarParts:
+                        case Global.CarParts:
                             I_CarParts(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.Collisions:
+                        case Global.Collisions:
                             I_Collisions(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.SlotTypes:
+                        case Global.SlotTypes:
                             I_SlotType(db, bw);
                             br.BaseStream.Position += WriterSlotSize;
                             break;

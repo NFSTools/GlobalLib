@@ -1,21 +1,23 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class GCareerStage
 	{
 		public unsafe void Assemble(byte* byteptr_t)
 		{
-			Utils.FormatX.GetByte(this._collection_name, "STAGE_{X}", out byte stage);
+			FormatX.GetByte(this._collection_name, "STAGE_{X}", out byte stage);
 			*byteptr_t = stage;
 			*(byteptr_t + 0x01) = this.NumberOfSponsorsToChoose;
 			*(short*)(byteptr_t + 0x02) = this.OutrunCashValue;
 			*(short*)(byteptr_t + 0x04) = this.Unknown0x04;
 			*(short*)(byteptr_t + 0x06) = this.Unknown0x06;
 
-			*(uint*)(byteptr_t + 0x08) = Utils.Bin.SmartHash(this._stage_sponsor1);
-			*(uint*)(byteptr_t + 0x0C) = Utils.Bin.SmartHash(this._stage_sponsor2);
-			*(uint*)(byteptr_t + 0x10) = Utils.Bin.SmartHash(this._stage_sponsor3);
-			*(uint*)(byteptr_t + 0x14) = Utils.Bin.SmartHash(this._stage_sponsor4);
-			*(uint*)(byteptr_t + 0x18) = Utils.Bin.SmartHash(this._stage_sponsor5);
+			*(uint*)(byteptr_t + 0x08) = Bin.SmartHash(this._stage_sponsor1);
+			*(uint*)(byteptr_t + 0x0C) = Bin.SmartHash(this._stage_sponsor2);
+			*(uint*)(byteptr_t + 0x10) = Bin.SmartHash(this._stage_sponsor3);
+			*(uint*)(byteptr_t + 0x14) = Bin.SmartHash(this._stage_sponsor4);
+			*(uint*)(byteptr_t + 0x18) = Bin.SmartHash(this._stage_sponsor5);
 
 			*(short*)(byteptr_t + 0x1C) = this.AttribSponsor1;
 			*(short*)(byteptr_t + 0x1E) = this.AttribSponsor2;
@@ -24,7 +26,7 @@
 			*(short*)(byteptr_t + 0x24) = this.AttribSponsor5;
 			*(short*)(byteptr_t + 0x26) = this.Unknown0x26;
 
-			*(uint*)(byteptr_t + 0x28) = Utils.Bin.SmartHash(this._last_stage_event);
+			*(uint*)(byteptr_t + 0x28) = Bin.SmartHash(this._last_stage_event);
 
 			*(byteptr_t + 0x2C) = this.Unknown0x2C;
 			*(byteptr_t + 0x2D) = this.Unknown0x2D;

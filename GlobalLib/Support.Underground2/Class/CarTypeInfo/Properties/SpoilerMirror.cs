@@ -1,38 +1,43 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class CarTypeInfo
 	{
-        private Reflection.Enum.eSpoiler _spoiler = Reflection.Enum.eSpoiler.SPOILER;
-        private Reflection.Enum.eMirrorTypes _mirrors = Reflection.Enum.eMirrorTypes.MIRRORS;
+        private eSpoiler _spoiler = eSpoiler.SPOILER;
+        private eMirrorTypes _mirrors = eMirrorTypes.MIRRORS;
 
         /// <summary>
         /// Aftermarket spoiler type of the cartypeinfo.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
-        public Reflection.Enum.eSpoiler Spoiler
+        [AccessModifiable()]
+        [StaticModifiable()]
+        public eSpoiler Spoiler
         {
             get => this._spoiler;
             set
             {
-                if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoiler), value))
+                if (Enum.IsDefined(typeof(eSpoiler), value))
                     this._spoiler = value;
                 else
-                    throw new Reflection.Exception.MappingFailException();
+                    throw new MappingFailException();
             }
         }
 
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
-        public Reflection.Enum.eMirrorTypes Mirrors
+        [AccessModifiable()]
+        [StaticModifiable()]
+        public eMirrorTypes Mirrors
         {
             get => this._mirrors;
             set
             {
-                if (System.Enum.IsDefined(typeof(Reflection.Enum.eMirrorTypes), value))
+                if (Enum.IsDefined(typeof(eMirrorTypes), value))
                     this._mirrors = value;
                 else
-                    throw new Reflection.Exception.MappingFailException();
+                    throw new MappingFailException();
             }
         }
     }

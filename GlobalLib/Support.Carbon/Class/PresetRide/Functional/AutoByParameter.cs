@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Support.Carbon.Parts.PresetParts;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class PresetRide
     {
@@ -7,7 +9,7 @@
         /// </summary>
         /// <param name="length">Length of the name of the part.</param>
         /// <returns>Autosculpt part class of the preset ride.</returns>
-        public Parts.PresetParts.Autosculpt AutoByParameter(int length)
+        public Autosculpt AutoByParameter(int length)
         {
             switch (length)
             {
@@ -35,7 +37,7 @@
         /// </summary>
         /// <param name="name">Name of the part.</param>
         /// <returns>Autosculpt part class of the preset ride.</returns>
-        public Parts.PresetParts.Autosculpt AutoByParameter(string name)
+        public Autosculpt AutoByParameter(string name)
         {
             switch (name)
             {

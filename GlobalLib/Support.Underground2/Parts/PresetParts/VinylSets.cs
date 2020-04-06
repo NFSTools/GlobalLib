@@ -1,29 +1,36 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Reflection.Interface;
+using System;
+
+namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public class VinylSets : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<VinylSets>
+	public class VinylSets : SubPart, ICopyable<VinylSets>
 	{
 		#region Private Fields
 
-		private string _vinyl_layer0 = Reflection.BaseArguments.NULL;
-		private string _vinyl_layer1 = Reflection.BaseArguments.NULL;
-		private string _vinyl_layer2 = Reflection.BaseArguments.NULL;
-		private string _vinyl_layer3 = Reflection.BaseArguments.NULL;
-		private string _vinyl0_color0 = Reflection.BaseArguments.NULL;
-		private string _vinyl0_color1 = Reflection.BaseArguments.NULL;
-		private string _vinyl0_color2 = Reflection.BaseArguments.NULL;
-		private string _vinyl0_color3 = Reflection.BaseArguments.NULL;
-		private string _vinyl1_color0 = Reflection.BaseArguments.NULL;
-		private string _vinyl1_color1 = Reflection.BaseArguments.NULL;
-		private string _vinyl1_color2 = Reflection.BaseArguments.NULL;
-		private string _vinyl1_color3 = Reflection.BaseArguments.NULL;
-		private string _vinyl2_color0 = Reflection.BaseArguments.NULL;
-		private string _vinyl2_color1 = Reflection.BaseArguments.NULL;
-		private string _vinyl2_color2 = Reflection.BaseArguments.NULL;
-		private string _vinyl2_color3 = Reflection.BaseArguments.NULL;
-		private string _vinyl3_color0 = Reflection.BaseArguments.NULL;
-		private string _vinyl3_color1 = Reflection.BaseArguments.NULL;
-		private string _vinyl3_color2 = Reflection.BaseArguments.NULL;
-		private string _vinyl3_color3 = Reflection.BaseArguments.NULL;
+		private string _vinyl_layer0 = BaseArguments.NULL;
+		private string _vinyl_layer1 = BaseArguments.NULL;
+		private string _vinyl_layer2 = BaseArguments.NULL;
+		private string _vinyl_layer3 = BaseArguments.NULL;
+		private string _vinyl0_color0 = BaseArguments.NULL;
+		private string _vinyl0_color1 = BaseArguments.NULL;
+		private string _vinyl0_color2 = BaseArguments.NULL;
+		private string _vinyl0_color3 = BaseArguments.NULL;
+		private string _vinyl1_color0 = BaseArguments.NULL;
+		private string _vinyl1_color1 = BaseArguments.NULL;
+		private string _vinyl1_color2 = BaseArguments.NULL;
+		private string _vinyl1_color3 = BaseArguments.NULL;
+		private string _vinyl2_color0 = BaseArguments.NULL;
+		private string _vinyl2_color1 = BaseArguments.NULL;
+		private string _vinyl2_color2 = BaseArguments.NULL;
+		private string _vinyl2_color3 = BaseArguments.NULL;
+		private string _vinyl3_color0 = BaseArguments.NULL;
+		private string _vinyl3_color1 = BaseArguments.NULL;
+		private string _vinyl3_color2 = BaseArguments.NULL;
+		private string _vinyl3_color3 = BaseArguments.NULL;
 
 		#endregion
 
@@ -35,7 +42,7 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				this._vinyl_layer0 = value;
 			}
 		}
@@ -46,7 +53,7 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				this._vinyl_layer1 = value;
 			}
 		}
@@ -57,7 +64,7 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				this._vinyl_layer2 = value;
 			}
 		}
@@ -68,7 +75,7 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				this._vinyl_layer3 = value;
 			}
 		}
@@ -78,8 +85,8 @@
 			get => this._vinyl0_color0;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl0_color0 = value;
 			}
 		}
@@ -89,8 +96,8 @@
 			get => this._vinyl0_color1;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl0_color1 = value;
 			}
 		}
@@ -100,8 +107,8 @@
 			get => this._vinyl0_color2;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl0_color2 = value;
 			}
 		}
@@ -111,8 +118,8 @@
 			get => this._vinyl0_color3;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl0_color3 = value;
 			}
 		}
@@ -122,8 +129,8 @@
 			get => this._vinyl1_color0;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl1_color0 = value;
 			}
 		}
@@ -133,8 +140,8 @@
 			get => this._vinyl1_color1;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl1_color1 = value;
 			}
 		}
@@ -144,8 +151,8 @@
 			get => this._vinyl1_color2;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl1_color2 = value;
 			}
 		}
@@ -155,8 +162,8 @@
 			get => this._vinyl1_color3;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl1_color3 = value;
 			}
 		}
@@ -166,8 +173,8 @@
 			get => this._vinyl2_color0;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl2_color0 = value;
 			}
 		}
@@ -177,8 +184,8 @@
 			get => this._vinyl2_color1;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl2_color1 = value;
 			}
 		}
@@ -188,8 +195,8 @@
 			get => this._vinyl2_color2;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl2_color2 = value;
 			}
 		}
@@ -199,8 +206,8 @@
 			get => this._vinyl2_color3;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl2_color3 = value;
 			}
 		}
@@ -210,8 +217,8 @@
 			get => this._vinyl3_color0;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl3_color0 = value;
 			}
 		}
@@ -221,8 +228,8 @@
 			get => this._vinyl3_color1;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl3_color1 = value;
 			}
 		}
@@ -232,8 +239,8 @@
 			get => this._vinyl3_color2;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl3_color2 = value;
 			}
 		}
@@ -243,8 +250,8 @@
 			get => this._vinyl3_color3;
 			set
 			{
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.UG2VinylPaints.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+				if (value != BaseArguments.NULL && !Map.UG2VinylPaints.Contains(value))
+					throw new MappingFailException();
 				this._vinyl3_color3 = value;
 			}
 		}

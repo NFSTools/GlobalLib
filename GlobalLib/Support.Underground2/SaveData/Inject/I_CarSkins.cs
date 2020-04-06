@@ -1,10 +1,13 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Reflection.ID;
+using System.IO;
+
+namespace GlobalLib.Support.Underground2
 {
 	public static partial class SaveData
 	{
-		private static void I_CarSkins(Database.Underground2 db, System.IO.BinaryWriter bw)
+		private static void I_CarSkins(Database.Underground2 db, BinaryWriter bw)
 		{
-			bw.Write(Reflection.ID.Global.CarSkins);
+			bw.Write(Global.CarSkins);
 			bw.Write(-1);
 			var pos = bw.BaseStream.Position;
 			int a1 = 0;

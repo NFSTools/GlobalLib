@@ -1,77 +1,79 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Attributes;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class GCareerStage
 	{
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public short Unknown0x04 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public short Unknown0x06 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public short Unknown0x26 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x2C { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x2D { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x2E { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x2F { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x35 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x36 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x37 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x38 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x39 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x3A { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x3B { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x3C { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x3D { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x3E { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x3F { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x41 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x42 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte Unknown0x43 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public float Unknown0x44 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public float Unknown0x48 { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public float Unknown0x4C { get; set; }
 	}
 }

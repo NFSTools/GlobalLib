@@ -16,7 +16,7 @@ namespace GlobalLib.Support.Shared.Class
         protected string _collection_name;
         protected int Version { get; set; } = 8; // 8 for C, 5 for MW and UG2
         protected string filename { get; set; } // 0x40 bytes max
-        protected uint FilenameHash { get; set; } // Utils.Bin.Hash(this.filename)
+        protected uint FilenameHash { get; set; } // Bin.Hash(this.filename)
         protected uint PermBlockByteOffset { get; set; } = 0; // usually 0
         protected uint PermBlockByteSize { get; set; } = 0; // usually 0
         protected int EndianSwapped { get; set; } = 0; // usually 0

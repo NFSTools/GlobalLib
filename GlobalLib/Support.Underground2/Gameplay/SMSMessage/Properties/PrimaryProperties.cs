@@ -1,21 +1,25 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Attributes;
+using System;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class SMSMessage
 	{
-		private string _message_label = Reflection.BaseArguments.NULL;
+		private string _message_label = BaseArguments.NULL;
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public int CashValue { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public string MessageSenderLabel
 		{
 			get => this._message_label;
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				this._message_label = value;
 			}
 		}

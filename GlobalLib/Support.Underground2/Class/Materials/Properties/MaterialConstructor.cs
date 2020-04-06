@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class Material : Shared.Class.Material
     {
@@ -10,11 +14,11 @@
         {
             this.Database = db;
             this.CollectionName = CName;
-            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+            Map.BinKeys[Bin.Hash(CName)] = CName;
         }
 
         // Default constructor: disassemble material
-        public unsafe Material(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
+        public unsafe Material(IntPtr byteptr_t, string CName, Database.Underground2 db)
         {
             this.Database = db;
             this._collection_name = CName;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalLib.Reflection.ID;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -32,7 +33,7 @@ namespace GlobalLib.Support.Underground2
                     // If one of the necessary slots is reached, replace it
                     switch (WriterSlotID)
                     {
-                        case Reflection.ID.Global.STRBlocks:
+                        case Global.STRBlocks:
                             if (!finished)
                             {
                                 bw.Write(db.STRBlocks[0].Assemble());
@@ -66,7 +67,7 @@ namespace GlobalLib.Support.Underground2
                     // If one of the necessary slots is reached, replace it
                     switch (WriterSlotID)
                     {
-                        case Reflection.ID.Global.STRBlocks:
+                        case Global.STRBlocks:
                             if (!finished)
                             {
                                 bw.Write(db.STRBlocks[0].ParseLabels());

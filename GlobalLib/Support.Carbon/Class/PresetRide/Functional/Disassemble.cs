@@ -1,4 +1,12 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Support.Shared.Parts.PresetParts;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class PresetRide
     {
@@ -23,8 +31,8 @@
             uint a3 = 0;       // extra for hashes, loops
             uint a4 = 0;       // extra for hashes, loops
 
-            var parts = new Shared.Parts.PresetParts.Concatenator(); // assign actual concatenator
-            var add_on = new Shared.Parts.PresetParts.Add_On(); // assign actual add_on
+            var parts = new Concatenator(); // assign actual concatenator
+            var add_on = new Add_On(); // assign actual add_on
 
             // Get the model name
             for (int x = 8; *(byteptr_t + x) != 0; ++x)
@@ -36,19 +44,19 @@
 
             // Frontend hash
             a1 = *(uint*)(byteptr_t + 0x48);
-            if (Core.Map.VltKeys.TryGetValue(a1, out v1))
+            if (Map.VltKeys.TryGetValue(a1, out v1))
                 this.Frontend = v1;
             else
                 this.Frontend = $"{hex}{a1:X8}";
 
             // Pvehicle hash
             a1 = *(uint*)(byteptr_t + 0x50);
-            if (Core.Map.VltKeys.TryGetValue(a1, out v1))
+            if (Map.VltKeys.TryGetValue(a1, out v1))
                 this.Pvehicle = v1;
             else
                 this.Pvehicle = $"{hex}{a1:X8}";
 
-            a1 = Utils.Bin.Hash(MODEL + parts._BASE); // for RaiderKeys
+            a1 = Bin.Hash(MODEL + parts._BASE); // for RaiderKeys
 
             // try to match _BODY
             a2 = *(uint*)(byteptr_t + 0xBC);
@@ -57,13 +65,13 @@
                 this._aftermarket_bodykit = -1; // basically no difference between this one and next one
                 goto LABEL_LIGHTS;
             }
-            a1 = Utils.Bin.Hash(MODEL + parts._BASE_KIT);
+            a1 = Bin.Hash(MODEL + parts._BASE_KIT);
             if (a1 == a2)
             {
                 this._aftermarket_bodykit = -1;
                 goto LABEL_LIGHTS;
             }
-            a1 = Utils.Bin.Hash(MODEL + parts._BASE_KIT + add_on._KIT + add_on._0); // (MODEL)_BODY_KIT00
+            a1 = Bin.Hash(MODEL + parts._BASE_KIT + add_on._KIT + add_on._0); // (MODEL)_BODY_KIT00
             if (a1 == a2)
             {
                 this._aftermarket_bodykit = 0;
@@ -72,7 +80,7 @@
             {
                 for (int x1 = 0; x1 < 6; ++x1) // 5 bodykits max
                 {
-                    a1 = Utils.Bin.Hash(MODEL + parts._BASE_KIT + add_on._KITW + x1.ToString());
+                    a1 = Bin.Hash(MODEL + parts._BASE_KIT + add_on._KITW + x1.ToString());
                     if (a1 == a2)
                     {
                         this._aftermarket_bodykit = (sbyte)x1;
@@ -84,19 +92,19 @@
         LABEL_LIGHTS:
             // Try match popup lights
             a2 = *(uint*)(byteptr_t + 0xE0);
-            a1 = Utils.Bin.Hash(MODEL + parts._LEFT_HEADLIGHT + add_on._ON);
-            this._popup_headlights_exist = (a2 == 0) ? Reflection.Enum.eBoolean.False : Reflection.Enum.eBoolean.True;  // either this
-            this._popup_headlights_exist = (a1 == a2) ? Reflection.Enum.eBoolean.True : Reflection.Enum.eBoolean.False; // or this
+            a1 = Bin.Hash(MODEL + parts._LEFT_HEADLIGHT + add_on._ON);
+            this._popup_headlights_exist = (a2 == 0) ? eBoolean.False : eBoolean.True;  // either this
+            this._popup_headlights_exist = (a1 == a2) ? eBoolean.True : eBoolean.False; // or this
             a2 = *(uint*)(byteptr_t + 0xE4);
             if (a2 == 0)
                 goto LABEL_EXHAUST; // skip if statements if null
-            if (this._popup_headlights_exist == Reflection.Enum.eBoolean.True)
+            if (this._popup_headlights_exist == eBoolean.True)
             {
-                a1 = Utils.Bin.Hash(MODEL + parts._LEFT_HEADLIGHT_GLASS + add_on._OFF);
-                this._popup_heaglights_on = (a1 == a2) ? Reflection.Enum.eBoolean.False : Reflection.Enum.eBoolean.True;
+                a1 = Bin.Hash(MODEL + parts._LEFT_HEADLIGHT_GLASS + add_on._OFF);
+                this._popup_heaglights_on = (a1 == a2) ? eBoolean.False : eBoolean.True;
             }
             else
-                this._popup_heaglights_on = Reflection.Enum.eBoolean.False;
+                this._popup_heaglights_on = eBoolean.False;
 
             LABEL_EXHAUST:
             // Try exhaust match
@@ -106,7 +114,7 @@
                 this._exhaust_style = -1;
                 goto LABEL_SPOILER; // skip the rest of statements
             }
-            a1 = Utils.Bin.Hash(MODEL + parts._KIT00_EXHAUST); // stock exhaust
+            a1 = Bin.Hash(MODEL + parts._KIT00_EXHAUST); // stock exhaust
             if (a1 == a2)
             {
                 this._exhaust_style = 0;
@@ -115,7 +123,7 @@
             {
                 for (sbyte x1 = 0; x1 < 18; ++x1) // 17 exhaust styles
                 {
-                    a1 = Utils.Bin.Hash(add_on.EXHAUST + add_on._STYLE + x1.ToString("00") + add_on._LEVEL1);
+                    a1 = Bin.Hash(add_on.EXHAUST + add_on._STYLE + x1.ToString("00") + add_on._LEVEL1);
                     if (a1 == a2)
                     {
                         this._exhaust_style = x1;
@@ -123,11 +131,11 @@
                     }
                     else
                     {
-                        a1 = Utils.Bin.Hash(add_on.EXHAUST + add_on._STYLE + x1.ToString("00") + add_on._CENTER + add_on._LEVEL1);
+                        a1 = Bin.Hash(add_on.EXHAUST + add_on._STYLE + x1.ToString("00") + add_on._CENTER + add_on._LEVEL1);
                         if (a1 == a2)
                         {
                             this._exhaust_style = x1;
-                            this._is_center_exhaust = Reflection.Enum.eBoolean.True;
+                            this._is_center_exhaust = eBoolean.True;
                             goto LABEL_SPOILER;
                         }
                     }
@@ -141,14 +149,14 @@
             if (a2 == 0)
             {
                 this._spoiler_style = 0;
-                this._spoiler_type = Reflection.Enum.eSTypes.NULL; // means spoiler is nulled
+                this._spoiler_type = eSTypes.NULL; // means spoiler is nulled
                 goto LABEL_FRONT_BUMPER;
             }
-            a1 = Utils.Bin.Hash(MODEL + parts._SPOILER);
+            a1 = Bin.Hash(MODEL + parts._SPOILER);
             if (a1 == a2)
             {   // stock spoiler
                 this._spoiler_style = 0;
-                this._spoiler_type = Reflection.Enum.eSTypes.STOCK;
+                this._spoiler_type = eSTypes.STOCK;
             }
             else
             {
@@ -158,8 +166,8 @@
                     {
                         v3 = add_on.SPOILER + add_on._STYLE + x2.ToString("00") + add_on._CSTYPE[x1];
                         v4 = add_on.AS_SPOILER + add_on._STYLE + x2.ToString("00") + add_on._CSTYPE[x1];
-                        a3 = Utils.Bin.Hash(v3);
-                        a4 = Utils.Bin.Hash(v4);
+                        a3 = Bin.Hash(v3);
+                        a4 = Bin.Hash(v4);
                         if (a3 == a2)
                         {
                             this._spoiler_style = x2;
@@ -170,26 +178,26 @@
                         {
                             this._spoiler_style = x2;
                             v1 = add_on._CSTYPE[x1];
-                            this._is_autosculpt_spoiler = Reflection.Enum.eBoolean.True;
+                            this._is_autosculpt_spoiler = eBoolean.True;
                             goto LABEL_FRONT_BUMPER; // break the whole loop
                         }
                         else // try carbonfibre
                         {
-                            a3 = Utils.Bin.Hash(v3 + add_on._CF);
-                            a4 = Utils.Bin.Hash(v4 + add_on._CF);
+                            a3 = Bin.Hash(v3 + add_on._CF);
+                            a4 = Bin.Hash(v4 + add_on._CF);
                             if (a3 == a2)
                             {
                                 this._spoiler_style = x2;
                                 v1 = add_on._CSTYPE[x1];
-                                this._is_carbonfibre_spoiler = Reflection.Enum.eBoolean.True;
+                                this._is_carbonfibre_spoiler = eBoolean.True;
                                 goto LABEL_FRONT_BUMPER; // break the whole loop
                             }
                             else if (a4 == a2)
                             {
                                 this._spoiler_style = x2;
                                 v1 = add_on._CSTYPE[x1];
-                                this._is_autosculpt_spoiler = Reflection.Enum.eBoolean.True;
-                                this._is_carbonfibre_spoiler = Reflection.Enum.eBoolean.True;
+                                this._is_autosculpt_spoiler = eBoolean.True;
+                                this._is_carbonfibre_spoiler = eBoolean.True;
                                 goto LABEL_FRONT_BUMPER; // break the whole loop
                             }
                         }
@@ -201,7 +209,7 @@
         LABEL_FRONT_BUMPER:
             // fix spoiler settings first
             if (v1 == "")
-                this._spoiler_type = Reflection.Enum.eSTypes.BASE; // use BASE to make it clearer
+                this._spoiler_type = eSTypes.BASE; // use BASE to make it clearer
             else
                 System.Enum.TryParse(v1, out this._spoiler_type);
 
@@ -214,7 +222,7 @@
             }
             for (a3 = 0; a3 < 10; ++a3)
             {
-                a1 = Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString("00") + parts._FRONT_BUMPER);
+                a1 = Bin.Hash(MODEL + add_on._K10 + a3.ToString("00") + parts._FRONT_BUMPER);
                 if (a1 == a2)
                 {
                     this._autosculpt_frontbumper = (sbyte)a3;
@@ -232,7 +240,7 @@
             }
             for (a3 = 0; a3 < 10; ++a3) // 10 rear bumper styles
             {
-                a1 = Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString("00") + parts._REAR_BUMPER);
+                a1 = Bin.Hash(MODEL + add_on._K10 + a3.ToString("00") + parts._REAR_BUMPER);
                 if (a1 == a2)
                 {
                     this._autosculpt_rearbumper = (sbyte)a3;
@@ -243,18 +251,18 @@
         LABEL_ROOF:
             // Try to match _ROOF
             a2 = *(uint*)(byteptr_t + 0x190);
-            if (a2 == 0 || Utils.Bin.Hash(MODEL + parts._ROOF) == a2)
-                this._choptop_is_on = Reflection.Enum.eBoolean.False; // means no roof at all
+            if (a2 == 0 || Bin.Hash(MODEL + parts._ROOF) == a2)
+                this._choptop_is_on = eBoolean.False; // means no roof at all
             else
             {
-                a1 = Utils.Bin.Hash(MODEL + parts._ROOF + "_CHOP_TOP");
+                a1 = Bin.Hash(MODEL + parts._ROOF + "_CHOP_TOP");
                 if (a1 == a2)
-                    this._choptop_is_on = Reflection.Enum.eBoolean.True;
+                    this._choptop_is_on = eBoolean.True;
             }
 
             // Try to match ROOF_STYLE
             a2 = *(uint*)(byteptr_t + 0x194);
-            a1 = Utils.Bin.Hash(parts.ROOF_STYLE + add_on._0 + add_on._0);
+            a1 = Bin.Hash(parts.ROOF_STYLE + add_on._0 + add_on._0);
             if (a2 == 0 || a1 == a2)
             {
                 this._roofscoop_style = 0;
@@ -268,9 +276,9 @@
                     v1 = parts.ROOF_STYLE + x1pad;
                     v3 = parts.ROOF_STYLE + x1pad + add_on._AUTOSCULPT;
                     v4 = parts.ROOF_STYLE + x1pad + add_on._DUAL;
-                    a1 = Utils.Bin.Hash(v1);
-                    a3 = Utils.Bin.Hash(v3);
-                    a4 = Utils.Bin.Hash(v4);
+                    a1 = Bin.Hash(v1);
+                    a3 = Bin.Hash(v3);
+                    a4 = Bin.Hash(v4);
                     if (a1 == a2)
                     {
                         this._roofscoop_style = x1;
@@ -279,38 +287,38 @@
                     else if (a3 == a2)
                     {
                         this._roofscoop_style = x1;
-                        this._is_autosculpt_roofscoop = Reflection.Enum.eBoolean.True;
+                        this._is_autosculpt_roofscoop = eBoolean.True;
                         goto LABEL_HOOD;
                     }
                     else if (a4 == a2)
                     {
                         this._roofscoop_style = x1;
-                        this._is_dual_roofscoop = Reflection.Enum.eBoolean.True;
+                        this._is_dual_roofscoop = eBoolean.True;
                         goto LABEL_HOOD;
                     }
                     else
                     {
-                        a1 = Utils.Bin.Hash(v1 + add_on._CF);
-                        a3 = Utils.Bin.Hash(v3 + add_on._CF);
-                        a4 = Utils.Bin.Hash(v4 + add_on._CF);
+                        a1 = Bin.Hash(v1 + add_on._CF);
+                        a3 = Bin.Hash(v3 + add_on._CF);
+                        a4 = Bin.Hash(v4 + add_on._CF);
                         if (a1 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
+                            this._is_carbonfibre_roofscoop = eBoolean.True;
                             goto LABEL_HOOD;
                         }
                         else if (a3 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_autosculpt_roofscoop = Reflection.Enum.eBoolean.True;
-                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
+                            this._is_autosculpt_roofscoop = eBoolean.True;
+                            this._is_carbonfibre_roofscoop = eBoolean.True;
                             goto LABEL_HOOD;
                         }
                         else if (a4 == a2)
                         {
                             this._roofscoop_style = x1;
-                            this._is_dual_roofscoop = Reflection.Enum.eBoolean.True;
-                            this._is_carbonfibre_roofscoop = Reflection.Enum.eBoolean.True;
+                            this._is_dual_roofscoop = eBoolean.True;
+                            this._is_carbonfibre_roofscoop = eBoolean.True;
                             goto LABEL_HOOD;
                         }
                     }
@@ -321,7 +329,7 @@
         LABEL_HOOD:
             // Try match _HOOD
             a2 = *(uint*)(byteptr_t + 0x198);
-            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._HOOD);
+            a1 = Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._HOOD);
             if (a2 == 0 || a1 == a2)
             {
                 this._hood_style = 0; // means no hood
@@ -333,8 +341,8 @@
                 {
                     v3 = MODEL + add_on._STYLE + add_on._0 + x1.ToString() + parts._HOOD;
                     v4 = MODEL + add_on._STYLE + add_on._0 + x1.ToString() + parts._HOOD + add_on._AS;
-                    a3 = Utils.Bin.Hash(v3);
-                    a4 = Utils.Bin.Hash(v4);
+                    a3 = Bin.Hash(v3);
+                    a4 = Bin.Hash(v4);
                     if (a3 == a2)
                     {
                         this._hood_style = x1;
@@ -343,24 +351,24 @@
                     else if (a4 == a2)
                     {
                         this._hood_style = x1;
-                        this._is_autosculpt_hood = Reflection.Enum.eBoolean.True;
+                        this._is_autosculpt_hood = eBoolean.True;
                         goto LABEL_SKIRT;
                     }
                     else
                     {
-                        a3 = Utils.Bin.Hash(v3 + add_on._CF);
-                        a4 = Utils.Bin.Hash(v4 + add_on._CF);
+                        a3 = Bin.Hash(v3 + add_on._CF);
+                        a4 = Bin.Hash(v4 + add_on._CF);
                         if (a3 == a2)
                         {
                             this._hood_style = x1;
-                            this._is_carbonfibre_hood = Reflection.Enum.eBoolean.True;
+                            this._is_carbonfibre_hood = eBoolean.True;
                             goto LABEL_SKIRT;
                         }
                         else if (a4 == a2)
                         {
                             this._hood_style = x1;
-                            this._is_autosculpt_hood = Reflection.Enum.eBoolean.True;
-                            this._is_carbonfibre_hood = Reflection.Enum.eBoolean.True;
+                            this._is_autosculpt_hood = eBoolean.True;
+                            this._is_carbonfibre_hood = eBoolean.True;
                             goto LABEL_SKIRT;
                         }
                     }
@@ -376,7 +384,7 @@
                 this._autosculpt_skirt = -1;
                 goto LABEL_RIM;
             }
-            a1 = Utils.Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._SKIRT + "_CAPPED");
+            a1 = Bin.Hash(MODEL + add_on._KIT + add_on._0 + parts._SKIRT + "_CAPPED");
             if (a1 == a2)
             {
                 this._autosculpt_skirt = -2;
@@ -384,7 +392,7 @@
             }
             for (a3 = 0; a3 < 15; ++a3) // basically 14 styles max
             {
-                a1 = Utils.Bin.Hash(MODEL + add_on._K10 + a3.ToString("00") + parts._SKIRT);
+                a1 = Bin.Hash(MODEL + add_on._K10 + a3.ToString("00") + parts._SKIRT);
                 if (a1 == a2)
                 {
                     this._autosculpt_skirt = (sbyte)a3;
@@ -394,40 +402,40 @@
 
         LABEL_RIM:
             a2 = *(uint*)(byteptr_t + 0x1B0);
-            a1 = Utils.Bin.Hash(MODEL + parts._WHEEL);
+            a1 = Bin.Hash(MODEL + parts._WHEEL);
             if (a2 == 0)
             {
-                this._rim_brand = Reflection.BaseArguments.NULL;
+                this._rim_brand = BaseArguments.NULL;
                 goto LABEL_PRECOMPVINYL;
             }
             else if (a1 == a2)
             {
-                this._rim_brand = Reflection.BaseArguments.STOCK;
+                this._rim_brand = BaseArguments.STOCK;
                 goto LABEL_PRECOMPVINYL;
             }
             else
             {
                 for (byte x1 = 1; x1 < 11; ++x1) // try autosculpt wheels
                 {
-                    a1 = Utils.Bin.Hash(Core.Map.RimBrands[0] + add_on._STYLE + x1.ToString("00") + "_17" + add_on._25);
+                    a1 = Bin.Hash(Map.RimBrands[0] + add_on._STYLE + x1.ToString("00") + "_17" + add_on._25);
                     if (a1 == a2)
                     {
-                        this._rim_brand = Core.Map.RimBrands[0];
+                        this._rim_brand = Map.RimBrands[0];
                         this._rim_style = x1;
                         this._rim_size = 17;
                         goto LABEL_PRECOMPVINYL;
                     }
                 }
-                for (byte x1 = 1; x1 < Core.Map.RimBrands.Count; ++x1) // else try match aftermarket wheels
+                for (byte x1 = 1; x1 < Map.RimBrands.Count; ++x1) // else try match aftermarket wheels
                 {
                     for (byte x2 = 1; x2 < 7; ++x2) // 3 loops: max manufacturers, 6 styles, 5 sizes
                     {
                         for (byte x3 = 17; x3 < 22; ++x3)
                         {
-                            a1 = Utils.Bin.Hash(Core.Map.RimBrands[x1] + add_on._STYLE + add_on._0 + x2.ToString() + "_" + x3.ToString() + add_on._25);
+                            a1 = Bin.Hash(Map.RimBrands[x1] + add_on._STYLE + add_on._0 + x2.ToString() + "_" + x3.ToString() + add_on._25);
                             if (a1 == a2)
                             {
-                                this._rim_brand = Core.Map.RimBrands[x1];
+                                this._rim_brand = Map.RimBrands[x1];
                                 this._rim_style = x2;
                                 this._rim_size = x3;
                                 goto LABEL_PRECOMPVINYL;
@@ -439,30 +447,30 @@
 
         LABEL_PRECOMPVINYL:
             a2 = *(uint*)(byteptr_t + 0x1D4);
-            this._specific_vinyl = Core.Map.Lookup(a2, true) ?? $"{hex}{a2:X8}";
+            this._specific_vinyl = Map.Lookup(a2, true) ?? $"{hex}{a2:X8}";
             a2 = *(uint*)(byteptr_t + 0x1D8);
-            this._generic_vinyl = Core.Map.Lookup(a2, true) ?? $"{hex}{a2:X8}";
+            this._generic_vinyl = Map.Lookup(a2, true) ?? $"{hex}{a2:X8}";
 
             // _WINDOW_TINT
             a2 = *(uint*)(byteptr_t + 0x1F8);
-            a1 = Utils.Bin.Hash(parts.WINDOW_TINT_STOCK);
+            a1 = Bin.Hash(parts.WINDOW_TINT_STOCK);
             if (a2 == 0 || a1 == a2)
-                this._window_tint_type = Reflection.BaseArguments.STOCK;
+                this._window_tint_type = BaseArguments.STOCK;
             else
             {
-                v2 = Core.Map.Lookup(a2, false);
-                this._window_tint_type = Core.Map.WindowTintMap.Contains(v2) ? v2 : Reflection.BaseArguments.STOCK;
+                v2 = Map.Lookup(a2, false);
+                this._window_tint_type = Map.WindowTintMap.Contains(v2) ? v2 : BaseArguments.STOCK;
             }
 
             // COLOR TYPE
             a2 = *(uint*)(byteptr_t + 0x20C);
-            if (System.Enum.IsDefined(typeof(Reflection.Enum.eCarbonPaint), a2))
-                this._paint_type = (Reflection.Enum.eCarbonPaint)a2;
+            if (Enum.IsDefined(typeof(eCarbonPaint), a2))
+                this._paint_type = (eCarbonPaint)a2;
             else
-                this._paint_type = Reflection.Enum.eCarbonPaint.GLOSS;
+                this._paint_type = eCarbonPaint.GLOSS;
 
             // Paint Swatch
-            this._paint_swatch = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x210), false));
+            this._paint_swatch = Resolve.GetSwatchIndex(Map.Lookup(*(uint*)(byteptr_t + 0x210), false));
 
             // Saturation and Brightness
             this._saturation = *(float*)(byteptr_t + 0x214);

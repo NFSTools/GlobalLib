@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted
+﻿using GlobalLib.Support.MostWanted.Class;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.MostWanted
 {
     public static partial class LoadData
     {
@@ -18,7 +21,7 @@
                     *(dataptr_t + a1) = *(byteptr_t + a1);
             }
             data = Utils.EA.SAT.Decompress(data);
-            var Class = new Class.FNGroup(data, db);
+            var Class = new FNGroup(data, db);
 
             // Check whether this FEng class already exists in the database
             if (Class.Destroy)
@@ -26,7 +29,7 @@
             if (db.FNGroups.FindCollection(Class.CollectionName) != null)
                 return;
             db.FNGroups.Collections.Add(Class);
-            Utils.Bin.Hash(Class.CollectionName);
+            Bin.Hash(Class.CollectionName);
         }
     }
 }

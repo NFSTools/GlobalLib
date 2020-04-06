@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Utils.EA;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class TPKBlock
     {
@@ -9,7 +11,7 @@
         {
             this.compressions.Clear();
             for (int a1 = 0; a1 < this.Textures.Count; ++a1)
-                this.compressions.Add(Utils.EA.Comp.GetInt(this.Textures[a1].Compression));
+                this.compressions.Add(Comp.GetInt(this.Textures[a1].Compression));
         }
     }
 }

@@ -1,29 +1,35 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class PresetRide
 	{
-        private string _rim_brand = Reflection.BaseArguments.STOCK;
+        private string _rim_brand = BaseArguments.STOCK;
         private byte _rim_style = 0;
         private byte _rim_size = 18;
         private byte _rim_outer_max = 24;
-        private Reflection.Enum.eBoolean _is_spinning_rim = Reflection.Enum.eBoolean.False;
+        private eBoolean _is_spinning_rim = eBoolean.False;
 
         /// <summary>
         /// Rim brand value of the preset ride.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public string RimBrand
         {
             get => this._rim_brand;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                    throw new ArgumentNullException("This value cannot be left empty.");
                 switch (value)
                 {
-                    case Reflection.BaseArguments.NULL:
-                    case Reflection.BaseArguments.STOCK:
+                    case BaseArguments.NULL:
+                    case BaseArguments.STOCK:
                         this._rim_brand = value;
                         break;
                     default:
@@ -37,7 +43,7 @@
                             break;
                         }
                         else
-                            throw new Reflection.Exception.MappingFailException();
+                            throw new MappingFailException();
                 }
                 this.Modified = true;
             }
@@ -46,15 +52,15 @@
         /// <summary>
         /// Rim style value of the preset ride. Range varies for different brands.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public byte RimStyle
         {
             get => this._rim_style;
             set
             {
                 if (!this.IsValidRimStyle(value))
-                    throw new System.ArgumentOutOfRangeException("This value is outside of range of valid values.");
+                    throw new ArgumentOutOfRangeException("This value is outside of range of valid values.");
                 else
                 {
                     this._rim_style = value;
@@ -69,15 +75,15 @@
         /// <summary>
         /// Rim size value of the preset ride. Range varies for different brands and styles.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public byte RimSize
         {
             get => this._rim_size;
             set
             {
                 if (!this.IsValidRimSize(value))
-                    throw new System.ArgumentOutOfRangeException("This value is outside of range of valid values.");
+                    throw new ArgumentOutOfRangeException("This value is outside of range of valid values.");
                 else
                 {
                     this._rim_size = value;
@@ -91,15 +97,15 @@
         /// <summary>
         /// Rim outer max value of the preset ride. Range varies for different brands, styles, and sizes.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public byte RimOuterMax
         {
             get => this._rim_outer_max;
             set
             {
                 if (!this.IsValidRimOuterMax(value))
-                    throw new System.ArgumentOutOfRangeException("This value is outside of range of valid values.");
+                    throw new ArgumentOutOfRangeException("This value is outside of range of valid values.");
                 else
                 {
                     this._rim_outer_max = value;
@@ -112,19 +118,19 @@
         /// <summary>
         /// If set to true, rim is a spinner type, otherwise a regular rim.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
-        public Reflection.Enum.eBoolean IsSpinningRim
+        [AccessModifiable()]
+        [StaticModifiable()]
+        public eBoolean IsSpinningRim
         {
             get => this._is_spinning_rim;
             set
             {
-                if (value == Reflection.Enum.eBoolean.True)
+                if (value == eBoolean.True)
                 {
                     if (this.ValidateSpinning())
                         this._is_spinning_rim = value;
                     else
-                        throw new System.Exception("Spinner with the brand, style, size and outer max specified " +
+                        throw new Exception("Spinner with the brand, style, size and outer max specified " +
                             "does not exist.");
                 }
                 else

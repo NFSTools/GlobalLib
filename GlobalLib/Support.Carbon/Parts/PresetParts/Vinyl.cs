@@ -1,12 +1,16 @@
-﻿using GlobalLib.Reflection.Interface;
-
-
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System;
 
 namespace GlobalLib.Support.Carbon.Parts.PresetParts
 {
-    public class Vinyl : Reflection.Abstract.SubPart, ICopyable<Vinyl>
+    public class Vinyl : SubPart, ICopyable<Vinyl>
     {
-        private string _vectorvinyl = Reflection.BaseArguments.NULL;
+        private string _vectorvinyl = BaseArguments.NULL;
         private byte _swatch1 = 0;
         private byte _swatch2 = 0;
         private byte _swatch3 = 0;
@@ -18,7 +22,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                    throw new ArgumentNullException("This value cannot be left empty.");
                 this._vectorvinyl = value;
             }
         }
@@ -44,7 +48,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch1 = value;
             }
@@ -56,7 +60,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch2 = value;
             }
@@ -68,7 +72,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch3 = value;
             }
@@ -80,7 +84,7 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
             set
             {
                 if (value > 90)
-                    throw new System.ArgumentOutOfRangeException("This value should be in range 0 to 90.");
+                    throw new ArgumentOutOfRangeException("This value should be in range 0 to 90.");
                 else
                     this._swatch4 = value;
             }
@@ -106,17 +110,17 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
         public unsafe void Read(byte* byteptr_t)
         {
             var key = *(uint*)byteptr_t;
-            this._vectorvinyl = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
+            this._vectorvinyl = Map.Lookup(key, true) ?? $"0x{key:X8}";
             this.PositionY = *(short*)(byteptr_t + 0x04);
             this.PositionX = *(short*)(byteptr_t + 0x06);
             this.Rotation = *(sbyte*)(byteptr_t + 0x08);
             this.Skew = *(sbyte*)(byteptr_t + 0x09);
             this.ScaleY = *(sbyte*)(byteptr_t + 0x0A);
             this.ScaleX = *(sbyte*)(byteptr_t + 0x0B);
-            this.SwatchColor1 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x0C), false));
-            this.SwatchColor2 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x14), false));
-            this.SwatchColor3 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x1C), false));
-            this.SwatchColor4 = Utils.EA.Resolve.GetSwatchIndex(Core.Map.Lookup(*(uint*)(byteptr_t + 0x24), false));
+            this.SwatchColor1 = Resolve.GetSwatchIndex(Map.Lookup(*(uint*)(byteptr_t + 0x0C), false));
+            this.SwatchColor2 = Resolve.GetSwatchIndex(Map.Lookup(*(uint*)(byteptr_t + 0x14), false));
+            this.SwatchColor3 = Resolve.GetSwatchIndex(Map.Lookup(*(uint*)(byteptr_t + 0x1C), false));
+            this.SwatchColor4 = Resolve.GetSwatchIndex(Map.Lookup(*(uint*)(byteptr_t + 0x24), false));
             this.Saturation1 = *(byteptr_t + 0x10);
             this.Saturation2 = *(byteptr_t + 0x18);
             this.Saturation3 = *(byteptr_t + 0x20);
@@ -129,17 +133,17 @@ namespace GlobalLib.Support.Carbon.Parts.PresetParts
 
         public unsafe void Write(byte* byteptr_t)
         {
-            *(uint*)byteptr_t = Utils.Bin.SmartHash(this.VectorVinyl);
+            *(uint*)byteptr_t = Bin.SmartHash(this.VectorVinyl);
             *(short*)(byteptr_t + 0x04) = this.PositionY;
             *(short*)(byteptr_t + 0x06) = this.PositionX;
             *(byteptr_t + 0x08) = (byte)this.Rotation;
             *(byteptr_t + 0x09) = (byte)this.Skew;
             *(byteptr_t + 0x0A) = (byte)this.ScaleY;
             *(byteptr_t + 0x0B) = (byte)this.ScaleX;
-            *(uint*)(byteptr_t + 0x0C) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(this.SwatchColor1));
-            *(uint*)(byteptr_t + 0x14) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(this.SwatchColor2));
-            *(uint*)(byteptr_t + 0x1C) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(this.SwatchColor3));
-            *(uint*)(byteptr_t + 0x24) = Utils.Bin.Hash(Utils.EA.Resolve.GetVinylString(this.SwatchColor4));
+            *(uint*)(byteptr_t + 0x0C) = Bin.Hash(Resolve.GetVinylString(this.SwatchColor1));
+            *(uint*)(byteptr_t + 0x14) = Bin.Hash(Resolve.GetVinylString(this.SwatchColor2));
+            *(uint*)(byteptr_t + 0x1C) = Bin.Hash(Resolve.GetVinylString(this.SwatchColor3));
+            *(uint*)(byteptr_t + 0x24) = Bin.Hash(Resolve.GetVinylString(this.SwatchColor4));
             *(byteptr_t + 0x10) = this.Saturation1;
             *(byteptr_t + 0x18) = this.Saturation2;
             *(byteptr_t + 0x20) = this.Saturation3;

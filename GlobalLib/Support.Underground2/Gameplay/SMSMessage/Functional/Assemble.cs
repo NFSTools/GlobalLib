@@ -1,8 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class SMSMessage
 	{
-		public unsafe void Assemble(byte* byteptr_t, Utils.MemoryWriter mw)
+		public unsafe void Assemble(byte* byteptr_t, MemoryWriter mw)
 		{
 			ushort pointer = (ushort)mw.Position;
 			mw.WriteNullTerminated(this._collection_name);
@@ -20,7 +22,7 @@
 			*(byteptr_t + 0x0B) = this.b0x0B;
 
 			*(int*)(byteptr_t + 0x0C) = this.CashValue;
-			*(uint*)(byteptr_t + 0x10) = Utils.Bin.SmartHash(this.MessageSenderLabel);
+			*(uint*)(byteptr_t + 0x10) = Bin.SmartHash(this.MessageSenderLabel);
 		}
 	}
 }

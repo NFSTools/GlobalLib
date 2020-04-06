@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class TPKBlock
     {
@@ -26,7 +30,7 @@
             // Get sizes
             int _1_Size = _1_Part1.Length + _1_Part2.Length + _1_Part4.Length + _1_Part5.Length;
             int _2_Size = _2_Part1.Length + _2_Part2.Length;
-            var Padding = Utils.EA.Resolve.GetPaddingArray(_1_Size + 0x48, 0x80);
+            var Padding = Resolve.GetPaddingArray(_1_Size + 0x48, 0x80);
             int PadSize = Padding.Length;
 
             // All offsets
@@ -48,21 +52,21 @@
             // Write everything
             fixed (byte* byteptr_t = &result[0])
             {
-                *(uint*)byteptr_t = Reflection.ID.TPK.MAINID;
+                *(uint*)byteptr_t = TPK.MAINID;
                 *(int*)(byteptr_t + 4) = total - 8;
                 *(int*)(byteptr_t + 12) = 0x30;
-                *(uint*)(byteptr_t + PartialOffset1) = Reflection.ID.TPK.INFO_BLOCKID;
+                *(uint*)(byteptr_t + PartialOffset1) = TPK.INFO_BLOCKID;
                 *(int*)(byteptr_t + PartialOffset1 + 4) = _1_Size;
-                *(uint*)(byteptr_t + PartialOffset2) = Reflection.ID.TPK.DATA_BLOCKID;
+                *(uint*)(byteptr_t + PartialOffset2) = TPK.DATA_BLOCKID;
                 *(int*)(byteptr_t + PartialOffset2 + 4) = _2_Size;
             }
-            System.Buffer.BlockCopy(_1_Part1, 0, result, _1_Offset1, _1_Part1.Length);
-            System.Buffer.BlockCopy(_1_Part2, 0, result, _1_Offset2, _1_Part2.Length);
-            System.Buffer.BlockCopy(_1_Part4, 0, result, _1_Offset4, _1_Part4.Length);
-            System.Buffer.BlockCopy(_1_Part5, 0, result, _1_Offset5, _1_Part5.Length);
-            System.Buffer.BlockCopy(Padding, 0, result, PaddOffset, PadSize);
-            System.Buffer.BlockCopy(_2_Part1, 0, result, _2_Offset1, _2_Part1.Length);
-            System.Buffer.BlockCopy(_2_Part2, 0, result, _2_Offset2, _2_Part2.Length);
+            Buffer.BlockCopy(_1_Part1, 0, result, _1_Offset1, _1_Part1.Length);
+            Buffer.BlockCopy(_1_Part2, 0, result, _1_Offset2, _1_Part2.Length);
+            Buffer.BlockCopy(_1_Part4, 0, result, _1_Offset4, _1_Part4.Length);
+            Buffer.BlockCopy(_1_Part5, 0, result, _1_Offset5, _1_Part5.Length);
+            Buffer.BlockCopy(Padding, 0, result, PaddOffset, PadSize);
+            Buffer.BlockCopy(_2_Part1, 0, result, _2_Offset1, _2_Part1.Length);
+            Buffer.BlockCopy(_2_Part2, 0, result, _2_Offset2, _2_Part2.Length);
 
             return result;
         }

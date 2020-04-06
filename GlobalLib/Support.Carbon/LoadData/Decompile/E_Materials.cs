@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.Carbon
+﻿using GlobalLib.Core;
+using GlobalLib.Support.Carbon.Class;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.Carbon
 {
     public static partial class LoadData
     {
@@ -10,12 +16,12 @@
         private static unsafe void E_Material(byte* byteptr_t, Database.Carbon db)
         {
             // Get collection name of the material, starts at 0x14
-            string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x1C, 0x1C);
-            CName = Utils.EA.Resolve.GetPathFromCollection(CName);
-            Utils.EA.Resolve.GetWindowTintString(CName);
-            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+            string CName = ScriptX.NullTerminatedString(byteptr_t + 0x1C, 0x1C);
+            CName = Resolve.GetPathFromCollection(CName);
+            Resolve.GetWindowTintString(CName);
+            Map.BinKeys[Bin.Hash(CName)] = CName;
 
-            var Class = new Class.Material((System.IntPtr)byteptr_t, CName, db);
+            var Class = new Material((IntPtr)byteptr_t, CName, db);
             db.Materials.Collections.Add(Class);
         }
     }

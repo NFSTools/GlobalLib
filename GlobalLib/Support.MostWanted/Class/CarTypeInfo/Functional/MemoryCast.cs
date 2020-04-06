@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.Abstract;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class CarTypeInfo
     {
@@ -7,7 +9,7 @@
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public override Reflection.Abstract.Collectable MemoryCast(string CName)
+        public override Collectable MemoryCast(string CName)
         {
             var result = new CarTypeInfo(CName, this.Database);
 

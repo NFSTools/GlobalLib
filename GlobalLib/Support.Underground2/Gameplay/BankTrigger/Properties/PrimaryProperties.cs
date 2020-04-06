@@ -1,32 +1,36 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using System;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class BankTrigger
 	{
-		private Reflection.Enum.eBoolean _initially_unlocked = Reflection.Enum.eBoolean.False;
+		private eBoolean _initially_unlocked = eBoolean.False;
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public ushort CashValue { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eBoolean InitiallyUnlocked
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eBoolean InitiallyUnlocked
 		{
 			get => this._initially_unlocked;
 			set
 			{
-				if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+				if (Enum.IsDefined(typeof(eBoolean), value))
 					this._initially_unlocked = value;
 				else
-					throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
+					throw new ArgumentOutOfRangeException("Value passed is not of boolean type.");
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public byte BankIndex { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public int RequiredStagesCompleted { get; set; }
 	}
 }

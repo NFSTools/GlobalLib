@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.ID;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class TPKBlock
     {
@@ -11,7 +13,7 @@
             var result = new byte[0x78];
             fixed (byte* byteptr_t = &result[0])
             {
-                *(uint*)byteptr_t = Reflection.ID.TPK.DATA_PART1_BLOCKID; // write ID
+                *(uint*)byteptr_t = TPK.DATA_PART1_BLOCKID; // write ID
                 *(int*)(byteptr_t + 4) = 0x18; // write size
                 *(int*)(byteptr_t + 0x10) = 1;
                 *(uint*)(byteptr_t + 0x14) = this.FilenameHash;

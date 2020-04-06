@@ -1,4 +1,8 @@
-﻿using System;
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Support.Carbon.Class;
+using GlobalLib.Utils;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -25,12 +29,12 @@ namespace GlobalLib.Support.Carbon
             try
             {
                 db._GlobalBLZC = File.ReadAllBytes(GlobalB_dir);
-                Utils.Log.Write("Reading data from GlobalB.lzc...");
+                Log.Write("Reading data from GlobalB.lzc...");
             }
             catch (Exception e)
             {
                 while (e.InnerException != null) e = e.InnerException;
-                if (Core.Process.MessageShow)
+                if (Process.MessageShow)
                     MessageBox.Show($"Error occured: {e.Message}", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     Console.WriteLine(e.Message);
@@ -38,7 +42,7 @@ namespace GlobalLib.Support.Carbon
             }
 
             // Decompress if compressed
-            db._GlobalBLZC = Utils.JDLZ.Decompress(db._GlobalBLZC);
+            db._GlobalBLZC = JDLZ.Decompress(db._GlobalBLZC);
 
             // Use pointers to speed up process
             fixed (byte* byteptr_t = &db._GlobalBLZC[0])
@@ -65,7 +69,7 @@ namespace GlobalLib.Support.Carbon
                     size = *(uint*)(byteptr_t + offset + 4); // read size
                     if (offset + size > db._GlobalBLZC.Length)
                     {
-                        if (Core.Process.MessageShow)
+                        if (Process.MessageShow)
                             MessageBox.Show("GlobalB: unable to read beyond the stream.", "Failure");
                         else
                             Console.WriteLine("GlobalB: unable to read beyond the stream.");
@@ -75,49 +79,49 @@ namespace GlobalLib.Support.Carbon
                     switch (ID)
                     {
                         case 0:
-                            if (*(uint*)(byteptr_t + offset + 8) == Reflection.ID.Global.GlobalLib)
+                            if (*(uint*)(byteptr_t + offset + 8) == Global.GlobalLib)
                                 E_GlobalLibBlock(byteptr_t + offset, size + 8);
                             break;
 
-                        case Reflection.ID.Global.Materials:
+                        case Global.Materials:
                             E_Material(byteptr_t + offset, db);
                             break;
 
-                        case Reflection.ID.Global.TPKBlocks:
+                        case Global.TPKBlocks:
                             int count = db.TPKBlocks.Length;
-                            db.TPKBlocks.Collections.Add(new Class.TPKBlock(byteptr_t + offset, count, db));
+                            db.TPKBlocks.Collections.Add(new TPKBlock(byteptr_t + offset, count, db));
                             break;
 
-                        case Reflection.ID.Global.CarTypeInfo:
+                        case Global.CarTypeInfo:
                             E_CarTypeInfo(byteptr_t + offset + 8, size, db);
                             break;
 
-                        case Reflection.ID.Global.PresetRides:
+                        case Global.PresetRides:
                             proff = offset + 8;
                             prsize = size;
                             break;
 
-                        case Reflection.ID.Global.PresetSkins:
+                        case Global.PresetSkins:
                             psoff = offset + 8;
                             pssize = size;
                             break;
 
-                        case Reflection.ID.Global.CarParts:
+                        case Global.CarParts:
                             cpoff = offset + 8;
                             cpsize = size;
                             break;
 
-                        case Reflection.ID.Global.SlotTypes:
+                        case Global.SlotTypes:
                             E_SlotType(byteptr_t + offset, size + 8, db);
                             break;
 
-                        case Reflection.ID.Global.Collisions:
+                        case Global.Collisions:
                             cooff = offset + 8;
                             cosize = size;
                             break;
 
-                        case Reflection.ID.Global.FEngFiles:
-                        case Reflection.ID.Global.FNGCompress:
+                        case Global.FEngFiles:
+                        case Global.FNGCompress:
                             E_FNGroup(byteptr_t + offset, size + 8, db);
                             break;
 

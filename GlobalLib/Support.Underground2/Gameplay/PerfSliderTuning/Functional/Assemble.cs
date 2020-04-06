@@ -1,14 +1,16 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Utils.EA;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class PerfSliderTuning
 	{
 		public unsafe void Assemble(byte* byteptr_t)
 		{
 			// Since CollectionName is of type 0x{1}{2}{3}{4}, use SAT GetColors functions
-			int i1 = Utils.EA.SAT.GetAlpha(this._collection_name);
-			var i2 = Utils.EA.SAT.GetRed(this._collection_name);
-			var i3 = Utils.EA.SAT.GetGreen(this._collection_name);
-			var i4 = Utils.EA.SAT.GetBlue(this._collection_name);
+			int i1 = SAT.GetAlpha(this._collection_name);
+			var i2 = SAT.GetRed(this._collection_name);
+			var i3 = SAT.GetGreen(this._collection_name);
+			var i4 = SAT.GetBlue(this._collection_name);
 			*(int*)byteptr_t = i1;
 			*(byteptr_t + 0x04) = i2;
 			*(byteptr_t + 0x05) = i3;

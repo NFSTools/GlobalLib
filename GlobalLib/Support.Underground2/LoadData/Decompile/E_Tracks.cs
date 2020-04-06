@@ -1,4 +1,11 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Core;
+using GlobalLib.Support.Underground2.Framework;
+using GlobalLib.Support.Underground2.Gameplay;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.Underground2
 {
     public static partial class LoadData
     {
@@ -17,13 +24,13 @@
                 uint offset = loop * size; // current offset of the cartypeinfo (padding included)
 
                 // Get CollectionName
-                string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + offset + 0x20, 0x20);
+                string CName = ScriptX.NullTerminatedString(byteptr_t + offset + 0x20, 0x20);
 
-                CName = Framework.Parse.TrackCollectionName(CName);
-                CName = Utils.EA.Resolve.GetPathFromCollection(CName);
-                Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+                CName = Parse.TrackCollectionName(CName);
+                CName = Resolve.GetPathFromCollection(CName);
+                Map.BinKeys[Bin.Hash(CName)] = CName;
 
-                var Class = new Gameplay.Track((System.IntPtr)(byteptr_t + offset), CName, db);
+                var Class = new Track((IntPtr)(byteptr_t + offset), CName, db);
                 db.Tracks.Collections.Add(Class);
             }
         }

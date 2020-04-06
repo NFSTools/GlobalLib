@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.Abstract;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class Texture
     {
@@ -7,7 +10,7 @@
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public override Reflection.Abstract.Collectable MemoryCast(string CName)
+        public override Collectable MemoryCast(string CName)
         {
             var result = new Texture(CName, this._parent_TPK, this.Database);
 
@@ -47,7 +50,7 @@
             result.PaletteSize = this.PaletteSize;
 
             result.Data = new byte[this.Data.Length];
-            System.Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
+            Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
             return result;
         }
     }

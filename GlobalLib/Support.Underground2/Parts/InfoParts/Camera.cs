@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Camera : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Camera>
+	public class Camera : SubPart, ICopyable<Camera>
 	{
 		public float CameraAngle { get; set; }
 		public float CameraLag { get; set; }

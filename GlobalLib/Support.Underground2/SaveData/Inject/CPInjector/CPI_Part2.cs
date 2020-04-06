@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2
 {
 	public static partial class SaveData
 	{
@@ -12,7 +15,7 @@
 			// Precalculate size of part2
 			foreach (var car in db.CarTypeInfos.Collections)
 			{
-				if (car.Deletable && car.UsageType == Reflection.Enum.eUsageType.Racer)
+				if (car.Deletable && car.UsageType == eUsageType.Racer)
 				{
 					part2size += 0x11E;
                     ++numaddons;
@@ -23,7 +26,7 @@
 			if (padding != 0x10) part2size += padding;
 
 			// Use MemoryWriter instead of BinaryWriter so we can return an array for later processes
-			var mw = new Utils.MemoryWriter(part2size);
+			var mw = new MemoryWriter(part2size);
 			mw.Write(db.SlotTypes.Part2.Data);
 
             // Write all info

@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Carbon
+﻿using System.Collections.Generic;
+
+namespace GlobalLib.Support.Carbon
 {
     public static partial class LoadData
     {
@@ -9,7 +11,7 @@
         private static void E_Spoilers(Database.Carbon db)
         {
             if (db.SlotTypes.Spoilers == null) return;
-            var CNameList = new System.Collections.Generic.List<string>();
+            var CNameList = new List<string>();
             foreach (var car in db.CarTypeInfos.Collections)
                 CNameList.Add(car.CollectionName);
             var AllSlots = db.SlotTypes.Spoilers.GetSpoilers(CNameList);

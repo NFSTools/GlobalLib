@@ -1,8 +1,11 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Abstract;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class PresetRide
 	{
-		public override Reflection.Abstract.Collectable MemoryCast(string CName)
+		public override Collectable MemoryCast(string CName)
 		{
 			var result = new PresetRide(CName, this.Database);
 
@@ -66,7 +69,7 @@
 			result.SPECIALTIES = this.SPECIALTIES.PlainCopy();
 			result.VINYL_SETS = this.VINYL_SETS.PlainCopy();
 
-			System.Buffer.BlockCopy(this.data, 0, result.data, 0, this.data.Length);
+			Buffer.BlockCopy(this.data, 0, result.data, 0, this.data.Length);
 
 			return result;
         }

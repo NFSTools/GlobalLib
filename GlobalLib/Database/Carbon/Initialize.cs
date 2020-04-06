@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GlobalLib.Database.Collection;
+﻿using GlobalLib.Database.Collection;
 using GlobalLib.Support.Carbon.Class;
 
 

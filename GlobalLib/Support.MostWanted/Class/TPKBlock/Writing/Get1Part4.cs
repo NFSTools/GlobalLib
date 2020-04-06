@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.ID;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class TPKBlock
     {
@@ -13,7 +15,7 @@
             int offdata = 0; // for calculating data offsets
             fixed (byte* byteptr_t = &result[0])
             {
-                *(uint*)byteptr_t = Reflection.ID.TPK.INFO_PART4_BLOCKID; // write ID
+                *(uint*)byteptr_t = TPK.INFO_PART4_BLOCKID; // write ID
                 *(int*)(byteptr_t + 4) = this.keys.Count * 0x7C; // write size
                 for (int a1 = 0; a1 < this.keys.Count; ++a1)
                 {

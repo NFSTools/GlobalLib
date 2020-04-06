@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils.EA;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class TPKBlock
     {
@@ -8,11 +11,11 @@
         /// <param name="CName">Collection Name of the texture to be replaced.</param>
         /// <param name="filename">Path of the texture that replaces the current one.</param>
         /// <returns>True if texture replacing was successful, false otherwise.</returns>
-        public override bool TryReplaceTexture(uint key, Reflection.Enum.eKeyType type, string filename)
+        public override bool TryReplaceTexture(uint key, eKeyType type, string filename)
         {
             var tex = (Texture)this.FindTexture(key, type);
             if (tex == null) return false;
-            if (!Utils.EA.Comp.IsDDSTexture(filename)) return false;
+            if (!Comp.IsDDSTexture(filename)) return false;
             tex.Reload(filename);
             return true;
         }
@@ -24,7 +27,7 @@
         /// <param name="type">Type of the key passed.</param>
         /// <param name="filename">Path of the texture that replaces the current one.</param>
         /// <returns>True if texture replacing was successful, false otherwise.</returns>
-        public override bool TryReplaceTexture(uint key, Reflection.Enum.eKeyType type, string filename, out string error)
+        public override bool TryReplaceTexture(uint key, eKeyType type, string filename, out string error)
         {
             error = null;
             var tex = (Texture)this.FindTexture(key, type);
@@ -34,7 +37,7 @@
                 return false;
             }
 
-            if (!Utils.EA.Comp.IsDDSTexture(filename))
+            if (!Comp.IsDDSTexture(filename))
             {
                 error = $"File {filename} is not a valid DDS texture.";
                 return false;

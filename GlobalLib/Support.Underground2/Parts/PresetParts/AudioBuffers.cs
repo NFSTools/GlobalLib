@@ -1,21 +1,29 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Reflection.Interface;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public class AudioBuffers : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<AudioBuffers>
+	public class AudioBuffers : SubPart, ICopyable<AudioBuffers>
 	{
 		#region Private Fields
 
-		private string _audio_comp_00 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_01 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_02 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_03 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_04 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_05 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_06 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_07 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_08 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_09 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_10 = Reflection.BaseArguments.NULL;
-		private string _audio_comp_11 = Reflection.BaseArguments.NULL;
+		private string _audio_comp_00 = BaseArguments.NULL;
+		private string _audio_comp_01 = BaseArguments.NULL;
+		private string _audio_comp_02 = BaseArguments.NULL;
+		private string _audio_comp_03 = BaseArguments.NULL;
+		private string _audio_comp_04 = BaseArguments.NULL;
+		private string _audio_comp_05 = BaseArguments.NULL;
+		private string _audio_comp_06 = BaseArguments.NULL;
+		private string _audio_comp_07 = BaseArguments.NULL;
+		private string _audio_comp_08 = BaseArguments.NULL;
+		private string _audio_comp_09 = BaseArguments.NULL;
+		private string _audio_comp_10 = BaseArguments.NULL;
+		private string _audio_comp_11 = BaseArguments.NULL;
 
 		#endregion
 
@@ -27,9 +35,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_00 = value;
 			}
 		}
@@ -40,9 +48,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_01 = value;
 			}
 		}
@@ -53,9 +61,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_02 = value;
 			}
 		}
@@ -66,9 +74,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_03 = value;
 			}
 		}
@@ -79,9 +87,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_04 = value;
 			}
 		}
@@ -92,9 +100,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_05 = value;
 			}
 		}
@@ -105,9 +113,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_06 = value;
 			}
 		}
@@ -118,9 +126,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_07 = value;
 			}
 		}
@@ -131,9 +139,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_08 = value;
 			}
 		}
@@ -144,9 +152,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_09 = value;
 			}
 		}
@@ -157,9 +165,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_10 = value;
 			}
 		}
@@ -170,9 +178,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				if (value != Reflection.BaseArguments.NULL && !Core.Map.AudioTypes.Contains(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				if (value != BaseArguments.NULL && !Map.AudioTypes.Contains(value))
+					throw new MappingFailException();
 				this._audio_comp_11 = value;
 			}
 		}
@@ -201,45 +209,45 @@
 			uint key = 0;
 
 			key = *(uint*)byteptr_t;
-			this._audio_comp_00 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_00 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x04);
-			this._audio_comp_01 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_01 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x08);
-			this._audio_comp_02 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_02 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x0C);
-			this._audio_comp_03 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_03 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x10);
-			this._audio_comp_04 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_04 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x14);
-			this._audio_comp_05 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_05 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x18);
-			this._audio_comp_06 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_06 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x1C);
-			this._audio_comp_07 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_07 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x20);
-			this._audio_comp_08 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_08 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x24);
-			this._audio_comp_09 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_09 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x28);
-			this._audio_comp_10 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_10 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			key = *(uint*)(byteptr_t + 0x2C);
-			this._audio_comp_11 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._audio_comp_11 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 		}
 
 		public unsafe void Write(byte* byteptr_t)
 		{
-			*(uint*)byteptr_t = Utils.Bin.SmartHash(this._audio_comp_00);
-			*(uint*)(byteptr_t + 0x04) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x08) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x0C) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x10) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x14) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x18) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x1C) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x20) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x24) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x28) = Utils.Bin.SmartHash(this._audio_comp_01);
-			*(uint*)(byteptr_t + 0x2C) = Utils.Bin.SmartHash(this._audio_comp_01);
+			*(uint*)byteptr_t = Bin.SmartHash(this._audio_comp_00);
+			*(uint*)(byteptr_t + 0x04) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x08) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x0C) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x10) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x14) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x18) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x1C) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x20) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x24) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x28) = Bin.SmartHash(this._audio_comp_01);
+			*(uint*)(byteptr_t + 0x2C) = Bin.SmartHash(this._audio_comp_01);
 		}
 	}
 }

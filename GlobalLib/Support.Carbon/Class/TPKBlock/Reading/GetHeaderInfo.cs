@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class TPKBlock
     {
@@ -9,19 +13,19 @@
         /// <param name="offset">Partial 1 part1 offset in the tpk block array.</param>
         protected override unsafe void GetHeaderInfo(byte* byteptr_t, int offset)
         {
-            if (*(uint*)(byteptr_t + offset) != Reflection.ID.TPK.INFO_PART1_BLOCKID)
+            if (*(uint*)(byteptr_t + offset) != TPK.INFO_PART1_BLOCKID)
                 return; // check Part1 ID
             if (*(uint*)(byteptr_t + offset + 4) != 0x7C)
                 return; // check header size
 
             // Get CollectionName
             if (this._use_current_cname)
-                this._collection_name = Utils.ScriptX.NullTerminatedString(byteptr_t + offset + 0xC, 0x1C);
+                this._collection_name = ScriptX.NullTerminatedString(byteptr_t + offset + 0xC, 0x1C);
             else
-                this._collection_name = this.Index.ToString() + "_" + Utils.EA.Comp.GetTPKName(this.Index, this.GameINT);
+                this._collection_name = this.Index.ToString() + "_" + Comp.GetTPKName(this.Index, this.GameINT);
 
             // Get Filename
-            this.filename = Utils.ScriptX.NullTerminatedString(byteptr_t + offset + 0x28, 0x40);
+            this.filename = ScriptX.NullTerminatedString(byteptr_t + offset + 0x28, 0x40);
 
             // Get the rest of the settings
             this.Version = *(int*)(byteptr_t + offset + 8);

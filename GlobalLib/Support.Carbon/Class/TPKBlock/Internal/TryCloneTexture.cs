@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class TPKBlock
     {
@@ -9,11 +12,11 @@
         /// <param name="key">Key of the Collection Name of the <see cref="Texture"/> to clone.</param>
         /// <param name="type">Type of the key passed.</param>
         /// <returns>True if texture cloning was successful, false otherwise.</returns>
-        public override bool TryCloneTexture(string newname, uint key, Reflection.Enum.eKeyType type)
+        public override bool TryCloneTexture(string newname, uint key, eKeyType type)
         {
             if (string.IsNullOrWhiteSpace(newname)) return false;
 
-            if (this.FindTexture(Utils.Bin.Hash(newname), type) != null)
+            if (this.FindTexture(Bin.Hash(newname), type) != null)
                 return false;
 
             var copyfrom = (Texture)this.FindTexture(key, type);
@@ -32,7 +35,7 @@
         /// <param name="type">Type of the key passed.</param>
         /// <param name="error">Error occured when trying to clone a texture.</param>
         /// <returns>True if texture cloning was successful, false otherwise.</returns>
-        public override bool TryCloneTexture(string newname, uint key, Reflection.Enum.eKeyType type, out string error)
+        public override bool TryCloneTexture(string newname, uint key, eKeyType type, out string error)
         {
             error = null;
             if (string.IsNullOrWhiteSpace(newname))
@@ -41,7 +44,7 @@
                 return false;
             }
 
-            if (this.FindTexture(Utils.Bin.Hash(newname), type) != null)
+            if (this.FindTexture(Bin.Hash(newname), type) != null)
             {
                 error = $"Texture with CollectionName {newname} already exists.";
                 return false;

@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class PresetRide : Shared.Class.PresetRide
     {
@@ -14,12 +18,12 @@
             this.MODEL = "SUPRA";
             this.Frontend = "supra";
             this.Pvehicle = "supra";
-            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+            Map.BinKeys[Bin.Hash(CName)] = CName;
             this.Modified = true;
         }
 
         // Default constructor: disassemble preset
-        public unsafe PresetRide(System.IntPtr byteptr_t, string CName, Database.MostWanted db)
+        public unsafe PresetRide(IntPtr byteptr_t, string CName, Database.MostWanted db)
         {
             this.Database = db;
             this.data = new byte[0x290];

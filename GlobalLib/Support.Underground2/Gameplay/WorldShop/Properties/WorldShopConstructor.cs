@@ -1,6 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class WorldShop : Reflection.Abstract.Collectable
+	public partial class WorldShop : Collectable
 	{
 		// Default constructor
 		public WorldShop() { }
@@ -10,7 +14,7 @@
 		{
 			this.Database = db;
 			this.CollectionName = CName;
-			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+			Map.BinKeys[Bin.Hash(CName)] = CName;
 		}
 
 		// Default constructor: disassemble world shop

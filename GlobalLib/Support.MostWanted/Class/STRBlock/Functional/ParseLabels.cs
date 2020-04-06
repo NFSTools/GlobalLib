@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.ID;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
 	public partial class STRBlock
 	{
@@ -15,7 +17,7 @@
 			int padding = 0x10 - ((this._size + 8) % 0x10);
 			if (padding != 0x10) this._size += padding;
 
-			// var mark = "GlobalLib by MaxHwoy " + System.DateTime.Today.ToString("dd-MM-yyyy");
+			// var mark = "GlobalLib by MaxHwoy " + DateTime.Today.ToString("dd-MM-yyyy");
 			this._unk_data_offset = 0x10;
 			this._key_offset = 0x10 + this._labunk.Length;
 			this._text_offset = 0x10 + this._labunk.Length + this._stringinfo.Count * 8;
@@ -25,7 +27,7 @@
 			fixed (byte* byteptr_t = &result[0])
 			{
 				// Write header
-				*(uint*)byteptr_t = Reflection.ID.Global.STRBlocks;
+				*(uint*)byteptr_t = Global.STRBlocks;
 				*(int*)(byteptr_t + 0x4) = this._size;
 				*(int*)(byteptr_t + 0x8) = this._unk_data_offset;
 				*(int*)(byteptr_t + 0xC) = this._stringinfo.Count;

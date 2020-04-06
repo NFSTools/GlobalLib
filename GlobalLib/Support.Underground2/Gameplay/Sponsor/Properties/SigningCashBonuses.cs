@@ -1,17 +1,19 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Attributes;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class Sponsor
 	{
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public short CashValuePerWin { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public short SignCashBonus { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public short PotentialCashBonus { get; set; }
 	}
 }

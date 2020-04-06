@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Utils;
+using System;
+using System.Collections.Generic;
 
 
 
@@ -7,7 +12,7 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
     public class CarSpoilerType
     {
         public string CarTypeInfo { get; set; }
-        public Reflection.Enum.eSpoiler Spoiler { get; set; }
+        public eSpoiler Spoiler { get; set; }
     }
 
     public class Spoilers
@@ -50,7 +55,7 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
                 while (offset < this.data.Length)
                 {
                     uint key = *(uint*)(byteptr_t + offset);
-                    string CName = Core.Map.Lookup(key, false) ?? string.Empty;
+                    string CName = Map.Lookup(key, false) ?? string.Empty;
 
                     // Write to new array if not a spoiler or if not a padding
                     if (!reached && !CNames.Contains(CName))
@@ -67,16 +72,16 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
                     CarSlot.CarTypeInfo = CName;
 
                     uint SpoilerKey = *(uint*)(byteptr_t + offset + 0xC);
-                    if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoiler), SpoilerKey))
-                        CarSlot.Spoiler = (Reflection.Enum.eSpoiler)SpoilerKey;
+                    if (Enum.IsDefined(typeof(eSpoiler), SpoilerKey))
+                        CarSlot.Spoiler = (eSpoiler)SpoilerKey;
                     else
-                        CarSlot.Spoiler = Reflection.Enum.eSpoiler.SPOILER;
+                        CarSlot.Spoiler = eSpoiler.SPOILER;
                     result.Add(CarSlot);
                     offset += 0x10;
                 }
 
                 *(int*)(dataptr_t + 4) = newoff - 8;
-                System.Array.Resize(ref NewData, newoff);
+                Array.Resize(ref NewData, newoff);
             }
 
             // Set new array
@@ -98,20 +103,20 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
             int offset = this.data.Length;
 
             var result = new byte[newsize];
-            System.Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
+            Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
 
             fixed (byte* byteptr_t = &result[0])
             {
                 foreach (var CarSlot in list)
                 {
-                    uint key = Utils.Bin.Hash(CarSlot.CarTypeInfo);
+                    uint key = Bin.Hash(CarSlot.CarTypeInfo);
                     *(uint*)(byteptr_t + offset) = key;
                     *(uint*)(byteptr_t + offset + 4) = 0x2C;
                     *(uint*)(byteptr_t + offset + 8) = key;
                     *(uint*)(byteptr_t + offset + 0xC) = (uint)CarSlot.Spoiler;
                     offset += 0x10;
                 }
-                *(uint*)byteptr_t = Reflection.ID.Global.SlotTypes;
+                *(uint*)byteptr_t = Global.SlotTypes;
                 *(int*)(byteptr_t + 4) = newsize - 8;
             }
 

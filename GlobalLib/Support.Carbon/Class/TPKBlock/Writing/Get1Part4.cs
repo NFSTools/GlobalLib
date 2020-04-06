@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.ID;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class TPKBlock
     {
@@ -13,14 +16,14 @@
             int offdata = 0; // for calculating data offsets
             fixed (byte* byteptr_t = &result[0])
             {
-                *(uint*)byteptr_t = Reflection.ID.TPK.INFO_PART4_BLOCKID; // write ID
+                *(uint*)byteptr_t = TPK.INFO_PART4_BLOCKID; // write ID
                 for (int a1 = 0; a1 < this.keys.Count; ++a1)
                 {
                     this.Textures[a1].Assemble(byteptr_t, ref offheader, ref offdata);
                 }
                 *(int*)(byteptr_t + 4) = offheader - 8; // write size
             }
-            System.Array.Resize(ref result, offheader);
+            Array.Resize(ref result, offheader);
             return result;
         }
     }

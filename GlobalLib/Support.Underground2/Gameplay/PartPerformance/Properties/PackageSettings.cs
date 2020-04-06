@@ -1,31 +1,33 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Attributes;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class PartPerformance
 	{
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public int PerfPartCost { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public float PerfPartAmplifierFraction { get; set; }
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public float PerfPartRangeX { get; set; } = -1;
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public float PerfPartRangeY { get; set; } = -1;
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
+		[AccessModifiable()]
+		[StaticModifiable()]
 		public float PerfPartRangeZ { get; set; } = -1;
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public int BeingReplacedByIndex1 { get; set; } = -1;
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public int BeingReplacedByIndex2 { get; set; } = -1;
 	}
 }

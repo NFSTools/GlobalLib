@@ -1,14 +1,20 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Support.Underground2.Parts.CarParts;
+using GlobalLib.Utils;
+using System.Collections.Generic;
+
+namespace GlobalLib.Support.Underground2
 {
 	public static partial class SaveData
 	{
 		private static byte[] CPI_Part56(Database.Underground2 db)
 		{
             // Part56 list that is used for intermediate calculations
-            var Intermid56 = new System.Collections.Generic.List<Parts.CarParts.Part56>();
+            var Intermid56 = new List<Part56>();
 
             // Actual used Part56 list
-            var UsedPart56 = new System.Collections.Generic.List<Parts.CarParts.Part56>();
+            var UsedPart56 = new List<Part56>();
 
             // This will be used in writing new car parts
             int entries = (db.SlotTypes.Part4.Data.Length - 8) / 0x24;
@@ -25,9 +31,9 @@
                 if (!car.Deletable) continue; // Else (if car is old) continue
 
                 // If car is new and uses its own auto-generated carparts
-                Intermid56.Add(new Parts.CarParts.Part56(car.CollectionName, car.UsageType, entries, racers, trafs));
-                if (car.UsageType == Reflection.Enum.eUsageType.Traffic) ++trafs;
-                else if (car.UsageType == Reflection.Enum.eUsageType.Racer) ++racers;
+                Intermid56.Add(new Part56(car.CollectionName, car.UsageType, entries, racers, trafs));
+                if (car.UsageType == eUsageType.Traffic) ++trafs;
+                else if (car.UsageType == eUsageType.Racer) ++racers;
             }
 
             // Make new list of only used Part56 to write
@@ -57,13 +63,13 @@
             if (padding != 0x10) part6size += padding;
 
             // Write all info
-            var mw = new Utils.MemoryWriter(part5size + part6size);
-            mw.Write(Reflection.ID.CarParts.Part5);
+            var mw = new MemoryWriter(part5size + part6size);
+            mw.Write(CarParts.Part5);
             mw.Write(part5size - 8);
             foreach (var _56 in UsedPart56)
                 mw.Write(_56.Key);
             mw.Position = part5size;
-            mw.Write(Reflection.ID.CarParts.Part6);
+            mw.Write(CarParts.Part6);
             mw.Write(part6size - 8);
             foreach (var _56 in UsedPart56)
                 mw.Write(_56.Data);

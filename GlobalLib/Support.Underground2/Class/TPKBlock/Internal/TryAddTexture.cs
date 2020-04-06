@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class TPKBlock
     {
@@ -12,10 +16,10 @@
         {
             if (string.IsNullOrWhiteSpace(CName)) return false;
 
-            if (this.FindTexture(Utils.Bin.Hash(CName), Reflection.Enum.eKeyType.BINKEY) != null)
+            if (this.FindTexture(Bin.Hash(CName), eKeyType.BINKEY) != null)
                 return false;
 
-            if (!Utils.EA.Comp.IsDDSTexture(filename))
+            if (!Comp.IsDDSTexture(filename))
                 return false;
 
             var texture = new Texture(CName, this.CollectionName, filename, this.Database);
@@ -39,13 +43,13 @@
                 return false;
             }
 
-            if (this.FindTexture(Utils.Bin.Hash(CName), Reflection.Enum.eKeyType.BINKEY) != null)
+            if (this.FindTexture(Bin.Hash(CName), eKeyType.BINKEY) != null)
             {
                 error = $"Texture named {CName} already exists.";
                 return false;
             }
 
-            if (!Utils.EA.Comp.IsDDSTexture(filename))
+            if (!Comp.IsDDSTexture(filename))
             {
                 error = $"Texture passed is not a DDS texture.";
                 return false;

@@ -1,4 +1,11 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Support.Shared.Parts.PresetParts;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class PresetRide
     {
@@ -9,15 +16,15 @@
         public override unsafe byte[] Assemble()
         {
             var result = new byte[this.data.Length];
-            System.Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
+            Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
             fixed (byte* byteptr_t = &result[0])
             {
-                var parts = new Shared.Parts.PresetParts.Concatenator();
-                var add_on = new Shared.Parts.PresetParts.Add_On();
+                var parts = new Concatenator();
+                var add_on = new Add_On();
 
                 // Frontend and Pvehicle
-                this._Frontend_Hash = Utils.Vlt.SmartHash(this.Frontend);
-                this._Pvehicle_Hash = Utils.Vlt.SmartHash(this.Pvehicle);
+                this._Frontend_Hash = Vlt.SmartHash(this.Frontend);
+                this._Pvehicle_Hash = Vlt.SmartHash(this.Pvehicle);
 
                 // _BASE
                 parts._BASE = MODEL + parts._BASE;
@@ -75,16 +82,16 @@
                 parts._DRIVER = MODEL + parts._DRIVER;
 
                 // _SPOILER
-                if (this._spoiler_type == Reflection.Enum.eSTypes.NULL)
+                if (this._spoiler_type == eSTypes.NULL)
                     parts._SPOILER = "";
-                else if (this._spoiler_type == Reflection.Enum.eSTypes.STOCK || this._spoiler_style == 0)
+                else if (this._spoiler_type == eSTypes.STOCK || this._spoiler_style == 0)
                     parts._SPOILER = MODEL + parts._SPOILER;
                 else
                 {
                     parts._SPOILER = add_on.SPOILER + add_on._STYLE + this._spoiler_style.ToString("00");
-                    if (this.SpoilerType != Reflection.Enum.eSTypes.BASE)
+                    if (this.SpoilerType != eSTypes.BASE)
                         parts._SPOILER += this._spoiler_type.ToString();
-                    if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
+                    if (this._is_carbonfibre_spoiler == eBoolean.True)
                         parts._SPOILER += add_on._CF;
                 }
 
@@ -108,11 +115,11 @@
                 else
                 {
                     parts.ROOF_STYLE += this._roofscoop_style.ToString("00");
-                    if (this._is_dual_roofscoop == Reflection.Enum.eBoolean.True)
+                    if (this._is_dual_roofscoop == eBoolean.True)
                         parts.ROOF_STYLE += add_on._DUAL;
-                    if (this._is_offset_roofscoop == Reflection.Enum.eBoolean.True && this._is_dual_roofscoop == Reflection.Enum.eBoolean.False)
+                    if (this._is_offset_roofscoop == eBoolean.True && this._is_dual_roofscoop == eBoolean.False)
                         parts.ROOF_STYLE += add_on._OFFSET;
-                    if (this._is_carbonfibre_roofscoop == Reflection.Enum.eBoolean.True)
+                    if (this._is_carbonfibre_roofscoop == eBoolean.True)
                         parts.ROOF_STYLE += add_on._CF;
                 }
 
@@ -122,15 +129,15 @@
                 else
                 {
                     parts._HOOD = MODEL + add_on._STYLE + this._hood_style.ToString("00") + parts._HOOD;
-                    if (this._is_carbonfibre_hood == Reflection.Enum.eBoolean.True)
+                    if (this._is_carbonfibre_hood == eBoolean.True)
                         parts._HOOD += add_on._CF;
                 }
 
                 // _WHEEL
                 switch (this._rim_brand)
                 {
-                    case Reflection.BaseArguments.NULL:
-                    case Reflection.BaseArguments.STOCK:
+                    case BaseArguments.NULL:
+                    case BaseArguments.STOCK:
                         parts._WHEEL = MODEL + parts._WHEEL; // null, empty, NULL or STOCK
                         break;
                     default:
@@ -150,22 +157,22 @@
                 parts.PAINT = this._body_paint;
 
                 // RIMPAINT
-                if (this.RimPaint != Reflection.BaseArguments.NULL)
+                if (this.RimPaint != BaseArguments.NULL)
                     parts.RIM_PAINT = this._rim_paint;
 
                 // WINDOW_TINT
-                if (this.WindowTintType != Reflection.BaseArguments.STOCK)
+                if (this.WindowTintType != BaseArguments.STOCK)
                     parts.WINDOW_TINT_STOCK = this._window_tint_type;
 
                 // VINYL_LAYER
-                if (this.VinylName != Reflection.BaseArguments.NULL)
+                if (this.VinylName != BaseArguments.NULL)
                     parts.VINYL_LAYER = this.VinylName;
 
                 // SWATCH
-                parts.SWATCH[0] = Utils.EA.Resolve.GetVinylString(this._vinylcolor1);
-                parts.SWATCH[1] = Utils.EA.Resolve.GetVinylString(this._vinylcolor2);
-                parts.SWATCH[2] = Utils.EA.Resolve.GetVinylString(this._vinylcolor3);
-                parts.SWATCH[3] = Utils.EA.Resolve.GetVinylString(this._vinylcolor4);
+                parts.SWATCH[0] = Resolve.GetVinylString(this._vinylcolor1);
+                parts.SWATCH[1] = Resolve.GetVinylString(this._vinylcolor2);
+                parts.SWATCH[2] = Resolve.GetVinylString(this._vinylcolor3);
+                parts.SWATCH[3] = Resolve.GetVinylString(this._vinylcolor4);
 
                 // Hash all strings to keys
                 var keys = this.StringToKey(parts);
@@ -238,10 +245,10 @@
                         *(uint*)(byteptr_t + 0x26C) = *(uintptr_t + 79);
                         if (!this.Exists)
                         {
-                            *(uint*)(byteptr_t + 0x270) = Utils.Bin.Hash(parts.HUD);
-                            *(uint*)(byteptr_t + 0x274) = Utils.Bin.Hash(parts.HUD_BACKING);
-                            *(uint*)(byteptr_t + 0x278) = Utils.Bin.Hash(parts.HUD_NEEDLE);
-                            *(uint*)(byteptr_t + 0x27C) = Utils.Bin.Hash(parts.HUD_CHARS);
+                            *(uint*)(byteptr_t + 0x270) = Bin.Hash(parts.HUD);
+                            *(uint*)(byteptr_t + 0x274) = Bin.Hash(parts.HUD_BACKING);
+                            *(uint*)(byteptr_t + 0x278) = Bin.Hash(parts.HUD_NEEDLE);
+                            *(uint*)(byteptr_t + 0x27C) = Bin.Hash(parts.HUD_CHARS);
                         }
                     }
                 }

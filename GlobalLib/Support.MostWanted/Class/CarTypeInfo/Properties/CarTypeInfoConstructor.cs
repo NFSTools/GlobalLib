@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class CarTypeInfo : Shared.Class.CarTypeInfo
     {
@@ -20,17 +25,17 @@
             this.DefaultSkinNumber = 1;
             this.CollisionExternalName = CollectionName;
             this.CollisionInternalName = "CARRERAGT";
-            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+            Map.BinKeys[Bin.Hash(CName)] = CName;
         }
 
         // Default constructor: disassemble cartypeinfo
-        public unsafe CarTypeInfo(System.IntPtr byteptr_t, string CName, Database.MostWanted db)
+        public unsafe CarTypeInfo(IntPtr byteptr_t, string CName, Database.MostWanted db)
         {
             this.Database = db;
             this._collection_name = CName;
             this.OriginalName = CName;
             this.Disassemble((byte*)byteptr_t);
-            if (this.Index <= (int)Reflection.Enum.eBoundValues.MIN_INFO_MOSTWANTED)
+            if (this.Index <= (int)eBoundValues.MIN_INFO_MOSTWANTED)
                 this.Deletable = false;
             this.Modified = false;
         }

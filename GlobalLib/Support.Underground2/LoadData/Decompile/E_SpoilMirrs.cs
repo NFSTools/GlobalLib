@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using System.Collections.Generic;
+
+namespace GlobalLib.Support.Underground2
 {
     public static partial class LoadData
     {
@@ -9,7 +11,7 @@
         private static void E_SpoilMirrs(Database.Underground2 db)
         {
             if (db.SlotTypes.SpoilMirrs == null) return;
-            var CNameList = new System.Collections.Generic.List<string>(db.CarTypeInfos.Length);
+            var CNameList = new List<string>(db.CarTypeInfos.Length);
             foreach (var car in db.CarTypeInfos.Collections)
                 CNameList.Add(car.CollectionName);
 

@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class Sponsor
 	{
@@ -6,7 +9,7 @@
 		{
 			// CollectionName
 			ushort pointer = *(ushort*)ptr_header;
-			this._collection_name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			this._collection_name = ScriptX.NullTerminatedString(ptr_string + pointer);
 			
 			// Cash Values
 			this.CashValuePerWin = *(short*)(ptr_header + 2);
@@ -14,9 +17,9 @@
 			this.PotentialCashBonus = *(short*)(ptr_header + 14);
 
 			// Required Sponsor Races
-			this.ReqSponsorRace1 = (Reflection.Enum.eSponsorRaceType)(*(ptr_header + 4));
-			this.ReqSponsorRace2 = (Reflection.Enum.eSponsorRaceType)(*(ptr_header + 5));
-			this.ReqSponsorRace3 = (Reflection.Enum.eSponsorRaceType)(*(ptr_header + 6));
+			this.ReqSponsorRace1 = (eSponsorRaceType)(*(ptr_header + 4));
+			this.ReqSponsorRace2 = (eSponsorRaceType)(*(ptr_header + 5));
+			this.ReqSponsorRace3 = (eSponsorRaceType)(*(ptr_header + 6));
 		}
 	}
 }

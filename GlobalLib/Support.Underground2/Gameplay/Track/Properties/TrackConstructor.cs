@@ -1,6 +1,11 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class Track : Reflection.Abstract.Collectable
+	public partial class Track : Collectable
 	{
 		// Default constructor
 		public Track() { }
@@ -11,11 +16,11 @@
 			this.Database = db;
 			this.CollectionName = CName;
 			this.RegionName = "L4RA";
-			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+			Map.BinKeys[Bin.Hash(CName)] = CName;
 		}
 
 		// Default constructor: disassemble track
-		public unsafe Track(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
+		public unsafe Track(IntPtr byteptr_t, string CName, Database.Underground2 db)
 		{
 			this.Database = db;
 			this._collection_name = CName;

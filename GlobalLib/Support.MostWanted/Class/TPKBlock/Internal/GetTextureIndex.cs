@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.Enum;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class TPKBlock
     {
@@ -8,26 +11,26 @@
         /// <param name="key">Key of the Collection Name of the <see cref="Texture"/>.</param>
         /// <param name="type">Key type passed.</param>
         /// <returns>Index number as an integer. If element does not exist, returns -1.</returns>
-        public override int GetTextureIndex(uint key, Reflection.Enum.eKeyType type)
+        public override int GetTextureIndex(uint key, eKeyType type)
         {
             switch (type)
             {
-                case Reflection.Enum.eKeyType.BINKEY:
+                case eKeyType.BINKEY:
                     for (int a1 = 0; a1 < this.Textures.Count; ++a1)
                     {
                         if (this.Textures[a1].BinKey == key) return a1;
                     }
                     break;
 
-                case Reflection.Enum.eKeyType.VLTKEY:
+                case eKeyType.VLTKEY:
                     for (int a1 = 0; a1 < this.Textures.Count; ++a1)
                     {
                         if (this.Textures[a1].VltKey == key) return a1;
                     }
                     break;
 
-                case Reflection.Enum.eKeyType.CUSTOM:
-                    throw new System.NotImplementedException();
+                case eKeyType.CUSTOM:
+                    throw new NotImplementedException();
 
                 default:
                     break;

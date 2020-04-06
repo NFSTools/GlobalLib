@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Core;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class PresetRide
 	{
@@ -9,7 +11,7 @@
         /// <returns>True if value passed is valid, false otherwise.</returns>
         private bool IsValidRimBrand(string brand)
         {
-            foreach (var str in Core.Map.RimBrands)
+            foreach (var str in Map.RimBrands)
             {
                 if (str.StartsWith(brand))
                     return true;

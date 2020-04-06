@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Support.Carbon
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Utils;
+using System.IO;
+
+namespace GlobalLib.Support.Carbon
 {
     public static partial class SaveData
     {
@@ -7,18 +12,18 @@
         /// </summary>
         /// <param name="db">Database with classes.</param>
         /// <param name="bw">BinaryWriter for writing data.</param>
-        private static unsafe void I_Collisions(Database.Carbon db, System.IO.BinaryWriter bw)
+        private static unsafe void I_Collisions(Database.Carbon db, BinaryWriter bw)
         {
-            bw.Write(Reflection.ID.Global.Collisions);
+            bw.Write(Global.Collisions);
             bw.Write(0xFFFFFFFF); // write temp size
             int initial_size = (int)bw.BaseStream.Position;
 
             // Copy all collisions by the internal names
             foreach (var info in db.CarTypeInfos.Collections)
             {
-                if (info.CollisionExternalName == Reflection.BaseArguments.NULL) continue;
-                uint extkey = Utils.Vlt.Hash(info.CollisionExternalName);
-                uint intkey = Utils.Vlt.Hash(info.CollisionInternalName);
+                if (info.CollisionExternalName == BaseArguments.NULL) continue;
+                uint extkey = Vlt.Hash(info.CollisionExternalName);
+                uint intkey = Vlt.Hash(info.CollisionInternalName);
                 if (db.SlotTypes.Collisions.TryGetValue(intkey, out var collision))
                     bw.Write(collision.GetData(extkey));
             }

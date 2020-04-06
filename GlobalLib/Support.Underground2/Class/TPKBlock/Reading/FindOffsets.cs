@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.ID;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class TPKBlock
     {
@@ -15,11 +17,11 @@
             int InfoBlockSize = 0;
             int DataBlockSize = 0;
 
-            while (ReaderID != Reflection.ID.TPK.INFO_BLOCKID)
+            while (ReaderID != TPK.INFO_BLOCKID)
             {
                 ReaderID = *(uint*)(byteptr_t + ReaderOffset);
                 InfoBlockSize = *(int*)(byteptr_t + ReaderOffset + 4);
-                if (ReaderID != Reflection.ID.TPK.INFO_BLOCKID) ReaderOffset += InfoBlockSize;
+                if (ReaderID != TPK.INFO_BLOCKID) ReaderOffset += InfoBlockSize;
                 ReaderOffset += 8;
             }
 
@@ -29,23 +31,23 @@
                 ReaderID = *(uint*)(byteptr_t + ReaderOffset);
                 switch (ReaderID)
                 {
-                    case Reflection.ID.TPK.INFO_PART1_BLOCKID:
+                    case TPK.INFO_PART1_BLOCKID:
                         offsets[0] = ReaderOffset;
                         goto default;
 
-                    case Reflection.ID.TPK.INFO_PART2_BLOCKID:
+                    case TPK.INFO_PART2_BLOCKID:
                         offsets[1] = ReaderOffset;
                         goto default;
 
-                    case Reflection.ID.TPK.INFO_PART3_BLOCKID:
+                    case TPK.INFO_PART3_BLOCKID:
                         offsets[2] = ReaderOffset;
                         goto default;
 
-                    case Reflection.ID.TPK.INFO_PART4_BLOCKID:
+                    case TPK.INFO_PART4_BLOCKID:
                         offsets[3] = ReaderOffset;
                         goto default;
 
-                    case Reflection.ID.TPK.INFO_PART5_BLOCKID:
+                    case TPK.INFO_PART5_BLOCKID:
                         offsets[4] = ReaderOffset;
                         goto default;
 
@@ -55,11 +57,11 @@
                 }
             }
 
-            while (ReaderID != Reflection.ID.TPK.DATA_BLOCKID)
+            while (ReaderID != TPK.DATA_BLOCKID)
             {
                 ReaderID = *(uint*)(byteptr_t + ReaderOffset);
                 DataBlockSize = *(int*)(byteptr_t + ReaderOffset + 4);
-                if (ReaderID != Reflection.ID.TPK.DATA_BLOCKID) ReaderOffset += DataBlockSize;
+                if (ReaderID != TPK.DATA_BLOCKID) ReaderOffset += DataBlockSize;
                 ReaderOffset += 8;
             }
 
@@ -69,15 +71,15 @@
                 ReaderID = *(uint*)(byteptr_t + ReaderOffset);
                 switch (ReaderID)
                 {
-                    case Reflection.ID.TPK.DATA_PART1_BLOCKID:
+                    case TPK.DATA_PART1_BLOCKID:
                         offsets[5] = ReaderOffset;
                         goto default;
 
-                    case Reflection.ID.TPK.DATA_PART2_BLOCKID:
+                    case TPK.DATA_PART2_BLOCKID:
                         offsets[6] = ReaderOffset;
                         goto default;
 
-                    case Reflection.ID.TPK.DATA_PART3_BLOCKID:
+                    case TPK.DATA_PART3_BLOCKID:
                         offsets[7] = ReaderOffset;
                         goto default;
 

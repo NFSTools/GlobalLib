@@ -1,23 +1,28 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class CarTypeInfo
     {
-        private Reflection.Enum.eSpoilerAS2 _spoilerAS = Reflection.Enum.eSpoilerAS2.SPOILER_AS2;
+        private eSpoilerAS2 _spoilerAS = eSpoilerAS2.SPOILER_AS2;
 
         /// <summary>
         /// Aftermarket spoiler type of the cartypeinfo.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
-        public Reflection.Enum.eSpoilerAS2 SpoilerAS
+        [AccessModifiable()]
+        [StaticModifiable()]
+        public eSpoilerAS2 SpoilerAS
         {
             get => this._spoilerAS;
             set
             {
-                if (System.Enum.IsDefined(typeof(Reflection.Enum.eSpoilerAS2), value))
+                if (Enum.IsDefined(typeof(eSpoilerAS2), value))
                     this._spoilerAS = value;
                 else
-                    throw new Reflection.Exception.MappingFailException();
+                    throw new MappingFailException();
             }
         }
     }

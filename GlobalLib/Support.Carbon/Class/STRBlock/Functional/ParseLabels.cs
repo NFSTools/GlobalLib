@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.ID;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
 	public partial class STRBlock
 	{
@@ -16,7 +19,7 @@
 			if (padding >= 0xC) this._size += 4 + padding - 0x10;
 			else this._size += 4 + padding;
 
-			var mark = "GlobalLib by MaxHwoy " + System.DateTime.Today.ToString("dd-MM-yyyy");
+			var mark = "GlobalLib by MaxHwoy " + DateTime.Today.ToString("dd-MM-yyyy");
 			this._key_offset = 0x3C;
 			this._text_offset = 0x3C + this._stringinfo.Count * 8;
 
@@ -25,7 +28,7 @@
 			fixed (byte* byteptr_t = &result[0])
 			{
 				// Write header
-				*(uint*)byteptr_t = Reflection.ID.Global.STRBlocks;
+				*(uint*)byteptr_t = Global.STRBlocks;
 				*(int*)(byteptr_t + 0x4) = this._size;
 				*(int*)(byteptr_t + 0x8) = this._stringinfo.Count;
 				*(int*)(byteptr_t + 0xC) = this._key_offset;

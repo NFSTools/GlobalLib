@@ -1,6 +1,12 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Support.Underground2.Parts.GameParts;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class SunInfo : Reflection.Abstract.Collectable
+	public partial class SunInfo : Collectable
 	{
 		// Default constructor
 		public SunInfo() { }
@@ -10,26 +16,26 @@
 		{
 			this.Database = db;
 			this.CollectionName = CName;
-			this.SUNLAYER1 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER2 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER3 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER4 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER5 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER6 = new Parts.GameParts.SunLayer();
-			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+			this.SUNLAYER1 = new SunLayer();
+			this.SUNLAYER2 = new SunLayer();
+			this.SUNLAYER3 = new SunLayer();
+			this.SUNLAYER4 = new SunLayer();
+			this.SUNLAYER5 = new SunLayer();
+			this.SUNLAYER6 = new SunLayer();
+			Map.BinKeys[Bin.Hash(CName)] = CName;
 		}
 
 		// Default constructor: disassemble suninfo
-		public unsafe SunInfo(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
+		public unsafe SunInfo(IntPtr byteptr_t, string CName, Database.Underground2 db)
 		{
 			this.Database = db;
 			this._collection_name = CName;
-			this.SUNLAYER1 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER2 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER3 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER4 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER5 = new Parts.GameParts.SunLayer();
-			this.SUNLAYER6 = new Parts.GameParts.SunLayer();
+			this.SUNLAYER1 = new SunLayer();
+			this.SUNLAYER2 = new SunLayer();
+			this.SUNLAYER3 = new SunLayer();
+			this.SUNLAYER4 = new SunLayer();
+			this.SUNLAYER5 = new SunLayer();
+			this.SUNLAYER6 = new SunLayer();
 			this.Disassemble((byte*)byteptr_t);
 		}
 

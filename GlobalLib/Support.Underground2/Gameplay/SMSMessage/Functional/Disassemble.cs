@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class SMSMessage
 	{
@@ -6,7 +9,7 @@
 		{
 			// CollectionName
 			ushort pointer = *(ushort*)ptr_header;
-			this._collection_name = Utils.ScriptX.NullTerminatedString(ptr_string + pointer);
+			this._collection_name = ScriptX.NullTerminatedString(ptr_string + pointer);
 
 			// Unknown Yet Values
 			this.b0x02 = *(ptr_header + 0x02);
@@ -23,7 +26,7 @@
 			// Cash and Sender
 			this.CashValue = *(int*)(ptr_header + 0x0C);
 			uint key = *(uint*)(ptr_header + 0x10);
-			this.MessageSenderLabel = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
+			this.MessageSenderLabel = Map.Lookup(key, true) ?? $"0x{key:X8}";
 		}
 	}
 }

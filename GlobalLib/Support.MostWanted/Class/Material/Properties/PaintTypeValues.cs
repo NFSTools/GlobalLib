@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.Attributes;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class Material
     {
@@ -9,15 +12,15 @@
         /// <summary>
         /// Shadow level value of the material.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float ShadowLevel
         {
             get => this._shadowlevel;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._shadowlevel = value;
             }
@@ -26,15 +29,15 @@
         /// <summary>
         /// Matte level value of the material.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float MatteLevel
         {
             get => this._mattelevel;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._mattelevel = value;
             }
@@ -43,15 +46,15 @@
         /// <summary>
         /// Chrome level value of the material.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float ChromeLevel
         {
             get => this._chromelevel;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._chromelevel = value;
             }

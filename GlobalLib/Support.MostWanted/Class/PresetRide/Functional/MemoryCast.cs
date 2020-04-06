@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.Abstract;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class PresetRide
     {
@@ -7,7 +10,7 @@
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public override Reflection.Abstract.Collectable MemoryCast(string CName)
+        public override Collectable MemoryCast(string CName)
         {
             var result = new PresetRide(CName, this.Database);
 
@@ -36,7 +39,7 @@
             result.Pvehicle = this.Pvehicle;
             result.Frontend = this.Frontend;
 
-            System.Buffer.BlockCopy(this.data, 0, result.data, 0, this.data.Length);
+            Buffer.BlockCopy(this.data, 0, result.data, 0, this.data.Length);
 
             return result;
         }

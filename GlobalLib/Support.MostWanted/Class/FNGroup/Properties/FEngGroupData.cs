@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class FNGroup
     {
@@ -13,7 +15,7 @@
             set
             {
                 if (value == null || value.Length == 0)
-                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                    throw new ArgumentNullException("This value cannot be left empty.");
                 else
                     this._DATA = value;
             }
