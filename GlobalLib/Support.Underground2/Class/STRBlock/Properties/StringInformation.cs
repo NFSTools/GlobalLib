@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using GlobalLib.Utils;
+using GlobalLib.Reflection;
 using GlobalLib.Support.Shared.Parts.STRParts;
 
 
@@ -53,8 +55,8 @@ namespace GlobalLib.Support.Underground2.Class
 		public override bool TryAddRecord(string key, string label, string text)
 		{
 			uint hash = 0;
-			if (key == Reflection.BaseArguments.AUTO) hash = Utils.Bin.Hash(label);
-			else hash = Utils.ConvertX.ToUInt32(key);
+			if (key == BaseArguments.AUTO) hash = Bin.Hash(label);
+			else hash = ConvertX.ToUInt32(key);
 
 			if (hash == 0) return false;
 			if (this.GetRecord(hash) != null) return false;
@@ -79,8 +81,8 @@ namespace GlobalLib.Support.Underground2.Class
 		{
 			error = null;
 			uint hash = 0;
-			if (key == Reflection.BaseArguments.AUTO) hash = Utils.Bin.Hash(label);
-			else hash = Utils.ConvertX.ToUInt32(key);
+			if (key == BaseArguments.AUTO) hash = Bin.Hash(label);
+			else hash = ConvertX.ToUInt32(key);
 
 			if (hash == 0)
 			{
