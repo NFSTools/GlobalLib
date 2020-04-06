@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class PresetRide : Shared.Class.PresetRide
 	{
@@ -13,12 +17,12 @@
             this.Initialize();
             this.data = new byte[0x338];
             this.MODEL = "SUPRA";
-            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+            Map.BinKeys[Bin.Hash(CName)] = CName;
             this.Modified = true;
         }
 
         // Default constructor: disassemble preset
-        public unsafe PresetRide(System.IntPtr byteptr_t, string CName, Database.Underground2 db)
+        public unsafe PresetRide(IntPtr byteptr_t, string CName, Database.Underground2 db)
         {
             this.Database = db;
             this._collection_name = CName;

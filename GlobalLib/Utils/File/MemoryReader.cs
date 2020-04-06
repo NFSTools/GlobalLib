@@ -404,7 +404,7 @@ namespace GlobalLib.Utils
 		/// Sets the position within the current stream.
 		/// </summary>
 		/// <param name="offset">A byte offset relative to the origin parameter.</param>
-		/// <param name="origin">A value of type System.IO.SeekOrigin indicating the 
+		/// <param name="origin">A value of type SeekOrigin indicating the 
 		/// reference point used to obtain the new position.</param>
 		public void Seek(int offset, SeekOrigin origin)
 		{

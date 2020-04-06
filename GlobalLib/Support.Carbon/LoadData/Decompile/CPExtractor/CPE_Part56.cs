@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon
+﻿using GlobalLib.Support.Carbon.Parts.CarParts;
+using System.Collections.Generic;
+
+namespace GlobalLib.Support.Carbon
 {
     public static partial class LoadData
     {
@@ -22,8 +25,8 @@
             int total = (len5 - 8) / 4;
             if (check < total) len5 = check * 4 + 8;
 
-            db.SlotTypes.Part56 = new System.Collections.Generic.List<Parts.CarParts.Part56>();
-            var CarCNames = new System.Collections.Generic.List<uint>();
+            db.SlotTypes.Part56 = new List<Part56>();
+            var CarCNames = new List<uint>();
 
             foreach (var car in db.CarTypeInfos.Collections)
                 CarCNames.Add(car.BinKey);
@@ -43,7 +46,7 @@
                     else size += 4;
                 }
                 if (CarCNames.Contains(ckey)) IsCar = true;
-                var Part = new Parts.CarParts.Part56(ckey, part6ptr_t + off6, size, IsCar);
+                var Part = new Part56(ckey, part6ptr_t + off6, size, IsCar);
                 db.SlotTypes.Part56.Add(Part);
                 off5 += 4;
                 off6 += size;

@@ -1,9 +1,14 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.GameParts
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+using System;
+
+namespace GlobalLib.Support.Underground2.Parts.GameParts
 {
-	public class Opponent : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Opponent>
+	public class Opponent : SubPart, ICopyable<Opponent>
 	{
-		private string _name = Reflection.BaseArguments.NULL;
-		private string _preset_ride = Reflection.BaseArguments.RANDOM;
+		private string _name = BaseArguments.NULL;
+		private string _preset_ride = BaseArguments.RANDOM;
 
 		public string Name
 		{
@@ -11,7 +16,7 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				this._name = value;
 			}
 		}
@@ -24,7 +29,7 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				this._preset_ride = value;
 			}
 		}

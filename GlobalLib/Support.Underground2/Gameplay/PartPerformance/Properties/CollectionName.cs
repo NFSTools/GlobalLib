@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class PartPerformance
 	{
@@ -7,27 +13,27 @@
 		/// <summary>
 		/// Collection name of the variable.
 		/// </summary>
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public override string CollectionName
 		{
 			get => this._collection_name;
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left left empty.");
+					throw new ArgumentNullException("This value cannot be left left empty.");
 				if (value.Contains(" "))
-					throw new System.Exception("CollectionName cannot contain whitespace.");
+					throw new Exception("CollectionName cannot contain whitespace.");
 				if (this.Database.PartPerformances.FindCollection(value) != null)
-					throw new Reflection.Exception.CollectionExistenceException();
+					throw new CollectionExistenceException();
 				this._collection_name = value;
 				if (this._cname_is_set)
-					Core.Map.PerfPartTable[(int)this._part_perf_type, this._upgrade_level, this._upgrade_part_index] = Utils.ConvertX.ToUInt32(value);
+					Map.PerfPartTable[(int)this._part_perf_type, this._upgrade_level, this._upgrade_part_index] = ConvertX.ToUInt32(value);
 			}
 		}
 
 		// CollectionName is the BinKey, but as a string
-		public uint BinKey { get => Utils.Bin.SmartHash(this._collection_name); }
+		public uint BinKey { get => Bin.SmartHash(this._collection_name); }
 
-		public uint VltKey { get => Utils.Vlt.Hash(this._collection_name); }
+		public uint VltKey { get => Vlt.Hash(this._collection_name); }
 	}
 }

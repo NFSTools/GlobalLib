@@ -1,18 +1,25 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.PresetParts
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Reflection.Interface;
+using System;
+
+namespace GlobalLib.Support.Underground2.Parts.PresetParts
 {
-	public class Specialties : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Specialties>
+	public class Specialties : SubPart, ICopyable<Specialties>
 	{
 		#region Private Fields
 
-		private string _neon_body = Reflection.BaseArguments.NULL;
-		private string _neon_engine = Reflection.BaseArguments.NULL;
-		private string _neon_cabin = Reflection.BaseArguments.NULL;
-		private string _neon_trunk = Reflection.BaseArguments.NULL;
+		private string _neon_body = BaseArguments.NULL;
+		private string _neon_engine = BaseArguments.NULL;
+		private string _neon_cabin = BaseArguments.NULL;
+		private string _neon_trunk = BaseArguments.NULL;
 		private byte _neon_cabin_style = 0;
-		private string _headlight_bulb = Reflection.BaseArguments.STOCK;
-		private string _door_style = Reflection.BaseArguments.STOCK;
-		private string _hydraulics_style = Reflection.BaseArguments.NULL;
-		private string _nos_purge_style = Reflection.BaseArguments.NULL;
+		private string _headlight_bulb = BaseArguments.STOCK;
+		private string _door_style = BaseArguments.STOCK;
+		private string _hydraulics_style = BaseArguments.NULL;
+		private string _nos_purge_style = BaseArguments.NULL;
 
 		#endregion
 
@@ -24,9 +31,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value != Reflection.BaseArguments.NULL && !Core.Map.BinKeys.ContainsValue(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				else if (value != BaseArguments.NULL && !Map.BinKeys.ContainsValue(value))
+					throw new MappingFailException();
 				else
 					this._neon_body = value;
 			}
@@ -38,9 +45,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value != Reflection.BaseArguments.NULL && !Core.Map.BinKeys.ContainsValue(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				else if (value != BaseArguments.NULL && !Map.BinKeys.ContainsValue(value))
+					throw new MappingFailException();
 				else
 					this._neon_engine = value;
 			}
@@ -52,9 +59,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value != Reflection.BaseArguments.NULL && !Core.Map.BinKeys.ContainsValue(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				else if (value != BaseArguments.NULL && !Map.BinKeys.ContainsValue(value))
+					throw new MappingFailException();
 				else
 					this._neon_cabin = value;
 			}
@@ -66,9 +73,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value != Reflection.BaseArguments.NULL && !Core.Map.BinKeys.ContainsValue(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				else if (value != BaseArguments.NULL && !Map.BinKeys.ContainsValue(value))
+					throw new MappingFailException();
 				else
 					this._neon_trunk = value;
 			}
@@ -80,7 +87,7 @@
 			set
 			{
 				if (value > 3)
-					throw new System.ArgumentOutOfRangeException("This value should be in range 0-3.");
+					throw new ArgumentOutOfRangeException("This value should be in range 0-3.");
 				else
 					this._neon_cabin_style = value;
 			}
@@ -92,9 +99,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value != Reflection.BaseArguments.STOCK && !Core.Map.BinKeys.ContainsValue(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				else if (value != BaseArguments.STOCK && !Map.BinKeys.ContainsValue(value))
+					throw new MappingFailException();
 				else
 					this._headlight_bulb = value;
 			}
@@ -106,9 +113,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value != Reflection.BaseArguments.STOCK && !Core.Map.BinKeys.ContainsValue(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				else if (value != BaseArguments.STOCK && !Map.BinKeys.ContainsValue(value))
+					throw new MappingFailException();
 				else
 					this._door_style = value;
 			}
@@ -120,9 +127,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value != Reflection.BaseArguments.NULL && !Core.Map.BinKeys.ContainsValue(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				else if (value != BaseArguments.NULL && !Map.BinKeys.ContainsValue(value))
+					throw new MappingFailException();
 				else
 					this._hydraulics_style = value;
 			}
@@ -134,9 +141,9 @@
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
-				else if (value != Reflection.BaseArguments.NULL && !Core.Map.BinKeys.ContainsValue(value))
-					throw new Reflection.Exception.MappingFailException();
+					throw new ArgumentNullException("This value cannot be left empty.");
+				else if (value != BaseArguments.NULL && !Map.BinKeys.ContainsValue(value))
+					throw new MappingFailException();
 				else
 					this._nos_purge_style = value;
 			}

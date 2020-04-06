@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.MostWanted
 {
 	public static partial class LoadData
 	{
@@ -11,10 +14,10 @@
 			int offset = 8;
 			while (offset < size)
 			{
-				string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + offset, size - offset);
+				string CName = ScriptX.NullTerminatedString(byteptr_t + offset, size - offset);
 				if (CName == null) { offset += 1; continue; }
-				uint key = Utils.Vlt.Hash(CName);
-				Core.Map.VltKeys[key] = CName;
+				uint key = Vlt.Hash(CName);
+				Map.VltKeys[key] = CName;
 				offset += CName.Length + 1;
 			}
 		}

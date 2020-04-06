@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Transmission : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Transmission>
+	public class Transmission : SubPart, ICopyable<Transmission>
 	{
 		public float ClutchSlip { get; set; }
 		public float OptimalShift { get; set; }

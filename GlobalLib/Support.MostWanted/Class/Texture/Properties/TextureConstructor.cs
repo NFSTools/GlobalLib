@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Utils;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class Texture : Shared.Class.Texture
     {
@@ -10,7 +12,7 @@
             this.Database = db;
             this._collection_name = CName;
             this._parent_TPK = _TPK;
-            this.BinKey = Utils.Bin.Hash(CName);
+            this.BinKey = Bin.Hash(CName);
             this.PaletteOffset = 0;
             this._padding = 1;
         }
@@ -21,7 +23,7 @@
             this.Database = db;
             this._collection_name = CName;
             this._parent_TPK = _TPK;
-            this.BinKey = Utils.Bin.Hash(CName);
+            this.BinKey = Bin.Hash(CName);
             this.PaletteOffset = 0;
             this._padding = 1;
             this.Initialize(filename);

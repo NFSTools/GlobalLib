@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class Track
 	{
@@ -25,13 +28,13 @@
 				*(int*)(byteptr_t + 0x68) = this._location_index;
 				*(int*)(byteptr_t + 0x7C) = (int)this._location_type;
 				*(int*)(byteptr_t + 0x80) = (int)this._drift_type;
-				*(byteptr_t + 0x84) = (this._is_valid_race == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
-				*(byteptr_t + 0x85) = (this._is_looping_race == Reflection.Enum.eBoolean.True) ? (byte)0 : (byte)1;
-				*(byteptr_t + 0x86) = (this._reverse_version_exists == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
-				*(byteptr_t + 0x88) = (this._is_performance_tuning == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
+				*(byteptr_t + 0x84) = (this._is_valid_race == eBoolean.True) ? (byte)1 : (byte)0;
+				*(byteptr_t + 0x85) = (this._is_looping_race == eBoolean.True) ? (byte)0 : (byte)1;
+				*(byteptr_t + 0x86) = (this._reverse_version_exists == eBoolean.True) ? (byte)1 : (byte)0;
+				*(byteptr_t + 0x88) = (this._is_performance_tuning == eBoolean.True) ? (byte)1 : (byte)0;
 				*(ushort*)(byteptr_t + 0x8A) = this.TrackID;
 				*(ushort*)(byteptr_t + 0x8C) = this.TrackID;
-				*(uint*)(byteptr_t + 0x90) = Utils.Bin.SmartHash(this._sun_info_name);
+				*(uint*)(byteptr_t + 0x90) = Bin.SmartHash(this._sun_info_name);
 				*(int*)(byteptr_t + 0x94) = (int)this._race_gameplay_mode;
 				*(uint*)(byteptr_t + 0x98) = this.RaceLength;
 				*(float*)(byteptr_t + 0x9C) = this.TimeLimitToBeatForward;

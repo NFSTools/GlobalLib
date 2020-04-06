@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+using System.IO;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class CarTypeInfo
     {
@@ -21,7 +26,7 @@
                     *(byteptr_t + 0x10 + a1) = (byte)this.CollectionName[a1];
 
                 // Write GeometryFileName
-                string path = System.IO.Path.Combine("CARS", this.CollectionName, "GEOMETRY.BIN");
+                string path = Path.Combine("CARS", this.CollectionName, "GEOMETRY.BIN");
                 for (int a1 = 0; a1 < path.Length; ++a1)
                     *(byteptr_t + 0x20 + a1) = (byte)path[a1];
 
@@ -85,17 +90,17 @@
                 *(byteptr_t + 0xC5) = this.AvailableSkinNumbers10;
 
                 *(byteptr_t + 0xC6) = this.DefaultSkinNumber;
-                *(byteptr_t + 0xC7) = (this.IsSkinnable == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
+                *(byteptr_t + 0xC7) = (this.IsSkinnable == eBoolean.True) ? (byte)1 : (byte)0;
                 *(int*)(byteptr_t + 0xC8) = this.Padding2;
 
                 if (string.IsNullOrWhiteSpace(this.DefaultBasePaint)) { }
                 else if (this.DefaultBasePaint.StartsWith("0x"))
-                    *(uint*)(byteptr_t + 0xCC) = Utils.ConvertX.ToUInt32(this.DefaultBasePaint);
+                    *(uint*)(byteptr_t + 0xCC) = ConvertX.ToUInt32(this.DefaultBasePaint);
                 else
-                    *(uint*)(byteptr_t + 0xCC) = Utils.Bin.Hash(this.DefaultBasePaint);
+                    *(uint*)(byteptr_t + 0xCC) = Bin.Hash(this.DefaultBasePaint);
 
                 if (*(uint*)(byteptr_t + 0xCC) == 0)
-                    *(uint*)(byteptr_t + 0xCC) = Utils.Bin.Hash(Reflection.BaseArguments.BPAINT);
+                    *(uint*)(byteptr_t + 0xCC) = Bin.Hash(BaseArguments.BPAINT);
             }
             return result;
         }

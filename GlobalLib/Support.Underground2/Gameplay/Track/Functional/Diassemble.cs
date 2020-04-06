@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class Track
 	{
@@ -8,30 +12,30 @@
 		/// <param name="byteptr_t">Pointer to the track block.</param
 		protected unsafe void Disassemble(byte* byteptr_t)
 		{
-			this._race_descrition = Utils.ScriptX.NullTerminatedString(byteptr_t, 0x20);
-			this._track_directory = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x20, 0x20);
-			this._region_name = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x40, 0x8);
-			this._region_directory = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x48, 0x20);
+			this._race_descrition = ScriptX.NullTerminatedString(byteptr_t, 0x20);
+			this._track_directory = ScriptX.NullTerminatedString(byteptr_t + 0x20, 0x20);
+			this._region_name = ScriptX.NullTerminatedString(byteptr_t + 0x40, 0x8);
+			this._region_directory = ScriptX.NullTerminatedString(byteptr_t + 0x48, 0x20);
 			this._location_index = *(int*)(byteptr_t + 0x68);
-			this._location_directory = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x6C, 0x10);
-			this._location_type = (Reflection.Enum.eLocationType)(*(int*)(byteptr_t + 0x7C));
-			this._drift_type = (Reflection.Enum.eDriftType)(*(int*)(byteptr_t + 0x80));
+			this._location_directory = ScriptX.NullTerminatedString(byteptr_t + 0x6C, 0x10);
+			this._location_type = (eLocationType)(*(int*)(byteptr_t + 0x7C));
+			this._drift_type = (eDriftType)(*(int*)(byteptr_t + 0x80));
 			this._is_valid_race = (*(byteptr_t + 0x84) == 0)
-				? Reflection.Enum.eBoolean.False
-				: Reflection.Enum.eBoolean.True;
+				? eBoolean.False
+				: eBoolean.True;
 			this._is_looping_race = (*(byteptr_t + 0x85) == 0)
-				? Reflection.Enum.eBoolean.True
-				: Reflection.Enum.eBoolean.False;
+				? eBoolean.True
+				: eBoolean.False;
 			this._reverse_version_exists = (*(byteptr_t + 0x86) == 0)
-				? Reflection.Enum.eBoolean.False
-				: Reflection.Enum.eBoolean.True;
+				? eBoolean.False
+				: eBoolean.True;
 			this._is_performance_tuning = (*(byteptr_t + 0x88) == 0)
-				? Reflection.Enum.eBoolean.False
-				: Reflection.Enum.eBoolean.True;
+				? eBoolean.False
+				: eBoolean.True;
 			this.TrackID = *(ushort*)(byteptr_t + 0x8A);
 			uint key = *(uint*)(byteptr_t + 0x90);
-			this._sun_info_name = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
-			this._race_gameplay_mode = (Reflection.Enum.eRaceGameplayMode)(*(int*)(byteptr_t + 0x94));
+			this._sun_info_name = Map.Lookup(key, true) ?? $"0x{key:X8}";
+			this._race_gameplay_mode = (eRaceGameplayMode)(*(int*)(byteptr_t + 0x94));
 			this.RaceLength = *(uint*)(byteptr_t + 0x98);
 			this.TimeLimitToBeatForward = *(float*)(byteptr_t + 0x9C);
 			this.TimeLimitToBeatReverse = *(float*)(byteptr_t + 0xA0);
@@ -44,8 +48,8 @@
 			this.TrackMapStartgridAngle = ((float)*(ushort*)(byteptr_t + 0xBA)) * 180 / 32768;
 			this.TrackMapFinishlineAngle = ((float)*(ushort*)(byteptr_t + 0xBC)) * 180 / 32768;
 			this.TrackMapCalibrationZoomIn = *(float*)(byteptr_t + 0xC0);
-			this._difficulty_forward = (Reflection.Enum.eTrackDifficulty)(*(int*)(byteptr_t + 0xC4));
-			this._difficulty_reverse = (Reflection.Enum.eTrackDifficulty)(*(int*)(byteptr_t + 0xC8));
+			this._difficulty_forward = (eTrackDifficulty)(*(int*)(byteptr_t + 0xC4));
+			this._difficulty_reverse = (eTrackDifficulty)(*(int*)(byteptr_t + 0xC8));
 			this.NumSecBeforeShorcutsAllowed = *(short*)(byteptr_t + 0xE4);
 			this.DriftSecondsMin = *(short*)(byteptr_t + 0xE6);
 			this.DriftSecondsMax = *(short*)(byteptr_t + 0xE8);

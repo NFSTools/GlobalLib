@@ -1,6 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Enum;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class PartPerformance : Reflection.Abstract.Collectable
+	public partial class PartPerformance : Collectable
 	{
 		// Default constructor
 		public PartPerformance() { }
@@ -25,11 +29,11 @@
 		public unsafe PartPerformance(byte* byteptr_t, Database.Underground2 db, params int[] args)
 		{
 			this.Database = db;
-			this._part_perf_type = (Reflection.Enum.ePerformanceType)args[0];
+			this._part_perf_type = (ePerformanceType)args[0];
 			this._upgrade_level = args[1];
 			this._upgrade_part_index = args[2];
 			this.Disassemble(byteptr_t);
-			Core.Map.PerfPartTable[args[0], args[1], args[2]] = this.BinKey;
+			Map.PerfPartTable[args[0], args[1], args[2]] = this.BinKey;
 			this._cname_is_set = true;
 		}
 

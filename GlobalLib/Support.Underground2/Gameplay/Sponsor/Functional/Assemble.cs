@@ -1,8 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class Sponsor
 	{
-		public unsafe void Assemble(byte* byteptr_t, Utils.MemoryWriter mw)
+		public unsafe void Assemble(byte* byteptr_t, MemoryWriter mw)
 		{
 			ushort pointer = (ushort)mw.Position;
 			mw.WriteNullTerminated(this._collection_name);

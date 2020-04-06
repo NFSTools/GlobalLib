@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class GCareerStage
 	{
@@ -12,15 +15,15 @@
 			// Sponsor Settings
 			this.NumberOfSponsorsToChoose = *(byteptr_t + 0x01);
 			key = *(uint*)(byteptr_t + 0x08);
-			this._stage_sponsor1 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
+			this._stage_sponsor1 = Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x0C);
-			this._stage_sponsor2 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
+			this._stage_sponsor2 = Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x10);
-			this._stage_sponsor3 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
+			this._stage_sponsor3 = Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x14);
-			this._stage_sponsor4 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
+			this._stage_sponsor4 = Map.Lookup(key, true) ?? $"0x{key:X8}";
 			key = *(uint*)(byteptr_t + 0x18);
-			this._stage_sponsor5 = Core.Map.Lookup(key, true) ?? $"0x{key:X8}";
+			this._stage_sponsor5 = Map.Lookup(key, true) ?? $"0x{key:X8}";
 			this.AttribSponsor1 = *(short*)(byteptr_t + 0x1C);
 			this.AttribSponsor2 = *(short*)(byteptr_t + 0x1E);
 			this.AttribSponsor3 = *(short*)(byteptr_t + 0x20);
@@ -36,7 +39,7 @@
 			this.MaxSprintsShownOnMap = *(byteptr_t + 0x34);
 			this.MaxOutrunEvents = *(byteptr_t + 0x40);
 			key = *(uint*)(byteptr_t + 0x28);
-			this._last_stage_event = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+			this._last_stage_event = Map.Lookup(key, true) ?? BaseArguments.NULL;
 
 			// Unknown Yet Values
 			this.Unknown0x04 = *(short*)(byteptr_t + 0x04);

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -25,13 +27,13 @@ namespace GlobalLib.Support.MostWanted
 			{
 				Attributes = File.ReadAllBytes(AttribDir);
 				FE_Attrib = File.ReadAllBytes(FEAttrDir);
-				Utils.Log.Write("Reading data from attributes.bin...");
-				Utils.Log.Write("Reading data from fe_attrib.bin...");
+				Log.Write("Reading data from attributes.bin...");
+				Log.Write("Reading data from fe_attrib.bin...");
 			}
 			catch (Exception e)
 			{
 				while (e.InnerException != null) e = e.InnerException;
-				if (Core.Process.MessageShow)
+				if (Process.MessageShow)
 					MessageBox.Show($"Error occured: {e.Message}", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				else
 					Console.WriteLine(e.Message);
@@ -42,7 +44,7 @@ namespace GlobalLib.Support.MostWanted
 			{
 				if (*(uint*)byteptr_t != 0x4B415056)
 				{
-					if (Core.Process.MessageShow)
+					if (Process.MessageShow)
 						MessageBox.Show("attributes: invalid header definition.", "Failure");
 					else
 						Console.WriteLine("attributes: invalid header definition.");
@@ -71,7 +73,7 @@ namespace GlobalLib.Support.MostWanted
 			{
 				if (*(uint*)byteptr_t != 0x4B415056)
 				{
-					if (Core.Process.MessageShow)
+					if (Process.MessageShow)
 						MessageBox.Show("fe_attrib: invalid header definition.", "Failure");
 					else
 						Console.WriteLine("fe_attrib: invalid header definition.");

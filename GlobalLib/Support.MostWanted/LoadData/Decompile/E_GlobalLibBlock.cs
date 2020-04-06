@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.MostWanted
 {
     public static partial class LoadData
     {
@@ -21,14 +24,14 @@
                     num = *(int*)(byteptr_t + off); // get number of strings allocated
                     len = *(int*)(byteptr_t + off + 4); // get total length of characters
                     off += 8; // move last time
-                    Core.Map.CollisionMap.Clear(); // clear collision map
+                    Map.CollisionMap.Clear(); // clear collision map
                     while (len > 0 && num > 0)
                     {
                         string CName = "";
                         int numbytes = *(byteptr_t + off); // length of the string
                         for (int a1 = off + 1; a1 < off + 1 + numbytes; ++a1)
                             CName += ((char)*(byteptr_t + a1)).ToString();
-                        Core.Map.CollisionMap[Utils.Vlt.Hash(CName)] = CName;
+                        Map.CollisionMap[Vlt.Hash(CName)] = CName;
                         --num;
                         len -= numbytes + 1;
                         off += numbytes + 1;
@@ -46,7 +49,7 @@
                         int numbytes = *(byteptr_t + off); // length of the string
                         for (int a1 = off + 1; a1 < off + 1 + numbytes; ++a1)
                             CName += ((char)*(byteptr_t + a1)).ToString();
-                        Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+                        Map.BinKeys[Bin.Hash(CName)] = CName;
                         --num;
                         len -= numbytes + 1;
                         off += numbytes + 1;

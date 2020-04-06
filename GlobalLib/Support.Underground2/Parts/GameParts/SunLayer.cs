@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.GameParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.GameParts
 {
-	public class SunLayer : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<SunLayer>
+	public class SunLayer : SubPart, ICopyable<SunLayer>
 	{
 		/* 0x0000 */ public int SunTextureType { get; set; }
 		/* 0x0004 */ public int SunAlphaType { get; set; }

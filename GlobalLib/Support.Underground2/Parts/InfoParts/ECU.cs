@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class ECU : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<ECU>
+	public class ECU : SubPart, ICopyable<ECU>
 	{
         public float ECUx1000Add { get; set; }
         public float ECUx2000Add { get; set; }

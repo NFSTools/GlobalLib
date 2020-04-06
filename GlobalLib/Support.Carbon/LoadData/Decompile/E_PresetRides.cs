@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.Carbon
+﻿using GlobalLib.Core;
+using GlobalLib.Support.Carbon.Class;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.Carbon
 {
     public static partial class LoadData
     {
@@ -17,12 +23,12 @@
                 uint offset = loop * size; // current offset of the preset ride
 
                 // Get CollectionName
-                string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + offset + 0x28, 0x20);
+                string CName = ScriptX.NullTerminatedString(byteptr_t + offset + 0x28, 0x20);
 
-                CName = Utils.EA.Resolve.GetPathFromCollection(CName);
-                Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+                CName = Resolve.GetPathFromCollection(CName);
+                Map.BinKeys[Bin.Hash(CName)] = CName;
 
-                var Class = new Class.PresetRide((System.IntPtr)(byteptr_t + offset), CName, db);
+                var Class = new PresetRide((IntPtr)(byteptr_t + offset), CName, db);
                 db.PresetRides.Collections.Add(Class);
             }
         }

@@ -6,8 +6,6 @@ using GlobalLib.Reflection.Enum;
 using GlobalLib.Reflection.Abstract;
 using GlobalLib.Reflection.Attributes;
 
-
-
 namespace GlobalLib.Support.Shared.Class
 {
     public class Texture : Collectable

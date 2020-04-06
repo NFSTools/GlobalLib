@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.MostWanted
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Support.MostWanted.Parts.CarParts;
+using GlobalLib.Utils;
+using System.Collections.Generic;
+using System.IO;
+
+namespace GlobalLib.Support.MostWanted
 {
     public static partial class SaveData
     {
@@ -7,9 +13,9 @@
         /// </summary>
         /// <param name="db">Database with classes.</param>
         /// <param name="bw">BinaryWriter for writing data.</param>
-        private static void I_CarParts(Database.MostWanted db, System.IO.BinaryWriter bw)
+        private static void I_CarParts(Database.MostWanted db, BinaryWriter bw)
         {
-            bw.Write(Reflection.ID.Global.CarParts);
+            bw.Write(Global.CarParts);
             bw.Write(0xFFFFFFFF); // temp size
 
             int initial_size = (int)bw.BaseStream.Position;
@@ -17,9 +23,9 @@
             int PartNumOffset = initial_size + 0x40;
             int padding = 0;
 
-            var keylists = new System.Collections.Generic.List<uint>();
-            var Intermid56 = new System.Collections.Generic.List<Parts.CarParts.Part56>();
-            var UsedPart56 = new System.Collections.Generic.List<Parts.CarParts.Part56>();
+            var keylists = new List<uint>();
+            var Intermid56 = new List<Part56>();
+            var UsedPart56 = new List<Part56>();
 
             // Copy for processing
             for (int a1 = 0; a1 < db.SlotTypes.Part56.Count; ++a1)
@@ -32,7 +38,7 @@
                 int index = 0;
                 string CName = car.CollectionName;
                 uint ckey = car.BinKey;
-                uint okey = Utils.Bin.Hash(car.OriginalName);
+                uint okey = Bin.Hash(car.OriginalName);
                 keylists.Add(ckey);
                 for (index = 0; index < Intermid56.Count; ++index)
                 {
@@ -45,11 +51,11 @@
                 if (CarDoesExist)
                 {
                     if (ckey != okey || car.Modified)
-                        Intermid56[index] = new Parts.CarParts.Part56(CName, (byte)index);
+                        Intermid56[index] = new Part56(CName, (byte)index);
                 }
                 else
                 {
-                    var Class = new Parts.CarParts.Part56(CName, (byte)index);
+                    var Class = new Part56(CName, (byte)index);
                     Intermid56.Add(Class);
                 }
             }
@@ -75,7 +81,7 @@
             int part5size = UsedPart56.Count * 4;
             padding = 3 - UsedPart56.Count % 4;
             if (padding != 0) part5size += padding * 4;
-            bw.Write(Reflection.ID.CarParts.Part5);
+            bw.Write(CarParts.Part5);
             bw.Write(part5size);
             for (int a1 = 0; a1 < UsedPart56.Count; ++a1)
                 bw.Write(UsedPart56[a1].Key);
@@ -84,7 +90,7 @@
 
             // Write part 6
             int part6size = 0;
-            bw.Write(Reflection.ID.CarParts.Part6);
+            bw.Write(CarParts.Part6);
             int size6off = (int)bw.BaseStream.Position;
             bw.Write(0xFFFFFFFF); // temp size
             for (int a1 = 0; a1 < UsedPart56.Count; ++a1)

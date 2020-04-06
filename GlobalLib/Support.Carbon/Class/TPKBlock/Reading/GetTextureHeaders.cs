@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.ID;
+using System.Collections.Generic;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class TPKBlock
     {
@@ -10,12 +13,12 @@
         /// <returns>Array of offsets and sizes of texture headers.</returns>
         protected override unsafe int[,] GetTextureHeaders(byte* byteptr_t, int offset)
         {
-            if (*(uint*)(byteptr_t + offset) != Reflection.ID.TPK.INFO_PART4_BLOCKID)
+            if (*(uint*)(byteptr_t + offset) != TPK.INFO_PART4_BLOCKID)
                 return null; // check Part4 ID
 
             int ReaderSize = offset + 8 + *(int*)(byteptr_t + offset + 4);
-            var offsets = new System.Collections.Generic.List<int>();
-            var sizes = new System.Collections.Generic.List<int>();
+            var offsets = new List<int>();
+            var sizes = new List<int>();
             offset += 8;
 
             while (offset < ReaderSize)

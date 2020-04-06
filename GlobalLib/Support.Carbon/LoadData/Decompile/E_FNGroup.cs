@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.Carbon
+﻿using GlobalLib.Support.Carbon.Class;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+
+namespace GlobalLib.Support.Carbon
 {
     public static partial class LoadData
     {
@@ -17,8 +21,8 @@
                 for (int a1 = 0; a1 < data.Length; ++a1)
                     *(dataptr_t + a1) = *(byteptr_t + a1);
             }
-            data = Utils.EA.SAT.Decompress(data);
-            var Class = new Class.FNGroup(data, db);
+            data = SAT.Decompress(data);
+            var Class = new FNGroup(data, db);
 
             // Check whether this FEng class already exists in the database
             if (Class.Destroy)
@@ -26,7 +30,7 @@
             if (db.FNGroups.FindCollection(Class.CollectionName) != null)
                 return;
             db.FNGroups.Collections.Add(Class);
-            Utils.Bin.Hash(Class.CollectionName);
+            Bin.Hash(Class.CollectionName);
         }
     }
 }

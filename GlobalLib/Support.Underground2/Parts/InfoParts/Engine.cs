@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Engine : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Engine>
+	public class Engine : SubPart, ICopyable<Engine>
 	{
 		public float SpeedRefreshRate { get; set; }
 		public float EngineTorque1 { get; set; }

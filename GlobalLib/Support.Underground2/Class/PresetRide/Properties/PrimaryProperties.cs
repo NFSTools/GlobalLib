@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Attributes;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class PresetRide
     {
@@ -7,15 +11,15 @@
         private uint _unknown2 = 0;
         private int _performance_level = 0;
 
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public int PerformanceLevel
         {
             get => this._performance_level;
             set
             {
                 if (value > 3 || value < 0)
-                    throw new System.ArgumentOutOfRangeException("The value should be in range 0-3.");
+                    throw new ArgumentOutOfRangeException("The value should be in range 0-3.");
                 this._performance_level = value;
             }
         }
@@ -33,12 +37,12 @@
         /// <summary>
         /// Represents frontend name of the preset ride.
         /// </summary>
-        public override string Frontend { get => Reflection.BaseArguments.NULL; }
+        public override string Frontend { get => BaseArguments.NULL; }
 
         /// <summary>
         /// Represents pvehicle name of the preset ride.
         /// </summary>
-        public override string Pvehicle { get => Reflection.BaseArguments.NULL; }
+        public override string Pvehicle { get => BaseArguments.NULL; }
 
         /// <summary>
         /// Vault memory hash of the frontend value.

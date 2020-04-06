@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class Texture
     {
@@ -17,6 +19,6 @@
         /// <summary>
         /// Vault memory hash of the collection name.
         /// </summary>
-        public override uint VltKey { get => Utils.Vlt.Hash(this._collection_name); }
+        public override uint VltKey { get => Vlt.Hash(this._collection_name); }
     }
 }

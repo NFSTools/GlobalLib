@@ -1,6 +1,12 @@
-﻿namespace GlobalLib.Support.MostWanted.Parts.CarParts
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Reflection.Interface;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Parts.CarParts
 {
-    public class Part56 : Reflection.Interface.ICastable<Part56>
+    public class Part56 : ICastable<Part56>
     {
         private uint _key = 0;
         private string _collection_name;
@@ -26,12 +32,12 @@
             get => this._key;
             set
             {
-                if (!Core.Map.BinKeys.ContainsKey(_key))
-                    throw new Reflection.Exception.MappingFailException();
+                if (!Map.BinKeys.ContainsKey(_key))
+                    throw new MappingFailException();
                 else
                 {
                     this._key = value;
-                    this._collection_name = Core.Map.BinKeys[value];
+                    this._collection_name = Map.BinKeys[value];
                 }
             }
         }
@@ -45,11 +51,11 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException();
+                    throw new ArgumentNullException();
                 else
                 {
                     this._collection_name = value;
-                    uint temp = Utils.Bin.Hash(value);
+                    uint temp = Bin.Hash(value);
                     this._key = temp;
                 }
             }
@@ -74,7 +80,7 @@
         // Default constructor: initialize new part56
         public unsafe Part56(string CName, byte index)
         {
-            this._key = Utils.Bin.Hash(CName);
+            this._key = Bin.Hash(CName);
             this._collection_name = CName;
             this.Index = index;
             this.IsCar = true;
@@ -83,7 +89,7 @@
             {
                 for (int a1 = 0, a2 = 0; a1 < 0xBF; ++a1, a2 += 14)
                 {
-                    *(uint*)(byteptr_t + a2) = Utils.Bin.Hash(CName + UsageType.PartName[a1]);
+                    *(uint*)(byteptr_t + a2) = Bin.Hash(CName + UsageType.PartName[a1]);
                     *(byteptr_t + a2 + 4) = UsageType.CarSlotID[a1];
                     *(ushort*)(byteptr_t + a2 + 5) = UsageType.Unknown1[a1];
                     *(byteptr_t + a2 + 7) = index;
@@ -102,7 +108,7 @@
             this.Index = *(part6ptr_t + 7); // get index of the part
             this.IsCar = IsCar;
             if (IsCar)
-                this._collection_name = Core.Map.Lookup(key, false);
+                this._collection_name = Map.Lookup(key, false);
 
             // Copy part6 into memory
             fixed (byte* dataptr_t = &this.Data[0])
@@ -127,7 +133,7 @@
         {
             var result = new Part56();
             result.Data = new byte[this.Data.Length];
-            System.Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
+            Buffer.BlockCopy(this.Data, 0, result.Data, 0, this.Data.Length);
             result._collection_name = this._collection_name;
             result._key = this._key;
             result.IsCar = this.IsCar;

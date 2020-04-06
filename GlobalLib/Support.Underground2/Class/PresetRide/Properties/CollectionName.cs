@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class PresetRide
     {
@@ -7,20 +12,20 @@
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
+        [AccessModifiable()]
         public override string CollectionName
         {
             get => this._collection_name;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new System.ArgumentNullException("This value cannot be left empty.");
+                    throw new ArgumentNullException("This value cannot be left empty.");
                 if (value.Contains(" "))
-                    throw new System.Exception("CollectionName cannot contain whitespace.");
+                    throw new Exception("CollectionName cannot contain whitespace.");
                 if (value.Length > MaxCNameLength)
-                    throw new Reflection.Exception.ArgumentLengthException("Length of the value passed should not exceed 31 characters.");
+                    throw new ArgumentLengthException("Length of the value passed should not exceed 31 characters.");
                 if (this.Database.PresetRides.FindCollection(value) != null)
-                    throw new Reflection.Exception.CollectionExistenceException();
+                    throw new CollectionExistenceException();
                 this._collection_name = value;
             }
         }
@@ -28,12 +33,12 @@
         /// <summary>
         /// Binary memory hash of the collection name.
         /// </summary>
-        public override uint BinKey { get => Utils.Bin.Hash(this._collection_name); }
+        public override uint BinKey { get => Bin.Hash(this._collection_name); }
 
         /// <summary>
         /// Vault memory hash of the collection name.
         /// </summary>
-        public override uint VltKey { get => Utils.Vlt.Hash(this._collection_name); }
+        public override uint VltKey { get => Vlt.Hash(this._collection_name); }
     
         
     }

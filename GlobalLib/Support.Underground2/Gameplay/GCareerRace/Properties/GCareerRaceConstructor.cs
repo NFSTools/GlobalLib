@@ -1,6 +1,11 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Support.Underground2.Parts.GameParts;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class GCareerRace : Reflection.Abstract.Collectable
+	public partial class GCareerRace : Collectable
 	{
 		// Default constructor
 		public GCareerRace() { }
@@ -10,23 +15,23 @@
 		{
 			this.Database = db;
 			this.CollectionName = CName;
-			this.OPPONENT1 = new Parts.GameParts.Opponent();
-			this.OPPONENT2 = new Parts.GameParts.Opponent();
-			this.OPPONENT3 = new Parts.GameParts.Opponent();
-			this.OPPONENT4 = new Parts.GameParts.Opponent();
-			this.OPPONENT5 = new Parts.GameParts.Opponent();
-			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+			this.OPPONENT1 = new Opponent();
+			this.OPPONENT2 = new Opponent();
+			this.OPPONENT3 = new Opponent();
+			this.OPPONENT4 = new Opponent();
+			this.OPPONENT5 = new Opponent();
+			Map.BinKeys[Bin.Hash(CName)] = CName;
 		}
 
 		// Default constructor: disassemble career race
 		public unsafe GCareerRace(byte* ptr_header, byte* ptr_string, Database.Underground2 db)
 		{
 			this.Database = db;
-			this.OPPONENT1 = new Parts.GameParts.Opponent();
-			this.OPPONENT2 = new Parts.GameParts.Opponent();
-			this.OPPONENT3 = new Parts.GameParts.Opponent();
-			this.OPPONENT4 = new Parts.GameParts.Opponent();
-			this.OPPONENT5 = new Parts.GameParts.Opponent();
+			this.OPPONENT1 = new Opponent();
+			this.OPPONENT2 = new Opponent();
+			this.OPPONENT3 = new Opponent();
+			this.OPPONENT4 = new Opponent();
+			this.OPPONENT5 = new Opponent();
 			this.Disassemble(ptr_header, ptr_string);
 		}
 	}

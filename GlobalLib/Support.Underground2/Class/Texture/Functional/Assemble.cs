@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.ID;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class Texture
     {
@@ -11,7 +13,7 @@
         public override unsafe void Assemble(byte* byteptr_t, ref int offheader, ref int offdata)
         {
             // Get offset data
-            if (this._compression == Reflection.ID.EAComp.P8_08)
+            if (this._compression == EAComp.P8_08)
             {
                 this.PaletteOffset = offdata;
                 this.Offset = offdata + this.PaletteSize;
@@ -67,7 +69,7 @@
 
             // Check secret compression
             if (this._secretp8)
-                *(byteptr_t + offheader + 0x4A) = Reflection.ID.EAComp.SECRET;
+                *(byteptr_t + offheader + 0x4A) = EAComp.SECRET;
 
             // Precalculate next offsets
             offheader += 0x7C; // set next header offset

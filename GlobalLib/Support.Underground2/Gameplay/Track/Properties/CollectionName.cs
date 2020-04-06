@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Exception;
+using GlobalLib.Support.Underground2.Framework;
+using GlobalLib.Utils;
+using System;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class Track
 	{
@@ -7,22 +13,22 @@
 		/// <summary>
 		/// Collection name of the variable.
 		/// </summary>
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public override string CollectionName
 		{
 			get => this._collection_name;
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				if (value.Contains(" "))
-					throw new System.Exception("CollectionName cannot contain whitespace.");
-				if (!Framework.Validate.TrackCollectionName(value))
-					throw new System.Exception("Unable to parse TrackID from the collection name provided.");
+					throw new Exception("CollectionName cannot contain whitespace.");
+				if (!Validate.TrackCollectionName(value))
+					throw new Exception("Unable to parse TrackID from the collection name provided.");
 				if (this.Database.Tracks.FindCollection(value) != null)
-					throw new Reflection.Exception.CollectionExistenceException();
+					throw new CollectionExistenceException();
 				this._collection_name = value;
-				Utils.FormatX.GetUInt16(value, "Track_{X}", out ushort id);
+				FormatX.GetUInt16(value, "Track_{X}", out ushort id);
 				this.TrackID = id;
 			}
 		}
@@ -30,6 +36,6 @@
 		/// <summary>
 		/// Binary memory hash of the collection name.
 		/// </summary>
-		public uint BinKey { get => Utils.Bin.Hash(this._collection_name); }
+		public uint BinKey { get => Bin.Hash(this._collection_name); }
 	}
 }

@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection.Abstract;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class Track
 	{
@@ -7,7 +9,7 @@
         /// </summary>
         /// <param name="CName">CollectionName of the new created object.</param>
         /// <returns>Memory casted copy of the object.</returns>
-        public override Reflection.Abstract.Collectable MemoryCast(string CName)
+        public override Collectable MemoryCast(string CName)
 		{
 			var result = new Track(CName, this.Database);
 

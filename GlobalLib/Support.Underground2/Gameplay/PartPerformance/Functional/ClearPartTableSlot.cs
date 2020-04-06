@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class PartPerformance
 	{
@@ -7,8 +9,8 @@
 			int index = (int)this._part_perf_type;
 			int level = this._upgrade_level;
 			int value = this._upgrade_part_index;
-			if (Core.Map.PerfPartTable[index, level, value] == this.BinKey)
-				Core.Map.PerfPartTable[index, level, value] = 0;
+			if (Map.PerfPartTable[index, level, value] == this.BinKey)
+				Map.PerfPartTable[index, level, value] = 0;
 		}
 	}
 }

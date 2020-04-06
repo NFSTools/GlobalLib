@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.Attributes;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class Material
     {
@@ -9,15 +12,15 @@
         /// <summary>
         /// Main grayscale value of the material.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float Grayscale
         {
             get => this._grayscale;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._grayscale = value;
             }
@@ -26,15 +29,15 @@
         /// <summary>
         /// Linear negativity of the material colors.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float LinearNegative
         {
             get => this._linear_negative;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._linear_negative = value;
             }
@@ -43,15 +46,15 @@
         /// <summary>
         /// Gradient negativity of the material colors.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float GradientNegative
         {
             get => this._gradient_negative;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._gradient_negative = value;
             }

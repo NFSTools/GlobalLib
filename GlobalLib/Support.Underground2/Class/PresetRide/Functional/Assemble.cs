@@ -1,15 +1,20 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Support.Shared.Parts.PresetParts;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class PresetRide
 	{
 		public override unsafe byte[] Assemble()
 		{
 			var result = new byte[this.data.Length];
-			System.Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
+			Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
 			fixed (byte* byteptr_t = &result[0])
 			{
-				var parts = new Shared.Parts.PresetParts.Concatenator();
-				var add_on = new Shared.Parts.PresetParts.Add_On();
+				var parts = new Concatenator();
+				var add_on = new Add_On();
 
 				// BASE PARTS
 				parts._BASE = MODEL + parts._BASE;
@@ -41,11 +46,11 @@
 				else
 				{
 					parts.ROOF_STYLE += this._roofscoop_style.ToString("00");
-					if (this._is_dual_roofscoop == Reflection.Enum.eBoolean.True)
+					if (this._is_dual_roofscoop == eBoolean.True)
 						parts.ROOF_STYLE += add_on._DUAL;
-					if (this._is_offset_roofscoop == Reflection.Enum.eBoolean.True && this._is_dual_roofscoop == Reflection.Enum.eBoolean.False)
+					if (this._is_offset_roofscoop == eBoolean.True && this._is_dual_roofscoop == eBoolean.False)
 						parts.ROOF_STYLE += add_on._OFFSET;
-					if (this._is_carbonfibre_roofscoop == Reflection.Enum.eBoolean.True)
+					if (this._is_carbonfibre_roofscoop == eBoolean.True)
 						parts.ROOF_STYLE += add_on._CF;
 				}
 
@@ -55,7 +60,7 @@
 				else
 				{
 					parts._HOOD = MODEL + add_on._STYLE + this._hood_style.ToString("00") + parts._HOOD;
-					if (this._is_carbonfibre_hood == Reflection.Enum.eBoolean.True)
+					if (this._is_carbonfibre_hood == eBoolean.True)
 						parts._HOOD += add_on._CF;
 				}
 
@@ -69,16 +74,16 @@
 					parts._SKIRT = MODEL + add_on._K10 + this._autosculpt_skirt.ToString("00") + parts._SKIRT;
 
 				// _SPOILER
-				if (this._spoiler_type == Reflection.Enum.eSTypes.NULL)
+				if (this._spoiler_type == eSTypes.NULL)
 					parts._SPOILER = string.Empty;
-				else if (this._spoiler_style == 0 || this._spoiler_type == Reflection.Enum.eSTypes.STOCK)
+				else if (this._spoiler_style == 0 || this._spoiler_type == eSTypes.STOCK)
 					parts._SPOILER = MODEL + add_on._KIT + add_on._0 + parts._SPOILER;
 				else
 				{
 					parts._SPOILER = add_on.SPOILER + add_on._STYLE + this._spoiler_style.ToString("00");
-					if (this._spoiler_type != Reflection.Enum.eSTypes.BASE)
+					if (this._spoiler_type != eSTypes.BASE)
 						parts._SPOILER += this._spoiler_type.ToString();
-					if (this._is_carbonfibre_spoiler == Reflection.Enum.eBoolean.True)
+					if (this._is_carbonfibre_spoiler == eBoolean.True)
 						parts._SPOILER += add_on._CF;
 				}
 
@@ -150,7 +155,7 @@
 				parts._WHEEL = this.GetValidRimString();
 
 				// _MIRROR
-				if (this._wing_mirror_style == Reflection.BaseArguments.NULL || this._wing_mirror_style == Reflection.BaseArguments.STOCK)
+				if (this._wing_mirror_style == BaseArguments.NULL || this._wing_mirror_style == BaseArguments.STOCK)
 					parts._WING_MIRROR = MODEL + add_on._KIT + add_on._0 + parts._WING_MIRROR;
 				else
 					parts._WING_MIRROR = this._wing_mirror_style;
@@ -172,31 +177,31 @@
 				parts._DECAL_RIGHT_QUARTER_RECT_MEDIUM = MODEL + "_" + this._decalwide_rightquarter.ToString() + parts._DECAL_RIGHT_QUARTER_RECT_MEDIUM;
 
 				// KIT_CARBON
-				if (this._carbon_body == Reflection.Enum.eBoolean.True)
+				if (this._carbon_body == eBoolean.True)
 					parts.KIT_CARBON = parts.CARBON_FIBRE;
 				else
 					parts.KIT_CARBON = parts.CARBON_FIBRE_NONE;
 
 				// HOOD_CARBON
-				if (this._carbon_hood == Reflection.Enum.eBoolean.True)
+				if (this._carbon_hood == eBoolean.True)
 					parts.HOOD_CARBON = parts.CARBON_FIBRE;
 				else
 					parts.HOOD_CARBON = parts.CARBON_FIBRE_NONE;
 
 				// DOOR_CARBON
-				if (this._carbon_doors == Reflection.Enum.eBoolean.True)
+				if (this._carbon_doors == eBoolean.True)
 					parts.DOOR_CARBON = parts.CARBON_FIBRE;
 				else
 					parts.DOOR_CARBON = parts.CARBON_FIBRE_NONE;
 
 				// TRUNK_CARBON
-				if (this._carbon_trunk == Reflection.Enum.eBoolean.True)
+				if (this._carbon_trunk == eBoolean.True)
 					parts.TRUNK_CARBON = parts.CARBON_FIBRE;
 				else
 					parts.TRUNK_CARBON = parts.CARBON_FIBRE_NONE;
 
 				// WINDOW_TINT
-				if (this._window_tint_type != Reflection.BaseArguments.STOCK)
+				if (this._window_tint_type != BaseArguments.STOCK)
 					parts.WINDOW_TINT_STOCK = this._window_tint_type;
 
 				// CABIN_NEON

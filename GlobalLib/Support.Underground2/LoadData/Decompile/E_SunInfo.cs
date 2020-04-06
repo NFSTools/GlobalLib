@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Core;
+using GlobalLib.Support.Underground2.Gameplay;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.Underground2
 {
     public static partial class LoadData
     {
@@ -17,12 +23,12 @@
                 uint offset = 8 + loop * size; // current offset of the suninfo (padding included)
 
                 // Get CollectionName
-                string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + offset + 8, 0x18);
+                string CName = ScriptX.NullTerminatedString(byteptr_t + offset + 8, 0x18);
 
-                CName = Utils.EA.Resolve.GetPathFromCollection(CName);
-                Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+                CName = Resolve.GetPathFromCollection(CName);
+                Map.BinKeys[Bin.Hash(CName)] = CName;
 
-                var Class = new Gameplay.SunInfo((System.IntPtr)(byteptr_t + offset), CName, db);
+                var Class = new SunInfo((IntPtr)(byteptr_t + offset), CName, db);
                 db.SunInfos.Collections.Add(Class);
             }
         }

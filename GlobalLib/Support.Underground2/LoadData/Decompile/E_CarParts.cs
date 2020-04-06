@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Reflection.ID;
+
+namespace GlobalLib.Support.Underground2
 {
     public static partial class LoadData
     {
@@ -25,31 +27,31 @@
 
                 switch (ID)
                 {
-                    case Reflection.ID.CarParts.Part0:
+                    case CarParts.Part0:
                         db.SlotTypes.Part0.Data = CPE_Part0(byteptr_t + offset, size + 8);
                         goto default;
 
-                    case Reflection.ID.CarParts.Part1:
+                    case CarParts.Part1:
                         db.SlotTypes.Part1.Data = CPE_Part1(byteptr_t + offset, size + 8);
                         goto default;
 
-                    case Reflection.ID.CarParts.Part2:
+                    case CarParts.Part2:
                         db.SlotTypes.Part2.Data = CPE_Part2(byteptr_t + offset, size + 8);
                         goto default;
 
-                    case Reflection.ID.CarParts.Part3:
+                    case CarParts.Part3:
                         db.SlotTypes.Part3.Data = CPE_Part3(byteptr_t + offset, size + 8);
                         goto default;
 
-                    case Reflection.ID.CarParts.Part4:
+                    case CarParts.Part4:
                         db.SlotTypes.Part4.Data = CPE_Part4(byteptr_t + offset, size + 8);
                         goto default;
 
-                    case Reflection.ID.CarParts.Part5:
+                    case CarParts.Part5:
                         part5ptr_t = byteptr_t + offset;
                         goto default;
 
-                    case Reflection.ID.CarParts.Part6:
+                    case CarParts.Part6:
                         part6ptr_t = byteptr_t + offset;
                         goto default;
 

@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Brakes : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Brakes>
+	public class Brakes : SubPart, ICopyable<Brakes>
 	{
 		public float FrontDownForce { get; set; }
 		public float RearDownForce { get; set; } 

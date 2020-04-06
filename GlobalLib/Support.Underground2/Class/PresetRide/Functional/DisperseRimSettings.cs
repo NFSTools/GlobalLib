@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class PresetRide
 	{
@@ -18,17 +21,17 @@
                 potentialspi = true;
                 rim = rim.Substring(0, rim.Length - 4);
             }
-            this._rim_brand = Utils.FormatX.GetString(rim, "{X}_STYLE##_##_##");
-            if (!Utils.FormatX.GetByte(rim, this._rim_brand + "_STYLE{X}_##_##", out byte thisstyle))
+            this._rim_brand = FormatX.GetString(rim, "{X}_STYLE##_##_##");
+            if (!FormatX.GetByte(rim, this._rim_brand + "_STYLE{X}_##_##", out byte thisstyle))
                 thisstyle = 1;
-            if (!Utils.FormatX.GetByte(rim, this._rim_brand + "_STYLE##_{X}_##", out byte thissize))
+            if (!FormatX.GetByte(rim, this._rim_brand + "_STYLE##_{X}_##", out byte thissize))
                 thissize = 18;
-            if (!Utils.FormatX.GetByte(rim, this._rim_brand + "_STYLE##_##_{X}", out byte thismax))
+            if (!FormatX.GetByte(rim, this._rim_brand + "_STYLE##_##_{X}", out byte thismax))
                 thismax = 24;
             this._rim_style = thisstyle;
             this._rim_size = thissize;
             this._rim_outer_max = thismax;
-            this._is_spinning_rim = potentialspi ? Reflection.Enum.eBoolean.True : Reflection.Enum.eBoolean.False;
+            this._is_spinning_rim = potentialspi ? eBoolean.True : eBoolean.False;
         }
     }
 }

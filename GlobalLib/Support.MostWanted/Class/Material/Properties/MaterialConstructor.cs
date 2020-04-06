@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class Material : Shared.Class.Material
     {
@@ -10,7 +13,7 @@
         {
             this.Database = db;
             this.CollectionName = CName;
-            Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+            Map.BinKeys[Bin.Hash(CName)] = CName;
         }
 
         // Default constructor: disassemble material

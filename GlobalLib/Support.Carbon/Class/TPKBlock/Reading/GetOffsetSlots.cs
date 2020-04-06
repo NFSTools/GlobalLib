@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Support.Shared.Parts.TPKParts;
+
+namespace GlobalLib.Support.Carbon.Class
 {
 	public partial class TPKBlock
 	{
@@ -10,14 +13,14 @@
 		protected override unsafe void GetOffsetSlots(byte* byteptr_t, int offset)
 		{
 			if (offset == -1) return;  // if Part3 does not exist
-			if (*(uint*)(byteptr_t + offset) != Reflection.ID.TPK.INFO_PART3_BLOCKID)
+			if (*(uint*)(byteptr_t + offset) != TPK.INFO_PART3_BLOCKID)
 				return; // check Part3 ID
 
 			int ReaderSize = 8 + *(int*)(byteptr_t + offset + 4);
 			int current = 8;
 			while (current < ReaderSize)
 			{
-				var offslot = new Shared.Parts.TPKParts.OffSlot();
+				var offslot = new OffSlot();
 				offslot.Key = *(uint*)(byteptr_t + offset + current);
 				offslot.AbsoluteOffset = *(int*)(byteptr_t + offset + current + 4);
 				offslot.CompressedSize = *(int*)(byteptr_t + offset + current + 8);

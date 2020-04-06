@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class TPKBlock
     {
@@ -19,15 +23,15 @@
             // Copy all data to the array
             for (int a1 = 0; a1 < this.keys.Count; ++a1)
             {
-                if (this.Textures[a1].Compression == Utils.EA.Comp.GetString(Reflection.ID.EAComp.P8_08))
-                    System.Buffer.BlockCopy(this.Textures[a1].Data, 0, result, 0x80 + this.Textures[a1].PaletteOffset, this.Textures[a1].Data.Length);
+                if (this.Textures[a1].Compression == Comp.GetString(EAComp.P8_08))
+                    Buffer.BlockCopy(this.Textures[a1].Data, 0, result, 0x80 + this.Textures[a1].PaletteOffset, this.Textures[a1].Data.Length);
                 else
-                    System.Buffer.BlockCopy(this.Textures[a1].Data, 0, result, 0x80 + this.Textures[a1].Offset, this.Textures[a1].Data.Length);
+                    Buffer.BlockCopy(this.Textures[a1].Data, 0, result, 0x80 + this.Textures[a1].Offset, this.Textures[a1].Data.Length);
             }
 
             fixed (byte* byteptr_t = &result[8])
             {
-                *(uint*)(byteptr_t - 8) = Reflection.ID.TPK.DATA_PART2_BLOCKID; // write ID
+                *(uint*)(byteptr_t - 8) = TPK.DATA_PART2_BLOCKID; // write ID
                 *(int*)(byteptr_t - 4) = size + 0x78; // write size
                 for (int a1 = 0; a1 < 30; ++a1)
                     *(uint*)(byteptr_t + a1 * 4) = 0x11111111;

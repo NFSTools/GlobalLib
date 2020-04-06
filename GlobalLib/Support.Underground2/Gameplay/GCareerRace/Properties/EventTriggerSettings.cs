@@ -1,62 +1,68 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Reflection;
+using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using System;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class GCareerRace
 	{
-		private string _event_trigger = Reflection.BaseArguments.NULL;
-		private Reflection.Enum.eUnlockCondition _unlock_method = Reflection.Enum.eUnlockCondition.SPECIFIC_RACE_WON;
-		private Reflection.Enum.eBoolean _is_suv_race = Reflection.Enum.eBoolean.False;
-		private Reflection.Enum.eEventBehaviorType _event_behavior = Reflection.Enum.eEventBehaviorType.Circuit;
+		private string _event_trigger = BaseArguments.NULL;
+		private eUnlockCondition _unlock_method = eUnlockCondition.SPECIFIC_RACE_WON;
+		private eBoolean _is_suv_race = eBoolean.False;
+		private eEventBehaviorType _event_behavior = eEventBehaviorType.Circuit;
 
-		[Reflection.Attributes.AccessModifiable()]
+		[AccessModifiable()]
 		public string EventTrigger
 		{
 			get => this._event_trigger;
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
-					throw new System.ArgumentNullException("This value cannot be left empty.");
+					throw new ArgumentNullException("This value cannot be left empty.");
 				this._event_trigger = value;
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eUnlockCondition UnlockMethod
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eUnlockCondition UnlockMethod
 		{
 			get => this._unlock_method;
 			set
 			{
-				if (System.Enum.IsDefined(typeof(Reflection.Enum.eUnlockCondition), value))
+				if (Enum.IsDefined(typeof(eUnlockCondition), value))
 					this._unlock_method = value;
 				else
-					throw new Reflection.Exception.MappingFailException();
+					throw new MappingFailException();
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		[Reflection.Attributes.StaticModifiable()]
-		public Reflection.Enum.eBoolean IsSUVRace
+		[AccessModifiable()]
+		[StaticModifiable()]
+		public eBoolean IsSUVRace
 		{
 			get => this._is_suv_race;
 			set
 			{
-				if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+				if (Enum.IsDefined(typeof(eBoolean), value))
 					this._is_suv_race = value;
 				else
-					throw new System.ArgumentOutOfRangeException("Value passed is not of boolean type.");
+					throw new ArgumentOutOfRangeException("Value passed is not of boolean type.");
 			}
 		}
 
-		[Reflection.Attributes.AccessModifiable()]
-		public Reflection.Enum.eEventBehaviorType EventBehaviorType
+		[AccessModifiable()]
+		public eEventBehaviorType EventBehaviorType
 		{
 			get => this._event_behavior;
 			set
 			{
-				if (System.Enum.IsDefined(typeof(Reflection.Enum.eEventBehaviorType), value))
+				if (Enum.IsDefined(typeof(eEventBehaviorType), value))
 					this._event_behavior = value;
 				else
-					throw new Reflection.Exception.MappingFailException();
+					throw new MappingFailException();
 			}
 		}
 	}

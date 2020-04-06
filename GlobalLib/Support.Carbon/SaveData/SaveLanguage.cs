@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GlobalLib.Reflection.ID;
+using GlobalLib.Utils;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -31,9 +33,9 @@ namespace GlobalLib.Support.Carbon
                     // If one of the necessary slots is reached, replace it
                     switch (WriterSlotID)
                     {
-                        case Reflection.ID.Global.STRBlocks:
+                        case Global.STRBlocks:
                             br.BaseStream.Position += 0xC;
-                            var categ = Utils.ScriptX.NullTerminatedString(br, 0x10);
+                            var categ = ScriptX.NullTerminatedString(br, 0x10);
                             br.BaseStream.Position = WriterSlotOffset + 8;
                             if (categ == "Global")
                             {
@@ -66,9 +68,9 @@ namespace GlobalLib.Support.Carbon
                     // If one of the necessary slots is reached, replace it
                     switch (WriterSlotID)
                     {
-                        case Reflection.ID.Global.STRBlocks:
+                        case Global.STRBlocks:
                             br.BaseStream.Position += 0xC;
-                            var categ = Utils.ScriptX.NullTerminatedString(br, 0x10);
+                            var categ = ScriptX.NullTerminatedString(br, 0x10);
                             br.BaseStream.Position = WriterSlotOffset + 8;
                             if (categ == "Global")
                             {

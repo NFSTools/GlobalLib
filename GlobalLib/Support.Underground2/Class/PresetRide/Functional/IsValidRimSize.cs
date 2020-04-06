@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class PresetRide
 	{
@@ -11,11 +14,11 @@
         private bool IsValidRimSize(byte value)
         {
             string rim = $"{this._rim_brand}_STYLE{this._rim_style:00}_";
-            foreach (var str in Core.Map.RimBrands)
+            foreach (var str in Map.RimBrands)
             {
                 if (str.StartsWith(rim))
                 {
-                    if (!Utils.FormatX.GetByte(str, rim + "{X}_##", out byte radius))
+                    if (!FormatX.GetByte(str, rim + "{X}_##", out byte radius))
                         continue;
                     if (value == radius)
                         return true;

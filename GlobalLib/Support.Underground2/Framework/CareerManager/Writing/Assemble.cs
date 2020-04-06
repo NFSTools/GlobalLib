@@ -1,13 +1,19 @@
-﻿namespace GlobalLib.Support.Underground2.Framework
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System.IO;
+
+namespace GlobalLib.Support.Underground2.Framework
 {
 	public static partial class CareerManager
 	{
-		public static unsafe void Assemble(System.IO.BinaryWriter bw, Database.Underground2 db)
+		public static unsafe void Assemble(BinaryWriter bw, Database.Underground2 db)
 		{
 			// Initialize MemoryWriter for string block to its maximum size
-			var mw = new Utils.MemoryWriter(0xFFFF);
+			var mw = new MemoryWriter(0xFFFF);
 			mw.Write((byte)0); // write null-termination
-			mw.WriteNullTerminated(Core.Process.Watermark);
+			mw.WriteNullTerminated(Process.Watermark);
 
 			// Get arrays of all blocks
 			var GCareerRacesBlock = WriteGCareerRaces(mw, db);
@@ -45,13 +51,13 @@
 			size += GCarUnlocksBlock.Length;
 
 			// Pre-calculate padding
-			var padding = Utils.EA.Resolve.GetPaddingArray(size + 0x50, 0x80);
+			var padding = Resolve.GetPaddingArray(size + 0x50, 0x80);
 			size += padding.Length;
 
 			// Finally, write entire Career Block
-			bw.Write(Reflection.ID.CareerInfo.MAINID);
+			bw.Write(CareerInfo.MAINID);
 			bw.Write(size);
-			bw.Write(Reflection.ID.CareerInfo.STRING_BLOCK);
+			bw.Write(CareerInfo.STRING_BLOCK);
 			bw.Write(mw.Length);
 			bw.Write(mw.Data);
 			bw.Write(GCareerRacesBlock);

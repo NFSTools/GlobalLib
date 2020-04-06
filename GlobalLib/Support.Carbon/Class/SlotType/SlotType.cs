@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using GlobalLib.Support.Carbon.Parts.CarParts;
 
-
-
 namespace GlobalLib.Support.Carbon.Class
 {
     public partial class SlotType : Shared.Class.SlotType

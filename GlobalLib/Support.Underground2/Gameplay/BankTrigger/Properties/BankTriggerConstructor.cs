@@ -1,6 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Abstract;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
-	public partial class BankTrigger : Reflection.Abstract.Collectable
+	public partial class BankTrigger : Collectable
 	{
 		// Default constructor
 		public BankTrigger() { }
@@ -14,7 +18,7 @@
 			foreach (var bank in this.Database.BankTriggers.Collections)
 				if (bank.BankIndex > maxindex) maxindex = bank.BankIndex;
 			this.BankIndex = (byte)(maxindex + 1);
-			Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+			Map.BinKeys[Bin.Hash(CName)] = CName;
 		}
 
 		// Default constructor: disassemble bank trigger

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalLib.Reflection.ID;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -36,7 +37,7 @@ namespace GlobalLib.Support.Carbon
                         case 0:
                             uint key = br.ReadUInt32();
                             br.BaseStream.Position -= 4;
-                            if (key == Reflection.ID.Global.GlobalLib)
+                            if (key == Global.GlobalLib)
                             {
                                 br.BaseStream.Position += WriterSlotSize;
                                 break;
@@ -44,15 +45,15 @@ namespace GlobalLib.Support.Carbon
                             else
                                 goto default;
 
-                        case Reflection.ID.Global.TPKBlocks:
+                        case Global.TPKBlocks:
                             while (!db.TPKBlocks[tpkindex].InGlobalA)
                                 ++tpkindex;
                             I_TPKBlock(db, bw, ref tpkindex);
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 
-                        case Reflection.ID.Global.FEngFiles:
-                        case Reflection.ID.Global.FNGCompress:
+                        case Global.FEngFiles:
+                        case Global.FNGCompress:
                             br.BaseStream.Position += WriterSlotSize;
                             break;
 

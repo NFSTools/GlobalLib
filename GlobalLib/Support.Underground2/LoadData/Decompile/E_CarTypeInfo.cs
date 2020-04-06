@@ -1,4 +1,10 @@
-﻿namespace GlobalLib.Support.Underground2
+﻿using GlobalLib.Core;
+using GlobalLib.Support.Underground2.Class;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using System;
+
+namespace GlobalLib.Support.Underground2
 {
     public static partial class LoadData
     {
@@ -17,12 +23,12 @@
                 uint offset = 8 + loop * size; // current offset of the cartypeinfo (padding included)
 
                 // Get CollectionName
-                string CName = Utils.ScriptX.NullTerminatedString(byteptr_t + offset, 0x10);
+                string CName = ScriptX.NullTerminatedString(byteptr_t + offset, 0x10);
 
-                CName = Utils.EA.Resolve.GetPathFromCollection(CName);
-                Core.Map.BinKeys[Utils.Bin.Hash(CName)] = CName;
+                CName = Resolve.GetPathFromCollection(CName);
+                Map.BinKeys[Bin.Hash(CName)] = CName;
 
-                var Class = new Class.CarTypeInfo((System.IntPtr)(byteptr_t + offset), CName, db);
+                var Class = new CarTypeInfo((IntPtr)(byteptr_t + offset), CName, db);
                 db.CarTypeInfos.Collections.Add(Class);
             }
         }

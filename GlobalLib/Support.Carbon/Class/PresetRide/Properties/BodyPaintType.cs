@@ -1,26 +1,31 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Exception;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class PresetRide
     {
-        private Reflection.Enum.eCarbonPaint _paint_type = Reflection.Enum.eCarbonPaint.GLOSS;
+        private eCarbonPaint _paint_type = eCarbonPaint.GLOSS;
 
         /// <summary>
         /// Paint type value of the preset ride.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
-        public Reflection.Enum.eCarbonPaint PaintType
+        [AccessModifiable()]
+        [StaticModifiable()]
+        public eCarbonPaint PaintType
         {
             get => this._paint_type;
             set
             {
-                if (System.Enum.IsDefined(typeof(Reflection.Enum.eCarbonPaint), value))
+                if (Enum.IsDefined(typeof(eCarbonPaint), value))
                 {
                     this._paint_type = value;
                     this.Modified = true;
                 }
                 else
-                    throw new Reflection.Exception.MappingFailException();
+                    throw new MappingFailException();
             }
         }
     }

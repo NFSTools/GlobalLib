@@ -1,23 +1,27 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.Attributes;
+using GlobalLib.Reflection.Enum;
+using System;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class CarTypeInfo
     {
         private ushort[] _rigid_controls;
-        private Reflection.Enum.eBoolean _is_suv = Reflection.Enum.eBoolean.False;
+        private eBoolean _is_suv = eBoolean.False;
 
         /// <summary>
         /// Defines whether the car is an SUV.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        public Reflection.Enum.eBoolean IsSUV
+        [AccessModifiable()]
+        public eBoolean IsSUV
         {
             get => this._is_suv;
             set
             {
-                if (System.Enum.IsDefined(typeof(Reflection.Enum.eBoolean), value))
+                if (Enum.IsDefined(typeof(eBoolean), value))
                     this._is_suv = value;
                 else
-                    throw new System.InvalidCastException("Value passed is not of boolean type.");
+                    throw new InvalidCastException("Value passed is not of boolean type.");
             }
         }
 

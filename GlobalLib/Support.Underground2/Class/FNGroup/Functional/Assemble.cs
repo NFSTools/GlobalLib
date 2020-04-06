@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Reflection.ID;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class FNGroup : Shared.Class.FNGroup
     {
@@ -10,7 +12,7 @@
         {
             fixed (byte* byteptr_t = &this._DATA[0])
             {
-                *(uint*)byteptr_t = Reflection.ID.Global.FEngFiles;
+                *(uint*)byteptr_t = Global.FEngFiles;
                 *(uint*)(byteptr_t + 4) = this.Size;
 
                 foreach (var color in this._colorinfo)

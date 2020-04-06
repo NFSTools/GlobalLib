@@ -1,4 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Underground2.Class
 {
     public partial class CarTypeInfo
     {
@@ -9,7 +14,7 @@
         protected override unsafe void Disassemble(byte* byteptr_t)
         {
             // Manufacturer name
-            this.ManufacturerName = Utils.ScriptX.NullTerminatedString(byteptr_t + 0xC0, 0x10);
+            this.ManufacturerName = ScriptX.NullTerminatedString(byteptr_t + 0xC0, 0x10);
 
             // Secondary Properties
             this.HeadlightFOV = *(float*)(byteptr_t + 0xD4);
@@ -449,11 +454,11 @@
             // Secondary Properties
             uint key = 0;
             this.Index = *(int*)(byteptr_t + 0x840);
-            this.UsageType = (Reflection.Enum.eUsageType)(*(int*)(byteptr_t + 0x844));
+            this.UsageType = (eUsageType)(*(int*)(byteptr_t + 0x844));
             key = *(uint*)(byteptr_t + 0x84C);
-            this._defaultbasepaint = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+            this._defaultbasepaint = Map.Lookup(key, true) ?? BaseArguments.NULL;
             key = *(uint*)(byteptr_t + 0x850);
-            this._defaultbasepaint2 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+            this._defaultbasepaint2 = Map.Lookup(key, true) ?? BaseArguments.NULL;
             this.MaxInstances1 = *(byteptr_t + 0x854);
             this.MaxInstances2 = *(byteptr_t + 0x855);
             this.MaxInstances3 = *(byteptr_t + 0x856);
@@ -483,11 +488,11 @@
             this.AvailableSkinNumbers09 = *(byteptr_t + 0x888);
             this.AvailableSkinNumbers10 = *(byteptr_t + 0x889);
             this._is_suv = (*(short*)(byteptr_t + 0x88A) == 1)
-                ? Reflection.Enum.eBoolean.True
-                : Reflection.Enum.eBoolean.False;
+                ? eBoolean.True
+                : eBoolean.False;
             this.IsSkinnable = (*(int*)(byteptr_t + 0x88C) == 0)
-                ? Reflection.Enum.eBoolean.False
-                : Reflection.Enum.eBoolean.True;
+                ? eBoolean.False
+                : eBoolean.True;
         }
     }
 }

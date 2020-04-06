@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class Ecar : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<Ecar>
+	public class Ecar : SubPart, ICopyable<Ecar>
 	{
 		public float EcarUnknown1 { get; set; } = 2F;
 		public float EcarUnknown2 { get; set; } = 3F;

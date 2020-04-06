@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Utils;
+using System.IO;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class CarTypeInfo
     {
@@ -21,7 +25,7 @@
                     *(byteptr_t + 0x10 + a1) = (byte)this.CollectionName[a1];
 
                 // Write GeometryFileName
-                string path = System.IO.Path.Combine("CARS", this.CollectionName, "GEOMETRY.BIN");
+                string path = Path.Combine("CARS", this.CollectionName, "GEOMETRY.BIN");
                 for (int a1 = 0; a1 < path.Length; ++a1)
                     *(byteptr_t + 0x20 + a1) = (byte)path[a1];
 
@@ -85,9 +89,9 @@
                 *(byteptr_t + 0xC5) = this.AvailableSkinNumbers10;
 
                 *(byteptr_t + 0xC6) = this.DefaultSkinNumber;
-                *(byteptr_t + 0xC7) = (this.IsSkinnable == Reflection.Enum.eBoolean.True) ? (byte)1 : (byte)0;
+                *(byteptr_t + 0xC7) = (this.IsSkinnable == eBoolean.True) ? (byte)1 : (byte)0;
                 *(int*)(byteptr_t + 0xC8) = this.Padding2;
-                *(uint*)(byteptr_t + 0xCC) = Utils.Bin.SmartHash(this.DefaultBasePaint);
+                *(uint*)(byteptr_t + 0xCC) = Bin.SmartHash(this.DefaultBasePaint);
             }
             return result;
         }

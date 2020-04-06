@@ -1,4 +1,6 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Utils;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class Texture
     {
@@ -47,7 +49,7 @@
             this._unknown3 = *(int*)(byteptr_t  + 0x54);
 
             // Get texture name
-            this._collection_name = Utils.ScriptX.NullTerminatedString(byteptr_t  + 0x59, *(byteptr_t  + 0x58));
+            this._collection_name = ScriptX.NullTerminatedString(byteptr_t  + 0x59, *(byteptr_t  + 0x58));
         }
     }
 }

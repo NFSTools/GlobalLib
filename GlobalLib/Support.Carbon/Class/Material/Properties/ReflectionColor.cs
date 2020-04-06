@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Carbon.Class
+﻿using GlobalLib.Reflection.Attributes;
+using System;
+
+namespace GlobalLib.Support.Carbon.Class
 {
     public partial class Material
     {
@@ -10,15 +13,15 @@
         /// <summary>
         /// Level value of the reflection color of the material.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float ReflectionColorLevel
         {
             get => this._reflectioncolor_level;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._reflectioncolor_level = value;
             }
@@ -27,15 +30,15 @@
         /// <summary>
         /// Red value of the reflection color of the material.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float ReflectionColorRed
         {
             get => this._reflectioncolor_red;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._reflectioncolor_red = value;
             }
@@ -44,15 +47,15 @@
         /// <summary>
         /// Green value of the reflection color of the material.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float ReflectionColorGreen
         {
             get => this._reflectioncolor_green;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._reflectioncolor_green = value;
             }
@@ -61,15 +64,15 @@
         /// <summary>
         /// Blue value of the reflection color of the material.
         /// </summary>
-        [Reflection.Attributes.AccessModifiable()]
-        [Reflection.Attributes.StaticModifiable()]
+        [AccessModifiable()]
+        [StaticModifiable()]
         public float ReflectionColorBlue
         {
             get => this._reflectioncolor_blue;
             set
             {
                 if (value < 0)
-                    throw new System.ArgumentOutOfRangeException("This value should be positive.");
+                    throw new ArgumentOutOfRangeException("This value should be positive.");
                 else
                     this._reflectioncolor_blue = value;
             }

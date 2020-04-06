@@ -1,4 +1,8 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
+using GlobalLib.Reflection.Enum;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class PartUnlockable
 	{
@@ -21,15 +25,15 @@
 			this.PartPrice_Level3 = *(short*)(byteptr_t + 0x1E);
 
 			// Required Stages Done
-			this._unlock_method_level1 = (Reflection.Enum.ePartUnlockReq)(*(byteptr_t + 0x08));
-			this._unlock_method_level2 = (Reflection.Enum.ePartUnlockReq)(*(byteptr_t + 0x14));
-			this._unlock_method_level3 = (Reflection.Enum.ePartUnlockReq)(*(byteptr_t + 0x20));
+			this._unlock_method_level1 = (ePartUnlockReq)(*(byteptr_t + 0x08));
+			this._unlock_method_level2 = (ePartUnlockReq)(*(byteptr_t + 0x14));
+			this._unlock_method_level3 = (ePartUnlockReq)(*(byteptr_t + 0x20));
 
 			// Unlocking Requirements
-			if (this._unlock_method_level1 == Reflection.Enum.ePartUnlockReq.SPECIFIC_SHOP_FOUND)
+			if (this._unlock_method_level1 == ePartUnlockReq.SPECIFIC_SHOP_FOUND)
 			{
 				key = *(uint*)(byteptr_t + 0x0C);
-				this.UnlocksInShop_Level1 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+				this.UnlocksInShop_Level1 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			}
 			else
 			{
@@ -37,10 +41,10 @@
 				this.BelongsToStage_Level1 = *(byteptr_t + 0x0E);
 			}
 
-			if (this._unlock_method_level2 == Reflection.Enum.ePartUnlockReq.SPECIFIC_SHOP_FOUND)
+			if (this._unlock_method_level2 == ePartUnlockReq.SPECIFIC_SHOP_FOUND)
 			{
 				key = *(uint*)(byteptr_t + 0x18);
-				this.UnlocksInShop_Level2 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+				this.UnlocksInShop_Level2 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			}
 			else
 			{
@@ -48,10 +52,10 @@
 				this.BelongsToStage_Level2 = *(byteptr_t + 0x1A);
 			}
 
-			if (this._unlock_method_level3 == Reflection.Enum.ePartUnlockReq.SPECIFIC_SHOP_FOUND)
+			if (this._unlock_method_level3 == ePartUnlockReq.SPECIFIC_SHOP_FOUND)
 			{
 				key = *(uint*)(byteptr_t + 0x24);
-				this.UnlocksInShop_Level3 = Core.Map.Lookup(key, true) ?? Reflection.BaseArguments.NULL;
+				this.UnlocksInShop_Level3 = Map.Lookup(key, true) ?? BaseArguments.NULL;
 			}
 			else
 			{

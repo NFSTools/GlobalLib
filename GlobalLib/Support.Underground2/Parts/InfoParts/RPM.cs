@@ -1,6 +1,9 @@
-﻿namespace GlobalLib.Support.Underground2.Parts.InfoParts
+﻿using GlobalLib.Reflection.Abstract;
+using GlobalLib.Reflection.Interface;
+
+namespace GlobalLib.Support.Underground2.Parts.InfoParts
 {
-	public class RPM : Reflection.Abstract.SubPart, Reflection.Interface.ICopyable<RPM>
+	public class RPM : SubPart, ICopyable<RPM>
 	{
 		public float IdleRPMAdd { get; set; }
 		public float RedLineRPMAdd { get; set; }

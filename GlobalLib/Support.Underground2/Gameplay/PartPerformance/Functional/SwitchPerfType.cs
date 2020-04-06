@@ -1,8 +1,11 @@
-﻿namespace GlobalLib.Support.Underground2.Gameplay
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Enum;
+
+namespace GlobalLib.Support.Underground2.Gameplay
 {
 	public partial class PartPerformance
 	{
-		private void SwitchPerfType(Reflection.Enum.ePerformanceType perftype)
+		private void SwitchPerfType(ePerformanceType perftype)
 		{
 			// Clear slot
 			this.ClearPartTableSlot();
@@ -14,9 +17,9 @@
 			{
 				for (int a2 = 0; a2 < 4; ++a2)
 				{
-					if (Core.Map.PerfPartTable[index, a1, a2] == 0)
+					if (Map.PerfPartTable[index, a1, a2] == 0)
 					{
-						Core.Map.PerfPartTable[index, a1, a2] = this.BinKey;
+						Map.PerfPartTable[index, a1, a2] = this.BinKey;
 						this._upgrade_level = a1;
 						this._upgrade_part_index = a2;
 						return;

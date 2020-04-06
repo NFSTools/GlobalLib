@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using GlobalLib.Core;
+using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.ID;
+using GlobalLib.Utils;
+using System;
+using System.Collections.Generic;
 
 
 
@@ -8,8 +13,8 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
     {
         public bool SpoilerNoMirror { get; set; } = true;
         public string CarTypeInfo { get; set; }
-        public Reflection.Enum.eSpoiler Spoiler { get; set; } = Reflection.Enum.eSpoiler.SPOILER;
-        public Reflection.Enum.eMirrorTypes Mirrors { get; set; } = Reflection.Enum.eMirrorTypes.MIRRORS;
+        public eSpoiler Spoiler { get; set; } = eSpoiler.SPOILER;
+        public eMirrorTypes Mirrors { get; set; } = eMirrorTypes.MIRRORS;
     }
 
     public class SpoilMirr
@@ -52,7 +57,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
                 while (offset < this.data.Length)
                 {
                     uint key = *(uint*)(byteptr_t + offset);
-                    string CName = Core.Map.Lookup(key, false) ?? string.Empty;
+                    string CName = Map.Lookup(key, false) ?? string.Empty;
 
                     // Write to new array if not a spoiler or if not a padding
                     if (!reached && !CNames.Contains(CName))
@@ -71,14 +76,14 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
                     uint definer = *(uint*)(byteptr_t + offset + 0x4);
                     uint hash = *(uint*)(byteptr_t + offset + 0xC);
 
-                    if (definer == 0xC && System.Enum.IsDefined(typeof(Reflection.Enum.eSpoiler), hash))
+                    if (definer == 0xC && Enum.IsDefined(typeof(eSpoiler), hash))
                     {
-                        CarSlot.Spoiler = (Reflection.Enum.eSpoiler)hash;
+                        CarSlot.Spoiler = (eSpoiler)hash;
                         CarSlot.SpoilerNoMirror = true;
                     }
-                    else if (definer == 0x20 && System.Enum.IsDefined(typeof(Reflection.Enum.eMirrorTypes), hash))
+                    else if (definer == 0x20 && Enum.IsDefined(typeof(eMirrorTypes), hash))
                     {
-                        CarSlot.Mirrors = (Reflection.Enum.eMirrorTypes)hash;
+                        CarSlot.Mirrors = (eMirrorTypes)hash;
                         CarSlot.SpoilerNoMirror = false;
                     }
 
@@ -87,7 +92,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
                 }
 
                 *(int*)(dataptr_t + 4) = newoff - 8;
-                System.Array.Resize(ref NewData, newoff);
+                Array.Resize(ref NewData, newoff);
             }
 
             // Set new array
@@ -109,7 +114,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
             int offset = this.data.Length;
 
             var result = new byte[newsize];
-            System.Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
+            Buffer.BlockCopy(this.data, 0, result, 0, this.data.Length);
 
             fixed (byte* byteptr_t = &result[0])
             {
@@ -117,7 +122,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
                 {
                     if (CarSlot.SpoilerNoMirror)
                     {
-                        uint key = Utils.Bin.Hash(CarSlot.CarTypeInfo);
+                        uint key = Bin.Hash(CarSlot.CarTypeInfo);
                         *(uint*)(byteptr_t + offset) = key;
                         *(uint*)(byteptr_t + offset + 4) = 0x0C;
                         *(uint*)(byteptr_t + offset + 8) = key;
@@ -126,7 +131,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
                     }
                     else
                     {
-                        uint key = Utils.Bin.Hash(CarSlot.CarTypeInfo);
+                        uint key = Bin.Hash(CarSlot.CarTypeInfo);
                         *(uint*)(byteptr_t + offset) = key;
                         *(uint*)(byteptr_t + offset + 4) = 0x20;
                         *(uint*)(byteptr_t + offset + 8) = key;
@@ -134,7 +139,7 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
                         offset += 0x10;
                     }
                 }
-                *(uint*)byteptr_t = Reflection.ID.Global.SlotTypes;
+                *(uint*)byteptr_t = Global.SlotTypes;
                 *(int*)(byteptr_t + 4) = newsize - 8;
             }
 
