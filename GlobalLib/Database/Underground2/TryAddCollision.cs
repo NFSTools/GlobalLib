@@ -11,7 +11,8 @@ namespace GlobalLib.Database
 		/// </summary>
 		public override bool TryAddCollision(string CName, string filename, out string error)
 		{
-			throw new NotImplementedException();
+			error = $"Import of collisions is not supported";
+			return false;
 		}
 	}
 }

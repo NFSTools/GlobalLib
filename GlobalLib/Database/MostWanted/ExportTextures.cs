@@ -15,7 +15,7 @@ namespace GlobalLib.Database
         /// </summary>
         /// <param name="dir">Directory where all textures should be extracted.</param>
         /// <returns>True if export was successful.</returns>
-        public bool ExportTextures(string dir)
+        public override bool ExportTextures(string dir)
         {
             if (this.ExportTextures(dir, ".dds"))
                 return true;
@@ -29,7 +29,7 @@ namespace GlobalLib.Database
         /// <param name="dir">Directory where all textures should be extracted.</param>
         /// <param name="mode">Mode of extraction. Range: ".dds", ".png", ".jpg", ".tiff", ".bmp".</param>
         /// <returns>True if export was successful.</returns>
-        public bool ExportTextures(string dir, string mode)
+        public override bool ExportTextures(string dir, string mode)
         {
             ImageType type;
             switch (mode)

@@ -76,14 +76,20 @@ namespace GlobalLib.Support.Underground2.Parts.CarParts
                     uint definer = *(uint*)(byteptr_t + offset + 0x4);
                     uint hash = *(uint*)(byteptr_t + offset + 0xC);
 
-                    if (definer == 0xC && Enum.IsDefined(typeof(eSpoiler), hash))
+                    if (definer == 0xC)
                     {
-                        CarSlot.Spoiler = (eSpoiler)hash;
+                        if (Enum.IsDefined(typeof(eSpoiler), hash))
+                            CarSlot.Spoiler = (eSpoiler)hash;
+                        else
+                            CarSlot.Spoiler = eSpoiler.SPOILER_NONE;
                         CarSlot.SpoilerNoMirror = true;
                     }
-                    else if (definer == 0x20 && Enum.IsDefined(typeof(eMirrorTypes), hash))
+                    else if (definer == 0x20)
                     {
-                        CarSlot.Mirrors = (eMirrorTypes)hash;
+                        if (Enum.IsDefined(typeof(eMirrorTypes), hash))
+                            CarSlot.Mirrors = (eMirrorTypes)hash;
+                        else
+                            CarSlot.Mirrors = eMirrorTypes.MIRRORS_NONE;
                         CarSlot.SpoilerNoMirror = false;
                     }
 

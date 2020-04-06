@@ -75,11 +75,11 @@ namespace GlobalLib.Support.Carbon.Parts.CarParts
                     if (Enum.IsDefined(typeof(eSpoiler), SpoilerKey))
                         CarSlot.Spoiler = (eSpoiler)SpoilerKey;
                     else
-                        CarSlot.Spoiler = eSpoiler.SPOILER;
+                        CarSlot.Spoiler = eSpoiler.SPOILER_NONE;
                     if (Enum.IsDefined(typeof(eSpoilerAS2), SpoilerASKey))
                         CarSlot.SpoilerAS = (eSpoilerAS2)SpoilerASKey;
                     else
-                        CarSlot.SpoilerAS = eSpoilerAS2.SPOILER_AS2;
+                        CarSlot.SpoilerAS = eSpoilerAS2.SPOILER_NONE_AS2;
                     result.Add(CarSlot);
                     offset += 0x24;
                 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GlobalLib.Core;
+using GlobalLib.Utils;
 using GlobalLib.Reflection.Abstract;
 using GlobalLib.Support.Shared.Parts.STRParts;
 
@@ -90,7 +91,10 @@ namespace GlobalLib.Support.Shared.Class
 		/// </summary>
 		/// <param name="key">Key of the <see cref="StringRecord"/> to find.</param>
 		/// <returns>StringRecord is it exists; otherwise null;</returns>
-		public virtual StringRecord GetRecord(string key) { return null; }
+		public virtual StringRecord GetRecord(string key)
+		{
+			return this.GetRecord(ConvertX.ToUInt32(key));
+		}
 
 		/// <summary>
 		/// Gets all <see cref="StringRecord"/> stored in <see cref="STRBlock"/>.

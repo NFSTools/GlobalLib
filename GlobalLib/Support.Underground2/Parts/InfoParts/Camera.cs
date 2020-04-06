@@ -29,14 +29,4 @@ namespace GlobalLib.Support.Underground2.Parts.InfoParts
 			return result;
 		}
 	}
-
-	public enum CameraType : short
-	{
-		FAR,
-		CLOSE,
-		BUMPER,
-		DRIVER,
-		HOOD,
-		DRIFT
-	}
 }

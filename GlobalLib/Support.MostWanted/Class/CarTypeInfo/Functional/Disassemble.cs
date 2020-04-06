@@ -1,4 +1,5 @@
 ﻿using GlobalLib.Core;
+using GlobalLib.Reflection;
 using GlobalLib.Reflection.Enum;
 
 namespace GlobalLib.Support.MostWanted.Class
@@ -75,7 +76,7 @@ namespace GlobalLib.Support.MostWanted.Class
             this.Padding2 = *(int*)(byteptr_t + 0xC8);
 
             uint key = *(uint*)(byteptr_t + 0xCC);
-            this.DefaultBasePaint = Map.Lookup(key, true) ?? $"0x{key:X8}";
+            this.DefaultBasePaint = Map.Lookup(key, true) ?? BaseArguments.BPAINT;
         }
     }
 }

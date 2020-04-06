@@ -75,7 +75,7 @@ namespace GlobalLib.Support.MostWanted.Parts.CarParts
                     if (Enum.IsDefined(typeof(eSpoiler), SpoilerKey))
                         CarSlot.Spoiler = (eSpoiler)SpoilerKey;
                     else
-                        CarSlot.Spoiler = eSpoiler.SPOILER;
+                        CarSlot.Spoiler = eSpoiler.SPOILER_NONE;
                     result.Add(CarSlot);
                     offset += 0x10;
                 }

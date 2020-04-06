@@ -64,6 +64,7 @@
     <Compile Include="Database\Collection\Root.cs" />
     <Compile Include="Database\Underground2\ExportTextures.cs" />
     <Compile Include="Database\Underground2\TryAddCollision.cs" />
+    <Compile Include="Reflection\Enum\eCameraType.cs" />
     <Compile Include="Reflection\Enum\eGetInfoType.cs" />
     <Compile Include="Reflection\Enum\eKeyType.cs" />
     <Compile Include="Database\MostWanted\Initialize.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Reflection\Attributes\AccessModifiableAttribute.cs" />
     <Compile Include="Reflection\Attributes\ExpandableAttribute.cs" />
     <Compile Include="Database\Carbon\ExportTextures.cs" />
-    <Compile Include="Database\eClassType.cs" />
     <Compile Include="Database\MostWanted\TryAddCollision.cs" />
     <Compile Include="Database\MostWanted\ExportTextures.cs" />
     <Compile Include="Database\MostWanted\MostWanted.cs" />
@@ -122,7 +122,6 @@
     <Compile Include="Reflection\ID\CareerInfo.cs" />
     <Compile Include="Reflection\ID\Global.cs" />
     <Compile Include="Reflection\ID\TPK.cs" />
-    <Compile Include="Reflection\Interface\IGetIndex.cs" />
     <Compile Include="Reflection\Interface\IOperative.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\Disassemble.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Functional\Assemble.cs" />

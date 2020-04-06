@@ -456,9 +456,9 @@ namespace GlobalLib.Support.Underground2.Class
             this.Index = *(int*)(byteptr_t + 0x840);
             this.UsageType = (eUsageType)(*(int*)(byteptr_t + 0x844));
             key = *(uint*)(byteptr_t + 0x84C);
-            this._defaultbasepaint = Map.Lookup(key, true) ?? BaseArguments.NULL;
+            this._defaultbasepaint = Map.Lookup(key, true) ?? BaseArguments.UGPAINT;
             key = *(uint*)(byteptr_t + 0x850);
-            this._defaultbasepaint2 = Map.Lookup(key, true) ?? BaseArguments.NULL;
+            this._defaultbasepaint2 = Map.Lookup(key, true) ?? BaseArguments.UGPAINT;
             this.MaxInstances1 = *(byteptr_t + 0x854);
             this.MaxInstances2 = *(byteptr_t + 0x855);
             this.MaxInstances3 = *(byteptr_t + 0x856);

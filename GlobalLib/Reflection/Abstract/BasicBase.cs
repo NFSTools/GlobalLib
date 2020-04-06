@@ -424,6 +424,21 @@ namespace GlobalLib.Reflection.Abstract
         public abstract unsafe bool TryAddCollision(string CName, string filename, out string error);
 
         /// <summary>
+        /// Exports all textures to the directory specified as .dds files.
+        /// </summary>
+        /// <param name="dir">Directory where all textures should be extracted.</param>
+        /// <returns>True if export was successful.</returns>
+        public abstract bool ExportTextures(string dir);
+
+        /// <summary>
+        /// Exports all textures to the directory specified.
+        /// </summary>
+        /// <param name="dir">Directory where all textures should be extracted.</param>
+        /// <param name="mode">Mode of extraction. Range: ".dds", ".png", ".jpg", ".tiff", ".bmp".</param>
+        /// <returns>True if export was successful.</returns>
+        public abstract bool ExportTextures(string dir, string mode);
+
+        /// <summary>
         /// Gets information about <see cref="BasicBase"/> database.
         /// </summary>
         /// <returns></returns>

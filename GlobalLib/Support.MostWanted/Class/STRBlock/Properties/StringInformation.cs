@@ -86,12 +86,12 @@ namespace GlobalLib.Support.MostWanted.Class
 
 			if (hash == 0)
 			{
-				error = $"Unable to convert string to a hexadecimal hash or hash is equals 0.";
+				error = $"Unable to convert string to a hexadecimal hash or hash equals 0.";
 				return false;
 			}
 			if (this.GetRecord(hash) != null)
 			{
-				error = $"StringRecord with key 0x{key:X8} already exist.";
+				error = $"StringRecord with key 0x{hash:X8} already exist.";
 				return false;
 			}
 			this._stringinfo.Add(new StringRecord(this)
