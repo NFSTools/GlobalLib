@@ -20,7 +20,7 @@ namespace GlobalLib.Support.MostWanted.Class
             this.Modified = true;
             this.WhatGame = 1;
             this.WheelOuterRadius = 26;
-            this.WheelOuterRadiusMin = 17;
+            this.WheelInnerRadiusMin = 17;
             this.WheelInnerRadiusMax = 20;
             this.DefaultSkinNumber = 1;
             this.CollisionExternalName = CollectionName;

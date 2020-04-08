@@ -42,7 +42,7 @@ namespace GlobalLib.Support.Carbon.Class
                 *(byteptr_t + 0x5A) = this.WhatGame;
                 *(byteptr_t + 0x5B) = this.ConvertibleFlag;
                 *(byteptr_t + 0x5C) = this.WheelOuterRadius;
-                *(byteptr_t + 0x5D) = this.WheelOuterRadiusMin;
+                *(byteptr_t + 0x5D) = this.WheelInnerRadiusMin;
                 *(byteptr_t + 0x5E) = this.WheelInnerRadiusMax;
                 *(byteptr_t + 0x5F) = this.Padding0;
                 *(float*)(byteptr_t + 0x60) = this.HeadlightPositionX;

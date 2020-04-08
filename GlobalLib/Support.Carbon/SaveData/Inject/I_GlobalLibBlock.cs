@@ -1,5 +1,5 @@
 ﻿using GlobalLib.Reflection.ID;
-using System;
+using GlobalLib.Core;
 using System.IO;
 
 namespace GlobalLib.Support.Carbon
@@ -17,7 +17,7 @@ namespace GlobalLib.Support.Carbon
                 *(int*)(byteptr_t + 4) = 0x48 + padding;
                 *(uint*)(byteptr_t + 8) = Global.GlobalLib;
                 string padblock = "Padding Block";
-                string LibDescr = "GlobalLib by MaxHwoy " + DateTime.Today.ToString("dd-MM-yyyy");
+                string LibDescr = Process.Watermark;
                 for (int a1 = 0; a1 < LibDescr.Length; ++a1)
                     *(byteptr_t + 0x10 + a1) = (byte)LibDescr[a1];
                 for (int a1 = 0; a1 < padblock.Length; ++a1)

@@ -78,6 +78,12 @@ namespace GlobalLib.Support.Shared.Class
         }
 
         /// <summary>
+        /// Sorts <see cref="Texture"/> by their CollectionNames or BinKeys.
+        /// </summary>
+        /// <param name="by_name">True if sort by name; false is sort by hash.</param>
+        public virtual void SortTexturesByType(bool by_name) { }
+
+        /// <summary>
         /// Assembles <see cref="TPKBlock"/> into a byte array.
         /// </summary>
         /// <returns>Byte array of the tpk block.</returns>

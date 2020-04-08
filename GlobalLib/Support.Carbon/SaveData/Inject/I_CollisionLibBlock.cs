@@ -1,6 +1,6 @@
 ﻿using GlobalLib.Reflection;
 using GlobalLib.Reflection.ID;
-using System;
+using GlobalLib.Core;
 using System.Collections.Generic;
 using System.IO;
 
@@ -39,7 +39,7 @@ namespace GlobalLib.Support.Carbon
                 *(int*)(byteptr_t + 4) = colsize + 0x50 + padding;
                 *(uint*)(byteptr_t + 8) = Global.GlobalLib;
                 string colblock = "Collision Block";
-                string LibDescr = "GlobalLib by MaxHwoy " + DateTime.Today.ToString("dd-MM-yyyy");
+                string LibDescr = Process.Watermark;
                 for (int a1 = 0; a1 < LibDescr.Length; ++a1)
                     *(byteptr_t + 0x10 + a1) = (byte)LibDescr[a1];
                 for (int a1 = 0; a1 < colblock.Length; ++a1)

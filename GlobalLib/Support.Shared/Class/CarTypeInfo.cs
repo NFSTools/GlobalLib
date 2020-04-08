@@ -210,7 +210,7 @@ namespace GlobalLib.Support.Shared.Class
 
         [AccessModifiable()]
         [StaticModifiable()]
-        public byte WheelOuterRadiusMin { get; set; } = 0;
+        public byte WheelInnerRadiusMin { get; set; } = 0;
 
         [AccessModifiable()]
         [StaticModifiable()]

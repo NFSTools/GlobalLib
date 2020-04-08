@@ -28,7 +28,7 @@ namespace GlobalLib.Support.Underground2.Class
             result.WhatGame = this.WhatGame;
             result.ConvertibleFlag = this.ConvertibleFlag;
             result.WheelOuterRadius = this.WheelOuterRadius;
-            result.WheelOuterRadiusMin = this.WheelOuterRadiusMin;
+            result.WheelInnerRadiusMin = this.WheelInnerRadiusMin;
             result.WheelInnerRadiusMax = this.WheelInnerRadiusMax;
             result.Padding0 = this.Padding0;
             result.HeadlightPositionX = this.HeadlightPositionX;

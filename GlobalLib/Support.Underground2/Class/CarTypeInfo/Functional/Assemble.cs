@@ -47,7 +47,7 @@ namespace GlobalLib.Support.Underground2.Class
                 *(byteptr_t + 0xDA) = this.WhatGame;
                 *(byteptr_t + 0xDB) = this.ConvertibleFlag;
                 *(byteptr_t + 0xDC) = this.WheelOuterRadius;
-                *(byteptr_t + 0xDD) = this.WheelOuterRadiusMin;
+                *(byteptr_t + 0xDD) = this.WheelInnerRadiusMin;
                 *(byteptr_t + 0xDE) = this.WheelInnerRadiusMax;
                 *(byteptr_t + 0xDF) = this.Padding0;
 

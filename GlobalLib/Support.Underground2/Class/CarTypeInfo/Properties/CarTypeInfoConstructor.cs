@@ -19,7 +19,7 @@ namespace GlobalLib.Support.Underground2.Class
             this.Modified = true;
             this.WhatGame = 2;
             this.WheelOuterRadius = 26;
-            this.WheelOuterRadiusMin = 17;
+            this.WheelInnerRadiusMin = 17;
             this.WheelInnerRadiusMax = 20;
             this.DefaultSkinNumber = 1;
             Map.BinKeys[this.BinKey] = CName;

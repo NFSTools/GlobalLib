@@ -2,6 +2,7 @@
 {
 	public enum eSponsorRaceType : byte
 	{
+		None = 0,
 		Circuit = 1,
 		Drift = 2,
 		Drag = 3,

@@ -22,7 +22,7 @@ namespace GlobalLib.Support.MostWanted.Class
             this.WhatGame = *(byteptr_t + 0x5A);
             this.ConvertibleFlag = *(byteptr_t + 0x5B);
             this.WheelOuterRadius = *(byteptr_t + 0x5C);
-            this.WheelOuterRadiusMin = *(byteptr_t + 0x5D);
+            this.WheelInnerRadiusMin = *(byteptr_t + 0x5D);
             this.WheelInnerRadiusMax = *(byteptr_t + 0x5E);
             this.Padding0 = *(byteptr_t + 0x5F);
             this.HeadlightPositionX = *(float*)(byteptr_t + 0x60);

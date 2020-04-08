@@ -23,7 +23,7 @@ namespace GlobalLib.Support.Underground2.Class
             this.WhatGame = *(byteptr_t + 0xDA);
             this.ConvertibleFlag = *(byteptr_t + 0xDB);
             this.WheelOuterRadius = *(byteptr_t + 0xDC);
-            this.WheelOuterRadiusMin = *(byteptr_t + 0xDD);
+            this.WheelInnerRadiusMin = *(byteptr_t + 0xDD);
             this.WheelInnerRadiusMax = *(byteptr_t + 0xDE);
             this.Padding0 = *(byteptr_t + 0xDF);
 
