@@ -29,7 +29,7 @@ namespace GlobalLib.Support.Underground2.Framework
             "WingMirrors",           // 0x13
             "RoofScoops",            // 0x14
             "Exhausts",              // 0x15
-            "UnknownPart16",         // 0x16
+            "AftermarketBodykit",    // 0x16
             "Gauges",                // 0x17
             "HeadlightBulb",         // 0x18
             "NeonBody",              // 0x19

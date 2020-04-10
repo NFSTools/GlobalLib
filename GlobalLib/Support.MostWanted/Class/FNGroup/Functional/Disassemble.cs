@@ -1,11 +1,16 @@
-﻿namespace GlobalLib.Support.MostWanted.Class
+﻿using System;
+using GlobalLib.Utils;
+using GlobalLib.Utils.EA;
+using GlobalLib.Support.Shared.Parts.FNGParts;
+
+namespace GlobalLib.Support.MostWanted.Class
 {
     public partial class FNGroup
     {
         protected override unsafe void Disassemble(byte[] data)
         {
             this._DATA = new byte[data.Length];
-            System.Buffer.BlockCopy(data, 0, this._DATA, 0, data.Length);
+            Buffer.BlockCopy(data, 0, this._DATA, 0, data.Length);
 
             fixed (byte* byteptr_t = &this._DATA[0])
             {
@@ -19,9 +24,9 @@
                 }
 
                 // Read CollectionName
-                this.CollectionName = Utils.ScriptX.NullTerminatedString(byteptr_t + 0x30, this._DATA.Length - 0x30);
+                this.CollectionName = ScriptX.NullTerminatedString(byteptr_t + 0x30, this._DATA.Length - 0x30);
                 if (this.CollectionName.EndsWith(".fng"))
-                    this.CollectionName = Utils.FormatX.GetString(this.CollectionName, "{X}.fng");
+                    this.CollectionName = FormatX.GetString(this.CollectionName, "{X}.fng");
 
                 for (uint offset = 0x30; offset < this._DATA.Length; offset += 4)
                 {
@@ -39,9 +44,9 @@
                         uint Alpha = *(uint*)(byteptr_t + offset + 16);
 
                         // If it is a color, add to the list
-                        if (Utils.EA.Resolve.IsColor(Alpha, Red, Green, Blue))
+                        if (Resolve.IsColor(Alpha, Red, Green, Blue))
                         {
-                            var TempColor = new Shared.Parts.FNGParts.FEngColor(this);
+                            var TempColor = new FEngColor(this);
                             TempColor.Offset = offset;
                             TempColor.Alpha = (byte)Alpha;
                             TempColor.Red = (byte)Red;
