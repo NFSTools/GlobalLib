@@ -1,12 +1,13 @@
-﻿using GlobalLib.Reflection.Abstract;
+﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection.Abstract;
 using GlobalLib.Reflection.Interface;
 
 namespace GlobalLib.Support.Underground2.Parts.GameParts
 {
 	public class SunLayer : SubPart, ICopyable<SunLayer>
 	{
-		/* 0x0000 */ public int SunTextureType { get; set; }
-		/* 0x0004 */ public int SunAlphaType { get; set; }
+		/* 0x0000 */ public eSunTexture SunTextureType { get; set; }
+		/* 0x0004 */ public eSunAlpha SunAlphaType { get; set; }
 		/* 0x0008 */ public float IntensityScale { get; set; }
 		/* 0x000C */ public float Size { get; set; }
 		/* 0x0010 */ public float OffsetX { get; set; }
@@ -37,8 +38,8 @@ namespace GlobalLib.Support.Underground2.Parts.GameParts
 
 		public unsafe void Read(byte* byteptr_t)
 		{
-			this.SunTextureType = *(int*)byteptr_t;
-			this.SunAlphaType = *(int*)(byteptr_t + 4);
+			this.SunTextureType = (eSunTexture)(*(int*)byteptr_t);
+			this.SunAlphaType = (eSunAlpha)(*(int*)(byteptr_t + 4));
 			this.IntensityScale = *(float*)(byteptr_t + 8);
 			this.Size = *(float*)(byteptr_t + 0xC);
 			this.OffsetX = *(float*)(byteptr_t + 0x10);
@@ -53,8 +54,8 @@ namespace GlobalLib.Support.Underground2.Parts.GameParts
 
 		public unsafe void Write(byte* byteptr_t)
 		{
-			*(int*)byteptr_t = this.SunTextureType;
-			*(int*)(byteptr_t + 4) = this.SunAlphaType;
+			*(int*)byteptr_t = (int)this.SunTextureType;
+			*(int*)(byteptr_t + 4) = (int)this.SunAlphaType;
 			*(float*)(byteptr_t + 8) = this.IntensityScale;
 			*(float*)(byteptr_t + 0xC) = this.Size;
 			*(float*)(byteptr_t + 0x10) = this.OffsetX;

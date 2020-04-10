@@ -232,13 +232,9 @@ namespace GlobalLib.Reflection.Abstract
                 if (!Attribute.IsDefined(property, typeof(AccessModifiableAttribute)))
                     throw new FieldAccessException("This field is either non-modifiable or non-accessible");
                 if (property.PropertyType.IsEnum)
-                {
                     property.SetValue(this, System.Enum.Parse(property.PropertyType, value.ToString()));
-                }
                 else
-                {
                     property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
-                }
                 return true;
             }
             catch (System.Exception) { return false; }
@@ -263,13 +259,9 @@ namespace GlobalLib.Reflection.Abstract
                     throw new FieldAccessException("This field is either non-modifiable or non-accessible");
                 var type = property.GetType();
                 if (property.PropertyType.IsEnum)
-                {
                     property.SetValue(this, System.Enum.Parse(property.PropertyType, value.ToString()));
-                }
                 else
-                {
                     property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
-                }
                 return true;
             }
             catch (System.Exception e)

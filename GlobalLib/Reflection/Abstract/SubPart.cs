@@ -59,7 +59,10 @@ namespace GlobalLib.Reflection.Abstract
             {
                 var property = this.GetType().GetProperty(PropertyName);
                 if (property == null) return false;
-                property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
+                if (property.PropertyType.IsEnum)
+                    property.SetValue(this, System.Enum.Parse(property.PropertyType, value.ToString()));
+                else
+                    property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
                 return true;
             }
             catch (System.Exception) { return false; }
@@ -81,7 +84,10 @@ namespace GlobalLib.Reflection.Abstract
                     error = $"Field named {PropertyName} does not exist.";
                     return false;
                 }
-                property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
+                if (property.PropertyType.IsEnum)
+                    property.SetValue(this, System.Enum.Parse(property.PropertyType, value.ToString()));
+                else
+                    property.SetValue(this, Cast.ReinterpretCast(value, property.PropertyType));
                 return true;
             }
             catch (System.Exception e)
