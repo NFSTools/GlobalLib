@@ -52,7 +52,7 @@ namespace GlobalLib.Support.Underground2.Class
             }
             for (a3 = 0; a3 < 31; ++a3)
             {
-                a1 = Bin.Hash($"{MODEL}{add_on._KIT}{a3:00}{parts._FRONT_BUMPER}");
+                a1 = Bin.Hash($"{MODEL}{add_on._K10}{a3:00}{parts._FRONT_BUMPER}");
                 if (a1 == a2)
                 {
                     this._autosculpt_frontbumper = (sbyte)a3;
@@ -70,7 +70,7 @@ namespace GlobalLib.Support.Underground2.Class
             }
             for (a3 = 0; a3 < 31; ++a3) // 10 rear bumper styles
             {
-                a1 = Bin.Hash($"{MODEL}{add_on._KIT}{a3:00}{parts._REAR_BUMPER}");
+                a1 = Bin.Hash($"{MODEL}{add_on._K10}{a3:00}{parts._REAR_BUMPER}");
                 if (a1 == a2)
                 {
                     this._autosculpt_rearbumper = (sbyte)a3;
@@ -210,7 +210,7 @@ namespace GlobalLib.Support.Underground2.Class
             }
             for (a3 = 0; a3 < 31; ++a3) // 10 rear bumper styles
             {
-                a1 = Bin.Hash($"{MODEL}{add_on._KIT}{a3:00}{parts._SKIRT}");
+                a1 = Bin.Hash($"{MODEL}{add_on._K10}{a3:00}{parts._SKIRT}");
                 if (a1 == a2)
                 {
                     this._autosculpt_skirt = (sbyte)a3;

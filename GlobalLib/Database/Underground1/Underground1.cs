@@ -12,12 +12,12 @@ namespace GlobalLib.Database
         /// <summary>
         /// Game to which the class belongs to.
         /// </summary>
-        public override GameINT GameINT { get => GameINT.Underground2; }
+        public override GameINT GameINT { get => GameINT.Underground1; }
 
         /// <summary>
         /// Game string to which the class belongs to.
         /// </summary>
-        public override string GameSTR { get => GameINT.Underground2.ToString(); }
+        public override string GameSTR { get => GameINT.Underground1.ToString(); }
 
         public Root<Material> Materials { get; set; }
         //public Root<CarTypeInfo> CarTypeInfos { get; set; }
