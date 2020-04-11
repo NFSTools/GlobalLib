@@ -19,7 +19,12 @@ namespace GlobalLib.Support.Underground2.Gameplay
 
 			// Shop Trigger
 			key = *(uint*)(byteptr_t + 0x3C);
-			this._shop_trigger = Map.Lookup(key, true) ?? $"0x{key:X8}";
+			var guess = $"TRIGGER_{this._collection_name}";
+			var hash = Bin.Hash(guess);
+			if (key == hash)
+				this._shop_trigger = guess;
+			else
+				this._shop_trigger = Map.Lookup(key, true) ?? $"0x{key:X8}";
 
 			// Shop Filename
 			this._shop_filename = ScriptX.NullTerminatedString(byteptr_t + 0x40, 0x10);
