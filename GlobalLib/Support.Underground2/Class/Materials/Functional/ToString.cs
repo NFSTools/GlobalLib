@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class Material : Shared.Class.Material
+	public partial class Material
 	{
 		public override string ToString()
 		{

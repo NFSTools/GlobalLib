@@ -1,6 +1,6 @@
-﻿namespace GlobalLib.Support.Underground1.Class
+﻿namespace GlobalLib.Support.Underground2.Class
 {
-	public partial class Material
+	public partial class XenonEffect
 	{
 		public override string ToString()
 		{

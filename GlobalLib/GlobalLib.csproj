@@ -138,6 +138,7 @@
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\FindTexture.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\SortTexturesByType.cs" />
     <Compile Include="Support.MostWanted\SaveData\Inject\I_GlobalLibBlock.cs" />
+    <Compile Include="Support.Shared\Class\XenonEffect.cs" />
     <Compile Include="Support.Underground1\Class\FNGroup\Functional\Assemble.cs" />
     <Compile Include="Support.Underground1\Class\FNGroup\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground1\Class\FNGroup\Functional\ToString.cs" />
@@ -587,6 +588,14 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\WIndowTintSettings.cs" />
     <Compile Include="Support.Underground2\Class\TPKBlock\Internal\FindTexture.cs" />
     <Compile Include="Support.Underground2\Class\TPKBlock\Internal\SortTexturesByType.cs" />
+    <Compile Include="Support.Underground2\Class\XenonEffect\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Class\XenonEffect\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Class\XenonEffect\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Class\XenonEffect\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Class\XenonEffect\Properties\Matrix.cs" />
+    <Compile Include="Support.Underground2\Class\XenonEffect\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Class\XenonEffect\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Class\XenonEffect\Properties\MaterialConstructor.cs" />
     <Compile Include="Support.Underground2\Framework\Assert.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\Assemble.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteBankTriggers.cs" />

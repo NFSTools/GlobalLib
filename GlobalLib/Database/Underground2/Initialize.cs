@@ -210,6 +210,17 @@ namespace GlobalLib.Database
 				this
 			);
 
+			this.XenonEffects = new Root<XenonEffect>
+			(
+				"XenonEffects",
+				XenonEffect.MaxCNameLength,
+				XenonEffect.CNameOffsetAt,
+				XenonEffect.BaseClassSize,
+				true,
+				false,
+				this
+			);
+
 			this.FNGroups = new Root<FNGroup>
 			(
 				"FNGroups",

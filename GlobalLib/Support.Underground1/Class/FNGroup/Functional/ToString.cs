@@ -1,6 +1,6 @@
 ﻿namespace GlobalLib.Support.Underground1.Class
 {
-	public partial class FNGroup : Shared.Class.FNGroup
+	public partial class FNGroup
 	{
 		public override string ToString()
 		{

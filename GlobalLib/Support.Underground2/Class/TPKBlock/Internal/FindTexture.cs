@@ -1,4 +1,7 @@
-﻿namespace GlobalLib.Support.Underground2.Class
+﻿using System;
+using GlobalLib.Reflection.Enum;
+
+namespace GlobalLib.Support.Underground2.Class
 {
 	public partial class TPKBlock
 	{
@@ -8,16 +11,16 @@
 		/// <param name="key">Key of the <see cref="Texture"/> Collection Name.</param>
 		/// <param name="type">Type of the key passed.</param>
 		/// <returns>Texture if it is found; null otherwise.</returns>
-		public override Shared.Class.Texture FindTexture(uint key, Reflection.Enum.eKeyType type)
+		public override Shared.Class.Texture FindTexture(uint key, eKeyType type)
 		{
 			switch (type)
 			{
-				case Reflection.Enum.eKeyType.BINKEY:
+				case eKeyType.BINKEY:
 					return this.Textures.Find(t => t.BinKey == key);
-				case Reflection.Enum.eKeyType.VLTKEY:
+				case eKeyType.VLTKEY:
 					return this.Textures.Find(t => t.VltKey == key);
-				case Reflection.Enum.eKeyType.CUSTOM:
-					throw new System.NotImplementedException();
+				case eKeyType.CUSTOM:
+					throw new NotImplementedException();
 				default:
 					return null;
 			}
