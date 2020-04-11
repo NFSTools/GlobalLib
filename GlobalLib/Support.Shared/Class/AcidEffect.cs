@@ -5,12 +5,11 @@ using GlobalLib.Reflection.Abstract;
 
 namespace GlobalLib.Support.Shared.Class
 {
-    public class XenonEffect : Collectable
+    public class AcidEffect : Collectable
     {
         #region Private Fields
 
-        protected const int _Primary = 0xB;
-        protected const int _Localizer = 3;
+        protected const int _Localizer = 0xB;
 
         #endregion
 

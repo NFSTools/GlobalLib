@@ -6,7 +6,7 @@ namespace GlobalLib.Support.Underground2
     public static partial class SaveData
     {
         /// <summary>
-        /// Writes all preset rides into the Global data.
+        /// Writes all tracks into the Global data.
         /// </summary>
         /// <param name="db">Database with classes.</param>
         /// <param name="bw">BinaryWriter for writing data.</param>

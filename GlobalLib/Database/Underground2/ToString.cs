@@ -18,25 +18,28 @@ namespace GlobalLib.Database
 		public override string GetDatabaseInfo()
 		{
 			string nl = Environment.NewLine;
+			string equals = " = ";
+			string collections = " collections.";
 			string info = this.ToString() + nl;
-			info += $"{this.BankTriggers.ThisName} = {this.BankTriggers.Length} collections.{nl}";
-			info += $"{this.CarTypeInfos.ThisName} = {this.CarTypeInfos.Length} collections.{nl}";
-			info += $"{this.GCareerBrands.ThisName} = {this.GCareerBrands.Length} collections.{nl}";
-			info += $"{this.GCareerRaces.ThisName} = {this.GCareerRaces.Length} collections.{nl}";
-			info += $"{this.GCareerStages.ThisName} = {this.GCareerStages.Length} collections.{nl}";
-			info += $"{this.GCarUnlocks.ThisName} = {this.GCarUnlocks.Length} collections.{nl}";
-			info += $"{this.GShowcases.ThisName} = {this.GShowcases.Length} collections.{nl}";
-			info += $"{this.Materials.ThisName} = {this.Materials.Length} collections.{nl}";
-			info += $"{this.PartPerformances.ThisName} = {this.PartPerformances.Length} collections.{nl}";
-			info += $"{this.PartUnlockables.ThisName} = {this.PartUnlockables.Length} collections.{nl}";
-			info += $"{this.PerfSliderTunings.ThisName} = {this.PerfSliderTunings.Length} collections.{nl}";
-			info += $"{this.PresetRides.ThisName} = {this.PresetRides.Length} collections.{nl}";
-			info += $"{this.SMSMessages.ThisName} = {this.SMSMessages.Length} collections.{nl}";
-			info += $"{this.Sponsors.ThisName} = {this.Sponsors.Length} collections.{nl}";
-			info += $"{this.SunInfos.ThisName} = {this.SunInfos.Length} collections.{nl}";
-			info += $"{this.Tracks.ThisName} = {this.Tracks.Length} collections.{nl}";
-			info += $"{this.WorldChallenges.ThisName} = {this.WorldChallenges.Length} collections.{nl}";
-			info += $"{this.WorldShops.ThisName} = {this.WorldShops.Length} collections.{nl}";
+			info += $"{this.AcidEffects.ThisName}{equals}{this.AcidEffects.Length}{collections}{nl}";
+			info += $"{this.BankTriggers.ThisName}{equals}{this.BankTriggers.Length}{collections}{nl}";
+			info += $"{this.CarTypeInfos.ThisName}{equals}{this.CarTypeInfos.Length}{collections}{nl}";
+			info += $"{this.GCareerBrands.ThisName}{equals}{this.GCareerBrands.Length}{collections}{nl}";
+			info += $"{this.GCareerRaces.ThisName}{equals}{this.GCareerRaces.Length}{collections}{nl}";
+			info += $"{this.GCareerStages.ThisName}{equals}{this.GCareerStages.Length}{collections}{nl}";
+			info += $"{this.GCarUnlocks.ThisName}{equals}{this.GCarUnlocks.Length}{collections}{nl}";
+			info += $"{this.GShowcases.ThisName}{equals}{this.GShowcases.Length}{collections}{nl}";
+			info += $"{this.Materials.ThisName}{equals}{this.Materials.Length}{collections}{nl}";
+			info += $"{this.PartPerformances.ThisName}{equals}{this.PartPerformances.Length}{collections}{nl}";
+			info += $"{this.PartUnlockables.ThisName}{equals}{this.PartUnlockables.Length}{collections}{nl}";
+			info += $"{this.PerfSliderTunings.ThisName}{equals}{this.PerfSliderTunings.Length}{collections}{nl}";
+			info += $"{this.PresetRides.ThisName}{equals}{this.PresetRides.Length}{collections}{nl}";
+			info += $"{this.SMSMessages.ThisName}{equals}{this.SMSMessages.Length}{collections}{nl}";
+			info += $"{this.Sponsors.ThisName}{equals}{this.Sponsors.Length}{collections}{nl}";
+			info += $"{this.SunInfos.ThisName}{equals}{this.SunInfos.Length}{collections}{nl}";
+			info += $"{this.Tracks.ThisName}{equals}{this.Tracks.Length}{collections}{nl}";
+			info += $"{this.WorldChallenges.ThisName}{equals}{this.WorldChallenges.Length}{collections}{nl}";
+			info += $"{this.WorldShops.ThisName}{equals}{this.WorldShops.Length}{collections}{nl}";
 			return info;
 		}
 	}

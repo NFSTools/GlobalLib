@@ -138,7 +138,7 @@
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\FindTexture.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\SortTexturesByType.cs" />
     <Compile Include="Support.MostWanted\SaveData\Inject\I_GlobalLibBlock.cs" />
-    <Compile Include="Support.Shared\Class\XenonEffect.cs" />
+    <Compile Include="Support.Shared\Class\AcidEffect.cs" />
     <Compile Include="Support.Underground1\Class\FNGroup\Functional\Assemble.cs" />
     <Compile Include="Support.Underground1\Class\FNGroup\Functional\Disassemble.cs" />
     <Compile Include="Support.Underground1\Class\FNGroup\Functional\ToString.cs" />
@@ -230,6 +230,7 @@
     <Compile Include="Support.Underground1\Gameplay\SunInfo\Properties\SunInfoConstructor.cs" />
     <Compile Include="Support.Underground1\Gameplay\SunInfo\Properties\SunInfoSettings.cs" />
     <Compile Include="Support.Underground1\Parts\GameParts\SunLayer.cs" />
+    <Compile Include="Support.Underground2\Class\AcidEffect\Properties\PrimaryProperties.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Functional\GetCarSkins.cs" />
     <Compile Include="Support.Underground2\Class\CarTypeInfo\Properties\CarSkins.cs" />
     <Compile Include="Support.Carbon\Class\CarTypeInfo\Properties\CarTypeInfoConstructor.cs" />
@@ -588,14 +589,14 @@
     <Compile Include="Support.Underground2\Class\PresetRide\Properties\WIndowTintSettings.cs" />
     <Compile Include="Support.Underground2\Class\TPKBlock\Internal\FindTexture.cs" />
     <Compile Include="Support.Underground2\Class\TPKBlock\Internal\SortTexturesByType.cs" />
-    <Compile Include="Support.Underground2\Class\XenonEffect\Functional\Assemble.cs" />
-    <Compile Include="Support.Underground2\Class\XenonEffect\Functional\Disassemble.cs" />
-    <Compile Include="Support.Underground2\Class\XenonEffect\Functional\MemoryCast.cs" />
-    <Compile Include="Support.Underground2\Class\XenonEffect\Functional\ToString.cs" />
-    <Compile Include="Support.Underground2\Class\XenonEffect\Properties\Matrix.cs" />
-    <Compile Include="Support.Underground2\Class\XenonEffect\Properties\CollectionName.cs" />
-    <Compile Include="Support.Underground2\Class\XenonEffect\Properties\GameAddress.cs" />
-    <Compile Include="Support.Underground2\Class\XenonEffect\Properties\MaterialConstructor.cs" />
+    <Compile Include="Support.Underground2\Class\AcidEffect\Functional\Assemble.cs" />
+    <Compile Include="Support.Underground2\Class\AcidEffect\Functional\Disassemble.cs" />
+    <Compile Include="Support.Underground2\Class\AcidEffect\Functional\MemoryCast.cs" />
+    <Compile Include="Support.Underground2\Class\AcidEffect\Functional\ToString.cs" />
+    <Compile Include="Support.Underground2\Class\AcidEffect\Properties\LocalWorld.cs" />
+    <Compile Include="Support.Underground2\Class\AcidEffect\Properties\CollectionName.cs" />
+    <Compile Include="Support.Underground2\Class\AcidEffect\Properties\GameAddress.cs" />
+    <Compile Include="Support.Underground2\Class\AcidEffect\Properties\AcidConstructor.cs" />
     <Compile Include="Support.Underground2\Framework\Assert.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\Assemble.cs" />
     <Compile Include="Support.Underground2\Framework\CareerManager\Writing\WriteBankTriggers.cs" />
@@ -920,6 +921,7 @@
     <Compile Include="Support.Underground2\LoadData\Decompile\E_PresetRides.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SlotType.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SpoilMirrs.cs" />
+    <Compile Include="Support.Underground2\LoadData\Decompile\E_AcidEffects.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_Tracks.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_SunInfo.cs" />
     <Compile Include="Support.Underground2\LoadData\Decompile\E_CarTypeInfo.cs" />
@@ -964,6 +966,7 @@
     <Compile Include="Support.Underground2\SaveData\Inject\CPInjector\CPI_Part56.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_CarParts.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_CarSkins.cs" />
+    <Compile Include="Support.Underground2\SaveData\Inject\I_AcidEffects.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_Tracks.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_SunInfos.cs" />
     <Compile Include="Support.Underground2\SaveData\Inject\I_CarTypeInfo.cs" />

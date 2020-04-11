@@ -37,7 +37,7 @@ namespace GlobalLib.Database
         public Root<PartUnlockable> PartUnlockables { get; set; }
         public Root<BankTrigger> BankTriggers { get; set; }
         public Root<GCarUnlock> GCarUnlocks { get; set; }
-        public Root<XenonEffect> XenonEffects { get; set; }
+        public Root<AcidEffect> AcidEffects { get; set; }
         public Root<FNGroup> FNGroups { get; set; }
         public Root<TPKBlock> TPKBlocks { get; set; }
         public Root<STRBlock> STRBlocks { get; set; }
@@ -76,7 +76,7 @@ namespace GlobalLib.Database
             this.PartUnlockables = null;
             this.BankTriggers = null;
             this.GCarUnlocks = null;
-            this.XenonEffects = null;
+            this.AcidEffects = null;
         }
     }
 }

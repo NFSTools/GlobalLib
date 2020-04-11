@@ -5,7 +5,7 @@ using System;
 
 namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class XenonEffect
+    public partial class AcidEffect
     {
         private string _collection_name;
 

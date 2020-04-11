@@ -97,6 +97,11 @@ namespace GlobalLib.Support.Underground2
                             I_GlobalLibBlock(bw);
                             goto default;
 
+                        case Global.AcidEffects:
+                            I_AcidEffects(db, bw);
+                            br.BaseStream.Position += WriterSlotSize;
+                            break;
+
                         case Global.CareerInfo:
                             if (careerdone) goto default;
                             I_GlobalLibBlock(bw);

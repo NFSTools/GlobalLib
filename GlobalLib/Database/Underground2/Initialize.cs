@@ -210,12 +210,12 @@ namespace GlobalLib.Database
 				this
 			);
 
-			this.XenonEffects = new Root<XenonEffect>
+			this.AcidEffects = new Root<AcidEffect>
 			(
-				"XenonEffects",
-				XenonEffect.MaxCNameLength,
-				XenonEffect.CNameOffsetAt,
-				XenonEffect.BaseClassSize,
+				"AcidEffects",
+				AcidEffect.MaxCNameLength,
+				AcidEffect.CNameOffsetAt,
+				AcidEffect.BaseClassSize,
 				true,
 				false,
 				this

@@ -121,6 +121,10 @@ namespace GlobalLib.Support.Underground2
                                 gcoff = offset;
                             break;
 
+                        case Global.AcidEffects:
+                            E_AcidEffects(byteptr_t + offset + 8, size, db);
+                            break;
+
                         case Global.FEngFiles:
                         case Global.FNGCompress:
                             E_FNGroup(byteptr_t + offset, size + 8, db);

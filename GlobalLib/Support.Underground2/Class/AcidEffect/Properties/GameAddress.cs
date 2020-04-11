@@ -4,7 +4,7 @@
 
 namespace GlobalLib.Support.Underground2.Class
 {
-    public partial class XenonEffect
+    public partial class AcidEffect
     {
         /// <summary>
         /// Game to which the class belongs to.

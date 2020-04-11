@@ -6,7 +6,7 @@ namespace GlobalLib.Support.Underground2
     public static partial class SaveData
     {
         /// <summary>
-        /// Writes all cartypeinfo into the Global data.
+        /// Writes all sun infos into the Global data.
         /// </summary>
         /// <param name="db">Database with classes.</param>
         /// <param name="bw">BinaryWriter for writing data.</param>
