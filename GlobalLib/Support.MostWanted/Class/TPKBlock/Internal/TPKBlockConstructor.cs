@@ -12,7 +12,7 @@ namespace GlobalLib.Support.MostWanted.Class
         private List<uint> keys = new List<uint>(); // Part2
         private List<CompSlot> compressions = new List<CompSlot>(); // Part5
 
-        public TPKBlock() { }
+        public TPKBlock() { this._use_current_cname = true; }
 
         public unsafe TPKBlock(byte* byteptr_t, int index, Database.MostWanted db)
         {
