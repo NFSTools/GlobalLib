@@ -14,7 +14,9 @@ namespace GlobalLib.Support.Underground2.Class
         protected override unsafe void Disassemble(byte* byteptr_t)
         {
             // Manufacturer name
-            this.ManufacturerName = ScriptX.NullTerminatedString(byteptr_t + 0xC0, 0x10);
+            var name = ScriptX.NullTerminatedString(byteptr_t + 0xC0, 0x10);
+            if (string.IsNullOrWhiteSpace(name)) this.ManufacturerName = BaseArguments.NULL;
+            else this.ManufacturerName = name;
 
             // Secondary Properties
             this.HeadlightFOV = *(float*)(byteptr_t + 0xD4);

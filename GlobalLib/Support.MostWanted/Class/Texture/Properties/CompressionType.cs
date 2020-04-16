@@ -19,6 +19,12 @@ namespace GlobalLib.Support.MostWanted.Class
         }
 
         /// <summary>
+        /// Gets compression type of the texture.
+        /// </summary>
+        /// <returns>Compression type as a string.</returns>
+        public override string GetCompression() => this.Compression;
+
+        /// <summary>
         /// Used in TPK compression blocks.
         /// </summary>
         public int CompVal1 { get; set; } = 1;

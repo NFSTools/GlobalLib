@@ -1,4 +1,5 @@
 ﻿using GlobalLib.Core;
+using GlobalLib.Utils;
 using GlobalLib.Reflection;
 using GlobalLib.Reflection.Enum;
 
@@ -13,8 +14,9 @@ namespace GlobalLib.Support.Carbon.Class
         protected override unsafe void Disassemble(byte* byteptr_t)
         {
             // Get Manufacturer name
-            for (int x = 0x40; *(byteptr_t + x) != 0; ++x)
-                this.ManufacturerName += ((char)*(byteptr_t + x)).ToString();
+            var name = ScriptX.NullTerminatedString(byteptr_t + 0x40, 0x10);
+            if (string.IsNullOrWhiteSpace(name)) this.ManufacturerName = BaseArguments.NULL;
+            else this.ManufacturerName = name;
 
             this.HeadlightFOV = *(float*)(byteptr_t + 0x54);
             this.PadHighPerformance = *(byteptr_t + 0x58);

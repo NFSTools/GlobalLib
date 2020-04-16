@@ -14,7 +14,13 @@ namespace GlobalLib.Support.Carbon.Class
         public string Compression
         {
             get => Comp.GetString(this._compression);
-            private set => this._compression = Comp.GetByte(value);
+            set => this._compression = Comp.GetByte(value);
         }
+
+        /// <summary>
+        /// Gets compression type of the texture.
+        /// </summary>
+        /// <returns>Compression type as a string.</returns>
+        public override string GetCompression() => this.Compression;
     }
 }

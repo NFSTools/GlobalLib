@@ -1,4 +1,5 @@
 ﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection;
 using GlobalLib.Support.Underground2.Parts.CarParts;
 using GlobalLib.Utils;
 using System.IO;
@@ -36,8 +37,11 @@ namespace GlobalLib.Support.Underground2.Class
                     *(byteptr_t + 0x60 + a1) = (byte)pathlzc[a1];
 
                 // Write ManufacturerName
-                for (int a1 = 0; a1 < this.ManufacturerName.Length; ++a1)
-                    *(byteptr_t + 0xC0 + a1) = (byte)this.ManufacturerName[a1];
+                if (this.ManufacturerName != BaseArguments.NULL)
+                {
+                    for (int a1 = 0; a1 < this.ManufacturerName.Length; ++a1)
+                        *(byteptr_t + 0xC0 + a1) = (byte)this.ManufacturerName[a1];
+                }
 
                 // Secondary Properties
                 *(uint*)(byteptr_t + 0xD0) = this.BinKey;

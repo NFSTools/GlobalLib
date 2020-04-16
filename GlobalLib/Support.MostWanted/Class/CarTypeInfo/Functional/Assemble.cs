@@ -1,4 +1,5 @@
 ﻿using GlobalLib.Reflection.Enum;
+using GlobalLib.Reflection;
 using GlobalLib.Utils;
 using System.IO;
 
@@ -30,8 +31,11 @@ namespace GlobalLib.Support.MostWanted.Class
                     *(byteptr_t + 0x20 + a1) = (byte)path[a1];
 
                 // Write ManufacturerName
-                for (int a1 = 0; a1 < this.ManufacturerName.Length; ++a1)
-                    *(byteptr_t + 0x40 + a1) = (byte)this.ManufacturerName[a1];
+                if (this.ManufacturerName != BaseArguments.NULL)
+                {
+                    for (int a1 = 0; a1 < this.ManufacturerName.Length; ++a1)
+                        *(byteptr_t + 0x40 + a1) = (byte)this.ManufacturerName[a1];
+                }
 
                 // Write all settings
                 *(uint*)(byteptr_t + 0x50) = this.BinKey;

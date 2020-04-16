@@ -101,7 +101,7 @@ namespace GlobalLib.Support.Underground2.Class
 
 				// _BRAKELIGHT
 				if (this._brakelight_style == 0)
-					parts._BRAKELIGHT = MODEL + add_on._KIT + add_on._0 + parts._HEADLIGHT;
+					parts._BRAKELIGHT = MODEL + add_on._KIT + add_on._0 + parts._BRAKELIGHT;
 				else
 					parts._BRAKELIGHT = MODEL + add_on._STYLE + this._brakelight_style.ToString("00") + parts._BRAKELIGHT;
 

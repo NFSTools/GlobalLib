@@ -6,6 +6,12 @@ namespace GlobalLib.Support.MostWanted.Class
     public partial class TPKBlock
     {
         /// <summary>
+        /// Gets all textures of this <see cref="TPKBlock"/>.
+        /// </summary>
+        /// <returns>Textures as an object.</returns>
+        public override object GetTextures() => this.Textures;
+
+        /// <summary>
         /// Gets index of the <see cref="Texture"/> in the <see cref="TPKBlock"/>.
         /// </summary>
         /// <param name="key">Key of the Collection Name of the <see cref="Texture"/>.</param>

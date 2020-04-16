@@ -31,7 +31,7 @@ namespace GlobalLib.Support.Shared.Class
         /// <summary>
         /// Collection name of the variable.
         /// </summary>
-        public override string CollectionName { get => this._collection_name; set => throw new NotImplementedException(); }
+        public override string CollectionName { get => this._collection_name; set => this._collection_name = value; }
 
         /// <summary>
         /// Game to which the class belongs to.
@@ -76,6 +76,12 @@ namespace GlobalLib.Support.Shared.Class
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Gets all textures of this <see cref="TPKBlock"/>.
+        /// </summary>
+        /// <returns>Textures as an object.</returns>
+        public virtual object GetTextures() => null;
 
         /// <summary>
         /// Sorts <see cref="Texture"/> by their CollectionNames or BinKeys.

@@ -74,6 +74,12 @@ namespace GlobalLib.Support.Shared.Class
         #region Public Properties
 
         /// <summary>
+        /// Gets compression type of the texture.
+        /// </summary>
+        /// <returns>Compression type as a string.</returns>
+        public virtual string GetCompression() => null;
+
+        /// <summary>
         /// Represents height in pixels of the texture.
         /// </summary>
         public short Width
