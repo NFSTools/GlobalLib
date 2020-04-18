@@ -285,6 +285,14 @@ namespace GlobalLib.Support.MostWanted.Class
             this._vinylcolor3 = Resolve.GetSwatchIndex(Map.Lookup(*(uint*)(byteptr_t + 0x1A4), false));
             this._vinylcolor4 = Resolve.GetSwatchIndex(Map.Lookup(*(uint*)(byteptr_t + 0x1A8), false));
 
+            // Read Decals
+            this.DECALS_FRONT_WINDOW.Read(byteptr_t + 0x1AC);
+            this.DECALS_REAR_WINDOW.Read(byteptr_t + 0x1CC);
+            this.DECALS_LEFT_DOOR.Read(byteptr_t + 0x1EC);
+            this.DECALS_RIGHT_DOOR.Read(byteptr_t + 0x20C);
+            this.DECALS_LEFT_QUARTER.Read(byteptr_t + 0x22C);
+            this.DECALS_RIGHT_QUARTER.Read(byteptr_t + 0x24C);
+
             // _WINDOW_TINT
             a2 = *(uint*)(byteptr_t + 0x26C);
             a1 = Bin.Hash(parts.WINDOW_TINT_STOCK);

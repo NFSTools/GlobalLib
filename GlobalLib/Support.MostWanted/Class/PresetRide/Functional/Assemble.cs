@@ -252,6 +252,14 @@ namespace GlobalLib.Support.MostWanted.Class
                         }
                     }
                 }
+
+                // Read Decals
+                this.DECALS_FRONT_WINDOW.Write(byteptr_t + 0x1AC);
+                this.DECALS_REAR_WINDOW.Write(byteptr_t + 0x1CC);
+                this.DECALS_LEFT_DOOR.Write(byteptr_t + 0x1EC);
+                this.DECALS_RIGHT_DOOR.Write(byteptr_t + 0x20C);
+                this.DECALS_LEFT_QUARTER.Write(byteptr_t + 0x22C);
+                this.DECALS_RIGHT_QUARTER.Write(byteptr_t + 0x24C);
             }
             return result;
         }

@@ -135,8 +135,10 @@
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\FindTexture.cs" />
     <Compile Include="Support.Carbon\Class\TPKBlock\Internal\SortTexturesByType.cs" />
     <Compile Include="Support.Carbon\SaveData\Inject\I_GlobalLibBlock.cs" />
+    <Compile Include="Support.MostWanted\Class\PresetRide\Properties\SubClassesSettings.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\FindTexture.cs" />
     <Compile Include="Support.MostWanted\Class\TPKBlock\Internal\SortTexturesByType.cs" />
+    <Compile Include="Support.MostWanted\Parts\PresetParts\DecalArray.cs" />
     <Compile Include="Support.MostWanted\SaveData\Inject\I_GlobalLibBlock.cs" />
     <Compile Include="Support.Shared\Class\AcidEffect.cs" />
     <Compile Include="Support.Underground1\Class\FNGroup\Functional\Assemble.cs" />
